@@ -38,8 +38,10 @@ jobs:
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          submodules: recursive
+        run: |
+          git submodule update --recursive --remote
+        #with:
+        #  submodules: recursive
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v1
