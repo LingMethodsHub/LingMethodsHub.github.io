@@ -4,3 +4,6 @@
 [submodule "content/R/rmodels"]
 	path = content/R/rmodels
 	url = https://github.com/LingMethodsHub/rmodels.git
+[submodule "content/windows/wsl"]
+	path = content/windows/wsl
+	url = https://github.com/LingMethodsHub/wsl.git
