@@ -42,7 +42,7 @@ jobs:
         #  submodules: recursive
       - name: Checkout Submodules
         run: |
-          git submodule update --init --recursive
+          git submodule update --init --recursive --remote
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v1
