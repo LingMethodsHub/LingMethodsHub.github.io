@@ -1,10 +1,10 @@
 +++
-title = "R"
-weight = 1
+title = "Python"
+weight = 10
 chapter = true
 +++
 
 
-# R Tutorials
+# python Tutorials
 
 {{% children depth="4" %}}

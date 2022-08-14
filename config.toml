@@ -10,5 +10,20 @@ theme = 'hugo-theme-learn'
 home = [ "HTML", "RSS", "JSON"]
 
 [params]
+  editURL = "https://github.com/LingMethodsHub/LingMethodsHub.github.io/tree/main/content/"
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
   themeVariant = "blue"
+
+[Languages]
+[Languages.en]
+title = "Documentation for Hugo Learn Theme"
+weight = 1
+languageName = "English"
+landingPageURL = "/en"
+landingPageName = "<i class='fas fa-home'></i> Home"
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-fw fa-github'></i> GitHub repo"
+identifier = "ds"
+url = "https://github.com/LingMethodsHub/"
+weight = 10
