@@ -5,6 +5,6 @@ weight = 100
 chapter = true
 +++
 
-# Some Chapter title
+# Updates
 
-Lorem Ipsum.
+{{% children depth="4" %}}

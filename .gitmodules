@@ -1,9 +1,6 @@
 [submodule "themes/hugo-theme-learn"]
 	path = themes/hugo-theme-learn
 	url = https://github.com/matcornic/hugo-theme-learn.git
-[submodule "content/R/rmodels"]
-	path = content/R/rmodels
-	url = https://github.com/LingMethodsHub/rmodels.git
 [submodule "content/windows/wsl"]
 	path = content/windows/wsl
 	url = https://github.com/LingMethodsHub/wsl.git
