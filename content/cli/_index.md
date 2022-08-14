@@ -1,6 +1,6 @@
 +++
 title = "Command Line Interfaces"
-weight = 8
+weight = 30
 chapter = true
 +++
 

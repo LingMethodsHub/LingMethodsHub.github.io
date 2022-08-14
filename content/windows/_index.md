@@ -1,7 +1,6 @@
 +++
 title = "Windows"
-date = 2022-08-12
-weight = 90
+weight = 40
 chapter = true
 +++
 

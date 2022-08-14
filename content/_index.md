@@ -1,5 +1,5 @@
 ---
-title: "Landing Page"
+title: "Linguistics Methods Hub"
 ---
 
 # Linguistics Methods Hub

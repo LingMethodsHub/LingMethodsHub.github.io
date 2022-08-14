@@ -1,10 +1,10 @@
 +++
-title = "R"
-weight = 1
+title = "Praat"
+weight = 20
 chapter = true
 +++
 
 
-# R Tutorials
+# Praat Tutorials
 
 {{% children depth="4" %}}
