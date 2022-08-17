@@ -9,6 +9,11 @@ theme = 'hugo-theme-learn'
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
 
+ignoreFiles = [ "\\.qmd$", "\\.ipynb$" ]
+
+[markup.goldmark.renderer]
+unsafe= true
+
 [params]
   editURL = "https://github.com/LingMethodsHub/LingMethodsHub.github.io/tree/main/content/"
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
