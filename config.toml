@@ -9,15 +9,19 @@ theme = 'hugo-theme-learn'
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
 
+ignoreFiles = [ "\\.qmd$", "\\.ipynb$" ]
+
+[markup.goldmark.renderer]
+unsafe= true
+
 [params]
-  # the edit url requires more work given the submodules
   # editURL = "https://github.com/LingMethodsHub/LingMethodsHub.github.io/tree/main/content/"
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
   themeVariant = "blue"
 
 [Languages]
 [Languages.en]
-title = "Documentation for Hugo Learn Theme"
+title = "Linguistics Methods Hub"
 weight = 1
 languageName = "English"
 landingPageURL = "/en"
