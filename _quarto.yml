@@ -1,0 +1,36 @@
+project:
+  type: website
+  render:
+    - "*qmd"
+    - "*md"
+    - "content/*"
+    - "content/cli/keyboarding/_index.md"
+    - "!content/cli/keyboarding/_index.qmd"
+    - "!oldsite/"
+
+website:
+  title: "LingMethodsHub"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Command Line Interfaces"
+        contents:
+          - content/cli/index.md
+          - section: "Terminals"
+            contents:
+              - content/cli/terminals/index.md
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+
