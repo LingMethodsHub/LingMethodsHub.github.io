@@ -1,8 +1,7 @@
 ---
 title: "Linguistics Methods Hub"
+license: "CC-BY-SA 4.0"
 ---
-
-# Linguistics Methods Hub
 
 This is a project in development. Our goal is to provide a coherent and searchable source for linguistics methods, specifically computational and quantitative methods, to which people can contribute with appropriate credit. 
 

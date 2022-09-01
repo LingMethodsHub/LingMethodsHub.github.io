@@ -1,5 +1,11 @@
 ---
 title: "About"
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/LingMethodsHub
 ---
 
-About this site
+Linguistics Method Hub is a place for stuff

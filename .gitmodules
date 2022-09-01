@@ -2,7 +2,7 @@
 	path = oldsite/themes/hugo-theme-learn
 	url = https://github.com/matcornic/hugo-theme-learn.git
 [submodule "content/windows/wsl"]
-	path = oldsite/content/windows/wsl
+	path = content/windows/wsl
 	url = https://github.com/LingMethodsHub/wsl.git
 [submodule "content/cli/keyboarding"]
 	path = content/cli/keyboarding

@@ -9,7 +9,7 @@
    id="svg5"
    inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
    sodipodi:docname="logo.svg"
-   inkscape:export-filename="../static/images/favicon.png"
+   inkscape:export-filename="../../logo.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -29,11 +29,11 @@
      showgrid="false"
      inkscape:zoom="0.25258405"
      inkscape:cx="419.66229"
-     inkscape:cy="277.13548"
+     inkscape:cy="277.13547"
      inkscape:window-width="1673"
      inkscape:window-height="828"
      inkscape:window-x="0"
-     inkscape:window-y="38"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1">
     <inkscape:grid
@@ -56,36 +56,31 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-2.4932904,-2.7889603)">
-    <text
-       xml:space="preserve"
+    <g
        transform="scale(0.26458333)"
        id="text111"
-       style="white-space:pre;shape-inside:url(#rect113);display:inline;fill:#000000" />
+       style="white-space:pre;shape-inside:url(#rect113);display:inline" />
     <g
        id="g2523"
        transform="translate(5.0001078,4.00022)">
-      <text
-         xml:space="preserve"
-         style="font-size:134.972px;fill:#000000;fill-opacity:1;stroke-width:11.2476"
-         x="-11.939751"
-         y="105.28615"
-         id="text119"><tspan
-           sodipodi:role="line"
-           id="tspan117"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monaco;-inkscape-font-specification:Monaco;fill:#000000;fill-opacity:1;stroke-width:11.2476"
-           x="-11.939751"
-           y="105.28615">L</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:134.972px;font-family:Futura;-inkscape-font-specification:Futura;fill:#000000;fill-opacity:1;stroke-width:11.2476"
-         x="43.300747"
-         y="105.28615"
-         id="text173"><tspan
-           sodipodi:role="line"
-           id="tspan171"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monaco;-inkscape-font-specification:Monaco;fill:#000000;fill-opacity:1;stroke-width:11.2476"
-           x="43.300747"
-           y="105.28615">M</tspan></text>
+      <g
+         aria-label="L"
+         id="text119"
+         style="font-size:134.972px;stroke-width:11.2476">
+        <path
+           d="M 57.721091,94.016513 V 105.28615 H 2.4932904 V 3.0026792 H 15.805958 V 94.016513 Z"
+           style="font-family:Monaco;-inkscape-font-specification:Monaco"
+           id="path275" />
+      </g>
+      <g
+         aria-label="M"
+         id="text173"
+         style="font-size:134.972px;font-family:Futura;-inkscape-font-specification:Futura;stroke-width:11.2476">
+        <path
+           d="m 57.733788,105.28615 h -10.7424 V 3.0026792 H 60.36996 L 83.963698,70.356871 107.55744,3.0026792 h 13.04905 V 105.28615 h -12.2582 V 40.106798 l 0.32952,-8.962984 h -0.32952 L 105.4485,40.106798 89.631468,84.855816 H 76.3188 L 60.304056,40.106798 57.733788,31.143814 h -0.329522 l 0.329522,8.962984 z"
+           style="font-family:Monaco;-inkscape-font-specification:Monaco"
+           id="path278" />
+      </g>
       <g
          aria-label="H"
          transform="matrix(41.595561,0,0,43.446172,-1429.0069,-3531.2766)"

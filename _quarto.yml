@@ -11,13 +11,19 @@ project:
 website:
   title: "LingMethodsHub"
   navbar:
+    background: primary
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+    right:
+      - href: https://github.com/LingMethodsHub/LingMethodsHub.github.io
+        icon: "github"
+    search: true        
   sidebar:
-    style: "docked"
-    search: true
+    logo: assets/logo.svg
+    style: "floating"
+
     contents:
       - section: "Command Line Interfaces"
         contents:
@@ -25,12 +31,23 @@ website:
           - section: "Terminals"
             contents:
               - content/cli/terminals/index.md
+  page-navigation: true
+  reader-mode: true      
+  cookie-consent: true    
+  comments: 
+    hypothesis:
+      theme: clean
+      openSidebar: false
+      showHighlights: never
+
 
 format:
   html:
-    theme: cosmo
+    theme: minty
     css: styles.css
     toc: true
 
+execute:
+  freeze: auto
 
 
