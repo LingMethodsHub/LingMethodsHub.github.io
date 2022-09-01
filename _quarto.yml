@@ -23,14 +23,17 @@ website:
   sidebar:
     logo: assets/logo.svg
     style: "floating"
-
     contents:
-      - section: "Command Line Interfaces"
+      - section: "R"
         contents:
-          - content/cli/index.md
-          - section: "Terminals"
-            contents:
-              - content/cli/terminals/index.md
+          - content/R/index.md
+      - section: "Python"
+      - section: "Command Line Interfaces"
+      - section: Windows
+        contents:
+          - section: "Windows Subsystem for Linux"
+            contents: 
+              - content/windows/wsl/00_installing_wsl.md
   page-navigation: true
   reader-mode: true      
   cookie-consent: true    
