@@ -15,3 +15,4 @@ hugo.linux
 .DS_store
 /.quarto/
 _site/
+_freeze/

@@ -1,6 +1,8 @@
 ---
 title: "Command Line Interface"
+listing:
+    contents:
+        - "**/!(README)*md"
+    type: default
 ---
 
-## No 
-Some content, as a treat

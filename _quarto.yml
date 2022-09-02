@@ -27,21 +27,33 @@ website:
       - section: "R"
         contents:
           - content/R/index.md
-      - section: "Python"
-      - section: "Command Line Interfaces"
-      - section: Windows
+      - section: Python
+      - section: Praat
+      - section: Command Line Interfaces
+        href: content/cli/index.md
         contents:
-          - section: "Windows Subsystem for Linux"
+          - href: content/cli/keyboarding/index.qmd
+            text: Keyboarding
+      - section: Windows
+        href: content/windows/index.md
+        contents:
+          - section: Windows Subsystem for Linux
+            href: content/windows/wsl/index.md
             contents: 
-              - content/windows/wsl/00_installing_wsl.md
+              - href: content/windows/wsl/00_installing_wsl.md
+                text: Installation
   page-navigation: true
   reader-mode: true      
-  cookie-consent: true    
+  cookie-consent:
+    type: express
+
   comments: 
     hypothesis:
       theme: clean
       openSidebar: false
       showHighlights: never
+  google-analytics: G-ES98D09K0F
+
 
 
 format:
@@ -49,6 +61,8 @@ format:
     theme: minty
     css: styles.css
     toc: true
+
+output-format: all
 
 execute:
   freeze: auto
