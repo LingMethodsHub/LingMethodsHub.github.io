@@ -1,0 +1,8 @@
+---
+title: "Contributors"
+editor: visual
+---
+
+-   [Josef Fruehwald](https://jofrhwld.github.io/)
+
+-   [Matt Hunt Gardner](https://www.matthuntgardner.com/)

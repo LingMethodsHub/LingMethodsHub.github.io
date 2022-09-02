@@ -1,0 +1,18 @@
+---
+title: "Matt Hunt Gardner"
+editor: visual
+image: profile.jpeg
+about: 
+  template: jolla
+  image: profile.jpeg
+  links:
+    - icon: link
+      href: https://www.matthuntgardner.com/
+      text: homepage
+    - icon: github
+      href: https://github.com/matthuntgardner/
+    - icon: twitter
+      href: https://twitter.com/matthuntgardner
+    - icon: linkedin
+      href: https://www.linkedin.com/in/matthuntgardner
+---

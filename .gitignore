@@ -16,3 +16,4 @@ hugo.linux
 /.quarto/
 _site/
 _freeze/
+.Rproj.user

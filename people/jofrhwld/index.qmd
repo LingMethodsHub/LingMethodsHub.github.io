@@ -1,0 +1,16 @@
+---
+title: "Josef Fruehwald"
+editor: visual
+image: profile.jpeg
+about: 
+  template: jolla
+  image: profile.jpeg
+  links: 
+    - icon: link
+      href: https://jofrhwld.github.io/
+      text: homepage
+    - icon: github
+      href: https://github.com/JoFrhwld
+    - icon: twitter
+      href: https://twitter.com/JoFrhwld
+---

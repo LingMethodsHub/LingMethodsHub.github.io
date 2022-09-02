@@ -4,9 +4,6 @@ project:
     - "*qmd"
     - "*md"
     - "content/*"
-    - "content/cli/keyboarding/_index.md"
-    - "!content/cli/keyboarding/_index.qmd"
-    - "!oldsite/"
 
 website:
   title: "LingMethodsHub"
@@ -18,6 +15,8 @@ website:
       - about.qmd
       - href: content/contributing/index.md
         text: Contributing
+      - href: people/index.qmd
+        text: People
     right:
       - href: https://github.com/LingMethodsHub/LingMethodsHub.github.io
         icon: "github"
@@ -61,6 +60,8 @@ website:
 format:
   html:
     theme: minty
+    include-in-header: google_font.html
+    mainfont: "'Atkinson Hyperlegible', sans-serif"
     css: styles.css
     toc: true
 

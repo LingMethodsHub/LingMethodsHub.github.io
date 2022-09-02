@@ -1,0 +1,18 @@
+---
+title: "People"
+editor: visual
+listing:
+  - id: maintainers
+    contents:
+      - "**/index.qmd"
+    type: grid
+---
+
+## Linguistics Methods Hub Maintainers
+
+::: {#maintainers}
+:::
+
+## Linguistics Methods Hub Contributors
+
+{{< include _contributors.qmd >}}
