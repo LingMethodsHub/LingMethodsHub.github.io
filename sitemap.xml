@@ -2,54 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/about.html</loc>
-    <lastmod>2022-09-02T03:25:16.851Z</lastmod>
+    <lastmod>2022-09-02T21:30:08.924Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/cli/keyboarding/index.html</loc>
-    <lastmod>2022-09-02T03:25:17.448Z</lastmod>
+    <lastmod>2022-09-02T21:30:09.570Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/process.html</loc>
+    <lastmod>2022-09-02T21:30:10.023Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/recommendations.html</loc>
+    <lastmod>2022-09-02T21:30:10.585Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/requirements.html</loc>
+    <lastmod>2022-09-02T21:30:10.913Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/index.html</loc>
+    <lastmod>2022-09-02T21:30:11.307Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/index.html</loc>
-    <lastmod>2022-09-02T03:25:17.777Z</lastmod>
+    <lastmod>2022-09-02T21:30:11.703Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/people/index.html</loc>
+    <lastmod>2022-09-02T21:30:12.095Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/people/jofrhwld/index.html</loc>
+    <lastmod>2022-09-02T21:30:12.470Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/people/matthuntgardner/index.html</loc>
+    <lastmod>2022-09-02T21:30:12.890Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/index.html</loc>
-    <lastmod>2022-09-02T03:25:18.065Z</lastmod>
+    <lastmod>2022-09-02T21:30:13.232Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/cli/index.html</loc>
-    <lastmod>2022-09-02T03:25:18.394Z</lastmod>
+    <lastmod>2022-09-02T21:30:13.582Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/index.html</loc>
-    <lastmod>2022-09-02T03:25:18.657Z</lastmod>
+    <lastmod>2022-09-02T21:30:13.938Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/praat/index.html</loc>
-    <lastmod>2022-09-02T03:25:18.998Z</lastmod>
+    <lastmod>2022-09-02T21:30:14.279Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/python/index.html</loc>
-    <lastmod>2022-09-02T03:25:19.309Z</lastmod>
+    <lastmod>2022-09-02T21:30:14.688Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/updates/index.html</loc>
-    <lastmod>2022-09-02T03:25:19.591Z</lastmod>
+    <lastmod>2022-09-02T21:30:15.107Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/windows/index.html</loc>
-    <lastmod>2022-09-02T03:25:19.972Z</lastmod>
+    <lastmod>2022-09-02T21:30:15.637Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/windows/wsl/00_installing_wsl.html</loc>
-    <lastmod>2022-09-02T03:25:20.314Z</lastmod>
+    <lastmod>2022-09-02T21:30:16.111Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/windows/wsl/01_vscode_wsl.html</loc>
-    <lastmod>2022-09-02T03:25:26.153Z</lastmod>
+    <lastmod>2022-09-02T21:30:22.054Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/windows/wsl/index.html</loc>
-    <lastmod>2022-09-02T03:25:26.493Z</lastmod>
+    <lastmod>2022-09-02T21:30:22.574Z</lastmod>
   </url>
 </urlset>

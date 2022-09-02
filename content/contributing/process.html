@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>LingMethodsHub - Contributing</title>
+<title>LingMethodsHub - Contribution Process</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/contributing/requirements.html" rel="next">
+<link href="../../content/contributing/recommendations.html" rel="prev">
 <script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
@@ -152,7 +152,7 @@ cookieconsent.run({
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Contributing</h1>
+      <h1 class="quarto-secondary-nav-title">Contribution Process</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -172,7 +172,7 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/index.html" class="sidebar-item-text sidebar-link active">Contributing</a>
+  <a href="../../content/contributing/index.html" class="sidebar-item-text sidebar-link">Contributing</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -187,7 +187,7 @@ cookieconsent.run({
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/process.html" class="sidebar-item-text sidebar-link">Process</a>
+  <a href="../../content/contributing/process.html" class="sidebar-item-text sidebar-link active">Process</a>
   </div>
 </li>
     </ul>
@@ -199,7 +199,12 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#contributing-to-linguistics-methods-hub" id="toc-contributing-to-linguistics-methods-hub" class="nav-link active" data-scroll-target="#contributing-to-linguistics-methods-hub">Contributing to Linguistics Methods Hub</a></li>
+  <li><a href="#forking-tutorial-repositories" id="toc-forking-tutorial-repositories" class="nav-link active" data-scroll-target="#forking-tutorial-repositories">Forking Tutorial Repositories</a>
+  <ul class="collapse">
+  <li><a href="#why-does-lingmethodshub-have-to-fork-my-repository" id="toc-why-does-lingmethodshub-have-to-fork-my-repository" class="nav-link" data-scroll-target="#why-does-lingmethodshub-have-to-fork-my-repository">Why does LingMethodsHub have to fork my repository?</a></li>
+  <li><a href="#what-if-i-want-to-make-edits-after-lingmethodshub-has-forked-the-repository" id="toc-what-if-i-want-to-make-edits-after-lingmethodshub-has-forked-the-repository" class="nav-link" data-scroll-target="#what-if-i-want-to-make-edits-after-lingmethodshub-has-forked-the-repository">What if I want to make edits after LingMethodsHub has forked the repository?</a></li>
+  <li><a href="#what-if-something-looks-wrong-on-the-site" id="toc-what-if-something-looks-wrong-on-the-site" class="nav-link" data-scroll-target="#what-if-something-looks-wrong-on-the-site">What if something looks wrong on the site?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -208,7 +213,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Contributing</h1>
+<h1 class="title d-none d-lg-block">Contribution Process</h1>
 </div>
 
 
@@ -222,16 +227,33 @@ cookieconsent.run({
 
 </header>
 
-<section id="contributing-to-linguistics-methods-hub" class="level1">
-<h1>Contributing to Linguistics Methods Hub</h1>
-<p>Linguistics Methods Hub is hosted on Github, and built with <a href="https://quarto.org/">Quarto</a>. Rather than edit the whole site code directly, the content of most tutorials will be added as <em>submodules</em>.</p>
+<p>To contribute a tutorial to the LingMethodsHub, you will need to create a <a href="https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account">Github Account</a>, <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo">create a repository for your tutorial</a>, then submit <a href="https://github.com/LingMethodsHub/LingMethodsHub.github.io">an issue on the website repository requesting a fork</a>.</p>
+<section id="forking-tutorial-repositories" class="level2">
+<h2 class="anchored" data-anchor-id="forking-tutorial-repositories">Forking Tutorial Repositories</h2>
+<section id="why-does-lingmethodshub-have-to-fork-my-repository" class="level3">
+<h3 class="anchored" data-anchor-id="why-does-lingmethodshub-have-to-fork-my-repository">Why does LingMethodsHub have to fork my repository?</h3>
+<p>Since tutorial content is being added to the website as git submodules, we could technically add a submodule from <em>any</em> github repository. However, we will only add content submodules from our own team account’s repositories, meaning we need to fork external repositories. We are doing this for a few reasons.</p>
 <ul>
-<li><a href="../../content/contributing/requirements.html">Contribution Requirements</a></li>
-<li><a href="../../content/contributing/recommendations.html">Contribution Recommendations</a></li>
-<li><a href="../../content/contributing/process.html">Contribution Process</a></li>
+<li><p>Updates and maintenance to the site may require non-content edits to tutorial repositories (e.g.&nbsp;updating yaml headers, reorganizing files). If a tutorial submodule was directly added from an external account, we would have to wait on that maintainer to accept a pull request for the content to update appropriately on the website.</p></li>
+<li><p>In a reverse situation, if we added a submodule from an external account, and that account maintainer updated their repository to contain unwanted content, that content could wind up in the site when we update the submodules.</p></li>
 </ul>
+</section>
+<section id="what-if-i-want-to-make-edits-after-lingmethodshub-has-forked-the-repository" class="level3">
+<h3 class="anchored" data-anchor-id="what-if-i-want-to-make-edits-after-lingmethodshub-has-forked-the-repository">What if I want to make edits after LingMethodsHub has forked the repository?</h3>
+<p>You may want to make edits to the tutorial repository after we have forked it for a few reasons, including</p>
+<ul>
+<li><p>Editing the content.</p></li>
+<li><p>Updating the code.</p></li>
+<li><p>Updating your personal metadata (name, url, affiliation, etc).</p></li>
+</ul>
+<p>That is all fine to do in your own original repository. Once you’ve made updates as you see fit, just send us a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">pull request</a> and we can merge the updated version of the tutorial into the site’s version.</p>
+</section>
+<section id="what-if-something-looks-wrong-on-the-site" class="level3">
+<h3 class="anchored" data-anchor-id="what-if-something-looks-wrong-on-the-site">What if something looks wrong on the site?</h3>
+<p>Inevitably something won’t look quite right on the site. Submit <a href="https://github.com/LingMethodsHub/LingMethodsHub.github.io/issues">github issue</a> and we will try to sort it out.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -335,11 +357,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../../content/contributing/recommendations.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Recommendations</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/contributing/requirements.html" class="pagination-link">
-        <span class="nav-page-text">Requirements</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

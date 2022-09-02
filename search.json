@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Linguistics Method Hub is a place for stuff"
+    "text": "The idea for Linguistics Methods Hub came about during conversations at Methods XVII."
   },
   {
     "objectID": "content/cli/keyboarding/index.html",
@@ -35,11 +35,67 @@
     "text": "Modifier Combos\nSometimes you’ll see key combinations suggested to help you use the command line and other programming languages. For example, the key combo “Control+C” or “Ctrl+C” will end whatever process is running in a Unix-like system. What this notation means is that you should press the Control key, and while continuing to hold it, press the C key.\n\n\n\n\n\nCtrl+C location on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\nCtrl+C location on the tenkeyless keyboard\n\n\n\n\nIf you ever see more than two keys included in a key combination, assume they need to be pressed and held in the order they appear."
   },
   {
+    "objectID": "content/contributing/process.html",
+    "href": "content/contributing/process.html",
+    "title": "Contribution Process",
+    "section": "",
+    "text": "To contribute a tutorial to the LingMethodsHub, you will need to create a Github Account, create a repository for your tutorial, then submit an issue on the website repository requesting a fork."
+  },
+  {
+    "objectID": "content/contributing/process.html#forking-tutorial-repositories",
+    "href": "content/contributing/process.html#forking-tutorial-repositories",
+    "title": "Contribution Process",
+    "section": "Forking Tutorial Repositories",
+    "text": "Forking Tutorial Repositories\n\nWhy does LingMethodsHub have to fork my repository?\nSince tutorial content is being added to the website as git submodules, we could technically add a submodule from any github repository. However, we will only add content submodules from our own team account’s repositories, meaning we need to fork external repositories. We are doing this for a few reasons.\n\nUpdates and maintenance to the site may require non-content edits to tutorial repositories (e.g. updating yaml headers, reorganizing files). If a tutorial submodule was directly added from an external account, we would have to wait on that maintainer to accept a pull request for the content to update appropriately on the website.\nIn a reverse situation, if we added a submodule from an external account, and that account maintainer updated their repository to contain unwanted content, that content could wind up in the site when we update the submodules.\n\n\n\nWhat if I want to make edits after LingMethodsHub has forked the repository?\nYou may want to make edits to the tutorial repository after we have forked it for a few reasons, including\n\nEditing the content.\nUpdating the code.\nUpdating your personal metadata (name, url, affiliation, etc).\n\nThat is all fine to do in your own original repository. Once you’ve made updates as you see fit, just send us a pull request and we can merge the updated version of the tutorial into the site’s version.\n\n\nWhat if something looks wrong on the site?\nInevitably something won’t look quite right on the site. Submit github issue and we will try to sort it out."
+  },
+  {
+    "objectID": "content/contributing/recommendations.html",
+    "href": "content/contributing/recommendations.html",
+    "title": "Contribution Recommendations",
+    "section": "",
+    "text": "If your contribution is a one pager, just put the content in a index.md or index.qmd file. If there are multiple parts, still include a index.md file which links to each part. Include each part as just a sequentially named .md or .qmd file. For examle:\nrepo/\n├── .gitignore\n├── 00_part1.qmd\n├── 01_part2.qmd\n├── LICENSE\n├── README.md\n├── assets/\n└── index.md"
+  },
+  {
+    "objectID": "content/contributing/recommendations.html#recommended-.gitignore",
+    "href": "content/contributing/recommendations.html#recommended-.gitignore",
+    "title": "Contribution Recommendations",
+    "section": "Recommended .gitignore",
+    "text": "Recommended .gitignore\nEither be careful not to commit any rendered documents to your repository, or be sure to exclude them with .gitignore.\n*_files/\n*.html\n*.pdf\n_site/\n.ipynb_checkpoints/\n.quarto/\n.Rproj_user\n*.Rproj"
+  },
+  {
+    "objectID": "content/contributing/requirements.html",
+    "href": "content/contributing/requirements.html",
+    "title": "Contribution Requirements",
+    "section": "",
+    "text": "In order for your contribution to be added, it must be appropriately licensed, meaning you’ve included a license name in the yaml header of each content page, and there is a matching LICENSE document in the repository. It should at least be CC-BY-4.0, and we would recommend CC-BY-SA-4.0.\nTo add the license to your documents’ yaml header, just add\nlicense: \"CC-BY-SA-4.0\"\nTo add a license file, you can get it with curl in your terminal like so:\ncurl https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt > LICENSE"
+  },
+  {
+    "objectID": "content/contributing/requirements.html#format",
+    "href": "content/contributing/requirements.html#format",
+    "title": "Contribution Requirements",
+    "section": "Format",
+    "text": "Format\nYour tutorial repository must contain source files that are renderable by quarto, which include\n\n.md | markdown files\n.qmd | quarto markdown files\n.Rmd | R Markdown files\n.ipynb | Jupyter notebooks"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Linguistics Methods Hub",
     "section": "",
     "text": "For the time being, this is an active learning project for us.\n\n\n\nReuseCC-BY-SA 4.0"
+  },
+  {
+    "objectID": "people/index.html",
+    "href": "people/index.html",
+    "title": "Contributors",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "people/index.html#linguistics-methods-hub-contributors",
+    "href": "people/index.html#linguistics-methods-hub-contributors",
+    "title": "Contributors",
+    "section": "Linguistics Methods Hub Contributors",
+    "text": "Linguistics Methods Hub Contributors\n\nJosef Fruehwald\nMatt Hunt Gardner"
   },
   {
     "objectID": "content/cli/index.html",
@@ -53,7 +109,7 @@
     "href": "content/contributing/index.html",
     "title": "Contributing",
     "section": "",
-    "text": "Linguistics Methods Hub is hosted on Github, and built with Hugo. Rather than edit the whole site code directly, the content of most tutorials will be added as submodules."
+    "text": "Linguistics Methods Hub is hosted on Github, and built with Quarto. Rather than edit the whole site code directly, the content of most tutorials will be added as submodules.\n\nContribution Requirements\nContribution Recommendations\nContribution Process"
   },
   {
     "objectID": "content/praat/index.html",

@@ -1,0 +1,12 @@
+---
+title: "Contribution Recommendations"
+editor: visual
+---
+
+## Recommended contribution structure
+
+    repo/
+    |- index.qmd
+    |- 00_part1.qmd
+    |- 01_part2.qmd
+    |- README.md

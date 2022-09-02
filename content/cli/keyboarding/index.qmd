@@ -1,0 +1,387 @@
+---
+title: "Keyboarding"
+author: 
+  - name: "Josef Fruehwald"
+    url: "https://jofrhwld.github.io/"
+    affiliations:
+      - University of Kentucky
+date: 2020-9-1
+license: "CC-BY-SA 4.0"
+format: 
+  html: default
+editor: visual
+knitr: 
+  opts_chunk: 
+    echo: false
+    message: false
+---
+
+```{r}
+#| include: false
+renv::use(lockfile = "renv.lock")
+```
+
+In command line interfaces, there are some characters you'll want to enter frequently which don't otherwise show up very often when you're typing. This guide is meant to help you find those keys.
+
+
+```{r}
+library(ggkeyboard)
+library(tidyverse)
+```
+
+## Individual Keys
+
+### <code>\`</code> back tick
+
+This is importantly not the same as your familiar apostrophe key.
+
+```{r}
+#| fig.cap: "backtick on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(palette = keyboard_palette("wahtsy")) %>%
+   highlight_keys(c("~`"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+```{r}
+#| fig.cap: "backtick on the mac keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard = mac,
+           palette = keyboard_palette("magic")) %>%
+   highlight_keys(c("~`"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+### `\` backslash
+
+This symbol is used to separate directory names in DOS, but is more usually used as an "escape" character. It is **importantly** different from the forward slash symbol, `/`.
+
+```{r}
+#| fig.cap: "backslash on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(palette = keyboard_palette("wahtsy")) %>%
+   highlight_keys(c("|\\"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+```{r}
+#| fig.cap: "backslash on the mac keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(mac,
+           palette = keyboard_palette("magic")) %>%
+   highlight_keys(c("|\\"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+### `/` slash, or forward slash
+
+While we're on the subject, here's forward slash, used to separate directories on Unix-like systems (including macOS).
+
+```{r}
+#| fig.cap: "slash on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(palette = keyboard_palette("wahtsy")) %>%
+   highlight_keys(c("?/"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+```{r}
+#| fig.cap: "slash on the mac keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(mac,
+           palette = keyboard_palette("magic")) %>%
+   highlight_keys(c("?/"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+### `[` and `]` square brackets
+
+These have a number of different uses in programming languages. Usually when you have an "open" bracket `[` you need to make sure that you "close" it `]`.
+
+```{r}
+#| fig.cap: "square brackets on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard =tkl,
+           palette = keyboard_palette("wahtsy")) %>%
+   highlight_keys(c("{[", "}]"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+```{r}
+#| fig.cap: "tilde on the mac keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard = mac,
+           palette = keyboard_palette("magic")) %>%
+  highlight_keys(c("{[", "}]"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+## Modified Keys
+
+You get the following symbols by holding Shift + another key.
+
+### `~` tilde
+
+This symbol is used as a shortcut for your home directory in unix-like systems, and for many other purposes
+
+```{r}
+#| fig.cap: "tilde on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard =tkl,
+           palette = keyboard_palette("wahtsy")) %>%
+   highlight_keys(c("Shift Left", "~`"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+```{r}
+#| fig.cap: "tilde on the mac keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard = mac,
+           palette = keyboard_palette("magic")) %>%
+   highlight_keys(c("Shift Left", "~`"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+### `^` caret
+
+This symbol is *sometimes* used to indicate the Control key on a Mac keyboard, but usually it's the caret.
+
+```{r}
+#| fig.cap: "caret on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard =tkl,
+           palette = keyboard_palette("wahtsy")) %>%
+   highlight_keys(c("Shift Left", "6"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+```{r}
+#| fig.cap: "caret on the mac keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard = mac,
+           palette = keyboard_palette("magic")) %>%
+   highlight_keys(c("Shift Left", "6"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+### `_` underscore
+
+Underscores are often used in file and variable names.
+
+```{r}
+#| fig.cap: "underscore on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard =tkl,
+           palette = keyboard_palette("wahtsy")) %>%
+   highlight_keys(c("Shift Left", "_-"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+```{r}
+#| fig.cap: "underscore on the mac keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard = mac,
+           palette = keyboard_palette("magic")) %>%
+   highlight_keys(c("Shift Left", "_-"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+### `{` and `}` curly brackets
+
+A lot like the square brackets, these serve a number of different uses. And again, when you have an open backet `{` you'll want to make sure you close it `}`.
+
+```{r}
+#| fig.cap: "curly brackets on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard =tkl,
+           palette = keyboard_palette("wahtsy")) %>%
+   highlight_keys(c("Shift Left","{[", "}]"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+```{r}
+#| fig.cap: "curly brackets on the mac keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard = mac,
+           palette = keyboard_palette("magic")) %>%
+  highlight_keys(c("Shift Left", "{[", "}]"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+### `|` pipe *or* bar
+
+This vertical line often means "or" in programming languages.
+
+```{r}
+#| fig.cap: "bar location on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard =tkl,
+           palette = keyboard_palette("wahtsy")) %>%
+   highlight_keys(c("Shift Left", "|\\"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+```{r}
+#| fig.cap: "bar brackets on the mac keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard = mac,
+           palette = keyboard_palette("magic")) %>%
+   highlight_keys(c("Shift Left", "|\\"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+### `<` and `>` less than & greater than *or* angle brackets
+
+Sometimes the symbols `<` and `>` are used for their mathematical meaning of "less than" and "greater than." Other times they're used as brackets, a lot like the square or curly brackets.
+
+```{r}
+#| fig.cap: "angle bracket location on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard =tkl,
+           palette = keyboard_palette("wahtsy")) %>%
+   highlight_keys(c("Shift Left", "<,", ">."),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+```{r}
+#| fig.cap: "angle bracket location on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard = mac,
+           palette = keyboard_palette("magic")) %>%
+   highlight_keys(c("Shift Left", "<,", ">."),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+## Modifier Combos
+
+Sometimes you'll see key combinations suggested to help you use the command line and other programming languages. For example, the key combo "Control+C" or "Ctrl+C" will end whatever process is running in a Unix-like system. What this notation means is that you should press the `Control` key, and while continuing to hold it, press the `C` key.
+
+```{r}
+#| fig.cap: "Ctrl+C location on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard =tkl,
+           palette = keyboard_palette("wahtsy")) %>%
+   highlight_keys(c("Ctrl Left", "C"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+```{r}
+#| fig.cap: "Ctrl+C location on the tenkeyless keyboard"
+#| cap-location: margin
+#| column: screen-inset-shaded
+#| out-width: 150%
+#| fig-width: 10
+#| fig-height: 4
+ggkeyboard(keyboard = mac,
+           palette = keyboard_palette("magic")) %>%
+   highlight_keys(c("Ctrl", "C"),
+                  fill = "red", colour = "red",
+                  alpha = 0.3)
+```
+
+If you ever see more than two keys included in a key combination, assume they need to be pressed and held in the order they appear.

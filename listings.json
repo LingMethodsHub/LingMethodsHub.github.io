@@ -1,5 +1,12 @@
 [
   {
+    "listing": "/people/index.html",
+    "items": [
+      "/people/jofrhwld/index.html",
+      "/people/matthuntgardner/index.html"
+    ]
+  },
+  {
     "listing": "/content/cli/index.html",
     "items": [
       "/content/cli/keyboarding/index.html"
