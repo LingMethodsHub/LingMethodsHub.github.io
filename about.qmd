@@ -33,7 +33,7 @@ contribute to the Linguistics Methods Hub will be
 -   minted with a DOI from zenodo.
 
 If you would like to contribute, please see the [materials on
-contributing](content/contributing/index.qmd), and if you would like to
+contributing](content/contributing/index.md), and if you would like to
 get involved in the site organization and maintenance, contact [one of
 the maintainers](people/index.qmd).
 :::
