@@ -6,11 +6,14 @@ about:
   template: jolla
   image: profile.jpeg
   links: 
-    - icon: link
+    - icon: house-heart-fill
       href: https://jofrhwld.github.io/
       text: homepage
     - icon: github
       href: https://github.com/JoFrhwld
     - icon: twitter
       href: https://twitter.com/JoFrhwld
+    - icon: envelope-fill
+      text: "email"
+      href: "mailto:josef.fruehwald@uky.edu"
 ---

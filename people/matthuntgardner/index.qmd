@@ -6,7 +6,7 @@ about:
   template: jolla
   image: profile.jpeg
   links:
-    - icon: link
+    - icon: house-fill
       href: https://www.matthuntgardner.com/
       text: homepage
     - icon: github

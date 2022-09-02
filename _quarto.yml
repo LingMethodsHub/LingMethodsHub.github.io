@@ -29,6 +29,7 @@ website:
       contents:
         - index.qmd
     - title: "Tutorials"
+      collapse-level: 1
       logo: assets/logo.svg
       href: content/index.qmd
       contents:
@@ -63,6 +64,15 @@ website:
           text: "Recommendations"
         - href: content/contributing/process.qmd
           text: "Process"
+    - title: "About" 
+      href: about.qmd
+      style: "floating"
+    - title: "People"
+      href: people/index.qmd
+      logo: assets/logo.svg
+      style: "floating"
+      contents: 
+        - people/index.qmd   
   page-navigation: true
   reader-mode: true      
   cookie-consent:
