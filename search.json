@@ -1,0 +1,142 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Linguistics Method Hub is a place for stuff"
+  },
+  {
+    "objectID": "content/cli/keyboarding/index.html",
+    "href": "content/cli/keyboarding/index.html",
+    "title": "Keyboarding",
+    "section": "",
+    "text": "In command line interfaces, there are some characters you’ll want to enter frequently which don’t otherwise show up very often when you’re typing. This guide is meant to help you find those keys."
+  },
+  {
+    "objectID": "content/cli/keyboarding/index.html#individual-keys",
+    "href": "content/cli/keyboarding/index.html#individual-keys",
+    "title": "Keyboarding",
+    "section": "Individual Keys",
+    "text": "Individual Keys\n\n` back tick\nThis is importantly not the same as your familiar apostrophe key.\n\n\n\n\n\nbacktick on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\nbacktick on the mac keyboard\n\n\n\n\n\n\n\\ backslash\nThis symbol is used to separate directory names in DOS, but is more usually used as an “escape” character. It is importantly different from the forward slash symbol, /.\n\n\n\n\n\nbackslash on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\nbackslash on the mac keyboard\n\n\n\n\n\n\n/ slash, or forward slash\nWhile we’re on the subject, here’s forward slash, used to separate directories on Unix-like systems (including macOS).\n\n\n\n\n\nslash on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\nslash on the mac keyboard\n\n\n\n\n\n\n[ and ] square brackets\nThese have a number of different uses in programming languages. Usually when you have an “open” bracket [ you need to make sure that you “close” it ].\n\n\n\n\n\nsquare brackets on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\ntilde on the mac keyboard"
+  },
+  {
+    "objectID": "content/cli/keyboarding/index.html#modified-keys",
+    "href": "content/cli/keyboarding/index.html#modified-keys",
+    "title": "Keyboarding",
+    "section": "Modified Keys",
+    "text": "Modified Keys\nYou get the following symbols by holding Shift + another key.\n\n~ tilde\nThis symbol is used as a shortcut for your home directory in unix-like systems, and for many other purposes\n\n\n\n\n\ntilde on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\ntilde on the mac keyboard\n\n\n\n\n\n\n^ caret\nThis symbol is sometimes used to indicate the Control key on a Mac keyboard, but usually it’s the caret.\n\n\n\n\n\ncaret on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\ncaret on the mac keyboard\n\n\n\n\n\n\n_ underscore\nUnderscores are often used in file and variable names.\n\n\n\n\n\nunderscore on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\nunderscore on the mac keyboard\n\n\n\n\n\n\n{ and } curly brackets\nA lot like the square brackets, these serve a number of different uses. And again, when you have an open backet { you’ll want to make sure you close it }.\n\n\n\n\n\ncurly brackets on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\ncurly brackets on the mac keyboard\n\n\n\n\n\n\n| pipe or bar\nThis vertical line often means “or” in programming languages.\n\n\n\n\n\nbar location on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\nbar brackets on the mac keyboard\n\n\n\n\n\n\n< and > less than & greater than or angle brackets\nSometimes the symbols < and > are used for their mathematical meaning of “less than” and “greater than.” Other times they’re used as brackets, a lot like the square or curly brackets.\n\n\n\n\n\nangle bracket location on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\nangle bracket location on the tenkeyless keyboard"
+  },
+  {
+    "objectID": "content/cli/keyboarding/index.html#modifier-combos",
+    "href": "content/cli/keyboarding/index.html#modifier-combos",
+    "title": "Keyboarding",
+    "section": "Modifier Combos",
+    "text": "Modifier Combos\nSometimes you’ll see key combinations suggested to help you use the command line and other programming languages. For example, the key combo “Control+C” or “Ctrl+C” will end whatever process is running in a Unix-like system. What this notation means is that you should press the Control key, and while continuing to hold it, press the C key.\n\n\n\n\n\nCtrl+C location on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\nCtrl+C location on the tenkeyless keyboard\n\n\n\n\nIf you ever see more than two keys included in a key combination, assume they need to be pressed and held in the order they appear."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Linguistics Methods Hub",
+    "section": "",
+    "text": "For the time being, this is an active learning project for us.\n\n\n\nReuseCC-BY-SA 4.0"
+  },
+  {
+    "objectID": "content/cli/index.html",
+    "href": "content/cli/index.html",
+    "title": "Command Line Interface",
+    "section": "",
+    "text": "Sep 1, 2020\n\n\nJosef Fruehwald\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "content/contributing/index.html",
+    "href": "content/contributing/index.html",
+    "title": "Contributing",
+    "section": "",
+    "text": "Linguistics Methods Hub is hosted on Github, and built with Hugo. Rather than edit the whole site code directly, the content of most tutorials will be added as submodules."
+  },
+  {
+    "objectID": "content/praat/index.html",
+    "href": "content/praat/index.html",
+    "title": "LingMethodsHub",
+    "section": "",
+    "text": "Praat Tutorials\n{{% children depth=“4” %}}"
+  },
+  {
+    "objectID": "content/python/index.html",
+    "href": "content/python/index.html",
+    "title": "LingMethodsHub",
+    "section": "",
+    "text": "python Tutorials\n{{% children depth=“4” %}}"
+  },
+  {
+    "objectID": "content/updates/index.html",
+    "href": "content/updates/index.html",
+    "title": "LingMethodsHub",
+    "section": "",
+    "text": "Updates\n{{% children depth=“4” %}}"
+  },
+  {
+    "objectID": "content/windows/index.html",
+    "href": "content/windows/index.html",
+    "title": "Windows",
+    "section": "",
+    "text": "Configuring Visual Studio Code for Windows Subsystem for Linux\n\n\n\n\n\n\n\n\n\n\n\n\nJosef Fruehwald\n\n\n\n\n\n\n  \n\n\n\n\nInstalling Windows Subsystem for Linux\n\n\n\n\n\n\n\n\n\n\n\n\nSep 1, 2022\n\n\nJosef Fruehwald\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "content/windows/wsl/00_installing_wsl.html",
+    "href": "content/windows/wsl/00_installing_wsl.html",
+    "title": "Installing Windows Subsystem for Linux",
+    "section": "",
+    "text": "Installing a linux distribution on windows involves two main steps:"
+  },
+  {
+    "objectID": "content/windows/wsl/00_installing_wsl.html#enabling-windows-subsystem-for-linux",
+    "href": "content/windows/wsl/00_installing_wsl.html#enabling-windows-subsystem-for-linux",
+    "title": "Installing Windows Subsystem for Linux",
+    "section": "Enabling Windows Subsystem for Linux",
+    "text": "Enabling Windows Subsystem for Linux\nWindows Subsystem for Linux is a Windows feature that you’ll need to turn on in the Control Panel.\n\n1. Launch Control Panel\nYou can find the Control Panel by searching “Control Panel” in the start bar.\n\n\n2. Go to “Programs and Features”\nInside control panel, click on Programs and Features.\n\n\n\n\nA screenshot of the control panel, highlighting where programs and features are.\n\n\n\n\n3. Turn on Windows Features\nOnce inside Programs and Features, click on Turn Windows Features On or Off on the left hand side.\n\n\n\nA screenshot of Programs and Features, highlighting the location of Turn Windows Features On or Off.\n\n\n\n\n4. Turn on WSL\nA pop up window should appear. Scroll down to find “Windows Subsystem for Linux.” Click the box so it is checked. Then press ok.\n\n\n\nA screenshot highlighting the item Windows Subsystem for Linux that should be checked off.\n\n\n\n\n5. Restart your computer\nYour computer will need to restart before we continue the rest of the process. A window should open after hitting “OK” on the previous step asking if you want to restart now."
+  },
+  {
+    "objectID": "content/windows/wsl/00_installing_wsl.html#installing-and-configuring-a-linux-distribution",
+    "href": "content/windows/wsl/00_installing_wsl.html#installing-and-configuring-a-linux-distribution",
+    "title": "Installing Windows Subsystem for Linux",
+    "section": "Installing and Configuring a Linux Distribution",
+    "text": "Installing and Configuring a Linux Distribution\nThere are a few different linux distributions to choose from, but most online tutorials for WSL seem to assume you’re installing Ubuntu, so I will also.\n\n1. Install Ubuntu\nAfter your computer has restarted, launch the Windows Store, and search for “Ubuntu”. On its store page, click on “Get” to install it.\n\n\n\nA screenshot of Ubuntu in the Windows Store\n\n\n\n\n2. Launch Ubuntu\nYou can find Ubuntu, after it has been installed, but searching “Ubuntu” in the search bar. Launching it will open a command line interface.\n\n\n3. Set a username\nYou will need to set a username for Ubuntu on your first launch. It doesn’t have to be the same as your Windows username, but you might as well make it the same just to keep things easy. Just type in the username you want, and hit enter.\n\n\n4. Set a password\nYou’ll also need to set a password for your Ubuntu account. Again, this doesn’t need to be the same as your computer password.\n\n\n\n\n\n\nNote\n\n\n\nAs you are typing in your password, you won’t see the cursor move, or see blanked out characters like * like you are probably used to. That’s just how password entry in command lines work, it’s ok.\n\n\nYou’ll need re-enter your chosen password to confirm."
+  },
+  {
+    "objectID": "content/windows/wsl/00_installing_wsl.html#finding-your-files",
+    "href": "content/windows/wsl/00_installing_wsl.html#finding-your-files",
+    "title": "Installing Windows Subsystem for Linux",
+    "section": "Finding your files",
+    "text": "Finding your files\nIn most command line interfaces, to get to your home directory, you type cd ~, which will still work in Windows Subsystem for Linux, but ~ isn’t where your Windows files are. Instead, they’re “mounted” at /mnt/c/users/<USERNAME> where <USERNAME> is your Windows username. If you’re not sure what your Windows username is, inside Ubuntu type\ncd /mnt/c/users/\nThen run ls to see the list of user directories. Yours should be in there."
+  },
+  {
+    "objectID": "content/windows/wsl/00_installing_wsl.html#handout-version",
+    "href": "content/windows/wsl/00_installing_wsl.html#handout-version",
+    "title": "Installing Windows Subsystem for Linux",
+    "section": "Handout Version",
+    "text": "Handout Version\nHandout PDF"
+  },
+  {
+    "objectID": "content/windows/wsl/01_vscode_wsl.html",
+    "href": "content/windows/wsl/01_vscode_wsl.html",
+    "title": "Configuring Visual Studio Code for Windows Subsystem for Linux",
+    "section": "",
+    "text": "Upcoming"
+  },
+  {
+    "objectID": "content/windows/wsl/index.html",
+    "href": "content/windows/wsl/index.html",
+    "title": "Windows Subsystem for Linux",
+    "section": "",
+    "text": "One way to get around the problem of a missing bash interface on Windows is to enable the Windows Subsystem for Linux, and install an actual Linux distribution in Windows."
+  },
+  {
+    "objectID": "content/windows/wsl/index.html#table-of-contents",
+    "href": "content/windows/wsl/index.html#table-of-contents",
+    "title": "Windows Subsystem for Linux",
+    "section": "Table of Contents",
+    "text": "Table of Contents"
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "listing": "/content/cli/index.html",
+    "items": [
+      "/content/cli/keyboarding/index.html"
+    ]
+  },
+  {
+    "listing": "/content/windows/index.html",
+    "items": [
+      "/content/windows/wsl/01_vscode_wsl.html",
+      "/content/windows/wsl/00_installing_wsl.html"
+    ]
+  },
+  {
+    "listing": "/content/windows/wsl/index.html",
+    "items": [
+      "/content/windows/wsl/00_installing_wsl.html"
+    ]
+  }
+]
