@@ -12,6 +12,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: content/index.qmd
+        text: "Tutorials"
       - about.qmd
       - href: content/contributing/index.md
         text: Contributing
@@ -22,27 +24,45 @@ website:
         icon: "github"
     search: true        
   sidebar:
-    logo: assets/logo.svg
-    style: "floating"
-    contents:
-      - section: "R"
-        contents:
-          - content/R/index.md
-      - section: Python
-      - section: Praat
-      - section: Command Line Interfaces
-        href: content/cli/index.md
-        contents:
-          - href: content/cli/keyboarding/index.qmd
-            text: Keyboarding
-      - section: Windows
-        href: content/windows/index.md
-        contents:
-          - section: Windows Subsystem for Linux
-            href: content/windows/wsl/index.md
-            contents: 
-              - href: content/windows/wsl/00_installing_wsl.md
-                text: Installation
+    - title: "Home"
+      logo: assets/logo.svg
+      contents:
+        - index.qmd
+    - title: "Tutorials"
+      logo: assets/logo.svg
+      href: content/index.qmd
+      contents:
+        - content/index.qmd
+        - section: "R"
+          contents:
+            - content/R/index.md
+        - section: Python
+        - section: Praat
+        - section: Command Line Interfaces
+          href: content/cli/index.md
+          contents:
+            - href: content/cli/keyboarding/index.qmd
+              text: Keyboarding
+        - section: Windows
+          href: content/windows/index.md
+          contents:
+            - section: Windows Subsystem for Linux
+              href: content/windows/wsl/index.md
+              contents: 
+                - href: content/windows/wsl/00_installing_wsl.md
+                  text: Installation
+    - title: "Contributing" 
+      href: content/contributing/index.md
+      logo: assets/logo.svg
+      style: "floating"
+      contents: 
+        - content/contributing/index.md
+        - href: content/contributing/requirements.qmd
+          text: "Requirements"
+        - href: content/contributing/recommendations.qmd
+          text: "Recommendations"
+        - href: content/contributing/process.qmd
+          text: "Process"
   page-navigation: true
   reader-mode: true      
   cookie-consent:

@@ -1,0 +1,32 @@
+---
+title: "Contribution Process"
+editor: visual
+---
+
+To contribute a tutorial to the LingMethodsHub, you will need to create a [Github Account](https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account), [create a repository for your tutorial](https://docs.github.com/en/get-started/quickstart/create-a-repo), then submit [an issue on the website repository requesting a fork](https://github.com/LingMethodsHub/LingMethodsHub.github.io).
+
+## Forking Tutorial Repositories
+
+### Why does LingMethodsHub have to fork my repository?
+
+Since tutorial content is being added to the website as git submodules, we could technically add a submodule from *any* github repository. However, we will only add content submodules from our own team account's repositories, meaning we need to fork external repositories. We are doing this for a few reasons.
+
+-   Updates and maintenance to the site may require non-content edits to tutorial repositories (e.g. updating yaml headers, reorganizing files). If a tutorial submodule was directly added from an external account, we would have to wait on that maintainer to accept a pull request for the content to update appropriately on the website.
+
+-   In a reverse situation, if we added a submodule from an external account, and that account maintainer updated their repository to contain unwanted content, that content could wind up in the site when we update the submodules.
+
+### What if I want to make edits after LingMethodsHub has forked the repository?
+
+You may want to make edits to the tutorial repository after we have forked it for a few reasons, including
+
+-   Editing the content.
+
+-   Updating the code.
+
+-   Updating your personal metadata (name, url, affiliation, etc).
+
+That is all fine to do in your own original repository. Once you've made updates as you see fit, just send us a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) and we can merge the updated version of the tutorial into the site's version.
+
+### What if something looks wrong on the site?
+
+Inevitably something won't look quite right on the site. Submit [github issue](https://github.com/LingMethodsHub/LingMethodsHub.github.io/issues) and we will try to sort it out.

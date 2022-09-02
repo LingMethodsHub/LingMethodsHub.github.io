@@ -1,0 +1,32 @@
+---
+title: "Contribution Recommendations"
+editor: visual
+---
+
+## Recommended contribution structure
+
+If your contribution is a one pager, just put the content in a `index.md` or `index.qmd` file. If there are multiple parts, still include a `index.md` file which links to each part. Include each part as just a sequentially named `.md` or `.qmd` file. For examle:
+
+    repo/
+    ├── .gitignore
+    ├── 00_part1.qmd
+    ├── 01_part2.qmd
+    ├── LICENSE
+    ├── README.md
+    ├── assets/
+    └── index.md
+
+## Recommended `.gitignore`
+
+Either be careful not to commit any rendered documents to your repository, or be sure to exclude them with `.gitignore`.
+
+``` .gitignore
+*_files/
+*.html
+*.pdf
+_site/
+.ipynb_checkpoints/
+.quarto/
+.Rproj_user
+*.Rproj
+```

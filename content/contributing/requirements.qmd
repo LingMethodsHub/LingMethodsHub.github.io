@@ -1,0 +1,33 @@
+---
+title: "Contribution Requirements"
+editor: visual
+license: CC-BY-SA-4.0
+---
+
+## License
+
+In order for your contribution to be added, it must be appropriately licensed, meaning you've included a `license` name in the yaml header of each content page, and there is a matching `LICENSE` document in the repository. It should at least be CC-BY-4.0, and we would recommend CC-BY-SA-4.0.
+
+To add the license to your documents' yaml header, just add
+
+``` yaml
+license: "CC-BY-SA-4.0"
+```
+
+To add a license file, you can get it with `curl` in your terminal like so:
+
+``` bash
+curl https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt > LICENSE
+```
+
+## Format
+
+Your tutorial repository must contain source files that are renderable by quarto, which include
+
+-   `.md` \| markdown files
+
+-   `.qmd` \| quarto markdown files
+
+-   `.Rmd` \| R Markdown files
+
+-   `.ipynb` \| Jupyter notebooks
