@@ -3,4 +3,4 @@
 	url = https://github.com/LingMethodsHub/wsl.git
 [submodule "content/cli/keyboarding"]
 	path = content/cli/keyboarding
-	url = https://github.com/JoFrhwld/keyboarding.git
+	url = https://github.com/LingMethodsHub/keyboarding.git
