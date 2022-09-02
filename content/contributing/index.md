@@ -1,8 +1,6 @@
-+++
-title = "Contributing"
-weight = 90
-chapter = true
-+++
+---
+title: "Contributing"
+---
 
 # Contributing to Linguistics Methods Hub
 
@@ -10,4 +8,3 @@ Linguistics Methods Hub is hosted on Github, and built with Hugo. Rather than ed
 
 ## Available Tutorials
 
-{{% children depth="4" %}}

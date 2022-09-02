@@ -1,6 +1,3 @@
-[submodule "themes/hugo-theme-learn"]
-	path = oldsite/themes/hugo-theme-learn
-	url = https://github.com/matcornic/hugo-theme-learn.git
 [submodule "content/windows/wsl"]
 	path = content/windows/wsl
 	url = https://github.com/LingMethodsHub/wsl.git

@@ -16,6 +16,8 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+      - href: content/contributing/index.md
+        text: Contributing
     right:
       - href: https://github.com/LingMethodsHub/LingMethodsHub.github.io
         icon: "github"
