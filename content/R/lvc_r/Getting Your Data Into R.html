@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Josef Fruehwald">
-<meta name="dcterms.date" content="2022-09-01">
+<meta name="dcterms.date" content="2022-09-03">
 
-<title>LingMethodsHub - Installing Windows Subsystem for Linux</title>
+<title>LingMethodsHub - Getting Your Data Into R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,7 +94,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../content/windows/wsl/index.html" rel="prev">
 <script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
@@ -165,7 +163,7 @@ cookieconsent.run({
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -185,7 +183,7 @@ cookieconsent.run({
     <a class="nav-link" href="../../../index.html">Home</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../../content/index.html" aria-current="page">Tutorials</a>
+    <a class="nav-link" href="../../../content/index.html">Tutorials</a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../../about.html">About</a>
@@ -215,115 +213,17 @@ cookieconsent.run({
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Installing Windows Subsystem for Linux</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../../" class="sidebar-logo-link">
-      <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
-      </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">R</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">Doing LVC in R</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/Getting Started.html" class="sidebar-item-text sidebar-link">Getting Started</a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Python</span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Praat</span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../content/cli/index.html" class="sidebar-item-text sidebar-link">Command Line Interfaces</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/cli/keyboarding/index.html" class="sidebar-item-text sidebar-link">Keyboarding</a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../content/windows/index.html" class="sidebar-item-text sidebar-link">Windows</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">Windows Subsystem for Linux</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link active">Installation</a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#enabling-windows-subsystem-for-linux" id="toc-enabling-windows-subsystem-for-linux" class="nav-link active" data-scroll-target="#enabling-windows-subsystem-for-linux">Enabling Windows Subsystem for Linux</a></li>
-  <li><a href="#installing-and-configuring-a-linux-distribution" id="toc-installing-and-configuring-a-linux-distribution" class="nav-link" data-scroll-target="#installing-and-configuring-a-linux-distribution">Installing and Configuring a Linux Distribution</a></li>
-  <li><a href="#finding-your-files" id="toc-finding-your-files" class="nav-link" data-scroll-target="#finding-your-files">Finding your files</a></li>
-  <li><a href="#handout-version" id="toc-handout-version" class="nav-link" data-scroll-target="#handout-version">Handout Version</a></li>
+  <li><a href="#getting-your-data-into-r" id="toc-getting-your-data-into-r" class="nav-link active" data-scroll-target="#getting-your-data-into-r">Getting your data into <em>R</em></a></li>
   </ul>
 </nav>
     </div>
@@ -332,24 +232,31 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Installing Windows Subsystem for Linux</h1>
+<h1 class="title">Getting Your Data Into <em>R</em></h1>
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Matt Hunt Gardner <a href="https://orcid.org/0000-0002-1878-4232" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Oxford
+          </p>
+      </div>
+    </div>
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Josef Fruehwald </p>
-          </div>
-  </div>
-    
+      
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 1, 2022</p>
+      <p class="date">September 3, 2022</p>
     </div>
   </div>
     
@@ -358,116 +265,34 @@ cookieconsent.run({
 
 </header>
 
-<p>Installing a linux distribution on windows involves two main steps:</p>
-<ol type="1">
-<li>Enabling the windows subsystem for linux (wsl) feature.</li>
-<li>Installing and setting up a linux distribution.</li>
-</ol>
-<div class="callout-note callout callout-style-default callout-captioned">
+<section id="getting-your-data-into-r" class="level2">
+<h2 class="anchored" data-anchor-id="getting-your-data-into-r">Getting your data into <em>R</em></h2>
+<p>The best way to organize your tokens is in a spreadsheet in Microsoft <em>Excel</em>. There are a lot of useful tools in Microsoft <em>Excel</em> for automatically coding and re-coding your data. Some of those tools overlap with what I present here for <em>R</em>. If you want to explore <em>Excel</em>’s functionality, I recommend this website as a springboard: <a href="https://support.office.com/en-us/article/Excel-training-9bc05390-e94c-46af-a5b3-d7c22f6990bb" class="uri">https://support.office.com/en-us/article/Excel-training-9bc05390-e94c-46af-a5b3-d7c22f6990bb</a>. There are other programs for spreadsheet management: <em>Numbers</em> in OSX, or Google’s <em>Sheets</em>, for example. They generally function similarly to <em>Excel</em>. <em>R</em> does not easily read <em>Excel</em>’s default file type (<strong>.xls</strong> or <strong>.xlsx</strong>, <a href="https://cran.r-project.org/web/packages/xlsx/xlsx.pdf">though it can be done</a>) therefore, you must save your token file as a tab-delimited-text file (<strong>.txt</strong>) or a comma-separated-values (<strong>.csv</strong>) file.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note: you will have to restart your computer after step 1.</p>
+<p>I recommend NOT saving your token files as a .<strong>csv file</strong>. Often your token files will include a column of cells containing the broader context the token was extracted from. For example, the sentence in which it appears in a transcript. This broader context usually includes commas. If this is the case, when you save your file as a <strong>.csv file</strong>, it will appear as if there are column breaks in the middle of your broader context because commas are used as the column delimiter.</p>
 </div>
 </div>
-<section id="enabling-windows-subsystem-for-linux" class="level2">
-<h2 class="anchored" data-anchor-id="enabling-windows-subsystem-for-linux">Enabling Windows Subsystem for Linux</h2>
-<p>Windows Subsystem for Linux is a Windows feature that you’ll need to turn on in the Control Panel.</p>
-<section id="launch-control-panel" class="level4">
-<h4 class="anchored" data-anchor-id="launch-control-panel">1. Launch Control Panel</h4>
-<p>You can find the Control Panel by searching “Control Panel” in the start bar.</p>
-</section>
-<section id="go-to-programs-and-features" class="level4">
-<h4 class="anchored" data-anchor-id="go-to-programs-and-features">2. Go to “Programs and Features”</h4>
-<p>Inside control panel, click on <em>Programs and Features</em>.</p>
-<!-- I don't know why, but I have to link the imgage up a level -->
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/control_panel.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">A screenshot of the control panel, highlighting where programs and features are.</figcaption><p></p>
-</figure>
+<p>There are four or five ways to read data into <em>R</em>. Which method you choose is really up to you, but because I’m advocating the use of <em>R</em> script files and maximum replicability, I suggest using the following function at the top of your script file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="turn-on-windows-features" class="level4">
-<h4 class="anchored" data-anchor-id="turn-on-windows-features">3. Turn on Windows Features</h4>
-<p>Once inside Programs and Features, click on <em>Turn Windows Features On or Off</em> on the left hand side.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Programs_and_features.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">A screenshot of Programs and Features, highlighting the location of Turn Windows Features On or Off.</figcaption><p></p>
-</figure>
+<p>The function creates an <em>R</em> “object” called <code>td</code> and then uses the assignment operator <code>&lt;-</code> to specify what that object is. In this case <code>td</code> is the contents of the tab-delimited text file called <code>deletiondata.txt</code> that is located in a folder called <code>Data</code>, in the same directory as my script file. If your data is saved somewhere else on your computer, replace <code>'Data/deletiondata.txt"</code> with the full path of your data file. The <code>deletiondata.txt</code> is a tab-delimited text file and is the data file I will use to teach you about <em>R</em>. You can download this same file <a href="https://www.dropbox.com/s/pi8xz1kuo6cz60l/deletiondata.txt?dl=1">here</a>. Wherever you save this file, write that file path in quotation marks inside the <code>read.delim()</code> function. On a PC this file path will likely begin <code>"C:/..."</code>. You can actually just read the file directly into <em>R</em> from the web link using the following function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span><span class="fu">read.delim</span>(<span class="st">"https://www.dropbox.com/s/pi8xz1kuo6cz60l/deletiondata.txt?dl=1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="turn-on-wsl" class="level4">
-<h4 class="anchored" data-anchor-id="turn-on-wsl">4. Turn on WSL</h4>
-<p>A pop up window should appear. Scroll down to find “Windows Subsystem for Linux.” Click the box so it is checked. Then press ok.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/windows_features.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">A screenshot highlighting the item Windows Subsystem for Linux that should be checked off.</figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="restart-your-computer" class="level4">
-<h4 class="anchored" data-anchor-id="restart-your-computer">5. Restart your computer</h4>
-<p>Your computer will need to restart before we continue the rest of the process. A window should open after hitting “OK” on the previous step asking if you want to restart now.</p>
-</section>
-</section>
-<section id="installing-and-configuring-a-linux-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="installing-and-configuring-a-linux-distribution">Installing and Configuring a Linux Distribution</h2>
-<p>There are a few different linux distributions to choose from, but most online tutorials for WSL seem to assume you’re installing Ubuntu, so I will also.</p>
-<section id="install-ubuntu" class="level4">
-<h4 class="anchored" data-anchor-id="install-ubuntu">1. Install Ubuntu</h4>
-<p>After your computer has restarted, launch the Windows Store, and search for “Ubuntu”. On its store page, click on “Get” to install it.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/windows_store.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">A screenshot of Ubuntu in the Windows Store</figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="launch-ubuntu" class="level4">
-<h4 class="anchored" data-anchor-id="launch-ubuntu">2. Launch Ubuntu</h4>
-<p>You can find Ubuntu, after it has been installed, but searching “Ubuntu” in the search bar. Launching it will open a <a href="../../../cli">command line interface</a>.</p>
-</section>
-<section id="set-a-username" class="level4">
-<h4 class="anchored" data-anchor-id="set-a-username">3. Set a username</h4>
-<p>You will need to set a username for Ubuntu on your first launch. It doesn’t have to be the same as your Windows username, but you might as well make it the same just to keep things easy. Just type in the username you want, and hit enter.</p>
-</section>
-<section id="set-a-password" class="level4">
-<h4 class="anchored" data-anchor-id="set-a-password">4. Set a password</h4>
-<p>You’ll also need to set a password for your Ubuntu account. Again, this doesn’t <em>need</em> to be the same as your computer password.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>As you are typing in your password, you won’t see the cursor move, or see blanked out characters like <code>*</code> like you are probably used to. That’s just how password entry in command lines work, it’s ok.</p>
-</div>
-</div>
-<p>You’ll need re-enter your chosen password to confirm.</p>
-</section>
-</section>
-<section id="finding-your-files" class="level2">
-<h2 class="anchored" data-anchor-id="finding-your-files">Finding your files</h2>
-<p>In most command line interfaces, to get to your home directory, you type <code>cd ~</code>, which will still work in Windows Subsystem for Linux, but <code>~</code> isn’t where your <em>Windows</em> files are. Instead, they’re “mounted” at <code>/mnt/c/users/&lt;USERNAME&gt;</code> where <code>&lt;USERNAME&gt;</code> is your Windows username. If you’re not sure what your Windows username is, inside Ubuntu type</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /mnt/c/users/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then run <code>ls</code> to see the list of user directories. Yours should be in there.</p>
-</section>
-<section id="handout-version" class="level2">
-<h2 class="anchored" data-anchor-id="handout-version">Handout Version</h2>
-<p><a href="00_installing_wsl.pdf">Handout PDF</a></p>
+<p>This data file contains tokens of word-final (t, d) and was created for a project studying different pronunciations of word-final (t, d), including deletion. The data comes from a corpus collected for Gardner (2010; <a href="https://hdl.handle.net/1807/80940">2017</a>) among English speakers on <a href="https://en.wikipedia.org/wiki/Cape_Breton_Island">Cape Breton Island, Nova Scotia, Canada</a>.</p>
+<p>If you prefer to save your data files as comma-separated-values files (even though you shouldn’t, see above), you can read them into <em>R</em> using the function <code>read.csv2()</code>. If you find it tricky to figure out the file path of your data file you can instead write <code>file.choose()</code> (OS X) or <code>choose.files()</code> (PC) instead of the file path inside the <code>read.delim()</code>/<code>read.csv2()</code> function, with no quotation marks. This will create a pop-up window where you can browse through your files and select one. While this <em>seems</em> easier, it is not worth it. By not explicitly writing out the file path you introduce a non-replicable element in your script file because there is no record of what you browse to in the actual script file. This means that if you return to your project a year later, or someone else is looking over your code, it might not be clear which data file is supposed to be used. If you choose to use an <em>R</em> script file you can actually just drag and drop your data file (or any file) into the script window itself and the full file path will be automatically inserted.</p>
+<p>You can also copy a file’s filepath to the clipboard on a Mac by pressing <strong>Control</strong> while clicking on the file, then pressing <strong>Option</strong> and selecting <strong>Copy “[your file]” as Pathname</strong>. On a PC you can do the same thing by right-clicking on a file, or (if using Windows 10) using the <strong>Copy path</strong> button on the <strong>Home</strong> tab ribbon in <em>Windows File Explorer</em>.</p>
+<p>For more information about reading files into <em>R</em>, go <a href="https://stat.ethz.ch/R-manual/R-devel/library/utils/html/read.table.html">here</a></p>
 
 
 </section>
@@ -571,15 +396,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../../content/windows/wsl/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Windows Subsystem for Linux</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

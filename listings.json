@@ -7,6 +7,15 @@
     ]
   },
   {
+    "listing": "/content/R/lvc_r/index.html",
+    "items": [
+      "/content/R/lvc_r/Doing_LVC_with_R.html",
+      "/content/R/lvc_r/Getting Started.html",
+      "/content/R/lvc_r/Getting Your Data Into R.html",
+      "/content/R/lvc_r/Part1.html"
+    ]
+  },
+  {
     "listing": "/content/cli/index.html",
     "items": [
       "/content/cli/keyboarding/index.html"
