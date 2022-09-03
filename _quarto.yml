@@ -36,7 +36,12 @@ website:
         - content/index.qmd
         - section: "R"
           contents:
-            - content/R/index.md
+            #- content/R/index.md
+            - section: Doing LVC in R
+              href: content/R/lvc_r/index.md
+              contents:
+                - href: "content/R/lvc_r/Getting Started.qmd"
+                  text: Getting Started
         - section: Python
         - section: Praat
         - section: Command Line Interfaces
