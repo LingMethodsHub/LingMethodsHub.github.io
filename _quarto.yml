@@ -67,8 +67,10 @@ website:
           text: "Requirements"
         - href: content/contributing/01_recommendations.qmd
           text: "Recommendations"
-        - href: content/contributing/01_process.qmd
+        - href: content/contributing/02_process.qmd
           text: "Process"
+        - href: content/contributing/03_workflow.qmd
+          text: "Workflow"          
     - title: "About" 
       href: about.qmd
       style: "floating"
