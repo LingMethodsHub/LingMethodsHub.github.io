@@ -2,102 +2,106 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/about.html</loc>
-    <lastmod>2022-09-03T16:17:23.084Z</lastmod>
+    <lastmod>2022-09-05T20:57:53.311Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/Getting Started.html</loc>
-    <lastmod>2022-09-03T16:17:23.862Z</lastmod>
+    <lastmod>2022-09-05T20:57:54.069Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/Getting Your Data Into R.html</loc>
-    <lastmod>2022-09-03T16:17:30.635Z</lastmod>
+    <lastmod>2022-09-05T20:58:01.087Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/Part1.html</loc>
-    <lastmod>2022-09-03T16:17:35.792Z</lastmod>
+    <lastmod>2022-09-05T20:58:06.180Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/cli/keyboarding/index.html</loc>
-    <lastmod>2022-09-03T16:17:36.306Z</lastmod>
+    <lastmod>2022-09-05T20:58:06.747Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/process.html</loc>
-    <lastmod>2022-09-03T16:17:36.687Z</lastmod>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/00_requirements.html</loc>
+    <lastmod>2022-09-05T20:58:07.090Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/recommendations.html</loc>
-    <lastmod>2022-09-03T16:17:37.292Z</lastmod>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/01_recommendations.html</loc>
+    <lastmod>2022-09-05T20:58:07.603Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/requirements.html</loc>
-    <lastmod>2022-09-03T16:17:37.682Z</lastmod>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/02_process.html</loc>
+    <lastmod>2022-09-05T20:58:07.903Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/03_workflow.html</loc>
+    <lastmod>2022-09-05T20:58:08.257Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/index.html</loc>
-    <lastmod>2022-09-03T16:17:38.084Z</lastmod>
+    <lastmod>2022-09-05T20:58:08.666Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/index.html</loc>
-    <lastmod>2022-09-03T16:17:38.447Z</lastmod>
+    <lastmod>2022-09-05T20:58:09.031Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/people/index.html</loc>
-    <lastmod>2022-09-03T16:17:38.897Z</lastmod>
+    <lastmod>2022-09-05T20:58:09.431Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/people/jofrhwld/index.html</loc>
-    <lastmod>2022-09-03T16:17:39.292Z</lastmod>
+    <lastmod>2022-09-05T20:58:09.728Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/people/matthuntgardner/index.html</loc>
-    <lastmod>2022-09-03T16:17:39.615Z</lastmod>
+    <lastmod>2022-09-05T20:58:10.162Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/index.html</loc>
-    <lastmod>2022-09-03T16:17:39.999Z</lastmod>
+    <lastmod>2022-09-05T20:58:10.510Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/Doing_LVC_with_R.html</loc>
-    <lastmod>2022-09-03T16:17:43.861Z</lastmod>
+    <lastmod>2022-09-05T20:58:14.447Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/index.html</loc>
-    <lastmod>2022-09-03T16:17:44.374Z</lastmod>
+    <lastmod>2022-09-05T20:58:15.049Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/cli/index.html</loc>
-    <lastmod>2022-09-03T16:17:44.710Z</lastmod>
+    <lastmod>2022-09-05T20:58:15.419Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/index.html</loc>
-    <lastmod>2022-09-03T16:17:44.990Z</lastmod>
+    <lastmod>2022-09-05T20:58:15.801Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/praat/index.html</loc>
-    <lastmod>2022-09-03T16:17:45.275Z</lastmod>
+    <lastmod>2022-09-05T20:58:16.091Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/python/index.html</loc>
-    <lastmod>2022-09-03T16:17:45.534Z</lastmod>
+    <lastmod>2022-09-05T20:58:16.387Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/updates/index.html</loc>
-    <lastmod>2022-09-03T16:17:45.821Z</lastmod>
+    <lastmod>2022-09-05T20:58:16.658Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/windows/index.html</loc>
-    <lastmod>2022-09-03T16:17:46.207Z</lastmod>
+    <lastmod>2022-09-05T20:58:17.090Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/windows/wsl/00_installing_wsl.html</loc>
-    <lastmod>2022-09-03T16:17:46.587Z</lastmod>
+    <lastmod>2022-09-05T20:58:17.499Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/windows/wsl/01_vscode_wsl.html</loc>
-    <lastmod>2022-09-03T16:17:52.388Z</lastmod>
+    <lastmod>2022-09-05T20:58:23.225Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/windows/wsl/index.html</loc>
-    <lastmod>2022-09-03T16:17:52.813Z</lastmod>
+    <lastmod>2022-09-05T20:58:23.618Z</lastmod>
   </url>
 </urlset>

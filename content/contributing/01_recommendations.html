@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>LingMethodsHub - Contributing</title>
+<title>LingMethodsHub - Contribution Recommendations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/contributing/00_requirements.html" rel="next">
+<link href="../../content/contributing/02_process.html" rel="next">
+<link href="../../content/contributing/00_requirements.html" rel="prev">
 <script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
@@ -152,7 +153,7 @@ cookieconsent.run({
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Contributing</h1>
+      <h1 class="quarto-secondary-nav-title">Contribution Recommendations</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -172,7 +173,7 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/index.html" class="sidebar-item-text sidebar-link active">Contributing</a>
+  <a href="../../content/contributing/index.html" class="sidebar-item-text sidebar-link">Contributing</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -182,7 +183,7 @@ cookieconsent.run({
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/01_recommendations.html" class="sidebar-item-text sidebar-link">Recommendations</a>
+  <a href="../../content/contributing/01_recommendations.html" class="sidebar-item-text sidebar-link active">Recommendations</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -204,7 +205,8 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#contributing-to-linguistics-methods-hub" id="toc-contributing-to-linguistics-methods-hub" class="nav-link active" data-scroll-target="#contributing-to-linguistics-methods-hub">Contributing to Linguistics Methods Hub</a></li>
+  <li><a href="#recommended-contribution-structure" id="toc-recommended-contribution-structure" class="nav-link active" data-scroll-target="#recommended-contribution-structure">Recommended contribution structure</a></li>
+  <li><a href="#recommended-.gitignore" id="toc-recommended-.gitignore" class="nav-link" data-scroll-target="#recommended-.gitignore">Recommended <code>.gitignore</code></a></li>
   </ul>
 </nav>
     </div>
@@ -213,7 +215,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Contributing</h1>
+<h1 class="title d-none d-lg-block">Contribution Recommendations</h1>
 </div>
 
 
@@ -227,14 +229,29 @@ cookieconsent.run({
 
 </header>
 
-<section id="contributing-to-linguistics-methods-hub" class="level1">
-<h1>Contributing to Linguistics Methods Hub</h1>
-<p>Linguistics Methods Hub is hosted on Github, and built with <a href="https://quarto.org/">Quarto</a>. Rather than edit the whole site code directly, the content of most tutorials will be added as <em>submodules</em>.</p>
-<ul>
-<li><a href="requirements.qmd">Contribution Requirements</a></li>
-<li><a href="recommendations.qmd">Contribution Recommendations</a></li>
-<li><a href="process.qmd">Contribution Process</a></li>
-</ul>
+<section id="recommended-contribution-structure" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-contribution-structure">Recommended contribution structure</h2>
+<p>If your contribution is a one pager, just put the content in a <code>index.md</code> or <code>index.qmd</code> file. If there are multiple parts, still include a <code>index.md</code> file which links to each part. Include each part as just a sequentially named <code>.md</code> or <code>.qmd</code> file. For examle:</p>
+<pre><code>repo/
+├── .gitignore
+├── 00_part1.qmd
+├── 01_part2.qmd
+├── LICENSE
+├── README.md
+├── assets/
+└── index.md</code></pre>
+</section>
+<section id="recommended-.gitignore" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-.gitignore">Recommended <code>.gitignore</code></h2>
+<p>Either be careful not to commit any rendered documents to your repository, or be sure to exclude them with <code>.gitignore</code>.</p>
+<pre class=".gitignore"><code>*_files/
+*.html
+*.pdf
+_site/
+.ipynb_checkpoints/
+.quarto/
+.Rproj_user
+*.Rproj</code></pre>
 
 
 </section>
@@ -340,10 +357,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../../content/contributing/00_requirements.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Requirements</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/contributing/00_requirements.html" class="pagination-link">
-        <span class="nav-page-text">Requirements</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/contributing/02_process.html" class="pagination-link">
+        <span class="nav-page-text">Process</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>LingMethodsHub - Contributing</title>
+<title>LingMethodsHub - Contributing Workflow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/contributing/00_requirements.html" rel="next">
+<link href="../../content/contributing/02_process.html" rel="prev">
 <script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
@@ -95,6 +95,9 @@ cookieconsent.run({
 </script>
 <script async="" src="https://hypothes.is/embed.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible">
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -152,7 +155,7 @@ cookieconsent.run({
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Contributing</h1>
+      <h1 class="quarto-secondary-nav-title">Contributing Workflow</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -172,7 +175,7 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/index.html" class="sidebar-item-text sidebar-link active">Contributing</a>
+  <a href="../../content/contributing/index.html" class="sidebar-item-text sidebar-link">Contributing</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -192,7 +195,7 @@ cookieconsent.run({
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/03_workflow.html" class="sidebar-item-text sidebar-link">Workflow</a>
+  <a href="../../content/contributing/03_workflow.html" class="sidebar-item-text sidebar-link active">Workflow</a>
   </div>
 </li>
     </ul>
@@ -204,16 +207,18 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#contributing-to-linguistics-methods-hub" id="toc-contributing-to-linguistics-methods-hub" class="nav-link active" data-scroll-target="#contributing-to-linguistics-methods-hub">Contributing to Linguistics Methods Hub</a></li>
+  <li><a href="#the-point-of-this-page" id="toc-the-point-of-this-page" class="nav-link active" data-scroll-target="#the-point-of-this-page">The point of this page</a></li>
+  <li><a href="#planned-process-for-reviewing-and-adding-submissions." id="toc-planned-process-for-reviewing-and-adding-submissions." class="nav-link" data-scroll-target="#planned-process-for-reviewing-and-adding-submissions.">Planned process for reviewing and adding submissions.</a></li>
+  <li><a href="#git-view-of-process" id="toc-git-view-of-process" class="nav-link" data-scroll-target="#git-view-of-process">Git view of process</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Contributing</h1>
+<h1 class="title d-none d-lg-block">Contributing Workflow</h1>
 </div>
 
 
@@ -227,14 +232,133 @@ cookieconsent.run({
 
 </header>
 
-<section id="contributing-to-linguistics-methods-hub" class="level1">
-<h1>Contributing to Linguistics Methods Hub</h1>
-<p>Linguistics Methods Hub is hosted on Github, and built with <a href="https://quarto.org/">Quarto</a>. Rather than edit the whole site code directly, the content of most tutorials will be added as <em>submodules</em>.</p>
-<ul>
-<li><a href="requirements.qmd">Contribution Requirements</a></li>
-<li><a href="recommendations.qmd">Contribution Recommendations</a></li>
-<li><a href="process.qmd">Contribution Process</a></li>
-</ul>
+<section id="the-point-of-this-page" class="level2">
+<h2 class="anchored" data-anchor-id="the-point-of-this-page">The point of this page</h2>
+<p>The point of this page is to provide clarity to the process, and provide a roadmap for Linguistics Methods Hub maintainers to refer to. It is not important that you have a clear understanding of all components in this page before submitting a tutorial. Simply review the <a href="../../content/contributing/00_requirements.html">requirements</a> and <a href="../../content/contributing/01_recommendations.html">recommendations</a>, and <a href="https://github.com/LingMethodsHub/LingMethodsHub.github.io">submit a fork request</a> to begin the process.</p>
+</section>
+<section id="planned-process-for-reviewing-and-adding-submissions." class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="planned-process-for-reviewing-and-adding-submissions.">Planned process for reviewing and adding submissions.</h2>
+<p>Below is a sequence diagram of the planned communication systems and events involved in adding and maintaining a tutorial on LMH, which is described more explicitly below.</p>
+<div class="column-body-outset">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">sequenceDiagram
+  participant LMH Maintainer
+  participant LMH Contributor
+  
+  LMH Contributor -&gt;&gt;+ LMH Maintainer: 1. Open fork request in issues
+  loop Content editing
+    LMH Maintainer  -&gt;&gt;+ LMH Contributor: 2. Open content questions as issues.
+    LMH Contributor -&gt;&gt; LMH Contributor: 3a. Makes changes and commits.
+    LMH Contributor -&gt;&gt; LMH Contributor: 3b. Answers issues questions.
+    LMH Contributor -&gt;&gt;- LMH Contributor: 4. Closes issues.
+  end
+  LMH Maintainer --&gt;&gt;- LMH Contributor: 5. Forks repository to LMH
+  activate LMH Maintainer
+  loop Site format editing
+    LMH Maintainer -&gt;&gt; LMH Maintainer: 6. Makes edits necessary for quarto rendering.
+    LMH Maintainer -&gt;&gt; LMH Maintainer: 7. Pushes commits to LMH Fork.
+  end
+  LMH Maintainer -&gt;&gt;- LMH Contributor: 8. Sends pull request
+  activate LMH Contributor
+  LMH Contributor -&gt;&gt;- LMH Contributor: 9 Merges pull request
+  activate LMH Maintainer
+  LMH Maintainer -&gt;&gt;- LMH Maintainer: 10 Adds repo as submodule to main site.
+  opt problem with render
+    LMH Contributor -&gt;&gt;+ LMH Maintainer: Opens issue about how the tutorial renders on the site.
+    LMH Maintainer -&gt;&gt; LMH Maintainer: Makes necessary edits to tutorial.
+    LMH Maintainer -&gt;&gt;- LMH Maintainer: Closes issue.
+  end
+  opt updates to tutorial
+    activate LMH Contributor
+    LMH Contributor -&gt;&gt; LMH Contributor: Makes updates to tutorial
+    LMH Contributor -&gt;&gt;- LMH Maintainer: Sends pull request to the LMH Fork
+    activate LMH Maintainer
+    LMH Maintainer -&gt;&gt; LMH Maintainer: Merges pull request
+    LMH Maintainer -&gt;&gt;- LMH Maintainer: Updates submodules
+  end
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+<ol type="1">
+<li>Linguist Methods Hub contributor opens an issue on <a href="https://github.com/LingMethodsHub/LingMethodsHub.github.io">the main site repository</a> requesting a fork of their tutorial repository.</li>
+<li>After reviewing the contributor’s repository, a LMH Maintainer will address any questions or possible content edits in the form of github issues on the contributor’s repository. Examples could be
+<ol type="a">
+<li><p>Contributor did not include license information.</p></li>
+<li><p>If there are multiple renderable files (<code>.Rmd</code>, <code>.md</code>, <code>.qmd</code> or <code>.ipynb</code>) clarifying what order they should appear in.</p></li>
+<li><p>What content topic or subtopic the tutorials should appear in on the main site.</p></li>
+<li><p>The code in the tutorial loads data that is not included in the repository.</p></li>
+<li><p>Suggestions for content titles.</p></li>
+<li><p>Requesting file renaming.</p></li>
+</ol></li>
+<li>In response to these questions, the contributor will either:
+<ol type="a">
+<li><p>Make the changes, if appropriate.</p></li>
+<li><p>Answer the information seeking questions, then</p></li>
+</ol></li>
+<li>The contributor will close the issues.</li>
+<li>If no more content issues arise (going back to step 2), the LMH maintainer will fork the contributor’s repository.</li>
+<li>Some edits for the purpose of rendering the tutorial to the site may be necessary, including:
+<ol type="a">
+<li><p>Reformatting metadata (e.g.&nbsp;date published, author metadata, zenodo DOI).</p></li>
+<li><p>Reformatting code chunk options.</p></li>
+</ol></li>
+<li>After committing these edits, the LMH Maintainer will:</li>
+<li>Send a pull request to the contributor’s repo.</li>
+<li>If the contributor is happy with this final product, they will merge the pull request into their local repo.</li>
+<li>After 9, the LMH maintainer will at the tutorial repo to the main site as a submodule, and re-publish the site.</li>
+</ol>
+<p>After this final stage, some issues may still arise that don’t require substantial updates to the tutorial content, in which case the LMH contributor can open an issue.</p>
+<p>If further content updates are necessary (e.g.&nbsp;broken links, necessary updates to tutorials given new versions of dependent libraries etc) the contributor can make any necessary commits to their local repository, then send a pull request to the LMH fork.</p>
+</section>
+<section id="git-view-of-process" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="git-view-of-process">Git view of process</h2>
+<p>This flow chart illustrates the git procedures involved in the process described above.</p>
+<div class="column-body">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-2">flowchart TB
+    subgraph contributor repo
+      direction TB
+      a1--&gt;|edits| a2
+      a2--&gt;|edits| a3
+      a4--&gt;|edits| a5
+      
+    end
+      a3 --&gt;|fork| b1
+      b2 --&gt;|pull request| a4
+      a5--&gt;|pull request| b3
+    subgraph lmh fork
+      direction TB
+      b1 --&gt;|edits| b2
+      b3
+    end
+    b2 ---&gt;|submodule| c2
+    b3 -.-&gt; c3
+    subgraph lmh site
+      direction TB
+      c1 --------&gt; c2  
+      c2 --&gt;|submodule update| c3
+    end
+</pre>
+<div id="mermaid-tooltip-2" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -340,11 +464,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../../content/contributing/02_process.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Process</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/contributing/00_requirements.html" class="pagination-link">
-        <span class="nav-page-text">Requirements</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

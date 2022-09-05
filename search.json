@@ -56,46 +56,67 @@
     "text": "Modifier Combos\nSometimes you’ll see key combinations suggested to help you use the command line and other programming languages. For example, the key combo “Control+C” or “Ctrl+C” will end whatever process is running in a Unix-like system. What this notation means is that you should press the Control key, and while continuing to hold it, press the C key.\n\n\n\n\n\nCtrl+C location on the tenkeyless keyboard\n\n\n\n\n\n\n\n\n\nCtrl+C location on the tenkeyless keyboard\n\n\n\n\nIf you ever see more than two keys included in a key combination, assume they need to be pressed and held in the order they appear."
   },
   {
-    "objectID": "content/contributing/process.html",
-    "href": "content/contributing/process.html",
-    "title": "Contribution Process",
-    "section": "",
-    "text": "To contribute a tutorial to the LingMethodsHub, you will need to create a Github Account, create a repository for your tutorial, then submit an issue on the website repository requesting a fork."
-  },
-  {
-    "objectID": "content/contributing/process.html#forking-tutorial-repositories",
-    "href": "content/contributing/process.html#forking-tutorial-repositories",
-    "title": "Contribution Process",
-    "section": "Forking Tutorial Repositories",
-    "text": "Forking Tutorial Repositories\n\nWhy does LingMethodsHub have to fork my repository?\nSince tutorial content is being added to the website as git submodules, we could technically add a submodule from any github repository. However, we will only add content submodules from our own team account’s repositories, meaning we need to fork external repositories. We are doing this for a few reasons.\n\nUpdates and maintenance to the site may require non-content edits to tutorial repositories (e.g. updating yaml headers, reorganizing files). If a tutorial submodule was directly added from an external account, we would have to wait on that maintainer to accept a pull request for the content to update appropriately on the website.\nIn a reverse situation, if we added a submodule from an external account, and that account maintainer updated their repository to contain unwanted content, that content could wind up in the site when we update the submodules.\n\n\n\nWhat if I want to make edits after LingMethodsHub has forked the repository?\nYou may want to make edits to the tutorial repository after we have forked it for a few reasons, including\n\nEditing the content.\nUpdating the code.\nUpdating your personal metadata (name, url, affiliation, etc).\n\nThat is all fine to do in your own original repository. Once you’ve made updates as you see fit, just send us a pull request and we can merge the updated version of the tutorial into the site’s version.\n\n\nWhat if something looks wrong on the site?\nInevitably something won’t look quite right on the site. Submit github issue and we will try to sort it out."
-  },
-  {
-    "objectID": "content/contributing/recommendations.html",
-    "href": "content/contributing/recommendations.html",
-    "title": "Contribution Recommendations",
-    "section": "",
-    "text": "If your contribution is a one pager, just put the content in a index.md or index.qmd file. If there are multiple parts, still include a index.md file which links to each part. Include each part as just a sequentially named .md or .qmd file. For examle:\nrepo/\n├── .gitignore\n├── 00_part1.qmd\n├── 01_part2.qmd\n├── LICENSE\n├── README.md\n├── assets/\n└── index.md"
-  },
-  {
-    "objectID": "content/contributing/recommendations.html#recommended-.gitignore",
-    "href": "content/contributing/recommendations.html#recommended-.gitignore",
-    "title": "Contribution Recommendations",
-    "section": "Recommended .gitignore",
-    "text": "Recommended .gitignore\nEither be careful not to commit any rendered documents to your repository, or be sure to exclude them with .gitignore.\n*_files/\n*.html\n*.pdf\n_site/\n.ipynb_checkpoints/\n.quarto/\n.Rproj_user\n*.Rproj"
-  },
-  {
-    "objectID": "content/contributing/requirements.html",
-    "href": "content/contributing/requirements.html",
+    "objectID": "content/contributing/00_requirements.html",
+    "href": "content/contributing/00_requirements.html",
     "title": "Contribution Requirements",
     "section": "",
     "text": "In order for your contribution to be added, it must be appropriately licensed, meaning you’ve included a license name in the yaml header of each content page, and there is a matching LICENSE document in the repository. It should at least be CC-BY-4.0, and we would recommend CC-BY-SA-4.0.\nTo add the license to your documents’ yaml header, just add\nlicense: \"CC-BY-SA-4.0\"\nTo add a license file, you can get it with curl in your terminal like so:\ncurl https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt > LICENSE"
   },
   {
-    "objectID": "content/contributing/requirements.html#format",
-    "href": "content/contributing/requirements.html#format",
+    "objectID": "content/contributing/00_requirements.html#format",
+    "href": "content/contributing/00_requirements.html#format",
     "title": "Contribution Requirements",
     "section": "Format",
     "text": "Format\nYour tutorial repository must contain source files that are renderable by quarto, which include\n\n.md | markdown files\n.qmd | quarto markdown files\n.Rmd | R Markdown files\n.ipynb | Jupyter notebooks"
+  },
+  {
+    "objectID": "content/contributing/01_recommendations.html",
+    "href": "content/contributing/01_recommendations.html",
+    "title": "Contribution Recommendations",
+    "section": "",
+    "text": "If your contribution is a one pager, just put the content in a index.md or index.qmd file. If there are multiple parts, still include a index.md file which links to each part. Include each part as just a sequentially named .md or .qmd file. For examle:\nrepo/\n├── .gitignore\n├── 00_part1.qmd\n├── 01_part2.qmd\n├── LICENSE\n├── README.md\n├── assets/\n└── index.md"
+  },
+  {
+    "objectID": "content/contributing/01_recommendations.html#recommended-.gitignore",
+    "href": "content/contributing/01_recommendations.html#recommended-.gitignore",
+    "title": "Contribution Recommendations",
+    "section": "Recommended .gitignore",
+    "text": "Recommended .gitignore\nEither be careful not to commit any rendered documents to your repository, or be sure to exclude them with .gitignore.\n*_files/\n*.html\n*.pdf\n_site/\n.ipynb_checkpoints/\n.quarto/\n.Rproj_user\n*.Rproj"
+  },
+  {
+    "objectID": "content/contributing/02_process.html",
+    "href": "content/contributing/02_process.html",
+    "title": "Contribution Process",
+    "section": "",
+    "text": "To contribute a tutorial to the LingMethodsHub, you will need to create a Github Account, create a repository for your tutorial, then submit an issue on the website repository requesting a fork."
+  },
+  {
+    "objectID": "content/contributing/02_process.html#forking-tutorial-repositories",
+    "href": "content/contributing/02_process.html#forking-tutorial-repositories",
+    "title": "Contribution Process",
+    "section": "Forking Tutorial Repositories",
+    "text": "Forking Tutorial Repositories\n\nWhy does LingMethodsHub have to fork my repository?\nSince tutorial content is being added to the website as git submodules, we could technically add a submodule from any github repository. However, we will only add content submodules from our own team account’s repositories, meaning we need to fork external repositories. We are doing this for a few reasons.\n\nUpdates and maintenance to the site may require non-content edits to tutorial repositories (e.g. updating yaml headers, reorganizing files). If a tutorial submodule was directly added from an external account, we would have to wait on that maintainer to accept a pull request for the content to update appropriately on the website.\nIn a reverse situation, if we added a submodule from an external account, and that account maintainer updated their repository to contain unwanted content, that content could wind up in the site when we update the submodules.\n\n\n\nWhat if I want to make edits after LingMethodsHub has forked the repository?\nYou may want to make edits to the tutorial repository after we have forked it for a few reasons, including\n\nEditing the content.\nUpdating the code.\nUpdating your personal metadata (name, url, affiliation, etc).\n\nThat is all fine to do in your own original repository. Once you’ve made updates as you see fit, just send us a pull request and we can merge the updated version of the tutorial into the site’s version.\n\n\nWhat if something looks wrong on the site?\nInevitably something won’t look quite right on the site. Submit github issue and we will try to sort it out."
+  },
+  {
+    "objectID": "content/contributing/03_workflow.html",
+    "href": "content/contributing/03_workflow.html",
+    "title": "Contributing Workflow",
+    "section": "",
+    "text": "The point of this page is to provide clarity to the process, and provide a roadmap for Linguistics Methods Hub maintainers to refer to. It is not important that you have a clear understanding of all components in this page before submitting a tutorial. Simply review the requirements and recommendations, and submit a fork request to begin the process."
+  },
+  {
+    "objectID": "content/contributing/03_workflow.html#planned-process-for-reviewing-and-adding-submissions.",
+    "href": "content/contributing/03_workflow.html#planned-process-for-reviewing-and-adding-submissions.",
+    "title": "Contributing Workflow",
+    "section": "Planned process for reviewing and adding submissions.",
+    "text": "Planned process for reviewing and adding submissions.\nBelow is a sequence diagram of the planned communication systems and events involved in adding and maintaining a tutorial on LMH, which is described more explicitly below.\n\n\n\n\n\nsequenceDiagram\n  participant LMH Maintainer\n  participant LMH Contributor\n  \n  LMH Contributor ->>+ LMH Maintainer: 1. Open fork request in issues\n  loop Content editing\n    LMH Maintainer  ->>+ LMH Contributor: 2. Open content questions as issues.\n    LMH Contributor ->> LMH Contributor: 3a. Makes changes and commits.\n    LMH Contributor ->> LMH Contributor: 3b. Answers issues questions.\n    LMH Contributor ->>- LMH Contributor: 4. Closes issues.\n  end\n  LMH Maintainer -->>- LMH Contributor: 5. Forks repository to LMH\n  activate LMH Maintainer\n  loop Site format editing\n    LMH Maintainer ->> LMH Maintainer: 6. Makes edits necessary for quarto rendering.\n    LMH Maintainer ->> LMH Maintainer: 7. Pushes commits to LMH Fork.\n  end\n  LMH Maintainer ->>- LMH Contributor: 8. Sends pull request\n  activate LMH Contributor\n  LMH Contributor ->>- LMH Contributor: 9 Merges pull request\n  activate LMH Maintainer\n  LMH Maintainer ->>- LMH Maintainer: 10 Adds repo as submodule to main site.\n  opt problem with render\n    LMH Contributor ->>+ LMH Maintainer: Opens issue about how the tutorial renders on the site.\n    LMH Maintainer ->> LMH Maintainer: Makes necessary edits to tutorial.\n    LMH Maintainer ->>- LMH Maintainer: Closes issue.\n  end\n  opt updates to tutorial\n    activate LMH Contributor\n    LMH Contributor ->> LMH Contributor: Makes updates to tutorial\n    LMH Contributor ->>- LMH Maintainer: Sends pull request to the LMH Fork\n    activate LMH Maintainer\n    LMH Maintainer ->> LMH Maintainer: Merges pull request\n    LMH Maintainer ->>- LMH Maintainer: Updates submodules\n  end\n\n\n\n\n\n\n\n\n\n\nLinguist Methods Hub contributor opens an issue on the main site repository requesting a fork of their tutorial repository.\nAfter reviewing the contributor’s repository, a LMH Maintainer will address any questions or possible content edits in the form of github issues on the contributor’s repository. Examples could be\n\nContributor did not include license information.\nIf there are multiple renderable files (.Rmd, .md, .qmd or .ipynb) clarifying what order they should appear in.\nWhat content topic or subtopic the tutorials should appear in on the main site.\nThe code in the tutorial loads data that is not included in the repository.\nSuggestions for content titles.\nRequesting file renaming.\n\nIn response to these questions, the contributor will either:\n\nMake the changes, if appropriate.\nAnswer the information seeking questions, then\n\nThe contributor will close the issues.\nIf no more content issues arise (going back to step 2), the LMH maintainer will fork the contributor’s repository.\nSome edits for the purpose of rendering the tutorial to the site may be necessary, including:\n\nReformatting metadata (e.g. date published, author metadata, zenodo DOI).\nReformatting code chunk options.\n\nAfter committing these edits, the LMH Maintainer will:\nSend a pull request to the contributor’s repo.\nIf the contributor is happy with this final product, they will merge the pull request into their local repo.\nAfter 9, the LMH maintainer will at the tutorial repo to the main site as a submodule, and re-publish the site.\n\nAfter this final stage, some issues may still arise that don’t require substantial updates to the tutorial content, in which case the LMH contributor can open an issue.\nIf further content updates are necessary (e.g. broken links, necessary updates to tutorials given new versions of dependent libraries etc) the contributor can make any necessary commits to their local repository, then send a pull request to the LMH fork."
+  },
+  {
+    "objectID": "content/contributing/03_workflow.html#git-view-of-process",
+    "href": "content/contributing/03_workflow.html#git-view-of-process",
+    "title": "Contributing Workflow",
+    "section": "Git view of process",
+    "text": "Git view of process\nThis flow chart illustrates the git procedures involved in the process described above.\n\n\n\n\n\nflowchart TB\n    subgraph contributor repo\n      direction TB\n      a1-->|edits| a2\n      a2-->|edits| a3\n      a4-->|edits| a5\n      \n    end\n      a3 -->|fork| b1\n      b2 -->|pull request| a4\n      a5-->|pull request| b3\n    subgraph lmh fork\n      direction TB\n      b1 -->|edits| b2\n      b3\n    end\n    b2 --->|submodule| c2\n    b3 -.-> c3\n    subgraph lmh site\n      direction TB\n      c1 --------> c2  \n      c2 -->|submodule update| c3\n    end"
   },
   {
     "objectID": "index.html",
