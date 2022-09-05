@@ -63,11 +63,11 @@ website:
       style: "floating"
       contents: 
         - content/contributing/index.md
-        - href: content/contributing/requirements.qmd
+        - href: content/contributing/00_requirements.qmd
           text: "Requirements"
-        - href: content/contributing/recommendations.qmd
+        - href: content/contributing/01_recommendations.qmd
           text: "Recommendations"
-        - href: content/contributing/process.qmd
+        - href: content/contributing/01_process.qmd
           text: "Process"
     - title: "About" 
       href: about.qmd
