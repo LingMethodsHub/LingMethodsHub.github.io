@@ -118,6 +118,7 @@ format:
     toc: true
 
 output-format: all
+prefer-html: true
 
 execute:
   freeze: auto
