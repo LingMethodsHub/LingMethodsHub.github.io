@@ -36,7 +36,17 @@ website:
         - content/index.qmd
         - section: "R"
           contents:
-            - content/R/index.md
+            #- content/R/index.md
+            - section: From Goldvarb to R
+              contents:
+                - href: "content/R/lvc_r/Getting Started.qmd"
+                  text: Getting Started
+                - href: "content/R/lvc_r/Getting Your Data Into R.qmd"
+                  text: Getting your data into R
+                - href: "content/R/lvc_r/Getting to Know Your Data.qmd"
+                  text: Getting to know your data
+                - href: "content/R/lvc_r/Modifying Data.qmd"
+                  text: Modifying data
         - section: Python
         - section: Praat
         - section: Command Line Interfaces
@@ -58,12 +68,24 @@ website:
       style: "floating"
       contents: 
         - content/contributing/index.md
-        - href: content/contributing/requirements.qmd
+        - href: content/contributing/00_requirements.qmd
           text: "Requirements"
-        - href: content/contributing/recommendations.qmd
+        - href: content/contributing/01_recommendations.qmd
           text: "Recommendations"
-        - href: content/contributing/process.qmd
+        - href: content/contributing/02_process.qmd
           text: "Process"
+        - href: content/contributing/03_workflow.qmd
+          text: "Workflow"
+        - section: Template
+          contents:
+            - href: content/contributing/template/index.qmd
+              text: "template index"
+            - href: content/contributing/template/00_rmarkdown_template.Rmd
+              text: "template rmarkdown"
+            - href: content/contributing/template/01_qmd_template.qmd
+              text: "template qmd"
+            - href: content/contributing/template/02_jupyter.ipynb 
+              text: "template jupyter"
     - title: "About" 
       href: about.qmd
       style: "floating"

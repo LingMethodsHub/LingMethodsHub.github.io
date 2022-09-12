@@ -4,3 +4,9 @@
 [submodule "content/cli/keyboarding"]
 	path = content/cli/keyboarding
 	url = https://github.com/LingMethodsHub/keyboarding.git
+[submodule "content/contributing/template"]
+	path = content/contributing/template
+	url = https://github.com/LingMethodsHub/template.git
+[submodule "content/R/lvc_r"]
+	path = content/R/lvc_r
+	url = https://github.com/LingMethodsHub/lvc_r.git

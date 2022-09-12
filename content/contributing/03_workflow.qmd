@@ -1,0 +1,116 @@
+---
+title: "Contributing Workflow"
+editor: visual
+---
+
+## The point of this page
+
+The point of this page is to provide clarity to the process, and provide a roadmap for Linguistics Methods Hub maintainers to refer to. It is not important that you have a clear understanding of all components in this page before submitting a tutorial. Simply review the [requirements](00_requirements.qmd) and [recommendations](01_recommendations.qmd), and [submit a fork request](https://github.com/LingMethodsHub/LingMethodsHub.github.io) to begin the process.
+
+## Planned process for reviewing and adding submissions.
+
+Below is a sequence diagram of the planned communication systems and events involved in adding and maintaining a tutorial on LMH, which is described more explicitly below.
+
+::: column-body-outset
+```{mermaid}
+sequenceDiagram
+  participant LMH Maintainer
+  participant LMH Contributor
+  
+  LMH Contributor ->>+ LMH Maintainer: 1. Open fork request in issues
+  loop Content editing
+    LMH Maintainer  ->>+ LMH Contributor: 2. Open content questions as issues.
+    LMH Contributor ->> LMH Contributor: 3a. Makes changes and commits.
+    LMH Contributor ->> LMH Contributor: 3b. Answers issues questions.
+    LMH Contributor ->>- LMH Contributor: 4. Closes issues.
+  end
+  LMH Maintainer -->>- LMH Contributor: 5. Forks repository to LMH
+  activate LMH Maintainer
+  loop Site format editing
+    LMH Maintainer ->> LMH Maintainer: 6. Makes edits necessary for quarto rendering.
+    LMH Maintainer ->> LMH Maintainer: 7. Pushes commits to LMH Fork.
+  end
+  LMH Maintainer ->>- LMH Contributor: 8. Sends pull request
+  activate LMH Contributor
+  LMH Contributor ->>- LMH Contributor: 9 Merges pull request
+  activate LMH Maintainer
+  LMH Maintainer ->>- LMH Maintainer: 10 Adds repo as submodule to main site.
+  opt problem with render
+    LMH Contributor ->>+ LMH Maintainer: Opens issue about how the tutorial renders on the site.
+    LMH Maintainer ->> LMH Maintainer: Makes necessary edits to tutorial.
+    LMH Maintainer ->>- LMH Maintainer: Closes issue.
+  end
+  opt updates to tutorial
+    activate LMH Contributor
+    LMH Contributor ->> LMH Contributor: Makes updates to tutorial
+    LMH Contributor ->>- LMH Maintainer: Sends pull request to the LMH Fork
+    activate LMH Maintainer
+    LMH Maintainer ->> LMH Maintainer: Merges pull request
+    LMH Maintainer ->>- LMH Maintainer: Updates submodules
+  end
+```
+:::
+
+1.  Linguist Methods Hub contributor opens an issue on [the main site repository](https://github.com/LingMethodsHub/LingMethodsHub.github.io) requesting a fork of their tutorial repository.
+2.  After reviewing the contributor's repository, a LMH Maintainer will address any questions or possible content edits in the form of github issues on the contributor's repository. Examples could be
+    a.  Contributor did not include license information.
+
+    b.  If there are multiple renderable files (`.Rmd`, `.md`, `.qmd` or `.ipynb`) clarifying what order they should appear in.
+
+    c.  What content topic or subtopic the tutorials should appear in on the main site.
+
+    d.  The code in the tutorial loads data that is not included in the repository.
+
+    e.  Suggestions for content titles.
+
+    f.  Requesting file renaming.
+3.  In response to these questions, the contributor will either:
+    a.  Make the changes, if appropriate.
+
+    b.  Answer the information seeking questions, then
+4.  The contributor will close the issues.
+5.  If no more content issues arise (going back to step 2), the LMH maintainer will fork the contributor's repository.
+6.  Some edits for the purpose of rendering the tutorial to the site may be necessary, including:
+    a.  Reformatting metadata (e.g. date published, author metadata, zenodo DOI).
+
+    b.  Reformatting code chunk options.
+7.  After committing these edits, the LMH Maintainer will:
+8.  Send a pull request to the contributor's repo.
+9.  If the contributor is happy with this final product, they will merge the pull request into their local repo.
+10. After 9, the LMH maintainer will at the tutorial repo to the main site as a submodule, and re-publish the site.
+
+After this final stage, some issues may still arise that don't require substantial updates to the tutorial content, in which case the LMH contributor can open an issue.
+
+If further content updates are necessary (e.g. broken links, necessary updates to tutorials given new versions of dependent libraries etc) the contributor can make any necessary commits to their local repository, then send a pull request to the LMH fork.
+
+## Git view of process
+
+This flow chart illustrates the git procedures involved in the process described above.
+
+::: column-body
+```{mermaid}
+flowchart TB
+    subgraph contributor repo
+      direction TB
+      a1-->|edits| a2
+      a2-->|edits| a3
+      a4-->|edits| a5
+      
+    end
+      a3 -->|fork| b1
+      b2 -->|pull request| a4
+      a5-->|pull request| b3
+    subgraph lmh fork
+      direction TB
+      b1 -->|edits| b2
+      b3
+    end
+    b2 --->|submodule| c2
+    b3 -.-> c3
+    subgraph lmh site
+      direction TB
+      c1 --------> c2  
+      c2 -->|submodule update| c3
+    end
+```
+:::
