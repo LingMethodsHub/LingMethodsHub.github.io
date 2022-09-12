@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Robin Doe">
+<meta name="dcterms.date" content="2025-09-01">
 
-<title>LingMethodsHub - Contribution Requirements</title>
+<title>LingMethodsHub - Tutorial template</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -86,26 +88,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../content/contributing/01_recommendations.html" rel="next">
-<link href="../../content/contributing/index.html" rel="prev">
-<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../content/contributing/template/00_rmarkdown_template.html" rel="next">
+<link href="../../../content/contributing/03_workflow.html" rel="prev">
+<script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -161,7 +163,7 @@ cookieconsent.run({
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible">
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -171,7 +173,7 @@ cookieconsent.run({
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">LingMethodsHub</span>
     </a>
   </div>
@@ -181,19 +183,19 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">Home</a>
+    <a class="nav-link" href="../../../index.html">Home</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../content/index.html">Tutorials</a>
+    <a class="nav-link" href="../../../content/index.html">Tutorials</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">About</a>
+    <a class="nav-link" href="../../../about.html">About</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../content/contributing/index.html" aria-current="page">Contributing</a>
+    <a class="nav-link active" href="../../../content/contributing/index.html" aria-current="page">Contributing</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../people/index.html">People</a>
+    <a class="nav-link" href="../../../people/index.html">People</a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -216,7 +218,7 @@ cookieconsent.run({
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Contribution Requirements</h1>
+      <h1 class="quarto-secondary-nav-title">Tutorial template</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -228,35 +230,35 @@ cookieconsent.run({
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../" class="sidebar-logo-link">
-      <img src="../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../../../" class="sidebar-logo-link">
+      <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/index.html" class="sidebar-item-text sidebar-link">Contributing</a>
+  <a href="../../../content/contributing/index.html" class="sidebar-item-text sidebar-link">Contributing</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/00_requirements.html" class="sidebar-item-text sidebar-link active">Requirements</a>
+  <a href="../../../content/contributing/00_requirements.html" class="sidebar-item-text sidebar-link">Requirements</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/01_recommendations.html" class="sidebar-item-text sidebar-link">Recommendations</a>
+  <a href="../../../content/contributing/01_recommendations.html" class="sidebar-item-text sidebar-link">Recommendations</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/02_process.html" class="sidebar-item-text sidebar-link">Process</a>
+  <a href="../../../content/contributing/02_process.html" class="sidebar-item-text sidebar-link">Process</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/03_workflow.html" class="sidebar-item-text sidebar-link">Workflow</a>
+  <a href="../../../content/contributing/03_workflow.html" class="sidebar-item-text sidebar-link">Workflow</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -269,22 +271,22 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/template/index.html" class="sidebar-item-text sidebar-link">template index</a>
+  <a href="../../../content/contributing/template/index.html" class="sidebar-item-text sidebar-link active">template index</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/template/00_rmarkdown_template.html" class="sidebar-item-text sidebar-link">template rmarkdown</a>
+  <a href="../../../content/contributing/template/00_rmarkdown_template.html" class="sidebar-item-text sidebar-link">template rmarkdown</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/template/01_qmd_template.html" class="sidebar-item-text sidebar-link">template qmd</a>
+  <a href="../../../content/contributing/template/01_qmd_template.html" class="sidebar-item-text sidebar-link">template qmd</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/contributing/template/02_jupyter.html" class="sidebar-item-text sidebar-link">template jupyter</a>
+  <a href="../../../content/contributing/template/02_jupyter.html" class="sidebar-item-text sidebar-link">template jupyter</a>
   </div>
 </li>
       </ul>
@@ -298,8 +300,17 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#license" id="toc-license" class="nav-link active" data-scroll-target="#license">License</a></li>
+  <li><a href="#authoring" id="toc-authoring" class="nav-link active" data-scroll-target="#authoring">Authoring</a>
+  <ul class="collapse">
+  <li><a href="#writing-.md-.rmd-files" id="toc-writing-.md-.rmd-files" class="nav-link" data-scroll-target="#writing-.md-.rmd-files">Writing <code>.md</code>, <code>.rmd</code> files</a></li>
+  <li><a href="#writing-.qmd-files" id="toc-writing-.qmd-files" class="nav-link" data-scroll-target="#writing-.qmd-files">Writing <code>.qmd</code> files</a></li>
+  <li><a href="#jupyter" id="toc-jupyter" class="nav-link" data-scroll-target="#jupyter">Jupyter</a></li>
+  </ul></li>
+  <li><a href="#header-information" id="toc-header-information" class="nav-link" data-scroll-target="#header-information">Header information</a>
+  <ul class="collapse">
+  <li><a href="#author-information" id="toc-author-information" class="nav-link" data-scroll-target="#author-information">Author information</a></li>
   <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -308,42 +319,101 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Contribution Requirements</h1>
+<h1 class="title d-none d-lg-block">Tutorial template</h1>
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <a href="http://www.example.com">Robin Doe</a> 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of State
+          </p>
+      </div>
+    </div>
 
 <div class="quarto-title-meta">
 
-    
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 1, 2025</p>
+    </div>
+  </div>
     
   </div>
   
 
 </header>
 
-<section id="license" class="level2">
-<h2 class="anchored" data-anchor-id="license">License</h2>
-<p>In order for your contribution to be added, it must be appropriately licensed, meaning you’ve included a <code>license</code> name in the yaml header of each content page, and there is a matching <code>LICENSE</code> document in the repository. It should at least be CC-BY-4.0, and we would recommend CC-BY-SA-4.0.</p>
-<p>To add the license to your documents’ yaml header, just add</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">license</span><span class="kw">:</span><span class="at"> </span><span class="st">"CC-BY-SA-4.0"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To add a license file, you can get it with <code>curl</code> in your terminal like so:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt <span class="op">&gt;</span> LICENSE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is intended to be a tutoral template for the <a href="https://lingmethodshub.github.io/">Linguistics Methods Hub</a>. You can fork and rename this repository, then proceed to delete and rename files as works best for your needs</p>
+<p>Template repository url: <a href="https://github.com/LingMethodsHub/template" class="uri">https://github.com/LingMethodsHub/template</a></p>
+<section id="authoring" class="level2">
+<h2 class="anchored" data-anchor-id="authoring">Authoring</h2>
+<section id="writing-.md-.rmd-files" class="level3">
+<h3 class="anchored" data-anchor-id="writing-.md-.rmd-files">Writing <code>.md</code>, <code>.rmd</code> files</h3>
+<p>All markdown, rmarkdown and quarto files will be rendered (except for any named <code>README*</code>), and can be written in your preferred way.</p>
+<p><a href="../../../content/contributing/template/00_rmarkdown_template.html">rmd output</a></p>
 </section>
-<section id="format" class="level2">
-<h2 class="anchored" data-anchor-id="format">Format</h2>
-<p>Your tutorial repository must contain source files that are renderable by quarto, which include</p>
-<ul>
-<li><p><code>.md</code> | markdown files</p></li>
-<li><p><code>.qmd</code> | quarto markdown files</p></li>
-<li><p><code>.Rmd</code> | R Markdown files</p></li>
-<li><p><code>.ipynb</code> | Jupyter notebooks</p></li>
-</ul>
+<section id="writing-.qmd-files" class="level3">
+<h3 class="anchored" data-anchor-id="writing-.qmd-files">Writing <code>.qmd</code> files</h3>
+<p>You can write quarto documents exactly like rmarkdown files.</p>
+<p><a href="../../../content/contributing/template/01_qmd_template.html">qmd output</a></p>
+</section>
+<section id="jupyter" class="level3">
+<h3 class="anchored" data-anchor-id="jupyter">Jupyter</h3>
+<p>You can also write tutorials in a jupyter notebook, and they will be rendered into the same output.</p>
+<p><a href="02_jupyter_output">jupyter output</a></p>
+</section>
+</section>
+<section id="header-information" class="level2">
+<h2 class="anchored" data-anchor-id="header-information">Header information</h2>
+<section id="author-information" class="level3">
+<h3 class="anchored" data-anchor-id="author-information">Author information</h3>
+<p>The author yaml information for this page is</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"Robin Doe"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">url</span><span class="kw">:</span><span class="at"> </span><span class="st">"http://www.example.com"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">affiliations</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> University of State</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The full author schema, from the <a href="https://quarto.org/docs/journals/authors.html">quarto docs</a>, is</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">number</span><span class="kw">:</span><span class="at"> number</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">given</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">family</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">literal</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">dropping-particle</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">non-dropping-particle</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">url</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">email</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">fax</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">orcid</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">note</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">acknowledgements</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">attributes</span><span class="kw">:</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">corresponding</span><span class="kw">:</span><span class="at"> boolean</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">equal-contributor</span><span class="kw">:</span><span class="at"> boolean</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">deceased</span><span class="kw">:</span><span class="at"> boolean</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">metadata</span><span class="kw">:</span><span class="at"> object</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">affiliations</span><span class="kw">:</span><span class="at"> </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="format" class="level3">
+<h3 class="anchored" data-anchor-id="format">Format</h3>
+<p>If you include both information for both <code>html</code> and <code>pdf</code> output formats, they will both be generated, allowing a standalone pdf for printing etc: <a href="index.pdf">pdf output</a>.</p>
 
 
 </section>
+</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA-4.0</div></div></section></div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -444,13 +514,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/contributing/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Contributing</span>
+      <a href="../../../content/contributing/03_workflow.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Workflow</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/contributing/01_recommendations.html" class="pagination-link">
-        <span class="nav-page-text">Recommendations</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../content/contributing/template/00_rmarkdown_template.html" class="pagination-link">
+        <span class="nav-page-text">template rmarkdown</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
