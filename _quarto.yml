@@ -70,7 +70,17 @@ website:
         - href: content/contributing/02_process.qmd
           text: "Process"
         - href: content/contributing/03_workflow.qmd
-          text: "Workflow"          
+          text: "Workflow"
+        - section: Template
+          contents:
+            - href: content/contributing/template/index.qmd
+              text: "template index"
+            - href: content/contributing/template/00_rmarkdown_template.Rmd
+              text: "template rmarkdown"
+            - href: content/contributing/template/01_qmd_template.qmd
+              text: "template qmd"
+            - href: content/contributing/template/02_jupyter.ipynb 
+              text: "template jupyter"
     - title: "About" 
       href: about.qmd
       style: "floating"
