@@ -37,16 +37,12 @@ website:
         - section: "R"
           contents:
             #- content/R/index.md
-            - section: From Goldvarb to R
+            - section: "Doing LVC with R"
               contents:
                 - href: "content/R/lvc_r/Getting Started.qmd"
-                  text: Getting Started
                 - href: "content/R/lvc_r/Getting Your Data Into R.qmd"
-                  text: Getting your data into R
                 - href: "content/R/lvc_r/Getting to Know Your Data.qmd"
-                  text: Getting to know your data
                 - href: "content/R/lvc_r/Modifying Data.qmd"
-                  text: Modifying data
         - section: Python
         - section: Praat
         - section: Command Line Interfaces
