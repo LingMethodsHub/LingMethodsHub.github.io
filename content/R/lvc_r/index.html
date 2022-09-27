@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Matt Hunt Gardner, PhD">
+<meta name="dcterms.date" content="2022-09-27">
 
-<title>LingMethodsHub - Doing LVC with R (updated and revised)</title>
+<title>LingMethodsHub - Doing LVC with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../content/R/lvc_r/Getting Started.html" rel="next">
-<link href="../../../content/index.html" rel="prev">
+<link href="../../../content/R/lvc_r/010_lvcr.html" rel="next">
+<link href="../../../content/R/index.html" rel="prev">
 <script src="../../../site_libs/quarto-listing/list.min.js"></script>
 <script src="../../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
@@ -68,20 +68,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-lvcr-listings .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-description','listing-file-modified',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-lvcr-listings'] = new List('listing-lvcr-listings', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -186,7 +186,7 @@ cookieconsent.run({
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Doing LVC with R (updated and revised)</h1>
+      <h1 class="quarto-secondary-nav-title">Doing LVC with R</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -211,7 +211,7 @@ cookieconsent.run({
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">R</a>
+            <a href="../../../content/R/index.html" class="sidebar-item-text sidebar-link">R</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -219,7 +219,7 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link active">Doing LVC in R</a>
+            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link active">Doing LVC with R</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -227,19 +227,58 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/Getting Started.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">Getting Your Data Into <em>R</em></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">Getting to Know Your Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">Modifying Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">Doing it all again, but <code>tidy</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">Crosstabs: Counts, Proportions, and More</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">Proportions for <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
   </div>
 </li>
       </ul>
   </li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">Python</span>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">Praat</span>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/cli/index.html" class="sidebar-item-text sidebar-link">Command Line Interfaces</a>
@@ -255,6 +294,7 @@ cookieconsent.run({
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/windows/index.html" class="sidebar-item-text sidebar-link">Windows</a>
@@ -278,38 +318,47 @@ cookieconsent.run({
 </li>
       </ul>
   </li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
     </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Doing LVC with R (updated and revised)</h1>
+<h1 class="title d-none d-lg-block">Doing LVC with R</h1>
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Matt Hunt Gardner <a href="https://orcid.org/0000-0002-1878-4232" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Oxford
+          </p>
+      </div>
+    </div>
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Matt Hunt Gardner, PhD </p>
-          </div>
-  </div>
-    
+      
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Invalid Date</p>
+      <p class="date">September 27, 2022</p>
     </div>
   </div>
     
@@ -318,130 +367,150 @@ cookieconsent.run({
 
 </header>
 
+<p>This tutorial takes you step-by-step though a variationist analysis of a sociolinguisitic variable with discrete variants.</p>
+<div id="listing-lvcr-listings" class="quarto-listing quarto-listing-container-table">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-lvcr-listings-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-lvcr-listings'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title-sort" data-direction="asc">
+          Section
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
 
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Section</a>
+</th>
+<th>
+Description
+</th>
+<th>
+Modified
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042440" data-listing-reading-time-sort="8.235" data-listing-title-sort="Getting Started" data-listing-filename-sort="010_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/010_lvcr.html" class="title">Getting Started</a>
+</td>
+<td class="listing-description">
+An introduction to using this tutorial. The relationship between <em>R</em> and <em>Goldvarb</em>. Token and script files. <em>R</em> vs.&nbsp;<em>R Studio</em>. How to install packages.
+</td>
+<td class="listing-file-modified">
+9/27/22, 6:17:22 PM
+</td>
+</tr>
+<tr data-index="1" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042440" data-listing-reading-time-sort="3.475" data-listing-title-sort="Getting Your Data Into *R*" data-listing-filename-sort="020_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/020_lvcr.html" class="title">Getting Your Data Into <em>R</em></a>
+</td>
+<td class="listing-description">
+How to import your data into <em>R</em>.
+</td>
+<td class="listing-file-modified">
+9/27/22, 6:17:22 PM
+</td>
+</tr>
+<tr data-index="2" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="15.01" data-listing-title-sort="Getting to Know Your Data" data-listing-filename-sort="030_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/030_lvcr.html" class="title">Getting to Know Your Data</a>
+</td>
+<td class="listing-description">
+Getting a snapshot of your data. Types of data and data structures. Getting the dimensions of your data. Introducting the (t/d) dataset.
+</td>
+<td class="listing-file-modified">
+9/27/22, 6:17:22 PM
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="24.105" data-listing-title-sort="Modifying Data" data-listing-filename-sort="040_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/040_lvcr.html" class="title">Modifying Data</a>
+</td>
+<td class="listing-description">
+Modifying data, including removing rows, re-coding variables, centering continuous variables, dividing continuous variables, changing the order of variables, reversing the order of variables, combining columns, splitting columns, and partitioning data sets.
+</td>
+<td class="listing-file-modified">
+9/27/22, 6:17:22 PM
+</td>
+</tr>
+<tr data-index="4" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="9.745" data-listing-title-sort="Doing it all again, but `tidy`" data-listing-filename-sort="050_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/050_lvcr.html" class="title">Doing it all again, but <code>tidy</code></a>
+</td>
+<td class="listing-description">
+Modifying data, but using the <code>tidyverse</code>
+</td>
+<td class="listing-file-modified">
+9/27/22, 6:17:22 PM
+</td>
+</tr>
+<tr data-index="5" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042442" data-listing-reading-time-sort="26.455" data-listing-title-sort="Crosstabs: Counts, Proportions, and More" data-listing-filename-sort="060_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/060_lvcr.html" class="title">Crosstabs: Counts, Proportions, and More</a>
+</td>
+<td class="listing-description">
+Getting token counts and proportions. Getting mean, median, standard deviation, and quartiles. Dealing with decimals and exponential notation.
+</td>
+<td class="listing-file-modified">
+9/27/22, 6:17:22 PM
+</td>
+</tr>
+<tr data-index="6" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042442" data-listing-reading-time-sort="11.205" data-listing-title-sort="Proportions for `ggplot2`" data-listing-filename-sort="070_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/070_lvcr.html" class="title">Proportions for <code>ggplot2</code></a>
+</td>
+<td class="listing-description">
+Generating proportions that you can plot using <code>ggplot2</code>.
+</td>
+<td class="listing-file-modified">
+9/27/22, 6:17:22 PM
+</td>
+</tr>
+<tr data-index="7" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042442" data-listing-reading-time-sort="6.55" data-listing-title-sort="Conditional Inference Trees" data-listing-filename-sort="080_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/080_lvcr.html" class="title">Conditional Inference Trees</a>
+</td>
+<td class="listing-description">
+Doing an analysis using conditional inference trees.
+</td>
+<td class="listing-file-modified">
+9/27/22, 6:17:22 PM
+</td>
+</tr>
+</tbody>
 
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="NaN" data-listing-file-modified-sort="1662221157795" data-listing-reading-time-sort="56.65">
-<div class="thumbnail">
-<p><a href="../../../content/R/lvc_r/Doing_LVC_with_R.html"> <img src="../../../content/R/lvc_r/images/tweet.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="../../../content/R/lvc_r/Doing_LVC_with_R.html">
-<h3 class="no-anchor listing-title">
-Doing LVC with R (updated and revised)
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-These instructions are not intended to be a comprehensive overview of <em>R</em>’s functionality, which is myriad. Instead it is a set of very specific instructions for doing the kinds of things in <em>R</em> that variationist sociolinguists familiar with <em>Goldvarb</em> often want to do. This includes extracting summary statistics from a standard token spreadsheet and formatting those statistics in such a way that they can be graphed using the package <strong>ggplot2</strong>, as well as testing the trends in those summary statistics using mixed-effects logistic regression analysis. These instructions assume you have installed the latest version of <em>R</em> (4.1.3 or later ). Even though this guide does not show everything that <em>R</em> can do, after reading and working your way through this guide, you should be familiar enough with how <em>R</em> generally works to figure out how do something not covered.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../../../content/R/lvc_r/Doing_LVC_with_R.html">
-<div class="listing-date">
-Invalid Date
-</div>
-<div class="listing-author">
-Matt Hunt Gardner, PhD
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="NaN" data-listing-file-modified-sort="1662221157795" data-listing-reading-time-sort="8.23">
-<div class="thumbnail">
-<p><a href="../../../content/R/lvc_r/Getting Started.html"> <img src="../../../content/R/lvc_r/images/tweet.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="../../../content/R/lvc_r/Getting Started.html">
-<h3 class="no-anchor listing-title">
-Getting Started
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-If you have not installed <em>R</em> or have never used <em>R</em> before, please check out <em>Swirl</em> https://swirlstats.com/, which will guide you through installing and learning the basic functionality of <em>R</em>. <em>Swirl</em> is a collection of interactive courses. Its <em>R Programming</em> beginner course will introduce you to <em>R</em> and several concepts discussed in this guide. Even if you have used <em>R</em> before, you should still go through the basic <em>R Programming</em> tutorial — even I learned something new when testing it before recommending it here.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../../../content/R/lvc_r/Getting Started.html">
-<div class="listing-date">
-Invalid Date
-</div>
-<div class="listing-author">
-[object Object]
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="NaN" data-listing-file-modified-sort="1662221157795" data-listing-reading-time-sort="3.475">
-<div class="thumbnail">
-<a href="../../../content/R/lvc_r/Getting Your Data Into R.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="../../../content/R/lvc_r/Getting Your Data Into R.html"></a></p>
-</div>
-<div class="body">
-<a href="../../../content/R/lvc_r/Getting Your Data Into R.html">
-<h3 class="no-anchor listing-title">
-Getting Your Data Into <em>R</em>
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-The best way to organize your tokens is in a spreadsheet in Microsoft <em>Excel</em>. There are a lot of useful tools in Microsoft <em>Excel</em> for automatically coding and re-coding your data. Some of those tools overlap with what I present here for <em>R</em>. If you want to explore <em>Excel</em>’s functionality, I recommend this website as a springboard: https://support.office.com/en-us/article/Excel-training-9bc05390-e94c-46af-a5b3-d7c22f6990bb. There are other programs for spreadsheet management: <em>Numbers</em> in OSX, or Google’s <em>Sheets</em>, for example. They generally function similarly to <em>Excel</em>. <em>R</em> does not easily read <em>Excel</em>’s default file type (<strong>.xls</strong> or <strong>.xlsx</strong>, though it can be done) therefore, you must save your token file as a tab-delimited-text file (<strong>.txt</strong>) or a comma-separated-values (<strong>.csv</strong>) file.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../../../content/R/lvc_r/Getting Your Data Into R.html">
-<div class="listing-date">
-Invalid Date
-</div>
-<div class="listing-author">
-[object Object]
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1662221157795" data-listing-reading-time-sort="1.345">
-<div class="thumbnail">
-<p><a href="../../../content/R/lvc_r/Part1.html"> <img src="../../../content/R/lvc_r/images/tweet.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="../../../content/R/lvc_r/Part1.html">
-<h3 class="no-anchor listing-title">
-Part 1
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-These instructions are not intended to be a comprehensive overview of <em>R</em>’s functionality, which is myriad. Instead it is a set of very specific instructions for doing the kinds of things in <em>R</em> that variationist sociolinguists familiar with <em>Goldvarb</em> often want to do. This includes extracting summary statistics from a standard token spreadsheet and formatting those statistics in such a way that they can be graphed using the package <strong>ggplot2</strong>, as well as testing the trends in those summary statistics using mixed-effects logistic regression analysis. These instructions assume you have installed the latest version of <em>R</em> (4.1.3 or later ). Even though this guide does not show everything that <em>R</em> can do, after reading and working your way through this guide, you should be familiar enough with how <em>R</em> generally works to figure out how do something not covered.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../../../content/R/lvc_r/Part1.html">
-<div class="listing-author">
-Matt Hunt Gardner, PhD
-</div>
-</a>
-</div>
-</div>
-</div>
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
-</div></main> <!-- /main -->
+</div>
+
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{huntgardner,
+  author = {Matt Hunt Gardner},
+  editor = {},
+  title = {Doing {LVC} with {R}},
+  date = {},
+  url = {https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-huntgardner" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Matt Hunt Gardner. n.d. <span>“Doing LVC with R.”</span> <a href="https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r">https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -542,12 +611,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../content/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tutorials</span>
+      <a href="../../../content/R/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">R</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../content/R/lvc_r/Getting Started.html" class="pagination-link">
+      <a href="../../../content/R/lvc_r/010_lvcr.html" class="pagination-link">
         <span class="nav-page-text">Getting Started</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

@@ -31,7 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../content/cli/keyboarding/index.html" rel="next">
-<link href="../../content/R/lvc_r/Modifying Data.html" rel="prev">
 <script src="../../site_libs/quarto-listing/list.min.js"></script>
 <script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
@@ -210,7 +209,7 @@ cookieconsent.run({
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">R</a>
+            <a href="../../content/R/index.html" class="sidebar-item-text sidebar-link">R</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -218,7 +217,7 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Doing LVC with R</a>
+            <a href="../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">Doing LVC with R</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -226,34 +225,58 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/R/lvc_r/Getting Started.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  <a href="../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">Getting Started</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/R/lvc_r/Getting Your Data Into R.html" class="sidebar-item-text sidebar-link">Getting Your Data Into <em>R</em></a>
+  <a href="../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">Getting Your Data Into <em>R</em></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/R/lvc_r/Getting to Know Your Data.html" class="sidebar-item-text sidebar-link">Getting to Know Your Data</a>
+  <a href="../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">Getting to Know Your Data</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/R/lvc_r/Modifying Data.html" class="sidebar-item-text sidebar-link">Modifying Data</a>
+  <a href="../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">Modifying Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">Doing it all again, but <code>tidy</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">Crosstabs: Counts, Proportions, and More</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">Proportions for <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
   </div>
 </li>
       </ul>
   </li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">Python</span>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">Praat</span>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../content/cli/index.html" class="sidebar-item-text sidebar-link active">Command Line Interfaces</a>
@@ -269,6 +292,7 @@ cookieconsent.run({
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../content/windows/index.html" class="sidebar-item-text sidebar-link">Windows</a>
@@ -292,8 +316,10 @@ cookieconsent.run({
 </li>
       </ul>
   </li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
     </div>
 </nav>
@@ -456,9 +482,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/R/lvc_r/Modifying Data.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Modifying Data</span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../content/cli/keyboarding/index.html" class="pagination-link">

@@ -2,118 +2,138 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/about.html</loc>
-    <lastmod>2022-09-22T14:21:42.094Z</lastmod>
+    <lastmod>2022-09-27T22:28:52.223Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/Getting Started.html</loc>
-    <lastmod>2022-09-22T14:21:42.913Z</lastmod>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/010_lvcr.html</loc>
+    <lastmod>2022-09-27T22:28:53.264Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/Getting Your Data Into R.html</loc>
-    <lastmod>2022-09-22T14:21:43.568Z</lastmod>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/020_lvcr.html</loc>
+    <lastmod>2022-09-27T22:28:54.020Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/Getting to Know Your Data.html</loc>
-    <lastmod>2022-09-22T14:21:46.722Z</lastmod>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/030_lvcr.html</loc>
+    <lastmod>2022-09-27T22:28:57.363Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/Modifying Data.html</loc>
-    <lastmod>2022-09-22T14:21:47.812Z</lastmod>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/040_lvcr.html</loc>
+    <lastmod>2022-09-27T22:28:58.634Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/050_lvcr.html</loc>
+    <lastmod>2022-09-27T22:28:59.703Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/060_lvcr.html</loc>
+    <lastmod>2022-09-27T22:29:05.742Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/070_lvcr.html</loc>
+    <lastmod>2022-09-27T22:29:11.978Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/080_lvcr.html</loc>
+    <lastmod>2022-09-27T22:29:16.714Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/lvc_r/index.html</loc>
+    <lastmod>2022-09-27T22:29:22.492Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/cli/keyboarding/index.html</loc>
-    <lastmod>2022-09-22T14:21:48.343Z</lastmod>
+    <lastmod>2022-09-27T22:29:22.971Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/00_requirements.html</loc>
-    <lastmod>2022-09-22T14:21:48.704Z</lastmod>
+    <lastmod>2022-09-27T22:29:23.450Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/01_recommendations.html</loc>
-    <lastmod>2022-09-22T14:21:49.362Z</lastmod>
+    <lastmod>2022-09-27T22:29:24.128Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/02_process.html</loc>
-    <lastmod>2022-09-22T14:21:49.693Z</lastmod>
+    <lastmod>2022-09-27T22:29:24.586Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/03_workflow.html</loc>
-    <lastmod>2022-09-22T14:21:50.053Z</lastmod>
+    <lastmod>2022-09-27T22:29:25.148Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/template/01_qmd_template.html</loc>
-    <lastmod>2022-09-22T14:21:50.487Z</lastmod>
+    <lastmod>2022-09-27T22:29:25.593Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/template/index.html</loc>
-    <lastmod>2022-09-22T14:21:54.892Z</lastmod>
+    <lastmod>2022-09-27T22:29:29.585Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/index.html</loc>
-    <lastmod>2022-09-22T14:21:58.804Z</lastmod>
+    <lastmod>2022-09-27T22:29:33.399Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/index.html</loc>
-    <lastmod>2022-09-22T14:21:59.215Z</lastmod>
+    <lastmod>2022-09-27T22:29:33.834Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/people/index.html</loc>
-    <lastmod>2022-09-22T14:21:59.677Z</lastmod>
+    <lastmod>2022-09-27T22:29:34.311Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/people/jofrhwld/index.html</loc>
-    <lastmod>2022-09-22T14:22:00.126Z</lastmod>
+    <lastmod>2022-09-27T22:29:34.681Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/people/matthuntgardner/index.html</loc>
-    <lastmod>2022-09-22T14:22:00.565Z</lastmod>
+    <lastmod>2022-09-27T22:29:34.985Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/R/index.html</loc>
-    <lastmod>2022-09-22T14:22:01.077Z</lastmod>
+    <lastmod>2022-09-27T22:29:35.795Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/cli/index.html</loc>
-    <lastmod>2022-09-22T14:22:01.543Z</lastmod>
+    <lastmod>2022-09-27T22:29:36.129Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/index.html</loc>
-    <lastmod>2022-09-22T14:22:01.876Z</lastmod>
+    <lastmod>2022-09-27T22:29:36.540Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/template/00_rmarkdown_template.html</loc>
-    <lastmod>2022-09-22T14:22:02.600Z</lastmod>
+    <lastmod>2022-09-27T22:29:37.118Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/praat/index.html</loc>
-    <lastmod>2022-09-22T14:22:06.846Z</lastmod>
+    <lastmod>2022-09-27T22:29:41.162Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/python/index.html</loc>
-    <lastmod>2022-09-22T14:22:07.288Z</lastmod>
+    <lastmod>2022-09-27T22:29:41.505Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/updates/index.html</loc>
-    <lastmod>2022-09-22T14:22:07.721Z</lastmod>
+    <lastmod>2022-09-27T22:29:41.904Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/windows/index.html</loc>
-    <lastmod>2022-09-22T14:22:08.248Z</lastmod>
+    <lastmod>2022-09-27T22:29:42.430Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/windows/wsl/00_installing_wsl.html</loc>
-    <lastmod>2022-09-22T14:22:08.649Z</lastmod>
+    <lastmod>2022-09-27T22:29:42.865Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/windows/wsl/01_vscode_wsl.html</loc>
-    <lastmod>2022-09-22T14:22:14.798Z</lastmod>
+    <lastmod>2022-09-27T22:29:48.834Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/windows/wsl/index.html</loc>
-    <lastmod>2022-09-22T14:22:15.297Z</lastmod>
+    <lastmod>2022-09-27T22:29:49.365Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/LingMethodsHub/LingMethodsHub.github.io/content/contributing/template/02_jupyter.html</loc>
-    <lastmod>2022-09-22T14:22:15.709Z</lastmod>
+    <lastmod>2022-09-27T22:29:53.524Z</lastmod>
   </url>
 </urlset>
