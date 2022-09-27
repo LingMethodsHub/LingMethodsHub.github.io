@@ -35,21 +35,31 @@ website:
       contents:
         - content/index.qmd
         - section: "R"
+          href: "content/R/index.md"
           contents:
-            #- content/R/index.md
             - section: "Doing LVC with R"
+              href: "content/R/lvc_r/index.qmd"
               contents:
-                - href: "content/R/lvc_r/Getting Started.qmd"
-                - href: "content/R/lvc_r/Getting Your Data Into R.qmd"
-                - href: "content/R/lvc_r/Getting to Know Your Data.qmd"
-                - href: "content/R/lvc_r/Modifying Data.qmd"
+                - href: "content/R/lvc_r/010_lvcr.qmd"
+                - href: "content/R/lvc_r/020_lvcr.qmd"
+                - href: "content/R/lvc_r/030_lvcr.qmd"
+                - href: "content/R/lvc_r/040_lvcr.qmd"                
+                - href: "content/R/lvc_r/050_lvcr.qmd"                
+                - href: "content/R/lvc_r/060_lvcr.qmd"                
+                - href: "content/R/lvc_r/070_lvcr.qmd"                
+                - href: "content/R/lvc_r/080_lvcr.qmd"
+            - text: "---"
+        - text: "---"
         - section: Python
+        - text: "---"
         - section: Praat
+        - text: "---"
         - section: Command Line Interfaces
           href: content/cli/index.md
           contents:
             - href: content/cli/keyboarding/index.qmd
               text: Keyboarding
+        - text: "---"
         - section: Windows
           href: content/windows/index.md
           contents:
@@ -58,6 +68,8 @@ website:
               contents: 
                 - href: content/windows/wsl/00_installing_wsl.md
                   text: Installation
+            - text: "---"
+        - text: "---"
     - title: "Contributing" 
       href: content/contributing/index.md
       logo: assets/logo.svg
@@ -72,6 +84,7 @@ website:
           text: "Process"
         - href: content/contributing/03_workflow.qmd
           text: "Workflow"
+        - text: "---"          
         - section: Template
           contents:
             - href: content/contributing/template/index.qmd
@@ -82,6 +95,7 @@ website:
               text: "template qmd"
             - href: content/contributing/template/02_jupyter.ipynb 
               text: "template jupyter"
+    - text: "---"              
     - title: "About" 
       href: about.qmd
       style: "floating"
