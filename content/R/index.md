@@ -2,6 +2,6 @@
 title: "*R* Tutorials"
 listing:
     contents:
-        - "**/!(README)*md"
+        - "*/!(index)*qmd"
     type: default
 ---
