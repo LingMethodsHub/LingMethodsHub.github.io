@@ -5,4 +5,6 @@ license: "CC-BY-SA 4.0"
 
 This is a project in development. Our goal is to provide a coherent and searchable source for linguistics methods, specifically computational and quantitative methods, to which people can contribute with appropriate credit. 
 
-For the time being, this is an active learning project for us.
+- [Browse Available Tutorials](content/index.qmd)
+- [Find out how to contribute!](content/contributing/index.md)
+- [Find us on Github](https://github.com/LingMethodsHub)
