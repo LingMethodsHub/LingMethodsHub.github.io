@@ -315,11 +315,18 @@
     "text": "Header information\n\nAuthor information\nThe author yaml information for this page is\nauthor: \n  - name: \"Robin Doe\"\n    url: \"http://www.example.com\"\n    affiliations:\n      - University of State\nThe full author schema, from the quarto docs, is\nauthor:\n  - id: string\n    number: number\n    name:\n      given: string\n      family: string\n      literal: string\n      dropping-particle: string\n      non-dropping-particle: string\n    url: string\n    email: string\n    fax: string\n    orcid: string\n    note: string\n    acknowledgements: string\n    attributes:\n      corresponding: boolean\n      equal-contributor: boolean\n      deceased: boolean\n    metadata: object\n    affiliations: \n\n\nFormat\nIf you include both information for both html and pdf output formats, they will both be generated, allowing a standalone pdf for printing etc: pdf output."
   },
   {
+    "objectID": "content/index.html",
+    "href": "content/index.html",
+    "title": "Tutorials",
+    "section": "",
+    "text": "R\nPython\nPraat\nCommand Line Interface\nWindows"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Linguistics Methods Hub",
     "section": "",
-    "text": "For the time being, this is an active learning project for us.\n\n\n\nReuseCC-BY-SA 4.0"
+    "text": "Browse Available Tutorials\nFind out how to contribute!\nFind us on Github\n\n\n\n\nReuseCC-BY-SA 4.0"
   },
   {
     "objectID": "people/index.html",
@@ -373,23 +380,16 @@
   {
     "objectID": "content/praat/index.html",
     "href": "content/praat/index.html",
-    "title": "LingMethodsHub",
+    "title": "Praat tutorials",
     "section": "",
-    "text": "Praat Tutorials\n{{% children depth=“4” %}}"
+    "text": "No matching items"
   },
   {
     "objectID": "content/python/index.html",
     "href": "content/python/index.html",
-    "title": "LingMethodsHub",
+    "title": "Python Tutorials",
     "section": "",
-    "text": "python Tutorials\n{{% children depth=“4” %}}"
-  },
-  {
-    "objectID": "content/updates/index.html",
-    "href": "content/updates/index.html",
-    "title": "LingMethodsHub",
-    "section": "",
-    "text": "Updates\n{{% children depth=“4” %}}"
+    "text": "No matching items"
   },
   {
     "objectID": "content/windows/index.html",

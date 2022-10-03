@@ -39,6 +39,14 @@
     ]
   },
   {
+    "listing": "/content/praat/index.html",
+    "items": []
+  },
+  {
+    "listing": "/content/python/index.html",
+    "items": []
+  },
+  {
     "listing": "/content/windows/index.html",
     "items": [
       "/content/windows/wsl/01_vscode_wsl.html",
