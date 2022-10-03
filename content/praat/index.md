@@ -1,10 +1,8 @@
-+++
-title = "Praat"
-weight = 20
-chapter = true
-+++
+---
+title: "Praat tutorials"
+listing:
+    contents:
+        - "*/!(index)*qmd"
+    type: default
+---
 
-
-# Praat Tutorials
-
-{{% children depth="4" %}}

@@ -51,8 +51,10 @@ website:
             - text: "---"
         - text: "---"
         - section: Python
+          href: "content/python/index.md"
         - text: "---"
         - section: Praat
+          href: "content/praat/index.md"        
         - text: "---"
         - section: Command Line Interfaces
           href: content/cli/index.md

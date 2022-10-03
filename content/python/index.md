@@ -1,10 +1,7 @@
-+++
-title = "Python"
-weight = 10
-chapter = true
-+++
-
-
-# python Tutorials
-
-{{% children depth="4" %}}
+---
+title: "*Python* Tutorials"
+listing:
+    contents:
+        - "*/!(index)*qmd"
+    type: default
+---
