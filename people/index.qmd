@@ -7,6 +7,11 @@ listing:
       - "**/index.qmd"
     type: grid
 citation: false
+knitr: 
+  opts_chunk: 
+    echo: false
+    message: false
+    warning: false
 ---
 
 ## Linguistics Methods Hub Maintainers
@@ -16,4 +21,69 @@ citation: false
 
 ## Linguistics Methods Hub Contributors
 
-{{< include _contributors.qmd >}}
+```{r}
+library(quarto)
+library(tidyverse)
+library(glue)
+```
+
+```{r}
+all_meta <- quarto_inspect()
+all_rendered <- all_meta$files$input %>% 
+                  str_subset("template", negate = T)
+```
+
+
+```{r}
+get_author_table <- function(rendered_file){
+  file_info <- quarto_inspect(rendered_file)
+  if("author" %in% names(file_info$formats$html$metadata)){
+    auth <- file_info$formats$html$metadata$author
+    if("name" %in% names(auth)){
+      if("given" %in% names(auth$name)){
+        name <- str_c(auth$name$given, auth$name$family, sep = " ")
+      }else{
+        name <- auth$name
+      }
+      if("url" %in% names(auth)){
+        aurl <- auth$url
+      }else{
+        aurl <- NULL
+      }
+    }else{
+      name <- auth
+      aurl <- NULL
+    }
+    if(!is.null(name)){
+      if(!is.null(aurl)){
+        out <- tibble(name = name, url = aurl)
+      }else{
+        out <- tibble(name = name)
+      }
+      return(out)
+    }
+  }
+}
+```
+
+```{r}
+author_list <- map (all_rendered, get_author_table)
+```
+
+```{r}
+#| results: asis
+bind_rows(author_list ) %>% 
+  arrange(url) %>% 
+  group_by(name)%>%
+  slice(1) %>%
+  mutate(markdown = case_when(!is.na(url) ~ glue("[{name}]({url})"),
+                              TRUE ~ name),
+         sorting = (name %>% str_split(" ", simplify = T) %>% rev)[1]) %>%
+  arrange(sorting)%>%
+  pull(markdown) -> to_list
+
+
+for(name in to_list){
+  print(glue("- {name}"))
+}
+```
