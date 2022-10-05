@@ -3,11 +3,11 @@ title: "Tutorials"
 editor: visual
 ---
 
-You can find tutorials either through searching (top menu bar), navigating the 
-site table of contents, or browsing the top-level pages here:
+You can find tutorials either through searching (top menu bar), navigating the site table of contents, or browsing the top-level pages here:
 
-- [R](R/index.md)
-- [Python](python/index.md)
-- [Praat](praat/index.md)
-- [Command Line Interface](cli/index.md)
-- [Windows](windows/index.md)
+-   [R](R/index.md)
+-   [Python](python/index.md)
+-   [Praat](praat/index.md)
+-   [Tools](tools/index.md)
+-   [Command Line Interface](cli/index.md)
+-   [Windows](windows/index.md)

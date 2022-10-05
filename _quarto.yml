@@ -56,6 +56,11 @@ website:
         - section: Praat
           href: "content/praat/index.md"        
         - text: "---"
+        - section: Tools
+          href: "content/tools/index.md"
+          contents:
+            - href: content/tools/mfa/mfa-tutorial/index.Rmd
+        - text: "---"
         - section: Command Line Interfaces
           href: content/cli/index.md
           contents:
@@ -128,6 +133,8 @@ format:
     mainfont: "'Atkinson Hyperlegible', sans-serif"
     css: styles.css
     toc: true
+    smooth-scroll: true
+    code-overflow: wrap
 
 output-format: all
 prefer-html: true

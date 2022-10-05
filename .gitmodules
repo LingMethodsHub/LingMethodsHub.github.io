@@ -10,3 +10,6 @@
 [submodule "content/R/lvc_r"]
 	path = content/R/lvc_r
 	url = https://github.com/LingMethodsHub/lvc_r.git
+[submodule "content/tools/mfa/mfa-tutorial"]
+	path = content/tools/mfa/mfa-tutorial
+	url = https://github.com/LingMethodsHub/mfa-tutorial.git
