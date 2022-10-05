@@ -1,6 +1,7 @@
 ---
 title: "Tutorials"
 editor: visual
+citation: false
 ---
 
 You can find tutorials either through searching (top menu bar), navigating the site table of contents, or browsing the top-level pages here:

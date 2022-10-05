@@ -7,6 +7,7 @@ project:
 
 website:
   title: "LingMethodsHub"
+  site-url: "https://lingmethodshub.github.io"
   navbar:
     background: primary
     left:
@@ -116,15 +117,12 @@ website:
   reader-mode: true      
   cookie-consent:
     type: express
-
   comments: 
     hypothesis:
       theme: clean
       openSidebar: false
       showHighlights: never
   google-analytics: G-ES98D09K0F
-
-
 
 format:
   html:
@@ -136,6 +134,8 @@ format:
     smooth-scroll: true
     code-overflow: wrap
 
+citation:
+  collection-title: "Linguistics Methods Hub"
 output-format: all
 prefer-html: true
 

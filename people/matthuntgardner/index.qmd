@@ -15,4 +15,5 @@ about:
       href: https://twitter.com/matthuntgardner
     - icon: linkedin
       href: https://www.linkedin.com/in/matthuntgardner
+citation: false      
 ---

@@ -16,4 +16,5 @@ about:
     - icon: envelope-fill
       text: "email"
       href: "mailto:josef.fruehwald@uky.edu"
+citation: false      
 ---

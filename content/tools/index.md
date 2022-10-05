@@ -4,4 +4,5 @@ listing:
     contents:
         - "*/*/*md"
     type: default
+citation: false    
 ---

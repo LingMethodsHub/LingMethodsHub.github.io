@@ -4,4 +4,5 @@ listing:
     contents:
         - "*/!(index)*qmd"
     type: default
+citation: false     
 ---
