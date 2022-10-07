@@ -33,7 +33,6 @@ all_rendered <- all_meta$files$input %>%
                   str_subset("template", negate = T)
 ```
 
-
 ```{r}
 get_author_table <- function(rendered_file){
   file_info <- quarto_inspect(rendered_file)
