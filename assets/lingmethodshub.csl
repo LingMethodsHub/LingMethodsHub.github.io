@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="never" default-locale="en-GB">
+  <!-- This style was edited with the Visual CSL Editor (https://editor.citationstyles.org/visualEditor/) -->
   <info>
-    <title>Glossa</title>
-    <id>http://www.zotero.org/styles/glossa</id>
-    <link href="http://www.zotero.org/styles/glossa" rel="self"/>
+    <title>LingMethodsHub</title>
+    <title-short>LMH</title-short>
+    <id>http://www.zotero.org/styles/lingmethodshub</id>
+    <link href="http://www.zotero.org/styles/lingmethodshub" rel="self"/>
+    <link href="http://www.zotero.org/styles/glossa" rel="template"/>
     <link href="http://www.zotero.org/styles/apa" rel="template"/>
-    <link href="http://www.glossa-journal.org/about/submissions/#Style%20sheet" rel="documentation"/>
     <author>
       <name>Patrick O'Brien, PhD</name>
       <email>obrienpat86@gmail.com</email>
@@ -18,11 +20,14 @@
       <name>Lisa Levinson</name>
       <email>lisa.levinson@gmail.com</email>
     </contributor>
+    <contributor>
+      <name>Josef Fruehwald</name>
+      <email>jofrhwld@gmail.com</email>
+    </contributor>
     <category citation-format="author-date"/>
     <category field="linguistics"/>
-    <eissn>2397-1835</eissn>
-    <summary>Citation style for Glossa based on APA 6th edition.</summary>
-    <updated>2022-05-24T20:26:54+00:00</updated>
+    <summary>Citation style for LMH, adapted from Glossa based on APA 6th edition.</summary>
+    <updated>2022-10-07T22:58:13+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="en">
@@ -148,14 +153,11 @@
       </if>
       <else>
         <choose>
-          <if variable="DOI">
-            <text variable="DOI" prefix="DOI: https://doi.org/"/>
-          </if>
-          <else>
+          <if type="webpage">
             <choose>
-              <if type="webpage">
+              <if match="any" variable="URL">
                 <group delimiter=" ">
-                  <text variable="URL" prefix="(" suffix=")"/>
+                  <text variable="URL" prefix="(" suffix="). "/>
                   <group suffix=")">
                     <text term="accessed" text-case="capitalize-first" prefix="(" suffix=" "/>
                     <date variable="accessed">
@@ -166,14 +168,24 @@
                   </group>
                 </group>
               </if>
-              <else>
-                <group>
-                  <text term="retrieved" text-case="capitalize-first" suffix=" "/>
-                  <text term="from" suffix=" "/>
-                  <text variable="URL"/>
-                </group>
-              </else>
             </choose>
+            <choose>
+              <if match="any" variable="DOI">
+                <group>
+                  <text variable="DOI" prefix="doi: "/>
+                </group>
+              </if>
+            </choose>
+          </if>
+          <else-if type="article" match="any">
+            <text variable="DOI" prefix="DOI: https://doi.org/"/>
+          </else-if>
+          <else>
+            <group>
+              <text term="retrieved" text-case="capitalize-first" suffix=" "/>
+              <text term="from" suffix=" "/>
+              <text variable="URL"/>
+            </group>
           </else>
         </choose>
       </else>
@@ -468,7 +480,7 @@
             <else>
               <group>
                 <text term="volume" form="short" plural="true" text-case="capitalize-first" suffix=" "/>
-                <number variable="number-of-volumes" form="numeric" prefix="1&#8211;"/>
+                <number variable="number-of-volumes" form="numeric" prefix="1–"/>
               </group>
             </else>
           </choose>
@@ -508,30 +520,34 @@
     </group>
   </macro>
   <macro name="container">
-    <choose>
-      <if type="post-weblog webpage" match="none">
-        <group>
-          <choose>
-            <if type="chapter paper-conference entry-encyclopedia" match="any">
-              <text term="in" text-case="capitalize-first" suffix=" "/>
-            </if>
-          </choose>
-          <group delimiter=", ">
-            <text macro="container-contributors"/>
-            <text macro="secondary-contributors"/>
-            <text macro="container-title"/>
-          </group>
-        </group>
-      </if>
-    </choose>
+    <group>
+      <choose>
+        <if type="chapter paper-conference entry-encyclopedia" match="any">
+          <text term="in" text-case="capitalize-first" suffix=" "/>
+        </if>
+      </choose>
+      <group delimiter=", ">
+        <text macro="container-contributors"/>
+        <text macro="secondary-contributors"/>
+        <text macro="container-title"/>
+      </group>
+    </group>
   </macro>
   <macro name="container-title">
     <choose>
-      <if type="article article-journal article-magazine article-newspaper" match="any">
+      <if type="article article-journal article-magazine article-newspaper webpage" match="any">
         <text variable="container-title" font-style="italic" text-case="title"/>
+        <choose>
+          <if match="any" variable="volume-title">
+            <text variable="volume-title" text-case="title" font-style="italic" prefix=": "/>
+          </if>
+          <else>
+            <text value="."/>
+          </else>
+        </choose>
       </if>
       <else-if type="bill legal_case legislation" match="none">
-        <text variable="container-title" font-style="italic" suffix=","/>
+        <text variable="container-title" font-style="italic"/>
       </else-if>
     </choose>
   </macro>

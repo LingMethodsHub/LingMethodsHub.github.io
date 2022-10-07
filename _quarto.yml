@@ -135,7 +135,9 @@ format:
     code-overflow: wrap
 
 citation:
+  container-title: "Linguistics Methods Hub"
   collection-title: "Linguistics Methods Hub"
+csl: "assets/lingmethodshub.csl"
 output-format: all
 prefer-html: true
 
