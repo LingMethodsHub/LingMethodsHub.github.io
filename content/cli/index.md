@@ -4,6 +4,7 @@ listing:
     contents:
         - "**/!(README)*md"
     type: default
+    sort: "modified"
 citation: false 
 ---
 
