@@ -30,7 +30,7 @@ website:
       contents:
         - index.qmd
     - title: "Tutorials"
-      collapse-level: 1
+      collapse-level: 2
       logo: assets/logo.svg
       href: content/index.qmd
       contents:
@@ -138,9 +138,10 @@ citation:
   container-title: "Linguistics Methods Hub"
   collection-title: "Linguistics Methods Hub"
 csl: "assets/lingmethodshub.csl"
+google-scholar: true
+
 output-format: all
 prefer-html: true
-
 execute:
   freeze: auto
 
