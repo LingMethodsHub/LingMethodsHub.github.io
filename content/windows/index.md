@@ -4,6 +4,9 @@ listing:
     contents:
         - "**/!(index)*md"
     type: default
+    sort: "modified"
+
+citation: false    
 ---
 
 # Using Windows

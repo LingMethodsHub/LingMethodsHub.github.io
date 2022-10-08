@@ -1,9 +1,9 @@
 ---
-title: "Praat tutorials"
+title: "Tools Tutorials"
 listing:
     contents:
-        - "*/!(index)*qmd"
+        - "*/*/*md"
+    type: default
     sort: "modified"
 citation: false    
 ---
-

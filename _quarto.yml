@@ -7,6 +7,7 @@ project:
 
 website:
   title: "LingMethodsHub"
+  site-url: "https://lingmethodshub.github.io"
   navbar:
     background: primary
     left:
@@ -55,6 +56,11 @@ website:
         - text: "---"
         - section: Praat
           href: "content/praat/index.md"        
+        - text: "---"
+        - section: Tools
+          href: "content/tools/index.md"
+          contents:
+            - href: content/tools/mfa/mfa-tutorial/index.Rmd
         - text: "---"
         - section: Command Line Interfaces
           href: content/cli/index.md
@@ -111,15 +117,12 @@ website:
   reader-mode: true      
   cookie-consent:
     type: express
-
   comments: 
     hypothesis:
       theme: clean
       openSidebar: false
       showHighlights: never
   google-analytics: G-ES98D09K0F
-
-
 
 format:
   html:
@@ -128,7 +131,13 @@ format:
     mainfont: "'Atkinson Hyperlegible', sans-serif"
     css: styles.css
     toc: true
+    smooth-scroll: true
+    code-overflow: wrap
 
+citation:
+  container-title: "Linguistics Methods Hub"
+  collection-title: "Linguistics Methods Hub"
+csl: "assets/lingmethodshub.csl"
 output-format: all
 prefer-html: true
 
