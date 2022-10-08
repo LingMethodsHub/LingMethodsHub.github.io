@@ -65,6 +65,7 @@ website:
         - section: Command Line Interfaces
           href: content/cli/index.md
           contents:
+            - href: content/cli/bash-shell-basics/index.Rmd
             - href: content/cli/keyboarding/index.qmd
               text: Keyboarding
         - text: "---"
