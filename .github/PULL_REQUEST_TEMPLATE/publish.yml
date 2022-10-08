@@ -1,0 +1,6 @@
+name: Publish
+description: Publish a new submodule
+title: "[publish]: "
+labels: ["publish"]
+body:
+  template: publish.md
