@@ -55,8 +55,7 @@
   {
     "listing": "/content/windows/index.html",
     "items": [
-      "/content/windows/wsl/00_installing_wsl.html",
-      "/content/windows/wsl/01_vscode_wsl.html"
+      "/content/windows/wsl/00_installing_wsl.html"
     ]
   },
   {
