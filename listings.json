@@ -35,6 +35,7 @@
   {
     "listing": "/content/cli/index.html",
     "items": [
+      "/content/cli/bash-shell-basics/index.html",
       "/content/cli/keyboarding/index.html"
     ]
   },
