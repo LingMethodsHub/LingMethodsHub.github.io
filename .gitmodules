@@ -13,3 +13,6 @@
 [submodule "content/tools/mfa/mfa-tutorial"]
 	path = content/tools/mfa/mfa-tutorial
 	url = https://github.com/LingMethodsHub/mfa-tutorial.git
+[submodule "content/tools/autovot/autovot-tutorial"]
+	path = content/tools/autovot/autovot-tutorial
+	url = https://github.com/LingMethodsHub/autovot-tutorial.git
