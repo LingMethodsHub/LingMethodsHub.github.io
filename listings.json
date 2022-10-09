@@ -50,6 +50,7 @@
   {
     "listing": "/content/tools/index.html",
     "items": [
+      "/content/tools/autovot/autovot-tutorial/index.html",
       "/content/tools/mfa/mfa-tutorial/index.html"
     ]
   },
