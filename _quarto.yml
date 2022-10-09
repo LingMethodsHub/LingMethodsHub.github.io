@@ -126,7 +126,7 @@ website:
   google-analytics: G-ES98D09K0F
   open-graph: true
   twitter-card: 
-    image: "assets/logo.svg"
+    image: "assets/logo.png"
 
 format:
   html:
