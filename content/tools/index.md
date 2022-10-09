@@ -2,7 +2,7 @@
 title: "Tools Tutorials"
 listing:
     contents:
-        - "*/*/*md"
+        - "*/*/!(README)*md"
     type: default
     sort: "modified"
 citation: false    

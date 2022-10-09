@@ -61,6 +61,7 @@ website:
           href: "content/tools/index.md"
           contents:
             - href: content/tools/mfa/mfa-tutorial/index.Rmd
+            - href: content/tools/autovot/autovot-tutorial/index.Rmd
         - text: "---"
         - section: Command Line Interfaces
           href: content/cli/index.md
