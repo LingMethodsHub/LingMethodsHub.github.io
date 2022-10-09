@@ -65,6 +65,7 @@ website:
         - section: Command Line Interfaces
           href: content/cli/index.md
           contents:
+            - href: content/cli/bash-shell-basics/index.Rmd
             - href: content/cli/keyboarding/index.qmd
               text: Keyboarding
         - text: "---"
@@ -123,6 +124,9 @@ website:
       openSidebar: false
       showHighlights: never
   google-analytics: G-ES98D09K0F
+  open-graph: true
+  twitter-card: 
+    image: "assets/logo.png"
 
 format:
   html:
