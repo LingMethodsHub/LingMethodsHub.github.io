@@ -13,6 +13,9 @@
 [submodule "content/tools/mfa/mfa-tutorial"]
 	path = content/tools/mfa/mfa-tutorial
 	url = https://github.com/LingMethodsHub/mfa-tutorial.git
+[submodule "content/tools/autovot/autovot-tutorial"]
+	path = content/tools/autovot/autovot-tutorial
+	url = https://github.com/LingMethodsHub/autovot-tutorial.git
 [submodule "content/cli/bash-shell-basics"]
 	path = content/cli/bash-shell-basics
 	url = https://github.com/LingMethodsHub/bash-shell-basics.git
