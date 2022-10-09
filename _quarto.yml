@@ -124,6 +124,9 @@ website:
       openSidebar: false
       showHighlights: never
   google-analytics: G-ES98D09K0F
+  open-graph: true
+  twitter-card: 
+    image: "assets/logo.svg"
 
 format:
   html:
