@@ -22,6 +22,7 @@
 - [ ] Nav bar in `_quarto.yml` links to new material
 - [ ] All links resolve
 - [ ] `people/` list generates correctly
+- [ ] `content/` sub-page is listing new content
 
 ## DOI Minting
 - [ ] Minting activated on Zenodo
@@ -31,3 +32,6 @@
 - [ ] Citation information updated on Zenodo
 - [ ] DOI added to submodule `_metadata.yml`
 - [ ] Citation format double checked.
+
+## Final Check
+- [ ] publication date is correct
