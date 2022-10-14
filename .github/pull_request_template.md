@@ -5,10 +5,19 @@
 - [ ] `_metadata.yml` has been added.
   - [ ] author metadata included
   - [ ] volume netadata included
+
+```
+citation:
+  collection-title: "Linguistics Methods Hub"
+  container-title: "Linguistics Methods Hub"
+```
+
 - [ ] `renv` when appropriate
   - [ ] `renv.lock` synced
   - [ ] `requirements.txt` synced
   - [ ] `renv/activate.R` added
+
+
   
 ### Formatting
 - [ ] Code blocks updated to quarto format
