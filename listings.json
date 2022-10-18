@@ -22,6 +22,7 @@
   {
     "listing": "/content/R/index.html",
     "items": [
+      "/content/R/vowel-plots-tutorial/index.html",
       "/content/R/lvc_r/010_lvcr.html",
       "/content/R/lvc_r/020_lvcr.html",
       "/content/R/lvc_r/030_lvcr.html",
@@ -29,7 +30,8 @@
       "/content/R/lvc_r/050_lvcr.html",
       "/content/R/lvc_r/060_lvcr.html",
       "/content/R/lvc_r/070_lvcr.html",
-      "/content/R/lvc_r/080_lvcr.html"
+      "/content/R/lvc_r/080_lvcr.html",
+      "/content/R/lvc_r/index.html"
     ]
   },
   {
