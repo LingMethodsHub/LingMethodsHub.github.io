@@ -2,8 +2,10 @@
 title: "*R* Tutorials"
 listing:
     contents:
-        - "*/!(index)*qmd"
+      - "**/*[qR]md"
     type: default
-    sort: "filename"
+    sort: 
+      - "date desc"
+      - "filename"
 citation: false    
 ---
