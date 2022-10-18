@@ -19,3 +19,6 @@
 [submodule "content/cli/bash-shell-basics"]
 	path = content/cli/bash-shell-basics
 	url = https://github.com/LingMethodsHub/bash-shell-basics.git
+[submodule "content/R/vowel-plots-tutorial"]
+	path = content/R/vowel-plots-tutorial
+	url = https://github.com/LingMethodsHub/vowel-plots-tutorial.git
