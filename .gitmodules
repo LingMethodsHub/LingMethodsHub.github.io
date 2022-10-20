@@ -22,3 +22,6 @@
 [submodule "content/R/vowel-plots-tutorial"]
 	path = content/R/vowel-plots-tutorial
 	url = https://github.com/LingMethodsHub/vowel-plots-tutorial.git
+[submodule "content/R/tidy-norm"]
+	path = content/R/tidy-norm
+	url = https://github.com/LingMethodsHub/tidy-norm.git
