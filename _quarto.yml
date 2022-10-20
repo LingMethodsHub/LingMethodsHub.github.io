@@ -49,6 +49,7 @@ website:
                 - href: "content/R/lvc_r/060_lvcr.qmd"                
                 - href: "content/R/lvc_r/070_lvcr.qmd"                
                 - href: "content/R/lvc_r/080_lvcr.qmd"
+            - href: "content/R/vowel-plots-tutorial/index.Rmd"
             - text: "---"
         - text: "---"
         - section: Python
