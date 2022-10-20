@@ -1,9 +1,9 @@
 project:
   type: website
-  render:
-    - "*qmd"
-    - "*md"
-    - "content/*"
+  # render:
+  #   - "*qmd"
+  #   - "*md"
+  #   - "content/*"
 
 website:
   title: "LingMethodsHub"
@@ -50,6 +50,7 @@ website:
                 - href: "content/R/lvc_r/070_lvcr.qmd"                
                 - href: "content/R/lvc_r/080_lvcr.qmd"
             - href: "content/R/vowel-plots-tutorial/index.Rmd"
+            - href: "content/R/tidy-norm/index.qmd"
             - text: "---"
         - text: "---"
         - section: Python
@@ -146,7 +147,7 @@ citation:
   container-title: "Linguistics Methods Hub"
   collection-title: "Linguistics Methods Hub"
 csl: "assets/lingmethodshub.csl"
-google-scholar: true
+#google-scholar: true
 
 output-format: all
 prefer-html: true
