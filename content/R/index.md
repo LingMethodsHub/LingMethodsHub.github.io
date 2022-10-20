@@ -6,6 +6,5 @@ listing:
     type: default
     sort: 
       - "date desc"
-      - "filename"
 citation: false    
 ---
