@@ -1,0 +1,2560 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.210">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Josef Fruehwald">
+<meta name="dcterms.date" content="2022-10-20">
+<meta name="description" content="A tutorial on how to normalize vowel formant measurments in R using the tidyverse">
+
+<title>LingMethodsHub - How to normalize your vowels using the tidyverse</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../content/R/vowel-plots-tutorial/index.html" rel="prev">
+<script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+<style>html{ scroll-behavior: smooth; }</style>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false,
+  "showHighlights": "never"
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="LingMethodsHub - How to normalize your vowels using the tidyverse">
+<meta property="og:description" content="A tutorial on how to normalize vowel formant measurments in R using the tidyverse">
+<meta property="og:image" content="https://lingmethodshub.github.io/content/R/tidy-norm/index_files/figure-html/fig-unnorm1-1.png">
+<meta property="og:site-name" content="LingMethodsHub">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1152">
+<meta name="twitter:title" content="LingMethodsHub - How to normalize your vowels using the tidyverse">
+<meta name="twitter:description" content="A tutorial on how to normalize vowel formant measurments in R using the tidyverse">
+<meta name="twitter:image" content="https://lingmethodshub.github.io/content/R/tidy-norm/index_files/figure-html/fig-unnorm1-1.png">
+<meta name="twitter:image-height" content="960">
+<meta name="twitter:image-width" content="1152">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">LingMethodsHub</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../content/index.html" aria-current="page">
+ <span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../content/contributing/index.html">
+ <span class="menu-text">Contributing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../people/index.html">
+ <span class="menu-text">People</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">How to normalize your vowels using the tidyverse</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../" class="sidebar-logo-link">
+      <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/R/index.html" class="sidebar-item-text sidebar-link">R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">Doing LVC with R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">Getting Your Data Into <em>R</em></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">Getting to Know Your Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">Modifying Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">Doing it all again, but <code>tidy</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">Crosstabs: Counts, Proportions, and More</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">Proportions for <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">Vowel Plots with <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/tidy-norm/index.html" class="sidebar-item-text sidebar-link active">How to normalize your vowels using the tidyverse</a>
+  </div>
+</li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/python/index.html" class="sidebar-item-text sidebar-link">Python</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">Vowel plotting in Python</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Praat</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/tools/index.html" class="sidebar-item-text sidebar-link">Tools</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">Montreal Forced Aligner</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/tools/autovot/autovot-tutorial/index.html" class="sidebar-item-text sidebar-link">AutoVOT</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/cli/index.html" class="sidebar-item-text sidebar-link">Command Line Interfaces</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">Bash Shell Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/cli/keyboarding/index.html" class="sidebar-item-text sidebar-link">Keyboarding</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/windows/index.html" class="sidebar-item-text sidebar-link">Windows</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">Windows Subsystem for Linux</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">Installation</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lobanov-a.k.a.-z-scoring" id="toc-lobanov-a.k.a.-z-scoring" class="nav-link active" data-scroll-target="#lobanov-a.k.a.-z-scoring">Lobanov (a.k.a. z-scoring)</a></li>
+  <li><a href="#nearey-2" id="toc-nearey-2" class="nav-link" data-scroll-target="#nearey-2">Nearey 2</a></li>
+  <li><a href="#watt-fabricius" id="toc-watt-fabricius" class="nav-link" data-scroll-target="#watt-fabricius">Watt &amp; Fabricius</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#unnormalized" id="toc-unnormalized" class="nav-link" data-scroll-target="#unnormalized">Unnormalized</a></li>
+  <li><a href="#prepping-for-normalization" id="toc-prepping-for-normalization" class="nav-link" data-scroll-target="#prepping-for-normalization">Prepping for normalization</a></li>
+  <li><a href="#normalizations" id="toc-normalizations" class="nav-link" data-scroll-target="#normalizations">Normalizations</a>
+  <ul class="collapse">
+  <li><a href="#lobanov-a.k.a.-z-score" id="toc-lobanov-a.k.a.-z-score" class="nav-link" data-scroll-target="#lobanov-a.k.a.-z-score">Lobanov a.k.a. z-score</a></li>
+  <li><a href="#nearey-a.k.a.-nearey-2" id="toc-nearey-a.k.a.-nearey-2" class="nav-link" data-scroll-target="#nearey-a.k.a.-nearey-2">Nearey (a.k.a. Nearey 2)</a></li>
+  <li><a href="#watt-fabricius-1" id="toc-watt-fabricius-1" class="nav-link" data-scroll-target="#watt-fabricius-1">Watt &amp; Fabricius</a></li>
+  </ul></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final thoughts</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">How to normalize your vowels using the tidyverse</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">vowels</div>
+    <div class="quarto-category">normalization</div>
+    <div class="quarto-category">R</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A tutorial on how to normalize vowel formant measurments in R using the tidyverse
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Josef Fruehwald </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 20, 2022</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.7232341">10.5281/zenodo.7232341</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<p>This is a tutorial about how to “normalize” vowel formant data using data tools from the <a href="https://www.tidyverse.org/">tidyverse</a>. A <em>lot</em> has been written about vowel normalization (why we do it, how it should work, what methods are best) that I can’t really cover here, although <span class="citation" data-cites="Adank2004">Adank &amp; Smits &amp; Hout (<a href="#ref-Adank2004" role="doc-biblioref">2004</a>)</span> is often taken as the canonical citation, and I’ll be taking into account the recent “order of operations” from <span class="citation" data-cites="stanley2022">Stanley (<a href="#ref-stanley2022" role="doc-biblioref">2022</a>)</span>.</p>
+<p>There’s also a <code>vowels</code> R package <span class="citation" data-cites="vowels">(<a href="#ref-vowels" role="doc-biblioref">Kendall &amp; Thomas 2018</a>)</span> that basically lets you run <a href="http://lingtools.uoregon.edu/norm/norm1_methods.php">the NORM suite locally</a>.</p>
+<p>There are still many occasions when you might want or need to normalize your vowel data yourself, though, and learning how to do it is actually a great introduction to a number of tidyverse “verbs”, especially:</p>
+<ul>
+<li><p><a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>dplyr::group_by()</code></a></p></li>
+<li><p><a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>dplyr::summarise()</code></a></p></li>
+<li><p><a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>dplyr::mutate()</code></a></p></li>
+<li><p><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html"><code>tidyr::pivot_longer()</code></a></p></li>
+<li><p><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html"><code>tidyr::pivot_wider()</code></a></p></li>
+</ul>
+<p>Since I’m focusing on how data structures relate to vowel normalization, I’ll cover 3 specific normalization procedures:</p>
+<section id="lobanov-a.k.a.-z-scoring" class="level3">
+<h3 class="anchored" data-anchor-id="lobanov-a.k.a.-z-scoring">Lobanov (a.k.a. z-scoring)</h3>
+<p>In terms of tidy data procedures, this is the simplest. All it requires is a <code>group_by()</code> and a <code>mutate()</code></p>
+</section>
+<section id="nearey-2" class="level3">
+<h3 class="anchored" data-anchor-id="nearey-2">Nearey 2</h3>
+<p>This procedure is a little more complicated, involving “pivoting” our data from wide to long, then long to wide again, using <code>pivot_longer()</code> and <code>pivot_wider()</code>.</p>
+</section>
+<section id="watt-fabricius" class="level3">
+<h3 class="anchored" data-anchor-id="watt-fabricius">Watt &amp; Fabricius</h3>
+<p>This method requires estimating by-speaker scaling factors (using <code>group_by()</code> and <code>summarise()</code>) then merging them back onto the original data (with <code>left_join()</code>).</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>To begin with, I’m going to import a few packages:</p>
+<ul>
+<li><p><code>tidyverse</code>: This is a “metapackage” that imports many different packages that contain functions we’ll need, including <code>ggplot2</code></p></li>
+<li><p><code>ggforce</code>: This is a package that extends some of <code>ggplot2</code>’s functionality</p></li>
+<li><p><code>khroma</code>: This is another packages that has many different color palates for <code>ggplot2</code>.</p></li>
+<li><p><code>joeyr</code>: This is a package with functions written by Joey Stanley for vowel analysis.</p></li>
+</ul>
+<p>Any time I use a function that’s not loaded by the tidyverse, I’ll indicate it with the <code>package::function()</code> convention.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(khroma)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("JoeyStanley/joeyr")</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(joeyr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># set the ggplot2 theme</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We also need to load in some data. Here are two tab-delimited files of <a href="https://buckeyecorpus.osu.edu/">Buckeye Corpus</a> speakers whose interviews were run through <a href="https://github.com/JoFrhwld/FAVE">FAVE</a>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>s01_url <span class="ot">&lt;-</span> <span class="st">"https://lingmethodshub.github.io/content/R/norm-tidy/data/s01.txt"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>s03_url <span class="ot">&lt;-</span> <span class="st">"https://lingmethodshub.github.io/content/R/norm-tidy/data/s03.txt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+
+</div>
+<p>This code should load these files.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>vowels_orig <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="fu">c</span>(s01_url, s03_url), </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                       <span class="sc">~</span><span class="fu">read_tsv</span>(.x, <span class="at">col_types=</span><span class="fu">cols</span>(<span class="at">sex =</span> <span class="st">'c'</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+What that <code>map_dfr</code> thing did:
+</summary>
+<p>The <code>map_dfr</code> function iterated over each url, and applied the function <code>read_tsv()</code> to them. I had to tell <code>read_tsv()</code> that the column <code>sex</code> should be treated as a character data type, since the value <code>f</code> gets reinterpreted as <code>FALSE</code> otherwise. After reading in each tab-delimited file, <code>map_dfr()</code> then combines the results together row-wise, to produce one large data frame.</p>
+</details>
+<p>The variable <code>vowels_orig</code> is now one large data frame with both speakers’ FAVE output in it. Here’s three randomly sampled rows from each speakers’ data.</p>
+<div class="cell tbl-cap-location-bottom">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">50</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>vowels_orig <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-vowel-orig" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;1: Three randomly sampled rows from each speaker’s data</caption>
+<colgroup>
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 3%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 3%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">age</th>
+<th style="text-align: left;">city</th>
+<th style="text-align: left;">ethnicity</th>
+<th style="text-align: left;">first_name</th>
+<th style="text-align: left;">last_name</th>
+<th style="text-align: left;">location</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: left;">state</th>
+<th style="text-align: right;">tiernum</th>
+<th style="text-align: left;">year</th>
+<th style="text-align: left;">years_of_schooling</th>
+<th style="text-align: left;">vowel</th>
+<th style="text-align: right;">stress</th>
+<th style="text-align: left;">pre_word</th>
+<th style="text-align: left;">word</th>
+<th style="text-align: left;">fol_word</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">F2</th>
+<th style="text-align: right;">F3</th>
+<th style="text-align: right;">B1</th>
+<th style="text-align: right;">B2</th>
+<th style="text-align: right;">B3</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">beg</th>
+<th style="text-align: right;">end</th>
+<th style="text-align: right;">dur</th>
+<th style="text-align: left;">plt_vclass</th>
+<th style="text-align: left;">ipa_vclass</th>
+<th style="text-align: left;">plt_manner</th>
+<th style="text-align: left;">plt_place</th>
+<th style="text-align: left;">plt_voice</th>
+<th style="text-align: left;">plt_preseg</th>
+<th style="text-align: left;">plt_folseq</th>
+<th style="text-align: left;">style</th>
+<th style="text-align: left;">glide</th>
+<th style="text-align: left;">pre_seg</th>
+<th style="text-align: left;">fol_seg</th>
+<th style="text-align: left;">context</th>
+<th style="text-align: right;">vowel_index</th>
+<th style="text-align: left;">pre_word_trans</th>
+<th style="text-align: left;">word_trans</th>
+<th style="text-align: left;">fol_word_trans</th>
+<th style="text-align: right;">F1@20%</th>
+<th style="text-align: right;">F2@20%</th>
+<th style="text-align: right;">F1@35%</th>
+<th style="text-align: right;">F2@35%</th>
+<th style="text-align: right;">F1@50%</th>
+<th style="text-align: right;">F2@50%</th>
+<th style="text-align: right;">F1@65%</th>
+<th style="text-align: right;">F2@65%</th>
+<th style="text-align: right;">F1@80%</th>
+<th style="text-align: right;">F2@80%</th>
+<th style="text-align: right;">nFormants</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">y</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">f</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">IY</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">THESE</td>
+<td style="text-align: left;">REALLY</td>
+<td style="text-align: left;">ARE</td>
+<td style="text-align: right;">555.3</td>
+<td style="text-align: right;">2140.4</td>
+<td style="text-align: right;">3260.0</td>
+<td style="text-align: right;">237.0</td>
+<td style="text-align: right;">149.0</td>
+<td style="text-align: right;">310.5</td>
+<td style="text-align: right;">2677.844</td>
+<td style="text-align: right;">2677.811</td>
+<td style="text-align: right;">2677.911</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: left;">iyF</td>
+<td style="text-align: left;">iF</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">liquid</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">L</td>
+<td style="text-align: left;">AA1</td>
+<td style="text-align: left;">final</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">DH IY1 Z</td>
+<td style="text-align: left;">R IH1 L IY0</td>
+<td style="text-align: left;">AA1 R</td>
+<td style="text-align: right;">605.8</td>
+<td style="text-align: right;">1935.0</td>
+<td style="text-align: right;">568.2</td>
+<td style="text-align: right;">2100.6</td>
+<td style="text-align: right;">528.1</td>
+<td style="text-align: right;">2216.9</td>
+<td style="text-align: right;">591.2</td>
+<td style="text-align: right;">2161.8</td>
+<td style="text-align: right;">645.2</td>
+<td style="text-align: right;">2073.1</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">y</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">f</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">AH</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">WONDERFUL</td>
+<td style="text-align: left;">REPUTATION</td>
+<td style="text-align: left;">AN</td>
+<td style="text-align: right;">602.3</td>
+<td style="text-align: right;">2017.2</td>
+<td style="text-align: right;">3149.3</td>
+<td style="text-align: right;">145.5</td>
+<td style="text-align: right;">308.1</td>
+<td style="text-align: right;">126.9</td>
+<td style="text-align: right;">735.287</td>
+<td style="text-align: right;">735.264</td>
+<td style="text-align: right;">735.334</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: left;">@</td>
+<td style="text-align: left;">ə</td>
+<td style="text-align: left;">nasal</td>
+<td style="text-align: left;">apical</td>
+<td style="text-align: left;">voiced</td>
+<td style="text-align: left;">palatal</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">SH</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">internal</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">W AH1 N D ER0 F AH0 L</td>
+<td style="text-align: left;">R EH2 P Y AH0 T EY1 SH AH0 N</td>
+<td style="text-align: left;">AH0 N</td>
+<td style="text-align: right;">962.4</td>
+<td style="text-align: right;">2333.7</td>
+<td style="text-align: right;">661.2</td>
+<td style="text-align: right;">2092.4</td>
+<td style="text-align: right;">585.0</td>
+<td style="text-align: right;">1872.9</td>
+<td style="text-align: right;">573.0</td>
+<td style="text-align: right;">1934.5</td>
+<td style="text-align: right;">563.2</td>
+<td style="text-align: right;">1923.1</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">y</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">f</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">EH</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">QUITE</td>
+<td style="text-align: left;">WELL</td>
+<td style="text-align: left;">NOW</td>
+<td style="text-align: right;">709.6</td>
+<td style="text-align: right;">1388.0</td>
+<td style="text-align: right;">2788.7</td>
+<td style="text-align: right;">171.5</td>
+<td style="text-align: right;">194.6</td>
+<td style="text-align: right;">183.9</td>
+<td style="text-align: right;">584.777</td>
+<td style="text-align: right;">584.757</td>
+<td style="text-align: right;">584.817</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: left;">e</td>
+<td style="text-align: left;">ɛ</td>
+<td style="text-align: left;">lateral</td>
+<td style="text-align: left;">apical</td>
+<td style="text-align: left;">voiced</td>
+<td style="text-align: left;">w/y</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">W</td>
+<td style="text-align: left;">L</td>
+<td style="text-align: left;">internal</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">K W AY1 T</td>
+<td style="text-align: left;">W EH1 L</td>
+<td style="text-align: left;">N AW1</td>
+<td style="text-align: right;">635.1</td>
+<td style="text-align: right;">1314.8</td>
+<td style="text-align: right;">635.1</td>
+<td style="text-align: right;">1314.8</td>
+<td style="text-align: right;">777.8</td>
+<td style="text-align: right;">1445.7</td>
+<td style="text-align: right;">803.7</td>
+<td style="text-align: right;">1455.2</td>
+<td style="text-align: right;">804.4</td>
+<td style="text-align: right;">1451.3</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">o</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">m</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">ER</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">TODAY</td>
+<td style="text-align: left;">VERSUS</td>
+<td style="text-align: left;">WHAT</td>
+<td style="text-align: right;">409.7</td>
+<td style="text-align: right;">1251.9</td>
+<td style="text-align: right;">3475.6</td>
+<td style="text-align: right;">106.6</td>
+<td style="text-align: right;">119.1</td>
+<td style="text-align: right;">326.0</td>
+<td style="text-align: right;">1993.785</td>
+<td style="text-align: right;">1993.742</td>
+<td style="text-align: right;">1993.872</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: left;">*hr</td>
+<td style="text-align: left;">ə˞</td>
+<td style="text-align: left;">fricative</td>
+<td style="text-align: left;">apical</td>
+<td style="text-align: left;">voiceless</td>
+<td style="text-align: left;">oral_labial</td>
+<td style="text-align: left;">one_fol_syll</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">V</td>
+<td style="text-align: left;">S</td>
+<td style="text-align: left;">internal</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">T AH0 D EY1</td>
+<td style="text-align: left;">V ER1 S AH0 S</td>
+<td style="text-align: left;">W AH1 T</td>
+<td style="text-align: right;">607.3</td>
+<td style="text-align: right;">2460.1</td>
+<td style="text-align: right;">411.1</td>
+<td style="text-align: right;">1261.4</td>
+<td style="text-align: right;">408.2</td>
+<td style="text-align: right;">1225.1</td>
+<td style="text-align: right;">351.9</td>
+<td style="text-align: right;">1299.7</td>
+<td style="text-align: right;">1327.9</td>
+<td style="text-align: right;">3962.3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">o</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">m</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">AA</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">WELL</td>
+<td style="text-align: left;">GRANDPA</td>
+<td style="text-align: left;">HOW</td>
+<td style="text-align: right;">536.1</td>
+<td style="text-align: right;">857.6</td>
+<td style="text-align: right;">2272.3</td>
+<td style="text-align: right;">134.7</td>
+<td style="text-align: right;">111.2</td>
+<td style="text-align: right;">335.8</td>
+<td style="text-align: right;">3291.208</td>
+<td style="text-align: right;">3291.151</td>
+<td style="text-align: right;">3291.321</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: left;">o</td>
+<td style="text-align: left;">ɑ</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">oral_labial</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">P</td>
+<td style="text-align: left;">HH</td>
+<td style="text-align: left;">final</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">W EH1 L</td>
+<td style="text-align: left;">G R AE1 M P AA2</td>
+<td style="text-align: left;">HH AW1</td>
+<td style="text-align: right;">444.9</td>
+<td style="text-align: right;">893.9</td>
+<td style="text-align: right;">533.6</td>
+<td style="text-align: right;">861.6</td>
+<td style="text-align: right;">554.7</td>
+<td style="text-align: right;">829.6</td>
+<td style="text-align: right;">508.0</td>
+<td style="text-align: right;">853.2</td>
+<td style="text-align: right;">620.7</td>
+<td style="text-align: right;">1022.6</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">o</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">m</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">IH</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">OF</td>
+<td style="text-align: left;">THIS</td>
+<td style="text-align: left;">MASS</td>
+<td style="text-align: right;">429.4</td>
+<td style="text-align: right;">1460.3</td>
+<td style="text-align: right;">2851.0</td>
+<td style="text-align: right;">61.9</td>
+<td style="text-align: right;">244.1</td>
+<td style="text-align: right;">635.2</td>
+<td style="text-align: right;">936.169</td>
+<td style="text-align: right;">936.136</td>
+<td style="text-align: right;">936.236</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: left;">i</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: left;">fricative</td>
+<td style="text-align: left;">apical</td>
+<td style="text-align: left;">voiceless</td>
+<td style="text-align: left;">oral_apical</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">DH</td>
+<td style="text-align: left;">S</td>
+<td style="text-align: left;">internal</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">AH0 V</td>
+<td style="text-align: left;">DH IH0 S</td>
+<td style="text-align: left;">M AE1 S</td>
+<td style="text-align: right;">420.9</td>
+<td style="text-align: right;">1372.7</td>
+<td style="text-align: right;">428.0</td>
+<td style="text-align: right;">1441.2</td>
+<td style="text-align: right;">427.1</td>
+<td style="text-align: right;">1487.8</td>
+<td style="text-align: right;">415.2</td>
+<td style="text-align: right;">1517.5</td>
+<td style="text-align: right;">385.8</td>
+<td style="text-align: right;">1482.9</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>FAVE outputs a lot of useful information, but for this tutorial, I want to narrow down our focus to just a few columns</p>
+<ul>
+<li><p><code>name</code>: We’ll use this as a unique ID for each speaker</p></li>
+<li><p><code>word</code>: It’s just good to keep this info around</p></li>
+<li><p><code>ipa_vclass</code>: A column indicating each token’s vowel class in an IPA-like format</p></li>
+<li><p><code>F1</code>, <code>F2</code>: What we’re all here for. The first and second formants.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>vowels_orig <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="ot">-&gt;</span> vowels_focus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>vowels_focus <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-vowel-focus" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;2: The first few rows of the data we’re going to work with</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">word</th>
+<th style="text-align: left;">ipa_vclass</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">F2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">OKAY</td>
+<td style="text-align: left;">ejF</td>
+<td style="text-align: right;">763.5</td>
+<td style="text-align: right;">2088.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">UM</td>
+<td style="text-align: left;">ʌ</td>
+<td style="text-align: right;">699.5</td>
+<td style="text-align: right;">1881.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">I’M</td>
+<td style="text-align: left;">aj</td>
+<td style="text-align: right;">888.8</td>
+<td style="text-align: right;">1934.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">LIVED</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">555.5</td>
+<td style="text-align: right;">1530.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">IN</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">612.2</td>
+<td style="text-align: right;">2323.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">COLUMBUS</td>
+<td style="text-align: left;">ə</td>
+<td style="text-align: right;">612.4</td>
+<td style="text-align: right;">1903.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="unnormalized" class="level2">
+<h2 class="anchored" data-anchor-id="unnormalized">Unnormalized</h2>
+<p>First, let’s see how things look when we get our vowel means and plot them unnormalized. I won’t go into detail about how the plotting code works (see the LingMethodsHub tutorial on <a href="https://lingmethodshub.github.io/content/R/vowel-plots-tutorial/">ggplot2 vowel plots</a>).</p>
+<div class="cell">
+<details>
+<summary>Plot code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>vowels_focus <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-unnorm1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-unnorm1-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' unnormalized vowel means." width="576"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Speakers’ vowel means in unnormalized F1,F2 space.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here, we see reason number 1 why we’ll want to normalize vowels. These two speakers vowel spaced hardly overlap, but the <em>relative</em> position of vowel categories inside their spaces are fairly similar. All normalization methods try to do is pinch and scale <em>appropriately</em> to get the relative positions of these vowel spaces to overlap.</p>
+<p><em>Another</em> reason we might be motivated to normalize our data is because F2 has a much larger range of data than F1. We can more easily see that if we add <code>coord_fixed()</code> to the plot.</p>
+<div class="cell">
+<details>
+<summary>Plot code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>vowels_focus <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-unnorm2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-unnorm2-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' unnormalized vowel means." width="576"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Speakers’ vowel means in unnormalized F1,F2 space. (fixed coords)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The plot is squished because F2 just has that much larger a range of values than F1. Any stats or calculations we do on vowels in the F1<span class="math inline">\(\times\)</span>F2 space is going to be dominated by things that happen across F2 vs F1.</p>
+</section>
+<section id="prepping-for-normalization" class="level2">
+<h2 class="anchored" data-anchor-id="prepping-for-normalization">Prepping for normalization</h2>
+<p>In order to get ready for normalization, I’m going to first filter out any vowel tokens that have a <span class="math inline">\(\sqrt{\text{mahalanobis}}\)</span> distance from its vowel class greater than 2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>vowels_focus <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mahal =</span> joeyr<span class="sc">::</span><span class="fu">tidy_mahalanobis</span>(F1, F2),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">mahal_sq =</span> <span class="fu">sqrt</span>(mahal)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mahal_sq <span class="sc">&lt;=</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="ot">-&gt;</span> vowels_inlie</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="normalizations" class="level2">
+<h2 class="anchored" data-anchor-id="normalizations">Normalizations</h2>
+<section id="lobanov-a.k.a.-z-score" class="level3">
+<h3 class="anchored" data-anchor-id="lobanov-a.k.a.-z-score">Lobanov a.k.a. z-score</h3>
+<p>The first normalization procedure we’ll look at is “Lobanov” normalization <span class="citation" data-cites="lobanov">(<a href="#ref-lobanov" role="doc-biblioref">Lobanov 1971</a>)</span>. An important thing to know here is that while phoneticians may call this procedure “Lobanov” normalization, the rest of the data analysis world calls it “z-score” or even just “standard score.”</p>
+<p>The process works like this:</p>
+<ul>
+<li><p>Within each speaker’s data ⤵️</p>
+<ul>
+<li><p>Within each formant ⤵️</p>
+<ul>
+<li>subtract the mean of the formant, and divide by the standard deviation of the formant</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Since we already a have F1 and F2 separated out into separate columns, this means all we have to do us <code>group_by()</code> our vowels data by speaker ID (in <code>name</code>), then create our new normalized columns by subtracting the mean and dividing by the standard deviation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_z =</span> (F1 <span class="sc">-</span> <span class="fu">mean</span>(F1))<span class="sc">/</span><span class="fu">sd</span>(F1),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_z =</span> (F2 <span class="sc">-</span> <span class="fu">mean</span>(F2))<span class="sc">/</span><span class="fu">sd</span>(F2)) <span class="ot">-&gt;</span> vowels_score1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>group_by(name)</code> process in this pipeline means that when we calculate <code>mean(F1)</code> and <code>std(F1)</code> in the next part, those mean and standard deviation values are for each speaker’s subset of <code>vowels_inlie</code>.</p>
+<p>Since z-scoring is so common a thing to do in quantitative analysis, R actually has a built in function, <code>scale()</code> that we could use instead of writing the math out ourselves.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_z =</span> <span class="fu">scale</span>(F1),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_z =</span> <span class="fu">scale</span>(F2)) <span class="ot">-&gt;</span> vowels_zscore2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="results" class="level4">
+<h4 class="anchored" data-anchor-id="results">Results</h4>
+<p>Here’s the results of z-scoring! We’ve got largely overlapping vowel spaces now. The numeric values of these z-scores tend to run somewhere between -3 and 3 (less extreme for means). Both formants are also on the same scale, which you can see with the plot being roughly square shaped even with <code>coord_fixed()</code> being added.</p>
+<div class="cell">
+<details>
+<summary>Plot code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>vowels_zscore2 <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1_z, F2_z), <span class="at">.fns =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2_z, F1_z, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-zscore" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-zscore-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' Lobanov normalized vowel means." width="576"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Speakers’ vowel means in z-scored F1,F2 space. (fixed coords)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="nearey-a.k.a.-nearey-2" class="level3">
+<h3 class="anchored" data-anchor-id="nearey-a.k.a.-nearey-2">Nearey (a.k.a. Nearey 2)</h3>
+<p>Next, we’ll look at what the vowels package calls “Nearey 2” normalization <span class="citation" data-cites="nearey1978">(<a href="#ref-nearey1978" role="doc-biblioref">Nearey 1978</a>)</span>. The Nearey 1 procedure is more similar in terms of data code as z-scoring.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The Nearey 2 procedure works like this:</p>
+<ul>
+<li><p>Within each speaker ⤵️</p>
+<ul>
+<li><p>Convert <em>all</em> formant measurements to log-Hz</p></li>
+<li><p>Get the mean log-Hz across all measurements (F1 and F2 <em>together</em>)</p></li>
+<li><p>Subtract the mean log-Hz from the log-Hz</p></li>
+<li><p>“Anti-log” or exponentiate the result</p></li>
+</ul></li>
+</ul>
+<p>We need to combine F1 and F2 measurements together to get their mean, and this is best achieved in the tidyverse by “pivoting” the data frame from wide to long. We’ll take it in steps. In each next step, I’m going to be putting additional tidyverse verbs between the data frame and the line that has <code>head() %&gt;% knitr::kable()</code>, which is just there to provide nice looking output.</p>
+<section id="step-1-focus-in-on-the-columns-of-interest" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-focus-in-on-the-columns-of-interest">Step 1: Focus in on the columns of interest</h4>
+<p>The <code>vowels_inlie</code> has data columns for the mahalanobis distance, which I want to drop off for now.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-nearey-focus" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;3: The columns of importance for Neary 2</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">word</th>
+<th style="text-align: left;">ipa_vclass</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">F2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">UM</td>
+<td style="text-align: left;">ʌ</td>
+<td style="text-align: right;">699.5</td>
+<td style="text-align: right;">1881.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">I’M</td>
+<td style="text-align: left;">aj</td>
+<td style="text-align: right;">888.8</td>
+<td style="text-align: right;">1934.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">IN</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">612.2</td>
+<td style="text-align: right;">2323.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">COLUMBUS</td>
+<td style="text-align: left;">ə</td>
+<td style="text-align: right;">612.4</td>
+<td style="text-align: right;">1903.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">529.9</td>
+<td style="text-align: right;">2332.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ə˞</td>
+<td style="text-align: right;">538.4</td>
+<td style="text-align: right;">1682.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-add-an-id-column" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-add-an-id-column">Step 2: Add an ID column</h4>
+<p>When we’re pivoting our data long and then wide again, we need to have a column that is a unique id for each vowel observation. I’ll create that with <code>mutate(id = 1:n())</code> . The <code>n()</code> function there is a convenience function that returns the number of rows in each (group) of the data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-nearey-id" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;4: The formant data with a token ID for each observation</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">word</th>
+<th style="text-align: left;">ipa_vclass</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">F2</th>
+<th style="text-align: right;">id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">UM</td>
+<td style="text-align: left;">ʌ</td>
+<td style="text-align: right;">699.5</td>
+<td style="text-align: right;">1881.3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">I’M</td>
+<td style="text-align: left;">aj</td>
+<td style="text-align: right;">888.8</td>
+<td style="text-align: right;">1934.1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">IN</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">612.2</td>
+<td style="text-align: right;">2323.4</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">COLUMBUS</td>
+<td style="text-align: left;">ə</td>
+<td style="text-align: right;">612.4</td>
+<td style="text-align: right;">1903.7</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">529.9</td>
+<td style="text-align: right;">2332.1</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ə˞</td>
+<td style="text-align: right;">538.4</td>
+<td style="text-align: right;">1682.8</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-pivot-longer" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-pivot-longer">Step 3: Pivot Longer</h4>
+<p>Now, we want to take the F1 and F2 columns, and stack them one on top of each other, which we can do with <code>pivot_longer()</code>. This function needs to know at least three things:</p>
+<ul>
+<li><p>Which columns are we going to be stacking on top of each other?</p>
+<ul>
+<li>We pass this information to the <code>cols=</code> argument.</li>
+</ul></li>
+<li><p>How should we keep track of the original column names?</p>
+<ul>
+<li>We pass this information to <code>names_to=</code>.</li>
+</ul></li>
+<li><p>How should we keep track of the original values from these columns?</p>
+<ul>
+<li>We pass this information to <code>values_to=</code></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> F1<span class="sc">:</span>F2, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"formant"</span>, </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">12</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-nearey-long" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;5: The formant data, pivoted long</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">word</th>
+<th style="text-align: left;">ipa_vclass</th>
+<th style="text-align: right;">id</th>
+<th style="text-align: left;">formant</th>
+<th style="text-align: right;">hz</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">UM</td>
+<td style="text-align: left;">ʌ</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">F1</td>
+<td style="text-align: right;">699.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">UM</td>
+<td style="text-align: left;">ʌ</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">F2</td>
+<td style="text-align: right;">1881.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">I’M</td>
+<td style="text-align: left;">aj</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">F1</td>
+<td style="text-align: right;">888.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">I’M</td>
+<td style="text-align: left;">aj</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">F2</td>
+<td style="text-align: right;">1934.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">IN</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">F1</td>
+<td style="text-align: right;">612.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">IN</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">F2</td>
+<td style="text-align: right;">2323.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">COLUMBUS</td>
+<td style="text-align: left;">ə</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">F1</td>
+<td style="text-align: right;">612.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">COLUMBUS</td>
+<td style="text-align: left;">ə</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">F2</td>
+<td style="text-align: right;">1903.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">F1</td>
+<td style="text-align: right;">529.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">F2</td>
+<td style="text-align: right;">2332.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ə˞</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">F1</td>
+<td style="text-align: right;">538.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ə˞</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">F2</td>
+<td style="text-align: right;">1682.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>You can get an idea for what <code>pivot_longer()</code> has done by comparing this table (<a href="#tbl-nearey-long">Table&nbsp;5</a>) to the table before (<a href="#tbl-nearey-id">Table&nbsp;4</a>). There are two rows in this long table for every row in the wide table. The <code>name</code>, <code>word</code>, <code>ipa_vclass</code>, and <code>id</code> values are repeated twice. There’s also a new <code>formant</code> column, which contains the column names we pivoted longer, and a new <code>hz</code> column, which contains the values from the columns we pivoted longer.</p>
+</section>
+<section id="step-4-the-actual-normalization" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-the-actual-normalization">Step 4: The actual normalization!</h4>
+<p>Now we can do the actual normalization. The column we’ll target is the new <code>hz</code> column. We’ll log it, subtract the mean log value, then convert it back to its original scale with <code>exp()</code>. And don’t forget we need to <code>group_by(name)</code> first too!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> F1<span class="sc">:</span>F2, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"formant"</span>, </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nearey =</span> <span class="fu">exp</span>(<span class="fu">log</span>(hz)<span class="sc">-</span><span class="fu">mean</span>(<span class="fu">log</span>(hz))))<span class="sc">%&gt;%</span>  </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">12</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-nearey-norm" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;6: The formant data, pivoted long, and normalized</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">word</th>
+<th style="text-align: left;">ipa_vclass</th>
+<th style="text-align: right;">id</th>
+<th style="text-align: left;">formant</th>
+<th style="text-align: right;">hz</th>
+<th style="text-align: right;">nearey</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">UM</td>
+<td style="text-align: left;">ʌ</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">F1</td>
+<td style="text-align: right;">699.5</td>
+<td style="text-align: right;">0.633</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">UM</td>
+<td style="text-align: left;">ʌ</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">F2</td>
+<td style="text-align: right;">1881.3</td>
+<td style="text-align: right;">1.701</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">I’M</td>
+<td style="text-align: left;">aj</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">F1</td>
+<td style="text-align: right;">888.8</td>
+<td style="text-align: right;">0.804</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">I’M</td>
+<td style="text-align: left;">aj</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">F2</td>
+<td style="text-align: right;">1934.1</td>
+<td style="text-align: right;">1.749</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">IN</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">F1</td>
+<td style="text-align: right;">612.2</td>
+<td style="text-align: right;">0.554</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">IN</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">F2</td>
+<td style="text-align: right;">2323.4</td>
+<td style="text-align: right;">2.101</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">COLUMBUS</td>
+<td style="text-align: left;">ə</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">F1</td>
+<td style="text-align: right;">612.4</td>
+<td style="text-align: right;">0.554</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">COLUMBUS</td>
+<td style="text-align: left;">ə</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">F2</td>
+<td style="text-align: right;">1903.7</td>
+<td style="text-align: right;">1.722</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">F1</td>
+<td style="text-align: right;">529.9</td>
+<td style="text-align: right;">0.479</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">F2</td>
+<td style="text-align: right;">2332.1</td>
+<td style="text-align: right;">2.109</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ə˞</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">F1</td>
+<td style="text-align: right;">538.4</td>
+<td style="text-align: right;">0.487</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ə˞</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">F2</td>
+<td style="text-align: right;">1682.8</td>
+<td style="text-align: right;">1.522</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="step-5-pivoting-wide-again-for-plotting" class="level4">
+<h4 class="anchored" data-anchor-id="step-5-pivoting-wide-again-for-plotting">Step 5: Pivoting wide again, for plotting</h4>
+<p>Technically, we’re done normalizing the formant data, but in order to make a nice F1<span class="math inline">\(\times\)</span>F2 plot, we need to pivot the data wide again.</p>
+<p>To do that, we first need to drop the <code>hz</code> column, because <code>pivot_wider()</code> will go weird if we don’t.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Then, we need to tell <code>pivot_wider()</code> the following information:</p>
+<ul>
+<li><p>Where should it get the names of new columns from?</p>
+<ul>
+<li>We’ll pass this to <code>names_from=</code></li>
+</ul></li>
+<li><p>Where should it get the values to put into the new columns from?</p>
+<ul>
+<li>We’ll pass this to <code>values_from=</code></li>
+</ul></li>
+</ul>
+<p>After this step, we’re done the normalizing process, so I’ll assign the result to a variable called <code>vowels_neary</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> F1<span class="sc">:</span>F2, </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"formant"</span>, </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nearey =</span> <span class="fu">exp</span>(<span class="fu">log</span>(hz)<span class="sc">-</span><span class="fu">mean</span>(<span class="fu">log</span>(hz))))<span class="sc">%&gt;%</span>  </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>hz) <span class="sc">%&gt;%</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> nearey) <span class="ot">-&gt;</span> vowels_nearey</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>vowels_nearey <span class="sc">%&gt;%</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-neary-wide" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;7: Nearey Normalized Vowels, wide again</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">word</th>
+<th style="text-align: left;">ipa_vclass</th>
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">F2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">UM</td>
+<td style="text-align: left;">ʌ</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.633</td>
+<td style="text-align: right;">1.701</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">I’M</td>
+<td style="text-align: left;">aj</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.804</td>
+<td style="text-align: right;">1.749</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">IN</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.554</td>
+<td style="text-align: right;">2.101</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">COLUMBUS</td>
+<td style="text-align: left;">ə</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.554</td>
+<td style="text-align: right;">1.722</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.479</td>
+<td style="text-align: right;">2.109</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">ENTIRE</td>
+<td style="text-align: left;">ə˞</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.487</td>
+<td style="text-align: right;">1.522</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="results-1" class="level4">
+<h4 class="anchored" data-anchor-id="results-1">Results!</h4>
+<div class="cell">
+<details>
+<summary>Plot code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>vowels_nearey <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-neary-norm" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-neary-norm-1.png" class="img-fluid figure-img" width="624"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: An F1 by F2 plot of two speakers’ Nearey normalized vowel means.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Again, the vowel spaces are largely overlapping. One thing that’s not immediately clear from this graph, though, is that this specific approach to Nearey normalization still has a much wider range for F2 than F1, which we can see if we plot it with fixed coordinates.</p>
+<div class="cell">
+<details>
+<summary>Plot code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>vowels_nearey <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-neary-norm-fixed" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-neary-norm-fixed-1.png" class="img-fluid figure-img" width="624"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5: An F1 by F2 plot of two speakers’ Nearey normalized vowel means. (fixed coordinates).</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It gets better if we plot the log of the normalized values<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, but then the vowel space doesn’t look like the familiar hertz space.</p>
+<div class="cell">
+<details>
+<summary>Plot code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>vowels_nearey <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> <span class="sc">~</span><span class="fu">mean</span>(<span class="fu">log</span>(.x)))) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-neary-log-norm-fixed" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-neary-log-norm-fixed-1.png" class="img-fluid figure-img" width="624"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6: Speakers’ vowel means in Log Nearey Normalized F1,F2 space (fixed coordinates).</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="watt-fabricius-1" class="level3">
+<h3 class="anchored" data-anchor-id="watt-fabricius-1">Watt &amp; Fabricius</h3>
+<p>The final normalization method we’ll look at, which can’t easily be done with a single sequence of tidyverse verbs, is the Watt &amp; Fabricius method <span class="citation" data-cites="watt2002">(<a href="#ref-watt2002" role="doc-biblioref">Watt &amp; Fabricius 2002</a>)</span>. The idea behind the Watt &amp; Fabricius method is to define a vowel space triangle for each speaker, then to scale their formant values to the triangle.</p>
+<section id="step-1-getting-the-triangle-points" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-getting-the-triangle-points">Step 1: Getting the Triangle Points</h4>
+<p>I’ll follow the NORM suite and define the points of the triangle like so:</p>
+<ul>
+<li><p>Top Left Corner, “beet” point: The F1 of the vowel with the smallest F1, and the F2 of the vowel with the largest F2</p></li>
+<li><p>Bottom Corner, “bat” point: The F1 of the vowel with the maximum F1, and the F2 of that same vowel.</p></li>
+<li><p>Top Right Corner, “school” point: F1 = F2 = “beet” point F1.</p></li>
+</ul>
+<p>Here’s how you can get those values per speaker:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">beet_f1 =</span> <span class="fu">min</span>(F1),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">beet_f2 =</span> <span class="fu">max</span>(F2),</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">bat_f1 =</span> <span class="fu">max</span>(F1),</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">bat_f2 =</span> F2[F1 <span class="sc">==</span> <span class="fu">max</span>(F1)]) <span class="sc">%&gt;%</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">school_f1 =</span> beet_f1,</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">school_f2 =</span> beet_f1) <span class="sc">%&gt;%</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-wf-points" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;8: The vowel triangle point values.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">beet_f1</th>
+<th style="text-align: right;">beet_f2</th>
+<th style="text-align: right;">bat_f1</th>
+<th style="text-align: right;">bat_f2</th>
+<th style="text-align: right;">school_f1</th>
+<th style="text-align: right;">school_f2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: right;">430</td>
+<td style="text-align: right;">2596</td>
+<td style="text-align: right;">820</td>
+<td style="text-align: right;">1902</td>
+<td style="text-align: right;">430</td>
+<td style="text-align: right;">430</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s03</td>
+<td style="text-align: right;">316</td>
+<td style="text-align: right;">1990</td>
+<td style="text-align: right;">674</td>
+<td style="text-align: right;">1243</td>
+<td style="text-align: right;">316</td>
+<td style="text-align: right;">316</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>In order to plot these points in an F1<span class="math inline">\(\times\)</span>F2 space, we need to do a little <code>pivot_longer()</code> and <code>pivot_wider()</code> again with the following steps:</p>
+<ul>
+<li><p><code>pivot_longer()</code>, to stack the values of the columns between <code>beet_f1</code> and <code>school_f2</code> on top of each other.</p></li>
+<li><p>Split the point names (e.g.&nbsp;“<code>beet_f1"</code>) into separate values (e.g.&nbsp;<code>"beet"</code> and <code>"beet"</code>) using <code>separate()</code>.</p></li>
+<li><p><code>pivot_wider()</code> using the column with <code>"f1"</code> and <code>"f2"</code> to make the new column names.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">beet_f1 =</span> <span class="fu">min</span>(F1),</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">beet_f2 =</span> <span class="fu">max</span>(F2),</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">bat_f1 =</span> <span class="fu">max</span>(F1),</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">bat_f2 =</span> F2[F1 <span class="sc">==</span> <span class="fu">max</span>(F1)]) <span class="sc">%&gt;%</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">school_f1 =</span> beet_f1,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">school_f2 =</span> beet_f1) <span class="sc">%&gt;%</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> beet_f1<span class="sc">:</span>school_f2, <span class="at">names_to =</span> <span class="st">"var"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(var, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"point"</span>, <span class="st">"formant"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> hz) <span class="ot">-&gt;</span> wf_points</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>wf_points <span class="sc">%&gt;%</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-wf-point-long" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;9: The vowel triangle point values, long version</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">point</th>
+<th style="text-align: right;">f1</th>
+<th style="text-align: right;">f2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">beet</td>
+<td style="text-align: right;">430</td>
+<td style="text-align: right;">2596</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">bat</td>
+<td style="text-align: right;">820</td>
+<td style="text-align: right;">1902</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">school</td>
+<td style="text-align: right;">430</td>
+<td style="text-align: right;">430</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">beet</td>
+<td style="text-align: right;">316</td>
+<td style="text-align: right;">1990</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">bat</td>
+<td style="text-align: right;">674</td>
+<td style="text-align: right;">1243</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">school</td>
+<td style="text-align: right;">316</td>
+<td style="text-align: right;">316</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>When we plot thee triangle points, we wind up with a plot that looks like a very simplified version of the vowel space from <a href="#fig-unnorm1">Figure&nbsp;1</a>.</p>
+<div class="cell">
+<details>
+<summary>Plot code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>wf_points <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(f2, f1))<span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_polygon</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name, <span class="at">color =</span> name), <span class="at">alpha =</span> <span class="fl">0.6</span>)<span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> point))<span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_vibrant</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-wf-triangle" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-wf-triangle-1.png" class="img-fluid figure-img" width="576"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7: The vowel space triangles for the Watt &amp; Fabricius method</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-calculate-scaling-factors" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-calculate-scaling-factors">Step 2: Calculate Scaling Factors</h4>
+<p>With the F1 and F2 of these triangle points, we then calculate scaling factors by just taking the mean of F1 and F2 for each speaker.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>wf_points <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">S1 =</span> <span class="fu">mean</span>(f1),</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">S2 =</span> <span class="fu">mean</span>(f2)) <span class="ot">-&gt;</span> wf_scalers</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>wf_scalers <span class="sc">%&gt;%</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-wf-scaler" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;10: The Watt &amp; Fabricius scaling factors</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">S1</th>
+<th style="text-align: right;">S2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: right;">560</td>
+<td style="text-align: right;">1643</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s03</td>
+<td style="text-align: right;">435</td>
+<td style="text-align: right;">1183</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-merging-the-scalers-onto-the-original-data." class="level4">
+<h4 class="anchored" data-anchor-id="step-3-merging-the-scalers-onto-the-original-data.">Step 3: Merging the scalers onto the original data.</h4>
+<p>Now what we need to do is divide each speaker’s F1 and F2 value by these scalers. Right now the speakers’ original data is in <code>vowels_inlie</code> and the scaling values are in <code>wf_scalers</code>, so to do that division, we need to associate these two data frames.</p>
+<p>Fortunately, both <code>vowels_inlie</code> and <code>wf_scalers</code> have a column name in common: the speaker ID column <code>name</code>. That means we can merge <code>wf_scalers</code> onto <code>vowels_inlie</code> with a join operation. There are a few different <code>*_join()</code> functions in the tidyverse, and here I’ll use <code>left_join()</code>.</p>
+<p>We need to tell <code>left_join()</code> the following information:</p>
+<ul>
+<li><p>Which two data frames are we joining together?</p>
+<ul>
+<li>Since we’re piping, the first data frame will appear on the left hand side of <code>%&gt;%</code>, and the second data frame will be the first argument.</li>
+</ul></li>
+<li><p>Which columns should we use to join the data frames together?</p>
+<ul>
+<li><code>left_join()</code> will guess and try to join the data together using columns with the same name, but we can explicitly tell it which columns to use with the <code>by=</code> argument.</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(wf_scalers, <span class="at">by =</span> <span class="st">"name"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The group_by here is just to illustrate that each speaker's scalers were</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># successfully merged</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> <span class="fu">slice</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-wf-join" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;11: Speakers’s scalers merged onto the original data</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">word</th>
+<th style="text-align: left;">ipa_vclass</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">F2</th>
+<th style="text-align: right;">mahal</th>
+<th style="text-align: right;">mahal_sq</th>
+<th style="text-align: right;">S1</th>
+<th style="text-align: right;">S2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">UM</td>
+<td style="text-align: left;">ʌ</td>
+<td style="text-align: right;">699.5</td>
+<td style="text-align: right;">1881.3</td>
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">560.2</td>
+<td style="text-align: right;">1642.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">I’M</td>
+<td style="text-align: left;">aj</td>
+<td style="text-align: right;">888.8</td>
+<td style="text-align: right;">1934.1</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">560.2</td>
+<td style="text-align: right;">1642.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">IN</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">612.2</td>
+<td style="text-align: right;">2323.4</td>
+<td style="text-align: right;">1.6</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">560.2</td>
+<td style="text-align: right;">1642.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">aj</td>
+<td style="text-align: right;">771.5</td>
+<td style="text-align: right;">1257.4</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">1.8</td>
+<td style="text-align: right;">435.5</td>
+<td style="text-align: right;">1183.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">HAVE</td>
+<td style="text-align: left;">æ</td>
+<td style="text-align: right;">639.5</td>
+<td style="text-align: right;">1609.3</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">0.6</td>
+<td style="text-align: right;">435.5</td>
+<td style="text-align: right;">1183.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">ə</td>
+<td style="text-align: right;">501.2</td>
+<td style="text-align: right;">1202.0</td>
+<td style="text-align: right;">2.1</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">435.5</td>
+<td style="text-align: right;">1183.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-the-actual-normalization-1" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-the-actual-normalization-1">Step 4: The actual normalization!</h4>
+<p>Now all we need to do is divide F1 and F2 by their respective scaling factors to get the normalized Watt &amp; Fabricius values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(wf_scalers, <span class="at">by =</span> <span class="st">"name"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_wf =</span> F1<span class="sc">/</span>S1,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_wf =</span> F2<span class="sc">/</span>S2)<span class="ot">-&gt;</span>vowels_wf</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>vowels_wf <span class="sc">%&gt;%</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-wf-norm" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;12: Speakers’ vowels Watt &amp; Fabricius normalized</caption>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 14%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">word</th>
+<th style="text-align: left;">ipa_vclass</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">F2</th>
+<th style="text-align: right;">mahal</th>
+<th style="text-align: right;">mahal_sq</th>
+<th style="text-align: right;">S1</th>
+<th style="text-align: right;">S2</th>
+<th style="text-align: right;">F1_wf</th>
+<th style="text-align: right;">F2_wf</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">UM</td>
+<td style="text-align: left;">ʌ</td>
+<td style="text-align: right;">699.5</td>
+<td style="text-align: right;">1881.3</td>
+<td style="text-align: right;">1.12</td>
+<td style="text-align: right;">1.06</td>
+<td style="text-align: right;">560.17</td>
+<td style="text-align: right;">1642.58</td>
+<td style="text-align: right;">1.25</td>
+<td style="text-align: right;">1.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">I’M</td>
+<td style="text-align: left;">aj</td>
+<td style="text-align: right;">888.8</td>
+<td style="text-align: right;">1934.1</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">560.17</td>
+<td style="text-align: right;">1642.58</td>
+<td style="text-align: right;">1.59</td>
+<td style="text-align: right;">1.18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">IN</td>
+<td style="text-align: left;">ɪ</td>
+<td style="text-align: right;">612.2</td>
+<td style="text-align: right;">2323.4</td>
+<td style="text-align: right;">1.57</td>
+<td style="text-align: right;">1.25</td>
+<td style="text-align: right;">560.17</td>
+<td style="text-align: right;">1642.58</td>
+<td style="text-align: right;">1.09</td>
+<td style="text-align: right;">1.41</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">aj</td>
+<td style="text-align: right;">771.5</td>
+<td style="text-align: right;">1257.4</td>
+<td style="text-align: right;">3.23</td>
+<td style="text-align: right;">1.80</td>
+<td style="text-align: right;">435.50</td>
+<td style="text-align: right;">1182.96</td>
+<td style="text-align: right;">1.77</td>
+<td style="text-align: right;">1.06</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">HAVE</td>
+<td style="text-align: left;">æ</td>
+<td style="text-align: right;">639.5</td>
+<td style="text-align: right;">1609.3</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">435.50</td>
+<td style="text-align: right;">1182.96</td>
+<td style="text-align: right;">1.47</td>
+<td style="text-align: right;">1.36</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">ə</td>
+<td style="text-align: right;">501.2</td>
+<td style="text-align: right;">1202.0</td>
+<td style="text-align: right;">2.05</td>
+<td style="text-align: right;">1.43</td>
+<td style="text-align: right;">435.50</td>
+<td style="text-align: right;">1182.96</td>
+<td style="text-align: right;">1.15</td>
+<td style="text-align: right;">1.02</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="results-2" class="level4">
+<h4 class="anchored" data-anchor-id="results-2">Results!</h4>
+<div class="cell">
+<details>
+<summary>Plot code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>vowels_wf <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1_wf, F2_wf), <span class="at">.fns =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2_wf, F1_wf, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-wf-norm" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-wf-norm-1.png" class="img-fluid figure-img" width="576"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;8: An F1 by F2 plot of two speakers’ Watt &amp; Fabricius normalized vowel means.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Again, we’ve got largely overlapping vowel spaces, and since F1 and F2 were normalized separately, they’ve got very comparable data ranges.</p>
+</section>
+</section>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts">Final thoughts</h2>
+<p>There there has been a <em>lot</em> written about vowel normalization methods, and I’ve barely covered most of the relevant topics discussed in the literature. For example:</p>
+<ul>
+<li><p>How well do these methods correspond to what <em>listeners</em> actually do when hearing people with different vowel spaces?</p></li>
+<li><p>Should we really be plotting and analyzing formants in Hz, or should the by converted to a psychoacoustic dimension, like Mel or Bark?</p></li>
+<li><p>Which method is the “Best”? What do we want a method to be “Best” <em>at</em>?</p></li>
+</ul>
+<p>Instead, I’ve covered some of most commonly used normalization methods, and also tried to provide an outline of how these methods correspond to specific data frame operations in the tidyverse.</p>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-Adank2004" class="csl-entry" role="doc-biblioentry">
+Adank, Patti &amp; Smits, Roel &amp; Hout, Roeland van. 2004. A comparison of vowel normalization procedures for language variation research. <em>The Journal of the Acoustical Society of America</em>. 116(5). 3099. Retrieved from <a href="http://link.aip.org/link/JASMAN/v116/i5/p3099/s1&amp;Agg=doi">http://link.aip.org/link/JASMAN/v116/i5/p3099/s1&amp;Agg=doi</a>
+</div>
+<div id="ref-vowels" class="csl-entry" role="doc-biblioentry">
+Kendall, Tyler &amp; Thomas, Erik R. 2018. Vowels: Vowel manipulation, normalization, and plotting. Retrieved from <a href="https://CRAN.R-project.org/package=vowels">https://CRAN.R-project.org/package=vowels</a>
+</div>
+<div id="ref-lobanov" class="csl-entry" role="doc-biblioentry">
+Lobanov, Boris. 1971. Classification of russian vowels spoken by different listeners. <em>Journal of the Acoustical Society of America</em>. 49. 606–608.
+</div>
+<div id="ref-nearey1978" class="csl-entry" role="doc-biblioentry">
+Nearey, Terrance. 1978. <em>Phonetic feature systems for vowels.</em> Retrieved from <a href="https://sites.ualberta.ca/~tnearey/Nearey1978_compressed.pdf">https://sites.ualberta.ca/~tnearey/Nearey1978_compressed.pdf</a>
+</div>
+<div id="ref-stanley2022" class="csl-entry" role="doc-biblioentry">
+Stanley, Joseph A. 2022. Order of Operations in Sociophonetic Analysis. <em>Penn Working Papers in Linguistics</em>. 28(2). 151–160. Retrieved from <a href="https://repository.upenn.edu/pwpl/vol28/iss2/17">https://repository.upenn.edu/pwpl/vol28/iss2/17</a>
+</div>
+<div id="ref-watt2002" class="csl-entry" role="doc-biblioentry">
+Watt, Dominic &amp; Fabricius, Anne. 2002. Evaluation of a technique for improving the mapping of multiple speakers’ vowel spaces in the F1 &nbsp; F2 plane. <em>Leeds Working Papers in Linguistics and Phonetics</em>. 9. 159–173.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_n =</span> <span class="fu">exp</span>(<span class="fu">log</span>(F1) <span class="sc">-</span> <span class="fu">mean</span>(<span class="fu">log</span>(F1))),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_n =</span> <span class="fu">exp</span>(<span class="fu">log</span>(F2) <span class="sc">-</span> <span class="fu">mean</span>(<span class="fu">log</span>(F2))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn2"><p>But you should try it just to see!<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Which is a little silly because that’s what we had in the normalization code chunk above, and then we did <code>exp()</code> on it.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{fruehwald2022,
+  author = {Josef Fruehwald},
+  title = {How to Normalize Your Vowels Using the Tidyverse},
+  series = {Linguistics Methods Hub},
+  date = {2022-10-20},
+  url = {https://lingmethodshub.github.io/content/R/tidy-norm},
+  doi = {10.5281/zenodo.7232341},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-fruehwald2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Josef Fruehwald. 2022, October 20. How to normalize your vowels using
+the tidyverse. <em>Linguistics Methods Hub</em>. (<a href="https://lingmethodshub.github.io/content/R/tidy-norm">https://lingmethodshub.github.io/content/R/tidy-norm</a>).
+doi: <a href="https://doi.org/10.5281/zenodo.7232341">10.5281/zenodo.7232341</a>
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../content/R/vowel-plots-tutorial/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Vowel Plots with <code>ggplot2</code></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
+
+
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
