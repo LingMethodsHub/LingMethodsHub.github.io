@@ -2,7 +2,8 @@
 title: "*Python* Tutorials"
 listing:
     contents:
-        - "*/!(index)*qmd"
+        - "*/!(README)*md"
+        - "*/*ipynb"
     type: default
     sort: "modified"
 citation: false     

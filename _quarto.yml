@@ -54,6 +54,8 @@ website:
         - text: "---"
         - section: Python
           href: "content/python/index.md"
+          contents: 
+            - "content/python/vowel-plotting-py/index.ipynb"
         - text: "---"
         - section: Praat
           href: "content/praat/index.md"        
