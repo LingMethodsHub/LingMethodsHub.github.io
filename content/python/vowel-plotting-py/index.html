@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.210">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Emily Remirez">
+<meta name="dcterms.date" content="2022-10-20">
+<meta name="description" content="A tutorial on normalizing and plotting vowels in python with pandas, seaborn, and matplotlib.">
+
+<title>LingMethodsHub - Vowel plotting in Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../content/praat/index.html" rel="next">
+<link href="../../../content/python/index.html" rel="prev">
+<script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+<style>html{ scroll-behavior: smooth; }</style>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false,
+  "showHighlights": "never"
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="LingMethodsHub - Vowel plotting in Python">
+<meta property="og:description" content="A tutorial on normalizing and plotting vowels in python with pandas, seaborn, and matplotlib.">
+<meta property="og:image" content="https://lingmethodshub.github.io/content/python/vowel-plotting-py/index_files/figure-html/cell-15-output-1.png">
+<meta property="og:site-name" content="LingMethodsHub">
+<meta property="og:image:height" content="551">
+<meta property="og:image:width" content="555">
+<meta name="twitter:title" content="LingMethodsHub - Vowel plotting in Python">
+<meta name="twitter:description" content="A tutorial on normalizing and plotting vowels in python with pandas, seaborn, and matplotlib.">
+<meta name="twitter:image" content="https://lingmethodshub.github.io/assets/logo.png">
+<meta name="twitter:image-height" content="424">
+<meta name="twitter:image-width" content="653">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Vowel plotting in Python">
+<meta name="citation_author" content="Emily Remirez">
+<meta name="citation_publication_date" content="2022-10-20">
+<meta name="citation_cover_date" content="2022-10-20">
+<meta name="citation_year" content="2022">
+<meta name="citation_online_date" content="2022-10-20">
+<meta name="citation_fulltext_html_url" content="https://lingmethodshub.github.io/content/python/vowel-plotting-py">
+<meta name="citation_doi" content="10.5281/zenodo.7232005">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Linguistics Methods Hub">
+<meta name="citation_series_title" content="Linguistics Methods Hub">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">LingMethodsHub</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../content/index.html" aria-current="page">
+ <span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../content/contributing/index.html">
+ <span class="menu-text">Contributing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../people/index.html">
+ <span class="menu-text">People</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Vowel plotting in Python</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../" class="sidebar-logo-link">
+      <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/R/index.html" class="sidebar-item-text sidebar-link">R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">Doing LVC with R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">Getting Your Data Into <em>R</em></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">Getting to Know Your Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">Modifying Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">Doing it all again, but <code>tidy</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">Crosstabs: Counts, Proportions, and More</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">Proportions for <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">Vowel Plots with <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/python/index.html" class="sidebar-item-text sidebar-link">Python</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link active">Vowel plotting in Python</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Praat</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/tools/index.html" class="sidebar-item-text sidebar-link">Tools</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">Montreal Forced Aligner</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/tools/autovot/autovot-tutorial/index.html" class="sidebar-item-text sidebar-link">AutoVOT</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/cli/index.html" class="sidebar-item-text sidebar-link">Command Line Interfaces</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">Bash Shell Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/cli/keyboarding/index.html" class="sidebar-item-text sidebar-link">Keyboarding</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/windows/index.html" class="sidebar-item-text sidebar-link">Windows</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">Windows Subsystem for Linux</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">Installation</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lets-plot-some-vowel-spaces" id="toc-lets-plot-some-vowel-spaces" class="nav-link active" data-scroll-target="#lets-plot-some-vowel-spaces">Let’s plot some vowel spaces!</a>
+  <ul class="collapse">
+  <li><a href="#get-the-code-set-up" id="toc-get-the-code-set-up" class="nav-link" data-scroll-target="#get-the-code-set-up">1. Get the code set up</a>
+  <ul class="collapse">
+  <li><a href="#run-everything-in-this-section-first" id="toc-run-everything-in-this-section-first" class="nav-link" data-scroll-target="#run-everything-in-this-section-first">Run everything in this section first!</a></li>
+  </ul></li>
+  <li><a href="#import-data" id="toc-import-data" class="nav-link" data-scroll-target="#import-data">2. Import data</a>
+  <ul class="collapse">
+  <li><a href="#to-import-your-data" id="toc-to-import-your-data" class="nav-link" data-scroll-target="#to-import-your-data">To import your data</a></li>
+  </ul></li>
+  <li><a href="#plot-vowels" id="toc-plot-vowels" class="nav-link" data-scroll-target="#plot-vowels">3. Plot vowels!</a>
+  <ul class="collapse">
+  <li><a href="#the-shortest-line-of-code" id="toc-the-shortest-line-of-code" class="nav-link" data-scroll-target="#the-shortest-line-of-code">The shortest line of code</a></li>
+  <li><a href="#the-longest-line-of-code" id="toc-the-longest-line-of-code" class="nav-link" data-scroll-target="#the-longest-line-of-code">The longest line of code</a></li>
+  <li><a href="#demos-with-flege-1994" id="toc-demos-with-flege-1994" class="nav-link" data-scroll-target="#demos-with-flege-1994">Demos with Flege 1994</a></li>
+  </ul></li>
+  <li><a href="#import-and-plot-your-data" id="toc-import-and-plot-your-data" class="nav-link" data-scroll-target="#import-and-plot-your-data">4. Import and plot your data!</a></li>
+  <li><a href="#normalizing-data" id="toc-normalizing-data" class="nav-link" data-scroll-target="#normalizing-data">5. Normalizing data</a>
+  <ul class="collapse">
+  <li><a href="#convert-f1-and-f2-to-bark-using-barkify" id="toc-convert-f1-and-f2-to-bark-using-barkify" class="nav-link" data-scroll-target="#convert-f1-and-f2-to-bark-using-barkify">Convert F1 and F2 to Bark using <code>barkify</code></a></li>
+  <li><a href="#lobanov-normalize-vowel-spaces-by-ss-using-lobify" id="toc-lobanov-normalize-vowel-spaces-by-ss-using-lobify" class="nav-link" data-scroll-target="#lobanov-normalize-vowel-spaces-by-ss-using-lobify">Lobanov normalize vowel spaces by Ss using <code>Lobify</code></a></li>
+  </ul></li>
+  <li><a href="#pseudocode-recap" id="toc-pseudocode-recap" class="nav-link" data-scroll-target="#pseudocode-recap">6. Pseudocode recap</a>
+  <ul class="collapse">
+  <li><a href="#to-import-a-csv-file-spreadsheet-with-pandas" id="toc-to-import-a-csv-file-spreadsheet-with-pandas" class="nav-link" data-scroll-target="#to-import-a-csv-file-spreadsheet-with-pandas">To import a csv file (spreadsheet) with pandas</a></li>
+  <li><a href="#to-plot-your-data" id="toc-to-plot-your-data" class="nav-link" data-scroll-target="#to-plot-your-data">To plot your data</a></li>
+  <li><a href="#to-convert-hz-to-bark" id="toc-to-convert-hz-to-bark" class="nav-link" data-scroll-target="#to-convert-hz-to-bark">To convert Hz to Bark</a></li>
+  <li><a href="#to-lobanov-normalize-by-speaker" id="toc-to-lobanov-normalize-by-speaker" class="nav-link" data-scroll-target="#to-lobanov-normalize-by-speaker">To Lobanov normalize by speaker</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Vowel plotting in Python</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">python</div>
+    <div class="quarto-category">vowels</div>
+    <div class="quarto-category">data visualization</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>A tutorial on normalizing and plotting vowels in python with pandas, seaborn, and matplotlib.</p>
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading"></div>
+  
+    <div class="quarto-title-meta-contents">
+    <a href="https://sites.google.com/berkeley.edu/eremirez/">Emily Remirez</a> <a href="https://orcid.org/0000-0003-1223-6769" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            UC Berkeley
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 20, 2022</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.7232005">10.5281/zenodo.7232005</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+
+</header>
+
+<section id="lets-plot-some-vowel-spaces" class="level1">
+<h1>Let’s plot some vowel spaces!</h1>
+<section id="get-the-code-set-up" class="level2">
+<h2 class="anchored" data-anchor-id="get-the-code-set-up">1. Get the code set up</h2>
+<section id="run-everything-in-this-section-first" class="level3">
+<h3 class="anchored" data-anchor-id="run-everything-in-this-section-first">Run everything in this section first!</h3>
+<p>In these cells, we 1. Import the libraries and packages we’ll be using 2. Define a few functions we’ll use to plot and normalize vowels</p>
+<p>Editing these cells will have an impact on the rest of the code in the notebook, so do so carefully!</p>
+<p>In the next sections we’ll</p>
+<ol type="1">
+<li>Import data</li>
+<li>Visualize some examples</li>
+<li>Normalize the data</li>
+</ol>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Import libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.ticker <span class="im">import</span> ScalarFormatter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vowelplot (vowelcsv, color<span class="op">=</span><span class="va">None</span>, F1<span class="op">=</span><span class="st">"F1"</span>, F2<span class="op">=</span><span class="st">"F2"</span>, vowel<span class="op">=</span><span class="st">"Vowel"</span>, title<span class="op">=</span><span class="st">"Vowel Plot"</span>, unit<span class="op">=</span><span class="st">"Hz"</span>, logscale<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Set some parameters for the chart itself</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    sns.<span class="bu">set</span>(style<span class="op">=</span><span class="st">'ticks'</span>, context<span class="op">=</span><span class="st">'notebook'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">6</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If there's an argument for color, determine whether it's likely to be categorical</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">## If it's a string (text), use a categorical color palette</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">## If it's a number, use a sequential color palette</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> color <span class="op">!=</span> <span class="va">None</span>:</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">type</span>(vowelcsv[color].iloc[<span class="dv">0</span>])<span class="op">==</span><span class="bu">str</span>:</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            pal <span class="op">=</span> <span class="st">"husl"</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            pal <span class="op">=</span> <span class="st">"viridis"</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        pl <span class="op">=</span> sns.scatterplot(x <span class="op">=</span> F2,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                             y <span class="op">=</span> F1,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                             hue <span class="op">=</span> color,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                             data <span class="op">=</span> vowelcsv,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                             palette <span class="op">=</span> pal)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If no color argument is given, don't specify hue, and no palette needed</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        pl <span class="op">=</span> sns.scatterplot(x <span class="op">=</span> F2,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                             y <span class="op">=</span> F1,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                             data <span class="op">=</span> vowelcsv)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Invert axes to correlate with articulatory space!</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    pl.invert_yaxis()</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    pl.invert_xaxis()</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Add unit to the axis labels</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    F1name <span class="op">=</span> <span class="bu">str</span>(<span class="st">"F1 ("</span><span class="op">+</span>unit<span class="op">+</span><span class="st">")"</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    F2name <span class="op">=</span> <span class="bu">str</span>(<span class="st">"F2 ("</span><span class="op">+</span>unit<span class="op">+</span><span class="st">")"</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    laby <span class="op">=</span> plt.ylabel(F1name)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    labx <span class="op">=</span> plt.xlabel(F2name)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> logscale <span class="op">==</span> <span class="va">True</span>:</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        pl.loglog()</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        pl.yaxis.set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>        pl.yaxis.set_minor_formatter(ticker.ScalarFormatter())</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>        pl.xaxis.set_major_formatter(ticker.ScalarFormatter())</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>        pl.xaxis.set_minor_formatter(ticker.ScalarFormatter())</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add vowel labels</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> vowel <span class="op">!=</span> <span class="va">None</span>: </span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> line,row <span class="kw">in</span> vowelcsv.iterrows():</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>            pl.text(vowelcsv[F2][line]<span class="op">+</span><span class="fl">0.1</span>,</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>                    vowelcsv[F1][line],</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>                    vowelcsv[vowel][line],</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>                    horizontalalignment <span class="op">=</span> <span class="st">'left'</span>,</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>                    size <span class="op">=</span> <span class="dv">14</span>, <span class="co"># Edit for larger plots!</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>                    color <span class="op">=</span> <span class="st">'black'</span>,</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>                   <span class="co"># weight = 'semibold' # Uncomment for larger plots!</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>                   )</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    pl.set_title(title)</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pl</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> barkify (data, formants):</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    <span class="co"># For each formant listed, make a copy of the column prefixed with z</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> formant <span class="kw">in</span> formants:</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> ch <span class="kw">in</span> formant:</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> ch.isnumeric():</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>                num <span class="op">=</span> ch</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>        formantchar <span class="op">=</span> (formant.split(num)[<span class="dv">0</span>])</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>        name <span class="op">=</span> <span class="bu">str</span>(formant).replace(formantchar,<span class="st">'z'</span>)</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert each value from Hz to Bark</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>        data[name] <span class="op">=</span> <span class="fl">26.81</span><span class="op">/</span> (<span class="dv">1</span><span class="op">+</span> <span class="dv">1960</span><span class="op">/</span>data[formant]) <span class="op">-</span> <span class="fl">0.53</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Return the dataframe with the changes</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Lobify (data, group, formants):</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>    zscore <span class="op">=</span> <span class="kw">lambda</span> x: (x <span class="op">-</span> x.mean()) <span class="op">/</span> x.std()</span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> formant <span class="kw">in</span> formants:</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>        name <span class="op">=</span> <span class="bu">str</span>(<span class="st">"zsc_"</span> <span class="op">+</span> formant)</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>        col <span class="op">=</span> data.groupby([group])[formant].transform(zscore)</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>        data.insert(<span class="bu">len</span>(data.columns), name, col)</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="import-data" class="level2">
+<h2 class="anchored" data-anchor-id="import-data">2. Import data</h2>
+<p>This expects a CSV file (comma separated values) with the following columns.</p>
+<ul>
+<li>“F1”: F1 value in Hz</li>
+<li>“F2”: F2 value in Hz</li>
+<li>“Vowel”: transcription or label for vowel</li>
+</ul>
+<p>If your columns aren’t named exactly like this, that’s okay! <br> <strong>But</strong> you’ll need to be sure to provide the <em>exact</em> names of your columns when you make the plot!</p>
+<p>You may also have other values, which you can use to label your plot:</p>
+<ul>
+<li>F3</li>
+<li>Token</li>
+<li>Speaker</li>
+</ul>
+<section id="to-import-your-data" class="level3">
+<h3 class="anchored" data-anchor-id="to-import-your-data">To import your data</h3>
+<p>Make sure that the name of the file is correct! When we import the data, we’ll also have to give our dataframe a name, which will go on the left side of the =. When we need to do something to our data, this is the name we’ll use in the code, not the name of our csv! If your csv is in the same folder as this notebook, the code should look like the example below, with the name of your file in quotes within the parentheses.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>voweldata <span class="op">=</span> pd.read_csv(<span class="st">'NameOfFile.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If the csv is somewhere else, you’ll have to get more specific, for example:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>voweldata <span class="op">=</span> pd.read_csv(<span class="st">'MainFolder//NameOfFile.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For this example, let’s load in some vowel data from Flege 1994. Thanks to Prof Keith Johnson for suggesting this dataset and doing some pre-processing to make it work with this function! This is a rich dataset that will let us visualize a lot of different features</p>
+<section id="import-flege-1994-as-f94" class="level4">
+<h4 class="anchored" data-anchor-id="import-flege-1994-as-f94">Import Flege 1994 as F94</h4>
+<p>Let’s preview the data to confirm we loaded the data and make sure everything is as we expect. We can use <code>df.sample()</code> or <code>df.head()</code>, where df is the name of your dataframe. <code>df.sample()</code> will give you random rows, while <code>df.head()</code> will give you the first rows.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>F94 <span class="op">=</span> pd.read_csv(<span class="st">'Flege_94_vowels.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>F94.sample(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>lg</th>
+      <th>Vowel</th>
+      <th>Ss</th>
+      <th>point</th>
+      <th>VOT</th>
+      <th>dur</th>
+      <th>F0</th>
+      <th>F1</th>
+      <th>F2</th>
+      <th>F3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>53</th>
+      <td>English</td>
+      <td>a</td>
+      <td>3</td>
+      <td>offset</td>
+      <td>4</td>
+      <td>110</td>
+      <td>172</td>
+      <td>619</td>
+      <td>1209</td>
+      <td>1955</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>Spanish</td>
+      <td>i</td>
+      <td>1</td>
+      <td>midpoint</td>
+      <td>16</td>
+      <td>191</td>
+      <td>78</td>
+      <td>354</td>
+      <td>2238</td>
+      <td>2576</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>Spanish</td>
+      <td>a</td>
+      <td>1</td>
+      <td>onset</td>
+      <td>17</td>
+      <td>166</td>
+      <td>110</td>
+      <td>517</td>
+      <td>1195</td>
+      <td>2591</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>English</td>
+      <td>ɛ</td>
+      <td>3</td>
+      <td>onset</td>
+      <td>2</td>
+      <td>114</td>
+      <td>118</td>
+      <td>452</td>
+      <td>1466</td>
+      <td>2395</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>English</td>
+      <td>a</td>
+      <td>3</td>
+      <td>onset</td>
+      <td>4</td>
+      <td>110</td>
+      <td>172</td>
+      <td>551</td>
+      <td>1136</td>
+      <td>1857</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>F94.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>lg</th>
+      <th>Vowel</th>
+      <th>Ss</th>
+      <th>point</th>
+      <th>VOT</th>
+      <th>dur</th>
+      <th>F0</th>
+      <th>F1</th>
+      <th>F2</th>
+      <th>F3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>English</td>
+      <td>i</td>
+      <td>1</td>
+      <td>onset</td>
+      <td>10</td>
+      <td>119</td>
+      <td>131</td>
+      <td>312</td>
+      <td>2205</td>
+      <td>2726</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>English</td>
+      <td>i</td>
+      <td>1</td>
+      <td>midpoint</td>
+      <td>10</td>
+      <td>119</td>
+      <td>131</td>
+      <td>317</td>
+      <td>2299</td>
+      <td>2897</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>English</td>
+      <td>i</td>
+      <td>1</td>
+      <td>offset</td>
+      <td>10</td>
+      <td>119</td>
+      <td>131</td>
+      <td>320</td>
+      <td>2257</td>
+      <td>2829</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>English</td>
+      <td>i</td>
+      <td>2</td>
+      <td>onset</td>
+      <td>13</td>
+      <td>93</td>
+      <td>130</td>
+      <td>304</td>
+      <td>1995</td>
+      <td>2383</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>English</td>
+      <td>i</td>
+      <td>2</td>
+      <td>midpoint</td>
+      <td>13</td>
+      <td>93</td>
+      <td>130</td>
+      <td>281</td>
+      <td>2079</td>
+      <td>2516</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="plot-vowels" class="level2">
+<h2 class="anchored" data-anchor-id="plot-vowels">3. Plot vowels!</h2>
+<section id="the-shortest-line-of-code" class="level3">
+<h3 class="anchored" data-anchor-id="the-shortest-line-of-code">The shortest line of code</h3>
+<p>That you can use to make a plot only gives the name of your data.</p>
+<ul>
+<li>This will only work if your F1 column is called exactly “F1”, your F2 column is called exactly “F2”, and your Vowel column is called “Vowel”</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>vowelplot(voweldata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><em>If your columns have different names</em> be sure to provide them using</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>vowelplot(voweldata,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>          F1 <span class="op">=</span> <span class="st">"YOUR F1 NAME"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>          F2 <span class="op">=</span> <span class="st">"YOUR F2 NAME"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>          vowel <span class="op">=</span> <span class="st">"YOUR VOWEL NAME"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>This will plot a your data in F1-F2 space, with all points the same color</li>
+</ul>
+</section>
+<section id="the-longest-line-of-code" class="level3">
+<h3 class="anchored" data-anchor-id="the-longest-line-of-code">The longest line of code</h3>
+<p>You could use, if you specified every single argument, is:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>vowelplot(voweldata, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>          color <span class="op">=</span> <span class="st">"MY COLOR CHOICE"</span>, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>          F1 <span class="op">=</span> <span class="st">"MY F1 NAME"</span>, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>          F2 <span class="op">=</span> <span class="st">"MY F2 NAME"</span>, </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>          vowel <span class="op">=</span> <span class="st">"MY VOWEL NAME"</span>, </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>          title <span class="op">=</span> <span class="st">"MY TITLE"</span>, </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>          unit <span class="op">=</span> <span class="st">"MY FORMANT UNIT"</span>, </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>          logscale<span class="op">=</span><span class="va">True</span><span class="op">/</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>These other arguments are all optional.
+<ol type="1">
+<li>color: What would you like color to represent?
+<ul>
+<li>Don’t forget to put this term in quotes!</li>
+<li>This needs to be the exact name, including capitalization, of the name of the column in your spreadsheet</li>
+</ul></li>
+<li>title: Add a title for your plot!
+<ul>
+<li>If you don’t specify anyhing, your plot will be called “Vowel Plot”</li>
+<li>If you don’t want any title, use <code>title = None</code></li>
+</ul></li>
+<li>logscale: Do you want the axes to be on a log scale?
+<ul>
+<li>The log scale is closer to how we perceive sound, so it may be more informative</li>
+<li>use <code>logscale = True</code> to use the log for your axes</li>
+<li>use <code>logscale = False</code> to use non-transformed axes</li>
+</ul></li>
+</ol></li>
+<li>The <code>vowel</code> argument adds labels to each point and can also be used in other ways:
+<ul>
+<li>Use <code>vowel = None</code> to remove all labels from the points (for example, if you want to use only color to distinguish between vowels)</li>
+<li>Use the name of a different column to label points with that feature instead (for example, if they’re tokens of the same vowel in different contexts)</li>
+</ul></li>
+</ul>
+</section>
+<section id="demos-with-flege-1994" class="level3">
+<h3 class="anchored" data-anchor-id="demos-with-flege-1994">Demos with Flege 1994</h3>
+<div class="cell" data-fig-height="5" data-fig-width="5" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>vowelplot(F94,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>          color <span class="op">=</span> <span class="st">"lg"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>          title <span class="op">=</span> <span class="st">"Vowels by language"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>          logscale <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>&lt;AxesSubplot:title={'center':'Vowels by language'}, xlabel='F2 (Hz)', ylabel='F1 (Hz)'&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>vowelplot(F94,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>          color <span class="op">=</span> <span class="st">"F0"</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>          vowel <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>          title <span class="op">=</span> <span class="st">"Vowels by F0"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>          logscale <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>&lt;AxesSubplot:title={'center':'Vowels by F0'}, xlabel='F2 (Hz)', ylabel='F1 (Hz)'&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="import-and-plot-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="import-and-plot-your-data">4. Import and plot your data!</h2>
+<p>Remember: - If your data isn’t in the same folder as this notebook, you’ll need to include the path - The function we defined expects some defaults. If your plot is different from that, you need to specify those arguments! For example - If your vowel column is called V, include <code>vowel = "V"</code> - If you want to label it Figure 1, include <code>title = "Figure 1"</code> - If you don’t want the axes to be normalized, include <code>logscale = False</code> - If you want to color code by F0, include <code>color = "F0"</code></p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>voweldata <span class="op">=</span> pd.read_csv(<span class="st">'demo-vowels.csv'</span>) <span class="co"># Replace 'demo-vowels.csv'!</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>voweldata.sample(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>carrier1</th>
+      <th>word</th>
+      <th>carrier2</th>
+      <th>Vowel</th>
+      <th>F1</th>
+      <th>F2</th>
+      <th>F3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>say</td>
+      <td>hayed</td>
+      <td>again</td>
+      <td>e</td>
+      <td>666</td>
+      <td>2350</td>
+      <td>3576</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>say</td>
+      <td>hid</td>
+      <td>again</td>
+      <td>ɪ</td>
+      <td>484</td>
+      <td>2271</td>
+      <td>3304</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>say</td>
+      <td>heed</td>
+      <td>again</td>
+      <td>i</td>
+      <td>323</td>
+      <td>2692</td>
+      <td>3401</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>say</td>
+      <td>hud</td>
+      <td>again</td>
+      <td>ʌ</td>
+      <td>985</td>
+      <td>1644</td>
+      <td>3117</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>say</td>
+      <td>hoed</td>
+      <td>again</td>
+      <td>o</td>
+      <td>550</td>
+      <td>1050</td>
+      <td>3250</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>vowelplot(vowelcsv <span class="op">=</span> voweldata,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>          color <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>          F1 <span class="op">=</span> <span class="st">"F1"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>          F2 <span class="op">=</span> <span class="st">"F2"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>          vowel <span class="op">=</span> <span class="st">"Vowel"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>          title <span class="op">=</span> <span class="st">"Vowel Plot"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>          unit <span class="op">=</span> <span class="st">"Hz"</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>          logscale <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>&lt;AxesSubplot:title={'center':'Vowel Plot'}, xlabel='F2 (Hz)', ylabel='F1 (Hz)'&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="normalizing-data" class="level2">
+<h2 class="anchored" data-anchor-id="normalizing-data">5. Normalizing data</h2>
+<p>When you ran the cells in the “get the code set up” section, you also defined some code for normalizing data.</p>
+<p>There are two kinds of normalizing we’ll consider: - <strong>Psychoacoustic normalizing</strong> to convert Hz to Bark. - This is similar to using the log scale for the axes–I wouldn’t do both! - This psychoacoustic scale is better at capturing the non-linear perception of frequencies. - That is, the perceptual difference between 100 and 200 Hz is perceived as greater than the difference between 2100 and 2200 Hz - The perceptual difference between Bark is more uniform - Using Bark values will produce a plot that looks more like the IPA vowel chart - <strong>Lobanov normalizing</strong> to compare whole vowel systems - Because everyone’s individual formant values vary so much, it can be hard to compare raw formant values across speakers - Taking the z-score of each formant relative to some category, usually a speaker, lets us focus on how the two vowel systems compare overall - In other words, it gives us a picture of the shape of someone’s vowel space - This is how we can make statements about one person’s [u] being more fronted than another’s, for example - For this to work well, you need to have <em>complete vowel spaces</em> for each speaker</p>
+<p>Let’s try normaling the Flege 94 data both ways and visualizing the results</p>
+<section id="convert-f1-and-f2-to-bark-using-barkify" class="level3">
+<h3 class="anchored" data-anchor-id="convert-f1-and-f2-to-bark-using-barkify">Convert F1 and F2 to Bark using <code>barkify</code></h3>
+<ul>
+<li>To use barkify, we need to give it the name of our data, and a list of the columns we want to convert</li>
+<li>In Python, a list goes withins square brackets <code>[]</code> with each item separated by a comma</li>
+<li>The new columns will have ‘z’ in front of the number, instead of ‘F,’ for example</li>
+</ul>
+<p>Let’s try converting F1 and F2 of Flege 94 to Bark and visualizing the results</p>
+<pre><code>barkify(voweldata, ["formant","formant"...])</code></pre>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>barkify(F94, [<span class="st">"F1"</span>,<span class="st">"F2"</span>])</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>F94.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>lg</th>
+      <th>Vowel</th>
+      <th>Ss</th>
+      <th>point</th>
+      <th>VOT</th>
+      <th>dur</th>
+      <th>F0</th>
+      <th>F1</th>
+      <th>F2</th>
+      <th>F3</th>
+      <th>z1</th>
+      <th>z2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>English</td>
+      <td>i</td>
+      <td>1</td>
+      <td>onset</td>
+      <td>10</td>
+      <td>119</td>
+      <td>131</td>
+      <td>312</td>
+      <td>2205</td>
+      <td>2726</td>
+      <td>3.151655</td>
+      <td>13.663529</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>English</td>
+      <td>i</td>
+      <td>1</td>
+      <td>midpoint</td>
+      <td>10</td>
+      <td>119</td>
+      <td>131</td>
+      <td>317</td>
+      <td>2299</td>
+      <td>2897</td>
+      <td>3.202442</td>
+      <td>13.941986</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>English</td>
+      <td>i</td>
+      <td>1</td>
+      <td>offset</td>
+      <td>10</td>
+      <td>119</td>
+      <td>131</td>
+      <td>320</td>
+      <td>2257</td>
+      <td>2829</td>
+      <td>3.232807</td>
+      <td>13.819104</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>English</td>
+      <td>i</td>
+      <td>2</td>
+      <td>onset</td>
+      <td>13</td>
+      <td>93</td>
+      <td>130</td>
+      <td>304</td>
+      <td>1995</td>
+      <td>2383</td>
+      <td>3.069929</td>
+      <td>12.993628</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>English</td>
+      <td>i</td>
+      <td>2</td>
+      <td>midpoint</td>
+      <td>13</td>
+      <td>93</td>
+      <td>130</td>
+      <td>281</td>
+      <td>2079</td>
+      <td>2516</td>
+      <td>2.831718</td>
+      <td>13.269948</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<section id="plot-the-data" class="level4">
+<h4 class="anchored" data-anchor-id="plot-the-data">Plot the data</h4>
+<p>Be sure to update your arguments! We’ve changed three things about the data that we need to pay attention to for the code to run and our plot to be accurate: - <code>F1, F2</code>: The name of our F1 and F2 columns are different and need to be specified in order for the code to run - <code>unit</code>: The unit has changed, so the axes need to be updated in order for our plot to be accurate - <code>logscale</code>: The scale has changed, from Hz to Bark, so it no longer makes sense to log transform the axes</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>vowelplot(F94,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>          F1 <span class="op">=</span> <span class="st">"z1"</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>          F2 <span class="op">=</span> <span class="st">"z2"</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>          color <span class="op">=</span> <span class="st">"lg"</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>          unit <span class="op">=</span> <span class="st">"Bark"</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>          logscale <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>&lt;AxesSubplot:title={'center':'Vowel Plot'}, xlabel='F2 (Bark)', ylabel='F1 (Bark)'&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="lobanov-normalize-vowel-spaces-by-ss-using-lobify" class="level3">
+<h3 class="anchored" data-anchor-id="lobanov-normalize-vowel-spaces-by-ss-using-lobify">Lobanov normalize vowel spaces by Ss using <code>Lobify</code></h3>
+<p>Next, lets try normalizing the vowel spaces based on Ss so that we can compare the vowel spaces for each <br> To use <code>Lobify</code> we need to specify: - data: the data we want to transform - group: the category we want to compare vowel spaces by (usually speaker) - formants: a list of the formant values we want to normalize</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Lobify(voweldata, </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>       group <span class="op">=</span> <span class="st">"GROUP"</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>       formants <span class="op">=</span> [<span class="st">"formant1"</span>,<span class="st">"formant2"</span>...]</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>      )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will add a column for each formant with ‘zsc_’ (for ‘z-score’) in front of the formant name.</p>
+<section id="subsetting" class="level4">
+<h4 class="anchored" data-anchor-id="subsetting">Subsetting</h4>
+<p>Before we normalize the data, let’s also subset it so that we’re only looking at English<br> Let’s also only look at the midpoint of each vowel.<br> This way we’ll have just one F1 and F2 value for each Ss-vowel pair.</p>
+<p>1 condition <code>New_Data = Old_Data[Old_Data.Column=="Category To Keep"]</code></p>
+<p>2 or more conditions<br> <code>New_Data = Old_Data[(Old_Data.Column=="Category To Keep") &amp; Old_Data.SecondColumn=="Category To Keep"])</code></p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>F94_2 <span class="op">=</span> F94[(F94.point<span class="op">==</span><span class="st">"midpoint"</span>) <span class="op">&amp;</span> (F94.lg<span class="op">==</span><span class="st">"English"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>F94_2 <span class="op">=</span> Lobify(F94_2,</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>       group <span class="op">=</span> <span class="st">"Ss"</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>       formants <span class="op">=</span> [<span class="st">"z1"</span>,<span class="st">"z2"</span>]</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>F94_2.sample(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>lg</th>
+      <th>Vowel</th>
+      <th>Ss</th>
+      <th>point</th>
+      <th>VOT</th>
+      <th>dur</th>
+      <th>F0</th>
+      <th>F1</th>
+      <th>F2</th>
+      <th>F3</th>
+      <th>z1</th>
+      <th>z2</th>
+      <th>zsc_z1</th>
+      <th>zsc_z2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>58</th>
+      <td>English</td>
+      <td>ʌ</td>
+      <td>2</td>
+      <td>midpoint</td>
+      <td>19</td>
+      <td>87</td>
+      <td>95</td>
+      <td>599</td>
+      <td>1200</td>
+      <td>2367</td>
+      <td>5.745572</td>
+      <td>9.651013</td>
+      <td>0.487282</td>
+      <td>-1.079360</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>English</td>
+      <td>a</td>
+      <td>3</td>
+      <td>midpoint</td>
+      <td>4</td>
+      <td>110</td>
+      <td>172</td>
+      <td>681</td>
+      <td>1190</td>
+      <td>1968</td>
+      <td>6.383143</td>
+      <td>9.598222</td>
+      <td>1.012362</td>
+      <td>-1.219642</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>English</td>
+      <td>i</td>
+      <td>3</td>
+      <td>midpoint</td>
+      <td>7</td>
+      <td>109</td>
+      <td>129</td>
+      <td>300</td>
+      <td>2180</td>
+      <td>2628</td>
+      <td>3.028850</td>
+      <td>13.587343</td>
+      <td>-1.408034</td>
+      <td>1.461580</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>English</td>
+      <td>i</td>
+      <td>2</td>
+      <td>midpoint</td>
+      <td>13</td>
+      <td>93</td>
+      <td>130</td>
+      <td>281</td>
+      <td>2079</td>
+      <td>2516</td>
+      <td>2.831718</td>
+      <td>13.269948</td>
+      <td>-1.569002</td>
+      <td>1.357100</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>English</td>
+      <td>a</td>
+      <td>1</td>
+      <td>midpoint</td>
+      <td>10</td>
+      <td>115</td>
+      <td>155</td>
+      <td>769</td>
+      <td>1129</td>
+      <td>2161</td>
+      <td>7.024742</td>
+      <td>9.268799</td>
+      <td>0.983154</td>
+      <td>-1.639149</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>English</td>
+      <td>ɛ</td>
+      <td>3</td>
+      <td>midpoint</td>
+      <td>2</td>
+      <td>114</td>
+      <td>118</td>
+      <td>552</td>
+      <td>1575</td>
+      <td>2533</td>
+      <td>5.361369</td>
+      <td>11.415050</td>
+      <td>0.275069</td>
+      <td>0.001508</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>English</td>
+      <td>e</td>
+      <td>3</td>
+      <td>midpoint</td>
+      <td>7</td>
+      <td>114</td>
+      <td>195</td>
+      <td>411</td>
+      <td>2020</td>
+      <td>2508</td>
+      <td>4.117368</td>
+      <td>13.077085</td>
+      <td>-0.622579</td>
+      <td>1.118618</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>English</td>
+      <td>i</td>
+      <td>1</td>
+      <td>midpoint</td>
+      <td>10</td>
+      <td>119</td>
+      <td>131</td>
+      <td>317</td>
+      <td>2299</td>
+      <td>2897</td>
+      <td>3.202442</td>
+      <td>13.941986</td>
+      <td>-1.592593</td>
+      <td>1.330189</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>English</td>
+      <td>æ</td>
+      <td>1</td>
+      <td>midpoint</td>
+      <td>7</td>
+      <td>116</td>
+      <td>165</td>
+      <td>777</td>
+      <td>1788</td>
+      <td>2562</td>
+      <td>7.081023</td>
+      <td>12.259829</td>
+      <td>1.021081</td>
+      <td>0.261349</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>English</td>
+      <td>ʌ</td>
+      <td>3</td>
+      <td>midpoint</td>
+      <td>12</td>
+      <td>119</td>
+      <td>96</td>
+      <td>562</td>
+      <td>1249</td>
+      <td>2348</td>
+      <td>5.444314</td>
+      <td>9.904930</td>
+      <td>0.334920</td>
+      <td>-1.013493</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>vowelplot(F94_2,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>          F1 <span class="op">=</span> <span class="st">"zsc_z1"</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>          F2 <span class="op">=</span> <span class="st">"zsc_z2"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>          color <span class="op">=</span> <span class="st">"Ss"</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>          unit <span class="op">=</span> <span class="st">"Lobanov normalized from Bark"</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>          logscale <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>&lt;AxesSubplot:title={'center':'Vowel Plot'}, xlabel='F2 (Lobanov normalized from Bark)', ylabel='F1 (Lobanov normalized from Bark)'&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="pseudocode-recap" class="level2">
+<h2 class="anchored" data-anchor-id="pseudocode-recap">6. Pseudocode recap</h2>
+<section id="to-import-a-csv-file-spreadsheet-with-pandas" class="level3">
+<h3 class="anchored" data-anchor-id="to-import-a-csv-file-spreadsheet-with-pandas">To import a csv file (spreadsheet) with pandas</h3>
+<pre><code>my_data = pd.read_csv('NameOfFile.csv')</code></pre>
+</section>
+<section id="to-plot-your-data" class="level3">
+<h3 class="anchored" data-anchor-id="to-plot-your-data">To plot your data</h3>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>vowelplot(my_data,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>          color <span class="op">=</span> <span class="st">"Column Name - color coding/hue"</span>, <span class="co"># use None for no color</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>          F1 <span class="op">=</span> <span class="st">"Column Name - Y-axis"</span>, <span class="co"># can omit if column is called F1</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>          F2 <span class="op">=</span> <span class="st">"Column Name - X-axis"</span>, <span class="co"># can omit column is called F2</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>          vowel <span class="op">=</span> <span class="st">"Column Name - point label"</span>, <span class="co"># can omit if column is called "Vowel",</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="co"># use vowel = None for no label</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>          title <span class="op">=</span> <span class="st">"Title to go at top of plot"</span>, <span class="co"># can omit if title is "Vowel plot",</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>                                      <span class="co"># use title = None for no title</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>          unit <span class="op">=</span> <span class="st">"Unit for axis labels"</span>, <span class="co"># can omit if unit is Hz</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>          logscale <span class="op">=</span> <span class="va">True</span><span class="op">/</span><span class="va">False</span> <span class="co"># can omit if logscale should be on</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>         )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="to-convert-hz-to-bark" class="level3">
+<h3 class="anchored" data-anchor-id="to-convert-hz-to-bark">To convert Hz to Bark</h3>
+<pre><code>my_data = barkify(my_data, ["Column Name - formant", "Column Name - formant"...])</code></pre>
+</section>
+<section id="to-lobanov-normalize-by-speaker" class="level3">
+<h3 class="anchored" data-anchor-id="to-lobanov-normalize-by-speaker">To Lobanov normalize by speaker</h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="op">=</span> lobify(my_data,</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                 group <span class="op">=</span> <span class="st">"Column Name - speaker or other grouping"</span>,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                 formants <span class="op">=</span> [<span class="st">"Column Name - formant"</span>, <span class="st">"Column Name - formant"</span>...]</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>BSD3</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{remirez2022,
+  author = {Emily Remirez},
+  title = {Vowel Plotting in {Python}},
+  series = {Linguistics Methods Hub},
+  date = {2022-10-20},
+  url = {https://lingmethodshub.github.io/content/python/vowel-plotting-py},
+  doi = {10.5281/zenodo.7232005},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-remirez2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Emily Remirez. 2022, October 20. Vowel plotting in Python.
+<em>Linguistics Methods Hub</em>. (<a href="https://lingmethodshub.github.io/content/python/vowel-plotting-py">https://lingmethodshub.github.io/content/python/vowel-plotting-py</a>).
+doi: <a href="https://doi.org/10.5281/zenodo.7232005">10.5281/zenodo.7232005</a>
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../content/python/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Python</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../content/praat/index.html" class="pagination-link">
+        <span class="nav-page-text">Praat</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
+
+
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

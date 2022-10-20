@@ -47,7 +47,9 @@
   },
   {
     "listing": "/content/python/index.html",
-    "items": []
+    "items": [
+      "/content/python/vowel-plotting-py/index.html"
+    ]
   },
   {
     "listing": "/content/tools/index.html",

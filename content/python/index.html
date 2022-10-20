@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/praat/index.html" rel="next">
+<link href="../../content/python/vowel-plotting-py/index.html" rel="next">
 <script src="../../site_libs/quarto-listing/list.min.js"></script>
 <script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
@@ -73,9 +73,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -291,7 +291,19 @@ cookieconsent.run({
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Python</span>
+      <div class="sidebar-item-container"> 
+            <a href="../../content/python/index.html" class="sidebar-item-text sidebar-link active">Python</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">Vowel plotting in Python</a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
@@ -400,7 +412,34 @@ cookieconsent.run({
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="python,vowels,data visualization" data-listing-date-sort="1666238400000" data-listing-file-modified-sort="1666299328700" data-listing-reading-time-sort="9.635">
+<div class="thumbnail">
+<p><a href="../../content/python/vowel-plotting-py/index.html"> <img src="../../content/python/vowel-plotting-py/index_files/figure-html/cell-15-output-1.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="../../content/python/vowel-plotting-py/index.html">
+<h3 class="no-anchor listing-title">
+Vowel plotting in Python
+</h3>
+<div class="listing-subtitle">
 
+</div>
+<div class="listing-description">
+<p>A tutorial on normalizing and plotting vowels in python with pandas, seaborn, and matplotlib.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../../content/python/vowel-plotting-py/index.html">
+<div class="listing-date">
+Oct 20, 2022
+</div>
+<div class="listing-author">
+Emily Remirez
+</div>
+</a>
+</div>
+</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items
@@ -543,8 +582,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/praat/index.html" class="pagination-link">
-        <span class="nav-page-text">Praat</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/python/vowel-plotting-py/index.html" class="pagination-link">
+        <span class="nav-page-text">Vowel plotting in Python</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
