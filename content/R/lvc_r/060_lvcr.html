@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.210">
+<meta name="generator" content="quarto-1.2.233">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -176,6 +176,18 @@ cookieconsent.run({
 <meta name="twitter:image-height" content="424">
 <meta name="twitter:image-width" content="653">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Crosstabs: Counts, Proportions, and More">
+<meta name="citation_author" content="Matt Hunt Gardner">
+<meta name="citation_publication_date" content="2022-09-27">
+<meta name="citation_cover_date" content="2022-09-27">
+<meta name="citation_year" content="2022">
+<meta name="citation_online_date" content="2022-09-27">
+<meta name="citation_fulltext_html_url" content="https://lingmethodshub.github.io/060_lvcr.html">
+<meta name="citation_doi" content="10.5281/zenodo.7160718">
+<meta name="citation_volume" content="Doing LVC with R">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Linguistics Methods Hub">
+<meta name="citation_series_title" content="Linguistics Methods Hub">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -195,11 +207,11 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html">
+    <a class="nav-link active" href="../../../index.html" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../../content/index.html" aria-current="page">
+    <a class="nav-link" href="../../../content/index.html">
  <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item">
@@ -247,7 +259,7 @@ cookieconsent.run({
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../../" class="sidebar-logo-link">
+      <a href="../../../index.html" class="sidebar-logo-link">
       <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
@@ -448,7 +460,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Crosstabs: Counts, Proportions, and More</h1>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Crosstabs: Counts, Proportions, and More</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 <div>
@@ -1764,6 +1776,8 @@ Column Total |      386  |      803  |     1189  |
 <p>The above results show that there are 32 tokens from old, educated females, 2 of which (or 6.25%) are <code>Deletion</code>.</p>
 
 
+<!-- -->
+
 </section>
 
 
@@ -1856,6 +1870,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -1935,7 +2000,580 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         <span class="nav-page-text">Proportions for <code>ggplot2</code></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb101" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Crosstabs: Counts, Proportions, and More"</span></span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-9-27"</span></span>
+<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA 4.0"</span></span>
+<span id="cb101-5"><a href="#cb101-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb101-6"><a href="#cb101-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html: default</span></span>
+<span id="cb101-7"><a href="#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf: default</span></span>
+<span id="cb101-8"><a href="#cb101-8" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
+<span id="cb101-9"><a href="#cb101-9" aria-hidden="true" tabindex="-1"></a><span class="co">  # - name:</span></span>
+<span id="cb101-10"><a href="#cb101-10" aria-hidden="true" tabindex="-1"></a><span class="co">  #     given: Matt Hunt</span></span>
+<span id="cb101-11"><a href="#cb101-11" aria-hidden="true" tabindex="-1"></a><span class="co">  #     family: Gardner</span></span>
+<span id="cb101-12"><a href="#cb101-12" aria-hidden="true" tabindex="-1"></a><span class="co">  name: "Matt Hunt Gardner"</span></span>
+<span id="cb101-13"><a href="#cb101-13" aria-hidden="true" tabindex="-1"></a><span class="co">  orcid: 0000-0002-1878-4232</span></span>
+<span id="cb101-14"><a href="#cb101-14" aria-hidden="true" tabindex="-1"></a><span class="co">  email: matt.gardner@ling-phil.ox.ac.uk</span></span>
+<span id="cb101-15"><a href="#cb101-15" aria-hidden="true" tabindex="-1"></a><span class="co">  corresponding: true</span></span>
+<span id="cb101-16"><a href="#cb101-16" aria-hidden="true" tabindex="-1"></a><span class="co">  affiliations:</span></span>
+<span id="cb101-17"><a href="#cb101-17" aria-hidden="true" tabindex="-1"></a><span class="co">    - name: University of Oxford </span></span>
+<span id="cb101-18"><a href="#cb101-18" aria-hidden="true" tabindex="-1"></a><span class="co">      department: Linguistics, Philology, &amp; Phonetics</span></span>
+<span id="cb101-19"><a href="#cb101-19" aria-hidden="true" tabindex="-1"></a><span class="co">      city: Oxford</span></span>
+<span id="cb101-20"><a href="#cb101-20" aria-hidden="true" tabindex="-1"></a><span class="co">      country: UK</span></span>
+<span id="cb101-21"><a href="#cb101-21" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Getting token counts and proportions. Getting mean, median, standard deviation, and quartiles. Dealing with decimals and exponential notation. "</span></span>
+<span id="cb101-22"><a href="#cb101-22" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb101-25"><a href="#cb101-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb101-26"><a href="#cb101-26" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb101-27"><a href="#cb101-27" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"renv/activate.R"</span>)</span>
+<span id="cb101-28"><a href="#cb101-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-29"><a href="#cb101-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-30"><a href="#cb101-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb101-31"><a href="#cb101-31" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb101-32"><a href="#cb101-32" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">tidy=</span><span class="st">'styler'</span>, <span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">strict=</span><span class="cn">TRUE</span>, <span class="at">scope=</span><span class="st">"tokens"</span>), <span class="at">tidy =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb101-33"><a href="#cb101-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-34"><a href="#cb101-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-35"><a href="#cb101-35" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb101-36"><a href="#cb101-36" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb101-37"><a href="#cb101-37" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-38"><a href="#cb101-38" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Before <span class="sc">!=</span> <span class="st">"Vowel"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-39"><a href="#cb101-39" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">After.New =</span> <span class="fu">recode</span>(After, <span class="st">"H"</span> <span class="ot">=</span> <span class="st">"Consonant"</span>),  </span>
+<span id="cb101-40"><a href="#cb101-40" aria-hidden="true" tabindex="-1"></a>             <span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)),</span>
+<span id="cb101-41"><a href="#cb101-41" aria-hidden="true" tabindex="-1"></a>             <span class="at">Age.Group =</span> <span class="fu">cut</span>(YOB, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">1944</span>, <span class="dv">1979</span>, <span class="cn">Inf</span>), </span>
+<span id="cb101-42"><a href="#cb101-42" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>)),</span>
+<span id="cb101-43"><a href="#cb101-43" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme =</span> <span class="fu">sub</span>(<span class="st">"^(.)(--.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, Phoneme.Dep.Var),</span>
+<span id="cb101-44"><a href="#cb101-44" aria-hidden="true" tabindex="-1"></a>             <span class="at">Dep.Var.Full =</span> <span class="fu">sub</span>(<span class="st">"^(.--)(.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, Phoneme.Dep.Var),</span>
+<span id="cb101-45"><a href="#cb101-45" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme.Dep.Var =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-46"><a href="#cb101-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate_if</span>(is.character, as.factor)</span>
+<span id="cb101-47"><a href="#cb101-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-48"><a href="#cb101-48" aria-hidden="true" tabindex="-1"></a>td.young <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb101-49"><a href="#cb101-49" aria-hidden="true" tabindex="-1"></a>            <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Young"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-50"><a href="#cb101-50" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb101-51"><a href="#cb101-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-52"><a href="#cb101-52" aria-hidden="true" tabindex="-1"></a>td.middle <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb101-53"><a href="#cb101-53" aria-hidden="true" tabindex="-1"></a>             <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Middle"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-54"><a href="#cb101-54" aria-hidden="true" tabindex="-1"></a>             <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb101-55"><a href="#cb101-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-56"><a href="#cb101-56" aria-hidden="true" tabindex="-1"></a>td.old <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb101-57"><a href="#cb101-57" aria-hidden="true" tabindex="-1"></a>          <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Old"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-58"><a href="#cb101-58" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb101-59"><a href="#cb101-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-60"><a href="#cb101-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-61"><a href="#cb101-61" aria-hidden="true" tabindex="-1"></a>It took me two years to figure out how to do cross-tabs in *R* the way that *Goldvarb* does cross-tabs. Below I show you how to build cross-tabs from scratch.</span>
+<span id="cb101-62"><a href="#cb101-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-63"><a href="#cb101-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## Token Counts</span></span>
+<span id="cb101-64"><a href="#cb101-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-65"><a href="#cb101-65" aria-hidden="true" tabindex="-1"></a>A good starting point is the function <span class="in">`table()`</span>. This function returns token numbers.<span class="ot">[^1]</span></span>
+<span id="cb101-66"><a href="#cb101-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-67"><a href="#cb101-67" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>If you don't have the <span class="in">`td`</span> dataset loaded in *R*, go back to <span class="co">[</span><span class="ot">Doing it all again, but `tidy`</span><span class="co">](050_lvcr.qmd)</span> and run the code.</span>
+<span id="cb101-68"><a href="#cb101-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-69"><a href="#cb101-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
+<span id="cb101-70"><a href="#cb101-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by level of Dep.Var</span></span>
+<span id="cb101-71"><a href="#cb101-71" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(td<span class="sc">$</span>Dep.Var)</span>
+<span id="cb101-72"><a href="#cb101-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-73"><a href="#cb101-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-74"><a href="#cb101-74" aria-hidden="true" tabindex="-1"></a>This tells you that there are 386 <span class="in">`Deletion`</span> tokens and 803 not deleted, or <span class="in">`Realized`</span> tokens. If you add another factor group like <span class="in">`Age.Group`</span>, you get the number of tokens for each level of <span class="in">`Dep.Var`</span> for each level of that additional factor group. These two factor groups are returned as the rows and then columns in the table.</span>
+<span id="cb101-75"><a href="#cb101-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-76"><a href="#cb101-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
+<span id="cb101-77"><a href="#cb101-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by level of Dep.Var and Age.Group</span></span>
+<span id="cb101-78"><a href="#cb101-78" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group)</span>
+<span id="cb101-79"><a href="#cb101-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-80"><a href="#cb101-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-81"><a href="#cb101-81" aria-hidden="true" tabindex="-1"></a>If you add one more factor group, <span class="in">`Sex`</span>, it divides the data in what *R* calls "pages". The first page is the number of tokens for each level of <span class="in">`Dep.Var`</span> by each level of <span class="in">`Age.Group`</span> for female data (<span class="in">`Sex = F`</span>), and then the same for the male data (<span class="in">`Sex = M`</span>).</span>
+<span id="cb101-82"><a href="#cb101-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-83"><a href="#cb101-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,attr.output='style="max-height: 500px;"', R.options = list(width = 1000)}</span></span>
+<span id="cb101-84"><a href="#cb101-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by Dep.Var, Sex, and Age.Group</span></span>
+<span id="cb101-85"><a href="#cb101-85" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex)</span>
+<span id="cb101-86"><a href="#cb101-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-87"><a href="#cb101-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-88"><a href="#cb101-88" aria-hidden="true" tabindex="-1"></a>You can add the option <span class="in">`deparse.level = 2`</span> to include the names of the columns in the table.</span>
+<span id="cb101-89"><a href="#cb101-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-90"><a href="#cb101-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,attr.output='style="max-height: 500px;"', R.options = list(width = 1000)}</span></span>
+<span id="cb101-91"><a href="#cb101-91" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by Dep.Var, Sex, and Age.Group</span></span>
+<span id="cb101-92"><a href="#cb101-92" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, <span class="at">deparse.level =</span> <span class="dv">2</span>)</span>
+<span id="cb101-93"><a href="#cb101-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-94"><a href="#cb101-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-95"><a href="#cb101-95" aria-hidden="true" tabindex="-1"></a>If you wrap the <span class="in">`table()`</span> function in the <span class="in">`addmargins()`</span> function you get the sums of each row and column, and another page for both the male and the female data together.</span>
+<span id="cb101-96"><a href="#cb101-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-97"><a href="#cb101-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,attr.output='style="max-height: 500px;"', R.options = list(width = 1000)}</span></span>
+<span id="cb101-98"><a href="#cb101-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by Dep.Var, Sex, and Age.Group, with column, row and page totals</span></span>
+<span id="cb101-99"><a href="#cb101-99" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex,  <span class="at">deparse.level =</span> <span class="dv">2</span>))</span>
+<span id="cb101-100"><a href="#cb101-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-101"><a href="#cb101-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-102"><a href="#cb101-102" aria-hidden="true" tabindex="-1"></a>If you change the order of factor groups you include in the <span class="in">`table()`</span> function you can change which factors are rows, which are columns, and which are pages. You can also keep adding factors as additional pages. The order is always: rows, columns, page 1, page 2, etc.</span>
+<span id="cb101-103"><a href="#cb101-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-104"><a href="#cb101-104" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,attr.output='style="max-height: 500px;"', R.options = list(width = 1000)}</span></span>
+<span id="cb101-105"><a href="#cb101-105" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by Age.Group, Education, Sex, and Dep.Var, with row, column, and page totals </span></span>
+<span id="cb101-106"><a href="#cb101-106" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Education, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var,  <span class="at">deparse.level =</span> <span class="dv">2</span>))</span>
+<span id="cb101-107"><a href="#cb101-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-108"><a href="#cb101-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-109"><a href="#cb101-109" aria-hidden="true" tabindex="-1"></a>The above function produces 9 "pages", one for each combination of <span class="in">`Sex`</span> (two levels) and <span class="in">`Dep.Var`</span> (two levels), plus the sum of each (one additional level each), and the sum for both. With more than three factor groups like this it is very useful to have the column names included in the output. Scroll to the sixth page, for example (the one that begins <span class="in">`, , td$Sex = Sum, td$Dep.Var = Realized`</span>). It shows the number of tokens by <span class="in">`Age.Group`</span> and <span class="in">`Education`</span> (the first two factor groups in the function), when <span class="in">`Sex`</span> equals <span class="in">`Sum`</span> (e.g., <span class="in">`M`</span> and <span class="in">`F`</span> combined) and <span class="in">`Dep.Var`</span> equals <span class="in">`Realized`</span>.</span>
+<span id="cb101-110"><a href="#cb101-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-111"><a href="#cb101-111" aria-hidden="true" tabindex="-1"></a>One advantage of doing cross-tabs in *R*, rather than *Goldvarb*, is that you can simultaneously cross more than two factor groups at once. But, the presentation of these factors in pages may not be the most useful. The function <span class="in">`ftable()`</span> in the package <span class="in">`vcd`</span> presents the cross-tab in a more condensed format. The last factor group in the <span class="in">`table()`</span> function will be the variable for the columns in <span class="in">`ftable()`</span>, so you always want to make that the dependent variable. Below is the <span class="in">`ftable()`</span> for the cross-tab of <span class="in">`Age.Group`</span>, <span class="in">`Education`</span>, <span class="in">`Sex`</span>, and <span class="in">`Dep.Var`</span>. You can see, for example, that there are 52 <span class="in">`Deletion`</span> tokens from young, student, female speakers and that there are no tokens from old, educated men.</span>
+<span id="cb101-112"><a href="#cb101-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-113"><a href="#cb101-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-114"><a href="#cb101-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by Age.Group, Education, Sex, and Dep.Var, with row, column and page totals, presented in a flattened table</span></span>
+<span id="cb101-115"><a href="#cb101-115" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb101-116"><a href="#cb101-116" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Education, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var))</span>
+<span id="cb101-117"><a href="#cb101-117" aria-hidden="true" tabindex="-1"></a><span class="co"># Do the same but include the margin values</span></span>
+<span id="cb101-118"><a href="#cb101-118" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(<span class="fu">addmargins</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Education, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var)))</span>
+<span id="cb101-119"><a href="#cb101-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-120"><a href="#cb101-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-121"><a href="#cb101-121" aria-hidden="true" tabindex="-1"></a>Of course we can use the pipe <span class="in">`%&gt;%`</span> to make things a bit easier</span>
+<span id="cb101-122"><a href="#cb101-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-123"><a href="#cb101-123" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-124"><a href="#cb101-124" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by Age.Group, Education, Sex, and Dep.Var, with row, column and page totals, presented in a flattened table</span></span>
+<span id="cb101-125"><a href="#cb101-125" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Education, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var) <span class="sc">%&gt;%</span> </span>
+<span id="cb101-126"><a href="#cb101-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addmargins</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb101-127"><a href="#cb101-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ftable</span>()</span>
+<span id="cb101-128"><a href="#cb101-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-129"><a href="#cb101-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-130"><a href="#cb101-130" aria-hidden="true" tabindex="-1"></a>Another <span class="in">`tidy`</span> way to find out the number of tokens by the different levels of a factor group is using the <span class="in">`group_by()`</span> and <span class="in">`tally()`</span> functions. First, we specify how to group the data, i.e., what combination of factors we want to investigate. In this case, we want the number of tokens for every combination of <span class="in">`Age.Group`</span>, <span class="in">`Education`</span>, <span class="in">`Sex`</span> and <span class="in">`Dep.Var`</span>. Next we use the <span class="in">`tally()`</span> function to provide the token counts for each of those combinations. The results are very similar to those produced by <span class="in">`ftable(table())`</span>. </span>
+<span id="cb101-131"><a href="#cb101-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-132"><a href="#cb101-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-133"><a href="#cb101-133" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data by Age, Education, and Sex then tally each group</span></span>
+<span id="cb101-134"><a href="#cb101-134" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span> </span>
+<span id="cb101-135"><a href="#cb101-135" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Education, Sex, Dep.Var) <span class="sc">%&gt;%</span></span>
+<span id="cb101-136"><a href="#cb101-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span>
+<span id="cb101-137"><a href="#cb101-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-138"><a href="#cb101-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-139"><a href="#cb101-139" aria-hidden="true" tabindex="-1"></a>As the results of <span class="in">`tally()`</span> is a *tibble*, only the first 10 rows will be printed. To print all the rows add <span class="in">`print(n=Inf)`</span> at the end.</span>
+<span id="cb101-140"><a href="#cb101-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-141"><a href="#cb101-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-142"><a href="#cb101-142" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data by Age, Education, and Sex, tally each group, then print all rows</span></span>
+<span id="cb101-143"><a href="#cb101-143" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span> </span>
+<span id="cb101-144"><a href="#cb101-144" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Education, Sex, Dep.Var) <span class="sc">%&gt;%</span> </span>
+<span id="cb101-145"><a href="#cb101-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb101-146"><a href="#cb101-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="cn">Inf</span>)</span>
+<span id="cb101-147"><a href="#cb101-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-148"><a href="#cb101-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-149"><a href="#cb101-149" aria-hidden="true" tabindex="-1"></a>The above code gives us the number of <span class="in">`Realized`</span> and <span class="in">`Deletion`</span> tokens for each combination of <span class="in">`Age.Group`</span>, <span class="in">`Education`</span>, and <span class="in">`Sex`</span>. What if we want the total number of tokens for each combination, rather than the number of each level of <span class="in">`Dep.Var`</span>. In this case, you can just drop <span class="in">`Dep.Var`</span> from the <span class="in">`group_by()`</span> function.</span>
+<span id="cb101-150"><a href="#cb101-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-151"><a href="#cb101-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-152"><a href="#cb101-152" aria-hidden="true" tabindex="-1"></a><span class="co"># Get total number of tokens per group by removing Dep.Var</span></span>
+<span id="cb101-153"><a href="#cb101-153" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span> </span>
+<span id="cb101-154"><a href="#cb101-154" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Education, Sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb101-155"><a href="#cb101-155" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb101-156"><a href="#cb101-156" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="cn">Inf</span>)</span>
+<span id="cb101-157"><a href="#cb101-157" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-158"><a href="#cb101-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-159"><a href="#cb101-159" aria-hidden="true" tabindex="-1"></a>We know now that there are 32 tokens from <span class="in">`Old`</span>, <span class="in">`Educated`</span>, <span class="in">`F`</span> (female) speakers. The previous <span class="in">`tally()`</span> shows us that 2 of the tokens are <span class="in">`Deletion`</span> and 30 are of <span class="in">`Realized`</span>.</span>
+<span id="cb101-160"><a href="#cb101-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-161"><a href="#cb101-161" aria-hidden="true" tabindex="-1"></a>An alternative to <span class="in">`tally()`</span> is the much more flexible <span class="in">`summarize()`</span> function.<span class="ot">[^2]</span> With this function you can apply a summary statistic function to each combination of the grouping variables. If no summary statistic function is created, the a tibble of the combination of the groups is produced.</span>
+<span id="cb101-162"><a href="#cb101-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-163"><a href="#cb101-163" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span><span class="in">`summarise()`</span> and <span class="in">`summarize()`</span> are synonyms.</span>
+<span id="cb101-164"><a href="#cb101-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-165"><a href="#cb101-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-166"><a href="#cb101-166" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tibble of all combinations of Age.Group, Education, and Sex (for which there are rows of data)</span></span>
+<span id="cb101-167"><a href="#cb101-167" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-168"><a href="#cb101-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Education, Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-169"><a href="#cb101-169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>()</span>
+<span id="cb101-170"><a href="#cb101-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-171"><a href="#cb101-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-172"><a href="#cb101-172" aria-hidden="true" tabindex="-1"></a>To get the count, or number of rows, of each combination, we create a new column in the tibble that is the output of <span class="in">`summarize()`</span> and assign to it the value of the count function <span class="in">`n()`</span></span>
+<span id="cb101-173"><a href="#cb101-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-174"><a href="#cb101-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-175"><a href="#cb101-175" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tibble of grouping variables, then add a new column "Tokens" with the value of the count function </span></span>
+<span id="cb101-176"><a href="#cb101-176" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-177"><a href="#cb101-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Education, Sex, Dep.Var) <span class="sc">%&gt;%</span></span>
+<span id="cb101-178"><a href="#cb101-178" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Tokens =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb101-179"><a href="#cb101-179" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>) </span>
+<span id="cb101-180"><a href="#cb101-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-181"><a href="#cb101-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-182"><a href="#cb101-182" aria-hidden="true" tabindex="-1"></a>The <span class="in">`summarize()`</span> function can be used with a number of summary statistic functions, including, but not limited to. the following:</span>
+<span id="cb101-183"><a href="#cb101-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-184"><a href="#cb101-184" aria-hidden="true" tabindex="-1"></a>| Type     | Some Useful Functions        |</span>
+<span id="cb101-185"><a href="#cb101-185" aria-hidden="true" tabindex="-1"></a>|----------|------------------------------|</span>
+<span id="cb101-186"><a href="#cb101-186" aria-hidden="true" tabindex="-1"></a>| Center   | <span class="in">`mean()`</span>, <span class="in">`median()`</span>         |</span>
+<span id="cb101-187"><a href="#cb101-187" aria-hidden="true" tabindex="-1"></a>| Spread   | <span class="in">`sd()`</span>, <span class="in">`IQR()`</span>              |</span>
+<span id="cb101-188"><a href="#cb101-188" aria-hidden="true" tabindex="-1"></a>| Range    | <span class="in">`min()`</span>, <span class="in">`max()`</span>             |</span>
+<span id="cb101-189"><a href="#cb101-189" aria-hidden="true" tabindex="-1"></a>| Position | <span class="in">`first()`</span>, <span class="in">`last()`</span>, <span class="in">`nth()`</span> |</span>
+<span id="cb101-190"><a href="#cb101-190" aria-hidden="true" tabindex="-1"></a>| Count    | <span class="in">`n()`</span>, <span class="in">`n_distinct()`</span>        |</span>
+<span id="cb101-191"><a href="#cb101-191" aria-hidden="true" tabindex="-1"></a>| Logical  | <span class="in">`any()`</span>, <span class="in">`all()`</span>             |</span>
+<span id="cb101-192"><a href="#cb101-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-193"><a href="#cb101-193" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary Statistics for Continous Variables</span></span>
+<span id="cb101-194"><a href="#cb101-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-195"><a href="#cb101-195" aria-hidden="true" tabindex="-1"></a>This seems like an appropriate place to describe how to summarize values that are continous, like <span class="in">`YOB`</span>. Normally in variationist sociolinguistics we are very concerned with frequency and proportion of usage, and we will explore how to generate those statistics in the following section. Here, however, let's explore the functions available to use inside <span class="in">`summarize()`</span>. These functions can be used on their own, also. For example, the first two, <span class="in">`mean()`</span> and <span class="in">`median()`</span> provide the arithmetic mean (basically the average) of a set of numbers while the <span class="in">`median()`</span> provides the exact middle number of a set of values organized from smallest to largest (if there are an even number of values, <span class="in">`median()`</span> returns the halfway point between the two middle numbers).</span>
+<span id="cb101-196"><a href="#cb101-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-199"><a href="#cb101-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb101-200"><a href="#cb101-200" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth</span></span>
+<span id="cb101-201"><a href="#cb101-201" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(td<span class="sc">$</span>YOB)</span>
+<span id="cb101-202"><a href="#cb101-202" aria-hidden="true" tabindex="-1"></a><span class="co"># Get median year of birth</span></span>
+<span id="cb101-203"><a href="#cb101-203" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(td<span class="sc">$</span>YOB)</span>
+<span id="cb101-204"><a href="#cb101-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-205"><a href="#cb101-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-206"><a href="#cb101-206" aria-hidden="true" tabindex="-1"></a>We already know that the mean year of birth for the <span class="in">`td`</span> data set is 1969.447. You can also see that the middle number of all years of birth organized from oldest to youngest is 1984. If we wanted to find the mean or median year of birth for either just male or just female speakers, we have two options. We can use the base filter technique, or we can use the <span class="in">`tidy`</span> method to group the data and summarize it.</span>
+<span id="cb101-207"><a href="#cb101-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-208"><a href="#cb101-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-209"><a href="#cb101-209" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth of just female speakers</span></span>
+<span id="cb101-210"><a href="#cb101-210" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(td<span class="sc">$</span>YOB[td<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">"F"</span>])</span>
+<span id="cb101-211"><a href="#cb101-211" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth of just male speaker</span></span>
+<span id="cb101-212"><a href="#cb101-212" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(td<span class="sc">$</span>YOB[td<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">"M"</span>])</span>
+<span id="cb101-213"><a href="#cb101-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-214"><a href="#cb101-214" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth for each level of Sex</span></span>
+<span id="cb101-215"><a href="#cb101-215" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-216"><a href="#cb101-216" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-217"><a href="#cb101-217" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB))</span>
+<span id="cb101-218"><a href="#cb101-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-219"><a href="#cb101-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-220"><a href="#cb101-220" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dealing with Decimals</span></span>
+<span id="cb101-221"><a href="#cb101-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-222"><a href="#cb101-222" aria-hidden="true" tabindex="-1"></a>*Tibbles* are intended to be succinct and concise, so they provide very few values after the decimal place by default. If you require more decimal values, the easiest (trust me) thing to do is to convert the tibble into a *data frame*.</span>
+<span id="cb101-223"><a href="#cb101-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-224"><a href="#cb101-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-225"><a href="#cb101-225" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by Sex, converted to data frame </span></span>
+<span id="cb101-226"><a href="#cb101-226" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-227"><a href="#cb101-227" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-228"><a href="#cb101-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB)) <span class="sc">%&gt;%</span></span>
+<span id="cb101-229"><a href="#cb101-229" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb101-230"><a href="#cb101-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-231"><a href="#cb101-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-232"><a href="#cb101-232" aria-hidden="true" tabindex="-1"></a>*data frames* will display whole numbers, and numbers with decimals up to the total number of digits set by `options()` function. Keep in mind, though, that changing this value changes the global options for *R*. An alternative is to use the <span class="in">`format()`</span> function.</span>
+<span id="cb101-233"><a href="#cb101-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-234"><a href="#cb101-234" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-235"><a href="#cb101-235" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 10</span></span>
+<span id="cb101-236"><a href="#cb101-236" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">6</span>)</span>
+<span id="cb101-237"><a href="#cb101-237" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex, converted to data frame</span></span>
+<span id="cb101-238"><a href="#cb101-238" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-239"><a href="#cb101-239" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-240"><a href="#cb101-240" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB)) <span class="sc">%&gt;%</span></span>
+<span id="cb101-241"><a href="#cb101-241" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb101-242"><a href="#cb101-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-243"><a href="#cb101-243" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 10</span></span>
+<span id="cb101-244"><a href="#cb101-244" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">10</span>)</span>
+<span id="cb101-245"><a href="#cb101-245" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex, converted to data frame</span></span>
+<span id="cb101-246"><a href="#cb101-246" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-247"><a href="#cb101-247" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-248"><a href="#cb101-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB)) <span class="sc">%&gt;%</span></span>
+<span id="cb101-249"><a href="#cb101-249" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb101-250"><a href="#cb101-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-251"><a href="#cb101-251" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 3</span></span>
+<span id="cb101-252"><a href="#cb101-252" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb101-253"><a href="#cb101-253" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex, converted to data frame</span></span>
+<span id="cb101-254"><a href="#cb101-254" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-255"><a href="#cb101-255" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-256"><a href="#cb101-256" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB)) <span class="sc">%&gt;%</span></span>
+<span id="cb101-257"><a href="#cb101-257" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb101-258"><a href="#cb101-258" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format</span>(<span class="at">digits =</span> <span class="dv">10</span>)</span>
+<span id="cb101-259"><a href="#cb101-259" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-260"><a href="#cb101-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-261"><a href="#cb101-261" aria-hidden="true" tabindex="-1"></a>For very large numbers *R* will often display values in exponential notation. We can alter this by setting the value of `scipen` inside the `option()` function. Gain, though, remember that this is a global change for your whole *R* session. For <span class="in">`scipen`</span> positive values increase the likelihood of using real numbers, negative values increase the likelihood of using exponential notation. To ensure printouts are always real numbers, set <span class="in">`scipen`</span> to 9999 (this is the default). To ensure printouts are always exponential notation, set <span class="in">`scipen`</span> to -9999. To demonstrate, below we multiply mean <span class="in">`YOB`</span> by 10000.</span>
+<span id="cb101-262"><a href="#cb101-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-263"><a href="#cb101-263" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-264"><a href="#cb101-264" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 6, alter the likelihood of use of real number rather than scientific notation by 0</span></span>
+<span id="cb101-265"><a href="#cb101-265" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">6</span>, <span class="at">scipen =</span> <span class="dv">0</span>)</span>
+<span id="cb101-266"><a href="#cb101-266" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame</span></span>
+<span id="cb101-267"><a href="#cb101-267" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-268"><a href="#cb101-268" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-269"><a href="#cb101-269" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB) <span class="sc">*</span> <span class="dv">100000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-270"><a href="#cb101-270" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb101-271"><a href="#cb101-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-272"><a href="#cb101-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-273"><a href="#cb101-273" aria-hidden="true" tabindex="-1"></a>With <span class="in">`scipen`</span> set to 0, we still get real numbers as the values <span class="in">`Mean.YOB`</span> are not too big. To ensure we have real numbers, though, we change the <span class="in">`scipen`</span> value.</span>
+<span id="cb101-274"><a href="#cb101-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-275"><a href="#cb101-275" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-276"><a href="#cb101-276" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 6, alter the likelihood of use of real number rather than scientific notation by 9999</span></span>
+<span id="cb101-277"><a href="#cb101-277" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">6</span>, <span class="at">scipen =</span> <span class="dv">9999</span>)</span>
+<span id="cb101-278"><a href="#cb101-278" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame</span></span>
+<span id="cb101-279"><a href="#cb101-279" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-280"><a href="#cb101-280" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-281"><a href="#cb101-281" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB) <span class="sc">*</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-282"><a href="#cb101-282" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb101-283"><a href="#cb101-283" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-284"><a href="#cb101-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-285"><a href="#cb101-285" aria-hidden="true" tabindex="-1"></a>If, instead we prefer exponential notation, we use the maximum negative <span class="in">`scipen`</span> value, -9999/</span>
+<span id="cb101-286"><a href="#cb101-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-287"><a href="#cb101-287" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-288"><a href="#cb101-288" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 6, alter the likelihood of use of real number rather than scientific notation by -9999</span></span>
+<span id="cb101-289"><a href="#cb101-289" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">6</span>, <span class="at">scipen =</span> <span class="sc">-</span><span class="dv">9999</span>)</span>
+<span id="cb101-290"><a href="#cb101-290" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame</span></span>
+<span id="cb101-291"><a href="#cb101-291" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-292"><a href="#cb101-292" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-293"><a href="#cb101-293" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB) <span class="sc">*</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-294"><a href="#cb101-294" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb101-295"><a href="#cb101-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-296"><a href="#cb101-296" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-297"><a href="#cb101-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-298"><a href="#cb101-298" aria-hidden="true" tabindex="-1"></a>Above, the value <span class="in">`1.96349e+07`</span> means $1.96349 \times 10^7$. The easiest way to calculate this is to simply move the decimal places 7 spaces to the right (as the exponent is positive), which gives <span class="in">`19634900`</span>. Notice some precision is lost because our number of <span class="in">`digits`</span> is only 6.</span>
+<span id="cb101-299"><a href="#cb101-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-300"><a href="#cb101-300" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-301"><a href="#cb101-301" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 10, alter the likelihood of use of real number rather than scientific notation by -9999</span></span>
+<span id="cb101-302"><a href="#cb101-302" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">10</span>, <span class="at">scipen =</span> <span class="sc">-</span><span class="dv">9999</span>)</span>
+<span id="cb101-303"><a href="#cb101-303" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame</span></span>
+<span id="cb101-304"><a href="#cb101-304" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-305"><a href="#cb101-305" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-306"><a href="#cb101-306" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB) <span class="sc">*</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-307"><a href="#cb101-307" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb101-308"><a href="#cb101-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-309"><a href="#cb101-309" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-310"><a href="#cb101-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-311"><a href="#cb101-311" aria-hidden="true" tabindex="-1"></a>Now, with more <span class="in">`digits`</span> we have more precision; $1.963487102 \times 10^7 = 19634671.02$. If the exponential values are negative, move the decimal place to the left. For example, $1.963487102 \times 10^-7 = 0.0000001963467102$.</span>
+<span id="cb101-312"><a href="#cb101-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-313"><a href="#cb101-313" aria-hidden="true" tabindex="-1"></a>Similarly, we can set whether or not we want scientific notation using the <span class="in">`format()`</span> function. The <span class="in">`scientific`</span> option can be either <span class="in">`TRUE`</span> or <span class="in">`FALSE`</span>, or a value like <span class="in">`scipen`</span>.</span>
+<span id="cb101-314"><a href="#cb101-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-315"><a href="#cb101-315" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-316"><a href="#cb101-316" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 3, alter the likelihood of use of real number rather than scientific notation by 9999</span></span>
+<span id="cb101-317"><a href="#cb101-317" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">scipen =</span> <span class="dv">9999</span>)</span>
+<span id="cb101-318"><a href="#cb101-318" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame, digits formatted to 10 significant digits, and exponential notation</span></span>
+<span id="cb101-319"><a href="#cb101-319" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-320"><a href="#cb101-320" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-321"><a href="#cb101-321" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB) <span class="sc">*</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-322"><a href="#cb101-322" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb101-323"><a href="#cb101-323" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format</span>(<span class="at">digits =</span> <span class="dv">10</span>, <span class="at">scientific =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb101-324"><a href="#cb101-324" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-325"><a href="#cb101-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-326"><a href="#cb101-326" aria-hidden="true" tabindex="-1"></a><span class="fu">## More Summary Statistics for Continous Variables</span></span>
+<span id="cb101-327"><a href="#cb101-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-328"><a href="#cb101-328" aria-hidden="true" tabindex="-1"></a>The other summary statistics for continuous variables include spread functions and the range functions. Some spread functions are <span class="in">`sd()`</span>, which returns the standard deviation; and <span class="in">`IQR()`</span> which returns the interquartile range.<span class="ot">[^3]</span> Some range functions include: <span class="in">`min()`</span>, which returns the lowest value; <span class="in">`max()`</span>, which returns the highest value. To find the maximum spread (from highest to lowest), we can either subtract the <span class="in">`min()`</span> value from the <span class="in">`max()`</span> value, or employ the <span class="in">`diff()`</span> function plus the <span class="in">`range()`</span> function(which produces a vector containing the minimum and maximum values).</span>
+<span id="cb101-329"><a href="#cb101-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-330"><a href="#cb101-330" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>If we order the data from lowest to highest values, 50% of the data will be less than the mean, and 50% of the data will be higher than the mean. The mean is also called the 2nd quartile. The first quartile is halfway between the mean and the lowest value in the data. The third quartile is halfway betwen the mean and the highest value in the data. The interquartile range is the difference between the 3rd quartile and the 1st quartile and represents the spread of the middle 50% of the data.</span>
+<span id="cb101-331"><a href="#cb101-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-332"><a href="#cb101-332" aria-hidden="true" tabindex="-1"></a>We can include these functions inside the same <span class="in">`summarize()`</span> function as we used above.</span>
+<span id="cb101-333"><a href="#cb101-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-334"><a href="#cb101-334" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-335"><a href="#cb101-335" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean, standard deviation, interquartile range, minimum value, maximum value, and range of values (twice) for year of birth</span></span>
+<span id="cb101-336"><a href="#cb101-336" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-337"><a href="#cb101-337" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-338"><a href="#cb101-338" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB), </span>
+<span id="cb101-339"><a href="#cb101-339" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD.YOB =</span> <span class="fu">sd</span>(YOB), </span>
+<span id="cb101-340"><a href="#cb101-340" aria-hidden="true" tabindex="-1"></a>            <span class="at">IQR.YOB =</span> <span class="fu">IQR</span>(YOB), </span>
+<span id="cb101-341"><a href="#cb101-341" aria-hidden="true" tabindex="-1"></a>            <span class="at">Min.YOB =</span> <span class="fu">min</span>(YOB), </span>
+<span id="cb101-342"><a href="#cb101-342" aria-hidden="true" tabindex="-1"></a>            <span class="at">Max.YOB =</span> <span class="fu">max</span>(YOB), </span>
+<span id="cb101-343"><a href="#cb101-343" aria-hidden="true" tabindex="-1"></a>            <span class="at">Range =</span> <span class="fu">max</span>(YOB) <span class="sc">-</span> <span class="fu">min</span>(YOB), </span>
+<span id="cb101-344"><a href="#cb101-344" aria-hidden="true" tabindex="-1"></a>            <span class="at">Range2 =</span> <span class="fu">diff</span>(<span class="fu">range</span>(YOB)))</span>
+<span id="cb101-345"><a href="#cb101-345" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-346"><a href="#cb101-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-347"><a href="#cb101-347" aria-hidden="true" tabindex="-1"></a>Based on these values, we can make the following statements:</span>
+<span id="cb101-348"><a href="#cb101-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-349"><a href="#cb101-349" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Among females in the (t, d) data, the average or mean year of birth is 1963 $\pm$ 26.5 years.</span>
+<span id="cb101-350"><a href="#cb101-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-351"><a href="#cb101-351" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The oldest female speakers was born in 1915, and the youngest female speaker was born in 1999.</span>
+<span id="cb101-352"><a href="#cb101-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-353"><a href="#cb101-353" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Fifty-percent of women were born in the 45 years centered around 1963.</span>
+<span id="cb101-354"><a href="#cb101-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-355"><a href="#cb101-355" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The female data represents 84 years of <span class="co">[</span><span class="ot">apparent time</span><span class="co">](https://en.wikipedia.org/wiki/Apparent-time_hypothesis)</span>.</span>
+<span id="cb101-356"><a href="#cb101-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-357"><a href="#cb101-357" aria-hidden="true" tabindex="-1"></a><span class="fu">## Position functions with `summarize()`</span></span>
+<span id="cb101-358"><a href="#cb101-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-359"><a href="#cb101-359" aria-hidden="true" tabindex="-1"></a>The position functions <span class="in">`first()`</span>, <span class="in">`last()`</span>, and <span class="in">`nth()`</span> also work on the data created by <span class="in">`group_by()`</span> and <span class="in">`summarize()`</span>. <span class="in">`first()`</span> returns the first value, <span class="in">`last()`</span> returns the last value, and <span class="in">`nth()`</span> returns the value after a specific number of rows. </span>
+<span id="cb101-360"><a href="#cb101-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-361"><a href="#cb101-361" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-362"><a href="#cb101-362" aria-hidden="true" tabindex="-1"></a><span class="co"># Get first six rows of just Sex and Dep.Var columns of td</span></span>
+<span id="cb101-363"><a href="#cb101-363" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-364"><a href="#cb101-364" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sex, Dep.Var) <span class="sc">%&gt;%</span></span>
+<span id="cb101-365"><a href="#cb101-365" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb101-366"><a href="#cb101-366" aria-hidden="true" tabindex="-1"></a><span class="co"># Get last six rows of just Sex and Dep.Var columns of td</span></span>
+<span id="cb101-367"><a href="#cb101-367" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-368"><a href="#cb101-368" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sex, Dep.Var) <span class="sc">%&gt;%</span></span>
+<span id="cb101-369"><a href="#cb101-369" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>()</span>
+<span id="cb101-370"><a href="#cb101-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-371"><a href="#cb101-371" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-372"><a href="#cb101-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-373"><a href="#cb101-373" aria-hidden="true" tabindex="-1"></a>Above we use the <span class="in">`select()`</span> function to choose just the <span class="in">`Sex`</span> and <span class="in">`Dep.Var`</span> columns and run the <span class="in">`head()`</span> and <span class="in">`tail()`</span> functions in order to see the first and last six values for both in the data. We do this just for comparisons sake. Now, lets use the position functions an compare them to our results. </span>
+<span id="cb101-374"><a href="#cb101-374" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-375"><a href="#cb101-375" aria-hidden="true" tabindex="-1"></a><span class="co"># Get first, last, second, and second to last value of Dep.Var by Sex</span></span>
+<span id="cb101-376"><a href="#cb101-376" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-377"><a href="#cb101-377" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-378"><a href="#cb101-378" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">First =</span> <span class="fu">first</span>(Dep.Var), </span>
+<span id="cb101-379"><a href="#cb101-379" aria-hidden="true" tabindex="-1"></a>            <span class="at">Last =</span> <span class="fu">last</span>(Dep.Var), </span>
+<span id="cb101-380"><a href="#cb101-380" aria-hidden="true" tabindex="-1"></a>            <span class="at">Second =</span> <span class="fu">nth</span>(Dep.Var, <span class="dv">2</span>),</span>
+<span id="cb101-381"><a href="#cb101-381" aria-hidden="true" tabindex="-1"></a>            <span class="at">Second.Last =</span> <span class="fu">nth</span>(Dep.Var, <span class="sc">-</span><span class="dv">2</span>))</span>
+<span id="cb101-382"><a href="#cb101-382" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-383"><a href="#cb101-383" aria-hidden="true" tabindex="-1"></a>Compare the male values with those from the <span class="in">`head()`</span> and <span class="in">`tail()`</span> functions above.  The first (row 5) is <span class="in">`Realized`</span>, the last (row 1198) is <span class="in">`Realized`</span>. The second (row 6) is <span class="in">`Deletion`</span>, and the second to last (row 1188) is also <span class="in">`Deletion`</span>. </span>
+<span id="cb101-384"><a href="#cb101-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-385"><a href="#cb101-385" aria-hidden="true" tabindex="-1"></a><span class="fu">### Count functions with `summarize()`</span></span>
+<span id="cb101-386"><a href="#cb101-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-387"><a href="#cb101-387" aria-hidden="true" tabindex="-1"></a>We've already looked at <span class="in">`n()`</span> above, but there is also the <span class="in">`n_distinct()`</span> function, which reports the number of distinct values. We can use this, for example, to find the number of speakers in each social category. To do this using base *R* filtering is a lot more complicated to code (so much so its not even worth doing). One example is shown below. It would need to be repeated for every combination of sex, education, and age group.   </span>
+<span id="cb101-388"><a href="#cb101-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-389"><a href="#cb101-389" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-390"><a href="#cb101-390" aria-hidden="true" tabindex="-1"></a><span class="co"># Example using base R filtering, finding the number of unique speakers who are female, educated, and middle aged</span></span>
+<span id="cb101-391"><a href="#cb101-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-392"><a href="#cb101-392" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(td<span class="sc">$</span>Speaker[td<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">"F"</span> <span class="sc">&amp;</span> td<span class="sc">$</span>Education <span class="sc">==</span> <span class="st">"Educated"</span> <span class="sc">&amp;</span> td<span class="sc">$</span>Age.Group <span class="sc">==</span> <span class="st">"Middle"</span>])</span>
+<span id="cb101-393"><a href="#cb101-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-394"><a href="#cb101-394" aria-hidden="true" tabindex="-1"></a><span class="co"># Much easier way to find number of unique speakers for every combination of Sex, Education, and Age. Group</span></span>
+<span id="cb101-395"><a href="#cb101-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-396"><a href="#cb101-396" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-397"><a href="#cb101-397" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex, Education, Age.Group) <span class="sc">%&gt;%</span></span>
+<span id="cb101-398"><a href="#cb101-398" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Speaker.Count =</span> <span class="fu">n_distinct</span>(Speaker)) <span class="sc">%&gt;%</span></span>
+<span id="cb101-399"><a href="#cb101-399" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="cn">Inf</span>)</span>
+<span id="cb101-400"><a href="#cb101-400" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-401"><a href="#cb101-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-402"><a href="#cb101-402" aria-hidden="true" tabindex="-1"></a>You'll notice that there are is no value for older educated males. This is because there are no speakers in the data from this group. </span>
+<span id="cb101-403"><a href="#cb101-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-404"><a href="#cb101-404" aria-hidden="true" tabindex="-1"></a><span class="fu">### Logical functions</span></span>
+<span id="cb101-405"><a href="#cb101-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-406"><a href="#cb101-406" aria-hidden="true" tabindex="-1"></a>The two logical functions only work on data that is logical (i.e., is <span class="in">`TRUE`</span> or <span class="in">`FALSE`</span>). <span class="in">`any()`</span> returns the answer to the question "Are any values <span class="in">`TRUE`</span>?" and <span class="in">`all()`</span> returns the answer to the question "Are all values <span class="in">`TRUE`</span>?". There are no logical values in the <span class="in">`td`</span> data set, so lets make some as an example. </span>
+<span id="cb101-407"><a href="#cb101-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-408"><a href="#cb101-408" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-409"><a href="#cb101-409" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column in which all values are FALSE</span></span>
+<span id="cb101-410"><a href="#cb101-410" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Logical.Test <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb101-411"><a href="#cb101-411" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the new column so for any tokens from young female speakers are coded as TRUE instead of FALSE</span></span>
+<span id="cb101-412"><a href="#cb101-412" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Logical.Test[td<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">"F"</span> <span class="sc">&amp;</span> td<span class="sc">$</span>Age.Group <span class="sc">==</span> <span class="st">"Young"</span>] <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb101-413"><a href="#cb101-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-414"><a href="#cb101-414" aria-hidden="true" tabindex="-1"></a><span class="co"># Get logical value (TRUE or FALSE) of whether any tokens and all tokens of Logical.Test are TRUE, by Sex</span></span>
+<span id="cb101-415"><a href="#cb101-415" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-416"><a href="#cb101-416" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-417"><a href="#cb101-417" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Any.True =</span> <span class="fu">any</span>(Logical.Test), </span>
+<span id="cb101-418"><a href="#cb101-418" aria-hidden="true" tabindex="-1"></a>            <span class="at">All.True =</span> <span class="fu">all</span>(Logical.Test))</span>
+<span id="cb101-419"><a href="#cb101-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-420"><a href="#cb101-420" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-421"><a href="#cb101-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-422"><a href="#cb101-422" aria-hidden="true" tabindex="-1"></a>Above we created a logical column in which only tokens from young females are set to <span class="in">`TRUE`</span>.  The <span class="in">`any()`</span> function returns <span class="in">`TRUE`</span> for <span class="in">`F`</span> but not for <span class="in">`M`</span> because there is at least one <span class="in">`TRUE`</span> value in the female data. Conversely, the <span class="in">`all()`</span> function returns <span class="in">`FALSE`</span> for <span class="in">`F`</span> because not all of the female values are <span class="in">`TRUE`</span>.</span>
+<span id="cb101-423"><a href="#cb101-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-424"><a href="#cb101-424" aria-hidden="true" tabindex="-1"></a><span class="fu">## Proportions</span></span>
+<span id="cb101-425"><a href="#cb101-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-426"><a href="#cb101-426" aria-hidden="true" tabindex="-1"></a>Finding out the proportion of a variant is just like finding out the number of tokens. Using the base *R* methods, you simply wrap the <span class="in">`table()`</span> function in a <span class="in">`prop.table()`</span> function. </span>
+<span id="cb101-427"><a href="#cb101-427" aria-hidden="true" tabindex="-1"></a><span class="in">``` {r }</span></span>
+<span id="cb101-428"><a href="#cb101-428" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var</span></span>
+<span id="cb101-429"><a href="#cb101-429" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Dep.Var))</span>
+<span id="cb101-430"><a href="#cb101-430" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-431"><a href="#cb101-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-432"><a href="#cb101-432" aria-hidden="true" tabindex="-1"></a>Usually proportions are expressed as hundredths. To force *R* to express numbers in hundredths, you can use the <span class="in">`options()`</span> function to set the number of significant digits displayed to two. </span>
+<span id="cb101-433"><a href="#cb101-433" aria-hidden="true" tabindex="-1"></a><span class="in">``` {r }</span></span>
+<span id="cb101-434"><a href="#cb101-434" aria-hidden="true" tabindex="-1"></a><span class="co"># Display values rounded to nearest hundredth.  </span></span>
+<span id="cb101-435"><a href="#cb101-435" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb101-436"><a href="#cb101-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-437"><a href="#cb101-437" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var</span></span>
+<span id="cb101-438"><a href="#cb101-438" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Dep.Var))</span>
+<span id="cb101-439"><a href="#cb101-439" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-440"><a href="#cb101-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-441"><a href="#cb101-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-442"><a href="#cb101-442" aria-hidden="true" tabindex="-1"></a>In the example above there is only one dimension: <span class="in">`Dep.Var`</span>. The <span class="in">`prop.table()`</span> outer function takes the <span class="in">`table()`</span> inner function and divides the number of tokens in each cell by some total (e.g. denominator). The default denominator is the total number of tokens in the whole table. Because, in the example above, the total number of tokens in the one dimension table is the same as the total number of <span class="in">`Dep.Var`</span> tokens, you don't need to specify anything further. In the example below, however, there are two dimensions: <span class="in">`Dep.Var`</span> and <span class="in">`Age.Group`</span>. If you do not specify which total to use as a denominator, the proportions expressed use the total number of tokens in the table as the denominator.<span class="ot">[^4]</span>  If you want to know the percentage of deletion tokens that come from <span class="in">`Young`</span>, <span class="in">`Middle`</span> and <span class="in">`Old`</span> speakers, you set <span class="in">`margin = 1`</span>, meaning that you want the total (e.g., denominator) to be the sum of the tokens for the first variable in the function, (e.g., rows total). If instead you want to know the percentage of <span class="in">`Young`</span> tokens (or <span class="in">`Middle`</span> tokens, or <span class="in">`Old`</span> tokens) that are <span class="in">`Deletion`</span>, and the percentage that are <span class="in">`Realized`</span>, you set <span class="in">`margin = 2`</span>, or rather set the denominator to the sum of the second factor group in the function (e.g., column total). This follows *R*'s global pattern of rows, columns, page 1, page 2, etc. You can verify this by adding up the proportions in each table below. In the first table all of the proportions add up to 1. In the second table, on the other hand, the proportions add up to 1 going across the rows. In the third table they add up to 1 going down the columns. </span>
+<span id="cb101-443"><a href="#cb101-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-444"><a href="#cb101-444" aria-hidden="true" tabindex="-1"></a><span class="ot">[^4]: </span>You'll notice that the values in this table are expressed in thousandths instead of hundredths. This is because the proportion for <span class="in">`Deletion`</span> and <span class="in">`Old`</span> tokens requires three decimal places to have two meaningful digits.</span>
+<span id="cb101-445"><a href="#cb101-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-446"><a href="#cb101-446" aria-hidden="true" tabindex="-1"></a><span class="in">``` {r }</span></span>
+<span id="cb101-447"><a href="#cb101-447" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var and Age.Group (all values sum to 1)</span></span>
+<span id="cb101-448"><a href="#cb101-448" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group))</span>
+<span id="cb101-449"><a href="#cb101-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-450"><a href="#cb101-450" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Age.Group for each level of Dep.Var (each row sums to 1)</span></span>
+<span id="cb101-451"><a href="#cb101-451" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group), <span class="at">margin =</span><span class="dv">1</span>)</span>
+<span id="cb101-452"><a href="#cb101-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-453"><a href="#cb101-453" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var for each level of Age.Group (each column sums to 1)</span></span>
+<span id="cb101-454"><a href="#cb101-454" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group), <span class="at">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb101-455"><a href="#cb101-455" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-456"><a href="#cb101-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-457"><a href="#cb101-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-458"><a href="#cb101-458" aria-hidden="true" tabindex="-1"></a>In order to achieve the three-dimension cross-tabs you get from *Goldvarb*, with one dependent variable and two independent variables, you must set up the `prop.table(table())` function with your variables in the following order: *independent variable 1*, *independent variable 2*, *dependent variable*. You must also specify a particular `margin`, e.g., denominator. In a *Goldvarb*-style cross-tab each cell is the number of tokens for one level of the dependent variable (e.g., the application or non-application value) divided by the total number of tokens for that cell. In an *R* proportion table the total number of tokens per cell is the number of tokens for the value of the row and the column at the same time --- not the row total, or the column total. To specify that you want the denominator to be the cell total you set *margin = c(1,2)*, where the <span class="in">`c()`</span> concatenating function specifies both row (1) and column (2). The result is a separate page for proportions of each level of <span class="in">`Dep.Var`</span>. The proportions for the corresponding cells in each page add up to 1. </span>
+<span id="cb101-459"><a href="#cb101-459" aria-hidden="true" tabindex="-1"></a><span class="in">``` {r }</span></span>
+<span id="cb101-460"><a href="#cb101-460" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var for each level of Age.Group and Sex (all corresponding cells sum to 1)</span></span>
+<span id="cb101-461"><a href="#cb101-461" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb101-462"><a href="#cb101-462" aria-hidden="true" tabindex="-1"></a><span class="in">```</span> </span>
+<span id="cb101-463"><a href="#cb101-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-464"><a href="#cb101-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-465"><a href="#cb101-465" aria-hidden="true" tabindex="-1"></a>You can keep adding factor groups to your proportion table, but you must do two things. You must keep the dependent variable, <span class="in">`Dep.Var`</span>, as the rightmost variable in the function, and you must include all the other variables in the margin specification. For example, below you add  <span class="in">`Education`</span> as the third variable, and add 3 to the margin specification. There will be a separate page for each combination of the levels of <span class="in">`Education`</span> and <span class="in">`Dep.Var`</span>. </span>
+<span id="cb101-466"><a href="#cb101-466" aria-hidden="true" tabindex="-1"></a><span class="in">``` {r }</span></span>
+<span id="cb101-467"><a href="#cb101-467" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var for each level of Age.Group, Sex and Education</span></span>
+<span id="cb101-468"><a href="#cb101-468" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Education, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb101-469"><a href="#cb101-469" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-470"><a href="#cb101-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-471"><a href="#cb101-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-472"><a href="#cb101-472" aria-hidden="true" tabindex="-1"></a>Again, you can make these larger tables easier to read by flattening the pages using <span class="in">`ftable()`</span>. Here the <span class="in">`NaN`</span> means there is no data in the cell.</span>
+<span id="cb101-473"><a href="#cb101-473" aria-hidden="true" tabindex="-1"></a><span class="in">``` {r }</span></span>
+<span id="cb101-474"><a href="#cb101-474" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var for each level of Age.Group, Sex and Education, presented as a flattened table. Here the `NaN' just means there is no data in the cell. </span></span>
+<span id="cb101-475"><a href="#cb101-475" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb101-476"><a href="#cb101-476" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(<span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Education, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)))</span>
+<span id="cb101-477"><a href="#cb101-477" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-478"><a href="#cb101-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-479"><a href="#cb101-479" aria-hidden="true" tabindex="-1"></a>There are a number of functions specifically designed to create cross-tables that are somewhat easier to use, but can be somewhat less flexible. Generally, they are most useful for one independent variable and one dependent variable. I tend to use the <span class="in">`CrossTable()`</span> function from the <span class="in">`gmodels`</span> package frequently. </span>
+<span id="cb101-480"><a href="#cb101-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-483"><a href="#cb101-483" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb101-484"><a href="#cb101-484" aria-hidden="true" tabindex="-1"></a><span class="co"># Load gmodels</span></span>
+<span id="cb101-485"><a href="#cb101-485" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gmodels)</span>
+<span id="cb101-486"><a href="#cb101-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-487"><a href="#cb101-487" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate cross tab of Sex and Dep.Var in which the row proportions are displayed, but table proportions, column proportions, and contribution to chi-square are suppressed, with 0 decimal values displayed, and missing combinations included. </span></span>
+<span id="cb101-488"><a href="#cb101-488" aria-hidden="true" tabindex="-1"></a><span class="fu">CrossTable</span>(td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var, <span class="at">prop.r=</span><span class="cn">TRUE</span>, <span class="at">prop.c=</span><span class="cn">FALSE</span>, <span class="at">prop.t=</span><span class="cn">FALSE</span>, <span class="at">prop.chisq=</span><span class="cn">FALSE</span>, <span class="at">format=</span><span class="st">"SPSS"</span>, <span class="at">digits=</span><span class="dv">0</span>, <span class="at">missing.include=</span><span class="cn">TRUE</span>)</span>
+<span id="cb101-489"><a href="#cb101-489" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-490"><a href="#cb101-490" aria-hidden="true" tabindex="-1"></a>For the <span class="in">`CrossTable()`</span> function you can set the denominator to row total with the option <span class="in">`prop.r=TRUE`</span>. If instead you wanted to the proportion by column, you set <span class="in">`prop.c = TRUE`</span>, and if you want the proportion across the entire table you can set <span class="in">`prop.t = TRUE`</span>. You can actually set all of these to <span class="in">`TRUE`</span> to get all three. There are other values that can be generated, including values for calculating chi-square (see the <span class="in">`CrossTable()`</span> documentation <span class="co">[</span><span class="ot">here</span><span class="co">](https://www.rdocumentation.org/packages/gmodels/versions/2.18.1.1/topics/CrossTable)</span>). The above code includes the minimal number of options needed to generate the type of cross-table we generally want. </span>
+<span id="cb101-491"><a href="#cb101-491" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-492"><a href="#cb101-492" aria-hidden="true" tabindex="-1"></a>To produce proportions using the <span class="in">`tidy`</span> method, we combine the <span class="in">`group_by()`</span> and <span class="in">`summarize()`</span> functions with the <span class="in">`mutate()`</span> discussed in an <span class="co">[</span><span class="ot">earlier section</span><span class="co">](040_lvcr.qmd)</span>.</span>
+<span id="cb101-493"><a href="#cb101-493" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-494"><a href="#cb101-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-495"><a href="#cb101-495" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-496"><a href="#cb101-496" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate tibble of combination of Sex and Dep.Var with token counts and proportion of each level of Dep.Var by Sex </span></span>
+<span id="cb101-497"><a href="#cb101-497" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-498"><a href="#cb101-498" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex, Dep.Var) <span class="sc">%&gt;%</span></span>
+<span id="cb101-499"><a href="#cb101-499" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb101-500"><a href="#cb101-500" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prop =</span> Count<span class="sc">/</span><span class="fu">sum</span>(Count))</span>
+<span id="cb101-501"><a href="#cb101-501" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-502"><a href="#cb101-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-503"><a href="#cb101-503" aria-hidden="true" tabindex="-1"></a>After grouping the data by <span class="in">`Sex`</span> and <span class="in">`Dep.Var`</span>, we create a new column <span class="in">`Count`</span> with values equal to the number of tokens for the particular combination, then we create a new column using <span class="in">`mutate()`</span> and the a math equation to generate proportions. It is important here that your dependent variable <span class="in">`Dep.Var`</span> is the last grouping variable. If we change the order, instead of generating the proportion of <span class="in">`Realized`</span> and <span class="in">`Deletion`</span> tokens, it will instead return the percentage of <span class="in">`Realized`</span> tokens that are <span class="in">`M`</span> and the percentage that are <span class="in">`F`</span>, which is the incorrect denominator for our purposes. </span>
+<span id="cb101-504"><a href="#cb101-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-505"><a href="#cb101-505" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-506"><a href="#cb101-506" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate tibble of combination of Dep.Var and Sex with token counts and proportion of each level of Sex by Dep.Var </span></span>
+<span id="cb101-507"><a href="#cb101-507" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
+<span id="cb101-508"><a href="#cb101-508" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Dep.Var, Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb101-509"><a href="#cb101-509" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb101-510"><a href="#cb101-510" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prop =</span> Count<span class="sc">/</span><span class="fu">sum</span>(Count))</span>
+<span id="cb101-511"><a href="#cb101-511" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb101-512"><a href="#cb101-512" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-513"><a href="#cb101-513" aria-hidden="true" tabindex="-1"></a>Unlike the <span class="in">`CrossTable()`</span> function, we can include multiple independent variables. To include every combination (including those for which there are no tokens), we can add <span class="in">`.drop = FALSE`</span> to the <span class="in">`group_by()`</span> function. </span>
+<span id="cb101-514"><a href="#cb101-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-515"><a href="#cb101-515" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-516"><a href="#cb101-516" aria-hidden="true" tabindex="-1"></a><span class="in">```{r , message = FALSE}</span></span>
+<span id="cb101-517"><a href="#cb101-517" aria-hidden="true" tabindex="-1"></a><span class="st">```</span><span class="at">{r , message = FALSE}</span></span>
+<span id="cb101-518"><a href="#cb101-518" aria-hidden="true" tabindex="-1"></a><span class="at"># Generate tibble of combination of Sex, Edcuation, Age.Group, and Dep.Var with all combinations included, with token counts and proportion of each level of Dep.Var by each combination of other variables</span></span>
+<span id="cb101-519"><a href="#cb101-519" aria-hidden="true" tabindex="-1"></a><span class="at">td %&gt;%</span></span>
+<span id="cb101-520"><a href="#cb101-520" aria-hidden="true" tabindex="-1"></a><span class="at">  group_by(Sex, Education, Age.Group, Dep.Var, .drop = FALSE) %&gt;%</span></span>
+<span id="cb101-521"><a href="#cb101-521" aria-hidden="true" tabindex="-1"></a><span class="at">  summarize(Count = n()) %&gt;%</span></span>
+<span id="cb101-522"><a href="#cb101-522" aria-hidden="true" tabindex="-1"></a><span class="at">  mutate(Prop = Count/sum(Count)) %&gt;%</span></span>
+<span id="cb101-523"><a href="#cb101-523" aria-hidden="true" tabindex="-1"></a><span class="at">  print(n = Inf)</span></span>
+<span id="cb101-524"><a href="#cb101-524" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb101-525"><a href="#cb101-525" aria-hidden="true" tabindex="-1"></a>Notice that <span class="cf">for</span> the missing combinations the <span class="st">`</span><span class="at">count()</span><span class="st">`</span> is <span class="dv">0</span>, and the percentage is <span class="st">`</span><span class="at">NaN</span><span class="st">`</span>, which stands <span class="cf">for</span> <span class="st">"not a number"</span>, the result of trying to divide <span class="dv">0</span> by something. <span class="st">`</span><span class="at">NaN</span><span class="st">`</span> is similar to <span class="st">`</span><span class="at">NA</span><span class="st">`</span>, but <span class="st">`</span><span class="at">NA</span><span class="st">`</span> stands <span class="cf">for</span> <span class="st">"no data"</span>, and is used <span class="cf">for</span> empty cells. </span>
+<span id="cb101-526"><a href="#cb101-526" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-527"><a href="#cb101-527" aria-hidden="true" tabindex="-1"></a><span class="st">```</span><span class="at">{r , message = FALSE}</span></span>
+<span id="cb101-528"><a href="#cb101-528" aria-hidden="true" tabindex="-1"></a><span class="at"># Assign the tibble generated in the previous code to an object called results </span></span>
+<span id="cb101-529"><a href="#cb101-529" aria-hidden="true" tabindex="-1"></a><span class="at">results &lt;- td %&gt;%</span></span>
+<span id="cb101-530"><a href="#cb101-530" aria-hidden="true" tabindex="-1"></a><span class="at">  group_by(Sex, Education, Age.Group, Dep.Var, .drop = FALSE) %&gt;%</span></span>
+<span id="cb101-531"><a href="#cb101-531" aria-hidden="true" tabindex="-1"></a><span class="at">  summarize(Count = n()) %&gt;%</span></span>
+<span id="cb101-532"><a href="#cb101-532" aria-hidden="true" tabindex="-1"></a><span class="at">  mutate(Prop = Count/sum(Count))</span></span>
+<span id="cb101-533"><a href="#cb101-533" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-534"><a href="#cb101-534" aria-hidden="true" tabindex="-1"></a><span class="at"># Recode all NaN in results to 0</span></span>
+<span id="cb101-535"><a href="#cb101-535" aria-hidden="true" tabindex="-1"></a><span class="at">results$Prop[is.nan(results$Prop)] &lt;- 0 </span></span>
+<span id="cb101-536"><a href="#cb101-536" aria-hidden="true" tabindex="-1"></a><span class="at"># Print results</span></span>
+<span id="cb101-537"><a href="#cb101-537" aria-hidden="true" tabindex="-1"></a><span class="at">print(results, n = Inf)</span></span>
+<span id="cb101-538"><a href="#cb101-538" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb101-539"><a href="#cb101-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-540"><a href="#cb101-540" aria-hidden="true" tabindex="-1"></a>The easiest way to convert <span class="st">`</span><span class="at">NaN</span><span class="st">`</span> (or <span class="st">`</span><span class="at">Na</span><span class="st">`</span>) to <span class="dv">0</span> is to assign the above to a variable, then replace <span class="st">`</span><span class="at">NaN</span><span class="st">`</span> with <span class="dv">0</span> using the <span class="cf">function</span> <span class="st">`</span><span class="at">is.nan()</span><span class="st">`</span>. IF there were <span class="st">`</span><span class="at">NA</span><span class="st">`</span> values, you can do the same thing as above, but replace <span class="st">`</span><span class="at">is.nan()</span><span class="st">`</span> with <span class="st">`</span><span class="at">is.na()</span><span class="st">`</span></span>
+<span id="cb101-541"><a href="#cb101-541" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-542"><a href="#cb101-542" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-543"><a href="#cb101-543" aria-hidden="true" tabindex="-1"></a>When we report proportions <span class="cf">in</span> sociolinguistics manuscripts, we often only report the proportion of one level of the dependent <span class="fu">variable</span> (called the application value). Do only display one of the two levels of <span class="st">`</span><span class="at">Dep.Var</span><span class="st">`</span> <span class="sc">---</span> <span class="cf">for</span> instance, <span class="cf">if</span> we just want to show the rates of <span class="st">`</span><span class="at">Deletion</span><span class="st">`</span>, which we might decide is our application value <span class="sc">---</span> we can use the <span class="st">`</span><span class="at">subset()</span><span class="st">`</span> function. </span>
+<span id="cb101-544"><a href="#cb101-544" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-545"><a href="#cb101-545" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb101-546"><a href="#cb101-546" aria-hidden="true" tabindex="-1"></a><span class="st">```</span><span class="at">{r , message = FALSE}</span></span>
+<span id="cb101-547"><a href="#cb101-547" aria-hidden="true" tabindex="-1"></a><span class="at"># Create the results object, but subsetted to include only Deletion tokens</span></span>
+<span id="cb101-548"><a href="#cb101-548" aria-hidden="true" tabindex="-1"></a><span class="at">results &lt;- td %&gt;%</span></span>
+<span id="cb101-549"><a href="#cb101-549" aria-hidden="true" tabindex="-1"></a><span class="at">  group_by(Sex, Education, Age.Group, Dep.Var, .drop = FALSE) %&gt;%</span></span>
+<span id="cb101-550"><a href="#cb101-550" aria-hidden="true" tabindex="-1"></a><span class="at">  summarize(Count = n()) %&gt;%</span></span>
+<span id="cb101-551"><a href="#cb101-551" aria-hidden="true" tabindex="-1"></a><span class="at">  mutate(Prop = Count/sum(Count)) %&gt;%</span></span>
+<span id="cb101-552"><a href="#cb101-552" aria-hidden="true" tabindex="-1"></a><span class="at">  subset(Dep.Var == "Deletion")</span></span>
+<span id="cb101-553"><a href="#cb101-553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-554"><a href="#cb101-554" aria-hidden="true" tabindex="-1"></a><span class="at"># Recode NaN to 0</span></span>
+<span id="cb101-555"><a href="#cb101-555" aria-hidden="true" tabindex="-1"></a><span class="at">results$Prop[is.nan(results$Prop)] &lt;- 0 </span></span>
+<span id="cb101-556"><a href="#cb101-556" aria-hidden="true" tabindex="-1"></a><span class="at"># Print results</span></span>
+<span id="cb101-557"><a href="#cb101-557" aria-hidden="true" tabindex="-1"></a><span class="at">print(results, n = Inf)</span></span>
+<span id="cb101-558"><a href="#cb101-558" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb101-559"><a href="#cb101-559" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-560"><a href="#cb101-560" aria-hidden="true" tabindex="-1"></a>Finally, <span class="cf">if</span> we also want to add the total number of tokens per <span class="fu">category</span> (something we usually report alongside the application value) we can add another column using <span class="st">`</span><span class="at">mutate()</span><span class="st">`</span>. Also, <span class="cf">if</span> we want the percentage instead of proportion, we can add <span class="st">`</span><span class="at">100 *</span><span class="st">`</span> to the proportion <span class="fu">equation</span> (as percentage is proportion <span class="sc">$</span>\times <span class="dv">100</span><span class="sc">$</span>)</span>
+<span id="cb101-561"><a href="#cb101-561" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-562"><a href="#cb101-562" aria-hidden="true" tabindex="-1"></a><span class="st">```</span><span class="at">{r , message = FALSE}</span></span>
+<span id="cb101-563"><a href="#cb101-563" aria-hidden="true" tabindex="-1"></a><span class="at"># Generate results object with percentage instead of proportion and a column with total tokens per combination. </span></span>
+<span id="cb101-564"><a href="#cb101-564" aria-hidden="true" tabindex="-1"></a><span class="at">results &lt;- td %&gt;%</span></span>
+<span id="cb101-565"><a href="#cb101-565" aria-hidden="true" tabindex="-1"></a><span class="at">  group_by(Sex, Education, Age.Group, Dep.Var, .drop = FALSE) %&gt;%</span></span>
+<span id="cb101-566"><a href="#cb101-566" aria-hidden="true" tabindex="-1"></a><span class="at">  summarize(Count = n()) %&gt;%</span></span>
+<span id="cb101-567"><a href="#cb101-567" aria-hidden="true" tabindex="-1"></a><span class="at">  mutate(Percentage = 100*Count/sum(Count), </span></span>
+<span id="cb101-568"><a href="#cb101-568" aria-hidden="true" tabindex="-1"></a><span class="at">         Total.N = sum(Count)) %&gt;%</span></span>
+<span id="cb101-569"><a href="#cb101-569" aria-hidden="true" tabindex="-1"></a><span class="at">  subset(Dep.Var == "Deletion")</span></span>
+<span id="cb101-570"><a href="#cb101-570" aria-hidden="true" tabindex="-1"></a><span class="at">  </span></span>
+<span id="cb101-571"><a href="#cb101-571" aria-hidden="true" tabindex="-1"></a><span class="at"># Recode NaN to 0</span></span>
+<span id="cb101-572"><a href="#cb101-572" aria-hidden="true" tabindex="-1"></a><span class="at">results$Percentage[is.nan(results$Percentage)] &lt;- 0</span></span>
+<span id="cb101-573"><a href="#cb101-573" aria-hidden="true" tabindex="-1"></a><span class="at"># Print results</span></span>
+<span id="cb101-574"><a href="#cb101-574" aria-hidden="true" tabindex="-1"></a><span class="at">print(results, n = Inf)</span></span>
+<span id="cb101-575"><a href="#cb101-575" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb101-576"><a href="#cb101-576" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-577"><a href="#cb101-577" aria-hidden="true" tabindex="-1"></a>The above results show that there are <span class="dv">32</span> tokens from old, educated females, <span class="dv">2</span> of <span class="fu">which</span> (or <span class="fl">6.25</span>%) are <span class="st">`</span><span class="at">Deletion</span><span class="st">`</span>. </span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.210">
+<meta name="generator" content="quarto-1.2.233">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -175,6 +175,18 @@ cookieconsent.run({
 <meta name="twitter:image-height" content="424">
 <meta name="twitter:image-width" content="653">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Doing it all again, but `tidy`">
+<meta name="citation_author" content="Matt Hunt Gardner">
+<meta name="citation_publication_date" content="2022-09-27">
+<meta name="citation_cover_date" content="2022-09-27">
+<meta name="citation_year" content="2022">
+<meta name="citation_online_date" content="2022-09-27">
+<meta name="citation_fulltext_html_url" content="https://lingmethodshub.github.io/050_lvcr.html">
+<meta name="citation_doi" content="10.5281/zenodo.7160718">
+<meta name="citation_volume" content="Doing LVC with R">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Linguistics Methods Hub">
+<meta name="citation_series_title" content="Linguistics Methods Hub">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -194,11 +206,11 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html">
+    <a class="nav-link active" href="../../../index.html" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../../content/index.html" aria-current="page">
+    <a class="nav-link" href="../../../content/index.html">
  <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item">
@@ -246,7 +258,7 @@ cookieconsent.run({
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../../" class="sidebar-logo-link">
+      <a href="../../../index.html" class="sidebar-logo-link">
       <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
@@ -442,7 +454,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Doing it all again, but <code>tidy</code></h1>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Doing it all again, but <code>tidy</code></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 <div>
@@ -1945,6 +1957,8 @@ $ Dep.Var.Full &lt;fct&gt; T, Deletion, Deletion, Deletion, T, Deletion, Deletio
 </div>
 
 
+<!-- -->
+
 </section>
 </section>
 
@@ -2036,6 +2050,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -2115,7 +2180,267 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         <span class="nav-page-text">Crosstabs: Counts, Proportions, and More</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Doing it all again, but `tidy`"</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-9-27"</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA 4.0"</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html: default</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf: default</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">  # - name:</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co">  #     given: Matt Hunt</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co">  #     family: Gardner</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co">  name: "Matt Hunt Gardner"</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co">  orcid: 0000-0002-1878-4232</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co">  email: matt.gardner@ling-phil.ox.ac.uk</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="co">  corresponding: true</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co">  affiliations:</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="co">    - name: University of Oxford </span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="co">      department: Linguistics, Philology, &amp; Phonetics</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co">      city: Oxford</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="co">      country: UK</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Modifying data, but using the `tidyverse`"</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"renv/activate.R"</span>)</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">tidy=</span><span class="st">'styler'</span>, <span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">strict=</span><span class="cn">TRUE</span>, <span class="at">scope=</span><span class="st">"tokens"</span>), <span class="at">tidy =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE}</span></span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>)</span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset data to remove previous "Vowel" contexts</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> td[td<span class="sc">$</span>Before <span class="sc">!=</span> <span class="st">"Vowel"</span>,]</span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Before <span class="ot">&lt;-</span><span class="fu">factor</span>(td<span class="sc">$</span>Before)</span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-code "H" to be "Consonant" in a new column</span></span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>After.New <span class="ot">&lt;-</span> td<span class="sc">$</span>After</span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>After.New[td<span class="sc">$</span>After.New <span class="sc">==</span> <span class="st">"H"</span>] <span class="ot">&lt;-</span> <span class="st">"Consonant"</span></span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>After.New <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>After.New)</span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Center Year of Birth</span></span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Center.Age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(td<span class="sc">$</span>YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Age.Group</span></span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Age.Group[td<span class="sc">$</span>YOB <span class="sc">&gt;</span><span class="dv">1979</span>] <span class="ot">&lt;-</span> <span class="st">"Young"</span></span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Age.Group[td<span class="sc">$</span>YOB <span class="sc">&gt;</span><span class="dv">1944</span> <span class="sc">&amp;</span> td<span class="sc">$</span>YOB <span class="sc">&lt;</span><span class="dv">1980</span>] <span class="ot">&lt;-</span> <span class="st">"Middle"</span></span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Age.Group[td<span class="sc">$</span>YOB <span class="sc">&lt;</span><span class="dv">1945</span>] <span class="ot">&lt;-</span> <span class="st">"Old"</span></span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span><span class="fu">factor</span>(td<span class="sc">$</span>Age.Group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Young"</span>, <span class="st">"Middle"</span>, <span class="st">"Old"</span>))</span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine Age and Sex</span></span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Age_Sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">paste</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, <span class="at">sep =</span><span class="st">"_"</span>))</span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Break Phoneme.Dep.Var into two columns</span></span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">mutate</span>(td, <span class="at">Phoneme =</span> <span class="fu">sub</span>(<span class="st">"^(.)(--.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, Phoneme.Dep.Var), <span class="at">Dep.Var.Full =</span> <span class="fu">sub</span>(<span class="st">"^(.--)(.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, Phoneme.Dep.Var), <span class="at">Phoneme.Dep.Var =</span> <span class="cn">NULL</span>)</span>
+<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Phoneme <span class="ot">&lt;-</span><span class="fu">factor</span>(td<span class="sc">$</span>Phoneme)</span>
+<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var.Full <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Dep.Var.Full)  </span>
+<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Create three partitions based on Age.Group</span></span>
+<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a>td.young <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(<span class="fu">subset</span>(td, Age.Group <span class="sc">==</span> <span class="st">"Young"</span>))</span>
+<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a>td.middle <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(<span class="fu">subset</span>(td, Age.Group <span class="sc">==</span> <span class="st">"Middle"</span>))</span>
+<span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a>td.old <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(<span class="fu">subset</span>(td, Age.Group <span class="sc">==</span> <span class="st">"Old"</span>))</span>
+<span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-center Center.Age</span></span>
+<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a>td.young<span class="sc">$</span>Center.Age <span class="ot">&lt;-</span> <span class="fu">scale</span>(td.young<span class="sc">$</span>YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-65"><a href="#cb25-65" aria-hidden="true" tabindex="-1"></a>td.middle<span class="sc">$</span>Center.Age <span class="ot">&lt;-</span> <span class="fu">scale</span>(td.middle<span class="sc">$</span>YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-66"><a href="#cb25-66" aria-hidden="true" tabindex="-1"></a>td.old<span class="sc">$</span>Center.Age <span class="ot">&lt;-</span> <span class="fu">scale</span>(td.old<span class="sc">$</span>YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-67"><a href="#cb25-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-68"><a href="#cb25-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-69"><a href="#cb25-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## Doing It All Again, But `tidy`</span></span>
+<span id="cb25-70"><a href="#cb25-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-71"><a href="#cb25-71" aria-hidden="true" tabindex="-1"></a>The package <span class="in">`dplyr`</span> is part of a larger "universe" of *R* packages called `tidyverse`. This collection of packages is specifically focused on data science and offers some shortcuts that are useful to learn. The packages that make up the `tidyverse` are `dplyr`, `ggplot2`, `purr`, `tibble`, `tidyr`, `stingr`, `readr`, and `forcats`, among others. Throughout this guide I try to use the most basic *R* syntax for accomplishing a task. This way you learn how *R* works. I will also show how to complete the same task using packages from the <span class="in">`tidyverse`</span>. Using the <span class="in">`tidyverse`</span> methods is usually optional --- though once you get the hang of it, you might always use the <span class="in">`tidyverse`</span> methods.</span>
+<span id="cb25-72"><a href="#cb25-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-73"><a href="#cb25-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb25-74"><a href="#cb25-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the tidyverse package</span></span>
+<span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-77"><a href="#cb25-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-78"><a href="#cb25-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE,warning=FALSE }</span></span>
+<span id="cb25-79"><a href="#cb25-79" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the tidyverse package</span></span>
+<span id="cb25-80"><a href="#cb25-80" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb25-81"><a href="#cb25-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-82"><a href="#cb25-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-85"><a href="#cb25-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-86"><a href="#cb25-86" aria-hidden="true" tabindex="-1"></a><span class="co"># List the packages loaded by the tidyverse package</span></span>
+<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a><span class="fu">tidyverse_packages</span>()</span>
+<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a>Before we get started with the <span class="in">`tidyverse`</span>, there are two important new things to learn about. The first is the pipe operator <span class="in">`%&gt;%`</span> and the second is the the alternative to a *data frame* called a *tibble*.</span>
+<span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Pipe %\&gt;%</span></span>
+<span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a>The pipe operator <span class="in">`%&gt;%`</span><span class="ot">[^1]</span> is introduced by the <span class="in">`magrittr`</span> package<span class="ot">[^2]</span> and it is extremely useful. The pipe operator passes the output of a function to the first argument of the next function, which mean you can chain several steps together.</span>
+<span id="cb25-95"><a href="#cb25-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-96"><a href="#cb25-96" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>Not to be confused with the operator <span class="in">`|`</span>, which means "or" and whose symbol is also called "pipe".</span>
+<span id="cb25-97"><a href="#cb25-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-98"><a href="#cb25-98" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>Loading <span class="in">`dplyr`</span> will also let you use it.</span>
+<span id="cb25-99"><a href="#cb25-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-100"><a href="#cb25-100" aria-hidden="true" tabindex="-1"></a>For example, lets find the mean year of birth in our data.<span class="ot">[^3]</span> We already know that when the pre-vowel contexts are removed, the mean year of birth is 1969.</span>
+<span id="cb25-101"><a href="#cb25-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-102"><a href="#cb25-102" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>If you don't have the <span class="in">`td`</span> dataset loaded in *R*, go back to the <span class="co">[</span><span class="ot">Interim Summary</span><span class="co">](%22050_lvcr.qmd%22)</span> and run the code.</span>
+<span id="cb25-103"><a href="#cb25-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-106"><a href="#cb25-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-107"><a href="#cb25-107" aria-hidden="true" tabindex="-1"></a><span class="co"># Find mean YOB using mean() function</span></span>
+<span id="cb25-108"><a href="#cb25-108" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(td<span class="sc">$</span>YOB)</span>
+<span id="cb25-109"><a href="#cb25-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the mean YOB by piping the td data to the mean() function</span></span>
+<span id="cb25-110"><a href="#cb25-110" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>YOB <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
+<span id="cb25-111"><a href="#cb25-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a>The functionality of <span class="in">`%&gt;%`</span> might seem trivial at this point; however, when you need to perform multiple tasks sequentially, it saves a lot of time and space when writing your code.</span>
+<span id="cb25-114"><a href="#cb25-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-115"><a href="#cb25-115" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tibbles</span></span>
+<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-117"><a href="#cb25-117" aria-hidden="true" tabindex="-1"></a>A *tibble* is an updated version of a *data frame*. *Tibbles* keep the features that have stood the test of time, and drop the features that used to be convenient but are now frustrating (i.e. converting character vectors to factors). For our purposes, the difference between the two is negligible, but you should be aware that *tibbles* look a bit different from *data frames*.</span>
+<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,attr.output='style="max-height: 500px;"', R.options = list(width = 1000)}</span></span>
+<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(td)</span>
+<span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,attr.output='style="max-height: 500px;"', R.options = list(width = 1000)}</span></span>
+<span id="cb25-124"><a href="#cb25-124" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(td)</span>
+<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a>Notice that the *tibble* lists the dimensions of the tibble at the top, as well as the class of each of the columns. It also only displays the first 10 rows. You'll also notice that the row numbers have reset when we converted `td` to a *tibble*. If we want to view the entire tibble, we can use the <span class="in">`print()`</span> function and specify the <span class="in">`n=`</span> plus the number of rows we want to see, including all rows (<span class="in">`n=Inf`</span>). You can see below how the pipe operator makes doing this pretty easy.</span>
+<span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a><span class="co"># Embedding functions</span></span>
+<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">as_tibble</span>(td), <span class="at">n=</span><span class="dv">20</span>)</span>
+<span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a>The above produces the same as the following:</span>
+<span id="cb25-135"><a href="#cb25-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{r,attr.output='style="max-height: 500px;"', R.options = list(width = 1000)}</span></span>
+<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a><span class="co"># Using %&gt;% to pass the results from the first function to the second function</span></span>
+<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(td)<span class="sc">%&gt;%</span></span>
+<span id="cb25-139"><a href="#cb25-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="dv">20</span>)</span>
+<span id="cb25-140"><a href="#cb25-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-141"><a href="#cb25-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-142"><a href="#cb25-142" aria-hidden="true" tabindex="-1"></a><span class="fu">### Getting a `glimpse()`</span></span>
+<span id="cb25-143"><a href="#cb25-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a>Another useful addition to data exploration is the <span class="in">`glimpse()`</span> function from the <span class="in">`pilllar`</span> package and re-exported by <span class="in">`dplyr`</span>. The <span class="in">`glipmpse()`</span> function is like a cross between <span class="in">`print()`</span> (which shows the data) and <span class="in">`str()`</span> (which shows the structure of the data). I use <span class="in">`glimpse()`</span> almost as frequently as I use <span class="in">`summary()`</span>. In fact, if you have very wide data, i.e., with lots of columns, <span class="in">`glimpse()`</span> may prove more useful than <span class="in">`summary()`</span> for getting a quick snapshot of your data. <span class="in">`glimpse()`</span> shows the number of rows, the number of columns, the name of each column, its class, and however many values in each column as will fit horizontally in the console.</span>
+<span id="cb25-145"><a href="#cb25-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(td)</span>
+<span id="cb25-150"><a href="#cb25-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-151"><a href="#cb25-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-152"><a href="#cb25-152" aria-hidden="true" tabindex="-1"></a><span class="fu">### Manipulating data with `dplyr`</span></span>
+<span id="cb25-153"><a href="#cb25-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-154"><a href="#cb25-154" aria-hidden="true" tabindex="-1"></a>The <span class="in">`dplyr`</span> package is great for manipulating data in a data frame/tibble. Some common things that <span class="in">`diplyr`</span> can do include:</span>
+<span id="cb25-155"><a href="#cb25-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a>| Function      | Description                               |</span>
+<span id="cb25-157"><a href="#cb25-157" aria-hidden="true" tabindex="-1"></a>|---------------|-------------------------------------------|</span>
+<span id="cb25-158"><a href="#cb25-158" aria-hidden="true" tabindex="-1"></a>| <span class="in">`mutate()`</span>    | add new variables or modify existing ones |</span>
+<span id="cb25-159"><a href="#cb25-159" aria-hidden="true" tabindex="-1"></a>| <span class="in">`select()`</span>    | select variables                          |</span>
+<span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a>| <span class="in">`filter()`</span>    | filter                                    |</span>
+<span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a>| <span class="in">`summarize()`</span> | summarize/reduce                          |</span>
+<span id="cb25-162"><a href="#cb25-162" aria-hidden="true" tabindex="-1"></a>| <span class="in">`arrange()`</span>   | sort                                      |</span>
+<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a>| <span class="in">`group_by()`</span>  | group                                     |</span>
+<span id="cb25-164"><a href="#cb25-164" aria-hidden="true" tabindex="-1"></a>| <span class="in">`rename()`</span>    | rename columns                            |</span>
+<span id="cb25-165"><a href="#cb25-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a>Lets redo all our data manipulation of <span class="in">`td`</span> but with <span class="in">`dplyr`</span> and its pipe <span class="in">`%&gt;%`</span> operator</span>
+<span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=TRUE}</span></span>
+<span id="cb25-169"><a href="#cb25-169" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in token file</span></span>
+<span id="cb25-170"><a href="#cb25-170" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>)</span>
+<span id="cb25-171"><a href="#cb25-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-172"><a href="#cb25-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-173"><a href="#cb25-173" aria-hidden="true" tabindex="-1"></a>or...</span>
+<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-175"><a href="#cb25-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb25-176"><a href="#cb25-176" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in token file</span></span>
+<span id="cb25-177"><a href="#cb25-177" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"https://www.dropbox.com/s/jxlfuogea3lx2pu/deletiondata.txt?dl=1"</span>)</span>
+<span id="cb25-178"><a href="#cb25-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-180"><a href="#cb25-180" aria-hidden="true" tabindex="-1"></a>then...</span>
+<span id="cb25-181"><a href="#cb25-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-184"><a href="#cb25-184" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-185"><a href="#cb25-185" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset data to remove previous 'Vowel' contexts</span></span>
+<span id="cb25-186"><a href="#cb25-186" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> <span class="co"># pass td to next function</span></span>
+<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Before <span class="sc">!=</span> <span class="st">"Vowel"</span>) <span class="co"># filter td to include everything that is not "Vowel" in the column Before</span></span>
+<span id="cb25-188"><a href="#cb25-188" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-code 'H' to be 'Consonant' in a new column</span></span>
+<span id="cb25-189"><a href="#cb25-189" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> <span class="co"># pass td to next function</span></span>
+<span id="cb25-190"><a href="#cb25-190" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">After.New =</span> <span class="fu">recode</span>(After, <span class="st">"H"</span> <span class="ot">=</span> <span class="st">"Consonant"</span>)) <span class="co"># create a new column called After.New that equals a re-code of After in which H is re-coded as Consonant</span></span>
+<span id="cb25-191"><a href="#cb25-191" aria-hidden="true" tabindex="-1"></a><span class="co"># Center Year of Birth</span></span>
+<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> <span class="co"># pass td to next function</span></span>
+<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a>     <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>))) <span class="co"># create a new column called Center.Age equal to the YOB column but scaled</span></span>
+<span id="cb25-194"><a href="#cb25-194" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Age.Group</span></span>
+<span id="cb25-195"><a href="#cb25-195" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> <span class="co"># pass td to next function</span></span>
+<span id="cb25-196"><a href="#cb25-196" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">Age.Group =</span> <span class="fu">cut</span>(YOB, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">1944</span>, <span class="dv">1979</span>, <span class="cn">Inf</span>), </span>
+<span id="cb25-197"><a href="#cb25-197" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>))) <span class="co"># cut the YOB into discrete categories. </span></span>
+<span id="cb25-198"><a href="#cb25-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-199"><a href="#cb25-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-200"><a href="#cb25-200" aria-hidden="true" tabindex="-1"></a>Before we continue, a note about the <span class="in">`cut()`</span> function. The <span class="in">`breaks=`</span> option is a concatenated list of boundaries. It should start and end with <span class="in">`-Inf`</span> and <span class="in">`Inf`</span> (negative and positive infinity) as these will be the lower and upper bounds. The other values are the boundaries or cut-off points. By default <span class="in">`cut()`</span> has the setting <span class="in">`right=TRUE`</span>, which means the boundary values are considered the last value in a group (e.g., rightmost value). Above, this means <span class="in">`1944`</span> will be the highest value in the <span class="in">`Old`</span> category and <span class="in">`1979`</span> will the the highest value in the <span class="in">`Middle`</span> category. To reverse this you can add the option <span class="in">`right=FALSE`</span> in which case 1944 would be the lowest value in the <span class="in">`Middle`</span> category (e.g. leftmost value) and 1979 would be the lowest value in the <span class="in">`Young`</span> category.</span>
+<span id="cb25-201"><a href="#cb25-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-202"><a href="#cb25-202" aria-hidden="true" tabindex="-1"></a>Let's continue.</span>
+<span id="cb25-203"><a href="#cb25-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-204"><a href="#cb25-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, tidy=FALSE}</span></span>
+<span id="cb25-205"><a href="#cb25-205" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine Age and Sex</span></span>
+<span id="cb25-206"><a href="#cb25-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-207"><a href="#cb25-207" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span>td <span class="sc">%&gt;%</span> <span class="co"># pass td to next function</span></span>
+<span id="cb25-208"><a href="#cb25-208" aria-hidden="true" tabindex="-1"></a>     <span class="fu">unite</span>(<span class="st">"Age_Sex"</span>, Age.Group<span class="sc">:</span>Sex, <span class="at">sep=</span> <span class="st">"_"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="co"># using the unite() function from the tidyr package, if remove=TRUE the original Age.Group and Sex columns will be deleted</span></span>
+<span id="cb25-209"><a href="#cb25-209" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-210"><a href="#cb25-210" aria-hidden="true" tabindex="-1"></a><span class="co"># Break Phoneme.Dep.Var into two columns</span></span>
+<span id="cb25-211"><a href="#cb25-211" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span>td <span class="sc">%&gt;%</span> <span class="co"># pass td to next function</span></span>
+<span id="cb25-212"><a href="#cb25-212" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Phoneme =</span> <span class="fu">sub</span>(<span class="st">"^(.)(--.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, </span>
+<span id="cb25-213"><a href="#cb25-213" aria-hidden="true" tabindex="-1"></a>        Phoneme.Dep.Var), </span>
+<span id="cb25-214"><a href="#cb25-214" aria-hidden="true" tabindex="-1"></a>        <span class="at">Dep.Var.Full =</span> <span class="fu">sub</span>(<span class="st">"^(.--)(.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, </span>
+<span id="cb25-215"><a href="#cb25-215" aria-hidden="true" tabindex="-1"></a>        Phoneme.Dep.Var), </span>
+<span id="cb25-216"><a href="#cb25-216" aria-hidden="true" tabindex="-1"></a>        <span class="at">Phoneme.Dep.Var =</span> <span class="cn">NULL</span>) <span class="co"># Same as before, but with td passed to mutate() by the %&gt;% operator</span></span>
+<span id="cb25-217"><a href="#cb25-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-218"><a href="#cb25-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-219"><a href="#cb25-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-220"><a href="#cb25-220" aria-hidden="true" tabindex="-1"></a>At this point we have done everything except partition the data and re-center YOB in the partitioned data frames. You may ask, "How is this better?". Well, the answer is that because all these modifications feed into one another, we can actually include them all together in one serialized operation. Behold!</span>
+<span id="cb25-221"><a href="#cb25-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-222"><a href="#cb25-222" aria-hidden="true" tabindex="-1"></a>All of the above code can be simplified as follows:</span>
+<span id="cb25-223"><a href="#cb25-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-224"><a href="#cb25-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE}</span></span>
+<span id="cb25-225"><a href="#cb25-225" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>)</span>
+<span id="cb25-226"><a href="#cb25-226" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-227"><a href="#cb25-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-228"><a href="#cb25-228" aria-hidden="true" tabindex="-1"></a>or...</span>
+<span id="cb25-229"><a href="#cb25-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-230"><a href="#cb25-230" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb25-231"><a href="#cb25-231" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in token file</span></span>
+<span id="cb25-232"><a href="#cb25-232" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"https://www.dropbox.com/s/jxlfuogea3lx2pu/deletiondata.txt?dl=1"</span>)</span>
+<span id="cb25-233"><a href="#cb25-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-234"><a href="#cb25-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-235"><a href="#cb25-235" aria-hidden="true" tabindex="-1"></a>then...</span>
+<span id="cb25-236"><a href="#cb25-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-237"><a href="#cb25-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, tidy=TRUE}</span></span>
+<span id="cb25-238"><a href="#cb25-238" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset data to remove previous 'Vowel' contexts, then modify several columns with mutate, then convert any character column to a factor column</span></span>
+<span id="cb25-239"><a href="#cb25-239" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span></span>
+<span id="cb25-240"><a href="#cb25-240" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Before <span class="sc">!=</span> <span class="st">"Vowel"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb25-241"><a href="#cb25-241" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">After.New =</span> <span class="fu">recode</span>(After, <span class="st">"H"</span> <span class="ot">=</span> <span class="st">"Consonant"</span>),  </span>
+<span id="cb25-242"><a href="#cb25-242" aria-hidden="true" tabindex="-1"></a>             <span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)),</span>
+<span id="cb25-243"><a href="#cb25-243" aria-hidden="true" tabindex="-1"></a>             <span class="at">Age.Group =</span> <span class="fu">cut</span>(YOB, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">1944</span>, <span class="dv">1979</span>, <span class="cn">Inf</span>), </span>
+<span id="cb25-244"><a href="#cb25-244" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>)),</span>
+<span id="cb25-245"><a href="#cb25-245" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme =</span> <span class="fu">sub</span>(<span class="st">"^(.)(--.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, Phoneme.Dep.Var),</span>
+<span id="cb25-246"><a href="#cb25-246" aria-hidden="true" tabindex="-1"></a>             <span class="at">Dep.Var.Full =</span> <span class="fu">sub</span>(<span class="st">"^(.--)(.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, Phoneme.Dep.Var),</span>
+<span id="cb25-247"><a href="#cb25-247" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme.Dep.Var =</span> <span class="cn">NULL</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb25-248"><a href="#cb25-248" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate_if</span>(is.character, as.factor)</span>
+<span id="cb25-249"><a href="#cb25-249" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-250"><a href="#cb25-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-251"><a href="#cb25-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-252"><a href="#cb25-252" aria-hidden="true" tabindex="-1"></a>Now, doesn't the above look so much cleaner and easier to follow?</span>
+<span id="cb25-253"><a href="#cb25-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-254"><a href="#cb25-254" aria-hidden="true" tabindex="-1"></a>To partition the data we still need separate functions. Also, remember to re-centre any continuous variables after partioning.</span>
+<span id="cb25-255"><a href="#cb25-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-258"><a href="#cb25-258" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-259"><a href="#cb25-259" aria-hidden="true" tabindex="-1"></a>td.young <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb25-260"><a href="#cb25-260" aria-hidden="true" tabindex="-1"></a>            <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Young"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb25-261"><a href="#cb25-261" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb25-262"><a href="#cb25-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-263"><a href="#cb25-263" aria-hidden="true" tabindex="-1"></a>td.middle <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb25-264"><a href="#cb25-264" aria-hidden="true" tabindex="-1"></a>             <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Middle"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb25-265"><a href="#cb25-265" aria-hidden="true" tabindex="-1"></a>             <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb25-266"><a href="#cb25-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-267"><a href="#cb25-267" aria-hidden="true" tabindex="-1"></a>td.old <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb25-268"><a href="#cb25-268" aria-hidden="true" tabindex="-1"></a>          <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Old"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb25-269"><a href="#cb25-269" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb25-270"><a href="#cb25-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

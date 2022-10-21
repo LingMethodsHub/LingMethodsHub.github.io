@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.210">
+<meta name="generator" content="quarto-1.2.233">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -173,10 +173,21 @@ cookieconsent.run({
 <meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="LingMethodsHub - Vowel Plots with ggplot2">
 <meta name="twitter:description" content="This is a tutorial on how to make vowel plots in R using the ggplot2 package.">
-<meta name="twitter:image" content="https://lingmethodshub.github.io/assets/logo.png">
-<meta name="twitter:image-height" content="424">
-<meta name="twitter:image-width" content="653">
+<meta name="twitter:image" content="https://lingmethodshub.github.io/content/R/vowel-plots-tutorial/index_files/figure-html/unnamed-chunk-31-1.png">
+<meta name="twitter:image-height" content="960">
+<meta name="twitter:image-width" content="1344">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Vowel Plots with `ggplot2`">
+<meta name="citation_author" content="Joseph A. Stanley">
+<meta name="citation_publication_date" content="2022-10-18">
+<meta name="citation_cover_date" content="2022-10-18">
+<meta name="citation_year" content="2022">
+<meta name="citation_online_date" content="2022-10-18">
+<meta name="citation_fulltext_html_url" content="https://lingmethodshub.github.io/content/R/vowel-plots-tutorial">
+<meta name="citation_doi" content="10.5281/zenodo.7222149">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Linguistics Methods Hub">
+<meta name="citation_series_title" content="Linguistics Methods Hub">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -196,11 +207,11 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html">
+    <a class="nav-link active" href="../../../index.html" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../../content/index.html" aria-current="page">
+    <a class="nav-link" href="../../../content/index.html">
  <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item">
@@ -248,7 +259,7 @@ cookieconsent.run({
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../../" class="sidebar-logo-link">
+      <a href="../../../index.html" class="sidebar-logo-link">
       <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
@@ -457,7 +468,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Vowel Plots with <code>ggplot2</code></h1>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Vowel Plots with <code>ggplot2</code></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -1099,6 +1110,8 @@ Note
 <p>The way you present your data is all up to you. I often prefer a set of settings when I’m playing around with my data, but then switch to a different set when I want to copy and paste into a presentation or paper. It’s good to be comfortable enough with ggplot2 so that you know what is going on and what changes you can make. Hopefully this tutorial has made a few things clearer.</p>
 
 
+<!-- -->
+
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA-4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{a.stanley2022,
@@ -1180,6 +1193,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -1259,7 +1323,588 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         <span class="nav-page-text">How to normalize your vowels using the tidyverse</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb45" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Vowel Plots with `ggplot2`"</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> </span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">    name: "Joseph A. Stanley"</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">    corresponding: true</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co">    url: "https://joeystanley.com/"</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co">    orcid: "0000-0002-9185-0048"</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">    affiliations: </span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co">        name: "Brigham Young University"</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co">        department: "Linguistics"</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="co">        address: "4064 JFSB"</span></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co">        city: "Provo"</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="co">        state: "Utah"</span></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="co">        country: "USA"</span></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co">        postal-code: "84602"</span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-10-18"</span></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "index_files/figure-html/unnamed-chunk-31-1.png"</span></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="an">twitter-card:</span></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a><span class="co">  image: "index_files/figure-html/unnamed-chunk-31-1.png"</span></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="an">open-graph:</span></span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a><span class="co">  image: "index_files/figure-html/unnamed-chunk-31-1.png"</span></span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a><span class="co">  html: "default"</span></span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA-4.0"</span></span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"renv/activate.R"</span>)</span>
+<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a>This is a tutorial on how to make vowel plots in R using the ggplot2 package. Being able to make a vowel plot is a useful skill in contemporary phonetic research, and ggplot2 is an excellent tool to get that done. In this tutorial, I'll focus on how to make plots in the F1-F2 space (*i.e.* they roughly resemble the vowel trapezoid you see on the IPA chart).</span>
+<span id="cb45-36"><a href="#cb45-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb45-38"><a href="#cb45-38" aria-hidden="true" tabindex="-1"></a>Note that tutorial is an update to the one I published in 2018 on my personal website. It is largely the same content, with just some touch-ups to wording and code.</span>
+<span id="cb45-39"><a href="#cb45-39" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb45-40"><a href="#cb45-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-41"><a href="#cb45-41" aria-hidden="true" tabindex="-1"></a>For this workshop, we'll use the <span class="in">`tidyverse`</span> package, which contains <span class="in">`dplyr`</span> and <span class="in">`ggplot2`</span>. The former will be used to manage and manipulate our data. The latter is for plotting. We'll use one other package, one of my own called <span class="in">`joeysvowels`</span>, which is just a simple package containing some handy datasets specifically designed for tutorials like this. The package can be installed directly from Github using the <span class="in">`install_packages`</span> function in the <span class="in">`remotes`</span> package.</span>
+<span id="cb45-42"><a href="#cb45-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE, warning = FALSE}</span></span>
+<span id="cb45-44"><a href="#cb45-44" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("joeystanley/joeysvowels")</span></span>
+<span id="cb45-47"><a href="#cb45-47" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(joeysvowels)</span>
+<span id="cb45-48"><a href="#cb45-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-50"><a href="#cb45-50" aria-hidden="true" tabindex="-1"></a>Of course you're welcome to use your own data.</span>
+<span id="cb45-51"><a href="#cb45-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-52"><a href="#cb45-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## Read in and process data</span></span>
+<span id="cb45-53"><a href="#cb45-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-54"><a href="#cb45-54" aria-hidden="true" tabindex="-1"></a>As with any R script, the first step (after loading your packages) is to read in and prepare your data. The data we'll use for this tutorial is called <span class="in">`midpoints`</span>. Basically, I generated a bunch of words (real and fake) where there was a coronal consonant on either side of vowel. I did that for all the vowels I have in my variety of English, though only 10 are contained in this dataset: all except canonical diphthongs and /ʌ/. I sat at my desk and read all these words and then extracted formant measurements from the vowels. Let's load it and take a peek at what the data looks like.</span>
+<span id="cb45-55"><a href="#cb45-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-58"><a href="#cb45-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-59"><a href="#cb45-59" aria-hidden="true" tabindex="-1"></a>midpoints <span class="ot">&lt;-</span> joeysvowels<span class="sc">::</span>midpoints</span>
+<span id="cb45-60"><a href="#cb45-60" aria-hidden="true" tabindex="-1"></a>midpoints</span>
+<span id="cb45-61"><a href="#cb45-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-62"><a href="#cb45-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-63"><a href="#cb45-63" aria-hidden="true" tabindex="-1"></a>As you can see we have the following columns</span>
+<span id="cb45-64"><a href="#cb45-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-65"><a href="#cb45-65" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`vowel_id`</span>: a unique identifier for every vowel token</span>
+<span id="cb45-66"><a href="#cb45-66" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`start`</span>: the time (in seconds) from the beginning of the recording to vowel's onset.</span>
+<span id="cb45-67"><a href="#cb45-67" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`end`</span>: the time (in seconds) from the beginning of the recording to the vowel's offset.</span>
+<span id="cb45-68"><a href="#cb45-68" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`F1`</span>, <span class="in">`F2`</span>, <span class="in">`F3`</span>, <span class="in">`F4`</span>: the first four formant frequencies.</span>
+<span id="cb45-69"><a href="#cb45-69" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`word`</span>: an IPA transcription of the word</span>
+<span id="cb45-70"><a href="#cb45-70" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`pre`</span>: the onset of the syllable</span>
+<span id="cb45-71"><a href="#cb45-71" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`vowel`</span>: the vowel. Here I use <span class="co">[</span><span class="ot">Wells' Lexical sets</span><span class="co">](https://en.wikipedia.org/wiki/Lexical_set)</span>, which is typical in English dialectology.</span>
+<span id="cb45-72"><a href="#cb45-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`fol`</span>: the code of the syllable</span>
+<span id="cb45-73"><a href="#cb45-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-74"><a href="#cb45-74" aria-hidden="true" tabindex="-1"></a>With that in mind, we're ready to start making some vowel plots!</span>
+<span id="cb45-75"><a href="#cb45-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-76"><a href="#cb45-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Building a basic scatterplot</span></span>
+<span id="cb45-77"><a href="#cb45-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-78"><a href="#cb45-78" aria-hidden="true" tabindex="-1"></a>The way things work in ggplot2 is we be build a visualization layer by layer. The base layer can be created by just using the <span class="in">`ggplot`</span> function.</span>
+<span id="cb45-79"><a href="#cb45-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-82"><a href="#cb45-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-83"><a href="#cb45-83" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()</span>
+<span id="cb45-84"><a href="#cb45-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-85"><a href="#cb45-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-86"><a href="#cb45-86" aria-hidden="true" tabindex="-1"></a>It's just a blank, gray rectangle, but it is valid code. To make this actually useful, we can tell it to work with the <span class="in">`midpoints`</span> data.</span>
+<span id="cb45-87"><a href="#cb45-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-90"><a href="#cb45-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-91"><a href="#cb45-91" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints)</span>
+<span id="cb45-92"><a href="#cb45-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-93"><a href="#cb45-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-94"><a href="#cb45-94" aria-hidden="true" tabindex="-1"></a>Okay still no visualization, but we're on our way. The next part of a <span class="in">`ggplot`</span> function is what's called the <span class="in">`mapping`</span> argument. This is where you tell <span class="in">`ggplot`</span> which columns of your data should correspond to what parts of the visualization. Traditionally in vowel plots, we want F2 along the *x*-axis and F1 along the *y*-axis. We can do that using the <span class="in">`aes`</span> function and specify that we want to work with the columns called <span class="in">`F1`</span> and <span class="in">`F2`</span> from our spreadsheet.</span>
+<span id="cb45-95"><a href="#cb45-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-98"><a href="#cb45-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-99"><a href="#cb45-99" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1))</span>
+<span id="cb45-100"><a href="#cb45-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-101"><a href="#cb45-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-102"><a href="#cb45-102" aria-hidden="true" tabindex="-1"></a>We're getting closer. What <span class="in">`ggplot`</span> has done at this point is added some information to your plot already. There are now *x*- and *y*-axis labels, ticks, and a grid with major and minor lines. All we need to do is populate this with some data. We can do that by adding a separate layer to the <span class="in">`ggplot`</span> function. To do this, just add a plus sign (<span class="in">`+`</span>) at the end of the line, start a new line, and add the function <span class="in">`geom_point`</span>, which is the function for making a scatterplot in ggplot2.</span>
+<span id="cb45-103"><a href="#cb45-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-106"><a href="#cb45-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-107"><a href="#cb45-107" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1)) <span class="sc">+</span> </span>
+<span id="cb45-108"><a href="#cb45-108" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb45-109"><a href="#cb45-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-110"><a href="#cb45-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-111"><a href="#cb45-111" aria-hidden="true" tabindex="-1"></a>Aha! We now have a scatterplot! It's not the most useful one because we can't tell what vowel or word each point came from. But it is a start.</span>
+<span id="cb45-112"><a href="#cb45-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-113"><a href="#cb45-113" aria-hidden="true" tabindex="-1"></a><span class="fu">## Themes</span></span>
+<span id="cb45-114"><a href="#cb45-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-115"><a href="#cb45-115" aria-hidden="true" tabindex="-1"></a>Right now, you might be wondering why we have a gray background. This was a conscious choice made by the designers of ggplot2 because it arguably makes colors easier to see. You can change the overall look and feel of your plot using various theme functions. I like <span class="in">`theme_bw`</span>, <span class="in">`theme_minimal`</span>, and <span class="in">`theme_classic`</span> myself; today I'll stick with <span class="in">`theme_minimal`</span>.</span>
+<span id="cb45-116"><a href="#cb45-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-119"><a href="#cb45-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-120"><a href="#cb45-120" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1)) <span class="sc">+</span> </span>
+<span id="cb45-121"><a href="#cb45-121" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-122"><a href="#cb45-122" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-123"><a href="#cb45-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-124"><a href="#cb45-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-125"><a href="#cb45-125" aria-hidden="true" tabindex="-1"></a><span class="fu">## Coloring vowels</span></span>
+<span id="cb45-126"><a href="#cb45-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-127"><a href="#cb45-127" aria-hidden="true" tabindex="-1"></a>Because English has so many vowels, there's no really good way to show them all on a plot. Typically, I use color, but it's hard to get a set of 10 colors that are all easily distinguishable and easy on the eyes. There's no real way to win here. For now, let's just add the default colors and see how it looks.</span>
+<span id="cb45-128"><a href="#cb45-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-129"><a href="#cb45-129" aria-hidden="true" tabindex="-1"></a>So how do we add color? If you think about it, what we want <span class="in">`ggplot`</span> to do is to change the color of the dot depending on what the vowel is. Since the vowel is stored in a column called <span class="in">`vowel`</span> in our spreadsheet, in a practical sense we want to tell <span class="in">`ggplot`</span> to simply change the color of the dot so that each value in the <span class="in">`vowel`</span> column has its own color. In other words, we want to *map* the <span class="in">`vowel`</span> column in our spreadsheet to the <span class="in">`color`</span> property in the plot.</span>
+<span id="cb45-130"><a href="#cb45-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-133"><a href="#cb45-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-134"><a href="#cb45-134" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-135"><a href="#cb45-135" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-136"><a href="#cb45-136" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-137"><a href="#cb45-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-138"><a href="#cb45-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-139"><a href="#cb45-139" aria-hidden="true" tabindex="-1"></a>Okay, so let's look at the result. The most obvious thing we see is that there is now color, but there's also a legend too. Each unique vowel in our data is now represented in this legend, and the name of the column in our spreadsheet, <span class="in">`vowel`</span>, is the title of that legend. One subtler change is that the plotting area is actually a little bit narrower to make room for the legend.</span>
+<span id="cb45-140"><a href="#cb45-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-141"><a href="#cb45-141" aria-hidden="true" tabindex="-1"></a>How is this color assigned? In your dataset, the vowels will probably appear alphabetical in the legend. So, with that order, ggplot goes around the color wheel from red to pink, and picks equidistant, maximally-distinct colors as you have vowels. In this case, because the <span class="in">`midpoints`</span> comes prepared with a predetermined order of the vowels, ggplot2 is going to respect that order. So, it puts the vowels in order in the legend, and then again assigns them colors based on 10 equidistant values along a rainbow wheel. Because of the nature of how color works, there are several shades of blue and green, but not very many warm colors. We'll see how to fix the order of these colors, in just a sec.</span>
+<span id="cb45-142"><a href="#cb45-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-143"><a href="#cb45-143" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tangent: reversing the axes</span></span>
+<span id="cb45-144"><a href="#cb45-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-145"><a href="#cb45-145" aria-hidden="true" tabindex="-1"></a>Now wait a second. The high front vowel /i/---represented by the label "FLEECE"---is in the bottom right of the plot when it traditionally is in the top left. As it turns out, vowel plots typically reverse both the *x*- and the *y*-axes so that high vowels are at the top, and front vowels are on the right. This is just convention but it has to do with the inverse relationship with the actual formant values and our perception of sounds. Anyway, the functions you're looking for are <span class="in">`scale_x_reverse`</span> and <span class="in">`scale_y_reverse`</span>, which should each be added as their own layer.</span>
+<span id="cb45-146"><a href="#cb45-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-149"><a href="#cb45-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-150"><a href="#cb45-150" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-151"><a href="#cb45-151" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-152"><a href="#cb45-152" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-153"><a href="#cb45-153" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-154"><a href="#cb45-154" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-155"><a href="#cb45-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-156"><a href="#cb45-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-157"><a href="#cb45-157" aria-hidden="true" tabindex="-1"></a>Okay, much better. Now we can see that the teal FLEECE vowel is in the top left, the pink purple-ish GOOSE is in the top right-ish, and my unmerged LOT and THOUGHT (/ɑ/ and /ɔ/, as in *cot* and *caught*) are in the bottom right.</span>
+<span id="cb45-158"><a href="#cb45-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-159"><a href="#cb45-159" aria-hidden="true" tabindex="-1"></a><span class="fu">### Changing the order</span></span>
+<span id="cb45-160"><a href="#cb45-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-161"><a href="#cb45-161" aria-hidden="true" tabindex="-1"></a>If you want to change the order of the colors and the order in the legend, there are two ways to do that. The first is by leaving your underlying data alone and making superficial changes only within <span class="in">`ggplot`</span> itself. This is a useful thing to know how to do, but I won't cover that here. If you're interested, I'd highly recommend <span class="co">[</span><span class="ot">this page</span><span class="co">]</span>(http://www.cookbook-r.com/Graphs/Legends_(ggplot2)/) on that.</span>
+<span id="cb45-162"><a href="#cb45-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-163"><a href="#cb45-163" aria-hidden="true" tabindex="-1"></a>At least for the order of the vowels, what I think is the most useful option is to actually modify your dataset and then plot the modified version. The way to do this to overwrite the <span class="in">`vowel`</span> column in our <span class="in">`midpoints`</span> dataset, and, using the <span class="in">`factor`</span> function, manually specifying the order you want them to be in. The actual data itself doesn't change, but what we're doing is modifying how R treats this column under the hood. This is the order that I typically do, but you're of course free to do whatever you want.</span>
+<span id="cb45-164"><a href="#cb45-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-167"><a href="#cb45-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-168"><a href="#cb45-168" aria-hidden="true" tabindex="-1"></a>midpoints<span class="sc">$</span>vowel <span class="ot">&lt;-</span> <span class="fu">factor</span>(midpoints<span class="sc">$</span>vowel, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"FLEECE"</span>, <span class="st">"KIT"</span>, <span class="st">"FACE"</span>, <span class="st">"DRESS"</span>, <span class="st">"TRAP"</span>, </span>
+<span id="cb45-169"><a href="#cb45-169" aria-hidden="true" tabindex="-1"></a>                                                      <span class="st">"LOT"</span>, <span class="st">"THOUGHT"</span>, <span class="st">"GOAT"</span>, <span class="st">"FOOT"</span>, <span class="st">"GOOSE"</span>))</span>
+<span id="cb45-170"><a href="#cb45-170" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-171"><a href="#cb45-171" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-172"><a href="#cb45-172" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-173"><a href="#cb45-173" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-174"><a href="#cb45-174" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-175"><a href="#cb45-175" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-176"><a href="#cb45-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-177"><a href="#cb45-177" aria-hidden="true" tabindex="-1"></a>Ah. Now that the order of the vowels goes around the vowel space counterclockwise, we can more easily see the rainbow colors. The benefit to this order is that now the vowels are in a somewhat logical order in the legend. The downside is that the colors of each vowel are very close to other vowels near them in the vowel space (for example, look at DRESS and TRAP or LOT and THOUGHT). What would be better is to have vowels near each other to be different visually. This time, I'll put the vowels in a more random order.</span>
+<span id="cb45-178"><a href="#cb45-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-181"><a href="#cb45-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-182"><a href="#cb45-182" aria-hidden="true" tabindex="-1"></a>midpoints<span class="sc">$</span>vowel <span class="ot">&lt;-</span> <span class="fu">factor</span>(midpoints<span class="sc">$</span>vowel, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"FLEECE"</span>, <span class="st">"DRESS"</span>, <span class="st">"THOUGHT"</span>, <span class="st">"FOOT"</span>, <span class="st">"KIT"</span>,</span>
+<span id="cb45-183"><a href="#cb45-183" aria-hidden="true" tabindex="-1"></a>                                                      <span class="st">"TRAP"</span>, <span class="st">"GOOSE"</span>, <span class="st">"FACE"</span>, <span class="st">"LOT"</span>, <span class="st">"GOAT"</span>))</span>
+<span id="cb45-184"><a href="#cb45-184" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-185"><a href="#cb45-185" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-186"><a href="#cb45-186" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-187"><a href="#cb45-187" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-188"><a href="#cb45-188" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-189"><a href="#cb45-189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-190"><a href="#cb45-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-191"><a href="#cb45-191" aria-hidden="true" tabindex="-1"></a>With this particular order, vowels that are close to each other don't have similar colors. The good part is that the vowels are for the most part relatively easy to distinguish from their neighbors. The major downside is that the legend is the exact order I specified, which is useless for finding something. What we need to do is actually modify the legend order. We can do that with the <span class="in">`scale_color_discrete`</span> function added to our growing stack of <span class="in">`ggplot`</span> code and then supply the order you want it to be in as the <span class="in">`breaks`</span> argument.</span>
+<span id="cb45-192"><a href="#cb45-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-195"><a href="#cb45-195" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-196"><a href="#cb45-196" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-197"><a href="#cb45-197" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-198"><a href="#cb45-198" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-199"><a href="#cb45-199" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">"FLEECE"</span>, <span class="st">"KIT"</span>, <span class="st">"FACE"</span>, <span class="st">"DRESS"</span>, <span class="st">"TRAP"</span>, </span>
+<span id="cb45-200"><a href="#cb45-200" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"LOT"</span>, <span class="st">"THOUGHT"</span>, <span class="st">"GOAT"</span>, <span class="st">"FOOT"</span>, <span class="st">"GOOSE"</span>)) <span class="sc">+</span> </span>
+<span id="cb45-201"><a href="#cb45-201" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-202"><a href="#cb45-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-203"><a href="#cb45-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-204"><a href="#cb45-204" aria-hidden="true" tabindex="-1"></a>Cool. Now the colors are distinct from one another and the order of the legend is back to an order we might expect.</span>
+<span id="cb45-205"><a href="#cb45-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-206"><a href="#cb45-206" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adding vowel means</span></span>
+<span id="cb45-207"><a href="#cb45-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-208"><a href="#cb45-208" aria-hidden="true" tabindex="-1"></a>The problem with the plot the way it is, is you still have to constantly check back and forth between the legend and the plot to see what vowel you're looking at. An easier solution would be to plot the name of the vowel itself inside of its cluster.</span>
+<span id="cb45-209"><a href="#cb45-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-210"><a href="#cb45-210" aria-hidden="true" tabindex="-1"></a>One solution that I think I've seen before is to use the <span class="in">`stat_summary`</span> function. Supposedly this works, and if you know how to use it, by all means go for it. I've never gotten it to work and I found a workaround that I like that I think offers more flexibility anyway. It involves creating a separate dataset and essentially overlaying a second scatterplot over the main one.</span>
+<span id="cb45-211"><a href="#cb45-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-212"><a href="#cb45-212" aria-hidden="true" tabindex="-1"></a>To create this, I pull out some black magic from the <span class="in">`dplyr`</span> package. First, I start with the <span class="in">`midpoints`</span> dataset. I then "pipe" it (the <span class="in">`%&gt;%`</span> function) to the <span class="in">`summarize`</span> function. This function makes it easy to get summary statistics from your data. We're creating a new, arbitrarily-named column called <span class="in">`mean_F1`</span>, which is calculated as the mean of the values in the <span class="in">`F1`</span> column. Same thing for <span class="in">`mean_F2`</span>. However, as it is, we'll end up with two numbers: the average F1 and F2 of all your data, which would probably be somewhere near the middle of your vowel space.</span>
+<span id="cb45-213"><a href="#cb45-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-216"><a href="#cb45-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-217"><a href="#cb45-217" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> midpoints <span class="sc">%&gt;%</span></span>
+<span id="cb45-218"><a href="#cb45-218" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_F1 =</span> <span class="fu">mean</span>(F1),</span>
+<span id="cb45-219"><a href="#cb45-219" aria-hidden="true" tabindex="-1"></a>              <span class="at">mean_F2 =</span> <span class="fu">mean</span>(F2)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-220"><a href="#cb45-220" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span>
+<span id="cb45-221"><a href="#cb45-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-222"><a href="#cb45-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-223"><a href="#cb45-223" aria-hidden="true" tabindex="-1"></a>What we actually want though is the mean F1 and F2 *per vowel*. So, what we do is insert the <span class="in">`group_by`</span> function just before <span class="in">`summarize`</span>. By itself, <span class="in">`group_by`</span> doesn't really do much except change some stuff about the dataframe under the hood. But these changes are especially useful when that is then "piped" (<span class="in">`%&gt;%`</span>) to <span class="in">`summarize`</span>. Because I did <span class="in">`group_by(vowel)`</span> first, whatever summary information you want from your dataset will apply to each vowel independently. So, instead of the average overall, you're getting the average per group. The result is a new dataframe that we're calling <span class="in">`means`</span>, that has all the information we want. (I'm then piping it to a <span class="in">`print`</span> function so we can see the output.)</span>
+<span id="cb45-224"><a href="#cb45-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-227"><a href="#cb45-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-228"><a href="#cb45-228" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> midpoints <span class="sc">%&gt;%</span></span>
+<span id="cb45-229"><a href="#cb45-229" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel) <span class="sc">%&gt;%</span></span>
+<span id="cb45-230"><a href="#cb45-230" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_F1 =</span> <span class="fu">mean</span>(F1),</span>
+<span id="cb45-231"><a href="#cb45-231" aria-hidden="true" tabindex="-1"></a>              <span class="at">mean_F2 =</span> <span class="fu">mean</span>(F2)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-232"><a href="#cb45-232" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span>
+<span id="cb45-233"><a href="#cb45-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-234"><a href="#cb45-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-235"><a href="#cb45-235" aria-hidden="true" tabindex="-1"></a>This new dataset, <span class="in">`means`</span>, is a perfectly good, stand-alone dataset that we can plot by itself. Note that because we called the columns <span class="in">`mean_F1`</span> and <span class="in">`mean_F2`</span>, we'll have to use those in the <span class="in">`ggplot2`</span> function.</span>
+<span id="cb45-236"><a href="#cb45-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-239"><a href="#cb45-239" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-240"><a href="#cb45-240" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(means, <span class="fu">aes</span>(<span class="at">x =</span> mean_F2, <span class="at">y =</span> mean_F1)) <span class="sc">+</span> </span>
+<span id="cb45-241"><a href="#cb45-241" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-242"><a href="#cb45-242" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-243"><a href="#cb45-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-244"><a href="#cb45-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-245"><a href="#cb45-245" aria-hidden="true" tabindex="-1"></a>The points themselves aren't very enlightening. To add some pizzazz, I'm going to use <span class="in">`geom_label`</span>. This is essentially the same thing at <span class="in">`geom_point`</span> because it makes a scatterplot, but instead of dots it'll print these nice little labels. Of course, you have to tell <span class="in">`ggplot`</span> what text to use for these labels, so we'll tell it to map the text in the <span class="in">`vowel`</span> column in the <span class="in">`means`</span> dataset.</span>
+<span id="cb45-246"><a href="#cb45-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-249"><a href="#cb45-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-250"><a href="#cb45-250" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(means, <span class="fu">aes</span>(<span class="at">x =</span> mean_F2, <span class="at">y =</span> mean_F1, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-251"><a href="#cb45-251" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>() <span class="sc">+</span> </span>
+<span id="cb45-252"><a href="#cb45-252" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-253"><a href="#cb45-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-254"><a href="#cb45-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-255"><a href="#cb45-255" aria-hidden="true" tabindex="-1"></a>Ooh! Okay, so now we're getting somewhere. Here it becomes obvious that we need to reverse the *x*- and *y*-axes. Let's do that too.</span>
+<span id="cb45-256"><a href="#cb45-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-259"><a href="#cb45-259" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-260"><a href="#cb45-260" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(means, <span class="fu">aes</span>(<span class="at">x =</span> mean_F2, <span class="at">y =</span> mean_F1, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-261"><a href="#cb45-261" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>() <span class="sc">+</span> </span>
+<span id="cb45-262"><a href="#cb45-262" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-263"><a href="#cb45-263" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-264"><a href="#cb45-264" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-265"><a href="#cb45-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-266"><a href="#cb45-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-267"><a href="#cb45-267" aria-hidden="true" tabindex="-1"></a>Perfect. So we've seen how to plot the points themselves, and now we've seen how to plot the means. Now comes the fun part of actually overlaying them into one plot.</span>
+<span id="cb45-268"><a href="#cb45-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-269"><a href="#cb45-269" aria-hidden="true" tabindex="-1"></a>It's perfectly possible to plot two (or more) different datasets in a single visualization, but you'll have to be careful about the <span class="in">`aes()`</span> functions. Anything in the <span class="in">`ggplot(aes())`</span> function will apply to all other layers, unless they're overridden. That's why we didn't need to provide any additional information in <span class="in">`geom_point`</span> because it *inherited* all its information (the data, the axes, the color) from <span class="in">`ggplot`</span>.</span>
+<span id="cb45-270"><a href="#cb45-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-271"><a href="#cb45-271" aria-hidden="true" tabindex="-1"></a>If we want to add the means, we're using a different dataset, so that right off that bat has to be overridden in our <span class="in">`geom_label`</span> function:</span>
+<span id="cb45-272"><a href="#cb45-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-275"><a href="#cb45-275" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-276"><a href="#cb45-276" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb45-277"><a href="#cb45-277" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Don't plot this yet...</span></span>
+<span id="cb45-278"><a href="#cb45-278" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb45-279"><a href="#cb45-279" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means) <span class="sc">+</span> </span>
+<span id="cb45-280"><a href="#cb45-280" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb45-281"><a href="#cb45-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-282"><a href="#cb45-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-283"><a href="#cb45-283" aria-hidden="true" tabindex="-1"></a>Because we're using <span class="in">`geom_label`</span>, we're going to need to put <span class="in">`label = vowel`</span> somewhere. You can put it in the main <span class="in">`ggplot(aes())`</span> function with everything else and that'll work out fine:</span>
+<span id="cb45-284"><a href="#cb45-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-287"><a href="#cb45-287" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-288"><a href="#cb45-288" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb45-289"><a href="#cb45-289" aria-hidden="true" tabindex="-1"></a><span class="co"># Don't plot this yet...</span></span>
+<span id="cb45-290"><a href="#cb45-290" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-291"><a href="#cb45-291" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb45-292"><a href="#cb45-292" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means) <span class="sc">+</span> </span>
+<span id="cb45-293"><a href="#cb45-293" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb45-294"><a href="#cb45-294" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-295"><a href="#cb45-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-296"><a href="#cb45-296" aria-hidden="true" tabindex="-1"></a>However, we're going to have to supply our own <span class="in">`aes()`</span> function within <span class="in">`geom_label`</span>. The reason for that is because right now we've got <span class="in">`x = F2`</span> and <span class="in">`y = F1`</span> as global settings. Our new <span class="in">`means`</span> dataframe doesn't have columns with those names. So we'll have to override these by adding a second <span class="in">`aes()`</span> function, this time within <span class="in">`geom_label`</span>:</span>
+<span id="cb45-297"><a href="#cb45-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-300"><a href="#cb45-300" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-301"><a href="#cb45-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb45-302"><a href="#cb45-302" aria-hidden="true" tabindex="-1"></a><span class="co"># Still don't run this.</span></span>
+<span id="cb45-303"><a href="#cb45-303" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-304"><a href="#cb45-304" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb45-305"><a href="#cb45-305" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means, <span class="fu">aes</span>(<span class="at">x =</span> mean_F2, <span class="at">y =</span> mean_F1)) <span class="sc">+</span> </span>
+<span id="cb45-306"><a href="#cb45-306" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-307"><a href="#cb45-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-308"><a href="#cb45-308" aria-hidden="true" tabindex="-1"></a>Add all the other pieces to the plot, and let'er rip.</span>
+<span id="cb45-309"><a href="#cb45-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-312"><a href="#cb45-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-313"><a href="#cb45-313" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-314"><a href="#cb45-314" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-315"><a href="#cb45-315" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means, <span class="fu">aes</span>(<span class="at">x =</span> mean_F2, <span class="at">y =</span> mean_F1)) <span class="sc">+</span> </span>
+<span id="cb45-316"><a href="#cb45-316" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-317"><a href="#cb45-317" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-318"><a href="#cb45-318" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">"FLEECE"</span>, <span class="st">"KIT"</span>, <span class="st">"FACE"</span>, <span class="st">"DRESS"</span>, <span class="st">"TRAP"</span>, </span>
+<span id="cb45-319"><a href="#cb45-319" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"LOT"</span>, <span class="st">"THOUGHT"</span>, <span class="st">"GOAT"</span>, <span class="st">"FOOT"</span>, <span class="st">"GOOSE"</span>))  <span class="sc">+</span> </span>
+<span id="cb45-320"><a href="#cb45-320" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb45-321"><a href="#cb45-321" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-322"><a href="#cb45-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-323"><a href="#cb45-323" aria-hidden="true" tabindex="-1"></a>Aha! So now we have a vowel plot that has the points, and on top of them it has the labels for these vowels right where the averages are. Pretty cool.</span>
+<span id="cb45-324"><a href="#cb45-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-325"><a href="#cb45-325" aria-hidden="true" tabindex="-1"></a>A couple things to note here. In the legend, notice that the dots have now all turned into little *a*'s because we're using <span class="in">`geom_label`</span> now. But, something to consider is this: what additional information is the legend providing us? The answer is nothing. There is nothing that the legend says that we can't already get from the plot. So, to create a cleaner plot with less visual clutter, we really should remove the legend. We can do this with <span class="in">`theme(legend.position = "none")`</span>. And now that we've removed the legend, we can remove the <span class="in">`breaks = c(...)`</span> argument to <span class="in">`scale_color_discrete`</span> since there's no point in modifying the order of elements in a non-existent legend.</span>
+<span id="cb45-326"><a href="#cb45-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-329"><a href="#cb45-329" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-330"><a href="#cb45-330" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-331"><a href="#cb45-331" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-332"><a href="#cb45-332" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means, <span class="fu">aes</span>(<span class="at">x =</span> mean_F2, <span class="at">y =</span> mean_F1)) <span class="sc">+</span> </span>
+<span id="cb45-333"><a href="#cb45-333" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-334"><a href="#cb45-334" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-335"><a href="#cb45-335" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-336"><a href="#cb45-336" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-337"><a href="#cb45-337" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-338"><a href="#cb45-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-339"><a href="#cb45-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-340"><a href="#cb45-340" aria-hidden="true" tabindex="-1"></a>Another thing to notice is that the labels are automatically colored the same as the vowels! How did it do that? We'll, as it turns out, <span class="in">`geom_label`</span> inherited the <span class="in">`color = vowel`</span> argument from the main <span class="in">`ggplot(aes())`</span> function. It worked because it just so happens that the column <span class="in">`vowel`</span> exists in both the <span class="in">`means`</span> and the <span class="in">`midpoints`</span> datasets. Pretty cool. If you want to override it, perhaps by making them all black, you can certainly do so. Just put it within <span class="in">`geom_label`</span> but not inside of <span class="in">`aes`</span>:</span>
+<span id="cb45-341"><a href="#cb45-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-344"><a href="#cb45-344" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-345"><a href="#cb45-345" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-346"><a href="#cb45-346" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-347"><a href="#cb45-347" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means, <span class="fu">aes</span>(<span class="at">x =</span> mean_F2, <span class="at">y =</span> mean_F1), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb45-348"><a href="#cb45-348" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-349"><a href="#cb45-349" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-350"><a href="#cb45-350" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-351"><a href="#cb45-351" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-352"><a href="#cb45-352" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-353"><a href="#cb45-353" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-354"><a href="#cb45-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-355"><a href="#cb45-355" aria-hidden="true" tabindex="-1"></a>If course, now it's not quite as clear which cluster the labels belong to. It's up to you.</span>
+<span id="cb45-356"><a href="#cb45-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-357"><a href="#cb45-357" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tangent: An alternative approach</span></span>
+<span id="cb45-358"><a href="#cb45-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-359"><a href="#cb45-359" aria-hidden="true" tabindex="-1"></a>Side note, we could have saved ourselves some headache by planning ahead. When we created the <span class="in">`means`</span> dataframe, we could have called the new columns <span class="in">`F1`</span> and <span class="in">`F2`</span> to match the columns in <span class="in">`midpoints`</span>. By doing that, we wouldn't need to override the <span class="in">`x`</span> and <span class="in">`y`</span> arguments. All of that code would look like this.</span>
+<span id="cb45-360"><a href="#cb45-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-363"><a href="#cb45-363" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-364"><a href="#cb45-364" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> midpoints <span class="sc">%&gt;%</span></span>
+<span id="cb45-365"><a href="#cb45-365" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel) <span class="sc">%&gt;%</span></span>
+<span id="cb45-366"><a href="#cb45-366" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">F1 =</span> <span class="fu">mean</span>(F1),</span>
+<span id="cb45-367"><a href="#cb45-367" aria-hidden="true" tabindex="-1"></a>              <span class="at">F2 =</span> <span class="fu">mean</span>(F2))</span>
+<span id="cb45-368"><a href="#cb45-368" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-369"><a href="#cb45-369" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-370"><a href="#cb45-370" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means) <span class="sc">+</span> </span>
+<span id="cb45-371"><a href="#cb45-371" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-372"><a href="#cb45-372" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-373"><a href="#cb45-373" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-374"><a href="#cb45-374" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-375"><a href="#cb45-375" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-376"><a href="#cb45-376" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-377"><a href="#cb45-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-378"><a href="#cb45-378" aria-hidden="true" tabindex="-1"></a>And if you want to get really fancy, you can use the <span class="in">`across`</span> function if you'd like. Don't worry about it if you don't quite get what's happening.</span>
+<span id="cb45-379"><a href="#cb45-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-382"><a href="#cb45-382" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-383"><a href="#cb45-383" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> midpoints <span class="sc">%&gt;%</span></span>
+<span id="cb45-384"><a href="#cb45-384" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel) <span class="sc">%&gt;%</span></span>
+<span id="cb45-385"><a href="#cb45-385" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), mean))</span>
+<span id="cb45-386"><a href="#cb45-386" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-387"><a href="#cb45-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-388"><a href="#cb45-388" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ellipses</span></span>
+<span id="cb45-389"><a href="#cb45-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-390"><a href="#cb45-390" aria-hidden="true" tabindex="-1"></a>One final thing that would be good to show in a vowel plot are ellipses. These are often used to get an idea of the distribution of the vowels or to show degree of overlap. Fortunately, they're pretty easy to implement (a lot easier than means at least). The main function that takes care of these is <span class="in">`stat_ellipse`</span>.</span>
+<span id="cb45-391"><a href="#cb45-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-394"><a href="#cb45-394" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-395"><a href="#cb45-395" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-396"><a href="#cb45-396" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-397"><a href="#cb45-397" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb45-398"><a href="#cb45-398" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>() <span class="sc">+</span> </span>
+<span id="cb45-399"><a href="#cb45-399" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-400"><a href="#cb45-400" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-401"><a href="#cb45-401" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-402"><a href="#cb45-402" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-403"><a href="#cb45-403" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-404"><a href="#cb45-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-405"><a href="#cb45-405" aria-hidden="true" tabindex="-1"></a>Easy-peasy. By default, these ellipses cover about a 95% confidence interval (or approximately two standard deviations) around the means of each vowel. We can change that to whatever we want using the <span class="in">`level`</span> function. I usually set mine to <span class="in">`0.67`</span>, which corresponds to about one standard deviation, and I think that's pretty standard for people who make vowel plots. This only changes the size of the ellipses, leaving shape/orientation the same.</span>
+<span id="cb45-406"><a href="#cb45-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-409"><a href="#cb45-409" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-410"><a href="#cb45-410" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-411"><a href="#cb45-411" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-412"><a href="#cb45-412" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb45-413"><a href="#cb45-413" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>) <span class="sc">+</span> </span>
+<span id="cb45-414"><a href="#cb45-414" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-415"><a href="#cb45-415" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-416"><a href="#cb45-416" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-417"><a href="#cb45-417" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-418"><a href="#cb45-418" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-419"><a href="#cb45-419" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-420"><a href="#cb45-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-421"><a href="#cb45-421" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tangent: Ordering</span></span>
+<span id="cb45-422"><a href="#cb45-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-423"><a href="#cb45-423" aria-hidden="true" tabindex="-1"></a>You might be wondering why I order the layers in the block of code the way I do. For the most part, the order doesn't matter, but for some things it does. So if you look carefully at the above plot, you'll see that the ellipses lines actually cover the labels. The reason for that is simply because the <span class="in">`stat_ellipse`</span> function came after <span class="in">`geom_label`</span> in the block. I think it looks better with the labels on top, so you can switch those.</span>
+<span id="cb45-424"><a href="#cb45-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-427"><a href="#cb45-427" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-428"><a href="#cb45-428" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-429"><a href="#cb45-429" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-430"><a href="#cb45-430" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>) <span class="sc">+</span> </span>
+<span id="cb45-431"><a href="#cb45-431" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb45-432"><a href="#cb45-432" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-433"><a href="#cb45-433" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-434"><a href="#cb45-434" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-435"><a href="#cb45-435" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-436"><a href="#cb45-436" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-437"><a href="#cb45-437" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-438"><a href="#cb45-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-439"><a href="#cb45-439" aria-hidden="true" tabindex="-1"></a>Another piece of ordering that matters is <span class="in">`theme_classic`</span> and <span class="in">`theme()`</span>. The second one, which removes the legend, must go after <span class="in">`theme_classic`</span>. Basically, the reason is <span class="in">`theme_classic`</span> has <span class="in">`theme`</span> built into it, and it specifies that the legend goes on the right side. So if you put <span class="in">`theme`</span> first, it'll get overwritten by <span class="in">`theme_classic`</span>. But if you put <span class="in">`theme`</span> after, it'll overwrite things in <span class="in">`theme_classic`</span>.</span>
+<span id="cb45-440"><a href="#cb45-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-441"><a href="#cb45-441" aria-hidden="true" tabindex="-1"></a>As far as I can tell, most of the other things like <span class="in">`scale_x_reverse`</span>, <span class="in">`scale_y_reverse`</span>, and <span class="in">`scale_color_discrete`</span> can go anywhere. Generally, I order my block with the important things first (like <span class="in">`geom_point`</span> since this is a scatterplot after all), then the small cosmetic changes (like <span class="in">`scale_x_reverse`</span>), and then any themes.</span>
+<span id="cb45-442"><a href="#cb45-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-443"><a href="#cb45-443" aria-hidden="true" tabindex="-1"></a><span class="fu">### Making the ellipses the focus</span></span>
+<span id="cb45-444"><a href="#cb45-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-445"><a href="#cb45-445" aria-hidden="true" tabindex="-1"></a>Sometimes, you just have too much data and you lose the forest for the trees with all those points. You can easy remove them and leave just the means and the ellipses by removing (or just commenting out) the <span class="in">`geom_point`</span> line.</span>
+<span id="cb45-446"><a href="#cb45-446" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-449"><a href="#cb45-449" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-450"><a href="#cb45-450" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-451"><a href="#cb45-451" aria-hidden="true" tabindex="-1"></a>    <span class="co">#geom_point() + </span></span>
+<span id="cb45-452"><a href="#cb45-452" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>) <span class="sc">+</span> </span>
+<span id="cb45-453"><a href="#cb45-453" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means) <span class="sc">+</span> </span>
+<span id="cb45-454"><a href="#cb45-454" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-455"><a href="#cb45-455" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-456"><a href="#cb45-456" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-457"><a href="#cb45-457" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-458"><a href="#cb45-458" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-459"><a href="#cb45-459" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-460"><a href="#cb45-460" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-461"><a href="#cb45-461" aria-hidden="true" tabindex="-1"></a>That's one way to clean it up. We could also keep them but make them a bit transparent by adding the <span class="in">`alpha`</span> argument. The range of values for <span class="in">`alpha`</span> is from 0 to 1, with 1 being completely opaque and 0 being invisible. An <span class="in">`alpha`</span> level of <span class="in">`0.2`</span> means that it takes 5 (0.2 = 1/5) overlapping points to become completely opaque. In other words it's only shaded in 20%.</span>
+<span id="cb45-462"><a href="#cb45-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-465"><a href="#cb45-465" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-466"><a href="#cb45-466" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-467"><a href="#cb45-467" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb45-468"><a href="#cb45-468" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>) <span class="sc">+</span> </span>
+<span id="cb45-469"><a href="#cb45-469" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means) <span class="sc">+</span> </span>
+<span id="cb45-470"><a href="#cb45-470" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-471"><a href="#cb45-471" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-472"><a href="#cb45-472" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-473"><a href="#cb45-473" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-474"><a href="#cb45-474" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-475"><a href="#cb45-475" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-476"><a href="#cb45-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-477"><a href="#cb45-477" aria-hidden="true" tabindex="-1"></a>We could also change the size so that they're smaller. I've found that the exact size depends on how much data you're displaying, but if you make it smaller than the default of 1.5, you might have a slightly cleaner plot. I'll make mine about half the default size by adding <span class="in">`size = 0.75`</span> within <span class="in">`geom_point`</span>.</span>
+<span id="cb45-478"><a href="#cb45-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-481"><a href="#cb45-481" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-482"><a href="#cb45-482" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-483"><a href="#cb45-483" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.75</span>) <span class="sc">+</span> </span>
+<span id="cb45-484"><a href="#cb45-484" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>) <span class="sc">+</span> </span>
+<span id="cb45-485"><a href="#cb45-485" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means) <span class="sc">+</span> </span>
+<span id="cb45-486"><a href="#cb45-486" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-487"><a href="#cb45-487" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-488"><a href="#cb45-488" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-489"><a href="#cb45-489" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-490"><a href="#cb45-490" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-491"><a href="#cb45-491" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-492"><a href="#cb45-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-493"><a href="#cb45-493" aria-hidden="true" tabindex="-1"></a>You could even change the size to a lot smaller, like 0.1 or even 0.01. You could also keep them relatively large but change the transparency as well (<span class="in">`size = 2, alpha = 0.5`</span>). The sky's the limit!</span>
+<span id="cb45-494"><a href="#cb45-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-497"><a href="#cb45-497" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-498"><a href="#cb45-498" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-499"><a href="#cb45-499" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb45-500"><a href="#cb45-500" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>) <span class="sc">+</span> </span>
+<span id="cb45-501"><a href="#cb45-501" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means) <span class="sc">+</span> </span>
+<span id="cb45-502"><a href="#cb45-502" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-503"><a href="#cb45-503" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-504"><a href="#cb45-504" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-505"><a href="#cb45-505" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-506"><a href="#cb45-506" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-507"><a href="#cb45-507" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-508"><a href="#cb45-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-509"><a href="#cb45-509" aria-hidden="true" tabindex="-1"></a><span class="fu">### Shaded ellipses</span></span>
+<span id="cb45-510"><a href="#cb45-510" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-511"><a href="#cb45-511" aria-hidden="true" tabindex="-1"></a>I want to touch on how to shade the ellipses in. This takes slightly more finagling within <span class="in">`stat_ellipse`</span>, but the result is pretty cool.</span>
+<span id="cb45-512"><a href="#cb45-512" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-513"><a href="#cb45-513" aria-hidden="true" tabindex="-1"></a>The main argument that you need to add is <span class="in">`geom = "polygon"`</span> within <span class="in">`stat_ellipse`</span>. Try that and see what the result is:</span>
+<span id="cb45-514"><a href="#cb45-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-517"><a href="#cb45-517" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-518"><a href="#cb45-518" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-519"><a href="#cb45-519" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>, <span class="at">geom =</span> <span class="st">"polygon"</span>) <span class="sc">+</span> </span>
+<span id="cb45-520"><a href="#cb45-520" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means) <span class="sc">+</span> </span>
+<span id="cb45-521"><a href="#cb45-521" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-522"><a href="#cb45-522" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-523"><a href="#cb45-523" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-524"><a href="#cb45-524" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-525"><a href="#cb45-525" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-526"><a href="#cb45-526" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-527"><a href="#cb45-527" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-528"><a href="#cb45-528" aria-hidden="true" tabindex="-1"></a>Okay, so that has the effect of filling them all in black. It's good that we got them filled in, but that's probably not exactly what we had in mind though. Let's make them all a bit transparent by adding the <span class="in">`alpha = 0.2`</span> argument as a part of <span class="in">`stat_ellipse`</span>.</span>
+<span id="cb45-529"><a href="#cb45-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-532"><a href="#cb45-532" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-533"><a href="#cb45-533" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-534"><a href="#cb45-534" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>, <span class="at">geom =</span> <span class="st">"polygon"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> </span>
+<span id="cb45-535"><a href="#cb45-535" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means) <span class="sc">+</span> </span>
+<span id="cb45-536"><a href="#cb45-536" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-537"><a href="#cb45-537" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-538"><a href="#cb45-538" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-539"><a href="#cb45-539" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-540"><a href="#cb45-540" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-541"><a href="#cb45-541" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-542"><a href="#cb45-542" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-543"><a href="#cb45-543" aria-hidden="true" tabindex="-1"></a>Finally, we can actually color these ellipses based on the vowels themselves by adding <span class="in">`fill = vowel`</span> to our <span class="in">`aes`</span> function:</span>
+<span id="cb45-544"><a href="#cb45-544" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-547"><a href="#cb45-547" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-548"><a href="#cb45-548" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel, <span class="at">fill =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-549"><a href="#cb45-549" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>, <span class="at">geom =</span> <span class="st">"polygon"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> </span>
+<span id="cb45-550"><a href="#cb45-550" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means) <span class="sc">+</span> </span>
+<span id="cb45-551"><a href="#cb45-551" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-552"><a href="#cb45-552" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-553"><a href="#cb45-553" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-554"><a href="#cb45-554" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-555"><a href="#cb45-555" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-556"><a href="#cb45-556" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-557"><a href="#cb45-557" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-558"><a href="#cb45-558" aria-hidden="true" tabindex="-1"></a>Whoops! What did that do? Yes, the ellipses are shaded in correctly, but now the labels are too! Turns out, in <span class="in">`geom_label`</span>, the <span class="in">`fill`</span> argument also modifies the background color, which is normally white. We could either override the fill on <span class="in">`geom_label`</span> and set it to <span class="in">`"white"`</span>, or, better yet, let's just add <span class="in">`aes(fill = vowel)`</span> just to <span class="in">`stat_ellipse`</span> to prevent any other potential bugs.</span>
+<span id="cb45-559"><a href="#cb45-559" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-562"><a href="#cb45-562" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-563"><a href="#cb45-563" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-564"><a href="#cb45-564" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>, <span class="at">geom =</span> <span class="st">"polygon"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="fu">aes</span>(<span class="at">fill =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-565"><a href="#cb45-565" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> means) <span class="sc">+</span> </span>
+<span id="cb45-566"><a href="#cb45-566" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-567"><a href="#cb45-567" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-568"><a href="#cb45-568" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-569"><a href="#cb45-569" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-570"><a href="#cb45-570" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-571"><a href="#cb45-571" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-572"><a href="#cb45-572" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-573"><a href="#cb45-573" aria-hidden="true" tabindex="-1"></a>Aha. Now we get the desired result. So shaded ellipses are cool especially if the data is pretty clean like this. If you've got messier data, things can get a little muddy, partially because we have so many vowels in English. If you're only working with a subset of English vowels or a language with fewer vowels, it'll look a little crisper, even if you add the points back in. I'll just take five vowels and plot them, and I'll even add <span class="in">`shape`</span> in there too for fun. (Can you see how I did that?)</span>
+<span id="cb45-574"><a href="#cb45-574" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-577"><a href="#cb45-577" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-578"><a href="#cb45-578" aria-hidden="true" tabindex="-1"></a>my_five_vowels <span class="ot">&lt;-</span> <span class="fu">subset</span>(midpoints, vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"FLEECE"</span>, <span class="st">"FACE"</span>, <span class="st">"LOT"</span>, <span class="st">"GOAT"</span>, <span class="st">"GOOSE"</span>))</span>
+<span id="cb45-579"><a href="#cb45-579" aria-hidden="true" tabindex="-1"></a>five_means <span class="ot">&lt;-</span> my_five_vowels <span class="sc">%&gt;%</span></span>
+<span id="cb45-580"><a href="#cb45-580" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel) <span class="sc">%&gt;%</span></span>
+<span id="cb45-581"><a href="#cb45-581" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">F1 =</span> <span class="fu">mean</span>(F1),</span>
+<span id="cb45-582"><a href="#cb45-582" aria-hidden="true" tabindex="-1"></a>              <span class="at">F2 =</span> <span class="fu">mean</span>(F2))</span>
+<span id="cb45-583"><a href="#cb45-583" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_five_vowels, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel, <span class="at">shape =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-584"><a href="#cb45-584" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-585"><a href="#cb45-585" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>, <span class="at">geom =</span> <span class="st">"polygon"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="fu">aes</span>(<span class="at">fill =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-586"><a href="#cb45-586" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> five_means, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1)) <span class="sc">+</span> </span>
+<span id="cb45-587"><a href="#cb45-587" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-588"><a href="#cb45-588" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-589"><a href="#cb45-589" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-590"><a href="#cb45-590" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-591"><a href="#cb45-591" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-592"><a href="#cb45-592" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-593"><a href="#cb45-593" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-594"><a href="#cb45-594" aria-hidden="true" tabindex="-1"></a><span class="fu">## Text instead of points</span></span>
+<span id="cb45-595"><a href="#cb45-595" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-596"><a href="#cb45-596" aria-hidden="true" tabindex="-1"></a>Okay, last thing, I promise. If your dataset is relatively small, a really slick trick is to plot the words themselves rather than points. We saw how to do this above when we were plotting the means, but let's apply that to the regular data. For this example, I'll just zoom in on my LOT and THOUGHT vowels to look at my phonetically close but phonologically distinct low back vowels.</span>
+<span id="cb45-597"><a href="#cb45-597" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-600"><a href="#cb45-600" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-601"><a href="#cb45-601" aria-hidden="true" tabindex="-1"></a>cot_caught <span class="ot">&lt;-</span> midpoints <span class="sc">%&gt;%</span></span>
+<span id="cb45-602"><a href="#cb45-602" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"LOT"</span>, <span class="st">"THOUGHT"</span>))</span>
+<span id="cb45-603"><a href="#cb45-603" aria-hidden="true" tabindex="-1"></a>cot_caught_means <span class="ot">&lt;-</span> cot_caught <span class="sc">%&gt;%</span></span>
+<span id="cb45-604"><a href="#cb45-604" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel) <span class="sc">%&gt;%</span></span>
+<span id="cb45-605"><a href="#cb45-605" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">F1 =</span> <span class="fu">mean</span>(F1),</span>
+<span id="cb45-606"><a href="#cb45-606" aria-hidden="true" tabindex="-1"></a>              <span class="at">F2 =</span> <span class="fu">mean</span>(F2))</span>
+<span id="cb45-607"><a href="#cb45-607" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-608"><a href="#cb45-608" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-609"><a href="#cb45-609" aria-hidden="true" tabindex="-1"></a>So here's what this would look like with points.</span>
+<span id="cb45-610"><a href="#cb45-610" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-613"><a href="#cb45-613" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-614"><a href="#cb45-614" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cot_caught, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel, <span class="at">shape =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-615"><a href="#cb45-615" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb45-616"><a href="#cb45-616" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>, <span class="at">geom =</span> <span class="st">"polygon"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="fu">aes</span>(<span class="at">fill =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-617"><a href="#cb45-617" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> cot_caught_means) <span class="sc">+</span> </span>
+<span id="cb45-618"><a href="#cb45-618" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-619"><a href="#cb45-619" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-620"><a href="#cb45-620" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-621"><a href="#cb45-621" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-622"><a href="#cb45-622" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-623"><a href="#cb45-623" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-624"><a href="#cb45-624" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-625"><a href="#cb45-625" aria-hidden="true" tabindex="-1"></a>The trick here is to use <span class="in">`geom_text`</span> instead of <span class="in">`geom_point`</span>. Note that <span class="in">`geom_text`</span> is very similar to <span class="in">`geom_label`</span>, which is what we used for the means. The only difference I've been able to see is that there's a nice little box around <span class="in">`geom_label`</span> and not one for <span class="in">`geom_text`</span>.</span>
+<span id="cb45-626"><a href="#cb45-626" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-629"><a href="#cb45-629" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-630"><a href="#cb45-630" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cot_caught, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel, <span class="at">label =</span> vowel, <span class="at">shape =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-631"><a href="#cb45-631" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>() <span class="sc">+</span> </span>
+<span id="cb45-632"><a href="#cb45-632" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>, <span class="at">geom =</span> <span class="st">"polygon"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="fu">aes</span>(<span class="at">fill =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-633"><a href="#cb45-633" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> cot_caught_means) <span class="sc">+</span> </span>
+<span id="cb45-634"><a href="#cb45-634" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-635"><a href="#cb45-635" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-636"><a href="#cb45-636" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-637"><a href="#cb45-637" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-638"><a href="#cb45-638" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-639"><a href="#cb45-639" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-640"><a href="#cb45-640" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-641"><a href="#cb45-641" aria-hidden="true" tabindex="-1"></a>Oops! That's not what we wanted! For the means, yes, we want the vowel. But for the points we want the actual word. This means we have to add <span class="in">`label = word`</span> to our code somewhere. For clarity, I'll move <span class="in">`label = vowel`</span> out of <span class="in">`ggplot(aes()`</span> and into <span class="in">`geom_label(aes())`</span>. That way there is no default label and every time we call <span class="in">`geom_text`</span> or <span class="in">`geom_label`</span> we need to specify <span class="in">`label`</span> individually. (Also, I'll get rid of <span class="in">`shape = vowel`</span> since that's not being used anymore.)</span>
+<span id="cb45-642"><a href="#cb45-642" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-645"><a href="#cb45-645" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-646"><a href="#cb45-646" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cot_caught, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">color =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-647"><a href="#cb45-647" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> word)) <span class="sc">+</span> </span>
+<span id="cb45-648"><a href="#cb45-648" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>, <span class="at">geom =</span> <span class="st">"polygon"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="fu">aes</span>(<span class="at">fill =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-649"><a href="#cb45-649" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">data =</span> cot_caught_means, <span class="fu">aes</span>(<span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb45-650"><a href="#cb45-650" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-651"><a href="#cb45-651" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb45-652"><a href="#cb45-652" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>() <span class="sc">+</span></span>
+<span id="cb45-653"><a href="#cb45-653" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb45-654"><a href="#cb45-654" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb45-655"><a href="#cb45-655" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-656"><a href="#cb45-656" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-657"><a href="#cb45-657" aria-hidden="true" tabindex="-1"></a>Aha! There we go. So this is a way to make a plot look cooler. Especially if individual lexical items are part of your analysis and particularly if you don't have a lot of data to show at once. If you want, try it with the full dataset just to see how not helpful it is, but be aware that it can be slow to render if you have a lot of data to show.</span>
+<span id="cb45-658"><a href="#cb45-658" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-659"><a href="#cb45-659" aria-hidden="true" tabindex="-1"></a><span class="fu">## Final remarks</span></span>
+<span id="cb45-660"><a href="#cb45-660" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-661"><a href="#cb45-661" aria-hidden="true" tabindex="-1"></a>The way you present your data is all up to you. I often prefer a set of settings when I'm playing around with my data, but then switch to a different set when I want to copy and paste into a presentation or paper. It's good to be comfortable enough with ggplot2 so that you know what is going on and what changes you can make. Hopefully this tutorial has made a few things clearer.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

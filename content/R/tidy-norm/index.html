@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.210">
+<meta name="generator" content="quarto-1.2.233">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -197,6 +197,23 @@ cookieconsent.run({
 <meta name="twitter:image-height" content="960">
 <meta name="twitter:image-width" content="1152">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="How to normalize your vowels using the tidyverse">
+<meta name="citation_author" content="Josef Fruehwald">
+<meta name="citation_publication_date" content="2022-10-20">
+<meta name="citation_cover_date" content="2022-10-20">
+<meta name="citation_year" content="2022">
+<meta name="citation_online_date" content="2022-10-20">
+<meta name="citation_fulltext_html_url" content="https://lingmethodshub.github.io/content/R/tidy-norm">
+<meta name="citation_doi" content="10.5281/zenodo.7232341">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Linguistics Methods Hub">
+<meta name="citation_series_title" content="Linguistics Methods Hub">
+<meta name="citation_reference" content="citation_title=A comparison of vowel normalization procedures for language variation research;,citation_author=Patti Adank;,citation_author=Roel Smits;,citation_author=Roeland Hout;,citation_publication_date=2004;,citation_cover_date=2004;,citation_year=2004;,citation_fulltext_html_url=http://link.aip.org/link/JASMAN/v116/i5/p3099/s1&amp;amp;amp;Agg=doi;,citation_issue=5;,citation_doi=10.1121/1.1795335;,citation_volume=116;,citation_journal_title=The Journal of the Acoustical Society of America;">
+<meta name="citation_reference" content="citation_title=Order of Operations in Sociophonetic Analysis;,citation_author=Joseph A Stanley;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://repository.upenn.edu/pwpl/vol28/iss2/17;,citation_issue=2;,citation_volume=28;,citation_language=en;,citation_journal_title=Penn Working Papers in Linguistics;">
+<meta name="citation_reference" content="citation_title=Vowels: Vowel manipulation, normalization, and plotting;,citation_author=Tyler Kendall;,citation_author=Erik R. Thomas;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_fulltext_html_url=https://CRAN.R-project.org/package=vowels;">
+<meta name="citation_reference" content="citation_title=Classification of russian vowels spoken by different listeners;,citation_author=Boris Lobanov;,citation_publication_date=1971;,citation_cover_date=1971;,citation_year=1971;,citation_volume=49;,citation_journal_title=Journal of the Acoustical Society of America;">
+<meta name="citation_reference" content="citation_title=Phonetic feature systems for vowels.;,citation_author=Terrance Nearey;,citation_publication_date=1978;,citation_cover_date=1978;,citation_year=1978;,citation_fulltext_html_url=https://sites.ualberta.ca/~tnearey/Nearey1978_compressed.pdf;">
+<meta name="citation_reference" content="citation_title=Evaluation of a technique for improving the mapping of multiple speakers’ vowel spaces in the F1 &nbsp; F2 plane;,citation_author=Dominic Watt;,citation_author=Anne Fabricius;,citation_publication_date=2002;,citation_cover_date=2002;,citation_year=2002;,citation_volume=9;,citation_language=en;,citation_journal_title=Leeds Working Papers in Linguistics and Phonetics;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -216,11 +233,11 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html">
+    <a class="nav-link active" href="../../../index.html" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../../content/index.html" aria-current="page">
+    <a class="nav-link" href="../../../content/index.html">
  <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item">
@@ -268,7 +285,7 @@ cookieconsent.run({
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../../" class="sidebar-logo-link">
+      <a href="../../../index.html" class="sidebar-logo-link">
       <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
@@ -470,7 +487,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">How to normalize your vowels using the tidyverse</h1>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">How to normalize your vowels using the tidyverse</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
   <div class="quarto-categories">
     <div class="quarto-category">vowels</div>
     <div class="quarto-category">normalization</div>
@@ -2357,6 +2374,8 @@ What that <code>map_dfr</code> thing did:
 <p>Instead, I’ve covered some of most commonly used normalization methods, and also tried to provide an outline of how these methods correspond to specific data frame operations in the tidyverse.</p>
 
 
+<!-- -->
+
 
 </section>
 
@@ -2470,6 +2489,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -2546,7 +2616,660 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb29" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "How to normalize your vowels using the tidyverse"</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="an">knitr:</span><span class="co"> </span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">  opts_chunk: </span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">    message: false</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "A tutorial on how to normalize vowel formant measurments in R using the tidyverse"</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - "vowels"</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co">  - "normalization"</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co">  - "R"</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">".Rprofile"</span>)</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>This is a tutorial about how to "normalize" vowel formant data using data tools from the <span class="co">[</span><span class="ot">tidyverse</span><span class="co">](https://www.tidyverse.org/)</span>. A *lot* has been written about vowel normalization (why we do it, how it should work, what methods are best) that I can't really cover here, although @Adank2004 is often taken as the canonical citation, and I'll be taking into account the recent "order of operations" from @stanley2022.</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>There's also a <span class="in">`vowels`</span> R package <span class="co">[</span><span class="ot">@vowels</span><span class="co">]</span> that basically lets you run <span class="co">[</span><span class="ot">the NORM suite locally</span><span class="co">](http://lingtools.uoregon.edu/norm/norm1_methods.php)</span>.</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>There are still many occasions when you might want or need to normalize your vowel data yourself, though, and learning how to do it is actually a great introduction to a number of tidyverse "verbs", especially:</span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">`dplyr::group_by()`</span><span class="co">](https://dplyr.tidyverse.org/reference/group_by.html)</span></span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">`dplyr::summarise()`</span><span class="co">](https://dplyr.tidyverse.org/reference/summarise.html)</span></span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">`dplyr::mutate()`</span><span class="co">](https://dplyr.tidyverse.org/reference/mutate.html)</span></span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">`tidyr::pivot_longer()`</span><span class="co">](https://tidyr.tidyverse.org/reference/pivot_longer.html)</span></span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">`tidyr::pivot_wider()`</span><span class="co">](https://tidyr.tidyverse.org/reference/pivot_wider.html)</span></span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>Since I'm focusing on how data structures relate to vowel normalization, I'll cover 3 specific normalization procedures:</span>
+<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### Lobanov (a.k.a. z-scoring)</span></span>
+<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a>In terms of tidy data procedures, this is the simplest. All it requires is a <span class="in">`group_by()`</span> and a <span class="in">`mutate()`</span></span>
+<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nearey 2</span></span>
+<span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a>This procedure is a little more complicated, involving "pivoting" our data from wide to long, then long to wide again, using <span class="in">`pivot_longer()`</span> and <span class="in">`pivot_wider()`</span>.</span>
+<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-49"><a href="#cb29-49" aria-hidden="true" tabindex="-1"></a><span class="fu">### Watt &amp; Fabricius</span></span>
+<span id="cb29-50"><a href="#cb29-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-51"><a href="#cb29-51" aria-hidden="true" tabindex="-1"></a>This method requires estimating by-speaker scaling factors (using <span class="in">`group_by()`</span> and <span class="in">`summarise()`</span>) then merging them back onto the original data (with <span class="in">`left_join()`</span>).</span>
+<span id="cb29-52"><a href="#cb29-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-53"><a href="#cb29-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## Setup</span></span>
+<span id="cb29-54"><a href="#cb29-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-55"><a href="#cb29-55" aria-hidden="true" tabindex="-1"></a>To begin with, I'm going to import a few packages:</span>
+<span id="cb29-56"><a href="#cb29-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-57"><a href="#cb29-57" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`tidyverse`</span>: This is a "metapackage" that imports many different packages that contain functions we'll need, including <span class="in">`ggplot2`</span></span>
+<span id="cb29-58"><a href="#cb29-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-59"><a href="#cb29-59" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`ggforce`</span>: This is a package that extends some of <span class="in">`ggplot2`</span>'s functionality</span>
+<span id="cb29-60"><a href="#cb29-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-61"><a href="#cb29-61" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`khroma`</span>: This is another packages that has many different color palates for <span class="in">`ggplot2`</span>.</span>
+<span id="cb29-62"><a href="#cb29-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-63"><a href="#cb29-63" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`joeyr`</span>: This is a package with functions written by Joey Stanley for vowel analysis.</span>
+<span id="cb29-64"><a href="#cb29-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-65"><a href="#cb29-65" aria-hidden="true" tabindex="-1"></a>Any time I use a function that's not loaded by the tidyverse, I'll indicate it with the <span class="in">`package::function()`</span> convention.</span>
+<span id="cb29-66"><a href="#cb29-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-69"><a href="#cb29-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-70"><a href="#cb29-70" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load</span></span>
+<span id="cb29-71"><a href="#cb29-71" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb29-72"><a href="#cb29-72" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
+<span id="cb29-73"><a href="#cb29-73" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(khroma)</span>
+<span id="cb29-74"><a href="#cb29-74" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("JoeyStanley/joeyr")</span></span>
+<span id="cb29-75"><a href="#cb29-75" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(joeyr)</span>
+<span id="cb29-76"><a href="#cb29-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-77"><a href="#cb29-77" aria-hidden="true" tabindex="-1"></a><span class="co"># set the ggplot2 theme</span></span>
+<span id="cb29-78"><a href="#cb29-78" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span>
+<span id="cb29-79"><a href="#cb29-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-80"><a href="#cb29-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-81"><a href="#cb29-81" aria-hidden="true" tabindex="-1"></a>We also need to load in some data. Here are two tab-delimited files of <span class="co">[</span><span class="ot">Buckeye Corpus</span><span class="co">](https://buckeyecorpus.osu.edu/)</span> speakers whose interviews were run through <span class="co">[</span><span class="ot">FAVE</span><span class="co">](https://github.com/JoFrhwld/FAVE)</span>.</span>
+<span id="cb29-82"><a href="#cb29-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-83"><a href="#cb29-83" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb29-84"><a href="#cb29-84" aria-hidden="true" tabindex="-1"></a>s01_url <span class="ot">&lt;-</span> <span class="st">"{{&lt; meta website.site-url &gt;}}/content/R/tidy-norm/data/s01.txt"</span></span>
+<span id="cb29-85"><a href="#cb29-85" aria-hidden="true" tabindex="-1"></a>s03_url <span class="ot">&lt;-</span> <span class="st">"{{&lt; meta website.site-url &gt;}}/content/R/tidy-norm/data/s03.txt"</span></span>
+<span id="cb29-86"><a href="#cb29-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-87"><a href="#cb29-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-90"><a href="#cb29-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-91"><a href="#cb29-91" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: data_loc</span></span>
+<span id="cb29-92"><a href="#cb29-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb29-93"><a href="#cb29-93" aria-hidden="true" tabindex="-1"></a>s01_url <span class="ot">&lt;-</span> <span class="st">"data/s01.txt"</span></span>
+<span id="cb29-94"><a href="#cb29-94" aria-hidden="true" tabindex="-1"></a>s03_url <span class="ot">&lt;-</span> <span class="st">"data/s03.txt"</span></span>
+<span id="cb29-95"><a href="#cb29-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-96"><a href="#cb29-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-97"><a href="#cb29-97" aria-hidden="true" tabindex="-1"></a>This code should load these files.</span>
+<span id="cb29-98"><a href="#cb29-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-101"><a href="#cb29-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-102"><a href="#cb29-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: read_data</span></span>
+<span id="cb29-103"><a href="#cb29-103" aria-hidden="true" tabindex="-1"></a>vowels_orig <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="fu">c</span>(s01_url, s03_url), </span>
+<span id="cb29-104"><a href="#cb29-104" aria-hidden="true" tabindex="-1"></a>                       <span class="sc">~</span><span class="fu">read_tsv</span>(.x, <span class="at">col_types=</span><span class="fu">cols</span>(<span class="at">sex =</span> <span class="st">'c'</span>)))</span>
+<span id="cb29-105"><a href="#cb29-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-106"><a href="#cb29-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-107"><a href="#cb29-107" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
+<span id="cb29-108"><a href="#cb29-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-109"><a href="#cb29-109" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;summary&gt;</span>What that <span class="in">`map_dfr`</span> thing did:<span class="kw">&lt;/summary&gt;</span></span>
+<span id="cb29-110"><a href="#cb29-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-111"><a href="#cb29-111" aria-hidden="true" tabindex="-1"></a>The <span class="in">`map_dfr`</span> function iterated over each url, and applied the function <span class="in">`read_tsv()`</span> to them. I had to tell <span class="in">`read_tsv()`</span> that the column <span class="in">`sex`</span> should be treated as a character data type, since the value <span class="in">`f`</span> gets reinterpreted as <span class="in">`FALSE`</span> otherwise. After reading in each tab-delimited file, <span class="in">`map_dfr()`</span> then combines the results together row-wise, to produce one large data frame.</span>
+<span id="cb29-112"><a href="#cb29-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-113"><a href="#cb29-113" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
+<span id="cb29-114"><a href="#cb29-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-115"><a href="#cb29-115" aria-hidden="true" tabindex="-1"></a>The variable <span class="in">`vowels_orig`</span> is now one large data frame with both speakers' FAVE output in it. Here's three randomly sampled rows from each speakers' data.</span>
+<span id="cb29-116"><a href="#cb29-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-119"><a href="#cb29-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-120"><a href="#cb29-120" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-vowel-orig</span></span>
+<span id="cb29-121"><a href="#cb29-121" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Three randomly sampled rows from each speaker's data"</span></span>
+<span id="cb29-122"><a href="#cb29-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap-location: bottom</span></span>
+<span id="cb29-123"><a href="#cb29-123" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: markup</span></span>
+<span id="cb29-124"><a href="#cb29-124" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">50</span>)</span>
+<span id="cb29-125"><a href="#cb29-125" aria-hidden="true" tabindex="-1"></a>vowels_orig <span class="sc">%&gt;%</span></span>
+<span id="cb29-126"><a href="#cb29-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb29-127"><a href="#cb29-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-128"><a href="#cb29-128" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span>
+<span id="cb29-129"><a href="#cb29-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-130"><a href="#cb29-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-131"><a href="#cb29-131" aria-hidden="true" tabindex="-1"></a>FAVE outputs a lot of useful information, but for this tutorial, I want to narrow down our focus to just a few columns</span>
+<span id="cb29-132"><a href="#cb29-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-133"><a href="#cb29-133" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`name`</span>: We'll use this as a unique ID for each speaker</span>
+<span id="cb29-134"><a href="#cb29-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-135"><a href="#cb29-135" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`word`</span>: It's just good to keep this info around</span>
+<span id="cb29-136"><a href="#cb29-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-137"><a href="#cb29-137" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`ipa_vclass`</span>: A column indicating each token's vowel class in an IPA-like format</span>
+<span id="cb29-138"><a href="#cb29-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-139"><a href="#cb29-139" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`F1`</span>, <span class="in">`F2`</span>: What we're all here for. The first and second formants.</span>
+<span id="cb29-140"><a href="#cb29-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-143"><a href="#cb29-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-144"><a href="#cb29-144" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: vowel_focus</span></span>
+<span id="cb29-145"><a href="#cb29-145" aria-hidden="true" tabindex="-1"></a>vowels_orig <span class="sc">%&gt;%</span></span>
+<span id="cb29-146"><a href="#cb29-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="ot">-&gt;</span> vowels_focus</span>
+<span id="cb29-147"><a href="#cb29-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-148"><a href="#cb29-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-151"><a href="#cb29-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-152"><a href="#cb29-152" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-vowel-focus</span></span>
+<span id="cb29-153"><a href="#cb29-153" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "The first few rows of the data we're going to work with"</span></span>
+<span id="cb29-154"><a href="#cb29-154" aria-hidden="true" tabindex="-1"></a>vowels_focus <span class="sc">%&gt;%</span></span>
+<span id="cb29-155"><a href="#cb29-155" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb29-156"><a href="#cb29-156" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span>
+<span id="cb29-157"><a href="#cb29-157" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-158"><a href="#cb29-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-159"><a href="#cb29-159" aria-hidden="true" tabindex="-1"></a><span class="fu">## Unnormalized</span></span>
+<span id="cb29-160"><a href="#cb29-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-161"><a href="#cb29-161" aria-hidden="true" tabindex="-1"></a>First, let's see how things look when we get our vowel means and plot them unnormalized. I won't go into detail about how the plotting code works (see the LingMethodsHub tutorial on <span class="co">[</span><span class="ot">ggplot2 vowel plots</span><span class="co">](https://lingmethodshub.github.io/content/R/vowel-plots-tutorial/)</span>).</span>
+<span id="cb29-162"><a href="#cb29-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-165"><a href="#cb29-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-166"><a href="#cb29-166" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-167"><a href="#cb29-167" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Plot code"</span></span>
+<span id="cb29-168"><a href="#cb29-168" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-unnorm1</span></span>
+<span id="cb29-169"><a href="#cb29-169" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb29-170"><a href="#cb29-170" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb29-171"><a href="#cb29-171" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Speakers' vowel means in unnormalized F1,F2 space."</span></span>
+<span id="cb29-172"><a href="#cb29-172" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: "An F1 by F2 plot of two speakers' unnormalized vowel means."</span></span>
+<span id="cb29-173"><a href="#cb29-173" aria-hidden="true" tabindex="-1"></a>vowels_focus <span class="sc">%&gt;%</span></span>
+<span id="cb29-174"><a href="#cb29-174" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb29-175"><a href="#cb29-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-176"><a href="#cb29-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb29-177"><a href="#cb29-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb29-178"><a href="#cb29-178" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb29-179"><a href="#cb29-179" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb29-180"><a href="#cb29-180" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-181"><a href="#cb29-181" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-182"><a href="#cb29-182" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-183"><a href="#cb29-183" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()</span>
+<span id="cb29-184"><a href="#cb29-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-185"><a href="#cb29-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-186"><a href="#cb29-186" aria-hidden="true" tabindex="-1"></a>Here, we see reason number 1 why we'll want to normalize vowels. These two speakers vowel spaced hardly overlap, but the *relative* position of vowel categories inside their spaces are fairly similar. All normalization methods try to do is pinch and scale *appropriately* to get the relative positions of these vowel spaces to overlap.</span>
+<span id="cb29-187"><a href="#cb29-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-188"><a href="#cb29-188" aria-hidden="true" tabindex="-1"></a>*Another* reason we might be motivated to normalize our data is because F2 has a much larger range of data than F1. We can more easily see that if we add <span class="in">`coord_fixed()`</span> to the plot.</span>
+<span id="cb29-189"><a href="#cb29-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-192"><a href="#cb29-192" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-193"><a href="#cb29-193" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-194"><a href="#cb29-194" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Plot code"</span></span>
+<span id="cb29-195"><a href="#cb29-195" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-unnorm2</span></span>
+<span id="cb29-196"><a href="#cb29-196" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb29-197"><a href="#cb29-197" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 2</span></span>
+<span id="cb29-198"><a href="#cb29-198" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Speakers' vowel means in unnormalized F1,F2 space. (fixed coords)"</span></span>
+<span id="cb29-199"><a href="#cb29-199" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: "An F1 by F2 plot of two speakers' unnormalized vowel means."</span></span>
+<span id="cb29-200"><a href="#cb29-200" aria-hidden="true" tabindex="-1"></a>vowels_focus <span class="sc">%&gt;%</span></span>
+<span id="cb29-201"><a href="#cb29-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb29-202"><a href="#cb29-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-203"><a href="#cb29-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb29-204"><a href="#cb29-204" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb29-205"><a href="#cb29-205" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb29-206"><a href="#cb29-206" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb29-207"><a href="#cb29-207" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-208"><a href="#cb29-208" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-209"><a href="#cb29-209" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-210"><a href="#cb29-210" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-211"><a href="#cb29-211" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span>
+<span id="cb29-212"><a href="#cb29-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-213"><a href="#cb29-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-214"><a href="#cb29-214" aria-hidden="true" tabindex="-1"></a>The plot is squished because F2 just has that much larger a range of values than F1. Any stats or calculations we do on vowels in the F1$\times$F2 space is going to be dominated by things that happen across F2 vs F1.</span>
+<span id="cb29-215"><a href="#cb29-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-216"><a href="#cb29-216" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prepping for normalization</span></span>
+<span id="cb29-217"><a href="#cb29-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-218"><a href="#cb29-218" aria-hidden="true" tabindex="-1"></a>In order to get ready for normalization, I'm going to first filter out any vowel tokens that have a $\sqrt{\text{mahalanobis}}$ distance from its vowel class greater than 2.</span>
+<span id="cb29-219"><a href="#cb29-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-222"><a href="#cb29-222" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-223"><a href="#cb29-223" aria-hidden="true" tabindex="-1"></a>vowels_focus <span class="sc">%&gt;%</span></span>
+<span id="cb29-224"><a href="#cb29-224" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb29-225"><a href="#cb29-225" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mahal =</span> joeyr<span class="sc">::</span><span class="fu">tidy_mahalanobis</span>(F1, F2),</span>
+<span id="cb29-226"><a href="#cb29-226" aria-hidden="true" tabindex="-1"></a>         <span class="at">mahal_sq =</span> <span class="fu">sqrt</span>(mahal)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-227"><a href="#cb29-227" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mahal_sq <span class="sc">&lt;=</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-228"><a href="#cb29-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="ot">-&gt;</span> vowels_inlie</span>
+<span id="cb29-229"><a href="#cb29-229" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-230"><a href="#cb29-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-231"><a href="#cb29-231" aria-hidden="true" tabindex="-1"></a><span class="fu">## Normalizations</span></span>
+<span id="cb29-232"><a href="#cb29-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-233"><a href="#cb29-233" aria-hidden="true" tabindex="-1"></a><span class="fu">### Lobanov a.k.a. z-score</span></span>
+<span id="cb29-234"><a href="#cb29-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-235"><a href="#cb29-235" aria-hidden="true" tabindex="-1"></a>The first normalization procedure we'll look at is "Lobanov" normalization <span class="co">[</span><span class="ot">@lobanov</span><span class="co">]</span>. An important thing to know here is that while phoneticians may call this procedure "Lobanov" normalization, the rest of the data analysis world calls it "z-score" or even just "standard score."</span>
+<span id="cb29-236"><a href="#cb29-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-237"><a href="#cb29-237" aria-hidden="true" tabindex="-1"></a>The process works like this:</span>
+<span id="cb29-238"><a href="#cb29-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-239"><a href="#cb29-239" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Within each speaker's data ⤵️</span>
+<span id="cb29-240"><a href="#cb29-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-241"><a href="#cb29-241" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Within each formant ⤵️</span>
+<span id="cb29-242"><a href="#cb29-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-243"><a href="#cb29-243" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>subtract the mean of the formant, and divide by the standard deviation of the formant</span>
+<span id="cb29-244"><a href="#cb29-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-245"><a href="#cb29-245" aria-hidden="true" tabindex="-1"></a>Since we already a have F1 and F2 separated out into separate columns, this means all we have to do us <span class="in">`group_by()`</span> our vowels data by speaker ID (in <span class="in">`name`</span>), then create our new normalized columns by subtracting the mean and dividing by the standard deviation.</span>
+<span id="cb29-246"><a href="#cb29-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-249"><a href="#cb29-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-250"><a href="#cb29-250" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: zscore1</span></span>
+<span id="cb29-251"><a href="#cb29-251" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb29-252"><a href="#cb29-252" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb29-253"><a href="#cb29-253" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_z =</span> (F1 <span class="sc">-</span> <span class="fu">mean</span>(F1))<span class="sc">/</span><span class="fu">sd</span>(F1),</span>
+<span id="cb29-254"><a href="#cb29-254" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_z =</span> (F2 <span class="sc">-</span> <span class="fu">mean</span>(F2))<span class="sc">/</span><span class="fu">sd</span>(F2)) <span class="ot">-&gt;</span> vowels_score1</span>
+<span id="cb29-255"><a href="#cb29-255" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-256"><a href="#cb29-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-257"><a href="#cb29-257" aria-hidden="true" tabindex="-1"></a>The <span class="in">`group_by(name)`</span> process in this pipeline means that when we calculate <span class="in">`mean(F1)`</span> and <span class="in">`std(F1)`</span> in the next part, those mean and standard deviation values are for each speaker's subset of <span class="in">`vowels_inlie`</span>.</span>
+<span id="cb29-258"><a href="#cb29-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-259"><a href="#cb29-259" aria-hidden="true" tabindex="-1"></a>Since z-scoring is so common a thing to do in quantitative analysis, R actually has a built in function, <span class="in">`scale()`</span> that we could use instead of writing the math out ourselves.</span>
+<span id="cb29-260"><a href="#cb29-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-263"><a href="#cb29-263" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-264"><a href="#cb29-264" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: zscore2</span></span>
+<span id="cb29-265"><a href="#cb29-265" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb29-266"><a href="#cb29-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb29-267"><a href="#cb29-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_z =</span> <span class="fu">scale</span>(F1),</span>
+<span id="cb29-268"><a href="#cb29-268" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_z =</span> <span class="fu">scale</span>(F2)) <span class="ot">-&gt;</span> vowels_zscore2</span>
+<span id="cb29-269"><a href="#cb29-269" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-270"><a href="#cb29-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-271"><a href="#cb29-271" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Results</span></span>
+<span id="cb29-272"><a href="#cb29-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-273"><a href="#cb29-273" aria-hidden="true" tabindex="-1"></a>Here's the results of z-scoring! We've got largely overlapping vowel spaces now. The numeric values of these z-scores tend to run somewhere between -3 and 3 (less extreme for means). Both formants are also on the same scale, which you can see with the plot being roughly square shaped even with <span class="in">`coord_fixed()`</span> being added.</span>
+<span id="cb29-274"><a href="#cb29-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-277"><a href="#cb29-277" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-278"><a href="#cb29-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-279"><a href="#cb29-279" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Plot code"</span></span>
+<span id="cb29-280"><a href="#cb29-280" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-zscore</span></span>
+<span id="cb29-281"><a href="#cb29-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb29-282"><a href="#cb29-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb29-283"><a href="#cb29-283" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Speakers' vowel means in z-scored F1,F2 space. (fixed coords)"</span></span>
+<span id="cb29-284"><a href="#cb29-284" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: "An F1 by F2 plot of two speakers' Lobanov normalized vowel means."</span></span>
+<span id="cb29-285"><a href="#cb29-285" aria-hidden="true" tabindex="-1"></a>vowels_zscore2 <span class="sc">%&gt;%</span></span>
+<span id="cb29-286"><a href="#cb29-286" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb29-287"><a href="#cb29-287" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1_z, F2_z), <span class="at">.fns =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-288"><a href="#cb29-288" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2_z, F1_z, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb29-289"><a href="#cb29-289" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb29-290"><a href="#cb29-290" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb29-291"><a href="#cb29-291" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-292"><a href="#cb29-292" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-293"><a href="#cb29-293" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-294"><a href="#cb29-294" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-295"><a href="#cb29-295" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span>
+<span id="cb29-296"><a href="#cb29-296" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-297"><a href="#cb29-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-298"><a href="#cb29-298" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nearey (a.k.a. Nearey 2)</span></span>
+<span id="cb29-299"><a href="#cb29-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-300"><a href="#cb29-300" aria-hidden="true" tabindex="-1"></a>Next, we'll look at what the vowels package calls "Nearey 2" normalization <span class="co">[</span><span class="ot">@nearey1978</span><span class="co">]</span>. The Nearey 1 procedure is more similar in terms of data code as z-scoring.<span class="ot">[^1]</span> The Nearey 2 procedure works like this:</span>
+<span id="cb29-301"><a href="#cb29-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-302"><a href="#cb29-302" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]</span>:</span>
+<span id="cb29-303"><a href="#cb29-303" aria-hidden="true" tabindex="-1"></a>    <span class="in">``` r</span></span>
+<span id="cb29-304"><a href="#cb29-304" aria-hidden="true" tabindex="-1"></a>    vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb29-305"><a href="#cb29-305" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb29-306"><a href="#cb29-306" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">F1_n =</span> <span class="fu">exp</span>(<span class="fu">log</span>(F1) <span class="sc">-</span> <span class="fu">mean</span>(<span class="fu">log</span>(F1))),</span>
+<span id="cb29-307"><a href="#cb29-307" aria-hidden="true" tabindex="-1"></a>             <span class="at">F2_n =</span> <span class="fu">exp</span>(<span class="fu">log</span>(F2) <span class="sc">-</span> <span class="fu">mean</span>(<span class="fu">log</span>(F2))))</span>
+<span id="cb29-308"><a href="#cb29-308" aria-hidden="true" tabindex="-1"></a>    <span class="in">```</span></span>
+<span id="cb29-309"><a href="#cb29-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-310"><a href="#cb29-310" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Within each speaker ⤵️</span>
+<span id="cb29-311"><a href="#cb29-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-312"><a href="#cb29-312" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Convert *all* formant measurements to log-Hz</span>
+<span id="cb29-313"><a href="#cb29-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-314"><a href="#cb29-314" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Get the mean log-Hz across all measurements (F1 and F2 *together*)</span>
+<span id="cb29-315"><a href="#cb29-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-316"><a href="#cb29-316" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Subtract the mean log-Hz from the log-Hz</span>
+<span id="cb29-317"><a href="#cb29-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-318"><a href="#cb29-318" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>"Anti-log" or exponentiate the result</span>
+<span id="cb29-319"><a href="#cb29-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-320"><a href="#cb29-320" aria-hidden="true" tabindex="-1"></a>We need to combine F1 and F2 measurements together to get their mean, and this is best achieved in the tidyverse by "pivoting" the data frame from wide to long. We'll take it in steps. In each next step, I'm going to be putting additional tidyverse verbs between the data frame and the line that has <span class="in">`head() %&gt;% knitr::kable()`</span>, which is just there to provide nice looking output.</span>
+<span id="cb29-321"><a href="#cb29-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-322"><a href="#cb29-322" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 1: Focus in on the columns of interest</span></span>
+<span id="cb29-323"><a href="#cb29-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-324"><a href="#cb29-324" aria-hidden="true" tabindex="-1"></a>The <span class="in">`vowels_inlie`</span> has data columns for the mahalanobis distance, which I want to drop off for now.</span>
+<span id="cb29-325"><a href="#cb29-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-328"><a href="#cb29-328" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-329"><a href="#cb29-329" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-nearey-focus</span></span>
+<span id="cb29-330"><a href="#cb29-330" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "The columns of importance for Neary 2"</span></span>
+<span id="cb29-331"><a href="#cb29-331" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb29-332"><a href="#cb29-332" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">%&gt;%</span></span>
+<span id="cb29-333"><a href="#cb29-333" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
+<span id="cb29-334"><a href="#cb29-334" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span>
+<span id="cb29-335"><a href="#cb29-335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-336"><a href="#cb29-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-337"><a href="#cb29-337" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 2: Add an ID column</span></span>
+<span id="cb29-338"><a href="#cb29-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-339"><a href="#cb29-339" aria-hidden="true" tabindex="-1"></a>When we're pivoting our data long and then wide again, we need to have a column that is a unique id for each vowel observation. I'll create that with <span class="in">`mutate(id = 1:n())`</span> . The <span class="in">`n()`</span> function there is a convenience function that returns the number of rows in each (group) of the data frame.</span>
+<span id="cb29-340"><a href="#cb29-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-343"><a href="#cb29-343" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-344"><a href="#cb29-344" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-nearey-id</span></span>
+<span id="cb29-345"><a href="#cb29-345" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "The formant data with a token ID for each observation"</span></span>
+<span id="cb29-346"><a href="#cb29-346" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb29-347"><a href="#cb29-347" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">%&gt;%</span></span>
+<span id="cb29-348"><a href="#cb29-348" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb29-349"><a href="#cb29-349" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
+<span id="cb29-350"><a href="#cb29-350" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span>
+<span id="cb29-351"><a href="#cb29-351" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-352"><a href="#cb29-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-353"><a href="#cb29-353" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 3: Pivot Longer</span></span>
+<span id="cb29-354"><a href="#cb29-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-355"><a href="#cb29-355" aria-hidden="true" tabindex="-1"></a>Now, we want to take the F1 and F2 columns, and stack them one on top of each other, which we can do with <span class="in">`pivot_longer()`</span>. This function needs to know at least three things:</span>
+<span id="cb29-356"><a href="#cb29-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-357"><a href="#cb29-357" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Which columns are we going to be stacking on top of each other?</span>
+<span id="cb29-358"><a href="#cb29-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-359"><a href="#cb29-359" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>We pass this information to the <span class="in">`cols=`</span> argument.</span>
+<span id="cb29-360"><a href="#cb29-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-361"><a href="#cb29-361" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>How should we keep track of the original column names?</span>
+<span id="cb29-362"><a href="#cb29-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-363"><a href="#cb29-363" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>We pass this information to <span class="in">`names_to=`</span>.</span>
+<span id="cb29-364"><a href="#cb29-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-365"><a href="#cb29-365" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>How should we keep track of the original values from these columns?</span>
+<span id="cb29-366"><a href="#cb29-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-367"><a href="#cb29-367" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>We pass this information to <span class="in">`values_to=`</span></span>
+<span id="cb29-368"><a href="#cb29-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-371"><a href="#cb29-371" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-372"><a href="#cb29-372" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-nearey-long</span></span>
+<span id="cb29-373"><a href="#cb29-373" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "The formant data, pivoted long"</span></span>
+<span id="cb29-374"><a href="#cb29-374" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb29-375"><a href="#cb29-375" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">%&gt;%</span></span>
+<span id="cb29-376"><a href="#cb29-376" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb29-377"><a href="#cb29-377" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> F1<span class="sc">:</span>F2, </span>
+<span id="cb29-378"><a href="#cb29-378" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"formant"</span>, </span>
+<span id="cb29-379"><a href="#cb29-379" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb29-380"><a href="#cb29-380" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
+<span id="cb29-381"><a href="#cb29-381" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">12</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span>
+<span id="cb29-382"><a href="#cb29-382" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-383"><a href="#cb29-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-384"><a href="#cb29-384" aria-hidden="true" tabindex="-1"></a>You can get an idea for what <span class="in">`pivot_longer()`</span> has done by comparing this table (@tbl-nearey-long) to the table before (@tbl-nearey-id). There are two rows in this long table for every row in the wide table. The <span class="in">`name`</span>, <span class="in">`word`</span>, <span class="in">`ipa_vclass`</span>, and <span class="in">`id`</span> values are repeated twice. There's also a new <span class="in">`formant`</span> column, which contains the column names we pivoted longer, and a new <span class="in">`hz`</span> column, which contains the values from the columns we pivoted longer.</span>
+<span id="cb29-385"><a href="#cb29-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-386"><a href="#cb29-386" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 4: The actual normalization!</span></span>
+<span id="cb29-387"><a href="#cb29-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-388"><a href="#cb29-388" aria-hidden="true" tabindex="-1"></a>Now we can do the actual normalization. The column we'll target is the new <span class="in">`hz`</span> column. We'll log it, subtract the mean log value, then convert it back to its original scale with <span class="in">`exp()`</span>. And don't forget we need to <span class="in">`group_by(name)`</span> first too!</span>
+<span id="cb29-389"><a href="#cb29-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-392"><a href="#cb29-392" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-393"><a href="#cb29-393" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-nearey-norm</span></span>
+<span id="cb29-394"><a href="#cb29-394" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "The formant data, pivoted long, and normalized"</span></span>
+<span id="cb29-395"><a href="#cb29-395" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb29-396"><a href="#cb29-396" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">%&gt;%</span></span>
+<span id="cb29-397"><a href="#cb29-397" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb29-398"><a href="#cb29-398" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> F1<span class="sc">:</span>F2, </span>
+<span id="cb29-399"><a href="#cb29-399" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"formant"</span>, </span>
+<span id="cb29-400"><a href="#cb29-400" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-401"><a href="#cb29-401" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb29-402"><a href="#cb29-402" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nearey =</span> <span class="fu">exp</span>(<span class="fu">log</span>(hz)<span class="sc">-</span><span class="fu">mean</span>(<span class="fu">log</span>(hz))))<span class="sc">%&gt;%</span>  </span>
+<span id="cb29-403"><a href="#cb29-403" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
+<span id="cb29-404"><a href="#cb29-404" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">12</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb29-405"><a href="#cb29-405" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-406"><a href="#cb29-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-407"><a href="#cb29-407" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 5: Pivoting wide again, for plotting</span></span>
+<span id="cb29-408"><a href="#cb29-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-409"><a href="#cb29-409" aria-hidden="true" tabindex="-1"></a>Technically, we're done normalizing the formant data, but in order to make a nice F1$\times$F2 plot, we need to pivot the data wide again.</span>
+<span id="cb29-410"><a href="#cb29-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-411"><a href="#cb29-411" aria-hidden="true" tabindex="-1"></a>To do that, we first need to drop the <span class="in">`hz`</span> column, because <span class="in">`pivot_wider()`</span> will go weird if we don't.<span class="ot">[^2]</span> Then, we need to tell <span class="in">`pivot_wider()`</span> the following information:</span>
+<span id="cb29-412"><a href="#cb29-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-413"><a href="#cb29-413" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>But you should try it just to see!</span>
+<span id="cb29-414"><a href="#cb29-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-415"><a href="#cb29-415" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Where should it get the names of new columns from?</span>
+<span id="cb29-416"><a href="#cb29-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-417"><a href="#cb29-417" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>We'll pass this to <span class="in">`names_from=`</span></span>
+<span id="cb29-418"><a href="#cb29-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-419"><a href="#cb29-419" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Where should it get the values to put into the new columns from?</span>
+<span id="cb29-420"><a href="#cb29-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-421"><a href="#cb29-421" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>We'll pass this to <span class="in">`values_from=`</span></span>
+<span id="cb29-422"><a href="#cb29-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-423"><a href="#cb29-423" aria-hidden="true" tabindex="-1"></a>After this step, we're done the normalizing process, so I'll assign the result to a variable called <span class="in">`vowels_neary`</span></span>
+<span id="cb29-424"><a href="#cb29-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-427"><a href="#cb29-427" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-428"><a href="#cb29-428" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-neary-wide</span></span>
+<span id="cb29-429"><a href="#cb29-429" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Nearey Normalized Vowels, wide again"</span></span>
+<span id="cb29-430"><a href="#cb29-430" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb29-431"><a href="#cb29-431" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">%&gt;%</span></span>
+<span id="cb29-432"><a href="#cb29-432" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb29-433"><a href="#cb29-433" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> F1<span class="sc">:</span>F2, </span>
+<span id="cb29-434"><a href="#cb29-434" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"formant"</span>, </span>
+<span id="cb29-435"><a href="#cb29-435" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-436"><a href="#cb29-436" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb29-437"><a href="#cb29-437" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nearey =</span> <span class="fu">exp</span>(<span class="fu">log</span>(hz)<span class="sc">-</span><span class="fu">mean</span>(<span class="fu">log</span>(hz))))<span class="sc">%&gt;%</span>  </span>
+<span id="cb29-438"><a href="#cb29-438" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>hz) <span class="sc">%&gt;%</span></span>
+<span id="cb29-439"><a href="#cb29-439" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> nearey) <span class="ot">-&gt;</span> vowels_nearey</span>
+<span id="cb29-440"><a href="#cb29-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-441"><a href="#cb29-441" aria-hidden="true" tabindex="-1"></a>vowels_nearey <span class="sc">%&gt;%</span></span>
+<span id="cb29-442"><a href="#cb29-442" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb29-443"><a href="#cb29-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-444"><a href="#cb29-444" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-445"><a href="#cb29-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-446"><a href="#cb29-446" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Results!</span></span>
+<span id="cb29-447"><a href="#cb29-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-450"><a href="#cb29-450" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-451"><a href="#cb29-451" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-452"><a href="#cb29-452" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Plot code"</span></span>
+<span id="cb29-453"><a href="#cb29-453" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-neary-norm</span></span>
+<span id="cb29-454"><a href="#cb29-454" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "An F1 by F2 plot of two speakers' Nearey normalized vowel means."</span></span>
+<span id="cb29-455"><a href="#cb29-455" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6.5</span></span>
+<span id="cb29-456"><a href="#cb29-456" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb29-457"><a href="#cb29-457" aria-hidden="true" tabindex="-1"></a>vowels_nearey <span class="sc">%&gt;%</span></span>
+<span id="cb29-458"><a href="#cb29-458" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb29-459"><a href="#cb29-459" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-460"><a href="#cb29-460" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb29-461"><a href="#cb29-461" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb29-462"><a href="#cb29-462" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb29-463"><a href="#cb29-463" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-464"><a href="#cb29-464" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-465"><a href="#cb29-465" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-466"><a href="#cb29-466" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()</span>
+<span id="cb29-467"><a href="#cb29-467" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-468"><a href="#cb29-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-469"><a href="#cb29-469" aria-hidden="true" tabindex="-1"></a>Again, the vowel spaces are largely overlapping. One thing that's not immediately clear from this graph, though, is that this specific approach to Nearey normalization still has a much wider range for F2 than F1, which we can see if we plot it with fixed coordinates.</span>
+<span id="cb29-470"><a href="#cb29-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-473"><a href="#cb29-473" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-474"><a href="#cb29-474" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-475"><a href="#cb29-475" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Plot code"</span></span>
+<span id="cb29-476"><a href="#cb29-476" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-neary-norm-fixed</span></span>
+<span id="cb29-477"><a href="#cb29-477" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "An F1 by F2 plot of two speakers' Nearey normalized vowel means. (fixed coordinates)."</span></span>
+<span id="cb29-478"><a href="#cb29-478" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6.5</span></span>
+<span id="cb29-479"><a href="#cb29-479" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 2.5</span></span>
+<span id="cb29-480"><a href="#cb29-480" aria-hidden="true" tabindex="-1"></a>vowels_nearey <span class="sc">%&gt;%</span></span>
+<span id="cb29-481"><a href="#cb29-481" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb29-482"><a href="#cb29-482" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-483"><a href="#cb29-483" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb29-484"><a href="#cb29-484" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb29-485"><a href="#cb29-485" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb29-486"><a href="#cb29-486" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-487"><a href="#cb29-487" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-488"><a href="#cb29-488" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-489"><a href="#cb29-489" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-490"><a href="#cb29-490" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span>
+<span id="cb29-491"><a href="#cb29-491" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-492"><a href="#cb29-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-493"><a href="#cb29-493" aria-hidden="true" tabindex="-1"></a>It gets better if we plot the log of the normalized values<span class="ot">[^3]</span>, but then the vowel space doesn't look like the familiar hertz space.</span>
+<span id="cb29-494"><a href="#cb29-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-495"><a href="#cb29-495" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>Which is a little silly because that's what we had in the normalization code chunk above, and then we did <span class="in">`exp()`</span> on it.</span>
+<span id="cb29-496"><a href="#cb29-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-499"><a href="#cb29-499" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-500"><a href="#cb29-500" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-501"><a href="#cb29-501" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Plot code"</span></span>
+<span id="cb29-502"><a href="#cb29-502" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-neary-log-norm-fixed</span></span>
+<span id="cb29-503"><a href="#cb29-503" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Speakers' vowel means in Log Nearey Normalized F1,F2 space (fixed coordinates)."</span></span>
+<span id="cb29-504"><a href="#cb29-504" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6.5</span></span>
+<span id="cb29-505"><a href="#cb29-505" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb29-506"><a href="#cb29-506" aria-hidden="true" tabindex="-1"></a>vowels_nearey <span class="sc">%&gt;%</span></span>
+<span id="cb29-507"><a href="#cb29-507" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb29-508"><a href="#cb29-508" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> <span class="sc">~</span><span class="fu">mean</span>(<span class="fu">log</span>(.x)))) <span class="sc">%&gt;%</span></span>
+<span id="cb29-509"><a href="#cb29-509" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb29-510"><a href="#cb29-510" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb29-511"><a href="#cb29-511" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb29-512"><a href="#cb29-512" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-513"><a href="#cb29-513" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-514"><a href="#cb29-514" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-515"><a href="#cb29-515" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-516"><a href="#cb29-516" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span>
+<span id="cb29-517"><a href="#cb29-517" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-518"><a href="#cb29-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-519"><a href="#cb29-519" aria-hidden="true" tabindex="-1"></a><span class="fu">### Watt &amp; Fabricius</span></span>
+<span id="cb29-520"><a href="#cb29-520" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-521"><a href="#cb29-521" aria-hidden="true" tabindex="-1"></a>The final normalization method we'll look at, which can't easily be done with a single sequence of tidyverse verbs, is the Watt &amp; Fabricius method <span class="co">[</span><span class="ot">@watt2002</span><span class="co">]</span>. The idea behind the Watt &amp; Fabricius method is to define a vowel space triangle for each speaker, then to scale their formant values to the triangle.</span>
+<span id="cb29-522"><a href="#cb29-522" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-523"><a href="#cb29-523" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 1: Getting the Triangle Points</span></span>
+<span id="cb29-524"><a href="#cb29-524" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-525"><a href="#cb29-525" aria-hidden="true" tabindex="-1"></a>I'll follow the NORM suite and define the points of the triangle like so:</span>
+<span id="cb29-526"><a href="#cb29-526" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-527"><a href="#cb29-527" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Top Left Corner, "beet" point: The F1 of the vowel with the smallest F1, and the F2 of the vowel with the largest F2</span>
+<span id="cb29-528"><a href="#cb29-528" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-529"><a href="#cb29-529" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Bottom Corner, "bat" point: The F1 of the vowel with the maximum F1, and the F2 of that same vowel.</span>
+<span id="cb29-530"><a href="#cb29-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-531"><a href="#cb29-531" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Top Right Corner, "school" point: F1 = F2 = "beet" point F1.</span>
+<span id="cb29-532"><a href="#cb29-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-533"><a href="#cb29-533" aria-hidden="true" tabindex="-1"></a>Here's how you can get those values per speaker:</span>
+<span id="cb29-534"><a href="#cb29-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-537"><a href="#cb29-537" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-538"><a href="#cb29-538" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-wf-points</span></span>
+<span id="cb29-539"><a href="#cb29-539" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "The vowel triangle point values."</span></span>
+<span id="cb29-540"><a href="#cb29-540" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb29-541"><a href="#cb29-541" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb29-542"><a href="#cb29-542" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-543"><a href="#cb29-543" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb29-544"><a href="#cb29-544" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">beet_f1 =</span> <span class="fu">min</span>(F1),</span>
+<span id="cb29-545"><a href="#cb29-545" aria-hidden="true" tabindex="-1"></a>            <span class="at">beet_f2 =</span> <span class="fu">max</span>(F2),</span>
+<span id="cb29-546"><a href="#cb29-546" aria-hidden="true" tabindex="-1"></a>            <span class="at">bat_f1 =</span> <span class="fu">max</span>(F1),</span>
+<span id="cb29-547"><a href="#cb29-547" aria-hidden="true" tabindex="-1"></a>            <span class="at">bat_f2 =</span> F2[F1 <span class="sc">==</span> <span class="fu">max</span>(F1)]) <span class="sc">%&gt;%</span></span>
+<span id="cb29-548"><a href="#cb29-548" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">school_f1 =</span> beet_f1,</span>
+<span id="cb29-549"><a href="#cb29-549" aria-hidden="true" tabindex="-1"></a>         <span class="at">school_f2 =</span> beet_f1) <span class="sc">%&gt;%</span></span>
+<span id="cb29-550"><a href="#cb29-550" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
+<span id="cb29-551"><a href="#cb29-551" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">0</span>)</span>
+<span id="cb29-552"><a href="#cb29-552" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-553"><a href="#cb29-553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-554"><a href="#cb29-554" aria-hidden="true" tabindex="-1"></a>In order to plot these points in an F1$\times$F2 space, we need to do a little <span class="in">`pivot_longer()`</span> and <span class="in">`pivot_wider()`</span> again with the following steps:</span>
+<span id="cb29-555"><a href="#cb29-555" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-556"><a href="#cb29-556" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`pivot_longer()`</span>, to stack the values of the columns between <span class="in">`beet_f1`</span> and <span class="in">`school_f2`</span> on top of each other.</span>
+<span id="cb29-557"><a href="#cb29-557" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-558"><a href="#cb29-558" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Split the point names (e.g. "<span class="in">`beet_f1"`</span>) into separate values (e.g. <span class="in">`"beet"`</span> and <span class="in">`"beet"`</span>) using <span class="in">`separate()`</span>.</span>
+<span id="cb29-559"><a href="#cb29-559" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-560"><a href="#cb29-560" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`pivot_wider()`</span> using the column with <span class="in">`"f1"`</span> and <span class="in">`"f2"`</span> to make the new column names.</span>
+<span id="cb29-561"><a href="#cb29-561" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-564"><a href="#cb29-564" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-565"><a href="#cb29-565" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-wf-point-long</span></span>
+<span id="cb29-566"><a href="#cb29-566" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "The vowel triangle point values, long version"</span></span>
+<span id="cb29-567"><a href="#cb29-567" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb29-568"><a href="#cb29-568" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb29-569"><a href="#cb29-569" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-570"><a href="#cb29-570" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb29-571"><a href="#cb29-571" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">beet_f1 =</span> <span class="fu">min</span>(F1),</span>
+<span id="cb29-572"><a href="#cb29-572" aria-hidden="true" tabindex="-1"></a>            <span class="at">beet_f2 =</span> <span class="fu">max</span>(F2),</span>
+<span id="cb29-573"><a href="#cb29-573" aria-hidden="true" tabindex="-1"></a>            <span class="at">bat_f1 =</span> <span class="fu">max</span>(F1),</span>
+<span id="cb29-574"><a href="#cb29-574" aria-hidden="true" tabindex="-1"></a>            <span class="at">bat_f2 =</span> F2[F1 <span class="sc">==</span> <span class="fu">max</span>(F1)]) <span class="sc">%&gt;%</span></span>
+<span id="cb29-575"><a href="#cb29-575" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">school_f1 =</span> beet_f1,</span>
+<span id="cb29-576"><a href="#cb29-576" aria-hidden="true" tabindex="-1"></a>         <span class="at">school_f2 =</span> beet_f1) <span class="sc">%&gt;%</span></span>
+<span id="cb29-577"><a href="#cb29-577" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> beet_f1<span class="sc">:</span>school_f2, <span class="at">names_to =</span> <span class="st">"var"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-578"><a href="#cb29-578" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(var, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"point"</span>, <span class="st">"formant"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-579"><a href="#cb29-579" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> hz) <span class="ot">-&gt;</span> wf_points</span>
+<span id="cb29-580"><a href="#cb29-580" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-581"><a href="#cb29-581" aria-hidden="true" tabindex="-1"></a>wf_points <span class="sc">%&gt;%</span></span>
+<span id="cb29-582"><a href="#cb29-582" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">0</span>)</span>
+<span id="cb29-583"><a href="#cb29-583" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-584"><a href="#cb29-584" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-585"><a href="#cb29-585" aria-hidden="true" tabindex="-1"></a>When we plot thee triangle points, we wind up with a plot that looks like a very simplified version of the vowel space from @fig-unnorm1.</span>
+<span id="cb29-586"><a href="#cb29-586" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-589"><a href="#cb29-589" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-590"><a href="#cb29-590" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-591"><a href="#cb29-591" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Plot code"</span></span>
+<span id="cb29-592"><a href="#cb29-592" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-wf-triangle</span></span>
+<span id="cb29-593"><a href="#cb29-593" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb29-594"><a href="#cb29-594" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb29-595"><a href="#cb29-595" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "The vowel space triangles for the Watt &amp; Fabricius method"</span></span>
+<span id="cb29-596"><a href="#cb29-596" aria-hidden="true" tabindex="-1"></a>wf_points <span class="sc">%&gt;%</span></span>
+<span id="cb29-597"><a href="#cb29-597" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(f2, f1))<span class="sc">+</span></span>
+<span id="cb29-598"><a href="#cb29-598" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_polygon</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name, <span class="at">color =</span> name), <span class="at">alpha =</span> <span class="fl">0.6</span>)<span class="sc">+</span></span>
+<span id="cb29-599"><a href="#cb29-599" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> point))<span class="sc">+</span></span>
+<span id="cb29-600"><a href="#cb29-600" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-601"><a href="#cb29-601" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-602"><a href="#cb29-602" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-603"><a href="#cb29-603" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_vibrant</span>()</span>
+<span id="cb29-604"><a href="#cb29-604" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-605"><a href="#cb29-605" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-606"><a href="#cb29-606" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 2: Calculate Scaling Factors</span></span>
+<span id="cb29-607"><a href="#cb29-607" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-608"><a href="#cb29-608" aria-hidden="true" tabindex="-1"></a>With the F1 and F2 of these triangle points, we then calculate scaling factors by just taking the mean of F1 and F2 for each speaker.</span>
+<span id="cb29-609"><a href="#cb29-609" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-612"><a href="#cb29-612" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-613"><a href="#cb29-613" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-wf-scaler</span></span>
+<span id="cb29-614"><a href="#cb29-614" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "The Watt &amp; Fabricius scaling factors"</span></span>
+<span id="cb29-615"><a href="#cb29-615" aria-hidden="true" tabindex="-1"></a>wf_points <span class="sc">%&gt;%</span></span>
+<span id="cb29-616"><a href="#cb29-616" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb29-617"><a href="#cb29-617" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">S1 =</span> <span class="fu">mean</span>(f1),</span>
+<span id="cb29-618"><a href="#cb29-618" aria-hidden="true" tabindex="-1"></a>           <span class="at">S2 =</span> <span class="fu">mean</span>(f2)) <span class="ot">-&gt;</span> wf_scalers</span>
+<span id="cb29-619"><a href="#cb29-619" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-620"><a href="#cb29-620" aria-hidden="true" tabindex="-1"></a>wf_scalers <span class="sc">%&gt;%</span></span>
+<span id="cb29-621"><a href="#cb29-621" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">0</span>)</span>
+<span id="cb29-622"><a href="#cb29-622" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-623"><a href="#cb29-623" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-624"><a href="#cb29-624" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 3: Merging the scalers onto the original data.</span></span>
+<span id="cb29-625"><a href="#cb29-625" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-626"><a href="#cb29-626" aria-hidden="true" tabindex="-1"></a>Now what we need to do is divide each speaker's F1 and F2 value by these scalers. Right now the speakers' original data is in <span class="in">`vowels_inlie`</span> and the scaling values are in <span class="in">`wf_scalers`</span>, so to do that division, we need to associate these two data frames.</span>
+<span id="cb29-627"><a href="#cb29-627" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-628"><a href="#cb29-628" aria-hidden="true" tabindex="-1"></a>Fortunately, both <span class="in">`vowels_inlie`</span> and <span class="in">`wf_scalers`</span> have a column name in common: the speaker ID column <span class="in">`name`</span>. That means we can merge <span class="in">`wf_scalers`</span> onto <span class="in">`vowels_inlie`</span> with a join operation. There are a few different <span class="in">`*_join()`</span> functions in the tidyverse, and here I'll use <span class="in">`left_join()`</span>.</span>
+<span id="cb29-629"><a href="#cb29-629" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-630"><a href="#cb29-630" aria-hidden="true" tabindex="-1"></a>We need to tell <span class="in">`left_join()`</span> the following information:</span>
+<span id="cb29-631"><a href="#cb29-631" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-632"><a href="#cb29-632" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Which two data frames are we joining together?</span>
+<span id="cb29-633"><a href="#cb29-633" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-634"><a href="#cb29-634" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Since we're piping, the first data frame will appear on the left hand side of <span class="in">`%&gt;%`</span>, and the second data frame will be the first argument.</span>
+<span id="cb29-635"><a href="#cb29-635" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-636"><a href="#cb29-636" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Which columns should we use to join the data frames together?</span>
+<span id="cb29-637"><a href="#cb29-637" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-638"><a href="#cb29-638" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`left_join()`</span> will guess and try to join the data together using columns with the same name, but we can explicitly tell it which columns to use with the <span class="in">`by=`</span> argument.</span>
+<span id="cb29-639"><a href="#cb29-639" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-642"><a href="#cb29-642" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-643"><a href="#cb29-643" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-wf-join</span></span>
+<span id="cb29-644"><a href="#cb29-644" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Speakers's scalers merged onto the original data"</span></span>
+<span id="cb29-645"><a href="#cb29-645" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb29-646"><a href="#cb29-646" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(wf_scalers, <span class="at">by =</span> <span class="st">"name"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-647"><a href="#cb29-647" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
+<span id="cb29-648"><a href="#cb29-648" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The group_by here is just to illustrate that each speaker's scalers were</span></span>
+<span id="cb29-649"><a href="#cb29-649" aria-hidden="true" tabindex="-1"></a>  <span class="co"># successfully merged</span></span>
+<span id="cb29-650"><a href="#cb29-650" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> <span class="fu">slice</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">1</span>)</span>
+<span id="cb29-651"><a href="#cb29-651" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-652"><a href="#cb29-652" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-653"><a href="#cb29-653" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 4: The actual normalization!</span></span>
+<span id="cb29-654"><a href="#cb29-654" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-655"><a href="#cb29-655" aria-hidden="true" tabindex="-1"></a>Now all we need to do is divide F1 and F2 by their respective scaling factors to get the normalized Watt &amp; Fabricius values.</span>
+<span id="cb29-656"><a href="#cb29-656" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-659"><a href="#cb29-659" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-660"><a href="#cb29-660" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-wf-norm</span></span>
+<span id="cb29-661"><a href="#cb29-661" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Speakers' vowels Watt &amp; Fabricius normalized"</span></span>
+<span id="cb29-662"><a href="#cb29-662" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">%&gt;%</span></span>
+<span id="cb29-663"><a href="#cb29-663" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(wf_scalers, <span class="at">by =</span> <span class="st">"name"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-664"><a href="#cb29-664" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_wf =</span> F1<span class="sc">/</span>S1,</span>
+<span id="cb29-665"><a href="#cb29-665" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_wf =</span> F2<span class="sc">/</span>S2)<span class="ot">-&gt;</span>vowels_wf</span>
+<span id="cb29-666"><a href="#cb29-666" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-667"><a href="#cb29-667" aria-hidden="true" tabindex="-1"></a>vowels_wf <span class="sc">%&gt;%</span></span>
+<span id="cb29-668"><a href="#cb29-668" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb29-669"><a href="#cb29-669" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-670"><a href="#cb29-670" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-671"><a href="#cb29-671" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Results!</span></span>
+<span id="cb29-672"><a href="#cb29-672" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-675"><a href="#cb29-675" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-676"><a href="#cb29-676" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-wf-norm</span></span>
+<span id="cb29-677"><a href="#cb29-677" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb29-678"><a href="#cb29-678" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Plot code"</span></span>
+<span id="cb29-679"><a href="#cb29-679" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 6</span></span>
+<span id="cb29-680"><a href="#cb29-680" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb29-681"><a href="#cb29-681" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "An F1 by F2 plot of two speakers' Watt &amp; Fabricius normalized vowel means."</span></span>
+<span id="cb29-682"><a href="#cb29-682" aria-hidden="true" tabindex="-1"></a>vowels_wf <span class="sc">%&gt;%</span></span>
+<span id="cb29-683"><a href="#cb29-683" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">%&gt;%</span></span>
+<span id="cb29-684"><a href="#cb29-684" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1_wf, F2_wf), <span class="at">.fns =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb29-685"><a href="#cb29-685" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2_wf, F1_wf, <span class="at">color =</span> name))<span class="sc">+</span></span>
+<span id="cb29-686"><a href="#cb29-686" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
+<span id="cb29-687"><a href="#cb29-687" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
+<span id="cb29-688"><a href="#cb29-688" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-689"><a href="#cb29-689" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb29-690"><a href="#cb29-690" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-691"><a href="#cb29-691" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
+<span id="cb29-692"><a href="#cb29-692" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span>
+<span id="cb29-693"><a href="#cb29-693" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb29-694"><a href="#cb29-694" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-695"><a href="#cb29-695" aria-hidden="true" tabindex="-1"></a>Again, we've got largely overlapping vowel spaces, and since F1 and F2 were normalized separately, they've got very comparable data ranges.</span>
+<span id="cb29-696"><a href="#cb29-696" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-697"><a href="#cb29-697" aria-hidden="true" tabindex="-1"></a><span class="fu">## Final thoughts</span></span>
+<span id="cb29-698"><a href="#cb29-698" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-699"><a href="#cb29-699" aria-hidden="true" tabindex="-1"></a>There there has been a *lot* written about vowel normalization methods, and I've barely covered most of the relevant topics discussed in the literature. For example:</span>
+<span id="cb29-700"><a href="#cb29-700" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-701"><a href="#cb29-701" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>How well do these methods correspond to what *listeners* actually do when hearing people with different vowel spaces?</span>
+<span id="cb29-702"><a href="#cb29-702" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-703"><a href="#cb29-703" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Should we really be plotting and analyzing formants in Hz, or should the by converted to a psychoacoustic dimension, like Mel or Bark?</span>
+<span id="cb29-704"><a href="#cb29-704" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-705"><a href="#cb29-705" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Which method is the "Best"? What do we want a method to be "Best" *at*?</span>
+<span id="cb29-706"><a href="#cb29-706" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-707"><a href="#cb29-707" aria-hidden="true" tabindex="-1"></a>Instead, I've covered some of most commonly used normalization methods, and also tried to provide an outline of how these methods correspond to specific data frame operations in the tidyverse.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

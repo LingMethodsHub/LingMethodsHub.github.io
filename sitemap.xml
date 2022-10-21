@@ -1,163 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lingmethodshub.github.io/content/tools/mfa/mfa-tutorial/index.html</loc>
-    <lastmod>2022-10-20T22:51:33.491Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/tools/autovot/autovot-tutorial/index.html</loc>
-    <lastmod>2022-10-20T22:51:34.212Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/tools/index.html</loc>
-    <lastmod>2022-10-20T22:51:34.579Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/python/index.html</loc>
-    <lastmod>2022-10-20T22:51:34.924Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/python/vowel-plotting-py/index.html</loc>
-    <lastmod>2022-10-20T22:51:35.589Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/contributing/template/01_qmd_template.html</loc>
-    <lastmod>2022-10-20T22:51:36.089Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/contributing/template/index.html</loc>
-    <lastmod>2022-10-20T22:51:40.012Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/contributing/template/02_jupyter.html</loc>
-    <lastmod>2022-10-20T22:51:43.719Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/contributing/template/00_rmarkdown_template.html</loc>
-    <lastmod>2022-10-20T22:51:47.883Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/contributing/01_recommendations.html</loc>
-    <lastmod>2022-10-20T22:51:52.149Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/contributing/index.html</loc>
-    <lastmod>2022-10-20T22:51:52.614Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/contributing/02_process.html</loc>
-    <lastmod>2022-10-20T22:51:53.098Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/contributing/00_requirements.html</loc>
-    <lastmod>2022-10-20T22:51:53.588Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/contributing/03_workflow.html</loc>
-    <lastmod>2022-10-20T22:51:54.120Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/R/lvc_r/070_lvcr.html</loc>
-    <lastmod>2022-10-20T22:51:54.949Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/R/lvc_r/010_lvcr.html</loc>
-    <lastmod>2022-10-20T22:51:59.405Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/R/lvc_r/060_lvcr.html</loc>
-    <lastmod>2022-10-20T22:52:00.597Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/R/lvc_r/index.html</loc>
-    <lastmod>2022-10-20T22:52:06.173Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/R/lvc_r/080_lvcr.html</loc>
-    <lastmod>2022-10-20T22:52:06.918Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/R/lvc_r/050_lvcr.html</loc>
-    <lastmod>2022-10-20T22:52:12.505Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/R/lvc_r/030_lvcr.html</loc>
-    <lastmod>2022-10-20T22:52:19.957Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/R/lvc_r/040_lvcr.html</loc>
-    <lastmod>2022-10-20T22:52:21.039Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/R/lvc_r/020_lvcr.html</loc>
-    <lastmod>2022-10-20T22:52:21.738Z</lastmod>
+    <loc>https://lingmethodshub.github.io/about.html</loc>
+    <lastmod>2022-10-21T19:07:57.826Z</lastmod>
   </url>
   <url>
     <loc>https://lingmethodshub.github.io/content/R/index.html</loc>
-    <lastmod>2022-10-20T22:52:22.348Z</lastmod>
+    <lastmod>2022-10-21T19:07:58.563Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/R/lvc_r/010_lvcr.html</loc>
+    <lastmod>2022-10-21T19:07:59.576Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/R/lvc_r/020_lvcr.html</loc>
+    <lastmod>2022-10-21T19:08:00.373Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/R/lvc_r/030_lvcr.html</loc>
+    <lastmod>2022-10-21T19:08:03.945Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/R/lvc_r/040_lvcr.html</loc>
+    <lastmod>2022-10-21T19:08:05.694Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/R/lvc_r/050_lvcr.html</loc>
+    <lastmod>2022-10-21T19:08:06.877Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/R/lvc_r/060_lvcr.html</loc>
+    <lastmod>2022-10-21T19:08:13.095Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/R/lvc_r/070_lvcr.html</loc>
+    <lastmod>2022-10-21T19:08:19.279Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/R/lvc_r/080_lvcr.html</loc>
+    <lastmod>2022-10-21T19:08:27.176Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/R/lvc_r/index.html</loc>
+    <lastmod>2022-10-21T19:08:36.335Z</lastmod>
   </url>
   <url>
     <loc>https://lingmethodshub.github.io/content/R/tidy-norm/index.html</loc>
-    <lastmod>2022-10-20T22:52:31.792Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/R/vowel-plots-tutorial/index.html</loc>
-    <lastmod>2022-10-20T22:52:32.925Z</lastmod>
+    <lastmod>2022-10-21T19:08:38.233Z</lastmod>
   </url>
   <url>
     <loc>https://lingmethodshub.github.io/content/cli/keyboarding/index.html</loc>
-    <lastmod>2022-10-20T22:52:33.538Z</lastmod>
+    <lastmod>2022-10-21T19:08:38.975Z</lastmod>
   </url>
   <url>
-    <loc>https://lingmethodshub.github.io/content/cli/bash-shell-basics/index.html</loc>
-    <lastmod>2022-10-20T22:52:34.285Z</lastmod>
+    <loc>https://lingmethodshub.github.io/content/contributing/00_requirements.html</loc>
+    <lastmod>2022-10-21T19:08:39.495Z</lastmod>
   </url>
   <url>
-    <loc>https://lingmethodshub.github.io/content/cli/index.html</loc>
-    <lastmod>2022-10-20T22:52:34.648Z</lastmod>
+    <loc>https://lingmethodshub.github.io/content/contributing/01_recommendations.html</loc>
+    <lastmod>2022-10-21T19:08:40.211Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/contributing/02_process.html</loc>
+    <lastmod>2022-10-21T19:08:40.773Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/contributing/03_workflow.html</loc>
+    <lastmod>2022-10-21T19:08:41.375Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/contributing/template/01_qmd_template.html</loc>
+    <lastmod>2022-10-21T19:08:41.925Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/contributing/template/index.html</loc>
+    <lastmod>2022-10-21T19:08:45.993Z</lastmod>
   </url>
   <url>
     <loc>https://lingmethodshub.github.io/content/index.html</loc>
-    <lastmod>2022-10-20T22:52:34.980Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/updates/index.html</loc>
-    <lastmod>2022-10-20T22:52:35.286Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/praat/index.html</loc>
-    <lastmod>2022-10-20T22:52:35.632Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/windows/wsl/index.html</loc>
-    <lastmod>2022-10-20T22:52:36.205Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/windows/wsl/00_installing_wsl.html</loc>
-    <lastmod>2022-10-20T22:52:36.740Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/content/windows/index.html</loc>
-    <lastmod>2022-10-20T22:52:42.775Z</lastmod>
+    <lastmod>2022-10-21T19:08:49.610Z</lastmod>
   </url>
   <url>
     <loc>https://lingmethodshub.github.io/index.html</loc>
-    <lastmod>2022-10-20T22:52:43.233Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/about.html</loc>
-    <lastmod>2022-10-20T22:52:43.604Z</lastmod>
+    <lastmod>2022-10-21T19:08:50.073Z</lastmod>
   </url>
   <url>
     <loc>https://lingmethodshub.github.io/people/index.html</loc>
-    <lastmod>2022-10-20T22:52:43.958Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lingmethodshub.github.io/people/matthuntgardner/index.html</loc>
-    <lastmod>2022-10-20T22:52:44.304Z</lastmod>
+    <lastmod>2022-10-21T19:08:50.455Z</lastmod>
   </url>
   <url>
     <loc>https://lingmethodshub.github.io/people/jofrhwld/index.html</loc>
-    <lastmod>2022-10-20T22:52:44.608Z</lastmod>
+    <lastmod>2022-10-21T19:08:50.786Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/people/matthuntgardner/index.html</loc>
+    <lastmod>2022-10-21T19:08:51.111Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/R/vowel-plots-tutorial/index.html</loc>
+    <lastmod>2022-10-21T19:08:52.837Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/cli/bash-shell-basics/index.html</loc>
+    <lastmod>2022-10-21T19:08:53.969Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/cli/index.html</loc>
+    <lastmod>2022-10-21T19:08:54.352Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/contributing/index.html</loc>
+    <lastmod>2022-10-21T19:08:54.844Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/contributing/template/00_rmarkdown_template.html</loc>
+    <lastmod>2022-10-21T19:08:55.579Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/praat/index.html</loc>
+    <lastmod>2022-10-21T19:08:59.536Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/python/index.html</loc>
+    <lastmod>2022-10-21T19:08:59.877Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/tools/autovot/autovot-tutorial/index.html</loc>
+    <lastmod>2022-10-21T19:09:00.894Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/tools/index.html</loc>
+    <lastmod>2022-10-21T19:09:01.250Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/tools/mfa/mfa-tutorial/index.html</loc>
+    <lastmod>2022-10-21T19:09:02.367Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/updates/index.html</loc>
+    <lastmod>2022-10-21T19:09:02.704Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/windows/index.html</loc>
+    <lastmod>2022-10-21T19:09:03.115Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/windows/wsl/00_installing_wsl.html</loc>
+    <lastmod>2022-10-21T19:09:03.762Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/windows/wsl/index.html</loc>
+    <lastmod>2022-10-21T19:09:09.942Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/contributing/template/02_jupyter.html</loc>
+    <lastmod>2022-10-21T19:09:10.455Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lingmethodshub.github.io/content/python/vowel-plotting-py/index.html</loc>
+    <lastmod>2022-10-21T19:09:14.879Z</lastmod>
   </url>
 </urlset>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.210">
+<meta name="generator" content="quarto-1.2.233">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -139,6 +202,9 @@ cookieconsent.run({
 <meta name="twitter:image-height" content="424">
 <meta name="twitter:image-width" content="653">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="*R* Tutorials">
+<meta name="citation_fulltext_html_url" content="https://lingmethodshub.github.io/content/R">
+<meta name="citation_language" content="en">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -158,11 +224,11 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link active" href="../../index.html" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../content/index.html" aria-current="page">
+    <a class="nav-link" href="../../content/index.html">
  <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item">
@@ -210,7 +276,7 @@ cookieconsent.run({
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../" class="sidebar-logo-link">
+      <a href="../../index.html" class="sidebar-logo-link">
       <img src="../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
@@ -394,7 +460,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><em>R</em> Tutorials</h1>
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block"><em>R</em> Tutorials</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -412,10 +478,68 @@ cookieconsent.run({
 
 
 
+<!-- -->
+
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1665183899767" data-listing-reading-time-sort="8.235">
+<div class="quarto-post image-right" data-index="0" data-categories="vowels,normalization,R" data-listing-date-sort="1666238400000" data-listing-file-modified-sort="1666306270537" data-listing-reading-time-sort="18.94">
+<div class="thumbnail">
+<p><a href="../../content/R/tidy-norm/index.html"> <img src="../../content/R/tidy-norm/index_files/figure-html/fig-unnorm1-1.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="../../content/R/tidy-norm/index.html">
+<h3 class="no-anchor listing-title">
+How to normalize your vowels using the tidyverse
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>A tutorial on how to normalize vowel formant measurments in R using the tidyverse</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../../content/R/tidy-norm/index.html">
+<div class="listing-date">
+Oct 20, 2022
+</div>
+<div class="listing-author">
+Josef Fruehwald
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1666065600000" data-listing-file-modified-sort="1666377462844" data-listing-reading-time-sort="29.175">
+<div class="thumbnail">
+<p><a href="../../content/R/vowel-plots-tutorial/index.html"> <img src="../../content/R/vowel-plots-tutorial/index_files/figure-html/unnamed-chunk-31-1.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="../../content/R/vowel-plots-tutorial/index.html">
+<h3 class="no-anchor listing-title">
+Vowel Plots with <code>ggplot2</code>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+This is a tutorial on how to make vowel plots in R using the ggplot2 package. Being able to make a vowel…<em></em>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../../content/R/vowel-plots-tutorial/index.html">
+<div class="listing-date">
+Oct 18, 2022
+</div>
+<div class="listing-author">
+Joseph A. Stanley
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666374936622" data-listing-reading-time-sort="8.235">
 <div class="thumbnail">
 <p><a href="../../content/R/lvc_r/010_lvcr.html"> <img src="../../content/R/lvc_r/images/tweet.png" class="thumnail-image"> </a></p>
 </div>
@@ -443,7 +567,7 @@ Matt Hunt Gardner
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042440" data-listing-reading-time-sort="3.475">
+<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042440" data-listing-reading-time-sort="3.475">
 <div class="thumbnail">
 <a href="../../content/R/lvc_r/020_lvcr.html">
 <div class="thumbnail-image">
@@ -475,7 +599,7 @@ Matt Hunt Gardner
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="15.01">
+<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="15.01">
 <div class="thumbnail">
 <a href="../../content/R/lvc_r/030_lvcr.html">
 <div class="thumbnail-image">
@@ -507,7 +631,7 @@ Matt Hunt Gardner
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="24.105">
+<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="24.105">
 <div class="thumbnail">
 <a href="../../content/R/lvc_r/040_lvcr.html">
 <div class="thumbnail-image">
@@ -539,7 +663,7 @@ Matt Hunt Gardner
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="9.745">
+<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="9.745">
 <div class="thumbnail">
 <a href="../../content/R/lvc_r/050_lvcr.html">
 <div class="thumbnail-image">
@@ -571,7 +695,7 @@ Matt Hunt Gardner
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042442" data-listing-reading-time-sort="26.455">
+<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042442" data-listing-reading-time-sort="26.455">
 <div class="thumbnail">
 <a href="../../content/R/lvc_r/060_lvcr.html">
 <div class="thumbnail-image">
@@ -603,9 +727,9 @@ Matt Hunt Gardner
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042442" data-listing-reading-time-sort="11.205">
+<div class="quarto-post image-right" data-index="8" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666375491390" data-listing-reading-time-sort="11.205">
 <div class="thumbnail">
-<p><a href="../../content/R/lvc_r/070_lvcr.html"> <img src="../../content/R/lvc_r/images/summaryAgeGroupSex.png" class="thumnail-image"> </a></p>
+<p><a href="../../content/R/lvc_r/070_lvcr.html"> <img src="../../content/R/lvc_r/070_lvcr_files/figure-html/unnamed-chunk-8-1.png" class="thumnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="../../content/R/lvc_r/070_lvcr.html">
@@ -631,13 +755,9 @@ Matt Hunt Gardner
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042442" data-listing-reading-time-sort="6.55">
+<div class="quarto-post image-right" data-index="9" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666375491390" data-listing-reading-time-sort="6.55">
 <div class="thumbnail">
-<a href="../../content/R/lvc_r/080_lvcr.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="../../content/R/lvc_r/080_lvcr.html"></a></p>
+<p><a href="../../content/R/lvc_r/080_lvcr.html"> <img src="../../content/R/lvc_r/080_lvcr_files/figure-html/unnamed-chunk-6-1.png" class="thumnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="../../content/R/lvc_r/080_lvcr.html">
@@ -663,7 +783,7 @@ Matt Hunt Gardner
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-listing-date-sort="NaN" data-listing-file-modified-sort="1664311479139" data-listing-reading-time-sort="0.085">
+<div class="quarto-post image-right" data-index="10" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666371043193" data-listing-reading-time-sort="0.085">
 <div class="thumbnail">
 <a href="../../content/R/lvc_r/index.html">
 <div class="thumbnail-image">
@@ -687,66 +807,10 @@ This tutorial takes you step-by-step though a variationist analysis of a socioli
 <div class="metadata">
 <a href="../../content/R/lvc_r/index.html">
 <div class="listing-date">
-Invalid Date
+Sep 27, 2022
 </div>
 <div class="listing-author">
-[object Object]
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-categories="vowels,normalization,R" data-listing-date-sort="1666238400000" data-listing-file-modified-sort="1666306270537" data-listing-reading-time-sort="18.94">
-<div class="thumbnail">
-<p><a href="../../content/R/tidy-norm/index.html"> <img src="../../content/R/tidy-norm/index_files/figure-html/fig-unnorm1-1.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="../../content/R/tidy-norm/index.html">
-<h3 class="no-anchor listing-title">
-How to normalize your vowels using the tidyverse
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<p>A tutorial on how to normalize vowel formant measurments in R using the tidyverse</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../../content/R/tidy-norm/index.html">
-<div class="listing-date">
-Oct 20, 2022
-</div>
-<div class="listing-author">
-Josef Fruehwald
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-listing-date-sort="1666065600000" data-listing-file-modified-sort="1666115238863" data-listing-reading-time-sort="29.175">
-<div class="thumbnail">
-<p><a href="../../content/R/vowel-plots-tutorial/index.html"> <img src="../../content/R/vowel-plots-tutorial/index_files/figure-html/unnamed-chunk-31-1.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="../../content/R/vowel-plots-tutorial/index.html">
-<h3 class="no-anchor listing-title">
-Vowel Plots with <code>ggplot2</code>
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-This is a tutorial on how to make vowel plots in R using the ggplot2 package. Being able to make a vowel…<em></em>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../../content/R/vowel-plots-tutorial/index.html">
-<div class="listing-date">
-Oct 18, 2022
-</div>
-<div class="listing-author">
-Joseph A. Stanley
+Matt Hunt Gardner
 </div>
 </a>
 </div>
@@ -821,6 +885,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -900,7 +1015,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         <span class="nav-page-text">Doing LVC with R</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "*R* Tutorials"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">    contents:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">      - "**/*[qR]md"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">      - "!**/renv/"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    type: default</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    sort: </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">      - "date desc"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="an">citation:</span><span class="co"> false    </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
