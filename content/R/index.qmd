@@ -3,6 +3,7 @@ title: "*R* Tutorials"
 listing:
     contents:
       - "**/*[qR]md"
+      - "!**/renv/"
     type: default
     sort: 
       - "date desc"

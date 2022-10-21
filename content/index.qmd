@@ -6,7 +6,7 @@ citation: false
 
 You can find tutorials either through searching (top menu bar), navigating the site table of contents, or browsing the top-level pages here:
 
--   [R](R/index.md)
+-   [R](R/index.qmd)
 -   [Python](python/index.md)
 -   [Praat](praat/index.md)
 -   [Tools](tools/index.md)
