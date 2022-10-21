@@ -9,33 +9,35 @@ project:
 website:
   title: "LingMethodsHub"
   site-url: "https://lingmethodshub.github.io"
+  image: "assets/logo.png"
   navbar:
     background: primary
     left:
-      - href: index.qmd
-        text: Home
-      - href: content/index.qmd
+      - href: "index.qmd"
+        text: "Home"
+      - href: "content/index.qmd"
         text: "Tutorials"
-      - about.qmd
-      - href: content/contributing/index.md
-        text: Contributing
-      - href: people/index.qmd
-        text: People
+      - href: "about.qmd"
+        text: "About"
+      - href: "content/contributing/index.md"
+        text: "Contributing"
+      - href: "people/index.qmd"
+        text: "People"
     right:
-      - href: https://github.com/LingMethodsHub/LingMethodsHub.github.io
+      - href: "https://github.com/LingMethodsHub/LingMethodsHub.github.io"
         icon: "github"
     search: true        
   sidebar:
     - title: "Home"
       logo: assets/logo.svg
       contents:
-        - index.qmd
+        - "index.qmd"
     - title: "Tutorials"
       collapse-level: 2
       logo: assets/logo.svg
-      href: content/index.qmd
+      href: "content/index.qmd"
       contents:
-        - content/index.qmd
+        - href: "content/index.qmd"
         - section: "R"
           href: "content/R/index.qmd"
           contents:
@@ -54,72 +56,72 @@ website:
             - href: "content/R/tidy-norm/index.qmd"
             - text: "---"
         - text: "---"
-        - section: Python
+        - section: "Python"
           href: "content/python/index.md"
           contents: 
-            - "content/python/vowel-plotting-py/index.ipynb"
+            - href: "content/python/vowel-plotting-py/index.ipynb"
         - text: "---"
-        - section: Praat
+        - section: "Praat"
           href: "content/praat/index.md"        
         - text: "---"
-        - section: Tools
+        - section: "Tools"
           href: "content/tools/index.md"
           contents:
-            - href: content/tools/mfa/mfa-tutorial/index.Rmd
-            - href: content/tools/autovot/autovot-tutorial/index.Rmd
+            - href: "content/tools/mfa/mfa-tutorial/index.Rmd"
+            - href: "content/tools/autovot/autovot-tutorial/index.Rmd"
         - text: "---"
-        - section: Command Line Interfaces
-          href: content/cli/index.md
+        - section: "Command Line Interfaces"
+          href: "content/cli/index.md"
           contents:
-            - href: content/cli/bash-shell-basics/index.Rmd
-            - href: content/cli/keyboarding/index.qmd
-              text: Keyboarding
+            - href: "content/cli/bash-shell-basics/index.Rmd"
+            - href: "content/cli/keyboarding/index.qmd"
+              text: "Keyboarding"
         - text: "---"
-        - section: Windows
-          href: content/windows/index.md
+        - section: "Windows"
+          href: "content/windows/index.md"
           contents:
-            - section: Windows Subsystem for Linux
-              href: content/windows/wsl/index.md
+            - section: "Windows Subsystem for Linux"
+              href: "content/windows/wsl/index.md"
               contents: 
-                - href: content/windows/wsl/00_installing_wsl.md
-                  text: Installation
+                - href: "content/windows/wsl/00_installing_wsl.md"
+                  text: "Installation"
             - text: "---"
         - text: "---"
     - title: "Contributing" 
-      href: content/contributing/index.md
+      href: "content/contributing/index.md"
       logo: assets/logo.svg
       style: "floating"
       contents: 
-        - content/contributing/index.md
-        - href: content/contributing/00_requirements.qmd
+        - href: "content/contributing/index.md"
+        - href: "content/contributing/00_requirements.qmd"
           text: "Requirements"
-        - href: content/contributing/01_recommendations.qmd
+        - href: "content/contributing/01_recommendations.qmd"
           text: "Recommendations"
-        - href: content/contributing/02_process.qmd
+        - href: "content/contributing/02_process.qmd"
           text: "Process"
-        - href: content/contributing/03_workflow.qmd
+        - href: "content/contributing/03_workflow.qmd"
           text: "Workflow"
         - text: "---"          
-        - section: Template
+        - section: "Template"
           contents:
-            - href: content/contributing/template/index.qmd
+            - href: "content/contributing/template/index.qmd"
               text: "template index"
-            - href: content/contributing/template/00_rmarkdown_template.Rmd
+            - href: "content/contributing/template/00_rmarkdown_template.Rmd"
               text: "template rmarkdown"
-            - href: content/contributing/template/01_qmd_template.qmd
+            - href: "content/contributing/template/01_qmd_template.qmd"
               text: "template qmd"
-            - href: content/contributing/template/02_jupyter.ipynb 
+            - href: "content/contributing/template/02_jupyter.ipynb"
               text: "template jupyter"
     - text: "---"              
     - title: "About" 
-      href: about.qmd
+      href: "about.qmd"
       style: "floating"
     - title: "People"
-      href: people/index.qmd
-      logo: assets/logo.svg
+      href: "people/index.qmd"
+      logo: "assets/logo.svg"
       style: "floating"
       contents: 
-        - people/index.qmd   
+        - href: "people/index.qmd"
   page-navigation: true
   reader-mode: true      
   cookie-consent:
@@ -134,7 +136,7 @@ website:
   twitter-card: 
     image: "assets/logo.png"
 
-format:
+format: 
   html:
     theme: minty
     include-in-header: google_font.html
