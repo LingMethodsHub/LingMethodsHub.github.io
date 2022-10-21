@@ -4,12 +4,22 @@
 - [ ] `_quarto.yml` file has been added.
 - [ ] `_metadata.yml` has been added.
   - [ ] author metadata included
-  - [ ] volume netadata included
+  - [ ] volume metadata included
 
 ```
 citation:
   collection-title: "Linguistics Methods Hub"
   container-title: "Linguistics Methods Hub"
+```
+
+- [ ] images added where appropriate
+
+```
+image: 
+twitter-card:
+  image:
+open-graph:
+  image:
 ```
 
 - [ ] `renv` when appropriate
@@ -25,7 +35,7 @@ citation:
   - [ ] execution options moved to `#|` 
 - [ ] Citation format is correct.
 - [ ] Spellcheck
-- [ ] Assets (images etc) link ccorrectly
+- [ ] Assets (images etc) link correctly
 
 ## Main Site Update
 - [ ] Nav bar in `_quarto.yml` links to new material
