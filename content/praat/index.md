@@ -3,7 +3,8 @@ title: "Praat tutorials"
 listing:
     contents:
         - "*/!(index)*qmd"
-    sort: "modified"
+    fields: [date, author, title, description, image, reading-time]
+    sort: "modified desc"
 citation: false    
 ---
 

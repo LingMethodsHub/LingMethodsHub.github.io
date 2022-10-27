@@ -5,7 +5,8 @@ listing:
       - "**/*[qR]md"
       - "!**/renv/"
     type: default
+    fields: [date, author, title, description, image, reading-time]
     sort: 
-      - "date desc"
+      - "modified desc"
 citation: false    
 ---
