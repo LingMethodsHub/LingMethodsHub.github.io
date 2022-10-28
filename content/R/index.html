@@ -137,7 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-author','listing-title','listing-description','listing-image','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
     };
@@ -355,6 +355,11 @@ cookieconsent.run({
   <a href="../../content/R/tidy-norm/index.html" class="sidebar-item-text sidebar-link">How to normalize your vowels using the tidyverse</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/R/animated_vowel_plots_tutorial/index.html" class="sidebar-item-text sidebar-link">Visualising Vowel Space Change with GAMMs</a>
+  </div>
+</li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
   </li>
@@ -483,63 +488,38 @@ cookieconsent.run({
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="vowels,normalization,R" data-listing-date-sort="1666238400000" data-listing-file-modified-sort="1666306270537" data-listing-reading-time-sort="18.94">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1666929600000" data-listing-file-modified-sort="1666976818234" data-listing-reading-time-sort="17.01">
 <div class="thumbnail">
-<p><a href="../../content/R/tidy-norm/index.html"> <img src="../../content/R/tidy-norm/index_files/figure-html/fig-unnorm1-1.png" class="thumnail-image"> </a></p>
+<p><a href="../../content/R/animated_vowel_plots_tutorial/index.html"> <img src="../../content/R/animated_vowel_plots_tutorial/index_files/figure-html/unnamed-chunk-19-1.gif" class="thumnail-image"> </a></p>
 </div>
 <div class="body">
-<a href="../../content/R/tidy-norm/index.html">
+<a href="../../content/R/animated_vowel_plots_tutorial/index.html">
 <h3 class="no-anchor listing-title">
-How to normalize your vowels using the tidyverse
+Visualising Vowel Space Change with GAMMs
 </h3>
 <div class="listing-subtitle">
 
 </div>
 <div class="listing-description">
-<p>A tutorial on how to normalize vowel formant measurments in R using the tidyverse</p>
+<!-- desc(5A0113B34292)[max=175]:content/R/animated_vowel_plots_tutorial/index.html -->
 </div>
 </a>
 </div>
 <div class="metadata">
-<a href="../../content/R/tidy-norm/index.html">
+<a href="../../content/R/animated_vowel_plots_tutorial/index.html">
 <div class="listing-date">
-Oct 20, 2022
+Oct 28, 2022
 </div>
 <div class="listing-author">
-Josef Fruehwald
+Joshua Wilson Black
+</div>
+<div class="listing-reading-time">
+17 min
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1666065600000" data-listing-file-modified-sort="1666377462844" data-listing-reading-time-sort="29.175">
-<div class="thumbnail">
-<p><a href="../../content/R/vowel-plots-tutorial/index.html"> <img src="../../content/R/vowel-plots-tutorial/index_files/figure-html/unnamed-chunk-31-1.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="../../content/R/vowel-plots-tutorial/index.html">
-<h3 class="no-anchor listing-title">
-Vowel Plots with <code>ggplot2</code>
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-This is a tutorial on how to make vowel plots in R using the ggplot2 package. Being able to make a vowel…<em></em>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../../content/R/vowel-plots-tutorial/index.html">
-<div class="listing-date">
-Oct 18, 2022
-</div>
-<div class="listing-author">
-Joseph A. Stanley
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666374936622" data-listing-reading-time-sort="8.235">
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666374936622" data-listing-reading-time-sort="8.235">
 <div class="thumbnail">
 <p><a href="../../content/R/lvc_r/010_lvcr.html"> <img src="../../content/R/lvc_r/images/tweet.png" class="thumnail-image"> </a></p>
 </div>
@@ -564,10 +544,13 @@ Sep 27, 2022
 <div class="listing-author">
 Matt Hunt Gardner
 </div>
+<div class="listing-reading-time">
+8 min
+</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042440" data-listing-reading-time-sort="3.475">
+<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042440" data-listing-reading-time-sort="3.475">
 <div class="thumbnail">
 <a href="../../content/R/lvc_r/020_lvcr.html">
 <div class="thumbnail-image">
@@ -596,10 +579,13 @@ Sep 27, 2022
 <div class="listing-author">
 Matt Hunt Gardner
 </div>
+<div class="listing-reading-time">
+3 min
+</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="15.01">
+<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="15.01">
 <div class="thumbnail">
 <a href="../../content/R/lvc_r/030_lvcr.html">
 <div class="thumbnail-image">
@@ -628,10 +614,13 @@ Sep 27, 2022
 <div class="listing-author">
 Matt Hunt Gardner
 </div>
+<div class="listing-reading-time">
+15 min
+</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="24.105">
+<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="24.105">
 <div class="thumbnail">
 <a href="../../content/R/lvc_r/040_lvcr.html">
 <div class="thumbnail-image">
@@ -660,10 +649,13 @@ Sep 27, 2022
 <div class="listing-author">
 Matt Hunt Gardner
 </div>
+<div class="listing-reading-time">
+24 min
+</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="9.745">
+<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="9.745">
 <div class="thumbnail">
 <a href="../../content/R/lvc_r/050_lvcr.html">
 <div class="thumbnail-image">
@@ -692,10 +684,13 @@ Sep 27, 2022
 <div class="listing-author">
 Matt Hunt Gardner
 </div>
+<div class="listing-reading-time">
+9 min
+</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042442" data-listing-reading-time-sort="26.455">
+<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042442" data-listing-reading-time-sort="26.455">
 <div class="thumbnail">
 <a href="../../content/R/lvc_r/060_lvcr.html">
 <div class="thumbnail-image">
@@ -724,10 +719,13 @@ Sep 27, 2022
 <div class="listing-author">
 Matt Hunt Gardner
 </div>
+<div class="listing-reading-time">
+26 min
+</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666375491390" data-listing-reading-time-sort="11.205">
+<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666375491390" data-listing-reading-time-sort="11.205">
 <div class="thumbnail">
 <p><a href="../../content/R/lvc_r/070_lvcr.html"> <img src="../../content/R/lvc_r/070_lvcr_files/figure-html/unnamed-chunk-8-1.png" class="thumnail-image"> </a></p>
 </div>
@@ -752,10 +750,13 @@ Sep 27, 2022
 <div class="listing-author">
 Matt Hunt Gardner
 </div>
+<div class="listing-reading-time">
+11 min
+</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666375491390" data-listing-reading-time-sort="6.55">
+<div class="quarto-post image-right" data-index="8" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666375491390" data-listing-reading-time-sort="6.55">
 <div class="thumbnail">
 <p><a href="../../content/R/lvc_r/080_lvcr.html"> <img src="../../content/R/lvc_r/080_lvcr_files/figure-html/unnamed-chunk-6-1.png" class="thumnail-image"> </a></p>
 </div>
@@ -780,10 +781,13 @@ Sep 27, 2022
 <div class="listing-author">
 Matt Hunt Gardner
 </div>
+<div class="listing-reading-time">
+6 min
+</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666371043193" data-listing-reading-time-sort="0.085">
+<div class="quarto-post image-right" data-index="9" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666371043193" data-listing-reading-time-sort="0.085">
 <div class="thumbnail">
 <a href="../../content/R/lvc_r/index.html">
 <div class="thumbnail-image">
@@ -800,7 +804,7 @@ Doing LVC with R
 
 </div>
 <div class="listing-description">
-This tutorial takes you step-by-step though a variationist analysis of a sociolinguisitic variable with discrete variants.
+<!-- desc(5A0113B34292)[max=175]:content/R/lvc_r/index.html -->
 </div>
 </a>
 </div>
@@ -811,6 +815,71 @@ Sep 27, 2022
 </div>
 <div class="listing-author">
 Matt Hunt Gardner
+</div>
+<div class="listing-reading-time">
+0 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="vowels,normalization,R" data-listing-date-sort="1666238400000" data-listing-file-modified-sort="1666306270537" data-listing-reading-time-sort="18.94">
+<div class="thumbnail">
+<p><a href="../../content/R/tidy-norm/index.html"> <img src="../../content/R/tidy-norm/index_files/figure-html/fig-unnorm1-1.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="../../content/R/tidy-norm/index.html">
+<h3 class="no-anchor listing-title">
+How to normalize your vowels using the tidyverse
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>A tutorial on how to normalize vowel formant measurments in R using the tidyverse</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../../content/R/tidy-norm/index.html">
+<div class="listing-date">
+Oct 20, 2022
+</div>
+<div class="listing-author">
+Josef Fruehwald
+</div>
+<div class="listing-reading-time">
+18 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="11" data-listing-date-sort="1666065600000" data-listing-file-modified-sort="1666377462844" data-listing-reading-time-sort="29.175">
+<div class="thumbnail">
+<p><a href="../../content/R/vowel-plots-tutorial/index.html"> <img src="../../content/R/vowel-plots-tutorial/index_files/figure-html/unnamed-chunk-31-1.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="../../content/R/vowel-plots-tutorial/index.html">
+<h3 class="no-anchor listing-title">
+Vowel Plots with <code>ggplot2</code>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<!-- desc(5A0113B34292)[max=175]:content/R/vowel-plots-tutorial/index.html -->
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../../content/R/vowel-plots-tutorial/index.html">
+<div class="listing-date">
+Oct 18, 2022
+</div>
+<div class="listing-author">
+Joseph A. Stanley
+</div>
+<div class="listing-reading-time">
+29 min
 </div>
 </a>
 </div>
@@ -1023,10 +1092,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">      - "**/*[qR]md"</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">      - "!**/renv/"</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    type: default</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    sort: </span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">      - "date desc"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="an">citation:</span><span class="co"> false    </span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    fields: [date, author, title, description, image, reading-time]</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    sort: </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">      - "modified desc"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="an">citation:</span><span class="co"> false    </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
