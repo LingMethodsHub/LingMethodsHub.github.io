@@ -54,6 +54,7 @@ website:
                 - href: "content/R/lvc_r/080_lvcr.qmd"
             - href: "content/R/vowel-plots-tutorial/index.Rmd"
             - href: "content/R/tidy-norm/index.qmd"
+            - href: "content/R/animated_vowel_plots_tutorial/index.Rmd"
             - text: "---"
         - text: "---"
         - section: "Python"
