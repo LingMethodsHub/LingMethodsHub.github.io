@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2023-01-13">
+<meta name="description" content="Doing a mixed-effects logistic regression analysis suitable for comparing to a Goldvarb analysis. Part 4: Treatment Contrast Coding">
+
+<title>LingMethodsHub - Mixed-Efects Logistic Regression Analysisː Part 4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../content/R/vowel-plots-tutorial/index.html" rel="next">
+<link href="../../../content/R/lvc_r/114_lvcr.html" rel="prev">
+<script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+<style>html{ scroll-behavior: smooth; }</style>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false,
+  "showHighlights": "never"
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="LingMethodsHub - Mixed-Efects Logistic Regression Analysisː Part 4">
+<meta property="og:description" content="Doing a mixed-effects logistic regression analysis suitable for comparing to a *Goldvarb* analysis. Part 4: Treatment Contrast Coding">
+<meta property="og:site-name" content="LingMethodsHub">
+<meta name="twitter:title" content="LingMethodsHub - Mixed-Efects Logistic Regression Analysisː Part 4">
+<meta name="twitter:description" content="Doing a mixed-effects logistic regression analysis suitable for comparing to a *Goldvarb* analysis. Part 4: Treatment Contrast Coding">
+<meta name="twitter:image" content="https://lingmethodshub.github.io/assets/logo.png">
+<meta name="twitter:image-height" content="424">
+<meta name="twitter:image-width" content="653">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Mixed-Efects Logistic Regression Analysisː Part 4">
+<meta name="citation_author" content="Matt Hunt Gardner">
+<meta name="citation_publication_date" content="2023-01-13">
+<meta name="citation_cover_date" content="2023-01-13">
+<meta name="citation_year" content="2023">
+<meta name="citation_online_date" content="2023-01-13">
+<meta name="citation_fulltext_html_url" content="https://lingmethodshub.github.io/116_lvcr.html">
+<meta name="citation_doi" content="10.5281/zenodo.7160718">
+<meta name="citation_volume" content="Doing LVC with R">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Linguistics Methods Hub">
+<meta name="citation_series_title" content="Linguistics Methods Hub">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">LingMethodsHub</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../index.html" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../content/index.html">
+ <span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../content/contributing/index.html">
+ <span class="menu-text">Contributing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../people/index.html">
+ <span class="menu-text">People</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Mixed-Efects Logistic Regression Analysisː Part 4</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/R/index.html" class="sidebar-item-text sidebar-link">R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">Doing LVC with R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">Getting Your Data Into <em>R</em></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">Getting to Know Your Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">Modifying Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">Doing it all again, but <code>tidy</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">Crosstabs: Counts, Proportions, and More</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">Proportions for <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/090_lvcr.html" class="sidebar-item-text sidebar-link">Random Forests: The Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/110_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/112_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/114_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/116_lvcr.html" class="sidebar-item-text sidebar-link active">Mixed-Efects Logistic Regression Analysisː Part 4</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">Vowel Plots with <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/tidy-norm/index.html" class="sidebar-item-text sidebar-link">How to normalize your vowels using the tidyverse</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/animated_vowel_plots_tutorial/index.html" class="sidebar-item-text sidebar-link">Visualising Vowel Space Change with GAMMs</a>
+  </div>
+</li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/python/index.html" class="sidebar-item-text sidebar-link">Python</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">Vowel plotting in Python</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Praat</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/tools/index.html" class="sidebar-item-text sidebar-link">Tools</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">Montreal Forced Aligner</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/tools/autovot/autovot-tutorial/index.html" class="sidebar-item-text sidebar-link">AutoVOT</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/cli/index.html" class="sidebar-item-text sidebar-link">Command Line Interfaces</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">Bash Shell Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/cli/keyboarding/index.html" class="sidebar-item-text sidebar-link">Keyboarding</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/windows/index.html" class="sidebar-item-text sidebar-link">Windows</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">Windows Subsystem for Linux</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">Installation</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#treatment-contrasts-vs.-reference-value" id="toc-treatment-contrasts-vs.-reference-value" class="nav-link active" data-scroll-target="#treatment-contrasts-vs.-reference-value">Treatment Contrasts (vs.&nbsp;reference value)</a>
+  <ul class="collapse">
+  <li><a href="#visualizing-the-fixed-effects" id="toc-visualizing-the-fixed-effects" class="nav-link" data-scroll-target="#visualizing-the-fixed-effects">Visualizing the fixed effects</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Mixed-Efects Logistic Regression Analysisː Part 4</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+<div>
+  <div class="description">
+    Doing a mixed-effects logistic regression analysis suitable for comparing to a <em>Goldvarb</em> analysis. Part 4: Treatment Contrast Coding
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Matt Hunt Gardner <a href="https://orcid.org/0000-0002-1878-4232" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Oxford
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 13, 2023</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+
+</header>
+
+<p>Before you proceed with this section, please make sure that you have your data loaded and modified based on the code <a href="../../../content/R/lvc_r/050_lvcr.html">here</a> and that <code>Dep.Var</code> is <a href="../../../content/R/lvc_r/110_lvcr.html">re-coded such that <code>Deletion</code> is the second factor</a>. Next, you <a href="../../../content/R/lvc_r/112_lvcr.html">set the global <em>R</em> options to employ sum contrast coding</a>.</p>
+<section id="treatment-contrasts-vs.-reference-value" class="level1">
+<h1>Treatment Contrasts (vs.&nbsp;reference value)</h1>
+<p>Rather than compare levels of each parameter to the <a href="../../../content/R/lvc_r/112_lvcr.html">mean of that parameter</a>, you can instead specify one level as the reference level and then compare every other level to it (see <a href="../../../content/R/lvc_r/110_lvcr.html">Part 1</a>). To do this you need to set the global contrasts to <code>contr.treatment</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Treatment Contrasts (vs. reference)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts =</span> <span class="fu">c</span>(<span class="st">"contr.treatment"</span>, <span class="st">"contr.poly"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is actually the more common way to perform a mixed-effects logistic regression outside of sociolinguistics. With the contrasts now set to treatment contrasts you can re-run your most-parsimonious model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Most Parsimonious Model: Generalized linear mixed effects model with the</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fixed main effects of Before, After.New, Morph.Type, Stress, Phoneme, and the</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># random effect of Speaker</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>td.glmer.parsimonious <span class="ot">&lt;-</span> <span class="fu">glmer</span>(Dep.Var <span class="sc">~</span> After.New <span class="sc">+</span> Morph.Type <span class="sc">+</span> Before <span class="sc">+</span> Stress <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    Phoneme <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Speaker), <span class="at">data =</span> td, <span class="at">family =</span> <span class="st">"binomial"</span>, <span class="at">control =</span> <span class="fu">glmerControl</span>(<span class="at">optCtrl =</span> <span class="fu">list</span>(<span class="at">maxfun =</span> <span class="dv">20000</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">optimizer =</span> <span class="st">"bobyqa"</span>))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(td.glmer.parsimonious)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Generalized linear mixed model fit by maximum likelihood (Laplace
+  Approximation) [glmerMod]
+ Family: binomial  ( logit )
+Formula: Dep.Var ~ After.New + Morph.Type + Before + Stress + Phoneme +  
+    (1 | Speaker)
+   Data: td
+Control: glmerControl(optCtrl = list(maxfun = 20000), optimizer = "bobyqa")
+
+     AIC      BIC   logLik deviance df.resid 
+    1114     1175     -545     1090     1177 
+
+Scaled residuals: 
+   Min     1Q Median     3Q    Max 
+-5.223 -0.488 -0.259  0.495 14.033 
+
+Random effects:
+ Groups  Name        Variance Std.Dev.
+ Speaker (Intercept) 0.796    0.892   
+Number of obs: 1189, groups:  Speaker, 66
+
+Fixed effects:
+                      Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)              0.902      0.265    3.40  0.00067 ***
+After.NewPause          -3.015      0.255  -11.82  &lt; 2e-16 ***
+After.NewVowel          -2.506      0.284   -8.82  &lt; 2e-16 ***
+Morph.TypePast          -2.319      0.296   -7.84  4.7e-15 ***
+Morph.TypeSemi-Weak      1.039      0.281    3.70  0.00022 ***
+BeforeNasal              1.100      0.276    3.99  6.6e-05 ***
+BeforeOther Fricative    0.692      0.407    1.70  0.08907 .  
+BeforeS                  1.306      0.317    4.11  3.9e-05 ***
+BeforeStop              -0.224      0.299   -0.75  0.45349    
+StressUnstressed         1.598      0.275    5.81  6.2e-09 ***
+Phonemet                -0.573      0.255   -2.25  0.02462 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) Aft.NP Aft.NV Mrp.TP M.TS-W BfrNsl BfrOtF BeforS BfrStp
+After.NewPs -0.464                                                        
+After.NwVwl -0.294  0.529                                                 
+Mrph.TypPst -0.232  0.260  0.190                                          
+Mrph.TypS-W -0.217  0.009  0.050  0.058                                   
+BeforeNasal -0.221 -0.343 -0.187 -0.047  0.222                            
+BfrOthrFrct -0.098 -0.181 -0.041 -0.498  0.238  0.337                     
+BeforeS     -0.056 -0.451 -0.132 -0.102  0.337  0.553  0.480              
+BeforeStop  -0.259  0.016  0.039 -0.132  0.389  0.443  0.472  0.557       
+StrssUnstrs  0.059 -0.230 -0.511 -0.046  0.123 -0.047  0.092  0.185 -0.089
+Phonemet    -0.386  0.265  0.009  0.126 -0.337 -0.214 -0.372 -0.608 -0.488
+            StrssU
+After.NewPs       
+After.NwVwl       
+Mrph.TypPst       
+Mrph.TypS-W       
+BeforeNasal       
+BfrOthrFrct       
+BeforeS           
+BeforeStop        
+StrssUnstrs       
+Phonemet    -0.107</code></pre>
+</div>
+</div>
+<p>The treatment contrast output looks very much like the model you constructed using sum contrasts (you’ll notice that the measures of model fit and the description of the random effects are identical), but there are a few key differences. Firstly, the listed levels of each parameter are now written-out rather than just being numbers. This makes treatment contrast results somewhat easier to interpret. The levels that are listed are all the levels other than the first in that level’s factor order. The default order of factors is alphabetic, though you can change this (as you did <a href="../../../content/R/lvc_r/112_lvcr.html">previously</a> for <code>Dep.Var</code> and <code>Age.Group</code>). The first level in each parameter is set as the <strong>reference level</strong>. The reference level for <code>Before</code> is <code>Liquid</code>, the reference level for <code>After.New</code> is <code>Consonant</code>, the reference level for <code>Morph.Type</code> is <code>Mono</code>, the reference level for <code>Stress</code> is <code>Stressed</code>, and the reference level for <code>Phoneme</code> is <code>d</code>.</p>
+<p>The <code>(Intercept)</code> value is the likelihood of a given token being the application value if that token is coded with all the reference levels. In other words, <code>0.902</code> is the likelihood, in log odds, of a token being <code>Deletion</code> if that token has a preceding liquid, a following consonant, is mono-morphemic, is stressed, and is an underlying /d/. The estimate for each level is the change in likelihood if that parameter changes to the given level. The difference in likelihood resulting from a token being unstressed, instead of stressed, but with all other parameter settings the same, is <code>1.598</code> In other words, a token with a preceding liquid, following consonant, that is mono-morphemic, that is an underlying /d/, and is unstressed is <span class="math inline">\(2.500\)</span> log odds (<span class="math inline">\(0.902+1.598\)</span>) or <span class="math inline">\(92\%\)</span> probability.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plogis</span>(<span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.92</code></pre>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>With treatment contrasts you <strong>must</strong> <a href="../../../content/R/lvc_r/040_lvcr.html">center your continuous variables</a>.</p>
+</div>
+</div>
+<p>With sum contrasts the reference “level” is the mean for each parameter not a particular level of the parameter; this includes continuous factors. For this reason, whether or not you center continuous factors with sum contrast coding doesn’t really matter. The reference level for treatment contrast coding is the first level of the parameter. For continuous variables this means the reference level is <span class="math inline">\(0\)</span>. For some applications this might be okay — for example, if your continuous variable is voice onset time. For most of your applications, though, where continuous factors represent age, this is not desirable. Zero is not a meaningful year of birth or a meaningful age. For this reason we center these factors, thereby changing the mean or average age to zero (so that <span class="math inline">\(0\)</span> equals something meaningful), and all other ages as differences from that mean. This results in the intercept of a treatment contrast model being the overall likelihood when all the discrete parameters are set to their first value and the continuous parameters set to their mean value.</p>
+<p>The <em>p</em>-value for each level represents whether or not the resultant difference (e.g., estimate) is significantly different from zero. The <em>p</em>-value for <code>BeforeStop</code> is <span class="math inline">\(0.45350\)</span>. This is greater than <span class="math inline">\(0.05\)</span>, and therefore you say there is not a significant difference in likelihood between tokens with a preceding liquid and tokens with a preceding stop. This changes the constraint hierarchy for this factor group to <code>S</code> &gt; <code>Nasal</code> &gt; <code>Other Fricative</code> &gt; <code>Liquid/Stop</code>. It also justifies re-coding these two factors into a single parameter level.</p>
+<div id="fig-contrasts" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/comparingcontrasts.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Table&nbsp;1: Treatment contrasts vs.&nbsp;sum contrasts</figcaption><p></p>
+</figure>
+</div>
+<p>As before, the correlation of fixed effects suggests where there might be non-orthogonality. Values over <span class="math inline">\(|0.3|\)</span> should be investigated, those above <span class="math inline">\(|0.7|\)</span> should be seriously investigated. Calculating the Variable Inflation Factor (VIF) and Condition Number (<span class="math inline">\(\kappa\)</span>) is, as always, useful in determining if these correlations are within acceptable limits of collinearity (as discussed in <a href="../../../content/R/lvc_r/114_lvcr.html">Part 3</a>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the Variable Inflation Factor</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">check_collinearity</span>(td.glmer.parsimonious)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Check for Multicollinearity
+
+Low Correlation
+
+       Term  VIF   VIF 95% CI Increased SE Tolerance Tolerance 95% CI
+  After.New 2.68 [2.45, 2.94]         1.64      0.37     [0.34, 0.41]
+ Morph.Type 2.06 [1.90, 2.25]         1.44      0.49     [0.44, 0.53]
+     Before 4.93 [4.46, 5.46]         2.22      0.20     [0.18, 0.22]
+     Stress 1.68 [1.56, 1.83]         1.30      0.59     [0.55, 0.64]
+    Phoneme 1.87 [1.73, 2.04]         1.37      0.53     [0.49, 0.58]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Condition Number</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JGmermod)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">collin.fnc.mer</span>(td.glmer.parsimonious)<span class="sc">$</span>cnumber</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.6</code></pre>
+</div>
+</div>
+<p>The highest VIF is (still) lower than <span class="math inline">\(5\)</span>, indicating low collinearity but <span class="math inline">\(\kappa = 7.6\)</span>, which is slightly above the threshold of <span class="math inline">\(6\)</span> indicating low-to-moderate collinearity. This latter value further suggests investigating the across-parameter correlations (see <a href="../../../content/R/lvc_r/114_lvcr.html">Part 3</a>). For the moment, however, you will keep using the <code>td.glmer.parsimonious</code> model.</p>
+<p>You could choose to report the results of this treatment contrast analysis in your manuscript. If you do, a <em>Goldvarb</em>-style table wouldn’t be appropriate. Instead a <code>lme4</code>-style table is needed.</p>
+<div id="fig-lme4table3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/lme4table3.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Table&nbsp;2: Mixed-effects logistic regression testing the fixed effect of Following Context, Morpheme Type, Preceding Context, Stress, and Phoneme and a random intercept of Speaker on the deletion of word-final (t, d) in Cape Breton English</figcaption><p></p>
+</figure>
+</div>
+<p>The order of parameters in <a href="#fig-lme4table3">Table&nbsp;2</a> is based on the the relative ordering presented in Table <span class="math inline">\(\ref{tab:wald1}\)</span>. The parameter levels are also ordered by their estimates. You’ll notice that all the estimates are negative and they don’t match up to the results reported above. This is because, before creating this table, each factor was reordered based on level estimates so that the reference level, i.e., first level, was also the level that most favoured the application value. I find this makes understanding the constraint hierarchy easier. It also means that the intercept represents the likelihood of the the application value when it is most likely. Alternatively, you could re-arrange the factor levels so that the least likely levels were the reference levels. This would result in estimates that were all positive and showed how much switching levels improved the likelihood. What you choose to do is entirely up to you and the story you want to tell with your analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder levels of Before from most favouring to least favouring</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Before <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Before, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"Nasal"</span>, <span class="st">"Other Fricative"</span>, <span class="st">"Liquid"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Stop"</span>))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder levels of After.New from most favouring to least favouring</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>After.New <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>After.New, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Consonant"</span>, <span class="st">"Vowel"</span>, <span class="st">"Pause"</span>))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder levels of Morph.Type from most favouring to least favouring</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Morph.Type <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Morph.Type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Semi-Weak"</span>, <span class="st">"Mono"</span>, <span class="st">"Past"</span>))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder levels of Stress from most favouring to least favouring</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Stress <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Stress, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Unstressed"</span>, <span class="st">"Stressed"</span>))</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Most Parsimonious Model: Generalized linear mixed effects model with the</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># fixed main effects of Before, After.New, Morph.Type, Stress, Phoneme, , and</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># the random effect of Speaker</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>td.glmer <span class="ot">&lt;-</span> <span class="fu">glmer</span>(Dep.Var <span class="sc">~</span> Before <span class="sc">+</span> After.New <span class="sc">+</span> Morph.Type <span class="sc">+</span> Stress <span class="sc">+</span> Phoneme <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span> <span class="sc">|</span> Speaker), <span class="at">data =</span> td, <span class="at">family =</span> <span class="st">"binomial"</span>, <span class="at">control =</span> <span class="fu">glmerControl</span>(<span class="at">optCtrl =</span> <span class="fu">list</span>(<span class="at">maxfun =</span> <span class="dv">20000</span>),</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">optimizer =</span> <span class="st">"bobyqa"</span>))</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(td.glmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Generalized linear mixed model fit by maximum likelihood (Laplace
+  Approximation) [glmerMod]
+ Family: binomial  ( logit )
+Formula: Dep.Var ~ Before + After.New + Morph.Type + Stress + Phoneme +  
+    (1 | Speaker)
+   Data: td
+Control: glmerControl(optCtrl = list(maxfun = 20000), optimizer = "bobyqa")
+
+     AIC      BIC   logLik deviance df.resid 
+    1114     1175     -545     1090     1177 
+
+Scaled residuals: 
+   Min     1Q Median     3Q    Max 
+-5.223 -0.488 -0.259  0.495 14.033 
+
+Random effects:
+ Groups  Name        Variance Std.Dev.
+ Speaker (Intercept) 0.796    0.892   
+Number of obs: 1189, groups:  Speaker, 66
+
+Fixed effects:
+                      Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)              4.846      0.635    7.63  2.4e-14 ***
+BeforeNasal             -0.206      0.283   -0.73  0.46716    
+BeforeOther Fricative   -0.614      0.377   -1.63  0.10350    
+BeforeLiquid            -1.306      0.317   -4.11  3.9e-05 ***
+BeforeStop              -1.530      0.290   -5.27  1.4e-07 ***
+After.NewVowel          -2.506      0.284   -8.82  &lt; 2e-16 ***
+After.NewPause          -3.015      0.255  -11.82  &lt; 2e-16 ***
+Morph.TypeMono          -1.039      0.281   -3.70  0.00022 ***
+Morph.TypePast          -3.358      0.396   -8.48  &lt; 2e-16 ***
+StressStressed          -1.598      0.275   -5.81  6.2e-09 ***
+Phonemet                -0.573      0.255   -2.25  0.02461 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) BfrNsl BfrOtF BfrLqd BfrStp Aft.NV Aft.NP Mrp.TM Mrp.TP
+BeforeNasal -0.536                                                        
+BfrOthrFrct -0.222  0.264                                                 
+BeforeLiqud -0.705  0.583  0.323                                          
+BeforeStop  -0.458  0.439  0.395  0.519                                   
+After.NwVwl -0.388 -0.033  0.067  0.132  0.184                            
+After.NewPs -0.514  0.172  0.184  0.451  0.510  0.529                     
+Morph.TypMn -0.573  0.162  0.027  0.337 -0.032 -0.050 -0.009              
+Mrph.TypPst -0.513  0.166 -0.318  0.315 -0.041  0.106  0.188  0.666       
+StrssStrssd -0.604  0.253  0.056  0.185  0.294  0.511  0.230  0.123  0.122
+Phonemet    -0.660  0.473  0.111  0.608  0.162  0.009  0.265  0.337  0.333
+            StrssS
+BeforeNasal       
+BfrOthrFrct       
+BeforeLiqud       
+BeforeStop        
+After.NwVwl       
+After.NewPs       
+Morph.TypMn       
+Mrph.TypPst       
+StrssStrssd       
+Phonemet     0.106</code></pre>
+</div>
+</div>
+<p>By reordering the levels of you verify some intuitions generated by <a href="../../../content/R/lvc_r/114_lvcr.html">previous analyses</a> about the constraint hierarchy for <code>Before</code>. There is not a significant difference between the reference level (<code>S</code>) and <code>Nasal</code> or between the reference level (<code>S</code>) and <code>Other Fricatives</code>. This suggests that your constraint hierarchy is actually <code>All Fricatives/Nasals</code> &gt; <code>Liquids/Stops</code> (remember in the non-reordered <code>summary(td.glmer)</code> <code>Liquids</code> and <code>Stops</code> were not significantly different). This is an insight into the data that the <code>glmer()</code> model with sum contrasts couldn’t have provided.</p>
+<p>But what about the other parameter levels? For example, there is a significant difference between following consonant and following vowel. There is also a significant difference between following consonant and following pause. But is there a significant difference between following vowel and following pause? You could run a series of <code>glmer()</code> models in which you keep reordering the parameter levels to find out where the significant differences are. However, the <code>glmer()</code> model you’ve just constructed contains this information, you just need to know how to ask for it.</p>
+<p>The first task is to create a contrast matrix of all the comparisons you want to make. You use <code>rbind()</code> to create two rows (which you call <code>"After.NewVowel vs. After.NewPause"</code> and <code>"Morph.TypeMono vs. Morph.TypePast"</code>). Each row has 11 cells. These 11 cells correspond to the 11 rows in the <code>glmer()</code> fixed effects results: the first cell corresponds to the <code>(Intercept)</code>, the second cell corresponds to <code>BeforeNasal</code>, etc. To compare two estimates place a <code>1</code> and <code>-1</code> in the corresponding cells and a <code>0</code> in all remaining cells. In the code below there is a <code>1</code> in the sixth and a <code>-1</code> in the seventh cells because <code>After.NewVowel</code> and <code>After.NewPause</code> are the sixth and seventh rows in the fixed effects results. You use the <code>glht()</code> function (a simultaneous test of the General Linear Hypotheses) in the <code>multcomp</code> package to calculate the comparisons. A <code>summary()</code> for that function displays the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create contrast matrix</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="st">`</span><span class="at">After.NewVowel vs. After.NewPause</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>), <span class="st">`</span><span class="at">Morph.TypeMono vs. Morph.TypePast</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Test pairwise comparisons</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">glht</span>(td.glmer, d))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Simultaneous Tests for General Linear Hypotheses
+
+Fit: glmer(formula = Dep.Var ~ Before + After.New + Morph.Type + Stress + 
+    Phoneme + (1 | Speaker), data = td, family = "binomial", 
+    control = glmerControl(optCtrl = list(maxfun = 20000), optimizer = "bobyqa"))
+
+Linear Hypotheses:
+                                       Estimate Std. Error z value Pr(&gt;|z|)    
+After.NewVowel vs. After.NewPause == 0    0.509      0.263    1.94      0.1    
+Morph.TypeMono vs. Morph.TypePast == 0    2.319      0.296    7.84   &lt;1e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+(Adjusted p values reported -- single-step method)</code></pre>
+</div>
+</div>
+<p>The results indicate that the difference in likelihood of <code>After.NewVowel</code> and <code>After.NewPause</code> on the <code>Intercept</code> are not significantly different from zero (<span class="math inline">\(p&gt;0.05\)</span>). This means that the real contrast for this factor group is consonant versus not-consonant. On the other hand, there is a significant difference between <code>Morph.TypeMono</code> and <code>Morph.TypePast</code> indicating that this factor group has a real three-way contrast between semi-weak simple past, mono-morphemes and weak simple past. Again, by performing a detailed analysis of the contrasts between factors <strong>in addition to</strong> an analysis of the contrasts between factors and their mean, you achieve a much more nuanced (and I argue superior) understanding of the three lines of evidence because you can pinpoint exactly where significant contrasts exist.</p>
+<p>An easier method for generating the contrast matrix is provided below. For a different analysis replace <code>td.glmer.parsimonious</code> with your model name, and replace <code>Before</code>, <code>After.New</code>, etc. with your own predictors. You don’t need to include all predictors. You could also include more. Just adjust the number of <code>k1</code>, <code>k2</code>, etc. objects you create. This method provides all the contrasts for a single predictor variable, unlike the method above, in which you specify the specific contrasts you are interested in. I have not included <code>Phoneme</code> or <code>Stress</code> here as they are binary, so the contrast between the two levels is represented in the <code>summary(td.glmer.parsimonious)</code> output already.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>k1 <span class="ot">&lt;-</span> <span class="fu">glht</span>(td.glmer.parsimonious, <span class="fu">mcp</span>(<span class="at">Before =</span> <span class="st">"Tukey"</span>))<span class="sc">$</span>linfct</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>k2 <span class="ot">&lt;-</span> <span class="fu">glht</span>(td.glmer.parsimonious, <span class="fu">mcp</span>(<span class="at">After.New =</span> <span class="st">"Tukey"</span>))<span class="sc">$</span>linfct</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>k3 <span class="ot">&lt;-</span> <span class="fu">glht</span>(td.glmer.parsimonious, <span class="fu">mcp</span>(<span class="at">Morph.Type =</span> <span class="st">"Tukey"</span>))<span class="sc">$</span>linfct</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">glht</span>(td.glmer.parsimonious, <span class="at">linfct =</span> <span class="fu">rbind</span>(k1, k2, k3)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Simultaneous Tests for General Linear Hypotheses
+
+Fit: glmer(formula = Dep.Var ~ After.New + Morph.Type + Before + Stress + 
+    Phoneme + (1 | Speaker), data = td, family = "binomial", 
+    control = glmerControl(optCtrl = list(maxfun = 20000), optimizer = "bobyqa"))
+
+Linear Hypotheses:
+                              Estimate Std. Error z value Pr(&gt;|z|)    
+Nasal - Liquid == 0              1.100      0.276    3.99   &lt;0.001 ***
+Other Fricative - Liquid == 0    0.692      0.407    1.70   0.6009    
+S - Liquid == 0                  1.306      0.317    4.11   &lt;0.001 ***
+Stop - Liquid == 0              -0.224      0.299   -0.75   0.9938    
+Other Fricative - Nasal == 0    -0.408      0.408   -1.00   0.9630    
+S - Nasal == 0                   0.206      0.283    0.73   0.9950    
+Stop - Nasal == 0               -1.325      0.304   -4.36   &lt;0.001 ***
+S - Other Fricative == 0         0.614      0.377    1.63   0.6532    
+Stop - Other Fricative == 0     -0.916      0.374   -2.45   0.1572    
+Stop - S == 0                   -1.530      0.290   -5.27   &lt;0.001 ***
+Pause - Consonant == 0          -3.015      0.255  -11.82   &lt;0.001 ***
+Vowel - Consonant == 0          -2.506      0.284   -8.82   &lt;0.001 ***
+Vowel - Pause == 0               0.509      0.263    1.94   0.4303    
+Past - Mono == 0                -2.319      0.296   -7.84   &lt;0.001 ***
+Semi-Weak - Mono == 0            1.039      0.281    3.70   0.0031 ** 
+Semi-Weak - Past == 0            3.358      0.396    8.48   &lt;0.001 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+(Adjusted p values reported -- single-step method)</code></pre>
+</div>
+</div>
+<p>You can add the results from this <code>glht()</code> test to your manuscript table, as in <a href="#fig-lme4table3">Table&nbsp;2</a>.</p>
+<section id="visualizing-the-fixed-effects" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-fixed-effects">Visualizing the fixed effects</h2>
+<p>As in <a href="../../../content/R/lvc_r/112_lvcr.html">Part 2</a>, you can use the <code>plot_model()</code> function to examine the fixed effects.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required packages</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjlabelled)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot fixed effects</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(td.glmer, <span class="at">transform =</span> <span class="cn">NULL</span>, <span class="at">show.values =</span> <span class="cn">TRUE</span>, <span class="at">value.offset =</span> <span class="fl">0.3</span>, <span class="at">vline.color =</span> <span class="st">"black"</span>,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Likelihood of (t,d) deletion"</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="116_lvcr_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Unlike the fixed effects plot for the sum contrast coding model, in which zero on the <em>x</em>-axis represented the grand mean, or overall baseline likelihood, zero on the <em>x</em>-axis here represents the likelihood when all predictors are set to their reference values. You have arbitrarily set all the reference values to the most favouring values, so all the values represented in the plot are below zero, as they have negative estimates (they all disfavour <code>Deletion</code> relative to the reference values).</p>
+<p>Any predictor level whose error bars overlap the zero line are not significantly different from the reference level of that predictor. As is shown in the <code>glmer()</code> output, for preceding context, <code>Nasal</code> and <code>Other Fricative</code> are not significantly different from the reference value <code>S</code>. The error bars can also tell you how the non-reference values relate to each other, as with the <code>glht()</code> test. Any error bars for levels of the same predictor that overlap indicate those levesl are not significantly different from each other. By looking at the plot you can see that for preceding context <code>Nasal</code> and <code>Stop</code> and <code>Nasal</code> and <code>Liquid</code> do not overlap (though the space between <code>Nasal</code> and <code>Liquid</code> is quite hard to see), but all other non-reference values do. Likewise, for following context <code>Vowel</code> and <code>Pause</code> overlap, indicating that they are not significantly differnet from each other, despite both being significantly different from the reference level <code>Consonant</code>. For morpheme type, however, both <code>Mono</code> and <code>Past</code> are significantly different from the reference value <code>Semi-Weak</code> as their error bars do not cross the zero line, and also significantly different from each other, as their error bars do not overlap.</p>
+<p>Instead of colouring all the predictor levels similarly (as they are all below zero), you can instead colour them by predictor type using the <code>group.terms=</code> option, and then specifying which group each term belongs to, as in the example below. The first four terms (the four <code>Before</code> levels) are all <code>1</code>, the next two (the two <code>After.New</code> levels) are <code>2</code>, etc. This might make presenting a plot like this easier to read, especially as part of a slide presentation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot fixed effects</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(td.glmer, <span class="at">transform =</span> <span class="cn">NULL</span>, <span class="at">show.values =</span> <span class="cn">TRUE</span>, <span class="at">value.offset =</span> <span class="fl">0.3</span>, <span class="at">vline.color =</span> <span class="st">"black"</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Likelihood of (t,d) deletion"</span>, <span class="at">group.terms =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="116_lvcr_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{huntgardner,
+  author = {Matt Hunt Gardner},
+  title = {Mixed-Efects {Logistic} {Regression} {Analysisː} {Part} 4},
+  series = {Linguistics Methods Hub},
+  volume = {Doing LVC with R},
+  date = {},
+  url = {https://lingmethodshub.github.io/116_lvcr.html},
+  doi = {10.5281/zenodo.7160718},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-huntgardner" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Matt Hunt Gardner. n.d. Mixed-Efects Logistic Regression Analysisː Part
+4. <em>Linguistics Methods Hub</em>: <em>Doing LVC with R</em>. (<a href="https://lingmethodshub.github.io/116_lvcr.html">https://lingmethodshub.github.io/116_lvcr.html</a>).
+doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../content/R/lvc_r/114_lvcr.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Mixed-Efects Logistic Regression Analysis: Part 3</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../content/R/vowel-plots-tutorial/index.html" class="pagination-link">
+        <span class="nav-page-text">Vowel Plots with <code>ggplot2</code></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb18" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Mixed-Efects Logistic Regression Analysisː Part 4"</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "`r Sys.Date()`"</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA 4.0"</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: scroll</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pdf: default</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - name:</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">      given: Matt Hunt</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">      family: Gardner</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">    orcid: 0000-0002-1878-4232</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co">    email: matt.gardner@ling-phil.ox.ac.uk</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co">    corresponding: true</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co">    affiliations:</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="co">      - name: University of Oxford </span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co">        department: Linguistics, Philology, &amp; Phonetics</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="co">        city: Oxford</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="co">        country: UK</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Doing a mixed-effects logistic regression analysis suitable for comparing to a *Goldvarb* analysis. Part 4: Treatment Contrast Coding"</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="an">crossref:</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="co">  fig-title: Table  </span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="co">  fig-prefix: Table</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">tidy=</span><span class="st">'styler'</span>, <span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">strict=</span><span class="cn">TRUE</span>, <span class="at">scope=</span><span class="st">"tokens"</span>), <span class="at">tidy =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Before <span class="sc">!=</span> <span class="st">"Vowel"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">After.New =</span> <span class="fu">recode</span>(After, <span class="st">"H"</span> <span class="ot">=</span> <span class="st">"Consonant"</span>),  </span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>             <span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)),</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>             <span class="at">Age.Group =</span> <span class="fu">cut</span>(YOB, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">1944</span>, <span class="dv">1979</span>, <span class="cn">Inf</span>), </span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>)),</span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme =</span> <span class="fu">sub</span>(<span class="st">"^(.)(--.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, Phoneme.Dep.Var),</span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>             <span class="at">Dep.Var.Full =</span> <span class="fu">sub</span>(<span class="st">"^(.--)(.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, Phoneme.Dep.Var),</span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme.Dep.Var =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate_if</span>(is.character, as.factor)</span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>td.young <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>            <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Young"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>td.middle <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>             <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Middle"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>             <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>td.old <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>          <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Old"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a> <span class="co"># Sum Coding (vs. mean)</span></span>
+<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts=</span><span class="fu">c</span>(<span class="st">"contr.sum"</span>,<span class="st">"contr.poly"</span>))</span>
+<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder levels of Dep.Var to make application value second</span></span>
+<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Dep.Var, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Realized"</span>, <span class="st">"Deletion"</span>))</span>
+<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var.Binary <span class="ot">&lt;-</span> <span class="st">"0"</span></span>
+<span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Change all Dep.Var.Binary tokens to 1 where Dep.Var.Full is "Deletion". </span></span>
+<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var.Binary[td<span class="sc">$</span>Dep.Var.Full <span class="sc">==</span> <span class="st">"Deletion"</span>] <span class="ot">&lt;-</span> <span class="st">"1"</span></span>
+<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Make Dep.Var.Binary a factor column</span></span>
+<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var.Binary <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Dep.Var.Binary)</span>
+<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Generalized linear mixed effects model with the fixed main effects of Before, After.New, Morph.Type, Stress, Phoneme, center.Age, Sex and Education, and the random effect of Speaker</span></span>
+<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits=</span><span class="dv">2</span>)</span>
+<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a><span class="co"># td.glmer &lt;-glmer(Dep.Var ~ Before + After.New + Morph.Type + Stress + Phoneme + Center.Age + Sex + Education + (1|Speaker), data = td, family = "binomial", control = glmerControl(optCtrl = list(maxfun = 2e4), optimizer = "bobyqa"))</span></span>
+<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a><span class="co"># td.glmer1 &lt;-glmer(Dep.Var ~ After + Morph.Type + Before + Stress + Phoneme + (1|Speaker), data = td, family = "binomial", control = glmerControl(optCtrl = list(maxfun = 2e4), optimizer = "bobyqa"))</span></span>
+<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a><span class="co"># td.glmer2 &lt;-glmer(Dep.Var ~ After.New + Morph.Type + Before + Stress + Phoneme + (1|Speaker), data = td, family = "binomial", control = glmerControl(optCtrl = list(maxfun = 2e4), optimizer = "bobyqa"))</span></span>
+<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a><span class="co"># td.glmer3 &lt;-glmer(Dep.Var ~ After + Morph.Type + Before + Stress + Phoneme + Center.Age + (1|Speaker), data = td, family = "binomial", control = glmerControl(optCtrl = list(maxfun = 2e4), optimizer = "bobyqa"))</span></span>
+<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a><span class="co"># td.glmer4 &lt;-glmer(Dep.Var ~ After + Morph.Type + Before + Stress + Phoneme + Age.Group + (1|Speaker), data = td, family = "binomial", control = glmerControl(optCtrl = list(maxfun = 2e4), optimizer = "bobyqa"))</span></span>
+<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a><span class="co"># td.glmer.null &lt;-glmer(Dep.Var ~ (1|Speaker), data = td, family = "binomial", control = glmerControl(optCtrl = list(maxfun = 2e4), optimizer = "bobyqa" ))</span></span>
+<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a><span class="co">#                       </span></span>
+<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a><span class="co"># # Re-create td.glmer with all parameters with reversed factor orders</span></span>
+<span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a><span class="co"># td.glmer.reversed &lt;-glmer(Dep.Var ~ fct_rev(Before) + fct_rev(After.New) + fct_rev(Morph.Type) + fct_rev(Stress) + fct_rev(Phoneme) + Center.Age + fct_rev(Sex) + Education + (1|Speaker), data = td, family = "binomial", control = glmerControl(optCtrl = list(maxfun = 2e4), optimizer = "bobyqa"))</span></span>
+<span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb18-88"><a href="#cb18-88" aria-hidden="true" tabindex="-1"></a><span class="co"># # Re-order Before in reverse alphabetical order </span></span>
+<span id="cb18-89"><a href="#cb18-89" aria-hidden="true" tabindex="-1"></a><span class="co"># td$Before.Reorder&lt;-factor(td$Before, levels = c("Stop", "S", "Other Fricative", "Nasal", "Liquid"))</span></span>
+<span id="cb18-90"><a href="#cb18-90" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb18-91"><a href="#cb18-91" aria-hidden="true" tabindex="-1"></a><span class="co"># # Re-create td.glmer with reordered Before</span></span>
+<span id="cb18-92"><a href="#cb18-92" aria-hidden="true" tabindex="-1"></a><span class="co"># td.glmer.reorder &lt;- glmer(Dep.Var ~ Before.Reorder + After.New + Morph.Type + Stress + Phoneme +</span></span>
+<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a><span class="co">#     Center.Age + Sex + Education + (1 | Speaker), data = td, family = "binomial",</span></span>
+<span id="cb18-94"><a href="#cb18-94" aria-hidden="true" tabindex="-1"></a><span class="co">#     control = glmerControl(optCtrl = list(maxfun = 20000), optimizer = "bobyqa"))</span></span>
+<span id="cb18-95"><a href="#cb18-95" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb18-96"><a href="#cb18-96" aria-hidden="true" tabindex="-1"></a><span class="co"># # Alternative method </span></span>
+<span id="cb18-97"><a href="#cb18-97" aria-hidden="true" tabindex="-1"></a><span class="co"># td.glmer.reorder &lt;- glmer(Dep.Var ~ fct_rev(Before) + After.New + Morph.Type + Stress + Phoneme +</span></span>
+<span id="cb18-98"><a href="#cb18-98" aria-hidden="true" tabindex="-1"></a><span class="co">#     Center.Age + Sex + Education + (1 | Speaker), data = td, family = "binomial",</span></span>
+<span id="cb18-99"><a href="#cb18-99" aria-hidden="true" tabindex="-1"></a><span class="co">#     control = glmerControl(optCtrl = list(maxfun = 20000), optimizer = "bobyqa"))</span></span>
+<span id="cb18-100"><a href="#cb18-100" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(td.glmer.reorder)</span></span>
+<span id="cb18-101"><a href="#cb18-101" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb18-102"><a href="#cb18-102" aria-hidden="true" tabindex="-1"></a><span class="co"># td.glmer.parsimonious &lt;-glmer(Dep.Var ~ After.New + Morph.Type + Before + Stress + Phoneme + (1|Speaker), data = td, family = "binomial", control = glmerControl(optCtrl = list(maxfun = 2e4), optimizer = "bobyqa"))</span></span>
+<span id="cb18-103"><a href="#cb18-103" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb18-104"><a href="#cb18-104" aria-hidden="true" tabindex="-1"></a><span class="co"># # Subset data</span></span>
+<span id="cb18-105"><a href="#cb18-105" aria-hidden="true" tabindex="-1"></a><span class="co"># td.young &lt;-td %&gt;% subset(Age.Group == "Young")</span></span>
+<span id="cb18-106"><a href="#cb18-106" aria-hidden="true" tabindex="-1"></a><span class="co"># td.not.young &lt;- td %&gt;% subset(Age.Group != "Young")</span></span>
+<span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a><span class="co"># # Create young speaker regression model</span></span>
+<span id="cb18-108"><a href="#cb18-108" aria-hidden="true" tabindex="-1"></a><span class="co"># td.glmer.young &lt;- glmer(Dep.Var ~ After.New + Morph.Type + Before + Stress + Phoneme + (1 | Speaker), data = td.young, family = "binomial", glmerControl(optCtrl = list(maxfun = 20000), optimizer = "bobyqa"))</span></span>
+<span id="cb18-109"><a href="#cb18-109" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb18-110"><a href="#cb18-110" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb18-111"><a href="#cb18-111" aria-hidden="true" tabindex="-1"></a><span class="co"># # Create middle/old speaker regression model</span></span>
+<span id="cb18-112"><a href="#cb18-112" aria-hidden="true" tabindex="-1"></a><span class="co"># td.glmer.not.young &lt;- glmer(Dep.Var ~ After.New + Morph.Type + Before + Stress + Phoneme + (1 | Speaker), data = td.not.young, family = "binomial", glmerControl(optCtrl = list(maxfun = 20000), optimizer = "bobyqa"))</span></span>
+<span id="cb18-113"><a href="#cb18-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-114"><a href="#cb18-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-115"><a href="#cb18-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-116"><a href="#cb18-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-117"><a href="#cb18-117" aria-hidden="true" tabindex="-1"></a>Before you proceed with this section, please make sure that you have your data loaded and modified based on the code <span class="co">[</span><span class="ot">here</span><span class="co">](050_lvcr.qmd)</span> and that <span class="in">`Dep.Var`</span> is <span class="co">[</span><span class="ot">re-coded such that `Deletion` is the second factor</span><span class="co">](110_lvcr.qmd)</span>. Next, you <span class="co">[</span><span class="ot">set the global *R* options to employ sum contrast coding</span><span class="co">](112_lvcr.qmd)</span>.</span>
+<span id="cb18-118"><a href="#cb18-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-119"><a href="#cb18-119" aria-hidden="true" tabindex="-1"></a><span class="fu"># Treatment Contrasts (vs. reference value)</span></span>
+<span id="cb18-120"><a href="#cb18-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-121"><a href="#cb18-121" aria-hidden="true" tabindex="-1"></a>Rather than compare levels of each parameter to the <span class="co">[</span><span class="ot">mean of that parameter</span><span class="co">](112_lvcr.qmd)</span>, you can instead specify one level as the reference level and then compare every other level to it (see <span class="co">[</span><span class="ot">Part 1</span><span class="co">](110_lvcr.qmd)</span>). To do this you need to set the global contrasts to <span class="in">`contr.treatment`</span>.</span>
+<span id="cb18-122"><a href="#cb18-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-125"><a href="#cb18-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-126"><a href="#cb18-126" aria-hidden="true" tabindex="-1"></a><span class="co"># Treatment Contrasts (vs. reference)</span></span>
+<span id="cb18-127"><a href="#cb18-127" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts=</span><span class="fu">c</span>(<span class="st">"contr.treatment"</span>,<span class="st">"contr.poly"</span>))</span>
+<span id="cb18-128"><a href="#cb18-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-129"><a href="#cb18-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-130"><a href="#cb18-130" aria-hidden="true" tabindex="-1"></a>This is actually the more common way to perform a mixed-effects logistic regression outside of sociolinguistics. With the contrasts now set to treatment contrasts you can re-run your most-parsimonious model. </span>
+<span id="cb18-131"><a href="#cb18-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-134"><a href="#cb18-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-135"><a href="#cb18-135" aria-hidden="true" tabindex="-1"></a><span class="co"># Most Parsimonious Model: Generalized linear mixed effects model with the  fixed main effects of Before, After.New, Morph.Type, Stress, Phoneme, and the random effect of Speaker</span></span>
+<span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a>td.glmer.parsimonious <span class="ot">&lt;-</span> <span class="fu">glmer</span>(Dep.Var <span class="sc">~</span> After.New <span class="sc">+</span> Morph.Type <span class="sc">+</span> Before <span class="sc">+</span> Stress <span class="sc">+</span></span>
+<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a>    Phoneme <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> Speaker), <span class="at">data =</span> td, <span class="at">family =</span> <span class="st">"binomial"</span>, <span class="at">control =</span> <span class="fu">glmerControl</span>(<span class="at">optCtrl =</span> <span class="fu">list</span>(<span class="at">maxfun =</span> <span class="dv">20000</span>),</span>
+<span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a>    <span class="at">optimizer =</span> <span class="st">"bobyqa"</span>))</span>
+<span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(td.glmer.parsimonious)</span>
+<span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a>The treatment contrast output looks very much like the model you constructed using sum contrasts (you'll notice that the measures of model fit and the description of the random effects are identical), but there are a few key differences. Firstly, the listed levels of each parameter are now written-out rather than just being numbers. This makes treatment contrast results somewhat easier to interpret. The levels that are listed are all the levels other than the first in that level's factor order. The default order of factors is alphabetic, though you can change this (as you did <span class="co">[</span><span class="ot">previously</span><span class="co">](112_lvcr.qmd)</span> for <span class="in">`Dep.Var`</span> and <span class="in">`Age.Group`</span>). The first level in each parameter is set as the **reference level**. The reference level for <span class="in">`Before`</span> is <span class="in">`Liquid`</span>, the reference level for <span class="in">`After.New`</span> is <span class="in">`Consonant`</span>, the reference level for <span class="in">`Morph.Type`</span> is <span class="in">`Mono`</span>, the reference level for <span class="in">`Stress`</span> is <span class="in">`Stressed`</span>, and the reference level for <span class="in">`Phoneme`</span> is <span class="in">`d`</span>. </span>
+<span id="cb18-144"><a href="#cb18-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-145"><a href="#cb18-145" aria-hidden="true" tabindex="-1"></a>The <span class="in">`(Intercept)`</span> value is the likelihood of a given token being the application value if that token is coded with all the reference levels. In other words, <span class="in">`0.902`</span> is the likelihood, in log odds, of a token being <span class="in">`Deletion`</span> if that token has a preceding liquid, a following consonant, is mono-morphemic, is stressed, and is an underlying /d/. The estimate for each level is the change in likelihood if that parameter changes to the given level. The difference in likelihood resulting from a token being unstressed, instead of stressed, but with all other parameter settings the same, is <span class="in">`1.598`</span> In other words, a token with a preceding liquid, following consonant, that is mono-morphemic, that is an underlying /d/, and is unstressed is $2.500$ log odds ($0.902+1.598$) or $92\%$ probability.</span>
+<span id="cb18-146"><a href="#cb18-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-149"><a href="#cb18-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a><span class="fu">plogis</span>(<span class="fl">2.5</span>)</span>
+<span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a>:::{.callout-warning}</span>
+<span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a>With treatment contrasts you **must** <span class="co">[</span><span class="ot">center your continuous variables</span><span class="co">](040_lvcr.qmd)</span>.</span>
+<span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a>With sum contrasts the reference "level" is the mean for each parameter not a particular level of the parameter; this includes continuous factors. For this reason, whether or not you center continuous factors with sum contrast coding doesn't really matter. The reference level for treatment contrast coding is the first level of the parameter. For continuous variables this means the reference level is $0$. For some applications this might be okay --- for example, if your continuous variable is voice onset time. For most of your applications, though, where continuous factors represent age, this is not desirable. Zero is not a meaningful year of birth or a meaningful age. For this reason we center these factors, thereby changing the mean or average age to zero (so that $0$ equals something meaningful), and all other ages as differences from that mean.  This results in the intercept of a treatment contrast model being the overall likelihood when all the discrete parameters are set to their first value and the continuous parameters set to their mean value.</span>
+<span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-158"><a href="#cb18-158" aria-hidden="true" tabindex="-1"></a>The *p*-value for each level represents whether or not the resultant difference (e.g., estimate) is significantly different from zero.  The *p*-value for <span class="in">`BeforeStop`</span> is $0.45350$. This is greater than $0.05$, and therefore you say there is not a significant difference in likelihood between tokens with a preceding liquid and tokens with a preceding stop. This changes the constraint hierarchy for this factor group to <span class="in">`S`</span> &gt; <span class="in">`Nasal`</span> &gt; <span class="in">`Other Fricative`</span> &gt; <span class="in">`Liquid/Stop`</span>. It also justifies re-coding these two factors into a single parameter level.  </span>
+<span id="cb18-159"><a href="#cb18-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-160"><a href="#cb18-160" aria-hidden="true" tabindex="-1"></a><span class="al">![Treatment contrasts vs. sum contrasts](images/comparingcontrasts.png)</span>{#fig-contrasts width="80%"}</span>
+<span id="cb18-161"><a href="#cb18-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-162"><a href="#cb18-162" aria-hidden="true" tabindex="-1"></a>As before, the correlation of fixed effects suggests where there might be non-orthogonality. Values over $|0.3|$ should be investigated, those above $|0.7|$ should be seriously investigated. Calculating the Variable Inflation Factor (VIF) and Condition Number ($\kappa$) is, as always, useful in determining if these correlations are within acceptable limits of collinearity (as discussed in <span class="co">[</span><span class="ot">Part 3</span><span class="co">](114_lvcr.qmd)</span>). </span>
+<span id="cb18-163"><a href="#cb18-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-166"><a href="#cb18-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-167"><a href="#cb18-167" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the Variable Inflation Factor</span></span>
+<span id="cb18-168"><a href="#cb18-168" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb18-169"><a href="#cb18-169" aria-hidden="true" tabindex="-1"></a><span class="fu">check_collinearity</span>(td.glmer.parsimonious)</span>
+<span id="cb18-170"><a href="#cb18-170" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Condition Number</span></span>
+<span id="cb18-171"><a href="#cb18-171" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JGmermod)</span>
+<span id="cb18-172"><a href="#cb18-172" aria-hidden="true" tabindex="-1"></a><span class="fu">collin.fnc.mer</span>(td.glmer.parsimonious)<span class="sc">$</span>cnumber</span>
+<span id="cb18-173"><a href="#cb18-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-174"><a href="#cb18-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-175"><a href="#cb18-175" aria-hidden="true" tabindex="-1"></a>The highest VIF is (still) lower than $5$, indicating low collinearity but $\kappa = 7.6$, which is slightly above the threshold of $6$ indicating low-to-moderate collinearity. This latter value further suggests investigating the across-parameter correlations (see <span class="co">[</span><span class="ot">Part 3</span><span class="co">](114_lvcr.qmd)</span>). For the moment, however, you will keep using the <span class="in">`td.glmer.parsimonious`</span> model. </span>
+<span id="cb18-176"><a href="#cb18-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-177"><a href="#cb18-177" aria-hidden="true" tabindex="-1"></a>You could choose to report the results of this treatment contrast analysis in your manuscript. If you do, a *Goldvarb*-style table wouldn't be appropriate. Instead a <span class="in">`lme4`</span>-style table is needed.</span>
+<span id="cb18-178"><a href="#cb18-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-179"><a href="#cb18-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-180"><a href="#cb18-180" aria-hidden="true" tabindex="-1"></a><span class="al">![Mixed-effects logistic regression testing the fixed effect of Following Context, Morpheme Type, Preceding Context, Stress, and Phoneme and a random intercept of Speaker on the deletion of word-final (t, d) in Cape Breton English](images/lme4table3.png)</span>{#fig-lme4table3 width="80%"}</span>
+<span id="cb18-181"><a href="#cb18-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-182"><a href="#cb18-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-183"><a href="#cb18-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-184"><a href="#cb18-184" aria-hidden="true" tabindex="-1"></a>The order of parameters in @fig-lme4table3 is based on the the relative ordering presented in Table \ref{tab:wald1}. The parameter levels are also ordered by their estimates. You'll notice that all the estimates are negative and they don't match up to the results reported above. This is because, before creating this table, each factor was reordered based on level estimates so that the reference level, i.e., first level, was also the level that most favoured the application value. I find this makes understanding the constraint hierarchy easier. It also means that the intercept represents the likelihood of the the application value when it is most likely. Alternatively, you could re-arrange the factor levels so that the least likely levels were the reference levels. This would result in estimates that were all positive and showed how much switching levels improved the likelihood. What you choose to do is entirely up to you and the story you want to tell with your analysis. </span>
+<span id="cb18-185"><a href="#cb18-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-186"><a href="#cb18-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-189"><a href="#cb18-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-190"><a href="#cb18-190" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder levels of Before from most favouring to least favouring </span></span>
+<span id="cb18-191"><a href="#cb18-191" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Before <span class="ot">&lt;-</span><span class="fu">factor</span>(td<span class="sc">$</span>Before, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"Nasal"</span>, <span class="st">"Other Fricative"</span>, <span class="st">"Liquid"</span>, <span class="st">"Stop"</span>))</span>
+<span id="cb18-192"><a href="#cb18-192" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder levels of After.New from most favouring to least favouring</span></span>
+<span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>After.New <span class="ot">&lt;-</span><span class="fu">factor</span>(td<span class="sc">$</span>After.New, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Consonant"</span>, <span class="st">"Vowel"</span>, <span class="st">"Pause"</span>))</span>
+<span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder levels of Morph.Type from most favouring to least favouring</span></span>
+<span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Morph.Type <span class="ot">&lt;-</span><span class="fu">factor</span>(td<span class="sc">$</span>Morph.Type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Semi-Weak"</span>, <span class="st">"Mono"</span>, <span class="st">"Past"</span>))</span>
+<span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder levels of Stress from most favouring to least favouring</span></span>
+<span id="cb18-197"><a href="#cb18-197" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Stress <span class="ot">&lt;-</span><span class="fu">factor</span>(td<span class="sc">$</span>Stress, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Unstressed"</span>, <span class="st">"Stressed"</span>))</span>
+<span id="cb18-198"><a href="#cb18-198" aria-hidden="true" tabindex="-1"></a><span class="co"># Most Parsimonious Model:  Generalized linear mixed effects model with the fixed main effects of Before, After.New, Morph.Type, Stress, Phoneme, , and the random effect of Speaker</span></span>
+<span id="cb18-199"><a href="#cb18-199" aria-hidden="true" tabindex="-1"></a>td.glmer <span class="ot">&lt;-</span><span class="fu">glmer</span>(Dep.Var<span class="sc">~</span>Before<span class="sc">+</span>After.New<span class="sc">+</span>Morph.Type<span class="sc">+</span> Stress <span class="sc">+</span> Phoneme<span class="sc">+</span>(<span class="dv">1</span><span class="sc">|</span>Speaker), <span class="at">data =</span> td, <span class="at">family =</span><span class="st">"binomial"</span>, <span class="at">control =</span> <span class="fu">glmerControl</span>(<span class="at">optCtrl=</span><span class="fu">list</span>(<span class="at">maxfun=</span><span class="fl">2e4</span>),<span class="at">optimizer=</span><span class="st">"bobyqa"</span>))</span>
+<span id="cb18-200"><a href="#cb18-200" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(td.glmer)</span>
+<span id="cb18-201"><a href="#cb18-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-202"><a href="#cb18-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-203"><a href="#cb18-203" aria-hidden="true" tabindex="-1"></a>By reordering the levels of you verify some intuitions generated by <span class="co">[</span><span class="ot">previous analyses</span><span class="co">](114_lvcr.qmd)</span> about the constraint hierarchy for <span class="in">`Before`</span>. There is not a significant difference between the reference level (<span class="in">`S`</span>) and <span class="in">`Nasal`</span> or between the reference level (<span class="in">`S`</span>) and <span class="in">`Other Fricatives`</span>. This suggests that your constraint hierarchy is actually <span class="in">`All Fricatives/Nasals`</span> &gt; <span class="in">`Liquids/Stops`</span> (remember in the non-reordered <span class="in">`summary(td.glmer)`</span> <span class="in">`Liquids`</span> and <span class="in">`Stops`</span> were not significantly different). This is an insight into the data that the <span class="in">`glmer()`</span> model with sum contrasts couldn't have provided. </span>
+<span id="cb18-204"><a href="#cb18-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-205"><a href="#cb18-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-206"><a href="#cb18-206" aria-hidden="true" tabindex="-1"></a>But what about the other parameter levels? For example, there is a significant difference between following consonant and following vowel. There is also a significant difference between following consonant and following pause. But is there a significant difference between following vowel and following pause? You could run a series of <span class="in">`glmer()`</span> models in which you keep reordering the parameter levels to find out where the significant differences are. However, the <span class="in">`glmer()`</span> model you've just constructed contains this information, you just need to know how to ask for it.</span>
+<span id="cb18-207"><a href="#cb18-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-208"><a href="#cb18-208" aria-hidden="true" tabindex="-1"></a>The first task is to create a contrast matrix of all the comparisons you want to make. You use  <span class="in">`rbind()`</span> to create two rows (which you call <span class="in">`"After.NewVowel vs. After.NewPause"`</span> and <span class="in">`"Morph.TypeMono vs. Morph.TypePast"`</span>). Each row has 11 cells. These 11 cells correspond to the 11 rows in the <span class="in">`glmer()`</span> fixed effects results: the first cell corresponds to the <span class="in">`(Intercept)`</span>, the second cell corresponds to <span class="in">`BeforeNasal`</span>, etc. To compare two estimates place a <span class="in">`1`</span> and <span class="in">`-1`</span> in the corresponding cells and a <span class="in">`0`</span> in all remaining cells. In the code below there is a <span class="in">`1`</span> in the sixth and a <span class="in">`-1`</span> in the seventh cells because <span class="in">`After.NewVowel`</span> and <span class="in">`After.NewPause`</span> are the sixth and seventh rows in the fixed effects results. You use the <span class="in">`glht()`</span> function (a simultaneous test of the General Linear Hypotheses) in the <span class="in">`multcomp`</span> package to calculate the comparisons. A <span class="in">`summary()`</span> for that function displays the results.</span>
+<span id="cb18-209"><a href="#cb18-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-210"><a href="#cb18-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
+<span id="cb18-211"><a href="#cb18-211" aria-hidden="true" tabindex="-1"></a><span class="co"># Create  contrast matrix</span></span>
+<span id="cb18-212"><a href="#cb18-212" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span><span class="fu">rbind</span>(</span>
+<span id="cb18-213"><a href="#cb18-213" aria-hidden="true" tabindex="-1"></a>    <span class="st">"After.NewVowel vs. After.NewPause"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb18-214"><a href="#cb18-214" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Morph.TypeMono vs. Morph.TypePast"</span>  <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)  </span>
+<span id="cb18-215"><a href="#cb18-215" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb18-216"><a href="#cb18-216" aria-hidden="true" tabindex="-1"></a><span class="co"># Test pairwise comparisons</span></span>
+<span id="cb18-217"><a href="#cb18-217" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
+<span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">glht</span>(td.glmer, d))</span>
+<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a>The results indicate that the difference in likelihood of <span class="in">`After.NewVowel`</span> and <span class="in">`After.NewPause`</span> on the <span class="in">`Intercept`</span> are not  significantly different from zero ($p&gt;0.05$). This means that the real contrast for this factor group is consonant versus not-consonant. On the other hand, there is a significant difference between <span class="in">`Morph.TypeMono`</span> and <span class="in">`Morph.TypePast`</span> indicating that this factor group has a real three-way contrast between semi-weak simple past, mono-morphemes and weak simple past. Again, by performing a detailed analysis of the contrasts between factors **in addition to** an analysis of the contrasts between factors and their mean, you achieve a much more nuanced (and I argue superior) understanding of the three lines of evidence because you can pinpoint exactly where significant contrasts exist. </span>
+<span id="cb18-222"><a href="#cb18-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-223"><a href="#cb18-223" aria-hidden="true" tabindex="-1"></a>An easier method for generating the contrast matrix is provided below. For a different analysis replace <span class="in">`td.glmer.parsimonious`</span> with your model name, and replace <span class="in">`Before`</span>, <span class="in">`After.New`</span>, etc. with your own predictors. You don't need to include all predictors. You could also include more. Just adjust the number of <span class="in">`k1`</span>, <span class="in">`k2`</span>, etc. objects you create. This method provides all the contrasts for a single predictor variable, unlike the method above, in which you specify the specific contrasts you are interested in. I have not included <span class="in">`Phoneme`</span> or <span class="in">`Stress`</span> here as they are binary, so the contrast between the two levels is represented in the <span class="in">`summary(td.glmer.parsimonious)`</span> output already. </span>
+<span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
+<span id="cb18-226"><a href="#cb18-226" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
+<span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a>k1<span class="ot">&lt;-</span><span class="fu">glht</span>(td.glmer.parsimonious, <span class="fu">mcp</span>(<span class="at">Before =</span><span class="st">"Tukey"</span>))<span class="sc">$</span>linfct</span>
+<span id="cb18-228"><a href="#cb18-228" aria-hidden="true" tabindex="-1"></a>k2<span class="ot">&lt;-</span><span class="fu">glht</span>(td.glmer.parsimonious, <span class="fu">mcp</span>(<span class="at">After.New =</span> <span class="st">"Tukey"</span>))<span class="sc">$</span>linfct</span>
+<span id="cb18-229"><a href="#cb18-229" aria-hidden="true" tabindex="-1"></a>k3<span class="ot">&lt;-</span><span class="fu">glht</span>(td.glmer.parsimonious, <span class="fu">mcp</span>(<span class="at">Morph.Type =</span> <span class="st">"Tukey"</span>))<span class="sc">$</span>linfct</span>
+<span id="cb18-230"><a href="#cb18-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">glht</span>(td.glmer.parsimonious, <span class="at">linfct=</span><span class="fu">rbind</span>(k1,k2,k3)))</span>
+<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a>You can add the results from this <span class="in">`glht()`</span> test to your manuscript table, as in @fig-lme4table3.</span>
+<span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-235"><a href="#cb18-235" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visualizing the fixed effects</span></span>
+<span id="cb18-236"><a href="#cb18-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-237"><a href="#cb18-237" aria-hidden="true" tabindex="-1"></a>As in <span class="co">[</span><span class="ot">Part 2</span><span class="co">](112_lvcr.qmd)</span>, you can use the <span class="in">`plot_model()`</span> function to examine the fixed effects. </span>
+<span id="cb18-238"><a href="#cb18-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-239"><a href="#cb18-239" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
+<span id="cb18-240"><a href="#cb18-240" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required packages</span></span>
+<span id="cb18-241"><a href="#cb18-241" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb18-242"><a href="#cb18-242" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjlabelled)</span>
+<span id="cb18-243"><a href="#cb18-243" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span>
+<span id="cb18-244"><a href="#cb18-244" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-245"><a href="#cb18-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-246"><a href="#cb18-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-247"><a href="#cb18-247" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot fixed effects</span></span>
+<span id="cb18-248"><a href="#cb18-248" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(td.glmer, <span class="at">transform =</span> <span class="cn">NULL</span>, <span class="at">show.values =</span> <span class="cn">TRUE</span>, <span class="at">value.offset=</span><span class="fl">0.3</span>, <span class="at">vline.color=</span><span class="st">"black"</span>, <span class="at">title =</span> <span class="st">"Likelihood of (t,d) deletion"</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
+<span id="cb18-249"><a href="#cb18-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-250"><a href="#cb18-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-251"><a href="#cb18-251" aria-hidden="true" tabindex="-1"></a>Unlike the fixed effects plot for the sum contrast coding model, in which  zero on the *x*-axis  represented the grand mean, or overall baseline likelihood, zero on the *x*-axis here represents the likelihood when all predictors are set to their reference values. You have arbitrarily set all the reference values to the most favouring values, so all the values represented  in the plot are below zero, as they have negative estimates (they all disfavour <span class="in">`Deletion`</span> relative to the reference values). </span>
+<span id="cb18-252"><a href="#cb18-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-253"><a href="#cb18-253" aria-hidden="true" tabindex="-1"></a>Any predictor level whose error bars overlap the zero line are not significantly different from the reference level of that predictor. As is shown in the <span class="in">`glmer()`</span> output, for preceding context, <span class="in">`Nasal`</span> and <span class="in">`Other Fricative`</span> are not significantly different from the reference value <span class="in">`S`</span>. The error bars can also tell you how the non-reference values relate to each other, as with the <span class="in">`glht()`</span> test. Any error bars for levels of the same predictor that overlap indicate those levesl are not significantly different from each other. By looking at the plot you can see that for preceding context <span class="in">`Nasal`</span> and <span class="in">`Stop`</span> and <span class="in">`Nasal`</span> and <span class="in">`Liquid`</span> do not overlap (though the space between <span class="in">`Nasal`</span> and <span class="in">`Liquid`</span> is quite hard to see), but all other non-reference values do. Likewise, for following context <span class="in">`Vowel`</span> and <span class="in">`Pause`</span> overlap, indicating that they are not significantly differnet from each other, despite both being significantly different from the reference level <span class="in">`Consonant`</span>. For morpheme type, however, both <span class="in">`Mono`</span> and <span class="in">`Past`</span> are significantly different from the reference value <span class="in">`Semi-Weak`</span> as their error bars do not cross the zero line, and also significantly different from each other, as their error bars do not overlap. </span>
+<span id="cb18-254"><a href="#cb18-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-255"><a href="#cb18-255" aria-hidden="true" tabindex="-1"></a>Instead of colouring all the predictor levels similarly (as they are all below zero), you can instead colour them by predictor type using the <span class="in">`group.terms=`</span> option, and then specifying which group each term belongs to, as in the example below. The first four terms (the four <span class="in">`Before`</span> levels) are all <span class="in">`1`</span>, the next two (the two <span class="in">`After.New`</span> levels)  are <span class="in">`2`</span>, etc. This might make presenting a plot like this easier to read, especially as part of a slide presentation. </span>
+<span id="cb18-256"><a href="#cb18-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-259"><a href="#cb18-259" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-260"><a href="#cb18-260" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot fixed effects</span></span>
+<span id="cb18-261"><a href="#cb18-261" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(td.glmer, <span class="at">transform =</span> <span class="cn">NULL</span>, <span class="at">show.values =</span> <span class="cn">TRUE</span>, <span class="at">value.offset=</span><span class="fl">0.3</span>, <span class="at">vline.color=</span><span class="st">"black"</span>, <span class="at">title =</span> <span class="st">"Likelihood of (t,d) deletion"</span>, <span class="at">group.terms =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
+<span id="cb18-262"><a href="#cb18-262" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
+
+
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

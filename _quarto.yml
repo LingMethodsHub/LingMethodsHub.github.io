@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: "docs"
   render:
     - "*qmd"
     - "*md"
@@ -40,18 +41,23 @@ website:
         - href: "content/index.qmd"
         - section: "R"
           href: "content/R/index.qmd"
-          contents:
+          contents: #content/R/
             - section: "Doing LVC with R"
               href: "content/R/lvc_r/index.qmd"
               contents:
                 - href: "content/R/lvc_r/010_lvcr.qmd"
                 - href: "content/R/lvc_r/020_lvcr.qmd"
                 - href: "content/R/lvc_r/030_lvcr.qmd"
-                - href: "content/R/lvc_r/040_lvcr.qmd"                
-                - href: "content/R/lvc_r/050_lvcr.qmd"                
-                - href: "content/R/lvc_r/060_lvcr.qmd"                
-                - href: "content/R/lvc_r/070_lvcr.qmd"                
+                - href: "content/R/lvc_r/040_lvcr.qmd"
+                - href: "content/R/lvc_r/050_lvcr.qmd"
+                - href: "content/R/lvc_r/060_lvcr.qmd"
+                - href: "content/R/lvc_r/070_lvcr.qmd"
                 - href: "content/R/lvc_r/080_lvcr.qmd"
+                - href: "content/R/lvc_r/090_lvcr.qmd"
+                - href: "content/R/lvc_r/110_lvcr.qmd"
+                - href: "content/R/lvc_r/112_lvcr.qmd"
+                - href: "content/R/lvc_r/114_lvcr.qmd"
+                - href: "content/R/lvc_r/116_lvcr.qmd"                
             - href: "content/R/vowel-plots-tutorial/index.Rmd"
             - href: "content/R/tidy-norm/index.qmd"
             - href: "content/R/animated_vowel_plots_tutorial/index.Rmd"

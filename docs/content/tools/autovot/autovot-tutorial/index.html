@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Eleanor Chodroff">
+<meta name="dcterms.date" content="2022-10-09">
+
+<title>LingMethodsHub - AutoVOT</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../content/tools/mfa/mfa-tutorial/index.html" rel="prev">
+<script src="../../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+<style>html{ scroll-behavior: smooth; }</style>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false,
+  "showHighlights": "never"
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible">
+
+
+<link rel="stylesheet" href="../../../../styles.css">
+<meta property="og:title" content="LingMethodsHub - AutoVOT">
+<meta property="og:description" content="What does AutoVOT do?">
+<meta property="og:image" content="https://lingmethodshub.github.io/content/tools/autovot/autovot-tutorial/images/finalAutoVOT.png">
+<meta property="og:site-name" content="LingMethodsHub">
+<meta property="og:image:height" content="583">
+<meta property="og:image:width" content="1119">
+<meta name="twitter:title" content="LingMethodsHub - AutoVOT">
+<meta name="twitter:description" content="What does AutoVOT do?">
+<meta name="twitter:image" content="https://lingmethodshub.github.io/content/tools/autovot/autovot-tutorial/images/finalAutoVOT.png">
+<meta name="twitter:image-height" content="583">
+<meta name="twitter:image-width" content="1119">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="AutoVOT">
+<meta name="citation_author" content="Eleanor Chodroff">
+<meta name="citation_publication_date" content="2022-10-09">
+<meta name="citation_cover_date" content="2022-10-09">
+<meta name="citation_year" content="2022">
+<meta name="citation_online_date" content="2022-10-09">
+<meta name="citation_fulltext_html_url" content="https://lingmethodshub.github.io/content/tools/autovot/autovot-tutorial">
+<meta name="citation_doi" content="10.5281/zenodo.7178545">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Linguistics Methods Hub">
+<meta name="citation_series_title" content="Linguistics Methods Hub">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../../index.html">
+    <span class="navbar-title">LingMethodsHub</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../../index.html" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../content/index.html">
+ <span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../content/contributing/index.html">
+ <span class="menu-text">Contributing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../people/index.html">
+ <span class="menu-text">People</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">AutoVOT</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../../index.html" class="sidebar-logo-link">
+      <img src="../../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../content/R/index.html" class="sidebar-item-text sidebar-link">R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">Doing LVC with R</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">Getting Your Data Into <em>R</em></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">Getting to Know Your Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">Modifying Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">Doing it all again, but <code>tidy</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">Crosstabs: Counts, Proportions, and More</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">Proportions for <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/090_lvcr.html" class="sidebar-item-text sidebar-link">Random Forests: The Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/110_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/112_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/114_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/116_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysisː Part 4</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">Vowel Plots with <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/tidy-norm/index.html" class="sidebar-item-text sidebar-link">How to normalize your vowels using the tidyverse</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/animated_vowel_plots_tutorial/index.html" class="sidebar-item-text sidebar-link">Visualising Vowel Space Change with GAMMs</a>
+  </div>
+</li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../content/python/index.html" class="sidebar-item-text sidebar-link">Python</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">Vowel plotting in Python</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Praat</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../content/tools/index.html" class="sidebar-item-text sidebar-link">Tools</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">Montreal Forced Aligner</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/tools/autovot/autovot-tutorial/index.html" class="sidebar-item-text sidebar-link active">AutoVOT</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../content/cli/index.html" class="sidebar-item-text sidebar-link">Command Line Interfaces</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">Bash Shell Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/cli/keyboarding/index.html" class="sidebar-item-text sidebar-link">Keyboarding</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../content/windows/index.html" class="sidebar-item-text sidebar-link">Windows</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">Windows Subsystem for Linux</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">Installation</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#simple-recipe" id="toc-simple-recipe" class="nav-link" data-scroll-target="#simple-recipe">Simple recipe</a></li>
+  <li><a href="#full-recipe" id="toc-full-recipe" class="nav-link" data-scroll-target="#full-recipe">Full recipe</a>
+  <ul class="collapse">
+  <li><a href="#create-a-list-of-word-initial-prevocalic-cv-words-in-your-transcript" id="toc-create-a-list-of-word-initial-prevocalic-cv-words-in-your-transcript" class="nav-link" data-scroll-target="#create-a-list-of-word-initial-prevocalic-cv-words-in-your-transcript">1. Create a list of word-initial, prevocalic (CV) words in your transcript</a></li>
+  <li><a href="#find-start-and-end-times-for-words-on-wordlist.txt-in-textgrids-with-phone--and-word--level-boundaries" id="toc-find-start-and-end-times-for-words-on-wordlist.txt-in-textgrids-with-phone--and-word--level-boundaries" class="nav-link" data-scroll-target="#find-start-and-end-times-for-words-on-wordlist.txt-in-textgrids-with-phone--and-word--level-boundaries">2. Find start and end times for words on <code>wordList.txt</code> in TextGrids with phone- and word- level boundaries</a></li>
+  <li><a href="#create-autovot-intervals-on-a-new-tier-in-your-praat-textgrid" id="toc-create-autovot-intervals-on-a-new-tier-in-your-praat-textgrid" class="nav-link" data-scroll-target="#create-autovot-intervals-on-a-new-tier-in-your-praat-textgrid">3. Create AutoVOT intervals on a new tier in your Praat TextGrid</a></li>
+  <li><a href="#make-a-list-of-your-textgrids-and-wav-files-and-move-them-the-lists-to-autovotexperimentsconfig" id="toc-make-a-list-of-your-textgrids-and-wav-files-and-move-them-the-lists-to-autovotexperimentsconfig" class="nav-link" data-scroll-target="#make-a-list-of-your-textgrids-and-wav-files-and-move-them-the-lists-to-autovotexperimentsconfig">4. Make a list of your TextGrids and wav files and move them the lists to <code>autovot/experiments/config</code></a></li>
+  <li><a href="#run-autovot-from-the-terminal-on-one-stop-consonant" id="toc-run-autovot-from-the-terminal-on-one-stop-consonant" class="nav-link" data-scroll-target="#run-autovot-from-the-terminal-on-one-stop-consonant">5. Run AutoVOT from the terminal on <strong>one</strong> stop consonant</a></li>
+  <li><a href="#rename-autovot-output-tier" id="toc-rename-autovot-output-tier" class="nav-link" data-scroll-target="#rename-autovot-output-tier">6. Rename AutoVOT output tier</a></li>
+  <li><a href="#move-all-autovot-boundaries-to-one-tier" id="toc-move-all-autovot-boundaries-to-one-tier" class="nav-link" data-scroll-target="#move-all-autovot-boundaries-to-one-tier">7. Move all AutoVOT boundaries to one tier</a></li>
+  <li><a href="#stack-textgrids-with-manual-boundaries-and-the-autovot-boundaries" id="toc-stack-textgrids-with-manual-boundaries-and-the-autovot-boundaries" class="nav-link" data-scroll-target="#stack-textgrids-with-manual-boundaries-and-the-autovot-boundaries">8. Stack TextGrids with manual boundaries and the AutoVOT boundaries</a></li>
+  <li><a href="#compare-manual-and-automatic-boundaries" id="toc-compare-manual-and-automatic-boundaries" class="nav-link" data-scroll-target="#compare-manual-and-automatic-boundaries">9. Compare manual and automatic boundaries</a></li>
+  <li><a href="#replace-automatic-boundaries-with-manual-ones-where-available" id="toc-replace-automatic-boundaries-with-manual-ones-where-available" class="nav-link" data-scroll-target="#replace-automatic-boundaries-with-manual-ones-where-available">10. Replace automatic boundaries with manual ones where available</a></li>
+  <li><a href="#measure-vot-and-sentence-rate" id="toc-measure-vot-and-sentence-rate" class="nav-link" data-scroll-target="#measure-vot-and-sentence-rate">11. Measure VOT and sentence rate</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">AutoVOT</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eleanor Chodroff </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 9, 2022</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.7178545">10.5281/zenodo.7178545</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+
+</header>
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p><strong>What does AutoVOT do?</strong> AutoVOT takes a sound file and Praat TextGrid marked with the locations of word-initial, prevocalic stop consonants and creates a new tier with boundaries marking the stop consonant burst release and following vocalic onset. With these boundaries, positive VOT can be measured efficiently using a standard acoustic analysis program such as Praat.</p>
+<p>What does it include? AutoVOT can be used via Praat directly or via the command line. The system comes with pre-trained acoustic models/classifiers for American English and British English word-initial, prevocalic VOTs. It also offers the option to train your own acoustic models from labeled training data.</p>
+<p>As the online tutorial is extremely helpful, I will just offer a few tips from experience. You will first need to visit the online tutorial for the prerequisites and basic installation.</p>
+<p><strong>Online tutorial and download:</strong> <a href="https://github.com/mlml/autovot/" target="_blank">https://github.com/mlml/autovot/</a></p>
+<p>Do follow the command line installation instructions closely. Note that there are several dependencies that you might have to download separately. Make sure to do this!</p>
+<p>I was able to follow their instructions up until the <code>pip -r "requirements.txt"</code> command. I did not have <code>pip</code> installed on my computer, so I needed to install that separately. You might also run into this with <code>pip</code> and possibly also <code>git</code>. At least for <code>pip</code>, I solved the problem in the following way:</p>
+<p>First: install pip by typing the following into the command line (must be connected to the internet).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> easy_install pip</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> pip install <span class="at">--upgrade</span> pip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Second: even after installing pip, I had trouble running their command of <code>pip -r "requirements.txt"</code>, so I installed each package separately in the following way. These should again be typed into the command line (bash).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install numpy</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install future</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install scipy</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install textgrid</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install argparse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="simple-recipe" class="level2">
+<h2 class="anchored" data-anchor-id="simple-recipe">Simple recipe</h2>
+<p>To run AutoVOT, you will need the following:</p>
+<ul>
+<li>a TextGrid with an interval tier for the VOT “windows of analysis”</li>
+<li>corresponding 16kHz mono wav file</li>
+<li>a text file containing the names and locations (the path) for the TextGrids to be processed</li>
+<li>a text file containing the names and locations (the path) for the wav files to be processed</li>
+</ul>
+<p>The TextGrid should contain at least one tier with an interval for every VOT to be processed. If you would like to run AutoVOT in one go, the label of the intervals to be processed should be the same (e.g., “vot” or “stop”). If you would like to run AutoVOT separately for each stop consonant (e.g., once for “p”, once for “t”, and once for “k”; there are good reasons for doing this), then see the full recipe below.</p>
+<p>The windows of analysis are the intervals surrounding the word-initial stop consonant that AutoVOT should process. You should make sure that the analysis window provides enough space before the start and after the end for the system to be able to identify the stop release (or burst) and the onset of voicing in the following segment.)</p>
+<p>As mentioned in the list above, the wav file needs to have a sampling rate of 16 kHz and single channel.</p>
+<p>The text files containing the paths and filenames to the TextGrids and wav files to be processed can be created manually or automatically. If you’d like to create them automatically, see step 4 in the Full Recipe section. The TextGrids and wav files need to be in the same order, and each filename needs to be on its own line. These two files need to be placed in <code>~/autovot/experiments/config/</code>.</p>
+<p>Once you’ve set up your TextGrids, wav files, and have created the lists of the filenames + paths, you should be ready to run AutoVOT. Before you run AutoVOT, make sure to navigate to the <code>experiments</code> folder and set the path to your <code>autovot/autovot/bin</code> folder.</p>
+<p>You’ll then run <code>auto_vot_decode.py</code> from the <code>experiments</code> folder with the following arguments:</p>
+<ul>
+<li>–window_tier <strong>name of the tier with your vot windows</strong></li>
+<li>–window_mark <strong>name of the label in your vot window intervals</strong></li>
+<li>–min_vot_length <strong>minimum vot length allowed in milliseconds</strong></li>
+<li>location of your list of wav files</li>
+<li>location of your list of TextGrids</li>
+<li>name of model (I typically use the model I specified below which is also located in your <code>autovot/autovot/bin/models/</code> folder)</li>
+</ul>
+<p>Example code for a voiceless stop (periodic reminder that backslashes shouldn’t be copied; these are just there as line breaks):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> experiments            </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:/Users/Eleanor/autovot/autovot/bin</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">auto_vot_decode.py</span> <span class="at">--window_tier</span> vot <span class="at">--window_mark</span> P <span class="at">--min_vot_length</span> 15 <span class="dt">\</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>config/ListWavFiles.txt config/ListTextGrids.txt <span class="dt">\</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>/Users/Eleanor/autovot/autovot/bin/models/vot_predictor.amanda.max_num_instances_1000.model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="full-recipe" class="level2">
+<h2 class="anchored" data-anchor-id="full-recipe">Full recipe</h2>
+<p>The recipe assumes that you have TextGrids containing the phone and word level transcriptions (e.g., Penn Forced Aligner output)! To run AutoVOT, the word-initial, prevocalic stop consonants need to be located and given a “window of analysis” in the TextGrid. The window of analysis is the interval surrounding the stop consonant that AutoVOT will process. This part of the tutorial will cover one method for accomplishing this.</p>
+<section id="create-a-list-of-word-initial-prevocalic-cv-words-in-your-transcript" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-list-of-word-initial-prevocalic-cv-words-in-your-transcript">1. Create a list of word-initial, prevocalic (CV) words in your transcript</h3>
+<p>There are many ways to accomplish this; the following is just one suggested way using some Unix and the P2FA dictionary. The following bash commands take multiple transcripts with the naming structure <code>S001.txt</code>, <code>S002.txt</code>, etc. as input, concatenates them, removes punctuation, puts each word on a new line, strips end of line characters, converts lowercase to uppercase, then removes duplicate words. The output of this is returned in the text file <code>fulltranscript_words.txt</code>. If you have a single transcript, you can replace <code>S*[0-9].txt</code> with the name of your transcript. Before running this code, you must direct the terminal (<code>cd</code>) to the directory housing your full transcript (<code>fulltranscript.txt</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> S<span class="pp">*</span>[0-9].txt <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'[:punct:]'</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="st">' '</span> <span class="st">'\n'</span> <span class="kw">|</span>  </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">'/^$/d'</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="st">'[a-z]'</span> <span class="st">'[A-Z]'</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="op">&gt;</span> transcript.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="https://www.eleanorchodroff.com/tutorial/scripts/matchText.py" target="_blank">matchText.py</a></p>
+<p><code>matchText.py</code> takes as input the CMU Pronouncing Dictionary with a ‘.txt’ extension. It identifies which of the words in your transcript begin with stop consonants in prevocalic position. These words are stored in the text file <code>wordList.txt</code>. You will need to modify the path locations and possibly the regular expression in <code>matchText.py</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run matchText.py</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> matchText.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="find-start-and-end-times-for-words-on-wordlist.txt-in-textgrids-with-phone--and-word--level-boundaries" class="level3">
+<h3 class="anchored" data-anchor-id="find-start-and-end-times-for-words-on-wordlist.txt-in-textgrids-with-phone--and-word--level-boundaries">2. Find start and end times for words on <code>wordList.txt</code> in TextGrids with phone- and word- level boundaries</h3>
+<p><a href="https://www.eleanorchodroff.com/tutorial/scripts/findWords.praat" target="_blank">findWords.praat</a> <code>findWords.praat</code> takes as input <a href="https://www.eleanorchodroff.com/tutorial/scripts/wordList.txt" target="_blank"><code>wordList.txt</code></a> and returns the start and end times of matching words in the audio file. This is stored in the text file <a href="https://www.eleanorchodroff.com/tutorial/scripts/CVWordLocations.txt" target="_blank"><code>CVWordLocations.txt</code></a>. You will need to modify the source and destination paths in <code>findWords.praat</code>. Verify that the regular expression in <code>‘Create Strings as file list…’</code> will work for your setup.</p>
+</section>
+<section id="create-autovot-intervals-on-a-new-tier-in-your-praat-textgrid" class="level3">
+<h3 class="anchored" data-anchor-id="create-autovot-intervals-on-a-new-tier-in-your-praat-textgrid">3. Create AutoVOT intervals on a new tier in your Praat TextGrid</h3>
+<p><a href="https://www.eleanorchodroff.com/tutorial/scripts/makeAutoVOTTextGrids.praat" target="_blank">makeAutoVOTTextGrids.praat</a></p>
+<p>This script takes as input the text file <code>CVWordLocations.txt</code> and the Penn Forced Aligner TextGrids. It adds an interval tier ‘vot’ and renames the TextGrids to <code>filename_allauto.TextGrid</code>. Because all stop consonants are word-initial, the start of the word is assumed to be the start of the stop consonant. The end of the stop consonant is identified using the interval on the phone tier that aligns with the start of the word. Those boundaries are then used to create an AutoVOT check interval on the new vot tier. If the stop consonant begins with PTK, then those boundaries are extended 31 ms in both directions. If the stop consonant begins with BDG, then the boundaries are extended 11 ms in both directions. The extra, odd millisecond is to reduce the chance of placing a boundary where one already exists. Note that the P2FA boundaries can only be placed at 10 ms intervals, so adding time at a factor of 10 ms results in overlapping/identical boundaries. The interval text is then set with the phone name (PTKBDG) after all boundaries have been created. This ensures that overlapping intervals will not be a problem. The output should look something like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/makeAutoVOTTextGrids.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Example TextGrid for AutoVOT</figcaption><p></p>
+</figure>
+</div>
+<p>The different labels in the ‘vot’ tier will have some consequences when running AutoVOT. The AutoVOT analysis depends on a consistent label for the intervals it needs to check. Since there are six different interval labels [PTKBDG], AutoVOT will need to be run six different times. For me, this is preferable, as I then know exactly which stop consonant was measured. For some, however, this may be too tedious. In that case, I still highly recommend running the voiced and voiceless stop consonants separately.</p>
+</section>
+<section id="make-a-list-of-your-textgrids-and-wav-files-and-move-them-the-lists-to-autovotexperimentsconfig" class="level3">
+<h3 class="anchored" data-anchor-id="make-a-list-of-your-textgrids-and-wav-files-and-move-them-the-lists-to-autovotexperimentsconfig">4. Make a list of your TextGrids and wav files and move them the lists to <code>autovot/experiments/config</code></h3>
+<p>The code below will generate a textfile located in the correct autovot folder that contains a list of the TextGrids with their path (<code>PWD</code> is the command that prints this). When generating these lists, the terminal must be in the directory that contains the TextGrids and wav files, respectively.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> experiment/myTextGrids  </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-d</span> <span class="at">-1</span> <span class="va">$PWD</span>/<span class="pp">*</span>_vot.TextGrid <span class="op">&gt;</span> ~/autovot/experiments/config/ListTextGrids.txt</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> experiment/myWavFiles</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-d</span> <span class="at">-1</span> <span class="va">$PWD</span>/<span class="pp">*</span>.wav <span class="op">&gt;</span> ~/autovot/experiments/config/ListWavFiles.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="run-autovot-from-the-terminal-on-one-stop-consonant" class="level3">
+<h3 class="anchored" data-anchor-id="run-autovot-from-the-terminal-on-one-stop-consonant">5. Run AutoVOT from the terminal on <strong>one</strong> stop consonant</h3>
+<p>Modify the arguments to <code>auto_vot_decode.py</code>: <code>window_mark</code> should be set to the stop consonant to be analyzed. We recommend setting <code>—min_vot_length</code> to 4 (ms) for voiced stops and 15 (ms) for voiceless stops. After each stop consonant, there is a post-processing step. Make sure to do that to avoid overwriting the AutoVOT output (see step 6)!</p>
+<p>Example code for a voiceless stop:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> experiments            </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:/Users/Eleanor/autovot/autovot/bin</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">auto_vot_decode.py</span> <span class="at">--window_tier</span> vot <span class="at">--window_mark</span> P <span class="at">--min_vot_length</span> 15 <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>config/ListWavFiles.txt config/ListTextGrids.txt <span class="dt">\</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>/Users/Eleanor/autovot/autovot/bin/models/vot_predictor.amanda.max_num_instances_1000.model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Example code for a voiced stop:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> experiments</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:/Users/Eleanor/autovot/autovot/bin</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">auto_vot_decode.py</span> <span class="at">--window_tier</span> vot <span class="at">--window_mark</span> B <span class="at">--min_vot_length</span> 4 <span class="dt">\</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>config/ListWavFiles.txt config/ListTextGrids.txt <span class="dt">\ </span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/Eleanor/autovot/autovot/bin/models/vot_predictor.amanda.max_num_instances_1000.model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The path (<code>export PATH=$PATH</code> command) should always be set from the <code>experiments</code> directory before running AutoVOT. I recommend the above argument specification, but the structure can also be modified to suit your particular dataset. The arguments in the AutoVOT decode command are listed here:</p>
+<ul>
+<li>–window_tier
+<ul>
+<li>This refers to the TextGrid tier that contains the intervals to check (or windows of analysis). The current procedure has called this tier ‘vot’</li>
+</ul></li>
+<li>–window_mark
+<ul>
+<li>This refers to the label of the interval to check. The current procedure has six different labels [PTKBDG], so this command will need to be run six times, once for each of these labels. After each run, the output tier will need to be renamed so that it is not overwritten.</li>
+</ul></li>
+<li>–min_vot_length
+<ul>
+<li>This refers to the minimum allowed VOT length. I would recommend 15ms for voiceless stops and 4ms for voiced stops, but this can be modified. It should be noted, however, that performance degrades on the voiceless stop measurements if the minimum VOT is too low. (This is why I recommend running AutoVOT separately for the voiced and voiceless stops.)</li>
+</ul></li>
+<li>Path from experiments to the list of wav files</li>
+<li>Path from experiments to the list of TextGrids</li>
+<li>Path to AutoVOT classifier
+<ul>
+<li>The default classifier is the one named <code>amanda</code>, but there are a few others you can try. While the <code>amanda</code> classifier is hidden to the user, the others are located in the <code>autovot/bin/models</code> folder. Alternatively, AutoVOT gives you the option to train your own classifier on labeled data. For more information on training, please visit their main website: <a href="https://github.com/mlml/autovot/" target="_blank">https://github.com/mlml/autovot/</a>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="rename-autovot-output-tier" class="level3">
+<h3 class="anchored" data-anchor-id="rename-autovot-output-tier">6. Rename AutoVOT output tier</h3>
+<p><a href="https://www.eleanorchodroff.com/tutorial/scripts/autoVOTpostproc.praat" target="_blank">autoVOTpostproc.praat</a></p>
+<p>After each stop consonant is processed, run <code>autoVOTpostproc.praat</code> to rename the AutoVOT output tier. Otherwise, AutoVOT will overwrite your previous work.</p>
+<p>Make sure to change the phone name in the script.</p>
+<p>Return to step 5 and repeat until all 6 stop consonants have been processed.You will need to modify the path to the TextGrids, the tier labels, and the new tier name. Once you have completed this, the cycle starts over until you have all six stops.</p>
+</section>
+<section id="move-all-autovot-boundaries-to-one-tier" class="level3">
+<h3 class="anchored" data-anchor-id="move-all-autovot-boundaries-to-one-tier">7. Move all AutoVOT boundaries to one tier</h3>
+<p><a href="https://www.eleanorchodroff.com/tutorial/scripts/resetBoundaries_stops.praat" target="_blank">resetBoundaries_stops.praat</a></p>
+<p>After running AutoVOT, you should now have a TextGrid with 6 different output tiers: one for each stop consonant. These tiers can be collapsed into one tier with resetBoundaries_stops.praat. You will need to modify the path directory. In addition, if your AutoVOT output does not occupy tiers 3-8, you will need to modify the tier numbers in the script.</p>
+<p>The final product should look like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/finalAutoVOT.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Example output TextGrid from AutoVOT</figcaption><p></p>
+</figure>
+</div>
+<p>This resembles the previous picture of the TextGrid, but note that the boundaries on the autovot tier are now located at the burst and vocalic onset in the signal.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you have manually placed/corrected boundaries, continue on. Otherwise, skip to step 11!</p>
+</div>
+</div>
+</section>
+<section id="stack-textgrids-with-manual-boundaries-and-the-autovot-boundaries" class="level3">
+<h3 class="anchored" data-anchor-id="stack-textgrids-with-manual-boundaries-and-the-autovot-boundaries">8. Stack TextGrids with manual boundaries and the AutoVOT boundaries</h3>
+<p><a href="https://www.eleanorchodroff.com/tutorial/scripts/stackTextGrids.praat" target="_blank">stackTextGrids.praat</a></p>
+<p>This script takes as input TextGrids with manual boundaries (we have two different types) and the AutoVOT TextGrids (<code>_stops.TextGrid</code>). It places all the tiers together in one TextGrid and renames the file <code>_stacked.TextGrid</code>.</p>
+<p>We have two different TextGrids with manual boundaries in them: <code>_autovot.TextGrid</code> and <code>_check.TextGrid</code>. Using the <code>_autovot</code> TextGrids was meant to eliminate bias from seeing the AutoVOT output. Those TextGrids only contain the window of analysis and not the final measurement. On the other hand, manual adjustments on the <code>_check</code> TextGrids were made directly to the AutoVOT output. This was for efficiency. Only the boundaries on the _autovot files were used for comparison to the AutoVOT output.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you want to compare AutoVOT and manual measurements, complete step 9; otherwise, continue on to step 10.</p>
+</div>
+</div>
+</section>
+<section id="compare-manual-and-automatic-boundaries" class="level3">
+<h3 class="anchored" data-anchor-id="compare-manual-and-automatic-boundaries">9. Compare manual and automatic boundaries</h3>
+<p><a href="https://www.eleanorchodroff.com/tutorial/scripts/measureVOT.praat" target="_blank">measureVOT.praat</a></p>
+<p>This script takes as input the <code>_stacked.TextGrid</code> and creates the file <code>manualVOTs.txt</code>.</p>
+</section>
+<section id="replace-automatic-boundaries-with-manual-ones-where-available" class="level3">
+<h3 class="anchored" data-anchor-id="replace-automatic-boundaries-with-manual-ones-where-available">10. Replace automatic boundaries with manual ones where available</h3>
+<p><a href="https://www.eleanorchodroff.com/tutorial/scripts/resetBoundaries_stacked.praat" target="_blank">resetBoundaries_stacked.praat</a></p>
+<p>This script takes as input the <code>_stacked.TextGrids</code> and creates as output <code>_stacked2.TextGrid</code>.</p>
+</section>
+<section id="measure-vot-and-sentence-rate" class="level3">
+<h3 class="anchored" data-anchor-id="measure-vot-and-sentence-rate">11. Measure VOT and sentence rate</h3>
+<p><a href="https://www.eleanorchodroff.com/tutorial/scripts/cueAnalysis_new.praat" target="_blank">cueAnalysis_new.praat</a></p>
+<p>This script measures the duration of each burst (positive VOT, if you will), following vowel, and word. It also measures the speaking rate, defined as the average word duration per sentence. The speaking rate component relies on there being two ‘sp’ or silent intervals between each sentence. If your data does not meet this criterion, you can modify the script to fit your data or simply comment out the speaking rate measurement. You will need to modify the path to the wav files and TextGrids.</p>
+
+
+<!-- -->
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{chodroff2022,
+  author = {Eleanor Chodroff},
+  title = {AutoVOT},
+  series = {Linguistics Methods Hub},
+  date = {2022-10-09},
+  url = {https://lingmethodshub.github.io/content/tools/autovot/autovot-tutorial},
+  doi = {10.5281/zenodo.7178545},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-chodroff2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Eleanor Chodroff. 2022, October 9. AutoVOT. <em>Linguistics Methods
+Hub</em>. (<a href="https://lingmethodshub.github.io/content/tools/autovot/autovot-tutorial">https://lingmethodshub.github.io/content/tools/autovot/autovot-tutorial</a>).
+doi: <a href="https://doi.org/10.5281/zenodo.7178545">10.5281/zenodo.7178545</a>
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../../content/tools/mfa/mfa-tutorial/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Montreal Forced Aligner</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "AutoVOT"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-10-9"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">  name: "Eleanor Chodroff"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">  url: "https://www.eleanorchodroff.com/"</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">  #orcid:</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">  #email:</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">  #affiliations:</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">    #name:</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">    #department:</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html: default</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA 4.0"</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="an">citation:</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">  container-title: "Linguistics Methods Hub"</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">  collection-title: "Linguistics Methods Hub"</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>**What does AutoVOT do?** AutoVOT takes a sound file and Praat TextGrid marked with the locations of word-initial, prevocalic stop consonants and creates a new tier with boundaries marking the stop consonant burst release and following vocalic onset. With these boundaries, positive VOT can be measured efficiently using a standard acoustic analysis program such as Praat.</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>What does it include? AutoVOT can be used via Praat directly or via the command line. The system comes with pre-trained acoustic models/classifiers for American English and British English word-initial, prevocalic VOTs. It also offers the option to train your own acoustic models from labeled training data.</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>As the online tutorial is extremely helpful, I will just offer a few tips from experience. You will first need to visit the online tutorial for the prerequisites and basic installation.</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>**Online tutorial and download:** <span class="co">[</span><span class="ot">https://github.com/mlml/autovot/</span><span class="co">](https://github.com/mlml/autovot/)</span>{target="_blank"}</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>Do follow the command line installation instructions closely. Note that there are several dependencies that you might have to download separately. Make sure to do this!</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>I was able to follow their instructions up until the <span class="in">`pip -r "requirements.txt"`</span> command. I did not have <span class="in">`pip`</span> installed on my computer, so I needed to install that separately. You might also run into this with <span class="in">`pip`</span> and possibly also <span class="in">`git`</span>. At least for <span class="in">`pip`</span>, I solved the problem in the following way:</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>First: install pip by typing the following into the command line (must be connected to the internet).</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> easy_install pip</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> pip install <span class="at">--upgrade</span> pip</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>Second: even after installing pip, I had trouble running their command of <span class="in">`pip -r "requirements.txt"`</span>, so I installed each package separately in the following way. These should again be typed into the command line (bash).</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install numpy</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install future</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install scipy</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install textgrid</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install argparse</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simple recipe</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>To run AutoVOT, you will need the following:</span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a TextGrid with an interval tier for the VOT "windows of analysis"</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>corresponding 16kHz mono wav file</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a text file containing the names and locations (the path) for the TextGrids to be processed</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a text file containing the names and locations (the path) for the wav files to be processed</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>The TextGrid should contain at least one tier with an interval for every VOT to be processed. If you would like to run AutoVOT in one go, the label of the intervals to be processed should be the same (e.g., "vot" or "stop"). If you would like to run AutoVOT separately for each stop consonant (e.g., once for "p", once for "t", and once for "k"; there are good reasons for doing this), then see the full recipe below.</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>The windows of analysis are the intervals surrounding the word-initial stop consonant that AutoVOT should process. You should make sure that the analysis window provides enough space before the start and after the end for the system to be able to identify the stop release (or burst) and the onset of voicing in the following segment.)</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>As mentioned in the list above, the wav file needs to have a sampling rate of 16 kHz and single channel.</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>The text files containing the paths and filenames to the TextGrids and wav files to be processed can be created manually or automatically. If you'd like to create them automatically, see step 4 in the Full Recipe section. The TextGrids and wav files need to be in the same order, and each filename needs to be on its own line. These two files need to be placed in <span class="in">`~/autovot/experiments/config/`</span>.</span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>Once you've set up your TextGrids, wav files, and have created the lists of the filenames + paths, you should be ready to run AutoVOT. Before you run AutoVOT, make sure to navigate to the <span class="in">`experiments`</span> folder and set the path to your <span class="in">`autovot/autovot/bin`</span> folder.</span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>You'll then run <span class="in">`auto_vot_decode.py`</span> from the <span class="in">`experiments`</span> folder with the following arguments:</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>--window_tier **name of the tier with your vot windows**</span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>--window_mark **name of the label in your vot window intervals**</span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>--min_vot_length **minimum vot length allowed in milliseconds**</span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>location of your list of wav files</span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>location of your list of TextGrids</span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>name of model (I typically use the model I specified below which is also located in your <span class="in">`autovot/autovot/bin/models/`</span> folder)</span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>Example code for a voiceless stop (periodic reminder that backslashes shouldn't be copied; these are just there as line breaks):</span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> experiments            </span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:/Users/Eleanor/autovot/autovot/bin</span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a><span class="ex">auto_vot_decode.py</span> <span class="at">--window_tier</span> vot <span class="at">--window_mark</span> P <span class="at">--min_vot_length</span> 15 <span class="dt">\</span></span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>config/ListWavFiles.txt config/ListTextGrids.txt <span class="dt">\</span></span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>/Users/Eleanor/autovot/autovot/bin/models/vot_predictor.amanda.max_num_instances_1000.model</span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a><span class="fu">## Full recipe</span></span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>The recipe assumes that you have TextGrids containing the phone and word level transcriptions (e.g., Penn Forced Aligner output)! To run AutoVOT, the word-initial, prevocalic stop consonants need to be located and given a "window of analysis" in the TextGrid. The window of analysis is the interval surrounding the stop consonant that AutoVOT will process. This part of the tutorial will cover one method for accomplishing this.</span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Create a list of word-initial, prevocalic (CV) words in your transcript</span></span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a>There are many ways to accomplish this; the following is just one suggested way using some Unix and the P2FA dictionary. The following bash commands take multiple transcripts with the naming structure <span class="in">`S001.txt`</span>, <span class="in">`S002.txt`</span>, etc. as input, concatenates them, removes punctuation, puts each word on a new line, strips end of line characters, converts lowercase to uppercase, then removes duplicate words. The output of this is returned in the text file <span class="in">`fulltranscript_words.txt`</span>. If you have a single transcript, you can replace <span class="in">`S*[0-9].txt`</span> with the name of your transcript. Before running this code, you must direct the terminal (<span class="in">`cd`</span>) to the directory housing your full transcript (<span class="in">`fulltranscript.txt`</span>).</span>
+<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> S<span class="pp">*</span>[0-9].txt <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">'[:punct:]'</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="st">' '</span> <span class="st">'\n'</span> <span class="kw">|</span>  </span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">'/^$/d'</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="st">'[a-z]'</span> <span class="st">'[A-Z]'</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="op">&gt;</span> transcript.txt</span>
+<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">matchText.py</span><span class="co">](https://www.eleanorchodroff.com/tutorial/scripts/matchText.py)</span>{target="_blank"}</span>
+<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a><span class="in">`matchText.py`</span> takes as input the CMU Pronouncing Dictionary with a '.txt' extension. It identifies which of the words in your transcript begin with stop consonants in prevocalic position. These words are stored in the text file <span class="in">`wordList.txt`</span>. You will need to modify the path locations and possibly the regular expression in <span class="in">`matchText.py`</span>.</span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a><span class="co"># run matchText.py</span></span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> matchText.py</span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Find start and end times for words on `wordList.txt` in TextGrids with phone- and word- level boundaries</span></span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">findWords.praat</span><span class="co">](https://www.eleanorchodroff.com/tutorial/scripts/findWords.praat)</span>{target="_blank"} `findWords.praat` takes as input [`wordList.txt`](https://www.eleanorchodroff.com/tutorial/scripts/wordList.txt){target="_blank"} and returns the start and end times of matching words in the audio file. This is stored in the text file [`CVWordLocations.txt`](https://www.eleanorchodroff.com/tutorial/scripts/CVWordLocations.txt){target="_blank"}. You will need to modify the source and destination paths in <span class="in">`findWords.praat`</span>. Verify that the regular expression in <span class="in">`‘Create Strings as file list…’`</span> will work for your setup.</span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Create AutoVOT intervals on a new tier in your Praat TextGrid</span></span>
+<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">makeAutoVOTTextGrids.praat</span><span class="co">](https://www.eleanorchodroff.com/tutorial/scripts/makeAutoVOTTextGrids.praat)</span>{target="_blank"}</span>
+<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a>This script takes as input the text file <span class="in">`CVWordLocations.txt`</span> and the Penn Forced Aligner TextGrids. It adds an interval tier 'vot' and renames the TextGrids to <span class="in">`filename_allauto.TextGrid`</span>. Because all stop consonants are word-initial, the start of the word is assumed to be the start of the stop consonant. The end of the stop consonant is identified using the interval on the phone tier that aligns with the start of the word. Those boundaries are then used to create an AutoVOT check interval on the new vot tier. If the stop consonant begins with PTK, then those boundaries are extended 31 ms in both directions. If the stop consonant begins with BDG, then the boundaries are extended 11 ms in both directions. The extra, odd millisecond is to reduce the chance of placing a boundary where one already exists. Note that the P2FA boundaries can only be placed at 10 ms intervals, so adding time at a factor of 10 ms results in overlapping/identical boundaries. The interval text is then set with the phone name (PTKBDG) after all boundaries have been created. This ensures that overlapping intervals will not be a problem. The output should look something like this:</span>
+<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a><span class="al">![Example TextGrid for AutoVOT](images/makeAutoVOTTextGrids.png)</span></span>
+<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a>The different labels in the 'vot' tier will have some consequences when running AutoVOT. The AutoVOT analysis depends on a consistent label for the intervals it needs to check. Since there are six different interval labels <span class="sc">\[</span>PTKBDG<span class="sc">\]</span>, AutoVOT will need to be run six different times. For me, this is preferable, as I then know exactly which stop consonant was measured. For some, however, this may be too tedious. In that case, I still highly recommend running the voiced and voiceless stop consonants separately.</span>
+<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4. Make a list of your TextGrids and wav files and move them the lists to `autovot/experiments/config`</span></span>
+<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a>The code below will generate a textfile located in the correct autovot folder that contains a list of the TextGrids with their path (<span class="in">`PWD`</span> is the command that prints this). When generating these lists, the terminal must be in the directory that contains the TextGrids and wav files, respectively.</span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> experiment/myTextGrids  </span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-d</span> <span class="at">-1</span> <span class="va">$PWD</span>/<span class="pp">*</span>_vot.TextGrid <span class="op">&gt;</span> ~/autovot/experiments/config/ListTextGrids.txt</span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> experiment/myWavFiles</span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-d</span> <span class="at">-1</span> <span class="va">$PWD</span>/<span class="pp">*</span>.wav <span class="op">&gt;</span> ~/autovot/experiments/config/ListWavFiles.txt</span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a><span class="fu">### 5. Run AutoVOT from the terminal on **one** stop consonant</span></span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a>Modify the arguments to <span class="in">`auto_vot_decode.py`</span>: <span class="in">`window_mark`</span> should be set to the stop consonant to be analyzed. We recommend setting <span class="in">`—min_vot_length`</span> to 4 (ms) for voiced stops and 15 (ms) for voiceless stops. After each stop consonant, there is a post-processing step. Make sure to do that to avoid overwriting the AutoVOT output (see step 6)!</span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a>Example code for a voiceless stop:</span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> experiments            </span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:/Users/Eleanor/autovot/autovot/bin</span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a><span class="ex">auto_vot_decode.py</span> <span class="at">--window_tier</span> vot <span class="at">--window_mark</span> P <span class="at">--min_vot_length</span> 15 <span class="dt">\</span></span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a>config/ListWavFiles.txt config/ListTextGrids.txt <span class="dt">\</span></span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a>/Users/Eleanor/autovot/autovot/bin/models/vot_predictor.amanda.max_num_instances_1000.model</span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a>Example code for a voiced stop:</span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> experiments</span>
+<span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:/Users/Eleanor/autovot/autovot/bin</span>
+<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a><span class="ex">auto_vot_decode.py</span> <span class="at">--window_tier</span> vot <span class="at">--window_mark</span> B <span class="at">--min_vot_length</span> 4 <span class="dt">\</span></span>
+<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a>config/ListWavFiles.txt config/ListTextGrids.txt <span class="dt">\ </span></span>
+<span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/Eleanor/autovot/autovot/bin/models/vot_predictor.amanda.max_num_instances_1000.model</span></span>
+<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a>The path (<span class="in">`export PATH=$PATH`</span> command) should always be set from the <span class="in">`experiments`</span> directory before running AutoVOT. I recommend the above argument specification, but the structure can also be modified to suit your particular dataset. The arguments in the AutoVOT decode command are listed here:</span>
+<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>--window_tier</span>
+<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>This refers to the TextGrid tier that contains the intervals to check (or windows of analysis). The current procedure has called this tier 'vot'</span>
+<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>--window_mark</span>
+<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>This refers to the label of the interval to check. The current procedure has six different labels <span class="sc">\[</span>PTKBDG<span class="sc">\]</span>, so this command will need to be run six times, once for each of these labels. After each run, the output tier will need to be renamed so that it is not overwritten.</span>
+<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>--min_vot_length</span>
+<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>This refers to the minimum allowed VOT length. I would recommend 15ms for voiceless stops and 4ms for voiced stops, but this can be modified. It should be noted, however, that performance degrades on the voiceless stop measurements if the minimum VOT is too low. (This is why I recommend running AutoVOT separately for the voiced and voiceless stops.)</span>
+<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Path from experiments to the list of wav files</span>
+<span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Path from experiments to the list of TextGrids</span>
+<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Path to AutoVOT classifier</span>
+<span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>The default classifier is the one named <span class="in">`amanda`</span>, but there are a few others you can try. While the <span class="in">`amanda`</span> classifier is hidden to the user, the others are located in the <span class="in">`autovot/bin/models`</span> folder. Alternatively, AutoVOT gives you the option to train your own classifier on labeled data. For more information on training, please visit their main website: <span class="co">[</span><span class="ot">https://github.com/mlml/autovot/</span><span class="co">](https://github.com/mlml/autovot/)</span>{target="_blank"}.</span>
+<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6. Rename AutoVOT output tier</span></span>
+<span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-203"><a href="#cb9-203" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">autoVOTpostproc.praat</span><span class="co">](https://www.eleanorchodroff.com/tutorial/scripts/autoVOTpostproc.praat)</span>{target="_blank"}</span>
+<span id="cb9-204"><a href="#cb9-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a>After each stop consonant is processed, run <span class="in">`autoVOTpostproc.praat`</span> to rename the AutoVOT output tier. Otherwise, AutoVOT will overwrite your previous work.</span>
+<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a>Make sure to change the phone name in the script.</span>
+<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a>Return to step 5 and repeat until all 6 stop consonants have been processed.You will need to modify the path to the TextGrids, the tier labels, and the new tier name. Once you have completed this, the cycle starts over until you have all six stops.</span>
+<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a><span class="fu">### 7. Move all AutoVOT boundaries to one tier</span></span>
+<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">resetBoundaries_stops.praat</span><span class="co">](https://www.eleanorchodroff.com/tutorial/scripts/resetBoundaries_stops.praat)</span>{target="_blank"}</span>
+<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a>After running AutoVOT, you should now have a TextGrid with 6 different output tiers: one for each stop consonant. These tiers can be collapsed into one tier with resetBoundaries_stops.praat. You will need to modify the path directory. In addition, if your AutoVOT output does not occupy tiers 3-8, you will need to modify the tier numbers in the script.</span>
+<span id="cb9-216"><a href="#cb9-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-217"><a href="#cb9-217" aria-hidden="true" tabindex="-1"></a>The final product should look like this:</span>
+<span id="cb9-218"><a href="#cb9-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-219"><a href="#cb9-219" aria-hidden="true" tabindex="-1"></a><span class="al">![Example output TextGrid from AutoVOT](images/finalAutoVOT.png)</span></span>
+<span id="cb9-220"><a href="#cb9-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-221"><a href="#cb9-221" aria-hidden="true" tabindex="-1"></a>This resembles the previous picture of the TextGrid, but note that the boundaries on the autovot tier are now located at the burst and vocalic onset in the signal.</span>
+<span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
+<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a>If you have manually placed/corrected boundaries, continue on. Otherwise, skip to step 11!</span>
+<span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-227"><a href="#cb9-227" aria-hidden="true" tabindex="-1"></a><span class="fu">### 8. Stack TextGrids with manual boundaries and the AutoVOT boundaries</span></span>
+<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-229"><a href="#cb9-229" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">stackTextGrids.praat</span><span class="co">](https://www.eleanorchodroff.com/tutorial/scripts/stackTextGrids.praat)</span>{target="_blank"}</span>
+<span id="cb9-230"><a href="#cb9-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-231"><a href="#cb9-231" aria-hidden="true" tabindex="-1"></a>This script takes as input TextGrids with manual boundaries (we have two different types) and the AutoVOT TextGrids (<span class="in">`_stops.TextGrid`</span>). It places all the tiers together in one TextGrid and renames the file <span class="in">`_stacked.TextGrid`</span>.</span>
+<span id="cb9-232"><a href="#cb9-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-233"><a href="#cb9-233" aria-hidden="true" tabindex="-1"></a>We have two different TextGrids with manual boundaries in them: <span class="in">`_autovot.TextGrid`</span> and <span class="in">`_check.TextGrid`</span>. Using the <span class="in">`_autovot`</span> TextGrids was meant to eliminate bias from seeing the AutoVOT output. Those TextGrids only contain the window of analysis and not the final measurement. On the other hand, manual adjustments on the <span class="in">`_check`</span> TextGrids were made directly to the AutoVOT output. This was for efficiency. Only the boundaries on the <span class="sc">\_</span>autovot files were used for comparison to the AutoVOT output.</span>
+<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-235"><a href="#cb9-235" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
+<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a>If you want to compare AutoVOT and manual measurements, complete step 9; otherwise, continue on to step 10.</span>
+<span id="cb9-237"><a href="#cb9-237" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a><span class="fu">### 9. Compare manual and automatic boundaries</span></span>
+<span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">measureVOT.praat</span><span class="co">](https://www.eleanorchodroff.com/tutorial/scripts/measureVOT.praat)</span>{target="_blank"}</span>
+<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a>This script takes as input the <span class="in">`_stacked.TextGrid`</span> and creates the file <span class="in">`manualVOTs.txt`</span>.</span>
+<span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a><span class="fu">### 10. Replace automatic boundaries with manual ones where available</span></span>
+<span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">resetBoundaries_stacked.praat</span><span class="co">](https://www.eleanorchodroff.com/tutorial/scripts/resetBoundaries_stacked.praat)</span>{target="_blank"}</span>
+<span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a>This script takes as input the <span class="in">`_stacked.TextGrids`</span> and creates as output <span class="in">`_stacked2.TextGrid`</span>.</span>
+<span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a><span class="fu">### 11. Measure VOT and sentence rate</span></span>
+<span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">cueAnalysis_new.praat</span><span class="co">](https://www.eleanorchodroff.com/tutorial/scripts/cueAnalysis_new.praat)</span>{target="_blank"}</span>
+<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a>This script measures the duration of each burst (positive VOT, if you will), following vowel, and word. It also measures the speaking rate, defined as the average word duration per sentence. The speaking rate component relies on there being two 'sp' or silent intervals between each sentence. If your data does not meet this criterion, you can modify the script to fit your data or simply comment out the speaking rate measurement. You will need to modify the path to the wav files and TextGrids.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
+
+
+<script src="../../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
