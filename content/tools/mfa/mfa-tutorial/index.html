@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.233">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eleanor Chodroff">
-<meta name="dcterms.date" content="2022-10-05">
+<meta name="dcterms.date" content="2023-01-22">
 
 <title>LingMethodsHub - Montreal Forced Aligner</title>
 <style>
@@ -176,12 +176,12 @@ cookieconsent.run({
 <meta name="twitter:card" content="summary_large_image">
 <meta name="citation_title" content="Montreal Forced Aligner">
 <meta name="citation_author" content="Eleanor Chodroff">
-<meta name="citation_publication_date" content="2022-10-05">
-<meta name="citation_cover_date" content="2022-10-05">
-<meta name="citation_year" content="2022">
-<meta name="citation_online_date" content="2022-10-05">
+<meta name="citation_publication_date" content="2023-01-22">
+<meta name="citation_cover_date" content="2023-01-22">
+<meta name="citation_year" content="2023">
+<meta name="citation_online_date" content="2023-01-22">
 <meta name="citation_fulltext_html_url" content="https://lingmethodshub.github.io/content/tools/mfa/mfa-tutorial">
-<meta name="citation_doi" content="10.5281/zenodo.7161015">
+<meta name="citation_doi" content="10.5281/zenodo.7591607">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Linguistics Methods Hub">
 <meta name="citation_series_title" content="Linguistics Methods Hub">
@@ -321,6 +321,31 @@ cookieconsent.run({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/090_lvcr.html" class="sidebar-item-text sidebar-link">Random Forests: The Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/110_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/112_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/114_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/lvc_r/116_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysisː Part 4</a>
   </div>
 </li>
       </ul>
@@ -464,7 +489,7 @@ cookieconsent.run({
   <li><a href="#train-a-g2p-model" id="toc-train-a-g2p-model" class="nav-link" data-scroll-target="#train-a-g2p-model">Train a G2P model</a></li>
   <li><a href="#create-the-dictionary-by-hand" id="toc-create-the-dictionary-by-hand" class="nav-link" data-scroll-target="#create-the-dictionary-by-hand">Create the dictionary by hand</a></li>
   </ul></li>
-  <li><a href="#sec-tipsandtricks" id="toc-sec-tipsandtricks" class="nav-link" data-scroll-target="#sec-tipsandtricks">Tips and tricks</a></li>
+  <li><a href="#tips-and-tricks" id="toc-tips-and-tricks" class="nav-link" data-scroll-target="#tips-and-tricks">Tips and tricks</a></li>
   </ul>
 </nav>
     </div>
@@ -490,7 +515,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 5, 2022</p>
+      <p class="date">January 22, 2023</p>
     </div>
   </div>
   
@@ -499,7 +524,7 @@ cookieconsent.run({
     <div class="quarto-title-meta-heading">Doi</div>
     <div class="quarto-title-meta-contents">
       <p class="doi">
-        <a href="https://doi.org/10.5281/zenodo.7161015">10.5281/zenodo.7161015</a>
+        <a href="https://doi.org/10.5281/zenodo.7591607">10.5281/zenodo.7591607</a>
       </p>
     </div>
   </div>
@@ -532,7 +557,7 @@ cookieconsent.run({
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> aligner <span class="at">-c</span> conda-forge montreal-forced-aligner</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>-n</code> flag here refers to the <em>name</em> of the environment. If you want to test a new version of the aligner, but aren’t ready to overwrite your old working version of the aligner, you can create a new environment using a different name after the <code>-n</code> flag. See <a href="#sec-tipsandtricks">Tips and Tricks</a> for more on conda environments. If it’s worked, you should see something like:</p>
+<p>The <code>-n</code> flag here refers to the <em>name</em> of the environment. If you want to test a new version of the aligner, but aren’t ready to overwrite your old working version of the aligner, you can create a new environment using a different name after the <code>-n</code> flag. See @ref(Tips and tricks) for more on conda environments. If it’s worked, you should see something like:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To activate this environment, use</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
@@ -581,8 +606,8 @@ cookieconsent.run({
 <p>The alignment command is called <code>align</code> and takes 4 arguments:</p>
 <ul>
 <li>path to the input folder</li>
-<li>name of the acoustic model (in the <code>Documents/MFA/pretrained_models/acoustic/</code> folder) / path to the acoustic model if it’s elsewhere on the computer</li>
 <li>name of the dictionary (in the <code>Documents/MFA/pretrained_models/dictionary/</code> folder) / path to the acoustic model if it’s elsewhere on the computer</li>
+<li>name of the acoustic model (in the <code>Documents/MFA/pretrained_models/acoustic/</code> folder) / path to the acoustic model if it’s elsewhere on the computer</li>
 <li>path to the output folder</li>
 </ul>
 <p>I always add the optional <code>--clean</code> flag as this “cleans” out any old temporary files created in a previous run. (If you’re anything like me, you might find yourself re-running the aligner a few times, and with the same input filename. The aligner won’t actually re-run properly unless you clear out the old files.)</p>
@@ -606,14 +631,16 @@ cookieconsent.run({
 <h3 class="anchored" data-anchor-id="filenames">Filenames</h3>
 <p>The filename of the <code>wav</code> file and its corresponding transcript must be identical except for the extension (<code>.wav</code> or <code>.TextGrid</code>). If you have multiple speakers in the alignment or training, you can actually implement some degree of speaker/channel adaptation. You can do this either by placing speaker-specific files in its own subfolder within the input folder, or by adding an optional argument to the <code>mfa align</code> command to use the first <code>n</code> characters of the filename.</p>
 <p>If you go forward with this, it helps to have the speaker ID as the prefix to the filenames. For example:</p>
-<pre><code>spkr01_utt1.wav, spkr01_utt1.TextGrid
-spkr01_utt2.wav, spkr01_utt2.TextGrid  
-spkr02_utt1.wav, spkr02_utt1.TextGrid  
-spkr02_utt2.wav, spkr02_utt2.TextGrid
-spkr03_utt1.wav, spkr03_utt1.TextGrid  
-spkr03_utt2.wav, spkr03_utt2.TextGrid  
-spkr04_utt1.wav, spkr04_utt1.TextGrid  
-spkr04_utt2.wav, spkr04_utt2.TextGrid</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr01_utt1.wav,</span> spkr01_utt1.TextGrid  </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr01_utt2.wav,</span> spkr01_utt2.TextGrid  </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr02_utt1.wav,</span> spkr02_utt1.TextGrid  </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr02_utt2.wav,</span> spkr02_utt2.TextGrid</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr03_utt1.wav,</span> spkr03_utt1.TextGrid  </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr03_utt2.wav,</span> spkr03_utt2.TextGrid  </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr04_utt1.wav,</span> spkr04_utt1.TextGrid  </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr04_utt2.wav,</span> spkr04_utt2.TextGrid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>In this case, we can then tell the aligner to use the first 6 characters as the speaker information. The <code>-s</code> flag stands for speaker characters.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> align <span class="at">-s</span> 6 <span class="at">--clean</span> /Users/Eleanor/input_english/ english_us_arpa english_us_arpa /Users/Eleanor/output_english/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -652,7 +679,7 @@ spkr04_utt2.wav, spkr04_utt2.TextGrid</code></pre>
 <p>If you would like to reuse the acoustic model, you can find all of the trained models (there are several – one for each layer of training) in the associated folder in <code>Documents/MFA/</code> and any folder ending in <code>_ali</code>. I would recommend using the acoustic model from the last training and alignment pass, which is the <code>sat2_ali</code> folder. <code>sat2_ali</code> stands for the second round of Speaker Adaptive Training — alignment pass.</p>
 <p>The <code>mfa model save acoustic</code> command takes one required argument, which is the path to the model you want to save, and an optional (but highly recommended) argument which is the new name of the acoustic model. The optional argument is specified after the <code>--name</code> flag:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model save acoustic <span class="at">--name</span> guarani_cv ~/Documents/MFA/prep_validated_guarani/sat2_ali/acoustic_model.zip </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model save acoustic <span class="at">--name</span> guarani_cv ~/Documents/MFA/mfainput4guarani/sat3_ali/acoustic_model.zip </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -705,8 +732,8 @@ spkr04_utt2.wav, spkr04_utt2.TextGrid</code></pre>
 <p>This one is self-explanatory, but once again, make sure to use the same phone set as the acoustic models.</p>
 </section>
 </section>
-<section id="sec-tipsandtricks" class="level2">
-<h2 class="anchored" data-anchor-id="sec-tipsandtricks">Tips and tricks</h2>
+<section id="tips-and-tricks" class="level2">
+<h2 class="anchored" data-anchor-id="tips-and-tricks">Tips and tricks</h2>
 <ul>
 <li>Add <code>-h</code> after any command to get a help screen that will also display its argument structure. For example:</li>
 </ul>
@@ -746,6 +773,22 @@ spkr04_utt2.wav, spkr04_utt2.TextGrid</code></pre>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model list dictionary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
+<li>You can check for problems with your corpus using the <code>validate</code> command. Such problems might include words in your TextGrids that are not listed in your dictionary, phones in your dictionary that do not have corresponding acoustic models, as well as general problems with your sound file (like a missing waveform – this has happened to me when an audio file got corrupted during download). Note that checking for audio file problems takes a lot longer, so I frequently add the optional <code>--ignore_acoustics</code> flag.</li>
+</ul>
+<p>The three arguments required by the validate command are:</p>
+<ul>
+<li>path to the corpus</li>
+<li>name of the dictionary</li>
+<li>name of the acoustic model</li>
+</ul>
+<p>If you don’t yet have an acoustic model (i.e., you’re running the validate command on the data you’re using to train an acoustic model), just put in any acoustic model as a placeholder and ignore any corresponding warnings about phones in your dictionary that are not in the acoustic model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> validate ~/Documents/myCorpus/mfainput4english/ english_us_arpa english_us_arpa </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> validate ~/Documents/myCorpus/mfainput4english/ english_us_arpa english_us_arpa <span class="at">--ignore_acoustics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>words that are not in your dictionary and problems with your sounds</p>
+<ul>
 <li>And finally, there is even more to the MFA than just what I’ve put here! Definitely poke around the MFA user guide to learn more and find special functions that might make your workflow even easier.</li>
 </ul>
 
@@ -754,19 +797,19 @@ spkr04_utt2.wav, spkr04_utt2.TextGrid</code></pre>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{chodroff2022,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{chodroff2023,
   author = {Eleanor Chodroff},
   title = {Montreal {Forced} {Aligner}},
   series = {Linguistics Methods Hub},
-  date = {2022-10-05},
+  date = {2023-01-22},
   url = {https://lingmethodshub.github.io/content/tools/mfa/mfa-tutorial},
-  doi = {10.5281/zenodo.7161015},
+  doi = {10.5281/zenodo.7591607},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-chodroff2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Eleanor Chodroff. 2022, October 5. Montreal Forced Aligner.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-chodroff2023" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Eleanor Chodroff. 2023, January 22. Montreal Forced Aligner.
 <em>Linguistics Methods Hub</em>. (<a href="https://lingmethodshub.github.io/content/tools/mfa/mfa-tutorial">https://lingmethodshub.github.io/content/tools/mfa/mfa-tutorial</a>).
-doi: <a href="https://doi.org/10.5281/zenodo.7161015">10.5281/zenodo.7161015</a>
+doi: <a href="https://doi.org/10.5281/zenodo.7591607">10.5281/zenodo.7591607</a>
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -964,333 +1007,333 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb21" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Montreal Forced Aligner"</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-10-5"</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - name: "Eleanor Chodroff"</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">    url: "https://www.eleanorchodroff.com/"</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">    #orcid:</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">    #email:</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">    #affiliations:</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co">      #name:</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co">      #department:</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html: default</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA 4.0"</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="an">citation:</span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co">  container-title: "Linguistics Methods Hub"</span></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="co">  collection-title: "Linguistics Methods Hub"</span></span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">Montreal Forced Aligner</span><span class="co">](https://montreal-forced-aligner.readthedocs.io/en/latest/index.html)</span>{target="_blank"} is a forced alignment system with acoustic models built using the [Kaldi ASR toolkit](https://eleanorchodroff.com/tutorial/kaldi/introduction.html){target="_blank"}. A major highlight of this system is the availability of pretrained acoustic models and grapheme-to-phoneme models for a wide variety of languages, as well as the ability to train acoustic and grapheme-to-phoneme models to any new dataset you might have. It also uses advanced techniques for training and aligning speech data (Kaldi) with a full suite of training and speaker adaptation algorithms. The basic acoustic model recipe uses the traditional GMM-HMM framework, starting with monophone models, then triphone models (which allow for context sensitivity, read: coarticulation), and some transformations and speaker adaptation along the way. You can check out more regarding the recipes in the <span class="co">[</span><span class="ot">MFA user guide and reference guide</span><span class="co">](https://montreal-forced-aligner.readthedocs.io/en/latest/)</span>; for an overview to a standard training recipe, check out this <span class="co">[</span><span class="ot">Kaldi tutorial</span><span class="co">](https://www.eleanorchodroff.com/tutorial/kaldi/training-overview.html)</span>.</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>As a forced alignment system, the Montreal Forced Aligner will time-align a transcript to a corresponding audio file at the phone and word levels provided there exist a set of pretrained acoustic models and a pronunciation dictionary (a.k.a. lexicon) of the words in the transcript with their canonical phonetic pronunciation(s).</span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>The current MFA download contains a suite of <span class="in">`mfa`</span> commands that allow you to do everything from basic forced alignment to grapheme-to-phoneme conversion to automatic speech recognition. In this tutorial, we'll be focusing mostly on those commands relating to forced alignment and a side of grapheme-to-phoneme conversion.</span>
-<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>Very generally, the procedure for forced alignment is as follows:</span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Prep audio file(s)</span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Prep transcript(s) (Praat <span class="in">`TextGrids`</span> or <span class="in">`.lab`</span>/<span class="in">`.txt`</span> files)</span>
-<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Obtain a pronunciation dictionary</span>
-<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Obtain an acoustic model</span>
-<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create an input folder that contains the audio files and transcripts</span>
-<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create an empty output folder</span>
-<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Run the <span class="in">`mfa align`</span> command</span>
-<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## Installation</span></span>
-<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>You can find the streamlined installation instructions on the <span class="co">[</span><span class="ot">main MFA installation page</span><span class="co">](https://montreal-forced-aligner.readthedocs.io/en/latest/installation.html)</span>. The majority of users will be following the "All platforms" instructions.</span>
-<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>As listed there, you will need to download Miniconda or Anaconda. If you're trying to decide between the two, I'd probably recommend Miniconda. Compared to Anaconda, Miniconda is smaller, and has a slightly higher success rate for installation. Conda is a package and environment management system. If you're familiar with R, the package management system is similar in concept to the R CRAN server. Once installed, you can import sets of packages via the <span class="in">`conda`</span> commands, similar to how you might run <span class="in">`install.packages`</span> in R. The environment manager aspect of conda is fairly unique, and essentially creates a small environment on your computer for the collection of imported packages (here the MFA suite) to run. The primary advantage is that you don't have to worry about conflicting versions of the same code package on your computer; the environment will be a bubble in your computer with the correct package versions for the MFA suite.</span>
-<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>Once you've installed Miniconda/Anaconda, you'll run the following line of code in the command line. For Mac users, the command line will be the terminal or a downloaded equivalent. For Windows users, *I believe* you will run this directly in the Miniconda console.</span>
-<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> aligner <span class="at">-c</span> conda-forge montreal-forced-aligner</span>
-<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a>The <span class="in">`-n`</span> flag here refers to the *name* of the environment. If you want to test a new version of the aligner, but aren't ready to overwrite your old working version of the aligner, you can create a new environment using a different name after the <span class="in">`-n`</span> flag. See <span class="co">[</span><span class="ot">Tips and Tricks</span><span class="co">](#sec-tipsandtricks)</span> for more on conda environments. If it's worked, you should see something like:</span>
-<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a><span class="co"># To activate this environment, use</span></span>
-<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a><span class="co">#     $ conda activate aligner</span></span>
-<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a><span class="co"># To deactivate an active environment, use</span></span>
-<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a><span class="co">#     $ conda deactivate</span></span>
-<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a>And with that, the final step is **activating** the aligner. You will need to re-activate the aligner every time you open a new shell/command line window. You should be able to see which environment you have open in the parentheses before each shell prompt. For example, mine looks like:</span>
-<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">Eleanors-iPro:Documents</span> eleanorchodroff$ conda activate aligner</span>
-<span id="cb21-75"><a href="#cb21-75" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">aligner</span><span class="kw">)</span> <span class="ex">Eleanors-iPro:Documents</span> eleanorchodroff$ </span>
-<span id="cb21-76"><a href="#cb21-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a>You can run the aligner from any location on the computer as long as you're in the aligner environment on the command line.</span>
-<span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a>**NB:** The Montreal Forced Aligner is now located in the <span class="in">`Documents/MFA`</span> folder. All acoustic models, dictionaries, temporary alignment or training files, etc. will be stored in this folder. If you are ever confused or curious about what is happening with the aligner, just poke around this folder.</span>
-<span id="cb21-81"><a href="#cb21-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-82"><a href="#cb21-82" aria-hidden="true" tabindex="-1"></a><span class="fu">## Running the aligner</span></span>
-<span id="cb21-83"><a href="#cb21-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-84"><a href="#cb21-84" aria-hidden="true" tabindex="-1"></a>To run the aligner, we'll need to follow this procedure:</span>
-<span id="cb21-85"><a href="#cb21-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Prep audio file(s)</span>
-<span id="cb21-87"><a href="#cb21-87" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Prep transcript(s) (Praat <span class="in">`TextGrids`</span> or <span class="in">`.lab`</span>/<span class="in">`.txt`</span> files)</span>
-<span id="cb21-88"><a href="#cb21-88" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Obtain a pronunciation dictionary</span>
-<span id="cb21-89"><a href="#cb21-89" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Obtain an acoustic model</span>
-<span id="cb21-90"><a href="#cb21-90" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create an input folder that contains the audio files and transcripts</span>
-<span id="cb21-91"><a href="#cb21-91" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create an empty output folder</span>
-<span id="cb21-92"><a href="#cb21-92" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Run the align command</span>
-<span id="cb21-93"><a href="#cb21-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-94"><a href="#cb21-94" aria-hidden="true" tabindex="-1"></a>In this section, I will give a quick example of how this works using a hypothetical example of aligning American English. Through this, you'll see the primary <span class="in">`mfa`</span> commands that you'll need for alignment. Then in the following sections, I'll go into more detail about each of these steps.</span>
-<span id="cb21-95"><a href="#cb21-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-96"><a href="#cb21-96" aria-hidden="true" tabindex="-1"></a>For the first steps of prepping the audio files and prepping the transcripts, I'll assume we're working with a <span class="in">`wav`</span> file and a Praat <span class="in">`TextGrid`</span> that has a single interval tier with utterances transcribed in English. We can have multiple intervals per <span class="in">`TextGrid`</span>. The <span class="in">`wav`</span> file and <span class="in">`TextGrid`</span> must have the same name.</span>
-<span id="cb21-97"><a href="#cb21-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-98"><a href="#cb21-98" aria-hidden="true" tabindex="-1"></a>After we have the audio files and transcript <span class="in">`TextGrids`</span>, we'll place them in an input folder. For the sake of this tutorial, this input folder will be called <span class="in">`Documents/input_english/`</span>.</span>
-<span id="cb21-99"><a href="#cb21-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-100"><a href="#cb21-100" aria-hidden="true" tabindex="-1"></a>We will also need to create an empty output folder. I will call this output folder <span class="in">`Documents/output_english`</span>.</span>
-<span id="cb21-101"><a href="#cb21-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-102"><a href="#cb21-102" aria-hidden="true" tabindex="-1"></a>We can then obtain the acoustic model from the internet (yes, you'll have to be online the first time you do this) using the following command:</span>
-<span id="cb21-103"><a href="#cb21-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-106"><a href="#cb21-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-107"><a href="#cb21-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-108"><a href="#cb21-108" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model download acoustic english_us_arpa</span>
-<span id="cb21-109"><a href="#cb21-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-110"><a href="#cb21-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-111"><a href="#cb21-111" aria-hidden="true" tabindex="-1"></a>(You can also use <span class="in">`mfa models download acoustic english_us_arpa`</span>.)</span>
-<span id="cb21-112"><a href="#cb21-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-113"><a href="#cb21-113" aria-hidden="true" tabindex="-1"></a>And we can obtain the dictionary from the internet using this command:</span>
-<span id="cb21-114"><a href="#cb21-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-117"><a href="#cb21-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-118"><a href="#cb21-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-119"><a href="#cb21-119" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model download dictionary english_us_arpa</span>
-<span id="cb21-120"><a href="#cb21-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-121"><a href="#cb21-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-122"><a href="#cb21-122" aria-hidden="true" tabindex="-1"></a>(You can also use <span class="in">`mfa models download dictionary english_us_arpa`</span>.)</span>
-<span id="cb21-123"><a href="#cb21-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-124"><a href="#cb21-124" aria-hidden="true" tabindex="-1"></a>The dictionary and acoustic model can now be found in their respective <span class="in">`Documents/MFA/pretrained_models/`</span> folders.</span>
-<span id="cb21-125"><a href="#cb21-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-126"><a href="#cb21-126" aria-hidden="true" tabindex="-1"></a>Once we have the dictionary, acoustic model, <span class="in">`wav`</span> files and <span class="in">`TextGrids`</span> in their input folder, and an empty output folder, then we're ready to run the aligner!</span>
-<span id="cb21-127"><a href="#cb21-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-128"><a href="#cb21-128" aria-hidden="true" tabindex="-1"></a>The alignment command is called <span class="in">`align`</span> and takes 4 arguments:</span>
-<span id="cb21-129"><a href="#cb21-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-130"><a href="#cb21-130" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the input folder</span>
-<span id="cb21-131"><a href="#cb21-131" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>name of the acoustic model (in the <span class="in">`Documents/MFA/pretrained_models/acoustic/`</span> folder) / path to the acoustic model if it's elsewhere on the computer</span>
-<span id="cb21-132"><a href="#cb21-132" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>name of the dictionary (in the <span class="in">`Documents/MFA/pretrained_models/dictionary/`</span> folder) / path to the acoustic model if it's elsewhere on the computer</span>
-<span id="cb21-133"><a href="#cb21-133" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the output folder</span>
-<span id="cb21-134"><a href="#cb21-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-135"><a href="#cb21-135" aria-hidden="true" tabindex="-1"></a>I always add the optional <span class="in">`--clean`</span> flag as this "cleans" out any old temporary files created in a previous run. (If you're anything like me, you might find yourself re-running the aligner a few times, and with the same input filename. The aligner won't actually re-run properly unless you clear out the old files.)</span>
-<span id="cb21-136"><a href="#cb21-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-137"><a href="#cb21-137" aria-hidden="true" tabindex="-1"></a>**Important:** You will need to scroll across to see the whole line of code.</span>
-<span id="cb21-138"><a href="#cb21-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-141"><a href="#cb21-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-142"><a href="#cb21-142" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-143"><a href="#cb21-143" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> align <span class="at">--clean</span> /Users/Eleanor/Documents/input_english/ english_us_arpa english_us_arpa /Users/Eleanor/Documents/output_english/</span>
-<span id="cb21-144"><a href="#cb21-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-145"><a href="#cb21-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-146"><a href="#cb21-146" aria-hidden="true" tabindex="-1"></a>And if everything worked appropriately, your aligned <span class="in">`TextGrids`</span> should now be in the <span class="in">`Documents/output_english/`</span> folder!</span>
-<span id="cb21-147"><a href="#cb21-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-148"><a href="#cb21-148" aria-hidden="true" tabindex="-1"></a><span class="fu">## File preparation</span></span>
-<span id="cb21-149"><a href="#cb21-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-150"><a href="#cb21-150" aria-hidden="true" tabindex="-1"></a><span class="fu">### Audio files</span></span>
-<span id="cb21-151"><a href="#cb21-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-152"><a href="#cb21-152" aria-hidden="true" tabindex="-1"></a>The Montreal Forced Aligner is incredibly robust to audio files of differing formats, sampling rates and channels. You should not have to do much prep, but note that whatever you feed the system will be converted to be a <span class="in">`wav`</span> file with a sampling rate of 16 kHz with a single (mono) channel unless otherwise specified (see <span class="co">[</span><span class="ot">Feature Configuration</span><span class="co">](https://montreal-forced-aligner.readthedocs.io/en/latest/user_guide/configuration/global.html##feature-config)</span>. For the record, I have not yet tried any other file format except for <span class="in">`wav`</span> files, so I'm not yet aware of potential issues that might arise there.</span>
-<span id="cb21-153"><a href="#cb21-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-154"><a href="#cb21-154" aria-hidden="true" tabindex="-1"></a><span class="fu">### Transcripts</span></span>
-<span id="cb21-155"><a href="#cb21-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-156"><a href="#cb21-156" aria-hidden="true" tabindex="-1"></a>The MFA can take as input either a Praat <span class="in">`TextGrid`</span> or a <span class="in">`.lab`</span> or <span class="in">`.txt`</span> file. I have worked most extensively with the <span class="in">`TextGrid`</span> input, so I'll describe those details here. As for <span class="in">`.lab`</span> and <span class="in">`.txt`</span> input, I believe this method only works when the transcript is pasted in as a single line. In other words, I don't think it can handle time stamps for utterance start and end times.</span>
-<span id="cb21-157"><a href="#cb21-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-158"><a href="#cb21-158" aria-hidden="true" tabindex="-1"></a><span class="fu">### Filenames</span></span>
-<span id="cb21-159"><a href="#cb21-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-160"><a href="#cb21-160" aria-hidden="true" tabindex="-1"></a>The filename of the <span class="in">`wav`</span> file and its corresponding transcript must be identical except for the extension (<span class="in">`.wav`</span> or <span class="in">`.TextGrid`</span>). If you have multiple speakers in the alignment or training, you can actually implement some degree of speaker/channel adaptation. You can do this either by placing speaker-specific files in its own subfolder within the input folder, or by adding an optional argument to the <span class="in">`mfa align`</span> command to use the first <span class="in">`n`</span> characters of the filename.</span>
-<span id="cb21-161"><a href="#cb21-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-162"><a href="#cb21-162" aria-hidden="true" tabindex="-1"></a>If you go forward with this, it helps to have the speaker ID as the prefix to the filenames. For example:</span>
-<span id="cb21-163"><a href="#cb21-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-164"><a href="#cb21-164" aria-hidden="true" tabindex="-1"></a><span class="in">    spkr01_utt1.wav, spkr01_utt1.TextGrid</span></span>
-<span id="cb21-165"><a href="#cb21-165" aria-hidden="true" tabindex="-1"></a><span class="in">    spkr01_utt2.wav, spkr01_utt2.TextGrid  </span></span>
-<span id="cb21-166"><a href="#cb21-166" aria-hidden="true" tabindex="-1"></a><span class="in">    spkr02_utt1.wav, spkr02_utt1.TextGrid  </span></span>
-<span id="cb21-167"><a href="#cb21-167" aria-hidden="true" tabindex="-1"></a><span class="in">    spkr02_utt2.wav, spkr02_utt2.TextGrid</span></span>
-<span id="cb21-168"><a href="#cb21-168" aria-hidden="true" tabindex="-1"></a><span class="in">    spkr03_utt1.wav, spkr03_utt1.TextGrid  </span></span>
-<span id="cb21-169"><a href="#cb21-169" aria-hidden="true" tabindex="-1"></a><span class="in">    spkr03_utt2.wav, spkr03_utt2.TextGrid  </span></span>
-<span id="cb21-170"><a href="#cb21-170" aria-hidden="true" tabindex="-1"></a><span class="in">    spkr04_utt1.wav, spkr04_utt1.TextGrid  </span></span>
-<span id="cb21-171"><a href="#cb21-171" aria-hidden="true" tabindex="-1"></a><span class="in">    spkr04_utt2.wav, spkr04_utt2.TextGrid</span></span>
-<span id="cb21-172"><a href="#cb21-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-173"><a href="#cb21-173" aria-hidden="true" tabindex="-1"></a>In this case, we can then tell the aligner to use the first 6 characters as the speaker information. The <span class="in">`-s`</span> flag stands for speaker characters.</span>
-<span id="cb21-174"><a href="#cb21-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-177"><a href="#cb21-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-178"><a href="#cb21-178" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-179"><a href="#cb21-179" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> align <span class="at">-s</span> 6 <span class="at">--clean</span> /Users/Eleanor/input_english/ english_us_arpa english_us_arpa /Users/Eleanor/output_english/</span>
-<span id="cb21-180"><a href="#cb21-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-181"><a href="#cb21-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-182"><a href="#cb21-182" aria-hidden="true" tabindex="-1"></a>Alternatively:</span>
-<span id="cb21-183"><a href="#cb21-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-186"><a href="#cb21-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-187"><a href="#cb21-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-188"><a href="#cb21-188" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> align <span class="at">--speaker_characters</span> 6 <span class="at">--clean</span> /Users/Eleanor/input_english/ english_us_arpa english_us_arpa /Users/Eleanor/output_english/</span>
-<span id="cb21-189"><a href="#cb21-189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-190"><a href="#cb21-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-191"><a href="#cb21-191" aria-hidden="true" tabindex="-1"></a><span class="fu">### Input and output folders</span></span>
-<span id="cb21-192"><a href="#cb21-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-193"><a href="#cb21-193" aria-hidden="true" tabindex="-1"></a>I would recommend creating a special input folder that houses a copy of your audio files and <span class="in">`TextGrid`</span> transcripts. In case something goes wrong, you won't be messing up the raw data. You can place this folder basically anywhere on your computer, and you can call this whatever you want.</span>
-<span id="cb21-194"><a href="#cb21-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-195"><a href="#cb21-195" aria-hidden="true" tabindex="-1"></a>You will also need to create an empty output folder. I recommend making sure this is empty each time you run the aligner as the aligner does not overwrite any existing files. You can place this folder basically anywhere on your computer, and you can call this whatever you want; however, you may not re-use the input folder as the output folder.</span>
-<span id="cb21-196"><a href="#cb21-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-197"><a href="#cb21-197" aria-hidden="true" tabindex="-1"></a><span class="fu">## Obtaining acoustic models</span></span>
-<span id="cb21-198"><a href="#cb21-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-199"><a href="#cb21-199" aria-hidden="true" tabindex="-1"></a><span class="fu">### Download an acoustic model</span></span>
-<span id="cb21-200"><a href="#cb21-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-201"><a href="#cb21-201" aria-hidden="true" tabindex="-1"></a>Pretrained acoustic models for several languages can be downloaded directly using the command line interface. This is the <span class="co">[</span><span class="ot">master list</span><span class="co">](https://mfa-models.readthedocs.io/en/latest/acoustic/index.html)</span> of acoustic models available for download.</span>
-<span id="cb21-202"><a href="#cb21-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-203"><a href="#cb21-203" aria-hidden="true" tabindex="-1"></a><span class="fu">### Train an acoustic model</span></span>
-<span id="cb21-204"><a href="#cb21-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-205"><a href="#cb21-205" aria-hidden="true" tabindex="-1"></a>You can also train an acoustic model yourself directly on the data you're working on. You do need a fair amount of data to get reasonable alignments out. If an existing acoustic model already exists, it might be worth simply using that directly on your data or you could try <span class="co">[</span><span class="ot">adapting</span><span class="co">](https://montreal-forced-aligner.readthedocs.io/en/latest/user_guide/workflows/adapt_acoustic_model.html)</span> the model to your data. There are many cases, however, when training a new acoustic model is the best path forward.</span>
-<span id="cb21-206"><a href="#cb21-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-207"><a href="#cb21-207" aria-hidden="true" tabindex="-1"></a>The <span class="in">`mfa train`</span> command takes 3 arguments:</span>
-<span id="cb21-208"><a href="#cb21-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-209"><a href="#cb21-209" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the input folder with the audio files and utterance-level transcripts (<span class="in">`TextGrids`</span>)</span>
-<span id="cb21-210"><a href="#cb21-210" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>name of the pronunciation dictionary in the <span class="in">`pretrained_models`</span> folder or path to the pronunciation dictionary</span>
-<span id="cb21-211"><a href="#cb21-211" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the output folder (it still runs an alignment at the end)</span>
-<span id="cb21-212"><a href="#cb21-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-213"><a href="#cb21-213" aria-hidden="true" tabindex="-1"></a>In other words, <span class="in">`mfa train`</span> has the same syntax and requirements as the <span class="in">`mfa align`</span> command, but without the acoustic model specification.</span>
-<span id="cb21-214"><a href="#cb21-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-217"><a href="#cb21-217" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-218"><a href="#cb21-218" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-219"><a href="#cb21-219" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> train <span class="at">--clean</span> ~/Documents/input_spanish ~/Documents/talnupf_spanish.txt ~/Documents/output_spanish_textgrids</span>
-<span id="cb21-220"><a href="#cb21-220" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-221"><a href="#cb21-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-222"><a href="#cb21-222" aria-hidden="true" tabindex="-1"></a>Once again, I'm using the <span class="in">`--clean`</span> flag just in case I need to clean out an old folder in <span class="in">`Documents/MFA`</span>.</span>
-<span id="cb21-223"><a href="#cb21-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-224"><a href="#cb21-224" aria-hidden="true" tabindex="-1"></a>If you would like to reuse the acoustic model, you can find all of the trained models (there are several -- one for each layer of training) in the associated folder in <span class="in">`Documents/MFA/`</span> and any folder ending in <span class="in">`_ali`</span>. I would recommend using the acoustic model from the last training and alignment pass, which is the <span class="in">`sat2_ali`</span> folder. <span class="in">`sat2_ali`</span> stands for the second round of Speaker Adaptive Training --- alignment pass.</span>
-<span id="cb21-225"><a href="#cb21-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-226"><a href="#cb21-226" aria-hidden="true" tabindex="-1"></a>The <span class="in">`mfa model save acoustic`</span> command takes one required argument, which is the path to the model you want to save, and an optional (but highly recommended) argument which is the new name of the acoustic model. The optional argument is specified after the <span class="in">`--name`</span> flag:</span>
-<span id="cb21-227"><a href="#cb21-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-230"><a href="#cb21-230" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-231"><a href="#cb21-231" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-232"><a href="#cb21-232" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model save acoustic <span class="at">--name</span> guarani_cv ~/Documents/MFA/prep_validated_guarani/sat2_ali/acoustic_model.zip </span>
-<span id="cb21-233"><a href="#cb21-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-234"><a href="#cb21-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-235"><a href="#cb21-235" aria-hidden="true" tabindex="-1"></a><span class="fu">## Obtaining dictionaries</span></span>
-<span id="cb21-236"><a href="#cb21-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-237"><a href="#cb21-237" aria-hidden="true" tabindex="-1"></a>The pronunciation dictionary must be a two column text file with a list of words on the left-hand side and the phonetic pronunciation(s) on the right-hand side. Each word should be separated from its phonetic pronunciation by a tab, and each phone in the phonetic pronunciation should be separated by a space. Many-to-many mappings between words and pronunciations are permitted. In fact, you can even add <span class="co">[</span><span class="ot">pronunciation probabilities</span><span class="co">](https://montreal-forced-aligner.readthedocs.io/en/latest/user_guide/workflows/training_dictionary.html)</span> to the dictionary, but I have not yet tried this!</span>
-<span id="cb21-238"><a href="#cb21-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-239"><a href="#cb21-239" aria-hidden="true" tabindex="-1"></a>One important point: the phone set in your dictionary must match that used in the acoustic models and the orthography must match that in the transcripts.</span>
-<span id="cb21-240"><a href="#cb21-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-241"><a href="#cb21-241" aria-hidden="true" tabindex="-1"></a>There are a few options for obtaining a pronunciation dictionary:</span>
-<span id="cb21-242"><a href="#cb21-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-243"><a href="#cb21-243" aria-hidden="true" tabindex="-1"></a><span class="fu">### Download a dictionary</span></span>
-<span id="cb21-244"><a href="#cb21-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-245"><a href="#cb21-245" aria-hidden="true" tabindex="-1"></a>This is the <span class="co">[</span><span class="ot">master list</span><span class="co">](https://mfa-models.readthedocs.io/en/latest/dictionary/index.html)</span> of pre-existing pronunciation dictionaries available through the MFA. Click on the dictionary of interest, and if you scroll to the bottom of the page, it will tell you the name to type in the <span class="in">`mfa model download dictionary`</span> command.</span>
-<span id="cb21-246"><a href="#cb21-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-249"><a href="#cb21-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-250"><a href="#cb21-250" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-251"><a href="#cb21-251" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model download dictionary spanish_latin_america_mfa</span>
-<span id="cb21-252"><a href="#cb21-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-253"><a href="#cb21-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-254"><a href="#cb21-254" aria-hidden="true" tabindex="-1"></a>NB: you must add any missing words in your corpus manually, or train a G2P model to handle these cases.</span>
-<span id="cb21-255"><a href="#cb21-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-256"><a href="#cb21-256" aria-hidden="true" tabindex="-1"></a><span class="fu">### Generate a dictionary using a G2P model</span></span>
-<span id="cb21-257"><a href="#cb21-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-258"><a href="#cb21-258" aria-hidden="true" tabindex="-1"></a>Grapheme-to-phoneme (G2P) models automatically convert the orthographic words in your corpus to the most likely phonetic pronunciation. How exactly it does this depends a lot on the type of model and its training data.</span>
-<span id="cb21-259"><a href="#cb21-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-260"><a href="#cb21-260" aria-hidden="true" tabindex="-1"></a>The MFA has a handful of pretrained G2P models that you can download. This is the <span class="co">[</span><span class="ot">master list</span><span class="co">](https://mfa-models.readthedocs.io/en/latest/g2p/index.html)</span> of G2P models available for download.</span>
-<span id="cb21-261"><a href="#cb21-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-264"><a href="#cb21-264" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-265"><a href="#cb21-265" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-266"><a href="#cb21-266" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model download g2p bulgarian_mfa</span>
-<span id="cb21-267"><a href="#cb21-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-268"><a href="#cb21-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-269"><a href="#cb21-269" aria-hidden="true" tabindex="-1"></a>You'll then use the <span class="in">`mfa g2p`</span> command to generate the phonetic transcriptions from the submitted orthographic forms and the g2p model. The <span class="in">`mfa g2p`</span> command takes 3 arguments:</span>
-<span id="cb21-270"><a href="#cb21-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-271"><a href="#cb21-271" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>name of g2p model (in <span class="in">`Documents/MFA/pretrained_models/g2p/`</span>)</span>
-<span id="cb21-272"><a href="#cb21-272" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the <span class="in">`TextGrids`</span> or transcripts in your corpus</span>
-<span id="cb21-273"><a href="#cb21-273" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to where the new pronunciation dictionary should go</span>
-<span id="cb21-274"><a href="#cb21-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-277"><a href="#cb21-277" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-278"><a href="#cb21-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-279"><a href="#cb21-279" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> g2p <span class="at">--clean</span> bulgarian_mfa ~/Desktop/romanian/TextGrids_with_new_words/ ~/Desktop/new_bulgarian_dictionary.txt</span>
-<span id="cb21-280"><a href="#cb21-280" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-281"><a href="#cb21-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-282"><a href="#cb21-282" aria-hidden="true" tabindex="-1"></a>You can also use an external resource like <span class="co">[</span><span class="ot">Epitran</span><span class="co">](https://github.com/dmort27/epitran)</span> or <span class="co">[</span><span class="ot">XPF</span><span class="co">](https://cohenpr-xpf.github.io/XPF/Convert-to-IPA.html)</span> to generate a dictionary for you. These are both rule-based G2P systems built by linguists; these systems work to varying degrees of success.</span>
-<span id="cb21-283"><a href="#cb21-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-284"><a href="#cb21-284" aria-hidden="true" tabindex="-1"></a>In all cases, you're best off checking the output. Remember that the phone set in the dictionary must entirely match the phone set in the acoustic model.</span>
-<span id="cb21-285"><a href="#cb21-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-286"><a href="#cb21-286" aria-hidden="true" tabindex="-1"></a><span class="fu">### Train a G2P model</span></span>
-<span id="cb21-287"><a href="#cb21-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-288"><a href="#cb21-288" aria-hidden="true" tabindex="-1"></a>You can also train a G2P model on an existing pronunciation dictionary. Once you've trained the G2P model, you'll need to jump back up to the generate dictionary instructions just above. This might be useful in cases when you have many unlisted orthographic forms that are still in need of a phonetic transcription.</span>
-<span id="cb21-289"><a href="#cb21-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-290"><a href="#cb21-290" aria-hidden="true" tabindex="-1"></a>The <span class="in">`mfa train_g2p`</span> command has 2 arguments:</span>
-<span id="cb21-291"><a href="#cb21-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-292"><a href="#cb21-292" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the training data pronunciation lexicon</span>
-<span id="cb21-293"><a href="#cb21-293" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to where the trained G2P model should go</span>
-<span id="cb21-294"><a href="#cb21-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-297"><a href="#cb21-297" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-298"><a href="#cb21-298" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-299"><a href="#cb21-299" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> train_g2p ~/Desktop/romanian/romanian_lexicon.txt ~/Desktop/romanian/romanian_g2p</span>
-<span id="cb21-300"><a href="#cb21-300" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-301"><a href="#cb21-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-302"><a href="#cb21-302" aria-hidden="true" tabindex="-1"></a><span class="fu">### Create the dictionary by hand</span></span>
-<span id="cb21-303"><a href="#cb21-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-304"><a href="#cb21-304" aria-hidden="true" tabindex="-1"></a>This one is self-explanatory, but once again, make sure to use the same phone set as the acoustic models.</span>
-<span id="cb21-305"><a href="#cb21-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-306"><a href="#cb21-306" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tips and tricks {#sec-tipsandtricks}</span></span>
-<span id="cb21-307"><a href="#cb21-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-308"><a href="#cb21-308" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Add <span class="in">`-h`</span> after any command to get a help screen that will also display its argument structure. For example:</span>
-<span id="cb21-309"><a href="#cb21-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-312"><a href="#cb21-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-313"><a href="#cb21-313" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-314"><a href="#cb21-314" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> align <span class="at">-h</span></span>
-<span id="cb21-315"><a href="#cb21-315" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> train <span class="at">-h</span></span>
-<span id="cb21-316"><a href="#cb21-316" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-317"><a href="#cb21-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-318"><a href="#cb21-318" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use the <span class="in">`--clean`</span> flag each time you run the <span class="in">`align`</span> command</span>
-<span id="cb21-319"><a href="#cb21-319" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Don't forget to activate the aligner</span>
-<span id="cb21-320"><a href="#cb21-320" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Make sure the output folder is empty each time you run the <span class="in">`align`</span> command</span>
-<span id="cb21-321"><a href="#cb21-321" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The input and output folders must be different folders</span>
-<span id="cb21-322"><a href="#cb21-322" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Many users have trouble reading/writing files to the Desktop folder. If you're having issues using the Desktop, just switch to a different folder like Documents, or Google how to change the read/write permissions on your Desktop folder</span>
-<span id="cb21-323"><a href="#cb21-323" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>And a little more on conda:</span>
-<span id="cb21-324"><a href="#cb21-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-325"><a href="#cb21-325" aria-hidden="true" tabindex="-1"></a>If you have created multiple environments, you can list all of your environments using the following command:</span>
-<span id="cb21-326"><a href="#cb21-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-329"><a href="#cb21-329" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-330"><a href="#cb21-330" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-331"><a href="#cb21-331" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> info <span class="at">--envs</span></span>
-<span id="cb21-332"><a href="#cb21-332" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-333"><a href="#cb21-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-334"><a href="#cb21-334" aria-hidden="true" tabindex="-1"></a>You can delete an environment with the following command, where ENV_NAME is the name of the environment, like <span class="in">`aligner`</span>. Make sure that you have deactivated the environment before deleting it.</span>
-<span id="cb21-335"><a href="#cb21-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-338"><a href="#cb21-338" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-339"><a href="#cb21-339" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-340"><a href="#cb21-340" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span>
-<span id="cb21-341"><a href="#cb21-341" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">-n</span> ENV_NAME</span>
-<span id="cb21-342"><a href="#cb21-342" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-343"><a href="#cb21-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-344"><a href="#cb21-344" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>You can inspect the details of any local acoustic model or dictionary using the <span class="in">`mfa model inspect`</span> commands. One of the important outputs of this is the assumed phone set:</span>
-<span id="cb21-345"><a href="#cb21-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-348"><a href="#cb21-348" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-349"><a href="#cb21-349" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-350"><a href="#cb21-350" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model inspect acoustic english_us_arpa</span>
-<span id="cb21-351"><a href="#cb21-351" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model inspect dictionary english_us_arpa</span>
-<span id="cb21-352"><a href="#cb21-352" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-353"><a href="#cb21-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-354"><a href="#cb21-354" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>You can get a list of the local acoustic models and dictionaries in your <span class="in">`Documents/MFA/pretrained_models/`</span> folders using the <span class="in">`mfa model list`</span> commands:</span>
-<span id="cb21-355"><a href="#cb21-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-358"><a href="#cb21-358" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb21-359"><a href="#cb21-359" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb21-360"><a href="#cb21-360" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model list acoustic</span>
-<span id="cb21-361"><a href="#cb21-361" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model list dictionary</span>
-<span id="cb21-362"><a href="#cb21-362" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-363"><a href="#cb21-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-364"><a href="#cb21-364" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>And finally, there is even more to the MFA than just what I've put here! Definitely poke around the MFA user guide to learn more and find special functions that might make your workflow even easier.</span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Montreal Forced Aligner"</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2023-01-22"</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - name: "Eleanor Chodroff"</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">    url: "https://www.eleanorchodroff.com/"</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">    #orcid:</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">    #email:</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co">    #affiliations:</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">      #name:</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">      #department:</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html: default</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA 4.0"</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="an">citation:</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co">  container-title: "Linguistics Methods Hub"</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co">  collection-title: "Linguistics Methods Hub"</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">Montreal Forced Aligner</span><span class="co">](https://montreal-forced-aligner.readthedocs.io/en/latest/index.html)</span>{target="_blank"} is a forced alignment system with acoustic models built using the [Kaldi ASR toolkit](https://eleanorchodroff.com/tutorial/kaldi/introduction.html){target="_blank"}. A major highlight of this system is the availability of pretrained acoustic models and grapheme-to-phoneme models for a wide variety of languages, as well as the ability to train acoustic and grapheme-to-phoneme models to any new dataset you might have. It also uses advanced techniques for training and aligning speech data (Kaldi) with a full suite of training and speaker adaptation algorithms. The basic acoustic model recipe uses the traditional GMM-HMM framework, starting with monophone models, then triphone models (which allow for context sensitivity, read: coarticulation), and some transformations and speaker adaptation along the way. You can check out more regarding the recipes in the <span class="co">[</span><span class="ot">MFA user guide and reference guide</span><span class="co">](https://montreal-forced-aligner.readthedocs.io/en/latest/)</span>; for an overview to a standard training recipe, check out this <span class="co">[</span><span class="ot">Kaldi tutorial</span><span class="co">](https://www.eleanorchodroff.com/tutorial/kaldi/training-overview.html)</span>.</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>As a forced alignment system, the Montreal Forced Aligner will time-align a transcript to a corresponding audio file at the phone and word levels provided there exist a set of pretrained acoustic models and a pronunciation dictionary (a.k.a. lexicon) of the words in the transcript with their canonical phonetic pronunciation(s).</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>The current MFA download contains a suite of <span class="in">`mfa`</span> commands that allow you to do everything from basic forced alignment to grapheme-to-phoneme conversion to automatic speech recognition. In this tutorial, we'll be focusing mostly on those commands relating to forced alignment and a side of grapheme-to-phoneme conversion.</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>Very generally, the procedure for forced alignment is as follows:</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Prep audio file(s)</span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Prep transcript(s) (Praat <span class="in">`TextGrids`</span> or <span class="in">`.lab`</span>/<span class="in">`.txt`</span> files)</span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Obtain a pronunciation dictionary</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Obtain an acoustic model</span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create an input folder that contains the audio files and transcripts</span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create an empty output folder</span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Run the <span class="in">`mfa align`</span> command</span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## Installation</span></span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>You can find the streamlined installation instructions on the <span class="co">[</span><span class="ot">main MFA installation page</span><span class="co">](https://montreal-forced-aligner.readthedocs.io/en/latest/installation.html)</span>. The majority of users will be following the "All platforms" instructions.</span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>As listed there, you will need to download Miniconda or Anaconda. If you're trying to decide between the two, I'd probably recommend Miniconda. Compared to Anaconda, Miniconda is smaller, and has a slightly higher success rate for installation. Conda is a package and environment management system. If you're familiar with R, the package management system is similar in concept to the R CRAN server. Once installed, you can import sets of packages via the <span class="in">`conda`</span> commands, similar to how you might run <span class="in">`install.packages`</span> in R. The environment manager aspect of conda is fairly unique, and essentially creates a small environment on your computer for the collection of imported packages (here the MFA suite) to run. The primary advantage is that you don't have to worry about conflicting versions of the same code package on your computer; the environment will be a bubble in your computer with the correct package versions for the MFA suite.</span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>Once you've installed Miniconda/Anaconda, you'll run the following line of code in the command line. For Mac users, the command line will be the terminal or a downloaded equivalent. For Windows users, *I believe* you will run this directly in the Miniconda console.</span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> aligner <span class="at">-c</span> conda-forge montreal-forced-aligner</span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a>The <span class="in">`-n`</span> flag here refers to the *name* of the environment. If you want to test a new version of the aligner, but aren't ready to overwrite your old working version of the aligner, you can create a new environment using a different name after the <span class="in">`-n`</span> flag. See \@ref(Tips and tricks) for more on conda environments. If it's worked, you should see something like:</span>
+<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a><span class="co"># To activate this environment, use</span></span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a><span class="co">#     $ conda activate aligner</span></span>
+<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb22-57"><a href="#cb22-57" aria-hidden="true" tabindex="-1"></a><span class="co"># To deactivate an active environment, use</span></span>
+<span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a><span class="co">#     $ conda deactivate</span></span>
+<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a>And with that, the final step is **activating** the aligner. You will need to re-activate the aligner every time you open a new shell/command line window. You should be able to see which environment you have open in the parentheses before each shell prompt. For example, mine looks like:</span>
+<span id="cb22-63"><a href="#cb22-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-64"><a href="#cb22-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-65"><a href="#cb22-65" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">Eleanors-iPro:Documents</span> eleanorchodroff$ conda activate aligner</span>
+<span id="cb22-66"><a href="#cb22-66" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">aligner</span><span class="kw">)</span> <span class="ex">Eleanors-iPro:Documents</span> eleanorchodroff$ </span>
+<span id="cb22-67"><a href="#cb22-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-68"><a href="#cb22-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-69"><a href="#cb22-69" aria-hidden="true" tabindex="-1"></a>You can run the aligner from any location on the computer as long as you're in the aligner environment on the command line.</span>
+<span id="cb22-70"><a href="#cb22-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-71"><a href="#cb22-71" aria-hidden="true" tabindex="-1"></a>**NB:** The Montreal Forced Aligner is now located in the <span class="in">`Documents/MFA`</span> folder. All acoustic models, dictionaries, temporary alignment or training files, etc. will be stored in this folder. If you are ever confused or curious about what is happening with the aligner, just poke around this folder.</span>
+<span id="cb22-72"><a href="#cb22-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-73"><a href="#cb22-73" aria-hidden="true" tabindex="-1"></a><span class="fu">## Running the aligner</span></span>
+<span id="cb22-74"><a href="#cb22-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-75"><a href="#cb22-75" aria-hidden="true" tabindex="-1"></a>To run the aligner, we'll need to follow this procedure:</span>
+<span id="cb22-76"><a href="#cb22-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-77"><a href="#cb22-77" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Prep audio file(s)</span>
+<span id="cb22-78"><a href="#cb22-78" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Prep transcript(s) (Praat <span class="in">`TextGrids`</span> or <span class="in">`.lab`</span>/<span class="in">`.txt`</span> files)</span>
+<span id="cb22-79"><a href="#cb22-79" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Obtain a pronunciation dictionary</span>
+<span id="cb22-80"><a href="#cb22-80" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Obtain an acoustic model</span>
+<span id="cb22-81"><a href="#cb22-81" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create an input folder that contains the audio files and transcripts</span>
+<span id="cb22-82"><a href="#cb22-82" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create an empty output folder</span>
+<span id="cb22-83"><a href="#cb22-83" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Run the align command</span>
+<span id="cb22-84"><a href="#cb22-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-85"><a href="#cb22-85" aria-hidden="true" tabindex="-1"></a>In this section, I will give a quick example of how this works using a hypothetical example of aligning American English. Through this, you'll see the primary <span class="in">`mfa`</span> commands that you'll need for alignment. Then in the following sections, I'll go into more detail about each of these steps.</span>
+<span id="cb22-86"><a href="#cb22-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-87"><a href="#cb22-87" aria-hidden="true" tabindex="-1"></a>For the first steps of prepping the audio files and prepping the transcripts, I'll assume we're working with a <span class="in">`wav`</span> file and a Praat <span class="in">`TextGrid`</span> that has a single interval tier with utterances transcribed in English. We can have multiple intervals per <span class="in">`TextGrid`</span>. The <span class="in">`wav`</span> file and <span class="in">`TextGrid`</span> must have the same name.</span>
+<span id="cb22-88"><a href="#cb22-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-89"><a href="#cb22-89" aria-hidden="true" tabindex="-1"></a>After we have the audio files and transcript <span class="in">`TextGrids`</span>, we'll place them in an input folder. For the sake of this tutorial, this input folder will be called <span class="in">`Documents/input_english/`</span>.</span>
+<span id="cb22-90"><a href="#cb22-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-91"><a href="#cb22-91" aria-hidden="true" tabindex="-1"></a>We will also need to create an empty output folder. I will call this output folder <span class="in">`Documents/output_english`</span>.</span>
+<span id="cb22-92"><a href="#cb22-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-93"><a href="#cb22-93" aria-hidden="true" tabindex="-1"></a>We can then obtain the acoustic model from the internet (yes, you'll have to be online the first time you do this) using the following command:</span>
+<span id="cb22-94"><a href="#cb22-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-95"><a href="#cb22-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-96"><a href="#cb22-96" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model download acoustic english_us_arpa</span>
+<span id="cb22-97"><a href="#cb22-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-98"><a href="#cb22-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-99"><a href="#cb22-99" aria-hidden="true" tabindex="-1"></a>(You can also use <span class="in">`mfa models download acoustic english_us_arpa`</span>.)</span>
+<span id="cb22-100"><a href="#cb22-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-101"><a href="#cb22-101" aria-hidden="true" tabindex="-1"></a>And we can obtain the dictionary from the internet using this command:</span>
+<span id="cb22-102"><a href="#cb22-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-103"><a href="#cb22-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-104"><a href="#cb22-104" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model download dictionary english_us_arpa</span>
+<span id="cb22-105"><a href="#cb22-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-106"><a href="#cb22-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-107"><a href="#cb22-107" aria-hidden="true" tabindex="-1"></a>(You can also use <span class="in">`mfa models download dictionary english_us_arpa`</span>.)</span>
+<span id="cb22-108"><a href="#cb22-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-109"><a href="#cb22-109" aria-hidden="true" tabindex="-1"></a>The dictionary and acoustic model can now be found in their respective <span class="in">`Documents/MFA/pretrained_models/`</span> folders.</span>
+<span id="cb22-110"><a href="#cb22-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-111"><a href="#cb22-111" aria-hidden="true" tabindex="-1"></a>Once we have the dictionary, acoustic model, <span class="in">`wav`</span> files and <span class="in">`TextGrids`</span> in their input folder, and an empty output folder, then we're ready to run the aligner!</span>
+<span id="cb22-112"><a href="#cb22-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-113"><a href="#cb22-113" aria-hidden="true" tabindex="-1"></a>The alignment command is called <span class="in">`align`</span> and takes 4 arguments:</span>
+<span id="cb22-114"><a href="#cb22-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-115"><a href="#cb22-115" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the input folder</span>
+<span id="cb22-116"><a href="#cb22-116" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>name of the dictionary (in the <span class="in">`Documents/MFA/pretrained_models/dictionary/`</span> folder) / path to the acoustic model if it's elsewhere on the computer</span>
+<span id="cb22-117"><a href="#cb22-117" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>name of the acoustic model (in the <span class="in">`Documents/MFA/pretrained_models/acoustic/`</span> folder) / path to the acoustic model if it's elsewhere on the computer</span>
+<span id="cb22-118"><a href="#cb22-118" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the output folder</span>
+<span id="cb22-119"><a href="#cb22-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-120"><a href="#cb22-120" aria-hidden="true" tabindex="-1"></a>I always add the optional <span class="in">`--clean`</span> flag as this "cleans" out any old temporary files created in a previous run. (If you're anything like me, you might find yourself re-running the aligner a few times, and with the same input filename. The aligner won't actually re-run properly unless you clear out the old files.)</span>
+<span id="cb22-121"><a href="#cb22-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-122"><a href="#cb22-122" aria-hidden="true" tabindex="-1"></a>**Important:** You will need to scroll across to see the whole line of code.</span>
+<span id="cb22-123"><a href="#cb22-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-124"><a href="#cb22-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-125"><a href="#cb22-125" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> align <span class="at">--clean</span> /Users/Eleanor/Documents/input_english/ english_us_arpa english_us_arpa /Users/Eleanor/Documents/output_english/</span>
+<span id="cb22-126"><a href="#cb22-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-127"><a href="#cb22-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-128"><a href="#cb22-128" aria-hidden="true" tabindex="-1"></a>And if everything worked appropriately, your aligned <span class="in">`TextGrids`</span> should now be in the <span class="in">`Documents/output_english/`</span> folder!</span>
+<span id="cb22-129"><a href="#cb22-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-130"><a href="#cb22-130" aria-hidden="true" tabindex="-1"></a><span class="fu">## File preparation</span></span>
+<span id="cb22-131"><a href="#cb22-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-132"><a href="#cb22-132" aria-hidden="true" tabindex="-1"></a><span class="fu">### Audio files</span></span>
+<span id="cb22-133"><a href="#cb22-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-134"><a href="#cb22-134" aria-hidden="true" tabindex="-1"></a>The Montreal Forced Aligner is incredibly robust to audio files of differing formats, sampling rates and channels. You should not have to do much prep, but note that whatever you feed the system will be converted to be a <span class="in">`wav`</span> file with a sampling rate of 16 kHz with a single (mono) channel unless otherwise specified (see <span class="co">[</span><span class="ot">Feature Configuration</span><span class="co">](https://montreal-forced-aligner.readthedocs.io/en/latest/user_guide/configuration/global.html##feature-config)</span>. For the record, I have not yet tried any other file format except for <span class="in">`wav`</span> files, so I'm not yet aware of potential issues that might arise there.</span>
+<span id="cb22-135"><a href="#cb22-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-136"><a href="#cb22-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### Transcripts</span></span>
+<span id="cb22-137"><a href="#cb22-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-138"><a href="#cb22-138" aria-hidden="true" tabindex="-1"></a>The MFA can take as input either a Praat <span class="in">`TextGrid`</span> or a <span class="in">`.lab`</span> or <span class="in">`.txt`</span> file. I have worked most extensively with the <span class="in">`TextGrid`</span> input, so I'll describe those details here. As for <span class="in">`.lab`</span> and <span class="in">`.txt`</span> input, I believe this method only works when the transcript is pasted in as a single line. In other words, I don't think it can handle time stamps for utterance start and end times.</span>
+<span id="cb22-139"><a href="#cb22-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-140"><a href="#cb22-140" aria-hidden="true" tabindex="-1"></a><span class="fu">### Filenames</span></span>
+<span id="cb22-141"><a href="#cb22-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-142"><a href="#cb22-142" aria-hidden="true" tabindex="-1"></a>The filename of the <span class="in">`wav`</span> file and its corresponding transcript must be identical except for the extension (<span class="in">`.wav`</span> or <span class="in">`.TextGrid`</span>). If you have multiple speakers in the alignment or training, you can actually implement some degree of speaker/channel adaptation. You can do this either by placing speaker-specific files in its own subfolder within the input folder, or by adding an optional argument to the <span class="in">`mfa align`</span> command to use the first <span class="in">`n`</span> characters of the filename.</span>
+<span id="cb22-143"><a href="#cb22-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-144"><a href="#cb22-144" aria-hidden="true" tabindex="-1"></a>If you go forward with this, it helps to have the speaker ID as the prefix to the filenames. For example:</span>
+<span id="cb22-145"><a href="#cb22-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-146"><a href="#cb22-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-147"><a href="#cb22-147" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr01_utt1.wav,</span> spkr01_utt1.TextGrid  </span>
+<span id="cb22-148"><a href="#cb22-148" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr01_utt2.wav,</span> spkr01_utt2.TextGrid  </span>
+<span id="cb22-149"><a href="#cb22-149" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr02_utt1.wav,</span> spkr02_utt1.TextGrid  </span>
+<span id="cb22-150"><a href="#cb22-150" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr02_utt2.wav,</span> spkr02_utt2.TextGrid</span>
+<span id="cb22-151"><a href="#cb22-151" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr03_utt1.wav,</span> spkr03_utt1.TextGrid  </span>
+<span id="cb22-152"><a href="#cb22-152" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr03_utt2.wav,</span> spkr03_utt2.TextGrid  </span>
+<span id="cb22-153"><a href="#cb22-153" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr04_utt1.wav,</span> spkr04_utt1.TextGrid  </span>
+<span id="cb22-154"><a href="#cb22-154" aria-hidden="true" tabindex="-1"></a><span class="ex">spkr04_utt2.wav,</span> spkr04_utt2.TextGrid</span>
+<span id="cb22-155"><a href="#cb22-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-156"><a href="#cb22-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-157"><a href="#cb22-157" aria-hidden="true" tabindex="-1"></a>In this case, we can then tell the aligner to use the first 6 characters as the speaker information. The <span class="in">`-s`</span> flag stands for speaker characters.</span>
+<span id="cb22-158"><a href="#cb22-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-159"><a href="#cb22-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-160"><a href="#cb22-160" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> align <span class="at">-s</span> 6 <span class="at">--clean</span> /Users/Eleanor/input_english/ english_us_arpa english_us_arpa /Users/Eleanor/output_english/</span>
+<span id="cb22-161"><a href="#cb22-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-162"><a href="#cb22-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-163"><a href="#cb22-163" aria-hidden="true" tabindex="-1"></a>Alternatively:</span>
+<span id="cb22-164"><a href="#cb22-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-165"><a href="#cb22-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-166"><a href="#cb22-166" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> align <span class="at">--speaker_characters</span> 6 <span class="at">--clean</span> /Users/Eleanor/input_english/ english_us_arpa english_us_arpa /Users/Eleanor/output_english/</span>
+<span id="cb22-167"><a href="#cb22-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-168"><a href="#cb22-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-169"><a href="#cb22-169" aria-hidden="true" tabindex="-1"></a><span class="fu">### Input and output folders</span></span>
+<span id="cb22-170"><a href="#cb22-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-171"><a href="#cb22-171" aria-hidden="true" tabindex="-1"></a>I would recommend creating a special input folder that houses a copy of your audio files and <span class="in">`TextGrid`</span> transcripts. In case something goes wrong, you won't be messing up the raw data. You can place this folder basically anywhere on your computer, and you can call this whatever you want.</span>
+<span id="cb22-172"><a href="#cb22-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-173"><a href="#cb22-173" aria-hidden="true" tabindex="-1"></a>You will also need to create an empty output folder. I recommend making sure this is empty each time you run the aligner as the aligner does not overwrite any existing files. You can place this folder basically anywhere on your computer, and you can call this whatever you want; however, you may not re-use the input folder as the output folder.</span>
+<span id="cb22-174"><a href="#cb22-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-175"><a href="#cb22-175" aria-hidden="true" tabindex="-1"></a><span class="fu">## Obtaining acoustic models</span></span>
+<span id="cb22-176"><a href="#cb22-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-177"><a href="#cb22-177" aria-hidden="true" tabindex="-1"></a><span class="fu">### Download an acoustic model</span></span>
+<span id="cb22-178"><a href="#cb22-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-179"><a href="#cb22-179" aria-hidden="true" tabindex="-1"></a>Pretrained acoustic models for several languages can be downloaded directly using the command line interface. This is the <span class="co">[</span><span class="ot">master list</span><span class="co">](https://mfa-models.readthedocs.io/en/latest/acoustic/index.html)</span> of acoustic models available for download.</span>
+<span id="cb22-180"><a href="#cb22-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-181"><a href="#cb22-181" aria-hidden="true" tabindex="-1"></a><span class="fu">### Train an acoustic model</span></span>
+<span id="cb22-182"><a href="#cb22-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-183"><a href="#cb22-183" aria-hidden="true" tabindex="-1"></a>You can also train an acoustic model yourself directly on the data you're working on. You do need a fair amount of data to get reasonable alignments out. If an existing acoustic model already exists, it might be worth simply using that directly on your data or you could try <span class="co">[</span><span class="ot">adapting</span><span class="co">](https://montreal-forced-aligner.readthedocs.io/en/latest/user_guide/workflows/adapt_acoustic_model.html)</span> the model to your data. There are many cases, however, when training a new acoustic model is the best path forward.</span>
+<span id="cb22-184"><a href="#cb22-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-185"><a href="#cb22-185" aria-hidden="true" tabindex="-1"></a>The <span class="in">`mfa train`</span> command takes 3 arguments:</span>
+<span id="cb22-186"><a href="#cb22-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-187"><a href="#cb22-187" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the input folder with the audio files and utterance-level transcripts (<span class="in">`TextGrids`</span>)</span>
+<span id="cb22-188"><a href="#cb22-188" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>name of the pronunciation dictionary in the <span class="in">`pretrained_models`</span> folder or path to the pronunciation dictionary</span>
+<span id="cb22-189"><a href="#cb22-189" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the output folder (it still runs an alignment at the end)</span>
+<span id="cb22-190"><a href="#cb22-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-191"><a href="#cb22-191" aria-hidden="true" tabindex="-1"></a>In other words, <span class="in">`mfa train`</span> has the same syntax and requirements as the <span class="in">`mfa align`</span> command, but without the acoustic model specification.</span>
+<span id="cb22-192"><a href="#cb22-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-193"><a href="#cb22-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-194"><a href="#cb22-194" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> train <span class="at">--clean</span> ~/Documents/input_spanish ~/Documents/talnupf_spanish.txt ~/Documents/output_spanish_textgrids</span>
+<span id="cb22-195"><a href="#cb22-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-196"><a href="#cb22-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-197"><a href="#cb22-197" aria-hidden="true" tabindex="-1"></a>Once again, I'm using the <span class="in">`--clean`</span> flag just in case I need to clean out an old folder in <span class="in">`Documents/MFA`</span>.</span>
+<span id="cb22-198"><a href="#cb22-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-199"><a href="#cb22-199" aria-hidden="true" tabindex="-1"></a>If you would like to reuse the acoustic model, you can find all of the trained models (there are several -- one for each layer of training) in the associated folder in <span class="in">`Documents/MFA/`</span> and any folder ending in <span class="in">`_ali`</span>. I would recommend using the acoustic model from the last training and alignment pass, which is the <span class="in">`sat2_ali`</span> folder. <span class="in">`sat2_ali`</span> stands for the second round of Speaker Adaptive Training --- alignment pass.</span>
+<span id="cb22-200"><a href="#cb22-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-201"><a href="#cb22-201" aria-hidden="true" tabindex="-1"></a>The <span class="in">`mfa model save acoustic`</span> command takes one required argument, which is the path to the model you want to save, and an optional (but highly recommended) argument which is the new name of the acoustic model. The optional argument is specified after the <span class="in">`--name`</span> flag:</span>
+<span id="cb22-202"><a href="#cb22-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-203"><a href="#cb22-203" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-204"><a href="#cb22-204" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model save acoustic <span class="at">--name</span> guarani_cv ~/Documents/MFA/mfainput4guarani/sat3_ali/acoustic_model.zip </span>
+<span id="cb22-205"><a href="#cb22-205" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-206"><a href="#cb22-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-207"><a href="#cb22-207" aria-hidden="true" tabindex="-1"></a><span class="fu">## Obtaining dictionaries</span></span>
+<span id="cb22-208"><a href="#cb22-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-209"><a href="#cb22-209" aria-hidden="true" tabindex="-1"></a>The pronunciation dictionary must be a two column text file with a list of words on the left-hand side and the phonetic pronunciation(s) on the right-hand side. Each word should be separated from its phonetic pronunciation by a tab, and each phone in the phonetic pronunciation should be separated by a space. Many-to-many mappings between words and pronunciations are permitted. In fact, you can even add <span class="co">[</span><span class="ot">pronunciation probabilities</span><span class="co">](https://montreal-forced-aligner.readthedocs.io/en/latest/user_guide/workflows/training_dictionary.html)</span> to the dictionary, but I have not yet tried this!</span>
+<span id="cb22-210"><a href="#cb22-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-211"><a href="#cb22-211" aria-hidden="true" tabindex="-1"></a>One important point: the phone set in your dictionary must match that used in the acoustic models and the orthography must match that in the transcripts.</span>
+<span id="cb22-212"><a href="#cb22-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-213"><a href="#cb22-213" aria-hidden="true" tabindex="-1"></a>There are a few options for obtaining a pronunciation dictionary:</span>
+<span id="cb22-214"><a href="#cb22-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-215"><a href="#cb22-215" aria-hidden="true" tabindex="-1"></a><span class="fu">### Download a dictionary</span></span>
+<span id="cb22-216"><a href="#cb22-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-217"><a href="#cb22-217" aria-hidden="true" tabindex="-1"></a>This is the <span class="co">[</span><span class="ot">master list</span><span class="co">](https://mfa-models.readthedocs.io/en/latest/dictionary/index.html)</span> of pre-existing pronunciation dictionaries available through the MFA. Click on the dictionary of interest, and if you scroll to the bottom of the page, it will tell you the name to type in the <span class="in">`mfa model download dictionary`</span> command.</span>
+<span id="cb22-218"><a href="#cb22-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-219"><a href="#cb22-219" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-220"><a href="#cb22-220" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model download dictionary spanish_latin_america_mfa</span>
+<span id="cb22-221"><a href="#cb22-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-222"><a href="#cb22-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-223"><a href="#cb22-223" aria-hidden="true" tabindex="-1"></a>NB: you must add any missing words in your corpus manually, or train a G2P model to handle these cases.</span>
+<span id="cb22-224"><a href="#cb22-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-225"><a href="#cb22-225" aria-hidden="true" tabindex="-1"></a><span class="fu">### Generate a dictionary using a G2P model</span></span>
+<span id="cb22-226"><a href="#cb22-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-227"><a href="#cb22-227" aria-hidden="true" tabindex="-1"></a>Grapheme-to-phoneme (G2P) models automatically convert the orthographic words in your corpus to the most likely phonetic pronunciation. How exactly it does this depends a lot on the type of model and its training data.</span>
+<span id="cb22-228"><a href="#cb22-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-229"><a href="#cb22-229" aria-hidden="true" tabindex="-1"></a>The MFA has a handful of pretrained G2P models that you can download. This is the <span class="co">[</span><span class="ot">master list</span><span class="co">](https://mfa-models.readthedocs.io/en/latest/g2p/index.html)</span> of G2P models available for download.</span>
+<span id="cb22-230"><a href="#cb22-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-231"><a href="#cb22-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-232"><a href="#cb22-232" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model download g2p bulgarian_mfa</span>
+<span id="cb22-233"><a href="#cb22-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-234"><a href="#cb22-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-235"><a href="#cb22-235" aria-hidden="true" tabindex="-1"></a>You'll then use the <span class="in">`mfa g2p`</span> command to generate the phonetic transcriptions from the submitted orthographic forms and the g2p model. The <span class="in">`mfa g2p`</span> command takes 3 arguments:</span>
+<span id="cb22-236"><a href="#cb22-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-237"><a href="#cb22-237" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>name of g2p model (in <span class="in">`Documents/MFA/pretrained_models/g2p/`</span>)</span>
+<span id="cb22-238"><a href="#cb22-238" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the <span class="in">`TextGrids`</span> or transcripts in your corpus</span>
+<span id="cb22-239"><a href="#cb22-239" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to where the new pronunciation dictionary should go</span>
+<span id="cb22-240"><a href="#cb22-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-241"><a href="#cb22-241" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-242"><a href="#cb22-242" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> g2p <span class="at">--clean</span> bulgarian_mfa ~/Desktop/romanian/TextGrids_with_new_words/ ~/Desktop/new_bulgarian_dictionary.txt</span>
+<span id="cb22-243"><a href="#cb22-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-244"><a href="#cb22-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-245"><a href="#cb22-245" aria-hidden="true" tabindex="-1"></a>You can also use an external resource like <span class="co">[</span><span class="ot">Epitran</span><span class="co">](https://github.com/dmort27/epitran)</span> or <span class="co">[</span><span class="ot">XPF</span><span class="co">](https://cohenpr-xpf.github.io/XPF/Convert-to-IPA.html)</span> to generate a dictionary for you. These are both rule-based G2P systems built by linguists; these systems work to varying degrees of success.</span>
+<span id="cb22-246"><a href="#cb22-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-247"><a href="#cb22-247" aria-hidden="true" tabindex="-1"></a>In all cases, you're best off checking the output. Remember that the phone set in the dictionary must entirely match the phone set in the acoustic model.</span>
+<span id="cb22-248"><a href="#cb22-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-249"><a href="#cb22-249" aria-hidden="true" tabindex="-1"></a><span class="fu">### Train a G2P model</span></span>
+<span id="cb22-250"><a href="#cb22-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-251"><a href="#cb22-251" aria-hidden="true" tabindex="-1"></a>You can also train a G2P model on an existing pronunciation dictionary. Once you've trained the G2P model, you'll need to jump back up to the generate dictionary instructions just above. This might be useful in cases when you have many unlisted orthographic forms that are still in need of a phonetic transcription.</span>
+<span id="cb22-252"><a href="#cb22-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-253"><a href="#cb22-253" aria-hidden="true" tabindex="-1"></a>The <span class="in">`mfa train_g2p`</span> command has 2 arguments:</span>
+<span id="cb22-254"><a href="#cb22-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-255"><a href="#cb22-255" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the training data pronunciation lexicon</span>
+<span id="cb22-256"><a href="#cb22-256" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to where the trained G2P model should go</span>
+<span id="cb22-257"><a href="#cb22-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-258"><a href="#cb22-258" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-259"><a href="#cb22-259" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> train_g2p ~/Desktop/romanian/romanian_lexicon.txt ~/Desktop/romanian/romanian_g2p</span>
+<span id="cb22-260"><a href="#cb22-260" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-261"><a href="#cb22-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-262"><a href="#cb22-262" aria-hidden="true" tabindex="-1"></a><span class="fu">### Create the dictionary by hand</span></span>
+<span id="cb22-263"><a href="#cb22-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-264"><a href="#cb22-264" aria-hidden="true" tabindex="-1"></a>This one is self-explanatory, but once again, make sure to use the same phone set as the acoustic models.</span>
+<span id="cb22-265"><a href="#cb22-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-266"><a href="#cb22-266" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tips and tricks</span></span>
+<span id="cb22-267"><a href="#cb22-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-268"><a href="#cb22-268" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Add <span class="in">`-h`</span> after any command to get a help screen that will also display its argument structure. For example:</span>
+<span id="cb22-269"><a href="#cb22-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-270"><a href="#cb22-270" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-271"><a href="#cb22-271" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> align <span class="at">-h</span></span>
+<span id="cb22-272"><a href="#cb22-272" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> train <span class="at">-h</span></span>
+<span id="cb22-273"><a href="#cb22-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-274"><a href="#cb22-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-275"><a href="#cb22-275" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use the <span class="in">`--clean`</span> flag each time you run the <span class="in">`align`</span> command</span>
+<span id="cb22-276"><a href="#cb22-276" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Don't forget to activate the aligner</span>
+<span id="cb22-277"><a href="#cb22-277" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Make sure the output folder is empty each time you run the <span class="in">`align`</span> command</span>
+<span id="cb22-278"><a href="#cb22-278" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The input and output folders must be different folders</span>
+<span id="cb22-279"><a href="#cb22-279" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Many users have trouble reading/writing files to the Desktop folder. If you're having issues using the Desktop, just switch to a different folder like Documents, or Google how to change the read/write permissions on your Desktop folder</span>
+<span id="cb22-280"><a href="#cb22-280" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>And a little more on conda:</span>
+<span id="cb22-281"><a href="#cb22-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-282"><a href="#cb22-282" aria-hidden="true" tabindex="-1"></a>If you have created multiple environments, you can list all of your environments using the following command:</span>
+<span id="cb22-283"><a href="#cb22-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-284"><a href="#cb22-284" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-285"><a href="#cb22-285" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> info <span class="at">--envs</span></span>
+<span id="cb22-286"><a href="#cb22-286" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-287"><a href="#cb22-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-288"><a href="#cb22-288" aria-hidden="true" tabindex="-1"></a>You can delete an environment with the following command, where ENV_NAME is the name of the environment, like <span class="in">`aligner`</span>. Make sure that you have deactivated the environment before deleting it.</span>
+<span id="cb22-289"><a href="#cb22-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-290"><a href="#cb22-290" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-291"><a href="#cb22-291" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span>
+<span id="cb22-292"><a href="#cb22-292" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">-n</span> ENV_NAME</span>
+<span id="cb22-293"><a href="#cb22-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-294"><a href="#cb22-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-295"><a href="#cb22-295" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>You can inspect the details of any local acoustic model or dictionary using the <span class="in">`mfa model inspect`</span> commands. One of the important outputs of this is the assumed phone set:</span>
+<span id="cb22-296"><a href="#cb22-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-297"><a href="#cb22-297" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-298"><a href="#cb22-298" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model inspect acoustic english_us_arpa</span>
+<span id="cb22-299"><a href="#cb22-299" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model inspect dictionary english_us_arpa</span>
+<span id="cb22-300"><a href="#cb22-300" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-301"><a href="#cb22-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-302"><a href="#cb22-302" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>You can get a list of the local acoustic models and dictionaries in your <span class="in">`Documents/MFA/pretrained_models/`</span> folders using the <span class="in">`mfa model list`</span> commands:</span>
+<span id="cb22-303"><a href="#cb22-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-304"><a href="#cb22-304" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-305"><a href="#cb22-305" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model list acoustic</span>
+<span id="cb22-306"><a href="#cb22-306" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model list dictionary</span>
+<span id="cb22-307"><a href="#cb22-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-308"><a href="#cb22-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-309"><a href="#cb22-309" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>You can check for problems with your corpus using the <span class="in">`validate`</span> command. Such problems might include words in your TextGrids that are not listed in your dictionary, phones in your dictionary that do not have corresponding acoustic models, as well as general problems with your sound file (like a missing waveform -- this has happened to me when an audio file got corrupted during download). Note that checking for audio file problems takes a lot longer, so I frequently add the optional <span class="in">`--ignore_acoustics`</span> flag.</span>
+<span id="cb22-310"><a href="#cb22-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-311"><a href="#cb22-311" aria-hidden="true" tabindex="-1"></a>The three arguments required by the validate command are:</span>
+<span id="cb22-312"><a href="#cb22-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-313"><a href="#cb22-313" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>path to the corpus</span>
+<span id="cb22-314"><a href="#cb22-314" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>name of the dictionary</span>
+<span id="cb22-315"><a href="#cb22-315" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>name of the acoustic model</span>
+<span id="cb22-316"><a href="#cb22-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-317"><a href="#cb22-317" aria-hidden="true" tabindex="-1"></a>If you don't yet have an acoustic model (i.e., you're running the validate command on the data you're using to train an acoustic model), just put in any acoustic model as a placeholder and ignore any corresponding warnings about phones in your dictionary that are not in the acoustic model.</span>
+<span id="cb22-318"><a href="#cb22-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-319"><a href="#cb22-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash eval = F}</span></span>
+<span id="cb22-320"><a href="#cb22-320" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> validate ~/Documents/myCorpus/mfainput4english/ english_us_arpa english_us_arpa </span>
+<span id="cb22-321"><a href="#cb22-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-322"><a href="#cb22-322" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> validate ~/Documents/myCorpus/mfainput4english/ english_us_arpa english_us_arpa <span class="at">--ignore_acoustics</span></span>
+<span id="cb22-323"><a href="#cb22-323" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-324"><a href="#cb22-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-325"><a href="#cb22-325" aria-hidden="true" tabindex="-1"></a>words that are not in your dictionary and problems with your sounds</span>
+<span id="cb22-326"><a href="#cb22-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-327"><a href="#cb22-327" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>And finally, there is even more to the MFA than just what I've put here! Definitely poke around the MFA user guide to learn more and find special functions that might make your workflow even easier.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

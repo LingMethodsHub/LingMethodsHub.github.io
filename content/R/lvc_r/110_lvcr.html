@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2023-01-13">
+<meta name="description" content="Doing a mixed-effects logistic regression analysis suitable for comparing to a Goldvarb analysis. Part 1: The Setup">
+
+<title>LingMethodsHub - Mixed-Efects Logistic Regression Analysis: Part 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../content/R/lvc_r/112_lvcr.html" rel="next">
+<link href="../../../content/R/lvc_r/090_lvcr.html" rel="prev">
+<script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+<style>html{ scroll-behavior: smooth; }</style>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false,
+  "showHighlights": "never"
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible">
+
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="LingMethodsHub - Mixed-Efects Logistic Regression Analysis: Part 1">
+<meta property="og:description" content="Doing a mixed-effects logistic regression analysis suitable for comparing to a *Goldvarb* analysis. Part 1: The Setup">
+<meta property="og:site-name" content="LingMethodsHub">
+<meta name="twitter:title" content="LingMethodsHub - Mixed-Efects Logistic Regression Analysis: Part 1">
+<meta name="twitter:description" content="Doing a mixed-effects logistic regression analysis suitable for comparing to a *Goldvarb* analysis. Part 1: The Setup">
+<meta name="twitter:image" content="https://lingmethodshub.github.io/assets/logo.png">
+<meta name="twitter:image-height" content="424">
+<meta name="twitter:image-width" content="653">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Mixed-Efects Logistic Regression Analysis: Part 1">
+<meta name="citation_author" content="Matt Hunt Gardner">
+<meta name="citation_publication_date" content="2023-01-13">
+<meta name="citation_cover_date" content="2023-01-13">
+<meta name="citation_year" content="2023">
+<meta name="citation_online_date" content="2023-01-13">
+<meta name="citation_fulltext_html_url" content="https://lingmethodshub.github.io/110_lvcr.html">
+<meta name="citation_doi" content="10.5281/zenodo.7160718">
+<meta name="citation_volume" content="Doing LVC with R">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Linguistics Methods Hub">
+<meta name="citation_series_title" content="Linguistics Methods Hub">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">LingMethodsHub</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../index.html" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../content/index.html">
+ <span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../content/contributing/index.html">
+ <span class="menu-text">Contributing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../people/index.html">
+ <span class="menu-text">People</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Mixed-Efects Logistic Regression Analysis: Part 1</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/R/index.html" class="sidebar-item-text sidebar-link">R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">Doing LVC with R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">Getting Your Data Into <em>R</em></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">Getting to Know Your Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">Modifying Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">Doing it all again, but <code>tidy</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">Crosstabs: Counts, Proportions, and More</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">Proportions for <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/090_lvcr.html" class="sidebar-item-text sidebar-link">Random Forests: The Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/110_lvcr.html" class="sidebar-item-text sidebar-link active">Mixed-Efects Logistic Regression Analysis: Part 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/112_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/114_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/116_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysisː Part 4</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">Vowel Plots with <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/tidy-norm/index.html" class="sidebar-item-text sidebar-link">How to normalize your vowels using the tidyverse</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/animated_vowel_plots_tutorial/index.html" class="sidebar-item-text sidebar-link">Visualising Vowel Space Change with GAMMs</a>
+  </div>
+</li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/python/index.html" class="sidebar-item-text sidebar-link">Python</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">Vowel plotting in Python</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Praat</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/tools/index.html" class="sidebar-item-text sidebar-link">Tools</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">Montreal Forced Aligner</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/tools/autovot/autovot-tutorial/index.html" class="sidebar-item-text sidebar-link">AutoVOT</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/cli/index.html" class="sidebar-item-text sidebar-link">Command Line Interfaces</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">Bash Shell Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/cli/keyboarding/index.html" class="sidebar-item-text sidebar-link">Keyboarding</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/windows/index.html" class="sidebar-item-text sidebar-link">Windows</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">Windows Subsystem for Linux</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">Installation</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#making-your-depandent-variable-binary" id="toc-making-your-depandent-variable-binary" class="nav-link" data-scroll-target="#making-your-depandent-variable-binary">Making Your Depandent Variable Binary</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Mixed-Efects Logistic Regression Analysis: Part 1</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+<div>
+  <div class="description">
+    Doing a mixed-effects logistic regression analysis suitable for comparing to a <em>Goldvarb</em> analysis. Part 1: The Setup
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Matt Hunt Gardner <a href="https://orcid.org/0000-0002-1878-4232" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Oxford
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 13, 2023</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>One of the best way to test multiple potential predictors of a variable phenomenon is with multivariate statistical modelling. Increasingly in variationist sociolinguistics, we are also taking into account potential random effects, like speaker, in our models. In <em>R</em>, a good way to perform multivariate statistical modelling that takes random effects into account is to create mixed-effects logistic regression model. This is the kind of modelling used by <em>Rbrul</em> <a href="https://doi.org/10.1111/j.1749-818X.2008.00108.x">(Johnson 2009)</a>,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> with which you may already be familiar. Logistic regression examines the relationship of a binary (or dichotomous) outcome (e.g., alive/dead, success/failure, yes/no, <code>Deletion</code>/<code>Realized</code>) with one or more predictors that may be either categorical or continuous. Calling a regression analysis “mixed-effects” simply means that it will consider some fixed effects (i.e., independent predictor variables) and at least one random effect (explained below).</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What is a random effect?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Good question!</p>
+<p>The in a regression analysis, the first step is to calculate the baseline odds/likelihood of having one outcome (i.e., the *application value**, <code>Deletion</code>) versus not having the outcome without considering any predictor variables. This gives us the constant (also known as the intercept or grand mean). The next step in a regression analysis is to consider the independent predictor variables and how including them in the model changes the odds/likelihood of having one outcome versus not having that outcome. These independent predictor variables are collectively called the fixed effects in the model.</p>
+<p>Random effects, however, are variables we include in the model for which each level is understood to potentially have differing baseline odds/likelihoods . In other words, a mixed effects model assumes fixed effect independent variables are correlated to changes in odds/liklihood of the application value in the data (and determines whether those changes are significantly different from zero), while any variability across levels of the random effects variable is uncorrelated with the independent variables.</p>
+<p>Given that sociolinguistic data usually includes an inconsistent number of tokens per speaker, it is a good idea to include speaker as a random effect when modelling variation. By doing so you can allow the model to consider each speaker to have a different baseline odds/likelihood (intercept) that is unrelated to other predictors in the model like <code>Sex</code> or <code>Age.Group</code> in the (t, d) data set. If fixed effects like <code>Sex</code> and <code>Age.Group</code> are returned as significant predictors of the variation, and <code>Speaker</code> was included as a random effect, we can say that the effect of <code>Sex</code> or <code>Age.Group</code> is significant over and above the potential random effect of individual <code>Speaker</code>. Including speaker as a random effect also overcomes the non-indendence introduced by having multiple observations from the same individual.</p>
+</div>
+</div>
+</div>
+<p>Before you continue, it’s worth pointing out that as variationist sociolinguists, we use regression analyses to provide statistical validation for the acceptance or rejection of hypotheses and/or to confirm trends observed in summary statistics. The key facts that you use to do this are generally referred to as the “three lines of evidence” and are found in the results of <em>Goldvarb</em>’s step-up/step-down method of variable rule analysis (or in <em>Rbrul</em>’s mixed-effects logistic regression analysis, which mimics <em>Goldvarb</em>’s output).</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What are the Three Lines of Evidence?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>statistical significance</strong> — what independent variables, e.g., factor groups, are significant predictors of the variation and which are not.</li>
+<li><strong>magnitude of effect</strong> — the relative ordering of predictors, e.g., significant factor groups, based on their magnitude of effect on the variation.</li>
+<li><strong>constraint hierarchy/direction of effect</strong> — the relative ordering of levels of a predictor, e.g., factors within a factor group, from the level with the greatest positive effect to the level with the greatest negative effect on the overall probability.</li>
+</ol>
+<p>Based on <a href="https://www.wiley.com/en-us/African+American+English+in+the+Diaspora-p-9780631212669">Poplack &amp; Tagliamonte 2001: 92</a>; <a href="https://doi.org/10.1002/9781118335598.ch6">Tagliamonte 2002: 731</a>; <a href="https://doi.org/10.1017/CBO9780511801624">Tagliamonte 2006: 235</a>, etc.</p>
+</div>
+</div>
+</div>
+<p>In a standard <em>Goldvarb</em>/<em>Rbrul</em> analysis, the first line of evidence is determined by what factor groups (predictors) are selected in the best step-up/step-down run, the second line of evidence is determined by the range of the factor weights in each of the significant factor groups (predictor), and the third is determined by the ordering of factors (levels) within each factor group (predictor) based on each factor’s (level’s) factor weight. Mixed-effects logistic regression modelling in <em>R</em> does not provide the exact same step-up/step-down analysis with factor weights that <em>Goldvarb</em>/<em>Rbrul</em> provides; however, it <strong>does</strong> provide facts that are analogous to to the three lines of evidence.</p>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Factors, Factor Groups, Predictors, Levels — What’s the difference?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>In <em>Goldvarb</em> parlance, independent variables in an analysis — like <code>Phoneme</code> and <code>Sex</code> in the (t, d) data set) are called <em>factor groups</em> and the different options for these factor groups are called <em>factors</em> (<code>t</code> vs.&nbsp;<code>d</code>, <code>Male</code> vs.&nbsp;<code>Female</code>). For regression modelling, independent variables in the analysis are usually called <em>predictors</em> and the different options for these predictors are called <em>levels</em> of that predictor.</p>
+</div>
+</div>
+</div>
+<p>There are two styles of mixed-effects logistic regression models commonly used by sociolinguists. One style is to look at whether or not the levels of a predictor are significantly different from the mean of that predictor. This is roughly what <em>Goldvarb</em> does. Factor weights are centred around .50, and significant factor groups are those where the factor weights of the factors are significantly different from .50. The equivalent logistic regression style in <em>R</em> tests what are called <strong>sum contrasts</strong> between levels of a predictor. The second style, which tests <strong>treatment contrasts</strong>, examines whether the levels of a predictor are significantly different from each other, rather than the mean. In this type of analysis one level is selected as a reference to which all other levels are compared. You can see the difference between sum and treatment contrasts in <a href="#fig-contrasts">Table&nbsp;1</a>.</p>
+<div id="fig-contrasts" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/treatmentsum.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Table&nbsp;1: Treatment contrasts (left) versus sum contrasts (right), ©️ Derek Denis, 2014</figcaption><p></p>
+</figure>
+</div>
+<p>In <a href="../../../content/R/lvc_r/112_lvcr.html">Part 2</a> you will do an analyses with sum contrasts, then in <a href="../../../content/R/lvc_r/116_lvcr.html">Part 4</a> you will do the same analysis, but with treatment contrasts. While sum contrasts are consistent with a <em>Goldvarb</em>-type analysis, you can probe the constraint hierarchy of your fixed effects using treatment contrasts in a way not otherwise possible.</p>
+<section id="making-your-depandent-variable-binary" class="level2">
+<h2 class="anchored" data-anchor-id="making-your-depandent-variable-binary">Making Your Depandent Variable Binary</h2>
+<p>I recommend labelling application value tokens with <code>1</code> and non-application values as <code>0</code> because <em>R</em> eventually does this behind the scenes anyway. For example, with the <code>ctree()</code> function (<a href="../../../content/R/lvc_r/080_lvcr.html">Conditional Inference Trees</a>) and <code>glmer()</code> function below, the dependent variable used is <code>Dep.Var</code>. This variable has two levels <code>Realization</code> and <code>Deletion</code>. Before using these values in either model, <em>R</em> will convert each level to <code>0</code> and <code>1</code> in alphabetical order. So here <code>Deletion</code> becomes <code>0</code> and <code>Realization</code> becomes <code>1</code>. This causes complications for us because, for both <code>ctree()</code> and <code>glmer()</code>, likelihood is expressed as the likelihood of <code>1</code>, and <code>1</code> here is the non-application value. You don’t want to use the likelihood of the non-application value in your manuscript tables and charts! You want to include values in your tables and charts that reflect the probability of, in this case, <code>0</code>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>: I also recognize that labelling the application value as <code>1</code> can get confusing when the phenomenon in question is <code>Deletion</code>. This is the advantage of having two <code>Dep.Var</code> columns: one with the dependant variable clearly labled (e.g., <code>Deletion</code> and <code>Realized</code>), and another column with the dependent variable in binary format (e.g., <code>1</code> and <code>0</code>). Having both ensures you are never confused as to what the simplified binary coding means.</p>
+<p>There are two ways to overcome the above problem. You can change the ordering of the factors in the <code>Dep.Var</code> column so that the non-application value will be converted to <code>0</code> and the application value will be converted to <code>1</code>. This is exactly what was done when constructing the <code>ctree()</code> in <a href="../../../content/R/lvc_r/080_lvcr.html">Conditional Inference Trees</a> by changing the order of the levels in <code>Dep.Var</code> to <code>Realized</code> then <code>Deletion</code> (so <code>Realized</code> becomes <code>0</code> and <code>Deletion</code> becomes <code>1</code>). Alternatively, you can create a new column with <code>Realization</code> tokens coded as <code>0</code> and <code>Deletion</code> tokens coded as <code>1</code> (see the tip below), then use that new column in your models. The one disadvantage to this method is that in your figures, like the <code>ctree()</code> figure created in <a href="../../../content/R/lvc_r/080_lvcr.html">Conditional Inference Trees</a>, the names of the two levels of <code>Dep.Var</code> on the figure itself will be <code>1</code> and <code>0</code>. For the <code>glmer()</code> function this doesn’t really matter.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder levels of Dep.Var to make application value second</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Dep.Var, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Realized"</span>, <span class="st">"Deletion"</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create New Column for binary Dependent Variable, all values 0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var.Binary <span class="ot">&lt;-</span> <span class="st">"0"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Change all Dep.Var.Binary tokens to 1 where Dep.Var.Full is 'Deletion'.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var.Binary[td<span class="sc">$</span>Dep.Var.Full <span class="sc">==</span> <span class="st">"Deletion"</span>] <span class="ot">&lt;-</span> <span class="st">"1"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Make Dep.Var.Binary a factor column</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var.Binary <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Dep.Var.Binary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+A Note on Dependent Variables with 3+ levels
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Both the <code>ctree()</code> and <code>glmer()</code> functions require binary dependent variables. If you have a study in which you have a dependent variable with multiple variants (like the <code>Dep.Var.Full</code> column), you should make a separate column in which all the tokens with the application value are labelled as one thing, and all the tokens with any non-application value are labelled with another (this is effectively what the <code>Dep.Var</code> column is).</p>
+<p>Making this binary column is quite easy in <em>R</em>. I like to use the binary values <code>1</code> and <code>0</code>, with <code>1</code> as my application value and <code>0</code> as my non-application value. To do this recode, first you create a new column and make every value <code>0</code>. Then you change the value in this column to <code>1</code> for every token where <code>Dep.Var.Full</code> equals the application value. Lastly you make this column a factor column (though you could use the function <code>as.numeric()</code> to make a numeric column, if that were needed).</p>
+</div>
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><em>Rbrul</em> is a very useful variable rule analysis script that runs in <em>R</em>. Often <em>Rbrul</em> acts as a bridge for variationists familiar with <em>Goldvarb</em> who want to try running analyses in <em>R</em>. You can use <em>Rbrul</em>, or you can just use the same functions that <em>Rbrul</em> uses. The advantage of <strong>not</strong> using <em>Rbrul</em> is that you can preserve the steps you took to create the model in a script file — insuring easy replicability. For more information about <em>Rbrul</em> see <a href="http://www.danielezrajohnson.com/rbrul.html" class="uri">http://www.danielezrajohnson.com/rbrul.html</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><em>Rbrul</em> is a very useful variable rule analysis script that runs in <em>R</em>. Often <em>Rbrul</em> acts as a bridge for variationists familiar with <em>Goldvarb</em> who want to try running analyses in <em>R</em>. You can use <em>Rbrul</em>, or you can just use the same functions that <em>Rbrul</em> uses. The advantage of <strong>not</strong> using <em>Rbrul</em> is that you can preserve the steps you took to create the model in a script file — insuring easy replicability. For more information about <em>Rbrul</em> see <a href="http://www.danielezrajohnson.com/rbrul.html" class="uri">http://www.danielezrajohnson.com/rbrul.html</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>1<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{huntgardner,
+  author = {Matt Hunt Gardner},
+  title = {Mixed-Efects {Logistic} {Regression} {Analysis:} {Part} 1},
+  series = {Linguistics Methods Hub},
+  volume = {Doing LVC with R},
+  date = {},
+  url = {https://lingmethodshub.github.io/110_lvcr.html},
+  doi = {10.5281/zenodo.7160718},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-huntgardner" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Matt Hunt Gardner. n.d. Mixed-Efects Logistic Regression Analysis: Part
+1. <em>Linguistics Methods Hub</em>: <em>Doing LVC with R</em>. (<a href="https://lingmethodshub.github.io/110_lvcr.html">https://lingmethodshub.github.io/110_lvcr.html</a>).
+doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../content/R/lvc_r/090_lvcr.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Random Forests: The Basics</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../content/R/lvc_r/112_lvcr.html" class="pagination-link">
+        <span class="nav-page-text">Mixed-Efects Logistic Regression Analysis: Part 2</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Mixed-Efects Logistic Regression Analysis: Part 1"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "`r Sys.Date()`"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA 4.0"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: scroll</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pdf: default</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - name:</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">      given: Matt Hunt</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">      family: Gardner</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">    orcid: 0000-0002-1878-4232</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">    email: matt.gardner@ling-phil.ox.ac.uk</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">    corresponding: true</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">    affiliations:</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">      - name: University of Oxford </span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">        department: Linguistics, Philology, &amp; Phonetics</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">        city: Oxford</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">        country: UK</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Doing a mixed-effects logistic regression analysis suitable for comparing to a *Goldvarb* analysis. Part 1: The Setup"</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="an">crossref:</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">  fig-title: Table  </span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">  fig-prefix: Table</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">tidy=</span><span class="st">'styler'</span>, <span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">strict=</span><span class="cn">TRUE</span>, <span class="at">scope=</span><span class="st">"tokens"</span>), <span class="at">tidy =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Before <span class="sc">!=</span> <span class="st">"Vowel"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">After.New =</span> <span class="fu">recode</span>(After, <span class="st">"H"</span> <span class="ot">=</span> <span class="st">"Consonant"</span>),  </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>             <span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)),</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>             <span class="at">Age.Group =</span> <span class="fu">cut</span>(YOB, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">1944</span>, <span class="dv">1979</span>, <span class="cn">Inf</span>), </span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>)),</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme =</span> <span class="fu">sub</span>(<span class="st">"^(.)(--.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, Phoneme.Dep.Var),</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>             <span class="at">Dep.Var.Full =</span> <span class="fu">sub</span>(<span class="st">"^(.--)(.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, Phoneme.Dep.Var),</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme.Dep.Var =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate_if</span>(is.character, as.factor)</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>td.young <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>            <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Young"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>td.middle <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>             <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Middle"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>             <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>td.old <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>          <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Old"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>One of the best way to test multiple potential predictors of a variable phenomenon is with multivariate statistical modelling. Increasingly in variationist sociolinguistics, we are also taking into account potential random effects, like speaker, in our models. In *R*, a good way to perform multivariate statistical modelling that takes random effects into account is to create mixed-effects logistic regression model. This is the kind of modelling used by *Rbrul* <span class="co">[</span><span class="ot">(Johnson 2009)</span><span class="co">](https://doi.org/10.1111/j.1749-818X.2008.00108.x)</span>,<span class="ot">[^1]</span> with which you may already be familiar. Logistic regression examines the relationship of a binary (or dichotomous) outcome (e.g., alive/dead, success/failure, yes/no, <span class="in">`Deletion`</span>/<span class="in">`Realized`</span>) with one or more predictors that may be either categorical or continuous. Calling a regression analysis "mixed-effects" simply means that it will consider some fixed effects (i.e., independent predictor variables) and at least one random effect (explained below).</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>*Rbrul* is a very useful variable rule analysis script that runs in *R*. Often *Rbrul* acts as a bridge for variationists familiar with *Goldvarb* who want to try running analyses in *R*. You can use *Rbrul*, or you can just use the same functions that *Rbrul* uses. The advantage of **not** using *Rbrul* is that you can preserve the steps you took to create the model in a script file --- insuring easy replicability. For more information about *Rbrul* see <span class="ot">&lt;http://www.danielezrajohnson.com/rbrul.html&gt;</span>.</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="false"}</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## What is a random effect?</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>Good question!</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>The in a regression analysis, the first step is to calculate the baseline odds/likelihood of having one outcome (i.e., the <span class="sc">\*</span>application value<span class="sc">\*\*</span>, <span class="in">`Deletion`</span>) versus not having the outcome without considering any predictor variables. This gives us the constant (also known as the intercept or grand mean). The next step in a regression analysis is to consider the independent predictor variables and how including them in the model changes the odds/likelihood of having one outcome versus not having that outcome. These independent predictor variables are collectively called the fixed effects in the model.</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>Random effects, however, are variables we include in the model for which each level is understood to potentially have differing baseline odds/likelihoods . In other words, a mixed effects model assumes fixed effect independent variables are correlated to changes in odds/liklihood of the application value in the data (and determines whether those changes are significantly different from zero), while any variability across levels of the random effects variable is uncorrelated with the independent variables.</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>Given that sociolinguistic data usually includes an inconsistent number of tokens per speaker, it is a good idea to include speaker as a random effect when modelling variation. By doing so you can allow the model to consider each speaker to have a different baseline odds/likelihood (intercept) that is unrelated to other predictors in the model like <span class="in">`Sex`</span> or <span class="in">`Age.Group`</span> in the (t, d) data set. If fixed effects like <span class="in">`Sex`</span> and <span class="in">`Age.Group`</span> are returned as significant predictors of the variation, and <span class="in">`Speaker`</span> was included as a random effect, we can say that the effect of <span class="in">`Sex`</span> or <span class="in">`Age.Group`</span> is significant over and above the potential random effect of individual <span class="in">`Speaker`</span>. Including speaker as a random effect also overcomes the non-indendence introduced by having multiple observations from the same individual.</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>Before you continue, it's worth pointing out that as variationist sociolinguists, we use regression analyses to provide statistical validation for the acceptance or rejection of hypotheses and/or to confirm trends observed in summary statistics. The key facts that you use to do this are generally referred to as the "three lines of evidence" and are found in the results of *Goldvarb*'s step-up/step-down method of variable rule analysis (or in *Rbrul*'s mixed-effects logistic regression analysis, which mimics *Goldvarb*'s output).</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="false"}</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="fu">## What are the Three Lines of Evidence?</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**statistical significance** --- what independent variables, e.g., factor groups, are significant predictors of the variation and which are not.</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**magnitude of effect** --- the relative ordering of predictors, e.g., significant factor groups, based on their magnitude of effect on the variation.</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**constraint hierarchy/direction of effect** --- the relative ordering of levels of a predictor, e.g., factors within a factor group, from the level with the greatest positive effect to the level with the greatest negative effect on the overall probability.</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>Based on <span class="co">[</span><span class="ot">Poplack &amp; Tagliamonte 2001: 92</span><span class="co">](https://www.wiley.com/en-us/African+American+English+in+the+Diaspora-p-9780631212669)</span>; <span class="co">[</span><span class="ot">Tagliamonte 2002: 731</span><span class="co">](https://doi.org/10.1002/9781118335598.ch6)</span>; <span class="co">[</span><span class="ot">Tagliamonte 2006: 235</span><span class="co">](https://doi.org/10.1017/CBO9780511801624)</span>, etc.</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>In a standard *Goldvarb*/*Rbrul* analysis, the first line of evidence is determined by what factor groups (predictors) are selected in the best step-up/step-down run, the second line of evidence is determined by the range of the factor weights in each of the significant factor groups (predictor), and the third is determined by the ordering of factors (levels) within each factor group (predictor) based on each factor's (level's) factor weight. Mixed-effects logistic regression modelling in *R* does not provide the exact same step-up/step-down analysis with factor weights that *Goldvarb*/*Rbrul* provides; however, it **does** provide facts that are analogous to to the three lines of evidence.</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>::: {.callout-caution collapse="false"}</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="fu">## Factors, Factor Groups, Predictors, Levels --- What's the difference?</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>In *Goldvarb* parlance, independent variables in an analysis --- like `Phoneme` and `Sex` in the (t, d) data set) are called *factor groups* and the different options for these factor groups  are called *factors* (`t` vs. `d`, `Male` vs. `Female`). For regression modelling, independent variables in the analysis are usually called *predictors* and the different options for these predictors  are called *levels* of that predictor.</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>There are two styles of mixed-effects logistic regression models commonly used by sociolinguists. One style is to look at whether or not the levels of a predictor are significantly different from the mean of that predictor. This is roughly what *Goldvarb* does. Factor weights are centred around .50, and significant factor groups are those where the factor weights of the factors are significantly different from .50. The equivalent logistic regression style in *R* tests what are called **sum contrasts** between levels of a predictor. The second style, which tests **treatment contrasts**, examines whether the levels of a predictor are significantly different from each other, rather than the mean. In this type of analysis one level is selected as a reference to which all other levels are compared. You can see the difference between sum and treatment contrasts in @fig-contrasts. </span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="al">![Treatment contrasts (left) versus sum contrasts (right), ©️ Derek Denis, 2014](images/treatmentsum.png)</span>{#fig-contrasts}</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>In <span class="co">[</span><span class="ot">Part 2</span><span class="co">](112_lvcr.qmd)</span> you will do an analyses with sum contrasts, then in <span class="co">[</span><span class="ot">Part 4</span><span class="co">](116_lvcr.qmd)</span> you will do the same analysis, but with treatment contrasts. While sum contrasts are consistent with a *Goldvarb*-type analysis, you can probe the constraint hierarchy of your fixed effects using treatment contrasts in a way not otherwise possible. </span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="fu">## Making Your Depandent Variable Binary</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>I recommend labelling application value tokens with <span class="in">`1`</span> and non-application values as <span class="in">`0`</span> because *R* eventually does this behind the scenes anyway. For example, with the `ctree()` function ([Conditional Inference Trees](080_lvcr.qmd)) and `glmer()` function below, the dependent variable used is `Dep.Var`. This variable has two levels `Realization` and `Deletion`. Before using these values in either model, *R* will convert each level to <span class="in">`0`</span> and <span class="in">`1`</span> in alphabetical order. So here <span class="in">`Deletion`</span> becomes <span class="in">`0`</span> and <span class="in">`Realization`</span> becomes <span class="in">`1`</span>. This causes complications for us because, for both <span class="in">`ctree()`</span> and <span class="in">`glmer()`</span>, likelihood is expressed as the likelihood of <span class="in">`1`</span>, and <span class="in">`1`</span> here is the non-application value. You don't want to use the likelihood of the non-application value in your manuscript tables and charts! You want to include values in your tables and charts that reflect the probability of, in this case, <span class="in">`0`</span>.<span class="ot">[^1]</span> </span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>^<span class="co">[</span><span class="ot">1</span><span class="co">]</span>: I also recognize that labelling the application value as <span class="in">`1`</span> can get confusing when the phenomenon in question is <span class="in">`Deletion`</span>. This is the advantage of having two <span class="in">`Dep.Var`</span> columns: one with the dependant variable clearly labled (e.g., <span class="in">`Deletion`</span> and <span class="in">`Realized`</span>), and another column with the dependent variable in binary format (e.g., <span class="in">`1`</span> and <span class="in">`0`</span>). Having both ensures you are never confused as to what the simplified binary coding means. </span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>There are two ways to overcome the above problem. You can change the ordering of the factors in the <span class="in">`Dep.Var`</span> column so that the non-application value will be converted to <span class="in">`0`</span> and the application value will be converted to <span class="in">`1`</span>. This is exactly what was done when constructing the <span class="in">`ctree()`</span> in <span class="co">[</span><span class="ot">Conditional Inference Trees</span><span class="co">](080_lvcr.qmd)</span> by changing the order of the levels in <span class="in">`Dep.Var`</span> to <span class="in">`Realized`</span> then <span class="in">`Deletion`</span> (so <span class="in">`Realized`</span> becomes <span class="in">`0`</span> and <span class="in">`Deletion`</span> becomes <span class="in">`1`</span>). Alternatively, you can create a new column with <span class="in">`Realization`</span> tokens coded as <span class="in">`0`</span> and <span class="in">`Deletion`</span> tokens coded as <span class="in">`1`</span> (see the tip below), then use that new column in your models. The one disadvantage to this method is that in your figures, like the <span class="in">`ctree()`</span> figure created in <span class="co">[</span><span class="ot">Conditional Inference Trees</span><span class="co">](080_lvcr.qmd)</span>, the names of the two levels of <span class="in">`Dep.Var`</span> on the figure itself will be <span class="in">`1`</span> and <span class="in">`0`</span>. For the <span class="in">`glmer()`</span> function this doesn't really matter.</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder levels of Dep.Var to make application value second</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Dep.Var, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Realized"</span>, <span class="st">"Deletion"</span>))</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a><span class="co"># Create New Column for binary Dependent Variable, all values 0</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var.Binary <span class="ot">&lt;-</span> <span class="st">"0"</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="co"># Change all Dep.Var.Binary tokens to 1 where Dep.Var.Full is "Deletion". </span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var.Binary[td<span class="sc">$</span>Dep.Var.Full <span class="sc">==</span> <span class="st">"Deletion"</span>] <span class="ot">&lt;-</span> <span class="st">"1"</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="co"># Make Dep.Var.Binary a factor column</span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var.Binary <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Dep.Var.Binary)</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="false"}</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## A Note on Dependent Variables with 3+ levels</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>Both the <span class="in">`ctree()`</span> and <span class="in">`glmer()`</span> functions require binary dependent variables. If you have a study in which you have a dependent variable with multiple variants (like the <span class="in">`Dep.Var.Full`</span> column), you should make a separate column in which all the tokens with the application value are labelled as one thing, and all the tokens with any non-application value are labelled with another (this is effectively what the <span class="in">`Dep.Var`</span> column is).</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>Making this binary column is quite easy in *R*. I like to use the binary values <span class="in">`1`</span> and <span class="in">`0`</span>, with <span class="in">`1`</span> as my application value and <span class="in">`0`</span> as my non-application value. To do this recode, first you create a new column and make every value <span class="in">`0`</span>. Then you change the value in this column to <span class="in">`1`</span> for every token where <span class="in">`Dep.Var.Full`</span> equals the application value. Lastly you make this column a factor column (though you could use the function <span class="in">`as.numeric()`</span> to make a numeric column, if that were needed).</span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>:::</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
+
+
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -11,6 +11,11 @@
       "/content/R/lvc_r/060_lvcr.html",
       "/content/R/lvc_r/070_lvcr.html",
       "/content/R/lvc_r/080_lvcr.html",
+      "/content/R/lvc_r/090_lvcr.html",
+      "/content/R/lvc_r/110_lvcr.html",
+      "/content/R/lvc_r/112_lvcr.html",
+      "/content/R/lvc_r/114_lvcr.html",
+      "/content/R/lvc_r/116_lvcr.html",
       "/content/R/lvc_r/index.html",
       "/content/R/tidy-norm/index.html",
       "/content/R/vowel-plots-tutorial/index.html"
@@ -26,7 +31,12 @@
       "/content/R/lvc_r/050_lvcr.html",
       "/content/R/lvc_r/060_lvcr.html",
       "/content/R/lvc_r/070_lvcr.html",
-      "/content/R/lvc_r/080_lvcr.html"
+      "/content/R/lvc_r/080_lvcr.html",
+      "/content/R/lvc_r/090_lvcr.html",
+      "/content/R/lvc_r/110_lvcr.html",
+      "/content/R/lvc_r/112_lvcr.html",
+      "/content/R/lvc_r/114_lvcr.html",
+      "/content/R/lvc_r/116_lvcr.html"
     ]
   },
   {
@@ -56,8 +66,8 @@
   {
     "listing": "/content/tools/index.html",
     "items": [
-      "/content/tools/autovot/autovot-tutorial/index.html",
-      "/content/tools/mfa/mfa-tutorial/index.html"
+      "/content/tools/mfa/mfa-tutorial/index.html",
+      "/content/tools/autovot/autovot-tutorial/index.html"
     ]
   },
   {

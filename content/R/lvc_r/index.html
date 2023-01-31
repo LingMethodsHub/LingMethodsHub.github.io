@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.233">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -356,6 +356,31 @@ cookieconsent.run({
   <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/090_lvcr.html" class="sidebar-item-text sidebar-link">Random Forests: The Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/110_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/112_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/114_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/116_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysisː Part 4</a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item">
@@ -472,7 +497,7 @@ cookieconsent.run({
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(13)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -484,7 +509,7 @@ cookieconsent.run({
 
 <div class="quarto-title-meta-author">
   <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading"></div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
     Matt Hunt Gardner <a href="https://orcid.org/0000-0002-1878-4232" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
@@ -554,7 +579,7 @@ Modified
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666374936622" data-listing-reading-time-sort="8.235" data-listing-title-sort="Getting Started" data-listing-filename-sort="010_lvcr.qmd">
+<tr data-index="0" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1673629264183" data-listing-reading-time-sort="8.235" data-listing-title-sort="Getting Started" data-listing-filename-sort="010_lvcr.qmd">
 <td class="listing-title">
 <a href="../../../content/R/lvc_r/010_lvcr.html" class="title">Getting Started</a>
 </td>
@@ -562,10 +587,10 @@ Modified
 An introduction to using this tutorial. The relationship between <em>R</em> and <em>Goldvarb</em>. Token and script files. <em>R</em> vs.&nbsp;<em>R Studio</em>. How to install packages.
 </td>
 <td class="listing-file-modified">
-10/21/22, 1:55:36 PM
+1/13/23, 12:01:04 PM
 </td>
 </tr>
-<tr data-index="1" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042440" data-listing-reading-time-sort="3.475" data-listing-title-sort="Getting Your Data Into *R*" data-listing-filename-sort="020_lvcr.qmd">
+<tr data-index="1" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1673629264184" data-listing-reading-time-sort="3.475" data-listing-title-sort="Getting Your Data Into *R*" data-listing-filename-sort="020_lvcr.qmd">
 <td class="listing-title">
 <a href="../../../content/R/lvc_r/020_lvcr.html" class="title">Getting Your Data Into <em>R</em></a>
 </td>
@@ -573,10 +598,10 @@ An introduction to using this tutorial. The relationship between <em>R</em> and 
 How to import your data into <em>R</em>.
 </td>
 <td class="listing-file-modified">
-9/27/22, 6:17:22 PM
+1/13/23, 12:01:04 PM
 </td>
 </tr>
-<tr data-index="2" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="15.01" data-listing-title-sort="Getting to Know Your Data" data-listing-filename-sort="030_lvcr.qmd">
+<tr data-index="2" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1673629264184" data-listing-reading-time-sort="15.01" data-listing-title-sort="Getting to Know Your Data" data-listing-filename-sort="030_lvcr.qmd">
 <td class="listing-title">
 <a href="../../../content/R/lvc_r/030_lvcr.html" class="title">Getting to Know Your Data</a>
 </td>
@@ -584,10 +609,10 @@ How to import your data into <em>R</em>.
 Getting a snapshot of your data. Types of data and data structures. Getting the dimensions of your data. Introducting the (t/d) dataset.
 </td>
 <td class="listing-file-modified">
-9/27/22, 6:17:22 PM
+1/13/23, 12:01:04 PM
 </td>
 </tr>
-<tr data-index="3" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="24.105" data-listing-title-sort="Modifying Data" data-listing-filename-sort="040_lvcr.qmd">
+<tr data-index="3" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1673629264184" data-listing-reading-time-sort="24.105" data-listing-title-sort="Modifying Data" data-listing-filename-sort="040_lvcr.qmd">
 <td class="listing-title">
 <a href="../../../content/R/lvc_r/040_lvcr.html" class="title">Modifying Data</a>
 </td>
@@ -595,10 +620,10 @@ Getting a snapshot of your data. Types of data and data structures. Getting the 
 Modifying data, including removing rows, re-coding variables, centering continuous variables, dividing continuous variables, changing the order of variables, reversing the order of variables, combining columns, splitting columns, and partitioning data sets.
 </td>
 <td class="listing-file-modified">
-9/27/22, 6:17:22 PM
+1/13/23, 12:01:04 PM
 </td>
 </tr>
-<tr data-index="4" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042441" data-listing-reading-time-sort="9.745" data-listing-title-sort="Doing it all again, but `tidy`" data-listing-filename-sort="050_lvcr.qmd">
+<tr data-index="4" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1673629264184" data-listing-reading-time-sort="9.75" data-listing-title-sort="Doing it all again, but `tidy`" data-listing-filename-sort="050_lvcr.qmd">
 <td class="listing-title">
 <a href="../../../content/R/lvc_r/050_lvcr.html" class="title">Doing it all again, but <code>tidy</code></a>
 </td>
@@ -606,10 +631,10 @@ Modifying data, including removing rows, re-coding variables, centering continuo
 Modifying data, but using the <code>tidyverse</code>
 </td>
 <td class="listing-file-modified">
-9/27/22, 6:17:22 PM
+1/13/23, 12:01:04 PM
 </td>
 </tr>
-<tr data-index="5" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1664317042442" data-listing-reading-time-sort="26.455" data-listing-title-sort="Crosstabs: Counts, Proportions, and More" data-listing-filename-sort="060_lvcr.qmd">
+<tr data-index="5" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1673629264185" data-listing-reading-time-sort="26.64" data-listing-title-sort="Crosstabs: Counts, Proportions, and More" data-listing-filename-sort="060_lvcr.qmd">
 <td class="listing-title">
 <a href="../../../content/R/lvc_r/060_lvcr.html" class="title">Crosstabs: Counts, Proportions, and More</a>
 </td>
@@ -617,10 +642,10 @@ Modifying data, but using the <code>tidyverse</code>
 Getting token counts and proportions. Getting mean, median, standard deviation, and quartiles. Dealing with decimals and exponential notation.
 </td>
 <td class="listing-file-modified">
-9/27/22, 6:17:22 PM
+1/13/23, 12:01:04 PM
 </td>
 </tr>
-<tr data-index="6" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666375491390" data-listing-reading-time-sort="11.205" data-listing-title-sort="Proportions for `ggplot2`" data-listing-filename-sort="070_lvcr.qmd">
+<tr data-index="6" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1673629264185" data-listing-reading-time-sort="11.2" data-listing-title-sort="Proportions for `ggplot2`" data-listing-filename-sort="070_lvcr.qmd">
 <td class="listing-title">
 <a href="../../../content/R/lvc_r/070_lvcr.html" class="title">Proportions for <code>ggplot2</code></a>
 </td>
@@ -628,10 +653,10 @@ Getting token counts and proportions. Getting mean, median, standard deviation, 
 Generating proportions that you can plot using <code>ggplot2</code>.
 </td>
 <td class="listing-file-modified">
-10/21/22, 2:04:51 PM
+1/13/23, 12:01:04 PM
 </td>
 </tr>
-<tr data-index="7" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1666375491390" data-listing-reading-time-sort="6.55" data-listing-title-sort="Conditional Inference Trees" data-listing-filename-sort="080_lvcr.qmd">
+<tr data-index="7" data-listing-date-sort="1664251200000" data-listing-file-modified-sort="1673629264185" data-listing-reading-time-sort="6.55" data-listing-title-sort="Conditional Inference Trees" data-listing-filename-sort="080_lvcr.qmd">
 <td class="listing-title">
 <a href="../../../content/R/lvc_r/080_lvcr.html" class="title">Conditional Inference Trees</a>
 </td>
@@ -639,7 +664,62 @@ Generating proportions that you can plot using <code>ggplot2</code>.
 Doing an analysis using conditional inference trees.
 </td>
 <td class="listing-file-modified">
-10/21/22, 2:04:51 PM
+1/13/23, 12:01:04 PM
+</td>
+</tr>
+<tr data-index="8" data-listing-date-sort="NaN" data-listing-file-modified-sort="1673629264185" data-listing-reading-time-sort="15.595" data-listing-title-sort="Random Forests: The Basics" data-listing-filename-sort="090_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/090_lvcr.html" class="title">Random Forests: The Basics</a>
+</td>
+<td class="listing-description">
+Doing a basic random forest analysis.
+</td>
+<td class="listing-file-modified">
+1/13/23, 12:01:04 PM
+</td>
+</tr>
+<tr data-index="9" data-listing-date-sort="NaN" data-listing-file-modified-sort="1673629264185" data-listing-reading-time-sort="9.665" data-listing-title-sort="Mixed-Efects Logistic Regression Analysis: Part 1" data-listing-filename-sort="110_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/110_lvcr.html" class="title">Mixed-Efects Logistic Regression Analysis: Part 1</a>
+</td>
+<td class="listing-description">
+Doing a mixed-effects logistic regression analysis suitable for comparing to a <em>Goldvarb</em> analysis. Part 1: The Setup
+</td>
+<td class="listing-file-modified">
+1/13/23, 12:01:04 PM
+</td>
+</tr>
+<tr data-index="10" data-listing-date-sort="NaN" data-listing-file-modified-sort="1673629264186" data-listing-reading-time-sort="43.615" data-listing-title-sort="Mixed-Efects Logistic Regression Analysis: Part 2" data-listing-filename-sort="112_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/112_lvcr.html" class="title">Mixed-Efects Logistic Regression Analysis: Part 2</a>
+</td>
+<td class="listing-description">
+Doing a mixed-effects logistic regression analysis suitable for comparing to a <em>Goldvarb</em> analysis. Part 2: Sum Contrast Coding
+</td>
+<td class="listing-file-modified">
+1/13/23, 12:01:04 PM
+</td>
+</tr>
+<tr data-index="11" data-listing-date-sort="NaN" data-listing-file-modified-sort="1673629264186" data-listing-reading-time-sort="18.405" data-listing-title-sort="Mixed-Efects Logistic Regression Analysis: Part 3" data-listing-filename-sort="114_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/114_lvcr.html" class="title">Mixed-Efects Logistic Regression Analysis: Part 3</a>
+</td>
+<td class="listing-description">
+Doing a mixed-effects logistic regression analysis suitable for comparing to a <em>Goldvarb</em> analysis. Part 3: Correlations, Interactions, &amp; Collinearity
+</td>
+<td class="listing-file-modified">
+1/13/23, 12:01:04 PM
+</td>
+</tr>
+<tr data-index="12" data-listing-date-sort="NaN" data-listing-file-modified-sort="1673629264186" data-listing-reading-time-sort="15.25" data-listing-title-sort="Mixed-Efects Logistic Regression Analysisː Part 4" data-listing-filename-sort="116_lvcr.qmd">
+<td class="listing-title">
+<a href="../../../content/R/lvc_r/116_lvcr.html" class="title">Mixed-Efects Logistic Regression Analysisː Part 4</a>
+</td>
+<td class="listing-description">
+Doing a mixed-effects logistic regression analysis suitable for comparing to a <em>Goldvarb</em> analysis. Part 4: Treatment Contrast Coding
+</td>
+<td class="listing-file-modified">
+1/13/23, 12:01:04 PM
 </td>
 </tr>
 </tbody>
@@ -871,36 +951,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2022-9-27</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA 4.0"</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html: default</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># pdf: default</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  # - name:</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  #     given: Matt Hunt</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  #     family: Gardner</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  name: "Matt Hunt Gardner"</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">  orcid: 0000-0002-1878-4232</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">  email: matt.gardner@ling-phil.ox.ac.uk</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">  corresponding: true</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">  affiliations:</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">    - name: University of Oxford </span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">      department: Linguistics, Philology, &amp; Phonetics</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">      city: Oxford</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">      country: UK</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">    type: table</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">    id: lvcr-listings</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">    contents: "*.qmd"</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">    sort: "filename"</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">    field-display-names: </span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">      title: "Section"</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">    categories: true</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">    fields: [title, description, file-modified]</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>This tutorial takes you step-by-step though a variationist analysis of a sociolinguisitic variable with discrete variants.</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>::: {#lvcr-listings}</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: scroll</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pdf: default</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  # - name:</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  #     given: Matt Hunt</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  #     family: Gardner</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">  name: "Matt Hunt Gardner"</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">  orcid: 0000-0002-1878-4232</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">  email: matt.gardner@ling-phil.ox.ac.uk</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">  corresponding: true</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">  affiliations:</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">    - name: University of Oxford </span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">      department: Linguistics, Philology, &amp; Phonetics</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">      city: Oxford</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">      country: UK</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">    type: table</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">    id: lvcr-listings</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">    contents: "*.qmd"</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">    sort: "filename"</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">    field-display-names: </span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">      title: "Section"</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">    categories: true</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">    fields: [title, description, file-modified]</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>This tutorial takes you step-by-step though a variationist analysis of a sociolinguisitic variable with discrete variants.</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>::: {#lvcr-listings}</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

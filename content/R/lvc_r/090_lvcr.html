@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2023-01-13">
+<meta name="description" content="Doing a basic random forest analysis.">
+
+<title>LingMethodsHub - Random Forests: The Basics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../content/R/lvc_r/110_lvcr.html" rel="next">
+<link href="../../../content/R/lvc_r/080_lvcr.html" rel="prev">
+<script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+<style>html{ scroll-behavior: smooth; }</style>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false,
+  "showHighlights": "never"
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible">
+
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="LingMethodsHub - Random Forests: The Basics">
+<meta property="og:description" content="Doing a basic random forest analysis.">
+<meta property="og:site-name" content="LingMethodsHub">
+<meta name="twitter:title" content="LingMethodsHub - Random Forests: The Basics">
+<meta name="twitter:description" content="Doing a basic random forest analysis.">
+<meta name="twitter:image" content="https://lingmethodshub.github.io/assets/logo.png">
+<meta name="twitter:image-height" content="424">
+<meta name="twitter:image-width" content="653">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Random Forests: The Basics">
+<meta name="citation_author" content="Matt Hunt Gardner">
+<meta name="citation_publication_date" content="2023-01-13">
+<meta name="citation_cover_date" content="2023-01-13">
+<meta name="citation_year" content="2023">
+<meta name="citation_online_date" content="2023-01-13">
+<meta name="citation_fulltext_html_url" content="https://lingmethodshub.github.io/090_lvcr.html">
+<meta name="citation_doi" content="10.5281/zenodo.7160718">
+<meta name="citation_volume" content="Doing LVC with R">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Linguistics Methods Hub">
+<meta name="citation_series_title" content="Linguistics Methods Hub">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">LingMethodsHub</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../index.html" aria-current="page">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../content/index.html">
+ <span class="menu-text">Tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../content/contributing/index.html">
+ <span class="menu-text">Contributing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../people/index.html">
+ <span class="menu-text">People</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Random Forests: The Basics</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/R/index.html" class="sidebar-item-text sidebar-link">R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">Doing LVC with R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">Getting Your Data Into <em>R</em></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">Getting to Know Your Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">Modifying Data</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">Doing it all again, but <code>tidy</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">Crosstabs: Counts, Proportions, and More</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">Proportions for <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/090_lvcr.html" class="sidebar-item-text sidebar-link active">Random Forests: The Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/110_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/112_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/114_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/lvc_r/116_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysisː Part 4</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">Vowel Plots with <code>ggplot2</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/tidy-norm/index.html" class="sidebar-item-text sidebar-link">How to normalize your vowels using the tidyverse</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/animated_vowel_plots_tutorial/index.html" class="sidebar-item-text sidebar-link">Visualising Vowel Space Change with GAMMs</a>
+  </div>
+</li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/python/index.html" class="sidebar-item-text sidebar-link">Python</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">Vowel plotting in Python</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Praat</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/tools/index.html" class="sidebar-item-text sidebar-link">Tools</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">Montreal Forced Aligner</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/tools/autovot/autovot-tutorial/index.html" class="sidebar-item-text sidebar-link">AutoVOT</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/cli/index.html" class="sidebar-item-text sidebar-link">Command Line Interfaces</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">Bash Shell Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/cli/keyboarding/index.html" class="sidebar-item-text sidebar-link">Keyboarding</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/windows/index.html" class="sidebar-item-text sidebar-link">Windows</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">Windows Subsystem for Linux</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">Installation</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="px-0"><hr class="sidebar-divider hi "></li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Random Forests: The Basics</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+<div>
+  <div class="description">
+    Doing a basic random forest analysis.
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Matt Hunt Gardner <a href="https://orcid.org/0000-0002-1878-4232" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Oxford
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 13, 2023</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+
+</header>
+
+<p>Another useful type of analysis available as part of the <code>partykit</code> package is a random forest analysis. This algorithm determines the most common classification tree (like the one above) among a large collection of trees built on random subsets of a dataset. Random forests are useful because they can rank the relative importance of independent variables with respect to a dependent variable. They can also simultaneously test variables that are (multi)collinear. Logistic regression (discussed in <a href="../../../content/R/lvc_r/110_lvcr.html">Mixed-Efects Logistic Regression Analysis</a>) assumes little or no collinearity among independent predictor variables. Variables like lexical status (<code>Category</code>) and morphological type (<code>Morph.Type</code>) are highly correlated (i.e., semi-weak and past-tense verbs are all lexical), thus should not be included as predictors in the same logistic regression model.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Random forest analysis take a lot of computing power and time. I usually leave my computer to run the analysis overnight. The bigger your dataset and the more predictors you include, the longer the analysis will take.</p>
+<p>The first step is to first set the “seed” before running your random forest analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Seed</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123456</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The random forest algorithm finds the most common classification tree from those built on random samplings of the data. Setting the seed for <em>R</em>’s random number generator means you can both generate random samples of your data for creating these trees, and you can also make your analysis reproducible. Think of each seed as a list of random numbers. Above, the seed <code>123456</code> is used, but the seed you select is arbitrary. The one time it is important to select a specific seed is if you are trying to reproduce results. In that case, you must use the same seed as the previous analysis. Keeping a record of your seed setting in a script file and reporting your seed setting in a manuscript is therefore very important.</p>
+<p>You build your random forest formula just like you built the formula for your <code>ctree()</code>, but with the function <code>cforest()</code>. The formula here uses <code>Dep.Var</code> as the dependent variable and <code>Stress</code>, <code>Category</code>, <code>Morph.Type</code>, <code>Before</code>, <code>After</code>, <code>Sex</code>, <code>Education</code>, <code>Job</code>, <code>After.New</code>, <code>Center.Age</code>, <code>Age.Group</code>, and <code>Phoneme</code> as predictor variables. The data tested is set using <code>data=td</code>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>The setting <code>ntree=128</code> specifies the number of trees to grow. I have run analyses where I’ve specified 10,000 trees and it took almost 24 hours to compute on my 2015 MacBook Pro. As a rule, the more data/independent variables you have, the more trees you should specify; however, <a href="http://dx.doi.org/10.1007/978-3-642-31537-4_13">Oshiro <em>et al.</em> (2012)</a> point out, based on their test with 29 different datasets, that after 128 trees there is no significant improvement in the accuracy of the resulting random forest. As a random forest is never my only analysis, I now specify 128 trees for casual data exploration. I use at least 5,000 for any random forest that I include in a published manuscript.</p>
+<p>The <code>cforest()</code> function creates the random forest, but you still need to determine which independent variables do the best job of describing the data averaged over all of the trees created. To do this you use the function <code>varimp()</code> on the result of <code>cforest()</code> (here the object <code>td.cforest</code>). The setting <code>conditional=TRUE</code> is important when independent variables are collinear; it should always be used. In simple terms, this setting ensures that, if two independent variables are collinear, only the variable that does a better job at explaining the variation in the data will be considered as an important descriptor and the other will be ignored.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You’ll notice that I use the term descriptor for random forests and predictor for regression analysis. This is because regression analysis tests what independent variables do the best job of predicting whether a given token will be <code>Deletion</code> or <code>Realization</code>. The random forest analysis doesn’t predict, instead it determines the most useful way of dividing the data in order to best explain when <code>Deletion</code> and <code>Realization</code> occurs.</p>
+</div>
+</div>
+<p>The <code>varimp()</code> function is the part of this analysis that takes a long time and lots of computing power. Here is where the size of your dataset, the number of trees grown, and the number of independent variables all contribute to how much time and computing power is needed.</p>
+<p>The result of <code>varimp()</code> is a list, rather than a dataframe. To turn it into a dataframe we need to use the function <code>melt()</code>. The setting <code>id.var=NULL</code> turns the names of each independent variable into a value in a column called <code>variable</code>. If this setting is not used <em>R</em> will instead use the independent variable names as row names, which is not useful for graphing.</p>
+<p>Given that <code>varimp()</code> often takes a long time, it is a good idea to save the results as a text file. That way you don’t have to re-run the analysis if you want to refer to it at a later date. As above, doing so will automatically melt the data, but it won’t include column names. If you read this file back into <code>R</code> you need to assign the column names using the function <code>names(td.cforest.results)&lt;-c("variable", "value")</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate a Random Forest testing Stress, Category, Morph.Type, Before,</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># After, Sex, Education, Job, After.New, Center.Age, Age.Group , and Phoneme</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(partykit)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>td.cforest <span class="ot">&lt;-</span> <span class="fu">cforest</span>(Dep.Var <span class="sc">~</span> Stress <span class="sc">+</span> Category <span class="sc">+</span> Morph.Type <span class="sc">+</span> Before <span class="sc">+</span> After <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    Sex <span class="sc">+</span> Education <span class="sc">+</span> Job <span class="sc">+</span> After.New <span class="sc">+</span> Center.Age <span class="sc">+</span> Age.Group <span class="sc">+</span> Phoneme, <span class="at">data =</span> td,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ntree =</span> <span class="dv">128</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>td.cforest.varimp <span class="ot">&lt;-</span> <span class="fu">varimp</span>(td.cforest, <span class="at">conditional =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>td.cforest.results <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="fu">data.frame</span>(<span class="fu">as.list</span>(td.cforest.varimp)), <span class="at">id.vars =</span> <span class="cn">NULL</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Write Random Forest to File</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.cforest.results, <span class="at">file =</span> <span class="st">"Data/tdCForestVarimp.txt"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read Random Forest from File</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>td.cforest.results <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"Data/tdCForestVarimp.txt"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> <span class="cn">NULL</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(td.cforest.results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     variable         value
+1      Stress  0.0092881683
+2    Category  0.0010024089
+3  Morph.Type  0.0428405420
+4      Before  0.0891103455
+5       After  0.0225015590
+6         Sex -0.0046620498
+7   Education  0.0142773676
+8         Job  0.0190235499
+9   After.New  0.0108922165
+10 Center.Age  0.0286954756
+11  Age.Group  0.0005741748
+12    Phoneme -0.0052887491</code></pre>
+</div>
+</div>
+<p>Now that you have the variable importance of each independent variable in a dataframe you can compare the values to determine which variables do the best job at explaining the variation. You could do this by just looking at the values — higher values are more useful, lower values are less useful — however, the more common way to compare the variables is by graphing them.</p>
+<p>Older manuals suggest using the <em>R</em> base graphics function <code>dotplot()</code> to visualize this data. I prefer using <code>ggplot()</code> because it is so much more customizable. As in previous chapters, I won’t list all the different ways you can customize a <code>ggplot()</code>, but I will show you how to make and save a nice looking random forest graph.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder variable importance by highest to lowest value in column value</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>td.cforest.results<span class="sc">$</span>variable <span class="ot">&lt;-</span> <span class="fu">reorder</span>(td.cforest.results<span class="sc">$</span>variable, td.cforest.results<span class="sc">$</span>value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>First you make sure <code>ggplot2</code> is loaded using the <code>library()</code> function. Next, you need to order the descriptor variable names in the <code>td.cforest.results</code> column <code>variable</code> based on the values of the column <code>value</code>. To do this you use the <code>reorder()</code> function, which takes two objects: first, the column you want to sort (here <code>td.cforest.results$variable</code>); and second, the column you want to sort by (here <code>td.cforest.results$value</code>). You assign this reordered dataframe back as the original dataframe using the assignment operator <code>&lt;-</code>.</p>
+<p>Alternatively, you could to this in a <code>tidy</code> way using <code>arrange()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder variable importance by highest to lowest value in column value, but</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>td.cforest.results <span class="ot">&lt;-</span> td.cforest.results <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(variable, value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next you need to find the absolute value of the lowest negative-scoring descriptor variable. You’ll see why in a second. You create a new object <code>td.cforest.min</code> and, using the assignment operator <code>&lt;-</code>, make it equal to the absolute value (using <code>abs()</code>) of the lowest negative-scoring variable (using <code>min()</code>). Can can also do this in a <code>tidy</code> way using <code>%&gt;%</code>, though it’s not much quicker to type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get absolute minimum value of column value</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>td.cforest.min <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">min</span>(td.cforest.results<span class="sc">$</span>value))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get absolute minimum value of column value, but tidy</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>td.cforest.min <span class="ot">&lt;-</span> td.cforest.results<span class="sc">$</span>value <span class="sc">%&gt;%</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">min</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now you have everything you need to visualize the variable importance of the variables in the random forest. You create a new object <code>dotplot</code>, which will be the graph created by <code>ggplot()</code>. The function <code>ggplot()</code> has a special syntax. Generally you first create the plot using <code>ggplot()</code>; this is the function where you specify what values are going to serve as the <code>x</code> and <code>y</code> axes of the graph and also what data will be used. Specifying the <code>x</code> and <code>y</code> axes values is done inside the aesthetics (<code>aes()</code>) of the <code>gplot()</code>. These aesthetics are carried forward to all the other components you add to the plot. If you stop just at the <code>ggplot()</code> function, then <code>dotplot</code> would only be the plotting area, plus an <code>x</code> and <code>y</code> axes.</p>
+<p>The next step is to add some data points to your plot. You do this by adding what are called “geom’s” ([’gi.owmz]). You want to create a dotplot, so you use <code>geom_point()</code>, which will add the corresponding <code>x</code> and <code>y</code> values (inherited from <code>aes()</code>) as points. Use <code>+</code> to add the geom to the already created <code>ggplot()</code>. The geom <code>geom_point()</code> can be on a separate line, but the <code>+</code> must be on the same line as the object being added to.</p>
+<p>The next step is to name the <code>x</code>-axis by adding <code>xlab()</code> with the label in quotation marks. You can remove the <code>y</code>-axis label by specifying the label as <code>NULL</code>. Much of the customization of <code>ggplot()</code>’s look is done through the <code>theme()</code> function. I’m not going to delve too deep into customization; instead, I’m going to suggest one of the built-in themes: <code>theme_classic()</code>, which gives a very bare-bones graph (my personal preference). There are other built-in themes like <code>theme_linedraw()</code>; <code>theme_bw()</code>; <code>theme_dark()</code>; etc. <em>Google</em> is your best friend when you want to customize the look of your <code>ggplot2</code> visualizations.</p>
+<p>The final element you add to the dotplot is a vertical line where <code>x = td.cforest.min</code>. This is the absolute value of the lowest negative-scoring variable you calculated earlier. The geom <code>geom_vline()</code> adds the vertical line. Its first argument is where you specify the <code>xintercept</code>, i.e., where you want the vertical line to intercept the <code>x</code>-axis. The second argument is the <code>linetype</code>; here you specify it as <code>2</code>. There are different line types in <em>R</em>; <code>0</code> is “blank”, <code>1</code> is “solid”, <code>2</code> is “dashed”, <code>3</code> is “dotted”, <code>4</code> is “dotdash”, <code>5</code> is “longdash”, and <code>6</code> is “twodash”. You can either use the line type number or name, but the name must be in quotation marks. The <code>alpha</code> value is a number between <code>0</code> and <code>1</code> that indicates how transparent to make the line. Here <code>0.5</code> (50% transparent) is used.</p>
+<p>If you type <code>dotplot</code> in the <em>R</em> console and hit execute, you’ll see what your graph looks like.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object of Random Forest as a dotplot using ggplot2</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>dotplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(td.cforest.results, <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> variable)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Variable Importance"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> td.cforest.min,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Save dotplot</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"Data/tdCForest.png"</span>, dotplot, <span class="at">width =</span> <span class="dv">4</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="090_lvcr_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>To save the graph use the function <code>ggsave()</code>. The first argument is the save destination. You can specify which type of file you want to save your image as by using different file extensions: .png, .pdf, etc. I generally only use PNG or PDF files. The second argument is the name of the object to save (here <code>dotplot</code>). Next you specify the <code>width</code> and <code>height</code> of the image you want to create and the <code>units</code> of the values you specify. You don’t need to do this, but I like to so that I know exactly how big my image will be. I find this helpful when later inserting images in my manuscripts. It is also a good way to ensure consistency in size from graph to graph. For PNG you can also specify the <code>dpi</code> (dots per inch/pixels per inch), which will be the resolution of the final image. The higher the <code>dpi</code>, the bigger the file, but also the clearer the image will be if you decide later to zoom in on it or enlarge it. Though, if you need a bigger image it’s better to just specify the exact size using the height and width arguments, rather than enlarging a smaller image. For graphs with little to no text <code>300</code> dpi is sufficient. If there is a lot of text, you may want to bump it up to <code>600</code> dpi. For certain publishers there may be a specific dpi needed.</p>
+<p>In the dotplot above, the descriptor variables are ordered top to bottom from most important to least important. Variables can be considered informative if their variable importance is above the absolute value of the lowest negative-scoring variable. The rationale for this rule of thumb, according to <a href="https://doi.org/10.1037%2Fa0016973">Strobl <em>et al.</em> (2009: 342)</a>, is that importance of irrelevant variables varies randomly around zero. In other words, everything to the right of the dashed line is a useful in describing <code>Deletion</code> in the data. The further to the right of the dashed line, the more useful.</p>
+<p>The variables with the highest variable importance are <code>Before</code> and <code>Morph.Type</code>, followed by <code>Center.Age</code>, <code>After</code>, <code>Job</code>, <code>Education</code>, <code>After.New</code> and <code>Stress</code>. The variables <code>Category</code>, <code>Age.Group</code>, <code>Sex</code>, and <code>Phoneme</code> are all to the left of the dashed line, so you can consider them as not useful in describing the variation.</p>
+<p>You’ll notice that many of the independent variables included are collinear — in other words, the value of one can predict (all or some of) the values of the other. As I noted above, <code>Category</code> and <code>Morph.Type</code> are collinear because all <code>Semi-Weak</code> and <code>Past</code> tokens are also <code>Lexical</code>. Likewise <code>Age.Group</code> and <code>Center.Age</code> are completely collinear; the value of <code>Center.Age</code> can exactly predict the value of <code>Age.Group</code>. Values for both age measures can also do a good job of predicting both <code>Education</code> and <code>Job</code> in the Cape Breton data. Younger speakers are generally <code>Educated</code> and have <code>White</code> (collar) or <code>Service</code> jobs. All <code>Students</code> in the variable <code>Education</code> are also <code>Students</code> for the variable <code>Job</code>, and all are also <code>Young</code>. It would violate the assumptions of the model to include all these predictors at the same time in the same regression (see <a href="100_lvcr.qmd">next chapter</a>); however, these collinear variables can be included in a random forest. One of the greatest uses of a random forest analysis is when you have multiple ways of categorizing the same phenomenon (like social class, which can be operationalized by either <code>Job</code> or <code>Education</code>, or age which can be operationalized as a continuous variable like <code>Center.Age</code>, or a discrete variable like <code>Age.Group</code>) and you want to decide which categorization to use.</p>
+<p>In the dotplot the variable <code>After</code> is higher ranked than <code>After.New</code>. This would be good justification for choosing <code>After</code> — which includes a separate level for (t, d) before /h/ — instead of <code>After.New</code> in further analyses. Likewise, <code>Job</code> is describes the variation better than <code>Education</code>; the random forest therefore points to <code>Job</code> being a more useful reflection of social class stratification than <code>Education</code> for the (t, d) variable. The only caveat is that when selecting between independent variables that are collinear, you must also take into account the hypotheses that you aim to test. In other words, selection of variables should be also be independently motivated.</p>
+<p>A very important thing to remember about random forest analysis is that they are truly random, so the results can vary from run to run depending on which seed has been set. For this reason it’s a good idea to verify your findings by re-running your random forest analysis using different seeds and perhaps different numbers of trees. Below is the code for generating a random forest from seed 654321 and 8,000 randomly grown trees (I also used <code>theme_linedraw()</code> instead of <code>theme_classic()</code>). You’ll see that the variable importance rankings are nearly identical. <code>Before</code> is far-and-away the most informative descriptor, followed by <code>Center.Age</code> and <code>Morph.Type</code>, then <code>Job</code>, <code>After</code>, and <code>Education</code>, and finally marginally-informative <code>Stress</code> and <code>After.New</code>. This gives me confidence that the results from the previous random forest are relatively accurate. It also provides justification for choosing <code>Job</code> over <code>Education</code> as a metric of social status, <code>Center.Age</code> over <code>Age.Group</code> as a measure of apparent time, and <code>Morph.Type</code> over <code>Category</code> (two highly-correlated descriptors). <code>Sex</code> and <code>Phoneme</code> also appear to be poor descriptors of the variation in the data, so leaving them out of regression analysis (in order to simplify modelling), could also be justified.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">654321</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(partykit)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>td.cforest2 <span class="ot">&lt;-</span> <span class="fu">cforest</span>(Dep.Var <span class="sc">~</span> Stress <span class="sc">+</span> Category <span class="sc">+</span> Morph.Type <span class="sc">+</span> Before <span class="sc">+</span> After <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    Sex <span class="sc">+</span> Education <span class="sc">+</span> Job <span class="sc">+</span> After.New <span class="sc">+</span> Center.Age <span class="sc">+</span> Age.Group <span class="sc">+</span> Phoneme, <span class="at">data =</span> td,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">ntree =</span> <span class="dv">8000</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>td.cforest2.varimp <span class="ot">&lt;-</span> <span class="fu">varimp</span>(td.cforest2, <span class="at">conditional =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>td.cforest2.results <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="fu">data.frame</span>(<span class="fu">as.list</span>(td.cforest2.varimp)), <span class="at">id.vars =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>td.cforest2.results<span class="sc">$</span>variable <span class="ot">&lt;-</span> <span class="fu">reorder</span>(td.cforest2.results<span class="sc">$</span>variable, td.cforest2.results<span class="sc">$</span>value)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>td.cforest2.min <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">min</span>(td.cforest2.results<span class="sc">$</span>value))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(td.cforest2.results, <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> variable)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Variable Importance"</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> <span class="fu">theme_linedraw</span>() <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> td.cforest.min, <span class="at">linetype =</span> <span class="dv">2</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="090_lvcr_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Another important thing to remember when using random forest analyses is that the values along the <code>x</code>-axis are only relative rankings for a specific random forest. The absolute values shouldn’t be interpreted or compared across different studies <a href="https://doi.org/10.1037%2Fa0016973">(Strobl <em>et al.</em> 2009: 336)</a>. What you can compare across studies is the relative ranking of variables along the <code>y</code>-axis and which variables are on each side of the dashed line. Further, random forests do not take into account the weirdness of sociolinguisic data, which generally includes an inconsistent number of tokens from each speaker. Mixed-effects regression <em>can</em> do this. So, random forests should always be used in conjunction with other forms of data modelling like mixed-effects regression.</p>
+
+
+<!-- -->
+
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>See <a href="https://www.wiley.com/en-gb/Variationist+Sociolinguistics:+Change,+Observation,+Interpretation-p-9781405135900">Tagliamonte 2012</a> and <a href="https://doi.org/10.1017/S0954394512000129">Tagliamonte &amp; Baayen (2012)</a> for a variationist-focused explanation of random forest analysis and its relationship to other analyses.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If you don’t have the <code>td</code> dataset loaded in <em>R</em>, go back to <a href="../../../content/R/lvc_r/050_lvcr.html">Doing it all again, but <code>tidy</code></a> and run the code.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{huntgardner,
+  author = {Matt Hunt Gardner},
+  title = {Random {Forests:} {The} {Basics}},
+  series = {Linguistics Methods Hub},
+  volume = {Doing LVC with R},
+  date = {},
+  url = {https://lingmethodshub.github.io/090_lvcr.html},
+  doi = {10.5281/zenodo.7160718},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-huntgardner" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Matt Hunt Gardner. n.d. Random Forests: The Basics. <em>Linguistics
+Methods Hub</em>: <em>Doing LVC with R</em>. (<a href="https://lingmethodshub.github.io/090_lvcr.html">https://lingmethodshub.github.io/090_lvcr.html</a>).
+doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../content/R/lvc_r/080_lvcr.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Conditional Inference Trees</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../content/R/lvc_r/110_lvcr.html" class="pagination-link">
+        <span class="nav-page-text">Mixed-Efects Logistic Regression Analysis: Part 1</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Random Forests: The Basics"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "`r Sys.Date()`"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA 4.0"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: scroll</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pdf: default</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - name:</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">      given: Matt Hunt</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">      family: Gardner</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">    orcid: 0000-0002-1878-4232</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">    email: matt.gardner@ling-phil.ox.ac.uk</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">    corresponding: true</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">    affiliations:</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">      - name: University of Oxford </span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">        department: Linguistics, Philology, &amp; Phonetics</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co">        city: Oxford</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co">        country: UK</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Doing a basic random forest analysis. "</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">tidy=</span><span class="st">'styler'</span>, <span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">strict=</span><span class="cn">TRUE</span>, <span class="at">scope=</span><span class="st">"tokens"</span>), <span class="at">tidy =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Before <span class="sc">!=</span> <span class="st">"Vowel"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">After.New =</span> <span class="fu">recode</span>(After, <span class="st">"H"</span> <span class="ot">=</span> <span class="st">"Consonant"</span>),  </span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>             <span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)),</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>             <span class="at">Age.Group =</span> <span class="fu">cut</span>(YOB, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">1944</span>, <span class="dv">1979</span>, <span class="cn">Inf</span>), </span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>)),</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme =</span> <span class="fu">sub</span>(<span class="st">"^(.)(--.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, Phoneme.Dep.Var),</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>             <span class="at">Dep.Var.Full =</span> <span class="fu">sub</span>(<span class="st">"^(.--)(.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, Phoneme.Dep.Var),</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme.Dep.Var =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate_if</span>(is.character, as.factor)</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>td.young <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>            <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Young"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>td.middle <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>             <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Middle"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>             <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>td.old <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>          <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Old"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>Another useful type of analysis available as part of the <span class="in">`partykit`</span> package is a random forest analysis. This algorithm determines the most common classification tree (like the one above) among a large collection of trees built on random subsets of a dataset. Random forests are useful because they can rank the relative importance of independent variables with respect to a dependent variable. They can also simultaneously test variables that are (multi)collinear. Logistic regression (discussed in <span class="co">[</span><span class="ot">Mixed-Efects Logistic Regression Analysis</span><span class="co">](110_lvcr.qmd)</span>) assumes little or no collinearity among independent predictor variables. Variables like lexical status (<span class="in">`Category`</span>) and morphological type (<span class="in">`Morph.Type`</span>) are highly correlated (i.e., semi-weak and past-tense verbs are all lexical), thus should not be included as predictors in the same logistic regression model.<span class="ot">[^1]</span></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>See <span class="co">[</span><span class="ot">Tagliamonte 2012</span><span class="co">](https://www.wiley.com/en-gb/Variationist+Sociolinguistics:+Change,+Observation,+Interpretation-p-9781405135900)</span> and <span class="co">[</span><span class="ot">Tagliamonte &amp; Baayen (2012)</span><span class="co">](https://doi.org/10.1017/S0954394512000129)</span>  for a variationist-focused explanation of random forest analysis and its relationship to other analyses.</span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>Random forest analysis take a lot of computing power and time. I usually leave my computer to run the analysis overnight. The bigger your dataset and the more predictors you include, the longer the analysis will take. </span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>The first step is to first set the "seed" before running your random forest analysis. </span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Seed</span></span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123456</span>)</span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a>The random forest algorithm finds the most common classification tree from those built on random samplings of the data. Setting the seed for *R*'s random number generator means you can both generate random samples of your data for creating these trees, and you can also make your analysis reproducible. Think of each seed as a list of random numbers. Above, the seed <span class="in">`123456`</span> is used, but the seed you select is arbitrary. The one time it is important to select a specific seed is if you are trying to reproduce results. In that case, you must use the same seed as the previous analysis. Keeping a record of your seed setting in a script file and reporting your seed setting in a manuscript is therefore very important. </span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>You build your random forest formula just like you built the formula for your <span class="in">`ctree()`</span>, but with the  function <span class="in">`cforest()`</span>. The formula here uses <span class="in">`Dep.Var`</span> as the dependent variable and <span class="in">`Stress`</span>, <span class="in">`Category`</span>, <span class="in">`Morph.Type`</span>, <span class="in">`Before`</span>, <span class="in">`After`</span>, <span class="in">`Sex`</span>, <span class="in">`Education`</span>, <span class="in">`Job`</span>, <span class="in">`After.New`</span>, <span class="in">`Center.Age`</span>, <span class="in">`Age.Group`</span>, and <span class="in">`Phoneme`</span> as predictor variables. The data tested is set using <span class="in">`data=td`</span>.<span class="ot">[^2]</span> </span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>If you don't have the <span class="in">`td`</span> dataset loaded in *R*, go back to <span class="co">[</span><span class="ot">Doing it all again, but `tidy`</span><span class="co">](050_lvcr.qmd)</span> and run the code.</span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>The setting <span class="in">`ntree=128`</span>  specifies the number of trees to grow. I have run analyses where I've specified 10,000 trees and it took almost 24 hours to compute on my 2015 MacBook Pro. As a rule, the more data/independent variables you have, the more trees you should specify; however, <span class="co">[</span><span class="ot">Oshiro *et al.* (2012)</span><span class="co">](http://dx.doi.org/10.1007/978-3-642-31537-4_13)</span> point out, based on their test with 29 different datasets, that after 128 trees there is no significant improvement in the accuracy of the resulting random forest. As a random forest is never my only analysis, I now specify 128 trees for casual data exploration. I use at least 5,000 for any random forest that I include in a published manuscript. </span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a>The <span class="in">`cforest()`</span> function creates the random forest, but you still need to determine which independent variables do the best job of describing the data averaged over all of the trees created. To do this you use the function <span class="in">`varimp()`</span> on the result of <span class="in">`cforest()`</span> (here the object <span class="in">`td.cforest`</span>). The setting <span class="in">`conditional=TRUE`</span> is important when independent variables are collinear; it should always be used. In simple terms, this setting ensures that, if two independent variables are collinear, only the variable that does a better job at explaining the variation in the data will be considered as an important descriptor and the other will be ignored.</span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a>You'll notice that I use the term descriptor for random forests and predictor for regression analysis. This is because regression analysis tests what independent variables do the best job of predicting whether a given token will be <span class="in">`Deletion`</span> or <span class="in">`Realization`</span>. The random forest analysis doesn't predict, instead it determines the most useful way of dividing the data in order to best explain when <span class="in">`Deletion`</span> and <span class="in">`Realization`</span> occurs.</span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>The <span class="in">`varimp()`</span> function is the part of this analysis that takes a long time and lots of computing power. Here is where the size of your dataset, the number of trees grown, and the number of independent variables all contribute to how much time and computing power is needed.</span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>The result of <span class="in">`varimp()`</span> is a list, rather than a dataframe. To turn it into a dataframe we need to use the function <span class="in">`melt()`</span>. The setting <span class="in">`id.var=NULL`</span> turns the names of each independent variable into a value in a column called <span class="in">`variable`</span>. If this setting is not used *R* will instead use the independent variable names as row names, which is not useful for graphing. </span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a>Given that <span class="in">`varimp()`</span> often takes a long time, it is a good idea to save the results as a text file. That way you don't have to re-run the analysis if you want to refer to it at a later date.  As above, doing so will automatically melt the data, but it won't include column names. If you read this file back into <span class="in">`R`</span> you need to assign the column names using  the function <span class="in">`names(td.cforest.results)&lt;-c("variable", "value")`</span>. </span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate a Random Forest testing Stress, Category, Morph.Type, Before, After, Sex, Education, Job, After.New, Center.Age, Age.Group , and Phoneme</span></span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(partykit)</span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>td.cforest <span class="ot">&lt;-</span> <span class="fu">cforest</span>(Dep.Var <span class="sc">~</span> Stress <span class="sc">+</span> Category <span class="sc">+</span> Morph.Type <span class="sc">+</span> Before <span class="sc">+</span> After <span class="sc">+</span> Sex <span class="sc">+</span> Education <span class="sc">+</span> Job <span class="sc">+</span> After.New <span class="sc">+</span> Center.Age <span class="sc">+</span> Age.Group <span class="sc">+</span> Phoneme, <span class="at">data=</span>td, <span class="at">ntree=</span><span class="dv">128</span>)</span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>td.cforest.varimp<span class="ot">&lt;-</span><span class="fu">varimp</span>(td.cforest, <span class="at">conditional=</span><span class="cn">TRUE</span>)</span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a>td.cforest.results<span class="ot">&lt;-</span><span class="fu">melt</span>(<span class="fu">data.frame</span>(<span class="fu">as.list</span>(td.cforest.varimp)), <span class="at">id.vars=</span><span class="cn">NULL</span>)</span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a><span class="co">#Write Random Forest to File</span></span>
+<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.cforest.results, <span class="at">file =</span><span class="st">"Data/tdCForestVarimp.txt"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="co">#Read Random Forest from File </span></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a>td.cforest.results <span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="at">file =</span><span class="st">"Data/tdCForestVarimp.txt"</span>, <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">row.names=</span><span class="cn">NULL</span>)</span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(td.cforest.results)</span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a>Now that you have the variable importance of each independent variable in a dataframe you can compare the values to determine which variables do the best job at explaining the variation.  You could do this by just looking at the values --- higher values are more useful, lower values are less useful --- however, the more common way to compare the variables is by graphing them. </span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>Older manuals suggest using the *R* base graphics function <span class="in">`dotplot()`</span> to visualize this data. I prefer using <span class="in">`ggplot()`</span> because it is so much more customizable. As in previous chapters, I won't list all the different ways you can customize a <span class="in">`ggplot()`</span>, but I will show you how to make and save a nice looking random forest graph. </span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder variable importance by highest to lowest value in column value</span></span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>td.cforest.results<span class="sc">$</span>variable<span class="ot">&lt;-</span><span class="fu">reorder</span>(td.cforest.results<span class="sc">$</span>variable, td.cforest.results<span class="sc">$</span>value)</span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a>First you make sure <span class="in">`ggplot2`</span> is loaded using the <span class="in">`library()`</span> function. Next, you need to order the descriptor variable names in the <span class="in">`td.cforest.results`</span> column <span class="in">`variable`</span> based on the values of the column <span class="in">`value`</span>. To do this you use the <span class="in">`reorder()`</span> function, which takes two objects: first, the column you want to sort (here <span class="in">`td.cforest.results$variable`</span>); and second, the column you want to sort by (here <span class="in">`td.cforest.results$value`</span>). You assign this reordered dataframe back as the original dataframe using the assignment operator <span class="in">`&lt;-`</span>. </span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a>Alternatively, you could to this in a <span class="in">`tidy`</span> way using <span class="in">`arrange()`</span></span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder variable importance by highest to lowest value in column value, but tidy</span></span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>td.cforest.results<span class="ot">&lt;-</span>td.cforest.results <span class="sc">%&gt;%</span></span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(variable, value)</span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a>Next you need to find the absolute value of the lowest negative-scoring descriptor variable. You'll see why in a second. You create a new object <span class="in">`td.cforest.min`</span> and, using the assignment operator <span class="in">`&lt;-`</span>, make it equal to the absolute value (using <span class="in">`abs()`</span>) of the lowest negative-scoring variable (using <span class="in">`min()`</span>). Can can also do this in a <span class="in">`tidy`</span> way using <span class="in">`%&gt;%`</span>, though it's not much quicker to type: </span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a><span class="co"># Get absolute minimum value of column value</span></span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>td.cforest.min<span class="ot">&lt;-</span><span class="fu">abs</span>(<span class="fu">min</span>(td.cforest.results<span class="sc">$</span>value))</span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a><span class="co"># Get absolute minimum value of column value, but tidy</span></span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>td.cforest.min <span class="ot">&lt;-</span> td.cforest.results<span class="sc">$</span>value <span class="sc">%&gt;%</span> <span class="fu">min</span>() <span class="sc">%&gt;%</span> <span class="fu">abs</span>()</span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a>Now you have everything you need to visualize the variable importance of the variables in the random forest. You create a new object <span class="in">`dotplot`</span>, which will be the graph created by <span class="in">`ggplot()`</span>. The function <span class="in">`ggplot()`</span> has a special syntax. Generally you first create the plot using <span class="in">`ggplot()`</span>; this is the function where you specify what values are going to serve as the <span class="in">`x`</span> and <span class="in">`y`</span> axes of the graph and also what data will be used. Specifying the <span class="in">`x`</span> and <span class="in">`y`</span> axes values is done inside the aesthetics (<span class="in">`aes()`</span>) of the <span class="in">`gplot()`</span>. These aesthetics are carried forward to all the other components you add to the plot. If you stop just at the <span class="in">`ggplot()`</span> function, then <span class="in">`dotplot`</span> would only be the plotting area, plus an <span class="in">`x`</span> and <span class="in">`y`</span> axes. </span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a>The next step is to add some data points to your plot. You do this by adding what are called "geom's" (<span class="co">[</span><span class="ot">'gi.owmz</span><span class="co">]</span>). You want to create a dotplot, so you use <span class="in">`geom_point()`</span>, which will add the corresponding <span class="in">`x`</span> and <span class="in">`y`</span> values (inherited from <span class="in">`aes()`</span>)  as points. Use  <span class="in">`+`</span> to add the geom to the already created <span class="in">`ggplot()`</span>. The geom <span class="in">`geom_point()`</span> can be on a separate line, but the <span class="in">`+`</span> must be on the same line as the object being added to. </span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a>The next step is to name the <span class="in">`x`</span>-axis by adding <span class="in">`xlab()`</span> with the label in quotation marks. You can remove the <span class="in">`y`</span>-axis label by specifying the label as <span class="in">`NULL`</span>. Much of the customization of <span class="in">`ggplot()`</span>'s look is done through the <span class="in">`theme()`</span> function. I'm not going to delve too deep into customization; instead, I'm going to suggest one of the built-in themes: <span class="in">`theme_classic()`</span>, which gives a very bare-bones graph (my personal preference). There are other built-in themes like <span class="in">`theme_linedraw()`</span>; <span class="in">`theme_bw()`</span>; <span class="in">`theme_dark()`</span>; etc. *Google* is your best friend when you want to customize the look of your <span class="in">`ggplot2`</span> visualizations. </span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a>The final element you add to the dotplot is a vertical line where <span class="in">`x = td.cforest.min`</span>. This is the absolute value of the lowest negative-scoring  variable you calculated earlier. The geom <span class="in">`geom_vline()`</span> adds the vertical line. Its first argument is where you specify the <span class="in">`xintercept`</span>, i.e., where you want the vertical line to intercept the <span class="in">`x`</span>-axis. The second argument is the <span class="in">`linetype`</span>; here you specify it as <span class="in">`2`</span>. There are different line types in *R*; <span class="in">`0`</span> is "blank", <span class="in">`1`</span> is "solid",  <span class="in">`2`</span> is  "dashed", <span class="in">`3`</span> is "dotted", <span class="in">`4`</span> is "dotdash", <span class="in">`5`</span> is "longdash", and <span class="in">`6`</span> is "twodash". You can either use the line type number or name, but the name must be in quotation marks. The <span class="in">`alpha`</span> value is a number between <span class="in">`0`</span> and <span class="in">`1`</span> that indicates how transparent to make the line. Here <span class="in">`0.5`</span> (50% transparent) is used. </span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a>If you type <span class="in">`dotplot`</span> in the *R* console and hit execute, you'll see what your graph looks like. </span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a><span class="co">#Create object of Random Forest as a dotplot using ggplot2</span></span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a>dotplot<span class="ot">&lt;-</span><span class="fu">ggplot</span>(td.cforest.results, <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> variable))<span class="sc">+</span></span>
+<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Variable Importance"</span>)<span class="sc">+</span></span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> td.cforest.min, <span class="at">linetype=</span><span class="dv">2</span>, <span class="at">alpha=</span>.<span class="dv">5</span>)</span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a><span class="co"># Save dotplot</span></span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"Data/tdCForest.png"</span>, dotplot, <span class="at">width =</span> <span class="dv">4</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE}</span></span>
+<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a>dotplot</span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>To save the graph use the function <span class="in">`ggsave()`</span>. The first argument is the save destination. You can specify which type of file you want to save your image as by using different file extensions: .png, .pdf, etc. I generally only use PNG or PDF files. The second argument is the name of the object to save (here <span class="in">`dotplot`</span>). Next you specify the <span class="in">`width`</span> and <span class="in">`height`</span> of the image you want to create and the <span class="in">`units`</span> of the values you specify. You don't need to do this, but I like to so that I know exactly how big my image will be. I find this helpful when later inserting images in my manuscripts. It is also a good way to ensure consistency in size from graph to graph. For PNG you can also specify the <span class="in">`dpi`</span> (dots per inch/pixels per inch), which will be the resolution of the final image. The higher the <span class="in">`dpi`</span>, the bigger the file, but also the clearer the image will be if you decide later to zoom in on it or enlarge it. Though, if you need a bigger image it's better to just specify the exact size using the height and width arguments, rather than enlarging a smaller image. For graphs with little to no text <span class="in">`300`</span> dpi is sufficient. If there is a lot of text, you may want to bump it up to <span class="in">`600`</span> dpi. For certain publishers there may be a specific dpi needed. </span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a>In the dotplot above, the descriptor variables are ordered top to bottom from most important to least important. Variables can be considered informative if their variable importance is above the absolute value of the lowest negative-scoring variable. The rationale for this rule of thumb, according to <span class="co">[</span><span class="ot">Strobl *et al.* (2009: 342)</span><span class="co">](https://doi.org/10.1037%2Fa0016973)</span>, is that importance of irrelevant variables varies randomly around zero. In other words, everything to the right of the dashed line is a useful in describing <span class="in">`Deletion`</span> in the data. The further to the right of the dashed line, the more useful. </span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>The variables with the highest variable importance are <span class="in">`Before`</span> and <span class="in">`Morph.Type`</span>, followed by <span class="in">`Center.Age`</span>, <span class="in">`After`</span>, <span class="in">`Job`</span>, <span class="in">`Education`</span>, <span class="in">`After.New`</span> and <span class="in">`Stress`</span>. The variables <span class="in">`Category`</span>, <span class="in">`Age.Group`</span>, <span class="in">`Sex`</span>, and <span class="in">`Phoneme`</span> are all to the left of the dashed line, so you can consider them as not useful in describing the variation. </span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a>You'll notice that many of the independent variables included are collinear --- in other words, the value of one can predict (all or some of) the values of the other. As I noted above, <span class="in">`Category`</span> and <span class="in">`Morph.Type`</span> are collinear because all <span class="in">`Semi-Weak`</span> and <span class="in">`Past`</span> tokens are also <span class="in">`Lexical`</span>. Likewise <span class="in">`Age.Group`</span> and <span class="in">`Center.Age`</span> are completely collinear; the value of <span class="in">`Center.Age`</span> can exactly predict the value of <span class="in">`Age.Group`</span>. Values for both age measures can also do a good job of predicting both <span class="in">`Education`</span> and <span class="in">`Job`</span> in the Cape Breton data. Younger speakers are generally <span class="in">`Educated`</span> and have <span class="in">`White`</span> (collar) or <span class="in">`Service`</span> jobs. All <span class="in">`Students`</span> in the variable <span class="in">`Education`</span> are also <span class="in">`Students`</span> for the variable <span class="in">`Job`</span>, and all are also <span class="in">`Young`</span>. It would violate the assumptions of the model to include all these predictors at the same time in the same regression (see <span class="co">[</span><span class="ot">next chapter</span><span class="co">](100_lvcr.qmd)</span>); however, these collinear variables can be included in a random forest. One of the greatest uses of a random forest analysis is when you have multiple ways of categorizing the same phenomenon (like social class, which can be operationalized by either <span class="in">`Job`</span> or <span class="in">`Education`</span>, or age which can be operationalized as a continuous variable like <span class="in">`Center.Age`</span>, or a discrete variable like <span class="in">`Age.Group`</span>) and you want to decide which categorization to use.</span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a>In the dotplot the variable <span class="in">`After`</span> is higher ranked than <span class="in">`After.New`</span>. This would be good justification for choosing <span class="in">`After`</span> --- which includes a separate level for (t, d) before /h/ --- instead of <span class="in">`After.New`</span> in further analyses. Likewise,  <span class="in">`Job`</span> is describes the variation better than <span class="in">`Education`</span>; the random forest therefore points to <span class="in">`Job`</span> being a more useful reflection of social class stratification than <span class="in">`Education`</span> for the (t, d) variable. The only caveat is that when selecting between independent variables that are collinear, you must also take into account the hypotheses that you aim to test. In other words, selection of  variables should be also be independently motivated. </span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a>A very important thing to remember about random forest analysis is that they are truly random, so the results can vary from run to run depending on which seed has been set. For this reason it's a good idea to verify your findings by re-running your random forest analysis using different seeds and perhaps different numbers of trees. Below is the code for generating a random forest from seed 654321 and 8,000 randomly grown trees (I also used <span class="in">`theme_linedraw()`</span> instead of <span class="in">`theme_classic()`</span>).  You'll see that the variable importance rankings are nearly identical. <span class="in">`Before`</span> is far-and-away the most informative descriptor, followed by <span class="in">`Center.Age`</span> and <span class="in">`Morph.Type`</span>, then <span class="in">`Job`</span>, <span class="in">`After`</span>, and <span class="in">`Education`</span>, and finally marginally-informative <span class="in">`Stress`</span> and <span class="in">`After.New`</span>. This gives me confidence that the results from the previous random forest are relatively accurate. It also provides justification for choosing <span class="in">`Job`</span> over <span class="in">`Education`</span> as a metric of social status, <span class="in">`Center.Age`</span> over <span class="in">`Age.Group`</span> as a measure of apparent time, and <span class="in">`Morph.Type`</span> over <span class="in">`Category`</span> (two highly-correlated descriptors). <span class="in">`Sex`</span> and <span class="in">`Phoneme`</span> also appear to be poor descriptors of the variation in the data, so leaving them out of regression analysis (in order to simplify modelling), could also be justified. </span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">654321</span>)</span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(partykit)</span>
+<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>td.cforest2 <span class="ot">&lt;-</span> <span class="fu">cforest</span>(Dep.Var <span class="sc">~</span> Stress <span class="sc">+</span> Category <span class="sc">+</span> Morph.Type <span class="sc">+</span> Before <span class="sc">+</span> After <span class="sc">+</span> Sex <span class="sc">+</span> Education <span class="sc">+</span> Job <span class="sc">+</span> After.New <span class="sc">+</span> Center.Age <span class="sc">+</span> Age.Group <span class="sc">+</span> Phoneme, <span class="at">data=</span>td, <span class="at">ntree=</span><span class="dv">8000</span>)</span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a>td.cforest2.varimp<span class="ot">&lt;-</span><span class="fu">varimp</span>(td.cforest2, <span class="at">conditional=</span><span class="cn">TRUE</span>)</span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a>td.cforest2.results<span class="ot">&lt;-</span><span class="fu">melt</span>(<span class="fu">data.frame</span>(<span class="fu">as.list</span>(td.cforest2.varimp)), <span class="at">id.vars=</span><span class="cn">NULL</span>)</span>
+<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a>td.cforest2.results <span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="at">file =</span><span class="st">"Data/tdCForestVarimp2.txt"</span>, <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">row.names=</span><span class="cn">NULL</span>)</span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a>td.cforest2.results<span class="sc">$</span>variable<span class="ot">&lt;-</span><span class="fu">reorder</span>(td.cforest2.results<span class="sc">$</span>variable, td.cforest2.results<span class="sc">$</span>value)</span>
+<span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a>td.cforest2.min<span class="ot">&lt;-</span><span class="fu">abs</span>(<span class="fu">min</span>(td.cforest2.results<span class="sc">$</span>value))</span>
+<span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(td.cforest2.results, <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> variable))<span class="sc">+</span></span>
+<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Variable Importance"</span>)<span class="sc">+</span></span>
+<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb11-216"><a href="#cb11-216" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_linedraw</span>()<span class="sc">+</span></span>
+<span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> td.cforest.min, <span class="at">linetype=</span><span class="dv">2</span>, <span class="at">alpha=</span>.<span class="dv">5</span>)</span>
+<span id="cb11-218"><a href="#cb11-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-219"><a href="#cb11-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a>Another important thing to remember when using random forest analyses is that the values along the <span class="in">`x`</span>-axis are only relative rankings for a specific random forest. The absolute values shouldn't be interpreted or compared across different studies <span class="co">[</span><span class="ot">(Strobl *et al.* 2009: 336)</span><span class="co">](https://doi.org/10.1037%2Fa0016973)</span>. What you can compare across studies is the relative ranking of variables along the <span class="in">`y`</span>-axis and which variables are on each side of the dashed line. Further, random forests do not take into account the weirdness of sociolinguisic data, which generally includes an inconsistent number of tokens from each speaker. Mixed-effects regression *can* do this.  So, random forests should always be used in conjunction with other forms of data modelling like mixed-effects regression. </span>
+<span id="cb11-221"><a href="#cb11-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-222"><a href="#cb11-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-224"><a href="#cb11-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-225"><a href="#cb11-225" aria-hidden="true" tabindex="-1"></a></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
+
+
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
