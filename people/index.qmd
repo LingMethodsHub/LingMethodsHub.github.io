@@ -7,6 +7,8 @@ listing:
       - "**/index.qmd"
     type: grid
 citation: false
+execute: 
+  freeze: false
 knitr: 
   opts_chunk: 
     echo: false

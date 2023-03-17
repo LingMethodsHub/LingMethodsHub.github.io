@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.3.264">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,48 +49,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -103,8 +75,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -187,19 +158,19 @@ cookieconsent.run({
 
 <link rel="stylesheet" href="../../../styles.css">
 <meta property="og:title" content="LingMethodsHub - Visualising Vowel Space Change with GAMMs">
-<meta property="og:description" content="Multiple recent projects at NZILBB have used Generalised Mixed Models (GAMMs) to investigate changes in vowel spaces both across multiples speakers and within single speakers.">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://lingmethodshub.github.io/content/R/animated_vowel_plots_tutorial/index_files/figure-html/unnamed-chunk-18-1.png">
 <meta property="og:site-name" content="LingMethodsHub">
 <meta property="og:image:height" content="960">
 <meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="LingMethodsHub - Visualising Vowel Space Change with GAMMs">
-<meta name="twitter:description" content="Multiple recent projects at NZILBB have used Generalised Mixed Models (GAMMs) to investigate changes in vowel spaces both across multiples speakers and within single speakers.">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://lingmethodshub.github.io/content/R/animated_vowel_plots_tutorial/index_files/figure-html/unnamed-chunk-18-1.png">
 <meta name="twitter:image-height" content="960">
 <meta name="twitter:image-width" content="1344">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="citation_title" content="Visualising Vowel Space Change with GAMMs">
-<meta name="citation_author" content="Joshua Wilson Black">
+<meta name="citation_author" content="Joshua WilsonBlack">
 <meta name="citation_publication_date" content="2022-10-28">
 <meta name="citation_cover_date" content="2022-10-28">
 <meta name="citation_year" content="2022">
@@ -212,7 +183,7 @@ cookieconsent.run({
 <meta name="citation_reference" content="citation_title=Systematic co-variation of monophthongs across speakers of New Zealand English;,citation_author=James Brand;,citation_author=Jen Hay;,citation_author=Lynn Clark;,citation_author=Kevin Watson;,citation_author=Márton Sóskuthy;,citation_publication_date=2021-09-01;,citation_cover_date=2021-09-01;,citation_year=2021;,citation_fulltext_html_url=https://www.sciencedirect.com/science/article/pii/S0095447021000711;,citation_doi=10.1016/j.wocn.2021.101096;,citation_volume=88;,citation_language=en;,citation_journal_title=Journal of Phonetics;">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -223,63 +194,65 @@ cookieconsent.run({
     <span class="navbar-title">LingMethodsHub</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../../index.html" aria-current="page">
+    <a class="nav-link active" href="../../../index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../content/index.html">
+    <a class="nav-link" href="../../../content/index.html" rel="" target="">
  <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../about.html">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../content/contributing/index.html">
+    <a class="nav-link" href="../../../content/contributing/index.html" rel="" target="">
  <span class="menu-text">Contributing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../people/index.html">
+    <a class="nav-link" href="../../../people/index.html" rel="" target="">
  <span class="menu-text">People</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Visualising Vowel Space Change with GAMMs</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/animated_vowel_plots_tutorial/index.html">Visualising Vowel Space Change with GAMMs</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
       <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -289,203 +262,156 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorials</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/R/index.html" class="sidebar-item-text sidebar-link">R</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a href="../../../content/R/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">Doing LVC with R</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doing LVC with R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">Getting Your Data Into <em>R</em></a>
+  <a href="../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Your Data Into <em>R</em></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">Getting to Know Your Data</a>
+  <a href="../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting to Know Your Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">Modifying Data</a>
+  <a href="../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modifying Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">Doing it all again, but <code>tidy</code></a>
+  <a href="../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doing it all again, but <code>tidy</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">Crosstabs: Counts, Proportions, and More</a>
+  <a href="../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Crosstabs: Counts, Proportions, and More</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">Proportions for <code>ggplot2</code></a>
+  <a href="../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Proportions for <code>ggplot2</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
+  <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conditional Inference Trees</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/090_lvcr.html" class="sidebar-item-text sidebar-link">Random Forests: The Basics</a>
+  <a href="../../../content/R/lvc_r/090_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random Forests: The Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/110_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 1</a>
+  <a href="../../../content/R/lvc_r/110_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed-Efects Logistic Regression Analysis: Part 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/112_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 2</a>
+  <a href="../../../content/R/lvc_r/112_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed-Efects Logistic Regression Analysis: Part 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/114_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 3</a>
+  <a href="../../../content/R/lvc_r/114_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed-Efects Logistic Regression Analysis: Part 3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/116_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysisː Part 4</a>
+  <a href="../../../content/R/lvc_r/116_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed-Efects Logistic Regression Analysisː Part 4</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">Vowel Plots with <code>ggplot2</code></a>
+  <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vowel Plots with <code>ggplot2</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/tidy-norm/index.html" class="sidebar-item-text sidebar-link">How to normalize your vowels using the tidyverse</a>
+  <a href="../../../content/R/tidy-norm/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How to normalize your vowels using the tidyverse</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/animated_vowel_plots_tutorial/index.html" class="sidebar-item-text sidebar-link active">Visualising Vowel Space Change with GAMMs</a>
+  <a href="../../../content/R/animated_vowel_plots_tutorial/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Visualising Vowel Space Change with GAMMs</span></a>
   </div>
 </li>
-          <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/python/index.html" class="sidebar-item-text sidebar-link">Python</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a href="../../../content/python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">Vowel plotting in Python</a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Praat</span>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../content/tools/index.html" class="sidebar-item-text sidebar-link">Tools</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">Montreal Forced Aligner</a>
+  <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vowel plotting in Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/tools/autovot/autovot-tutorial/index.html" class="sidebar-item-text sidebar-link">AutoVOT</a>
+  <a href="../../../content/python/speaker-diarization-for-linguistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Speaker Diarization for Linguistics</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../content/cli/index.html" class="sidebar-item-text sidebar-link">Command Line Interfaces</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">Bash Shell Basics</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/cli/keyboarding/index.html" class="sidebar-item-text sidebar-link">Keyboarding</a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../content/windows/index.html" class="sidebar-item-text sidebar-link">Windows</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">Windows Subsystem for Linux</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">Installation</a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="px-0"><hr class="sidebar-divider hi "></li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -506,14 +432,14 @@ cookieconsent.run({
   <li><a href="#animation" id="toc-animation" class="nav-link" data-scroll-target="#animation">Animation</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Visualising Vowel Space Change with GAMMs</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Visualising Vowel Space Change with GAMMs</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -522,7 +448,7 @@ cookieconsent.run({
   <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
-    <a href="https://joshua.wilsonblack.nz/">Joshua Wilson Black</a> 
+    <p class="author"><a href="https://joshua.wilsonblack.nz/">Joshua Wilson Black</a> </p>
   </div>
     <div class="quarto-title-meta-contents">
         <p class="affiliation">
@@ -598,112 +524,113 @@ cookieconsent.run({
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">11</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"100%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table" style="font-size: 11px; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Speaker </th>
-   <th style="text-align:left;"> Vowel </th>
-   <th style="text-align:right;"> F1_50 </th>
-   <th style="text-align:right;"> F2_50 </th>
-   <th style="text-align:right;"> Speech_rate </th>
-   <th style="text-align:left;"> Gender </th>
-   <th style="text-align:right;"> yob </th>
-  </tr>
- </thead>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-sm table-striped" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Speaker</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Vowel</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F1_50</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F2_50</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Speech_rate</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Gender</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">yob</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:right;"> 622.5797 </td>
-   <td style="text-align:right;"> 1897.986 </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> FLEECE </td>
-   <td style="text-align:right;"> 518.7458 </td>
-   <td style="text-align:right;"> 1882.763 </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> GOOSE </td>
-   <td style="text-align:right;"> 524.0606 </td>
-   <td style="text-align:right;"> 1944.152 </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> KIT </td>
-   <td style="text-align:right;"> 646.8214 </td>
-   <td style="text-align:right;"> 1790.054 </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> LOT </td>
-   <td style="text-align:right;"> 735.3438 </td>
-   <td style="text-align:right;"> 1262.969 </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> NURSE </td>
-   <td style="text-align:right;"> 534.8571 </td>
-   <td style="text-align:right;"> 1912.714 </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> START </td>
-   <td style="text-align:right;"> 888.3929 </td>
-   <td style="text-align:right;"> 1604.750 </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> STRUT </td>
-   <td style="text-align:right;"> 831.9661 </td>
-   <td style="text-align:right;"> 1511.373 </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> THOUGHT </td>
-   <td style="text-align:right;"> 594.5000 </td>
-   <td style="text-align:right;"> 1051.571 </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> TRAP </td>
-   <td style="text-align:right;"> 637.8667 </td>
-   <td style="text-align:right;"> 1816.833 </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: right;">622.5797</td>
+<td style="text-align: right;">1897.986</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">FLEECE</td>
+<td style="text-align: right;">518.7458</td>
+<td style="text-align: right;">1882.763</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">GOOSE</td>
+<td style="text-align: right;">524.0606</td>
+<td style="text-align: right;">1944.152</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">KIT</td>
+<td style="text-align: right;">646.8214</td>
+<td style="text-align: right;">1790.054</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">LOT</td>
+<td style="text-align: right;">735.3438</td>
+<td style="text-align: right;">1262.969</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">NURSE</td>
+<td style="text-align: right;">534.8571</td>
+<td style="text-align: right;">1912.714</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">START</td>
+<td style="text-align: right;">888.3929</td>
+<td style="text-align: right;">1604.750</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">STRUT</td>
+<td style="text-align: right;">831.9661</td>
+<td style="text-align: right;">1511.373</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">THOUGHT</td>
+<td style="text-align: right;">594.5000</td>
+<td style="text-align: right;">1051.571</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">TRAP</td>
+<td style="text-align: right;">637.8667</td>
+<td style="text-align: right;">1816.833</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+</tr>
 </tbody>
-</table></div>
+</table>
+</div>
 
 </div>
 </div>
@@ -734,112 +661,113 @@ cookieconsent.run({
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">11</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"100%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table" style="font-size: 11px; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Speaker </th>
-   <th style="text-align:left;"> Vowel </th>
-   <th style="text-align:right;"> Speech_rate </th>
-   <th style="text-align:left;"> Gender </th>
-   <th style="text-align:right;"> yob </th>
-   <th style="text-align:left;"> Formant </th>
-   <th style="text-align:right;"> Frequency </th>
-  </tr>
- </thead>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-sm table-striped" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Speaker</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Vowel</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Speech_rate</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Gender</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">yob</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Formant</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Frequency</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-   <td style="text-align:left;"> F1_50 </td>
-   <td style="text-align:right;"> 622.5797 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-   <td style="text-align:left;"> F2_50 </td>
-   <td style="text-align:right;"> 1897.9855 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> FLEECE </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-   <td style="text-align:left;"> F1_50 </td>
-   <td style="text-align:right;"> 518.7458 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> FLEECE </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-   <td style="text-align:left;"> F2_50 </td>
-   <td style="text-align:right;"> 1882.7627 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> GOOSE </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-   <td style="text-align:left;"> F1_50 </td>
-   <td style="text-align:right;"> 524.0606 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> GOOSE </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-   <td style="text-align:left;"> F2_50 </td>
-   <td style="text-align:right;"> 1944.1515 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> KIT </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-   <td style="text-align:left;"> F1_50 </td>
-   <td style="text-align:right;"> 646.8214 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> KIT </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-   <td style="text-align:left;"> F2_50 </td>
-   <td style="text-align:right;"> 1790.0536 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> LOT </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-   <td style="text-align:left;"> F1_50 </td>
-   <td style="text-align:right;"> 735.3438 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> CC_f_020 </td>
-   <td style="text-align:left;"> LOT </td>
-   <td style="text-align:right;"> 4.9264 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1936 </td>
-   <td style="text-align:left;"> F2_50 </td>
-   <td style="text-align:right;"> 1262.9688 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: left;">F1_50</td>
+<td style="text-align: right;">622.5797</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: left;">F2_50</td>
+<td style="text-align: right;">1897.9855</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">FLEECE</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: left;">F1_50</td>
+<td style="text-align: right;">518.7458</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">FLEECE</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: left;">F2_50</td>
+<td style="text-align: right;">1882.7627</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">GOOSE</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: left;">F1_50</td>
+<td style="text-align: right;">524.0606</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">GOOSE</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: left;">F2_50</td>
+<td style="text-align: right;">1944.1515</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">KIT</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: left;">F1_50</td>
+<td style="text-align: right;">646.8214</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">KIT</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: left;">F2_50</td>
+<td style="text-align: right;">1790.0536</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">LOT</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: left;">F1_50</td>
+<td style="text-align: right;">735.3438</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CC_f_020</td>
+<td style="text-align: left;">LOT</td>
+<td style="text-align: right;">4.9264</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1936</td>
+<td style="text-align: left;">F2_50</td>
+<td style="text-align: right;">1262.9688</td>
+</tr>
 </tbody>
-</table></div>
+</table>
+</div>
 
 </div>
 </div>
@@ -936,7 +864,7 @@ cookieconsent.run({
 <div class="cell-output-display">
 <div id="fig-smooth-plot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="index_files/figure-html/fig-smooth-plot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/fig-smooth-plot-1.png" class="quarto-discovered-preview-image img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1: Smooth plot for KIT F1</figcaption><p></p>
 </figure>
 </div>
@@ -971,62 +899,63 @@ cookieconsent.run({
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"100%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Gender </th>
-   <th style="text-align:right;"> yob </th>
-   <th style="text-align:right;"> Speech_rate </th>
-   <th style="text-align:right;"> fit </th>
-   <th style="text-align:right;"> CI </th>
-  </tr>
- </thead>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-sm table-striped" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Gender</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">yob</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Speech_rate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">fit</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">CI</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> M </td>
-   <td style="text-align:right;"> 1864 </td>
-   <td style="text-align:right;"> 4.4873 </td>
-   <td style="text-align:right;"> 501.5480 </td>
-   <td style="text-align:right;"> 27.00804 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1864 </td>
-   <td style="text-align:right;"> 4.4873 </td>
-   <td style="text-align:right;"> 570.1079 </td>
-   <td style="text-align:right;"> 36.38487 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> M </td>
-   <td style="text-align:right;"> 1865 </td>
-   <td style="text-align:right;"> 4.4873 </td>
-   <td style="text-align:right;"> 501.0873 </td>
-   <td style="text-align:right;"> 26.68430 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1865 </td>
-   <td style="text-align:right;"> 4.4873 </td>
-   <td style="text-align:right;"> 569.3392 </td>
-   <td style="text-align:right;"> 35.95156 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> M </td>
-   <td style="text-align:right;"> 1866 </td>
-   <td style="text-align:right;"> 4.4873 </td>
-   <td style="text-align:right;"> 500.6266 </td>
-   <td style="text-align:right;"> 26.36302 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1866 </td>
-   <td style="text-align:right;"> 4.4873 </td>
-   <td style="text-align:right;"> 568.5705 </td>
-   <td style="text-align:right;"> 35.51985 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">1864</td>
+<td style="text-align: right;">4.4873</td>
+<td style="text-align: right;">501.5480</td>
+<td style="text-align: right;">27.00804</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1864</td>
+<td style="text-align: right;">4.4873</td>
+<td style="text-align: right;">570.1079</td>
+<td style="text-align: right;">36.38487</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">1865</td>
+<td style="text-align: right;">4.4873</td>
+<td style="text-align: right;">501.0873</td>
+<td style="text-align: right;">26.68430</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1865</td>
+<td style="text-align: right;">4.4873</td>
+<td style="text-align: right;">569.3392</td>
+<td style="text-align: right;">35.95156</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">1866</td>
+<td style="text-align: right;">4.4873</td>
+<td style="text-align: right;">500.6266</td>
+<td style="text-align: right;">26.36302</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1866</td>
+<td style="text-align: right;">4.4873</td>
+<td style="text-align: right;">568.5705</td>
+<td style="text-align: right;">35.51985</td>
+</tr>
 </tbody>
-</table></div>
+</table>
+</div>
 
 </div>
 </div>
@@ -1049,76 +978,77 @@ cookieconsent.run({
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"100%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Vowel </th>
-   <th style="text-align:left;"> Formant </th>
-   <th style="text-align:left;"> Gender </th>
-   <th style="text-align:right;"> yob </th>
-   <th style="text-align:right;"> Speech_rate </th>
-   <th style="text-align:right;"> fit </th>
-   <th style="text-align:right;"> CI </th>
-  </tr>
- </thead>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-sm table-striped" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Vowel</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Formant</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Gender</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">yob</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Speech_rate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">fit</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">CI</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:left;"> F1_50 </td>
-   <td style="text-align:left;"> M </td>
-   <td style="text-align:right;"> 1864 </td>
-   <td style="text-align:right;"> 4.4873 </td>
-   <td style="text-align:right;"> 501.5480 </td>
-   <td style="text-align:right;"> 27.00804 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:left;"> F1_50 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1864 </td>
-   <td style="text-align:right;"> 4.4873 </td>
-   <td style="text-align:right;"> 570.1079 </td>
-   <td style="text-align:right;"> 36.38487 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:left;"> F1_50 </td>
-   <td style="text-align:left;"> M </td>
-   <td style="text-align:right;"> 1865 </td>
-   <td style="text-align:right;"> 4.4873 </td>
-   <td style="text-align:right;"> 501.0873 </td>
-   <td style="text-align:right;"> 26.68430 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:left;"> F1_50 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1865 </td>
-   <td style="text-align:right;"> 4.4873 </td>
-   <td style="text-align:right;"> 569.3392 </td>
-   <td style="text-align:right;"> 35.95156 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:left;"> F1_50 </td>
-   <td style="text-align:left;"> M </td>
-   <td style="text-align:right;"> 1866 </td>
-   <td style="text-align:right;"> 4.4873 </td>
-   <td style="text-align:right;"> 500.6266 </td>
-   <td style="text-align:right;"> 26.36302 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:left;"> F1_50 </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1866 </td>
-   <td style="text-align:right;"> 4.4873 </td>
-   <td style="text-align:right;"> 568.5705 </td>
-   <td style="text-align:right;"> 35.51985 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: left;">F1_50</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">1864</td>
+<td style="text-align: right;">4.4873</td>
+<td style="text-align: right;">501.5480</td>
+<td style="text-align: right;">27.00804</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: left;">F1_50</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1864</td>
+<td style="text-align: right;">4.4873</td>
+<td style="text-align: right;">570.1079</td>
+<td style="text-align: right;">36.38487</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: left;">F1_50</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">1865</td>
+<td style="text-align: right;">4.4873</td>
+<td style="text-align: right;">501.0873</td>
+<td style="text-align: right;">26.68430</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: left;">F1_50</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1865</td>
+<td style="text-align: right;">4.4873</td>
+<td style="text-align: right;">569.3392</td>
+<td style="text-align: right;">35.95156</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: left;">F1_50</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">1866</td>
+<td style="text-align: right;">4.4873</td>
+<td style="text-align: right;">500.6266</td>
+<td style="text-align: right;">26.36302</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: left;">F1_50</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1866</td>
+<td style="text-align: right;">4.4873</td>
+<td style="text-align: right;">568.5705</td>
+<td style="text-align: right;">35.51985</td>
+</tr>
 </tbody>
-</table></div>
+</table>
+</div>
 
 </div>
 </div>
@@ -1163,62 +1093,63 @@ cookieconsent.run({
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"100%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Vowel </th>
-   <th style="text-align:left;"> Gender </th>
-   <th style="text-align:right;"> yob </th>
-   <th style="text-align:right;"> F1_50 </th>
-   <th style="text-align:right;"> F2_50 </th>
-  </tr>
- </thead>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-sm table-striped" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Vowel</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Gender</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">yob</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F1_50</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F2_50</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:left;"> M </td>
-   <td style="text-align:right;"> 1864 </td>
-   <td style="text-align:right;"> 501.5480 </td>
-   <td style="text-align:right;"> 1657.465 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1864 </td>
-   <td style="text-align:right;"> 570.1079 </td>
-   <td style="text-align:right;"> 1964.213 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:left;"> M </td>
-   <td style="text-align:right;"> 1865 </td>
-   <td style="text-align:right;"> 501.0873 </td>
-   <td style="text-align:right;"> 1659.390 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1865 </td>
-   <td style="text-align:right;"> 569.3392 </td>
-   <td style="text-align:right;"> 1966.005 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:left;"> M </td>
-   <td style="text-align:right;"> 1866 </td>
-   <td style="text-align:right;"> 500.6266 </td>
-   <td style="text-align:right;"> 1661.316 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> DRESS </td>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 1866 </td>
-   <td style="text-align:right;"> 568.5705 </td>
-   <td style="text-align:right;"> 1967.797 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">1864</td>
+<td style="text-align: right;">501.5480</td>
+<td style="text-align: right;">1657.465</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1864</td>
+<td style="text-align: right;">570.1079</td>
+<td style="text-align: right;">1964.213</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">1865</td>
+<td style="text-align: right;">501.0873</td>
+<td style="text-align: right;">1659.390</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1865</td>
+<td style="text-align: right;">569.3392</td>
+<td style="text-align: right;">1966.005</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">1866</td>
+<td style="text-align: right;">500.6266</td>
+<td style="text-align: right;">1661.316</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DRESS</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1866</td>
+<td style="text-align: right;">568.5705</td>
+<td style="text-align: right;">1967.797</td>
+</tr>
 </tbody>
-</table></div>
+</table>
+</div>
 
 </div>
 </div>
@@ -1443,12 +1374,12 @@ cookieconsent.run({
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
-<div id="ref-brand2021" class="csl-entry" role="doc-biblioentry">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-brand2021" class="csl-entry" role="listitem">
 Brand, James &amp; Hay, Jen &amp; Clark, Lynn &amp; Watson, Kevin &amp; Sóskuthy, Márton. 2021. Systematic co-variation of monophthongs across speakers of New Zealand English. <em>Journal of Phonetics</em>. 88. 101096. Retrieved from <a href="https://www.sciencedirect.com/science/article/pii/S0095447021000711">https://www.sciencedirect.com/science/article/pii/S0095447021000711</a>
 </div>
-</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA-4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{wilsonblack2022,
-  author = {Joshua Wilson Black},
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA-4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{wilsonblack2022,
+  author = {WilsonBlack, Joshua},
   title = {Visualising {Vowel} {Space} {Change} with {GAMMs}},
   series = {Linguistics Methods Hub},
   date = {2022-10-28},
@@ -1456,8 +1387,8 @@ Brand, James &amp; Hay, Jen &amp; Clark, Lynn &amp; Watson, Kevin &amp; Sóskuth
   doi = {10.5281/zenodo.7261966},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-wilsonblack2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Joshua Wilson Black. 2022, October 28. Visualising Vowel Space Change
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-wilsonblack2022" class="csl-entry quarto-appendix-citeas" role="listitem">
+WilsonBlack, Joshua. 2022, October 28. Visualising Vowel Space Change
 with GAMMs. <em>Linguistics Methods Hub</em>. (<a href="https://lingmethodshub.github.io/content/R/animated_vowel_plots_tutorial">https://lingmethodshub.github.io/content/R/animated_vowel_plots_tutorial</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7261966">10.5281/zenodo.7261966</a>
 </div></div></section></div></main> <!-- /main -->
@@ -1488,9 +1419,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1606,6 +1551,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -2308,7 +2339,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 
