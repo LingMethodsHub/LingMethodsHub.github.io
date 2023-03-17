@@ -30,11 +30,12 @@ website:
     search: true        
   sidebar:
     - title: "Home"
+      #style: "docked"
       logo: assets/logo.svg
       contents:
         - "index.qmd"
     - title: "Tutorials"
-      collapse-level: 2
+    #   collapse-level: 2
       logo: assets/logo.svg
       href: "content/index.qmd"
       contents:
@@ -57,19 +58,20 @@ website:
                 - href: "content/R/lvc_r/110_lvcr.qmd"
                 - href: "content/R/lvc_r/112_lvcr.qmd"
                 - href: "content/R/lvc_r/114_lvcr.qmd"
-                - href: "content/R/lvc_r/116_lvcr.qmd"                
+                - href: "content/R/lvc_r/116_lvcr.qmd"
+                - text: "---"
             - href: "content/R/vowel-plots-tutorial/index.Rmd"
             - href: "content/R/tidy-norm/index.qmd"
             - href: "content/R/animated_vowel_plots_tutorial/index.Rmd"
-            - text: "---"
         - text: "---"
         - section: "Python"
           href: "content/python/index.md"
-          contents: 
+          contents:
             - href: "content/python/vowel-plotting-py/index.ipynb"
+            - href: "content/python/speaker-diarization-for-linguistics/index.ipynb"
         - text: "---"
         - section: "Praat"
-          href: "content/praat/index.md"        
+          href: "content/praat/index.md"
         - text: "---"
         - section: "Tools"
           href: "content/tools/index.md"
@@ -89,16 +91,14 @@ website:
           contents:
             - section: "Windows Subsystem for Linux"
               href: "content/windows/wsl/index.md"
-              contents: 
+              contents:
                 - href: "content/windows/wsl/00_installing_wsl.md"
                   text: "Installation"
-            - text: "---"
         - text: "---"
-    - title: "Contributing" 
+    - title: "Contributing"
       href: "content/contributing/index.md"
       logo: assets/logo.svg
-      style: "floating"
-      contents: 
+      contents:
         - href: "content/contributing/index.md"
         - href: "content/contributing/00_requirements.qmd"
           text: "Requirements"
@@ -108,7 +108,7 @@ website:
           text: "Process"
         - href: "content/contributing/03_workflow.qmd"
           text: "Workflow"
-        - text: "---"          
+        - text: "---"
         - section: "Template"
           contents:
             - href: "content/contributing/template/index.qmd"
@@ -119,15 +119,13 @@ website:
               text: "template qmd"
             - href: "content/contributing/template/02_jupyter.ipynb"
               text: "template jupyter"
-    - text: "---"              
-    - title: "About" 
-      href: "about.qmd"
-      style: "floating"
+    # - text: "---"
+    # - title: "About"
+    #   href: "about.qmd"
     - title: "People"
       href: "people/index.qmd"
-      logo: "assets/logo.svg"
-      style: "floating"
-      contents: 
+      logo: assets/logo.svg
+      contents:
         - href: "people/index.qmd"
   page-navigation: true
   reader-mode: true      
