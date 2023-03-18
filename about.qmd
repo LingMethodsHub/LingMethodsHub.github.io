@@ -48,6 +48,10 @@ The idea for Linguistics Methods Hub came about during conversations at
 [Methods XVII](https://methodsxvii.uni-mainz.de/).
 :::
 
+```{r}
+#| include: false
+```
+
 ::: text-muted
-Last built with quarto v`r quarto::quarto_version()`, `r Sys.time()`
+Last built with quarto v `r quarto::quarto_version()`, `r Sys.time()`
 :::

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.3.264">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,9 +20,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -49,43 +50,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -96,6 +67,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../content/python/speaker-diarization-for-linguistics/index.html" rel="next">
 <link href="../../../content/python/index.html" rel="prev">
 <script src="../../../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -204,63 +176,65 @@ cookieconsent.run({
     <span class="navbar-title">LingMethodsHub</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../../index.html" aria-current="page">
+    <a class="nav-link active" href="../../../index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../content/index.html">
+    <a class="nav-link" href="../../../content/index.html" rel="" target="">
  <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../about.html">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../content/contributing/index.html">
+    <a class="nav-link" href="../../../content/contributing/index.html" rel="" target="">
  <span class="menu-text">Contributing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../people/index.html">
+    <a class="nav-link" href="../../../people/index.html" rel="" target="">
  <span class="menu-text">People</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Vowel plotting in Python</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/python/index.html">Python</a></li><li class="breadcrumb-item"><a href="../../../content/python/vowel-plotting-py/index.html">Vowel plotting in Python</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
       <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -270,147 +244,178 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorials</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/R/index.html" class="sidebar-item-text sidebar-link">R</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a href="../../../content/R/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">Doing LVC with R</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doing LVC with R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">Getting Your Data Into <em>R</em></a>
+  <a href="../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Your Data Into <em>R</em></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">Getting to Know Your Data</a>
+  <a href="../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting to Know Your Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">Modifying Data</a>
+  <a href="../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modifying Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">Doing it all again, but <code>tidy</code></a>
+  <a href="../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doing it all again, but <code>tidy</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">Crosstabs: Counts, Proportions, and More</a>
+  <a href="../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Crosstabs: Counts, Proportions, and More</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">Proportions for <code>ggplot2</code></a>
+  <a href="../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Proportions for <code>ggplot2</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
+  <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conditional Inference Trees</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/090_lvcr.html" class="sidebar-item-text sidebar-link">Random Forests: The Basics</a>
+  <a href="../../../content/R/lvc_r/090_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random Forests: The Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/110_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 1</a>
+  <a href="../../../content/R/lvc_r/110_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed-Efects Logistic Regression Analysis: Part 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/112_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 2</a>
+  <a href="../../../content/R/lvc_r/112_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed-Efects Logistic Regression Analysis: Part 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/114_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 3</a>
+  <a href="../../../content/R/lvc_r/114_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed-Efects Logistic Regression Analysis: Part 3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/116_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysisː Part 4</a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">Vowel Plots with <code>ggplot2</code></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/R/tidy-norm/index.html" class="sidebar-item-text sidebar-link">How to normalize your vowels using the tidyverse</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/R/animated_vowel_plots_tutorial/index.html" class="sidebar-item-text sidebar-link">Visualising Vowel Space Change with GAMMs</a>
+  <a href="../../../content/R/lvc_r/116_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed-Efects Logistic Regression Analysisː Part 4</span></a>
   </div>
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vowel Plots with <code>ggplot2</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/tidy-norm/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How to normalize your vowels using the tidyverse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/animated_vowel_plots_tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualising Vowel Space Change with GAMMs</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/python/index.html" class="sidebar-item-text sidebar-link">Python</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a href="../../../content/python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link active">Vowel plotting in Python</a>
+  <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Vowel plotting in Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/python/speaker-diarization-for-linguistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Speaker Diarization for Linguistics</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Praat</span>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Praat</span></span>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/tools/index.html" class="sidebar-item-text sidebar-link">Tools</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a href="../../../content/tools/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">Montreal Forced Aligner</a>
+  <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Montreal Forced Aligner</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/tools/autovot/autovot-tutorial/index.html" class="sidebar-item-text sidebar-link">AutoVOT</a>
+  <a href="../../../content/tools/autovot/autovot-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AutoVOT</span></a>
   </div>
 </li>
       </ul>
@@ -418,20 +423,23 @@ cookieconsent.run({
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/cli/index.html" class="sidebar-item-text sidebar-link">Command Line Interfaces</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a href="../../../content/cli/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Command Line Interfaces</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">Bash Shell Basics</a>
+  <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bash Shell Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/cli/keyboarding/index.html" class="sidebar-item-text sidebar-link">Keyboarding</a>
+  <a href="../../../content/cli/keyboarding/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Keyboarding</span></a>
   </div>
 </li>
       </ul>
@@ -439,34 +447,37 @@ cookieconsent.run({
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/windows/index.html" class="sidebar-item-text sidebar-link">Windows</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a href="../../../content/windows/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Windows</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">Windows Subsystem for Linux</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Windows Subsystem for Linux</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">Installation</a>
+  <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
   </div>
 </li>
       </ul>
   </li>
-          <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -511,7 +522,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Vowel plotting in Python</h1>
+<h1 class="title">Vowel plotting in Python</h1>
   <div class="quarto-categories">
     <div class="quarto-category">python</div>
     <div class="quarto-category">vowels</div>
@@ -530,7 +541,7 @@ cookieconsent.run({
   <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
-    <a href="https://sites.google.com/berkeley.edu/eremirez/">Emily Remirez</a> <a href="https://orcid.org/0000-0003-1223-6769" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+    <p class="author"><a href="https://sites.google.com/berkeley.edu/eremirez/">Emily Remirez</a> <a href="https://orcid.org/0000-0003-1223-6769" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
     <div class="quarto-title-meta-contents">
         <p class="affiliation">
@@ -707,186 +718,188 @@ cookieconsent.run({
 <div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>F94.sample(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>lg</th>
-      <th>Vowel</th>
-      <th>Ss</th>
-      <th>point</th>
-      <th>VOT</th>
-      <th>dur</th>
-      <th>F0</th>
-      <th>F1</th>
-      <th>F2</th>
-      <th>F3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>53</th>
-      <td>English</td>
-      <td>a</td>
-      <td>3</td>
-      <td>offset</td>
-      <td>4</td>
-      <td>110</td>
-      <td>172</td>
-      <td>619</td>
-      <td>1209</td>
-      <td>1955</td>
-    </tr>
-    <tr>
-      <th>64</th>
-      <td>Spanish</td>
-      <td>i</td>
-      <td>1</td>
-      <td>midpoint</td>
-      <td>16</td>
-      <td>191</td>
-      <td>78</td>
-      <td>354</td>
-      <td>2238</td>
-      <td>2576</td>
-    </tr>
-    <tr>
-      <th>81</th>
-      <td>Spanish</td>
-      <td>a</td>
-      <td>1</td>
-      <td>onset</td>
-      <td>17</td>
-      <td>166</td>
-      <td>110</td>
-      <td>517</td>
-      <td>1195</td>
-      <td>2591</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>English</td>
-      <td>ɛ</td>
-      <td>3</td>
-      <td>onset</td>
-      <td>2</td>
-      <td>114</td>
-      <td>118</td>
-      <td>452</td>
-      <td>1466</td>
-      <td>2395</td>
-    </tr>
-    <tr>
-      <th>51</th>
-      <td>English</td>
-      <td>a</td>
-      <td>3</td>
-      <td>onset</td>
-      <td>4</td>
-      <td>110</td>
-      <td>172</td>
-      <td>551</td>
-      <td>1136</td>
-      <td>1857</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">lg</th>
+<th data-quarto-table-cell-role="th">Vowel</th>
+<th data-quarto-table-cell-role="th">Ss</th>
+<th data-quarto-table-cell-role="th">point</th>
+<th data-quarto-table-cell-role="th">VOT</th>
+<th data-quarto-table-cell-role="th">dur</th>
+<th data-quarto-table-cell-role="th">F0</th>
+<th data-quarto-table-cell-role="th">F1</th>
+<th data-quarto-table-cell-role="th">F2</th>
+<th data-quarto-table-cell-role="th">F3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">53</td>
+<td>English</td>
+<td>a</td>
+<td>3</td>
+<td>offset</td>
+<td>4</td>
+<td>110</td>
+<td>172</td>
+<td>619</td>
+<td>1209</td>
+<td>1955</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">64</td>
+<td>Spanish</td>
+<td>i</td>
+<td>1</td>
+<td>midpoint</td>
+<td>16</td>
+<td>191</td>
+<td>78</td>
+<td>354</td>
+<td>2238</td>
+<td>2576</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">81</td>
+<td>Spanish</td>
+<td>a</td>
+<td>1</td>
+<td>onset</td>
+<td>17</td>
+<td>166</td>
+<td>110</td>
+<td>517</td>
+<td>1195</td>
+<td>2591</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">33</td>
+<td>English</td>
+<td>ɛ</td>
+<td>3</td>
+<td>onset</td>
+<td>2</td>
+<td>114</td>
+<td>118</td>
+<td>452</td>
+<td>1466</td>
+<td>2395</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">51</td>
+<td>English</td>
+<td>a</td>
+<td>3</td>
+<td>onset</td>
+<td>4</td>
+<td>110</td>
+<td>172</td>
+<td>551</td>
+<td>1136</td>
+<td>1857</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>F94.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>lg</th>
-      <th>Vowel</th>
-      <th>Ss</th>
-      <th>point</th>
-      <th>VOT</th>
-      <th>dur</th>
-      <th>F0</th>
-      <th>F1</th>
-      <th>F2</th>
-      <th>F3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>English</td>
-      <td>i</td>
-      <td>1</td>
-      <td>onset</td>
-      <td>10</td>
-      <td>119</td>
-      <td>131</td>
-      <td>312</td>
-      <td>2205</td>
-      <td>2726</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>English</td>
-      <td>i</td>
-      <td>1</td>
-      <td>midpoint</td>
-      <td>10</td>
-      <td>119</td>
-      <td>131</td>
-      <td>317</td>
-      <td>2299</td>
-      <td>2897</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>English</td>
-      <td>i</td>
-      <td>1</td>
-      <td>offset</td>
-      <td>10</td>
-      <td>119</td>
-      <td>131</td>
-      <td>320</td>
-      <td>2257</td>
-      <td>2829</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>English</td>
-      <td>i</td>
-      <td>2</td>
-      <td>onset</td>
-      <td>13</td>
-      <td>93</td>
-      <td>130</td>
-      <td>304</td>
-      <td>1995</td>
-      <td>2383</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>English</td>
-      <td>i</td>
-      <td>2</td>
-      <td>midpoint</td>
-      <td>13</td>
-      <td>93</td>
-      <td>130</td>
-      <td>281</td>
-      <td>2079</td>
-      <td>2516</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">lg</th>
+<th data-quarto-table-cell-role="th">Vowel</th>
+<th data-quarto-table-cell-role="th">Ss</th>
+<th data-quarto-table-cell-role="th">point</th>
+<th data-quarto-table-cell-role="th">VOT</th>
+<th data-quarto-table-cell-role="th">dur</th>
+<th data-quarto-table-cell-role="th">F0</th>
+<th data-quarto-table-cell-role="th">F1</th>
+<th data-quarto-table-cell-role="th">F2</th>
+<th data-quarto-table-cell-role="th">F3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>English</td>
+<td>i</td>
+<td>1</td>
+<td>onset</td>
+<td>10</td>
+<td>119</td>
+<td>131</td>
+<td>312</td>
+<td>2205</td>
+<td>2726</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>English</td>
+<td>i</td>
+<td>1</td>
+<td>midpoint</td>
+<td>10</td>
+<td>119</td>
+<td>131</td>
+<td>317</td>
+<td>2299</td>
+<td>2897</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>English</td>
+<td>i</td>
+<td>1</td>
+<td>offset</td>
+<td>10</td>
+<td>119</td>
+<td>131</td>
+<td>320</td>
+<td>2257</td>
+<td>2829</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>English</td>
+<td>i</td>
+<td>2</td>
+<td>onset</td>
+<td>13</td>
+<td>93</td>
+<td>130</td>
+<td>304</td>
+<td>1995</td>
+<td>2383</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>English</td>
+<td>i</td>
+<td>2</td>
+<td>midpoint</td>
+<td>13</td>
+<td>93</td>
+<td>130</td>
+<td>281</td>
+<td>2079</td>
+<td>2516</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -959,7 +972,7 @@ cookieconsent.run({
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>          title <span class="op">=</span> <span class="st">"Vowels by language"</span>,</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>          logscale <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<p><img src="index_files/figure-html/cell-7-output-1.png" class="quarto-discovered-preview-image img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>&lt;AxesSubplot:title={'center':'Vowels by language'}, xlabel='F2 (Hz)', ylabel='F1 (Hz)'&gt;</code></pre>
@@ -987,75 +1000,76 @@ cookieconsent.run({
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>voweldata <span class="op">=</span> pd.read_csv(<span class="st">'demo-vowels.csv'</span>) <span class="co"># Replace 'demo-vowels.csv'!</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>voweldata.sample(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>carrier1</th>
-      <th>word</th>
-      <th>carrier2</th>
-      <th>Vowel</th>
-      <th>F1</th>
-      <th>F2</th>
-      <th>F3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2</th>
-      <td>say</td>
-      <td>hayed</td>
-      <td>again</td>
-      <td>e</td>
-      <td>666</td>
-      <td>2350</td>
-      <td>3576</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>say</td>
-      <td>hid</td>
-      <td>again</td>
-      <td>ɪ</td>
-      <td>484</td>
-      <td>2271</td>
-      <td>3304</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>say</td>
-      <td>heed</td>
-      <td>again</td>
-      <td>i</td>
-      <td>323</td>
-      <td>2692</td>
-      <td>3401</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>say</td>
-      <td>hud</td>
-      <td>again</td>
-      <td>ʌ</td>
-      <td>985</td>
-      <td>1644</td>
-      <td>3117</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>say</td>
-      <td>hoed</td>
-      <td>again</td>
-      <td>o</td>
-      <td>550</td>
-      <td>1050</td>
-      <td>3250</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">carrier1</th>
+<th data-quarto-table-cell-role="th">word</th>
+<th data-quarto-table-cell-role="th">carrier2</th>
+<th data-quarto-table-cell-role="th">Vowel</th>
+<th data-quarto-table-cell-role="th">F1</th>
+<th data-quarto-table-cell-role="th">F2</th>
+<th data-quarto-table-cell-role="th">F3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>say</td>
+<td>hayed</td>
+<td>again</td>
+<td>e</td>
+<td>666</td>
+<td>2350</td>
+<td>3576</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>say</td>
+<td>hid</td>
+<td>again</td>
+<td>ɪ</td>
+<td>484</td>
+<td>2271</td>
+<td>3304</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>say</td>
+<td>heed</td>
+<td>again</td>
+<td>i</td>
+<td>323</td>
+<td>2692</td>
+<td>3401</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>say</td>
+<td>hud</td>
+<td>again</td>
+<td>ʌ</td>
+<td>985</td>
+<td>1644</td>
+<td>3117</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>say</td>
+<td>hoed</td>
+<td>again</td>
+<td>o</td>
+<td>550</td>
+<td>1050</td>
+<td>3250</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1094,105 +1108,106 @@ cookieconsent.run({
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>barkify(F94, [<span class="st">"F1"</span>,<span class="st">"F2"</span>])</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>F94.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>lg</th>
-      <th>Vowel</th>
-      <th>Ss</th>
-      <th>point</th>
-      <th>VOT</th>
-      <th>dur</th>
-      <th>F0</th>
-      <th>F1</th>
-      <th>F2</th>
-      <th>F3</th>
-      <th>z1</th>
-      <th>z2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>English</td>
-      <td>i</td>
-      <td>1</td>
-      <td>onset</td>
-      <td>10</td>
-      <td>119</td>
-      <td>131</td>
-      <td>312</td>
-      <td>2205</td>
-      <td>2726</td>
-      <td>3.151655</td>
-      <td>13.663529</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>English</td>
-      <td>i</td>
-      <td>1</td>
-      <td>midpoint</td>
-      <td>10</td>
-      <td>119</td>
-      <td>131</td>
-      <td>317</td>
-      <td>2299</td>
-      <td>2897</td>
-      <td>3.202442</td>
-      <td>13.941986</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>English</td>
-      <td>i</td>
-      <td>1</td>
-      <td>offset</td>
-      <td>10</td>
-      <td>119</td>
-      <td>131</td>
-      <td>320</td>
-      <td>2257</td>
-      <td>2829</td>
-      <td>3.232807</td>
-      <td>13.819104</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>English</td>
-      <td>i</td>
-      <td>2</td>
-      <td>onset</td>
-      <td>13</td>
-      <td>93</td>
-      <td>130</td>
-      <td>304</td>
-      <td>1995</td>
-      <td>2383</td>
-      <td>3.069929</td>
-      <td>12.993628</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>English</td>
-      <td>i</td>
-      <td>2</td>
-      <td>midpoint</td>
-      <td>13</td>
-      <td>93</td>
-      <td>130</td>
-      <td>281</td>
-      <td>2079</td>
-      <td>2516</td>
-      <td>2.831718</td>
-      <td>13.269948</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">lg</th>
+<th data-quarto-table-cell-role="th">Vowel</th>
+<th data-quarto-table-cell-role="th">Ss</th>
+<th data-quarto-table-cell-role="th">point</th>
+<th data-quarto-table-cell-role="th">VOT</th>
+<th data-quarto-table-cell-role="th">dur</th>
+<th data-quarto-table-cell-role="th">F0</th>
+<th data-quarto-table-cell-role="th">F1</th>
+<th data-quarto-table-cell-role="th">F2</th>
+<th data-quarto-table-cell-role="th">F3</th>
+<th data-quarto-table-cell-role="th">z1</th>
+<th data-quarto-table-cell-role="th">z2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>English</td>
+<td>i</td>
+<td>1</td>
+<td>onset</td>
+<td>10</td>
+<td>119</td>
+<td>131</td>
+<td>312</td>
+<td>2205</td>
+<td>2726</td>
+<td>3.151655</td>
+<td>13.663529</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>English</td>
+<td>i</td>
+<td>1</td>
+<td>midpoint</td>
+<td>10</td>
+<td>119</td>
+<td>131</td>
+<td>317</td>
+<td>2299</td>
+<td>2897</td>
+<td>3.202442</td>
+<td>13.941986</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>English</td>
+<td>i</td>
+<td>1</td>
+<td>offset</td>
+<td>10</td>
+<td>119</td>
+<td>131</td>
+<td>320</td>
+<td>2257</td>
+<td>2829</td>
+<td>3.232807</td>
+<td>13.819104</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>English</td>
+<td>i</td>
+<td>2</td>
+<td>onset</td>
+<td>13</td>
+<td>93</td>
+<td>130</td>
+<td>304</td>
+<td>1995</td>
+<td>2383</td>
+<td>3.069929</td>
+<td>12.993628</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>English</td>
+<td>i</td>
+<td>2</td>
+<td>midpoint</td>
+<td>13</td>
+<td>93</td>
+<td>130</td>
+<td>281</td>
+<td>2079</td>
+<td>2516</td>
+<td>2.831718</td>
+<td>13.269948</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1238,202 +1253,203 @@ cookieconsent.run({
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>      )</span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>F94_2.sample(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>lg</th>
-      <th>Vowel</th>
-      <th>Ss</th>
-      <th>point</th>
-      <th>VOT</th>
-      <th>dur</th>
-      <th>F0</th>
-      <th>F1</th>
-      <th>F2</th>
-      <th>F3</th>
-      <th>z1</th>
-      <th>z2</th>
-      <th>zsc_z1</th>
-      <th>zsc_z2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>58</th>
-      <td>English</td>
-      <td>ʌ</td>
-      <td>2</td>
-      <td>midpoint</td>
-      <td>19</td>
-      <td>87</td>
-      <td>95</td>
-      <td>599</td>
-      <td>1200</td>
-      <td>2367</td>
-      <td>5.745572</td>
-      <td>9.651013</td>
-      <td>0.487282</td>
-      <td>-1.079360</td>
-    </tr>
-    <tr>
-      <th>52</th>
-      <td>English</td>
-      <td>a</td>
-      <td>3</td>
-      <td>midpoint</td>
-      <td>4</td>
-      <td>110</td>
-      <td>172</td>
-      <td>681</td>
-      <td>1190</td>
-      <td>1968</td>
-      <td>6.383143</td>
-      <td>9.598222</td>
-      <td>1.012362</td>
-      <td>-1.219642</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>English</td>
-      <td>i</td>
-      <td>3</td>
-      <td>midpoint</td>
-      <td>7</td>
-      <td>109</td>
-      <td>129</td>
-      <td>300</td>
-      <td>2180</td>
-      <td>2628</td>
-      <td>3.028850</td>
-      <td>13.587343</td>
-      <td>-1.408034</td>
-      <td>1.461580</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>English</td>
-      <td>i</td>
-      <td>2</td>
-      <td>midpoint</td>
-      <td>13</td>
-      <td>93</td>
-      <td>130</td>
-      <td>281</td>
-      <td>2079</td>
-      <td>2516</td>
-      <td>2.831718</td>
-      <td>13.269948</td>
-      <td>-1.569002</td>
-      <td>1.357100</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>English</td>
-      <td>a</td>
-      <td>1</td>
-      <td>midpoint</td>
-      <td>10</td>
-      <td>115</td>
-      <td>155</td>
-      <td>769</td>
-      <td>1129</td>
-      <td>2161</td>
-      <td>7.024742</td>
-      <td>9.268799</td>
-      <td>0.983154</td>
-      <td>-1.639149</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>English</td>
-      <td>ɛ</td>
-      <td>3</td>
-      <td>midpoint</td>
-      <td>2</td>
-      <td>114</td>
-      <td>118</td>
-      <td>552</td>
-      <td>1575</td>
-      <td>2533</td>
-      <td>5.361369</td>
-      <td>11.415050</td>
-      <td>0.275069</td>
-      <td>0.001508</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>English</td>
-      <td>e</td>
-      <td>3</td>
-      <td>midpoint</td>
-      <td>7</td>
-      <td>114</td>
-      <td>195</td>
-      <td>411</td>
-      <td>2020</td>
-      <td>2508</td>
-      <td>4.117368</td>
-      <td>13.077085</td>
-      <td>-0.622579</td>
-      <td>1.118618</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>English</td>
-      <td>i</td>
-      <td>1</td>
-      <td>midpoint</td>
-      <td>10</td>
-      <td>119</td>
-      <td>131</td>
-      <td>317</td>
-      <td>2299</td>
-      <td>2897</td>
-      <td>3.202442</td>
-      <td>13.941986</td>
-      <td>-1.592593</td>
-      <td>1.330189</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>English</td>
-      <td>æ</td>
-      <td>1</td>
-      <td>midpoint</td>
-      <td>7</td>
-      <td>116</td>
-      <td>165</td>
-      <td>777</td>
-      <td>1788</td>
-      <td>2562</td>
-      <td>7.081023</td>
-      <td>12.259829</td>
-      <td>1.021081</td>
-      <td>0.261349</td>
-    </tr>
-    <tr>
-      <th>61</th>
-      <td>English</td>
-      <td>ʌ</td>
-      <td>3</td>
-      <td>midpoint</td>
-      <td>12</td>
-      <td>119</td>
-      <td>96</td>
-      <td>562</td>
-      <td>1249</td>
-      <td>2348</td>
-      <td>5.444314</td>
-      <td>9.904930</td>
-      <td>0.334920</td>
-      <td>-1.013493</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">lg</th>
+<th data-quarto-table-cell-role="th">Vowel</th>
+<th data-quarto-table-cell-role="th">Ss</th>
+<th data-quarto-table-cell-role="th">point</th>
+<th data-quarto-table-cell-role="th">VOT</th>
+<th data-quarto-table-cell-role="th">dur</th>
+<th data-quarto-table-cell-role="th">F0</th>
+<th data-quarto-table-cell-role="th">F1</th>
+<th data-quarto-table-cell-role="th">F2</th>
+<th data-quarto-table-cell-role="th">F3</th>
+<th data-quarto-table-cell-role="th">z1</th>
+<th data-quarto-table-cell-role="th">z2</th>
+<th data-quarto-table-cell-role="th">zsc_z1</th>
+<th data-quarto-table-cell-role="th">zsc_z2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">58</td>
+<td>English</td>
+<td>ʌ</td>
+<td>2</td>
+<td>midpoint</td>
+<td>19</td>
+<td>87</td>
+<td>95</td>
+<td>599</td>
+<td>1200</td>
+<td>2367</td>
+<td>5.745572</td>
+<td>9.651013</td>
+<td>0.487282</td>
+<td>-1.079360</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">52</td>
+<td>English</td>
+<td>a</td>
+<td>3</td>
+<td>midpoint</td>
+<td>4</td>
+<td>110</td>
+<td>172</td>
+<td>681</td>
+<td>1190</td>
+<td>1968</td>
+<td>6.383143</td>
+<td>9.598222</td>
+<td>1.012362</td>
+<td>-1.219642</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>English</td>
+<td>i</td>
+<td>3</td>
+<td>midpoint</td>
+<td>7</td>
+<td>109</td>
+<td>129</td>
+<td>300</td>
+<td>2180</td>
+<td>2628</td>
+<td>3.028850</td>
+<td>13.587343</td>
+<td>-1.408034</td>
+<td>1.461580</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>English</td>
+<td>i</td>
+<td>2</td>
+<td>midpoint</td>
+<td>13</td>
+<td>93</td>
+<td>130</td>
+<td>281</td>
+<td>2079</td>
+<td>2516</td>
+<td>2.831718</td>
+<td>13.269948</td>
+<td>-1.569002</td>
+<td>1.357100</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">46</td>
+<td>English</td>
+<td>a</td>
+<td>1</td>
+<td>midpoint</td>
+<td>10</td>
+<td>115</td>
+<td>155</td>
+<td>769</td>
+<td>1129</td>
+<td>2161</td>
+<td>7.024742</td>
+<td>9.268799</td>
+<td>0.983154</td>
+<td>-1.639149</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">34</td>
+<td>English</td>
+<td>ɛ</td>
+<td>3</td>
+<td>midpoint</td>
+<td>2</td>
+<td>114</td>
+<td>118</td>
+<td>552</td>
+<td>1575</td>
+<td>2533</td>
+<td>5.361369</td>
+<td>11.415050</td>
+<td>0.275069</td>
+<td>0.001508</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25</td>
+<td>English</td>
+<td>e</td>
+<td>3</td>
+<td>midpoint</td>
+<td>7</td>
+<td>114</td>
+<td>195</td>
+<td>411</td>
+<td>2020</td>
+<td>2508</td>
+<td>4.117368</td>
+<td>13.077085</td>
+<td>-0.622579</td>
+<td>1.118618</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>English</td>
+<td>i</td>
+<td>1</td>
+<td>midpoint</td>
+<td>10</td>
+<td>119</td>
+<td>131</td>
+<td>317</td>
+<td>2299</td>
+<td>2897</td>
+<td>3.202442</td>
+<td>13.941986</td>
+<td>-1.592593</td>
+<td>1.330189</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">37</td>
+<td>English</td>
+<td>æ</td>
+<td>1</td>
+<td>midpoint</td>
+<td>7</td>
+<td>116</td>
+<td>165</td>
+<td>777</td>
+<td>1788</td>
+<td>2562</td>
+<td>7.081023</td>
+<td>12.259829</td>
+<td>1.021081</td>
+<td>0.261349</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">61</td>
+<td>English</td>
+<td>ʌ</td>
+<td>3</td>
+<td>midpoint</td>
+<td>12</td>
+<td>119</td>
+<td>96</td>
+<td>562</td>
+<td>1249</td>
+<td>2348</td>
+<td>5.444314</td>
+<td>9.904930</td>
+<td>0.334920</td>
+<td>-1.013493</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1490,8 +1506,8 @@ cookieconsent.run({
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>BSD3</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{remirez2022,
-  author = {Emily Remirez},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div>BSD3</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{remirez2022,
+  author = {Remirez, Emily},
   title = {Vowel Plotting in {Python}},
   series = {Linguistics Methods Hub},
   date = {2022-10-20},
@@ -1499,8 +1515,8 @@ cookieconsent.run({
   doi = {10.5281/zenodo.7232005},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-remirez2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Emily Remirez. 2022, October 20. Vowel plotting in Python.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-remirez2022" class="csl-entry quarto-appendix-citeas" role="listitem">
+Remirez, Emily. 2022, October 20. Vowel plotting in Python.
 <em>Linguistics Methods Hub</em>. (<a href="https://lingmethodshub.github.io/content/python/vowel-plotting-py">https://lingmethodshub.github.io/content/python/vowel-plotting-py</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7232005">10.5281/zenodo.7232005</a>
 </div></div></section></div></main> <!-- /main -->
@@ -1531,9 +1547,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1649,6 +1679,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1695,12 +1811,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../../content/python/speaker-diarization-for-linguistics/index.html" class="pagination-link">
+        <span class="nav-page-text">Speaker Diarization for Linguistics</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 

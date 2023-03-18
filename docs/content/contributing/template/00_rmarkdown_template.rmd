@@ -1,0 +1,60 @@
+---
+title: "R Markdown Template"
+author:
+  - name: "Robin Doe"
+    url: "http://www.example.com"
+    affiliations:
+      - University of State
+date: 2025-9-1
+license: "CC-BY-SA 4.0"
+format: 
+  html: default
+  pdf: default
+editor: visual
+knitr: 
+  opts_chunk: 
+    message: false
+---
+
+## R environment (`renv`)
+
+Using `renv` while writing your tutorial will ensure that when a LingMethodsHub maintainer renders your tutorial, all of the necessary packages will be installed. Even if you've already been working on the tutorial, you can start using `renv` like so:
+
+```{r}
+#| eval: false
+renv::init()
+renv::snapshot()
+```
+
+This will create an `renv/` directory, and an `renv.lock` file. You should add `renv.lock` to git.
+
+Once you've run through all of the code for your tutorial again, just run `renv::snapshot()` one more time before you push your final commit.
+
+## Sample R Markdown Template
+
+```{r}
+renv::use(lockfile = "renv.lock")
+```
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+```{r}
+library(showtext)
+library(khroma)
+font_add_google("Atkinson Hyperlegible", "atkinson")
+showtext_auto()
+```
+
+```{r}
+palmerpenguins::penguins %>%
+  ggplot(aes(flipper_length_mm, body_mass_g, color = species))+
+    geom_point()+
+    scale_color_bright()+
+    theme_minimal()+
+    theme(text = element_text(family = "atkinson"))
+```
+
+[00_rmarkdown_template.pdf](00_rmarkdown_template.pdf)

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.3.264">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,9 +20,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -49,48 +50,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -104,8 +76,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -186,6 +157,7 @@ cookieconsent.run({
 <link href="../../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 <script src="../../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../styles.css">
@@ -231,63 +203,65 @@ cookieconsent.run({
     <span class="navbar-title">LingMethodsHub</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../../index.html" aria-current="page">
+    <a class="nav-link active" href="../../../index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../content/index.html">
+    <a class="nav-link" href="../../../content/index.html" rel="" target="">
  <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../about.html">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../content/contributing/index.html">
+    <a class="nav-link" href="../../../content/contributing/index.html" rel="" target="">
  <span class="menu-text">Contributing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../people/index.html">
+    <a class="nav-link" href="../../../people/index.html" rel="" target="">
  <span class="menu-text">People</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">How to normalize your vowels using the tidyverse</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/tidy-norm/index.html">How to normalize your vowels using the tidyverse</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
       <img src="../../../assets/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
@@ -297,147 +271,178 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorials</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/R/index.html" class="sidebar-item-text sidebar-link">R</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a href="../../../content/R/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">Doing LVC with R</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doing LVC with R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">Getting Started</a>
+  <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">Getting Your Data Into <em>R</em></a>
+  <a href="../../../content/R/lvc_r/020_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Your Data Into <em>R</em></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">Getting to Know Your Data</a>
+  <a href="../../../content/R/lvc_r/030_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting to Know Your Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">Modifying Data</a>
+  <a href="../../../content/R/lvc_r/040_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modifying Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">Doing it all again, but <code>tidy</code></a>
+  <a href="../../../content/R/lvc_r/050_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doing it all again, but <code>tidy</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">Crosstabs: Counts, Proportions, and More</a>
+  <a href="../../../content/R/lvc_r/060_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Crosstabs: Counts, Proportions, and More</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">Proportions for <code>ggplot2</code></a>
+  <a href="../../../content/R/lvc_r/070_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Proportions for <code>ggplot2</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">Conditional Inference Trees</a>
+  <a href="../../../content/R/lvc_r/080_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conditional Inference Trees</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/090_lvcr.html" class="sidebar-item-text sidebar-link">Random Forests: The Basics</a>
+  <a href="../../../content/R/lvc_r/090_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random Forests: The Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/110_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 1</a>
+  <a href="../../../content/R/lvc_r/110_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed-Efects Logistic Regression Analysis: Part 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/112_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 2</a>
+  <a href="../../../content/R/lvc_r/112_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed-Efects Logistic Regression Analysis: Part 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/114_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysis: Part 3</a>
+  <a href="../../../content/R/lvc_r/114_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed-Efects Logistic Regression Analysis: Part 3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/R/lvc_r/116_lvcr.html" class="sidebar-item-text sidebar-link">Mixed-Efects Logistic Regression Analysisː Part 4</a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">Vowel Plots with <code>ggplot2</code></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/R/tidy-norm/index.html" class="sidebar-item-text sidebar-link active">How to normalize your vowels using the tidyverse</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../content/R/animated_vowel_plots_tutorial/index.html" class="sidebar-item-text sidebar-link">Visualising Vowel Space Change with GAMMs</a>
+  <a href="../../../content/R/lvc_r/116_lvcr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed-Efects Logistic Regression Analysisː Part 4</span></a>
   </div>
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
   </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vowel Plots with <code>ggplot2</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/tidy-norm/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">How to normalize your vowels using the tidyverse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/animated_vowel_plots_tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualising Vowel Space Change with GAMMs</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/python/index.html" class="sidebar-item-text sidebar-link">Python</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a href="../../../content/python/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">Vowel plotting in Python</a>
+  <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vowel plotting in Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/python/speaker-diarization-for-linguistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Speaker Diarization for Linguistics</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Praat</span>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Praat</span></span>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/tools/index.html" class="sidebar-item-text sidebar-link">Tools</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a href="../../../content/tools/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">Montreal Forced Aligner</a>
+  <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Montreal Forced Aligner</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/tools/autovot/autovot-tutorial/index.html" class="sidebar-item-text sidebar-link">AutoVOT</a>
+  <a href="../../../content/tools/autovot/autovot-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AutoVOT</span></a>
   </div>
 </li>
       </ul>
@@ -445,20 +450,23 @@ cookieconsent.run({
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/cli/index.html" class="sidebar-item-text sidebar-link">Command Line Interfaces</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a href="../../../content/cli/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Command Line Interfaces</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">Bash Shell Basics</a>
+  <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bash Shell Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/cli/keyboarding/index.html" class="sidebar-item-text sidebar-link">Keyboarding</a>
+  <a href="../../../content/cli/keyboarding/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Keyboarding</span></a>
   </div>
 </li>
       </ul>
@@ -466,34 +474,37 @@ cookieconsent.run({
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/windows/index.html" class="sidebar-item-text sidebar-link">Windows</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a href="../../../content/windows/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Windows</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">Windows Subsystem for Linux</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Windows Subsystem for Linux</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">Installation</a>
+  <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
   </div>
 </li>
       </ul>
   </li>
-          <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -521,7 +532,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">How to normalize your vowels using the tidyverse</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">How to normalize your vowels using the tidyverse</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
   <div class="quarto-categories">
     <div class="quarto-category">vowels</div>
     <div class="quarto-category">normalization</div>
@@ -541,7 +552,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Josef Fruehwald </p>
+             <p><a href="https://jofrhwld.github.io/">Josef Fruehwald</a> </p>
           </div>
   </div>
     
@@ -566,9 +577,6 @@ cookieconsent.run({
 
 </header>
 
-<div class="cell">
-
-</div>
 <p>This is a tutorial about how to “normalize” vowel formant data using data tools from the <a href="https://www.tidyverse.org/">tidyverse</a>. A <em>lot</em> has been written about vowel normalization (why we do it, how it should work, what methods are best) that I can’t really cover here, although <span class="citation" data-cites="Adank2004">Adank &amp; Smits &amp; Hout (<a href="#ref-Adank2004" role="doc-biblioref">2004</a>)</span> is often taken as the canonical citation, and I’ll be taking into account the recent “order of operations” from <span class="citation" data-cites="stanley2022">Stanley (<a href="#ref-stanley2022" role="doc-biblioref">2022</a>)</span>.</p>
 <p>There’s also a <code>vowels</code> R package <span class="citation" data-cites="vowels">(<a href="#ref-vowels" role="doc-biblioref">Kendall &amp; Thomas 2018</a>)</span> that basically lets you run <a href="http://lingtools.uoregon.edu/norm/norm1_methods.php">the NORM suite locally</a>.</p>
 <p>There are still many occasions when you might want or need to normalize your vowel data yourself, though, and learning how to do it is actually a great introduction to a number of tidyverse “verbs”, especially:</p>
@@ -613,11 +621,8 @@ cookieconsent.run({
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We also need to load in some data. Here are two tab-delimited files of <a href="https://buckeyecorpus.osu.edu/">Buckeye Corpus</a> speakers whose interviews were run through <a href="https://github.com/JoFrhwld/FAVE">FAVE</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>s01_url <span class="ot">&lt;-</span> <span class="st">"https://lingmethodshub.github.io/content/R/tidy-norm/data/s01.txt"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>s03_url <span class="ot">&lt;-</span> <span class="st">"https://lingmethodshub.github.io/content/R/tidy-norm/data/s03.txt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell">
-
-</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>s01_url <span class="ot">&lt;-</span> <span class="st">"?meta:website.site-url/content/R/tidy-norm/data/s01.txt"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>s03_url <span class="ot">&lt;-</span> <span class="st">"?meta:website.site-url/content/R/tidy-norm/data/s03.txt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This code should load these files.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>vowels_orig <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="fu">c</span>(s01_url, s03_url), </span>
@@ -639,7 +644,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="tbl-vowel-orig" class="anchored">
 
-<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;1:  Three randomly sampled rows from each speaker’s data </div>
+<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;1:  <p>Three randomly sampled rows from each speaker’s data</p> </div>
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["age"],"name":[1],"type":["chr"],"align":["left"]},{"label":["city"],"name":[2],"type":["lgl"],"align":["right"]},{"label":["ethnicity"],"name":[3],"type":["lgl"],"align":["right"]},{"label":["first_name"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["last_name"],"name":[5],"type":["lgl"],"align":["right"]},{"label":["location"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["name"],"name":[7],"type":["chr"],"align":["left"]},{"label":["sex"],"name":[8],"type":["chr"],"align":["left"]},{"label":["state"],"name":[9],"type":["lgl"],"align":["right"]},{"label":["tiernum"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[11],"type":["lgl"],"align":["right"]},{"label":["years_of_schooling"],"name":[12],"type":["lgl"],"align":["right"]},{"label":["vowel"],"name":[13],"type":["chr"],"align":["left"]},{"label":["stress"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["pre_word"],"name":[15],"type":["chr"],"align":["left"]},{"label":["word"],"name":[16],"type":["chr"],"align":["left"]},{"label":["fol_word"],"name":[17],"type":["chr"],"align":["left"]},{"label":["F1"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["F2"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["F3"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["B1"],"name":[21],"type":["dbl"],"align":["right"]},{"label":["B2"],"name":[22],"type":["dbl"],"align":["right"]},{"label":["B3"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["t"],"name":[24],"type":["dbl"],"align":["right"]},{"label":["beg"],"name":[25],"type":["dbl"],"align":["right"]},{"label":["end"],"name":[26],"type":["dbl"],"align":["right"]},{"label":["dur"],"name":[27],"type":["dbl"],"align":["right"]},{"label":["plt_vclass"],"name":[28],"type":["chr"],"align":["left"]},{"label":["ipa_vclass"],"name":[29],"type":["chr"],"align":["left"]},{"label":["plt_manner"],"name":[30],"type":["chr"],"align":["left"]},{"label":["plt_place"],"name":[31],"type":["chr"],"align":["left"]},{"label":["plt_voice"],"name":[32],"type":["chr"],"align":["left"]},{"label":["plt_preseg"],"name":[33],"type":["chr"],"align":["left"]},{"label":["plt_folseq"],"name":[34],"type":["chr"],"align":["left"]},{"label":["style"],"name":[35],"type":["lgl"],"align":["right"]},{"label":["glide"],"name":[36],"type":["chr"],"align":["left"]},{"label":["pre_seg"],"name":[37],"type":["chr"],"align":["left"]},{"label":["fol_seg"],"name":[38],"type":["chr"],"align":["left"]},{"label":["context"],"name":[39],"type":["chr"],"align":["left"]},{"label":["vowel_index"],"name":[40],"type":["dbl"],"align":["right"]},{"label":["pre_word_trans"],"name":[41],"type":["chr"],"align":["left"]},{"label":["word_trans"],"name":[42],"type":["chr"],"align":["left"]},{"label":["fol_word_trans"],"name":[43],"type":["chr"],"align":["left"]},{"label":["F1@20%"],"name":[44],"type":["dbl"],"align":["right"]},{"label":["F2@20%"],"name":[45],"type":["dbl"],"align":["right"]},{"label":["F1@35%"],"name":[46],"type":["dbl"],"align":["right"]},{"label":["F2@35%"],"name":[47],"type":["dbl"],"align":["right"]},{"label":["F1@50%"],"name":[48],"type":["dbl"],"align":["right"]},{"label":["F2@50%"],"name":[49],"type":["dbl"],"align":["right"]},{"label":["F1@65%"],"name":[50],"type":["dbl"],"align":["right"]},{"label":["F2@65%"],"name":[51],"type":["dbl"],"align":["right"]},{"label":["F1@80%"],"name":[52],"type":["dbl"],"align":["right"]},{"label":["F2@80%"],"name":[53],"type":["dbl"],"align":["right"]},{"label":["nFormants"],"name":[54],"type":["dbl"],"align":["right"]}],"data":[{"1":"y","2":"NA","3":"NA","4":"NA","5":"NA","6":"NA","7":"s01","8":"f","9":"NA","10":"0","11":"NA","12":"NA","13":"IY","14":"0","15":"THESE","16":"REALLY","17":"ARE","18":"555.3","19":"2140.4","20":"3260.0","21":"237.0","22":"149.0","23":"310.5","24":"2677.844","25":"2677.811","26":"2677.911","27":"0.10","28":"iyF","29":"iF","30":"NA","31":"NA","32":"NA","33":"liquid","34":"NA","35":"NA","36":"NA","37":"L","38":"AA1","39":"final","40":"4","41":"DH IY1 Z","42":"R IH1 L IY0","43":"AA1 R","44":"605.8","45":"1935.0","46":"568.2","47":"2100.6","48":"528.1","49":"2216.9","50":"591.2","51":"2161.8","52":"645.2","53":"2073.1","54":"5"},{"1":"y","2":"NA","3":"NA","4":"NA","5":"NA","6":"NA","7":"s01","8":"f","9":"NA","10":"0","11":"NA","12":"NA","13":"AH","14":"0","15":"WONDERFUL","16":"REPUTATION","17":"AN","18":"602.3","19":"2017.2","20":"3149.3","21":"145.5","22":"308.1","23":"126.9","24":"735.287","25":"735.264","26":"735.334","27":"0.07","28":"@","29":"ə","30":"nasal","31":"apical","32":"voiced","33":"palatal","34":"NA","35":"NA","36":"NA","37":"SH","38":"N","39":"internal","40":"9","41":"W AH1 N D ER0 F AH0 L","42":"R EH2 P Y AH0 T EY1 SH AH0 N","43":"AH0 N","44":"962.4","45":"2333.7","46":"661.2","47":"2092.4","48":"585.0","49":"1872.9","50":"573.0","51":"1934.5","52":"563.2","53":"1923.1","54":"5"},{"1":"y","2":"NA","3":"NA","4":"NA","5":"NA","6":"NA","7":"s01","8":"f","9":"NA","10":"0","11":"NA","12":"NA","13":"EH","14":"1","15":"QUITE","16":"WELL","17":"NOW","18":"709.6","19":"1388.0","20":"2788.7","21":"171.5","22":"194.6","23":"183.9","24":"584.777","25":"584.757","26":"584.817","27":"0.06","28":"e","29":"ɛ","30":"lateral","31":"apical","32":"voiced","33":"w/y","34":"NA","35":"NA","36":"NA","37":"W","38":"L","39":"internal","40":"2","41":"K W AY1 T","42":"W EH1 L","43":"N AW1","44":"635.1","45":"1314.8","46":"635.1","47":"1314.8","48":"777.8","49":"1445.7","50":"803.7","51":"1455.2","52":"804.4","53":"1451.3","54":"5"},{"1":"o","2":"NA","3":"NA","4":"NA","5":"NA","6":"NA","7":"s03","8":"m","9":"NA","10":"0","11":"NA","12":"NA","13":"ER","14":"1","15":"TODAY","16":"VERSUS","17":"WHAT","18":"409.7","19":"1251.9","20":"3475.6","21":"106.6","22":"119.1","23":"326.0","24":"1993.785","25":"1993.742","26":"1993.872","27":"0.13","28":"*hr","29":"ə˞","30":"fricative","31":"apical","32":"voiceless","33":"oral_labial","34":"one_fol_syll","35":"NA","36":"NA","37":"V","38":"S","39":"internal","40":"2","41":"T AH0 D EY1","42":"V ER1 S AH0 S","43":"W AH1 T","44":"607.3","45":"2460.1","46":"411.1","47":"1261.4","48":"408.2","49":"1225.1","50":"351.9","51":"1299.7","52":"1327.9","53":"3962.3","54":"3"},{"1":"o","2":"NA","3":"NA","4":"NA","5":"NA","6":"NA","7":"s03","8":"m","9":"NA","10":"0","11":"NA","12":"NA","13":"AA","14":"2","15":"WELL","16":"GRANDPA","17":"HOW","18":"536.1","19":"857.6","20":"2272.3","21":"134.7","22":"111.2","23":"335.8","24":"3291.208","25":"3291.151","26":"3291.321","27":"0.17","28":"o","29":"ɑ","30":"NA","31":"NA","32":"NA","33":"oral_labial","34":"NA","35":"NA","36":"NA","37":"P","38":"HH","39":"final","40":"6","41":"W EH1 L","42":"G R AE1 M P AA2","43":"HH AW1","44":"444.9","45":"893.9","46":"533.6","47":"861.6","48":"554.7","49":"829.6","50":"508.0","51":"853.2","52":"620.7","53":"1022.6","54":"6"},{"1":"o","2":"NA","3":"NA","4":"NA","5":"NA","6":"NA","7":"s03","8":"m","9":"NA","10":"0","11":"NA","12":"NA","13":"IH","14":"0","15":"OF","16":"THIS","17":"MASS","18":"429.4","19":"1460.3","20":"2851.0","21":"61.9","22":"244.1","23":"635.2","24":"936.169","25":"936.136","26":"936.236","27":"0.10","28":"i","29":"ɪ","30":"fricative","31":"apical","32":"voiceless","33":"oral_apical","34":"NA","35":"NA","36":"NA","37":"DH","38":"S","39":"internal","40":"2","41":"AH0 V","42":"DH IH0 S","43":"M AE1 S","44":"420.9","45":"1372.7","46":"428.0","47":"1441.2","48":"427.1","49":"1487.8","50":"415.2","51":"1517.5","52":"385.8","53":"1482.9","54":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
@@ -665,7 +670,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="tbl-vowel-focus" class="anchored">
 
-<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;2:  The first few rows of the data we’re going to work with </div>
+<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;2:  <p>The first few rows of the data we’re going to work with</p> </div>
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["word"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ipa_vclass"],"name":[3],"type":["chr"],"align":["left"]},{"label":["F1"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F2"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"s01","2":"OKAY","3":"ejF","4":"763.5","5":"2088.1"},{"1":"s01","2":"UM","3":"ʌ","4":"699.5","5":"1881.3"},{"1":"s01","2":"I'M","3":"aj","4":"888.8","5":"1934.1"},{"1":"s01","2":"LIVED","3":"ɪ","4":"555.5","5":"1530.5"},{"1":"s01","2":"IN","3":"ɪ","4":"612.2","5":"2323.4"},{"1":"s01","2":"COLUMBUS","3":"ə","4":"612.4","5":"1903.7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
@@ -699,7 +704,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="fig-unnorm1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="index_files/figure-html/fig-unnorm1-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' unnormalized vowel means." width="576"></p>
+<p><img src="index_files/figure-html/fig-unnorm1-1.png" class="quarto-discovered-preview-image img-fluid figure-img" alt="An F1 by F2 plot of two speakers' unnormalized vowel means." width="576"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1: Speakers’ vowel means in unnormalized F1,F2 space.</figcaption><p></p>
 </figure>
 </div>
@@ -829,7 +834,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="tbl-nearey-focus" class="anchored">
 
-<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;3:  The columns of importance for Neary 2 </div>
+<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;3:  <p>The columns of importance for Neary 2</p> </div>
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["word"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ipa_vclass"],"name":[3],"type":["chr"],"align":["left"]},{"label":["F1"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F2"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"s01","2":"UM","3":"ʌ","4":"699.5","5":"1881.3"},{"1":"s01","2":"I'M","3":"aj","4":"888.8","5":"1934.1"},{"1":"s01","2":"IN","3":"ɪ","4":"612.2","5":"2323.4"},{"1":"s01","2":"COLUMBUS","3":"ə","4":"612.4","5":"1903.7"},{"1":"s01","2":"ENTIRE","3":"ɪ","4":"529.9","5":"2332.1"},{"1":"s01","2":"ENTIRE","3":"ə˞","4":"538.4","5":"1682.8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
@@ -850,7 +855,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="tbl-nearey-id" class="anchored">
 
-<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;4:  The formant data with a token ID for each observation </div>
+<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;4:  <p>The formant data with a token ID for each observation</p> </div>
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["word"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ipa_vclass"],"name":[3],"type":["chr"],"align":["left"]},{"label":["F1"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F2"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["id"],"name":[6],"type":["int"],"align":["right"]}],"data":[{"1":"s01","2":"UM","3":"ʌ","4":"699.5","5":"1881.3","6":"1"},{"1":"s01","2":"I'M","3":"aj","4":"888.8","5":"1934.1","6":"2"},{"1":"s01","2":"IN","3":"ɪ","4":"612.2","5":"2323.4","6":"3"},{"1":"s01","2":"COLUMBUS","3":"ə","4":"612.4","5":"1903.7","6":"4"},{"1":"s01","2":"ENTIRE","3":"ɪ","4":"529.9","5":"2332.1","6":"5"},{"1":"s01","2":"ENTIRE","3":"ə˞","4":"538.4","5":"1682.8","6":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
@@ -888,7 +893,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="tbl-nearey-long" class="anchored">
 
-<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;5:  The formant data, pivoted long </div>
+<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;5:  <p>The formant data, pivoted long</p> </div>
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["word"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ipa_vclass"],"name":[3],"type":["chr"],"align":["left"]},{"label":["id"],"name":[4],"type":["int"],"align":["right"]},{"label":["formant"],"name":[5],"type":["chr"],"align":["left"]},{"label":["hz"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"s01","2":"UM","3":"ʌ","4":"1","5":"F1","6":"699.5"},{"1":"s01","2":"UM","3":"ʌ","4":"1","5":"F2","6":"1881.3"},{"1":"s01","2":"I'M","3":"aj","4":"2","5":"F1","6":"888.8"},{"1":"s01","2":"I'M","3":"aj","4":"2","5":"F2","6":"1934.1"},{"1":"s01","2":"IN","3":"ɪ","4":"3","5":"F1","6":"612.2"},{"1":"s01","2":"IN","3":"ɪ","4":"3","5":"F2","6":"2323.4"},{"1":"s01","2":"COLUMBUS","3":"ə","4":"4","5":"F1","6":"612.4"},{"1":"s01","2":"COLUMBUS","3":"ə","4":"4","5":"F2","6":"1903.7"},{"1":"s01","2":"ENTIRE","3":"ɪ","4":"5","5":"F1","6":"529.9"},{"1":"s01","2":"ENTIRE","3":"ɪ","4":"5","5":"F2","6":"2332.1"},{"1":"s01","2":"ENTIRE","3":"ə˞","4":"6","5":"F1","6":"538.4"},{"1":"s01","2":"ENTIRE","3":"ə˞","4":"6","5":"F2","6":"1682.8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
@@ -915,7 +920,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="tbl-nearey-norm" class="anchored">
 
-<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;6:  The formant data, pivoted long, and normalized </div>
+<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;6:  <p>The formant data, pivoted long, and normalized</p> </div>
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["word"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ipa_vclass"],"name":[3],"type":["chr"],"align":["left"]},{"label":["id"],"name":[4],"type":["int"],"align":["right"]},{"label":["formant"],"name":[5],"type":["chr"],"align":["left"]},{"label":["hz"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["nearey"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"s01","2":"UM","3":"ʌ","4":"1","5":"F1","6":"699.5","7":"0.6325928"},{"1":"s01","2":"UM","3":"ʌ","4":"1","5":"F2","6":"1881.3","7":"1.7013537"},{"1":"s01","2":"I'M","3":"aj","4":"2","5":"F1","6":"888.8","7":"0.8037863"},{"1":"s01","2":"I'M","3":"aj","4":"2","5":"F2","6":"1934.1","7":"1.7491034"},{"1":"s01","2":"IN","3":"ɪ","4":"3","5":"F1","6":"612.2","7":"0.5536431"},{"1":"s01","2":"IN","3":"ɪ","4":"3","5":"F2","6":"2323.4","7":"2.1011669"},{"1":"s01","2":"COLUMBUS","3":"ə","4":"4","5":"F1","6":"612.4","7":"0.5538240"},{"1":"s01","2":"COLUMBUS","3":"ə","4":"4","5":"F2","6":"1903.7","7":"1.7216112"},{"1":"s01","2":"ENTIRE","3":"ɪ","4":"5","5":"F1","6":"529.9","7":"0.4792151"},{"1":"s01","2":"ENTIRE","3":"ɪ","4":"5","5":"F2","6":"2332.1","7":"2.1090347"},{"1":"s01","2":"ENTIRE","3":"ə˞","4":"6","5":"F1","6":"538.4","7":"0.4869021"},{"1":"s01","2":"ENTIRE","3":"ə˞","4":"6","5":"F2","6":"1682.8","7":"1.5218402"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
@@ -956,7 +961,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="tbl-neary-wide" class="anchored">
 
-<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;7:  Nearey Normalized Vowels, wide again </div>
+<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;7:  <p>Nearey Normalized Vowels, wide again</p> </div>
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["word"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ipa_vclass"],"name":[3],"type":["chr"],"align":["left"]},{"label":["id"],"name":[4],"type":["int"],"align":["right"]},{"label":["F1"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["F2"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"s01","2":"UM","3":"ʌ","4":"1","5":"0.6325928","6":"1.701354"},{"1":"s01","2":"I'M","3":"aj","4":"2","5":"0.8037863","6":"1.749103"},{"1":"s01","2":"IN","3":"ɪ","4":"3","5":"0.5536431","6":"2.101167"},{"1":"s01","2":"COLUMBUS","3":"ə","4":"4","5":"0.5538240","6":"1.721611"},{"1":"s01","2":"ENTIRE","3":"ɪ","4":"5","5":"0.4792151","6":"2.109035"},{"1":"s01","2":"ENTIRE","3":"ə˞","4":"6","5":"0.4869021","6":"1.521840"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
@@ -1070,7 +1075,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="tbl-wf-points" class="anchored">
 
-<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;8:  The vowel triangle point values. </div>
+<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;8:  <p>The vowel triangle point values.</p> </div>
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["beet_f1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["beet_f2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["bat_f1"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["bat_f2"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["school_f1"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["school_f2"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"s01","2":"430.4145","3":"2595.765","4":"819.6912","5":"1901.572","6":"430.4145","7":"430.4145"},{"1":"s03","2":"316.1036","3":"1989.806","4":"674.2896","5":"1242.969","6":"316.1036","7":"316.1036"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
@@ -1104,7 +1109,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="tbl-wf-point-long" class="anchored">
 
-<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;9:  The vowel triangle point values, long version </div>
+<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;9:  <p>The vowel triangle point values, long version</p> </div>
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["point"],"name":[2],"type":["chr"],"align":["left"]},{"label":["f1"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["f2"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"s01","2":"beet","3":"430.4145","4":"2595.7652"},{"1":"s01","2":"bat","3":"819.6912","4":"1901.5715"},{"1":"s01","2":"school","3":"430.4145","4":"430.4145"},{"1":"s03","2":"beet","3":"316.1036","4":"1989.8057"},{"1":"s03","2":"bat","3":"674.2896","4":"1242.9689"},{"1":"s03","2":"school","3":"316.1036","4":"316.1036"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
@@ -1149,7 +1154,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="tbl-wf-scaler" class="anchored">
 
-<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;10:  The Watt &amp; Fabricius scaling factors </div>
+<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;10:  <p>The Watt &amp; Fabricius scaling factors</p> </div>
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["S1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["S2"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"s01","2":"560.1734","3":"1642.584"},{"1":"s03","2":"435.4989","3":"1182.959"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
@@ -1183,7 +1188,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="tbl-wf-join" class="anchored">
 
-<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;11:  Speakers’s scalers merged onto the original data </div>
+<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;11:  <p>Speakers’s scalers merged onto the original data</p> </div>
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["word"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ipa_vclass"],"name":[3],"type":["chr"],"align":["left"]},{"label":["F1"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F2"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["mahal"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["mahal_sq"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["S1"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["S2"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"s01","2":"UM","3":"ʌ","4":"699.5","5":"1881.3","6":"1.1248704","7":"1.0605991","8":"560.1734","9":"1642.584"},{"1":"s01","2":"I'M","3":"aj","4":"888.8","5":"1934.1","6":"0.4752467","7":"0.6893814","8":"560.1734","9":"1642.584"},{"1":"s01","2":"IN","3":"ɪ","4":"612.2","5":"2323.4","6":"1.5749328","7":"1.2549633","8":"560.1734","9":"1642.584"},{"1":"s03","2":"I","3":"aj","4":"771.5","5":"1257.4","6":"3.2346829","7":"1.7985224","8":"435.4989","9":"1182.959"},{"1":"s03","2":"HAVE","3":"æ","4":"639.5","5":"1609.3","6":"0.3964394","7":"0.6296344","8":"435.4989","9":"1182.959"},{"1":"s03","2":"A","3":"ə","4":"501.2","5":"1202.0","6":"2.0544758","7":"1.4333443","8":"435.4989","9":"1182.959"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
@@ -1206,7 +1211,7 @@ What that <code>map_dfr</code> thing did:
 <div class="cell-output-display">
 <div id="tbl-wf-norm" class="anchored">
 
-<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;12:  Speakers’ vowels Watt &amp; Fabricius normalized </div>
+<div data-pagedtable="false"> <div class="table-caption">Table&nbsp;12:  <p>Speakers’ vowels Watt &amp; Fabricius normalized</p> </div>
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["word"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ipa_vclass"],"name":[3],"type":["chr"],"align":["left"]},{"label":["F1"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F2"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["mahal"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["mahal_sq"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["S1"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["S2"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["F1_wf"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["F2_wf"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"s01","2":"UM","3":"ʌ","4":"699.5","5":"1881.3","6":"1.1248704","7":"1.0605991","8":"560.1734","9":"1642.584","10":"1.248720","11":"1.145330"},{"1":"s01","2":"I'M","3":"aj","4":"888.8","5":"1934.1","6":"0.4752467","7":"0.6893814","8":"560.1734","9":"1642.584","10":"1.586651","11":"1.177474"},{"1":"s01","2":"IN","3":"ɪ","4":"612.2","5":"2323.4","6":"1.5749328","7":"1.2549633","8":"560.1734","9":"1642.584","10":"1.092876","11":"1.414479"},{"1":"s03","2":"I","3":"aj","4":"771.5","5":"1257.4","6":"3.2346829","7":"1.7985224","8":"435.4989","9":"1182.959","10":"1.771531","11":"1.062927"},{"1":"s03","2":"HAVE","3":"æ","4":"639.5","5":"1609.3","6":"0.3964394","7":"0.6296344","8":"435.4989","9":"1182.959","10":"1.468431","11":"1.360402"},{"1":"s03","2":"A","3":"ə","4":"501.2","5":"1202.0","6":"2.0544758","7":"1.4333443","8":"435.4989","9":"1182.959","10":"1.150864","11":"1.016096"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
@@ -1262,23 +1267,23 @@ What that <code>map_dfr</code> thing did:
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
-<div id="ref-Adank2004" class="csl-entry" role="doc-biblioentry">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-Adank2004" class="csl-entry" role="listitem">
 Adank, Patti &amp; Smits, Roel &amp; Hout, Roeland van. 2004. A comparison of vowel normalization procedures for language variation research. <em>The Journal of the Acoustical Society of America</em>. 116(5). 3099. Retrieved from <a href="http://link.aip.org/link/JASMAN/v116/i5/p3099/s1&amp;Agg=doi">http://link.aip.org/link/JASMAN/v116/i5/p3099/s1&amp;Agg=doi</a>
 </div>
-<div id="ref-vowels" class="csl-entry" role="doc-biblioentry">
+<div id="ref-vowels" class="csl-entry" role="listitem">
 Kendall, Tyler &amp; Thomas, Erik R. 2018. Vowels: Vowel manipulation, normalization, and plotting. Retrieved from <a href="https://CRAN.R-project.org/package=vowels">https://CRAN.R-project.org/package=vowels</a>
 </div>
-<div id="ref-lobanov" class="csl-entry" role="doc-biblioentry">
+<div id="ref-lobanov" class="csl-entry" role="listitem">
 Lobanov, Boris. 1971. Classification of russian vowels spoken by different listeners. <em>Journal of the Acoustical Society of America</em>. 49. 606–608.
 </div>
-<div id="ref-nearey1978" class="csl-entry" role="doc-biblioentry">
+<div id="ref-nearey1978" class="csl-entry" role="listitem">
 Nearey, Terrance. 1978. <em>Phonetic feature systems for vowels.</em> Retrieved from <a href="https://sites.ualberta.ca/~tnearey/Nearey1978_compressed.pdf">https://sites.ualberta.ca/~tnearey/Nearey1978_compressed.pdf</a>
 </div>
-<div id="ref-stanley2022" class="csl-entry" role="doc-biblioentry">
+<div id="ref-stanley2022" class="csl-entry" role="listitem">
 Stanley, Joseph A. 2022. Order of Operations in Sociophonetic Analysis. <em>Penn Working Papers in Linguistics</em>. 28(2). 151–160. Retrieved from <a href="https://repository.upenn.edu/pwpl/vol28/iss2/17">https://repository.upenn.edu/pwpl/vol28/iss2/17</a>
 </div>
-<div id="ref-watt2002" class="csl-entry" role="doc-biblioentry">
+<div id="ref-watt2002" class="csl-entry" role="listitem">
 Watt, Dominic &amp; Fabricius, Anne. 2002. Evaluation of a technique for improving the mapping of multiple speakers’ vowel spaces in the F1 &nbsp; F2 plane. <em>Leeds Working Papers in Linguistics and Phonetics</em>. 9. 159–173.
 </div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
@@ -1293,7 +1298,7 @@ Watt, Dominic &amp; Fabricius, Anne. 2002. Evaluation of a technique for improvi
 <li id="fn3"><p>Which is a little silly because that’s what we had in the normalization code chunk above, and then we did <code>exp()</code> on it.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{fruehwald2022,
-  author = {Josef Fruehwald},
+  author = {Fruehwald, Josef},
   title = {How to Normalize Your Vowels Using the Tidyverse},
   series = {Linguistics Methods Hub},
   date = {2022-10-20},
@@ -1301,8 +1306,8 @@ Watt, Dominic &amp; Fabricius, Anne. 2002. Evaluation of a technique for improvi
   doi = {10.5281/zenodo.7232341},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-fruehwald2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Josef Fruehwald. 2022, October 20. How to normalize your vowels using
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-fruehwald2022" class="csl-entry quarto-appendix-citeas" role="listitem">
+Fruehwald, Josef. 2022, October 20. How to normalize your vowels using
 the tidyverse. <em>Linguistics Methods Hub</em>. (<a href="https://lingmethodshub.github.io/content/R/tidy-norm">https://lingmethodshub.github.io/content/R/tidy-norm</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7232341">10.5281/zenodo.7232341</a>
 </div></div></section></div></main> <!-- /main -->
@@ -1333,9 +1338,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1451,6 +1470,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -2158,7 +2263,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 

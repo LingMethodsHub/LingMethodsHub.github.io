@@ -31,3 +31,6 @@
 [submodule "content/R/animated_vowel_plots_tutorial"]
 	path = content/R/animated_vowel_plots_tutorial
 	url = https://github.com/LingMethodsHub/animated_vowel_plots_tutorial.git
+[submodule "content/python/speaker-diarization-for-linguistics"]
+	path = content/python/speaker-diarization-for-linguistics
+	url = git@github.com:LingMethodsHub/Speaker-Diarization-for-Linguistics.git
