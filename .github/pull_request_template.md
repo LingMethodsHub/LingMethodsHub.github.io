@@ -54,3 +54,4 @@ open-graph:
 
 ## Final Check
 - [ ] publication date is correct
+- [ ] `docs/` have been rendered
