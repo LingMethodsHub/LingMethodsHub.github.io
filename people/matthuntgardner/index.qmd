@@ -1,10 +1,10 @@
 ---
 title: "Matt Hunt Gardner"
 editor: visual
-image: profile.jpeg
+image: profile.jpg
 about: 
   template: jolla
-  image: profile.jpeg
+  image: profile.jpg
   links:
     - icon: house-fill
       href: https://www.matthuntgardner.com/
