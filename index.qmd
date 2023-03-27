@@ -4,8 +4,12 @@ license: "CC-BY-SA 4.0"
 date: 2022-10-5
 citation: 
   editor:
-    - Josef Fruehwald
-    - Matt Hunt Gardner
+    - name:
+        given: Josef 
+        family: Fruehwald
+    - name:
+        given: Matt Hunt 
+        family: Gardner
 ---
 
 This is a project in development. Our goal is to provide a coherent and searchable source for linguistics methods, specifically computational and quantitative methods, to which people can contribute with appropriate credit. 
