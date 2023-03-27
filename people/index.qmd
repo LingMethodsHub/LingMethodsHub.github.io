@@ -6,6 +6,7 @@ listing:
     contents:
       - "**/index.qmd"
     type: grid
+    image-height: 200px
 citation: false
 execute: 
   freeze: false
