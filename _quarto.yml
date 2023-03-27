@@ -44,7 +44,6 @@ website:
           href: "content/R/index.qmd"
           contents: #content/R/
             - section: "Doing LVC with R"
-              href: "content/R/lvc_r/index.qmd"
               contents:
                 - href: "content/R/lvc_r/010_lvcr.qmd"
                 - href: "content/R/lvc_r/020_lvcr.qmd"

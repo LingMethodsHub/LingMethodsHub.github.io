@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Matt Hunt Gardner">
 <meta name="dcterms.date" content="2022-09-27">
 <meta name="description" content="Generating proportions that you can plot using ggplot2.">
 
@@ -135,6 +134,8 @@ cookieconsent.run({
 <script async="" src="https://hypothes.is/embed.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../styles.css">
 <meta property="og:title" content="LingMethodsHub - Proportions for ggplot2">
@@ -150,7 +151,6 @@ cookieconsent.run({
 <meta name="twitter:image-width" content="1344">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="citation_title" content="Proportions for `ggplot2`">
-<meta name="citation_author" content="Matt HuntGardner">
 <meta name="citation_publication_date" content="2022-09-27">
 <meta name="citation_cover_date" content="2022-09-27">
 <meta name="citation_year" content="2022">
@@ -223,7 +223,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/index.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/070_lvcr.html">Proportions for <code>ggplot2</code></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/070_lvcr.html">Proportions for <code>ggplot2</code></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -257,7 +257,7 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text">Doing LVC with R</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -479,7 +479,7 @@ cookieconsent.run({
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="070_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -536,7 +536,16 @@ cookieconsent.run({
 <p>Why is there a separate section on preparing summary statistics for <code>ggplot2</code>? It is <code>ggplot2</code> expects summary statistics to be organized in a way that is non-intuitive to us as sociolinguists. When we represent summary statistics we usually represent them like cross-tabs, for example:</p>
 <div id="tbl-normal" class="anchored">
 <table class="table">
-<caption>Table&nbsp;1: Percentage of deleted (t, d) tokens by Age Group and Sex in Cape Breton English<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></caption>
+<caption>Table&nbsp;1: Percentage of deleted (t, d) tokens by Age Group and Sex in Cape Breton English</caption>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -599,17 +608,32 @@ cookieconsent.run({
 </div>
 <p>In the above table there are variables both as rows (here <code>Age.Group</code>) and columns (here <code>Sex</code>). If I was going to create a chart in <em>Excel</em> of summary statistics this is how I would naturally make it. This is how data is presented in manuscripts, it is also how it is presented in <em>Goldvarb</em>, and it is how it is presented to us by the <code>prop.table()</code> function. It is NOT how <code>ggplot2</code> wants your data to be organized. For <code>ggplot2</code> each variable has to exist in its own individual column — much closer to the organization of the <code>ftable()</code> or what is produced using <code>tidy</code> methods.</p>
 <p>In order to create this kind of organization (if not using <code>tidy</code> methods) you need to “melt” the <code>prop.table()</code> using the function <code>melt()</code> in the package <code>reshape2</code>. You’ll do this in two steps. First you create a new object <code>td.prop</code>, which is the proportion table of the levels of <code>Dep.Var</code> for each level of <code>Age.Group</code> and <code>Sex</code>, just like the table above. Then you “melt” that table using the function <code>melt()</code>, and assign this new table to a new object <code>td.prop.melt</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Get the data first
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you don’t have the <code>td</code> data loaded in <em>R</em>, go back to <a href="https://lingmethodshub.github.io/content/R/lvc_r/050_lvcr.html">Doing it all again, but <code>tidy</code></a> and run the code.</p>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var for each</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># level of Age.Group and Sex</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>td.prop.melt <span class="ot">&lt;-</span> <span class="fu">melt</span>(td.prop)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># View first six lines of td.prop.melt</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td.prop.melt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># each level of Dep.Var for each level of</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Age.Group and Sex</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">margin =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>td.prop.melt <span class="ot">&lt;-</span> <span class="fu">melt</span>(td.prop)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># View first six lines of td.prop.melt</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td.prop.melt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Var1 Var2     Var3     value
 1    Old    F Deletion 0.2866667
@@ -623,9 +647,10 @@ cookieconsent.run({
 <p>This new melted table does not contain informative column names, so you add those as the third step.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.prop.melt) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View first six lines of td.prop.melt</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td.prop.melt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.prop.melt) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Percent"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View first six lines of td.prop.melt</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td.prop.melt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Age.Group Sex  Dep.Var   Percent
 1       Old   F Deletion 0.2866667
@@ -638,28 +663,42 @@ cookieconsent.run({
 </div>
 <p>An alternative way to melt the columns is to save the proportion table as a new tab-delimited-text file. You might want to do this anyway, as having a separate file containing summary statistics may be useful to you. One use I have for tab-delimited-text file versions of my summary statistics is that they are much easier for copying and pasting. If you copy and paste from the <em>R</em> console window there is an inconsistent number of space characters between columns (e.g., above there are five space characters between <code>1</code> and <code>Young</code>, four between <code>2</code> and <code>Middle</code>, and five between <code>3</code> and<code>Old</code>). If you save that same table to a text file you can specify that you want each cell separated by a tab character instead.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var for each</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># level of Age.Group and Sex</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>td.prop.melt <span class="ot">&lt;-</span> <span class="fu">melt</span>(td.prop)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.prop.melt) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Write td.prop.melt to file</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.prop.melt, <span class="at">file =</span> <span class="st">"Data/summaryAgeGroupSexMelted.txt"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Write td.prop to file (with automatic melting)</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.prop, <span class="at">file =</span> <span class="st">"Data/summaryAgeGroupSex.txt"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>,</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># each level of Dep.Var for each level of</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Age.Group and Sex</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">margin =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>td.prop.melt <span class="ot">&lt;-</span> <span class="fu">melt</span>(td.prop)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.prop.melt) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Percent"</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Write td.prop.melt to file</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.prop.melt, <span class="at">file =</span> <span class="st">"Data/summaryAgeGroupSexMelted.txt"</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Write td.prop to file (with automatic melting)</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.prop, <span class="at">file =</span> <span class="st">"Data/summaryAgeGroupSex.txt"</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The two <code>write.table()</code> functions above produce the exact same tab-delimited-text file. The one difference between them is that the melted table (e.g., <code>summaryAgeGroupSexMelted.txt</code>) includes column names.</p>
-<p><img src="images/summaryAgeGroupSex.png" id="fig-notmelted" class="quarto-discovered-preview-image img-fluid" alt="Not Melted"> <img src="images/summaryAgeGroupSexMelted.png" id="fig-melted" class="img-fluid" alt="Melted"></p>
+<div id="fig-notmelted" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/summaryAgeGroupSex.png" class="quarto-discovered-preview-image img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Not Melted</figcaption><p></p>
+</figure>
+</div>
+<div id="fig-melted" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/summaryAgeGroupSexMelted.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Melted</figcaption><p></p>
+</figure>
+</div>
 <p>When the <code>write.table()</code> melts the proportion table for you it does not create the new column names. For this reason, I like to melt proportion tables before I save them so that I have the opportunity to name the table’s columns. In the <code>write.table()</code> functions above you first specify the object you want to write to a text file, then you specify what you want to call that file and where you want it to be created. Here I’ve named the files <code>summaryAgeGroupSexMelted.txt</code> and <code>summaryAgeGroupSex.txt</code> and saved it in a subfolder called <code>Data</code> in the same folder in which my <em>R</em> script is saved. You can save your file anywhere on your computer and call it whatever you want. You can specify any file path here. For example, I could have written <code>~/Documents/My Project/Data</code> to indicate a folder called <code>Data</code> in a folder called <code>My Project</code> in my <code>Documents</code> folder on root drive of my Mac computer. If you are running a PC your folder structure will likely start with <code>"C:/\dots"</code>. In the function you specify that <code>quote = FALSE</code>. If you specify <code>TRUE</code>, <em>R</em> will put quotation marks around the values in each cell. I have never needed this. You further specify that the separator between cells in the same row is a tab, <code>sep="\t"</code>, which creates a tab-delimited-text file (.txt). If you wanted to create a comma-separated-value table (.csv) you would instead specify <code>sep=","</code> and change the file extension from <code>".txt"</code> to <code>".csv"</code>. Finally, you specify that <code>row.names = FALSE</code> because there are no row names in this table, just column names.</p>
 <p>If you’ve saved a summary statistics file previously and want to read it into <em>R</em> for use with <code>ggplot2</code>, you can use the same procedure as you used for reading in your data file.</p>
 <div class="cell">
@@ -668,52 +707,61 @@ cookieconsent.run({
 </div>
 <p>Here’s an example of a basic <code>ggplot2</code> line graph that can be made with the above summary statistics. The first three steps are only necessary if you didn’t read in the summary statistics file above.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var for each</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># level of Age.Group and Sex</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># for each level of Age.Group and Sex</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop  </span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>td.AgeSex <span class="ot">&lt;-</span> <span class="fu">melt</span>(td.prop)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>td.AgeSex <span class="ot">&lt;-</span><span class="fu">melt</span>(td.prop)</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.AgeSex) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.AgeSex) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder Age.Group</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>td.AgeSex<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span> <span class="fu">factor</span>(td.AgeSex<span class="sc">$</span>Age.Group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>))</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>td.AgeSex<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span><span class="fu">factor</span>(td.AgeSex<span class="sc">$</span>Age.Group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>))</span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create basic ggplot2 line graph of the proportion of deletion by Age.Group,</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create basic ggplot2 line graph of the proportion of deletion by Age.Group, </span></span>
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># with lines separated by Sex</span></span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data =</span> td.AgeSex[td.AgeSex<span class="sc">$</span>Dep.Var <span class="sc">==</span> <span class="st">"Deletion"</span>, ], <span class="at">x =</span> Age.Group, <span class="at">y =</span> Percent,</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">group =</span> Sex, <span class="at">colour =</span> Sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: `qplot()` was deprecated in ggplot2 3.4.0.</code></pre>
-</div>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data =</span> td.AgeSex[td.AgeSex<span class="sc">$</span>Dep.Var <span class="sc">==</span> <span class="st">"Deletion"</span>,], </span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Age.Group, </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Percent, </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">"line"</span>, </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> Sex, </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> Sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="070_lvcr_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>For this graph you can use the quick plot function <code>qplot()</code> available in the <code>ggplot2</code> package. For <code>qplot()</code> you specify the data, here the object <code>td.AgeSex</code> where <code>td.AgeSex</code>’s column <code>Dep.Var</code> equals <code>Deletion</code>. This filtering is only specified because you don’t need to represent both <code>Deletion</code> and <code>Realization</code> on the same graph (as the value of one implies the value of the other). You then specify that you want your x axis to be <code>Age.Group</code>: <code>x = Age.Group</code>. The axis will be ordered left to right (<code>Young</code>, <code>Middle</code>,<code>Old</code>) because you reordered the <code>Age.Group</code> column levels before running <code>qplot()</code>. You specify that<code>Percent</code> is the y axis:<code>y = Percent</code>, and that the kind of graph you want is a line graph: <code>geom = "line"</code>. Specifying<code>group = Sex</code> means the data will be grouped according to the levels of <code>Sex</code>, and produces two lines in the graph: one for men and one for women. To make the two lines different colours, specify <code>colour = Sex</code>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<p><code>ggplot2</code> is infinitely customizable. You can change almost every element of the graph — for example, you could change the y axis to show 0 to 100 percent instead of 0 to 50 percent — but these types of specifications are for another set of instructions.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<p>The use of the <code>tidy</code> method for cross tabs should be immediately apparent. There is no need to take the extra step to melt your proportions before building your plot. We will use the same code that we used to generate proportions from <a href="../../../content/R/lvc_r/060_lvcr.html">the previous chapter</a>. First, it is useful to reorder the <code>Age.Group</code> variable, as this ordering will be inherited by the <code>summarize()</code> function. Next we use the <code>tidy</code> code to generate proportions and assign the results to an object called <code>results</code> and then build our plot from that object. We also make a tweak so that the y-axis ranges from 0 to 1, as this is the full range of possible proportions with <code>ylim=c(0,1)</code>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> This also moderates what might look like exteme differences in the figure generated above with a smaller y axis. We also give the x axis and the y axis new labels with <code>ylab="Proportion of Deleted Tokens"</code> and <code>xlab= "Age Group"</code> and give the table a title with <code>main = "Proportion of Deleted (t ,d) tokens in Cape Breton English by Age and Sex"</code>.</p>
+<p>For this graph you can use the quick plot function <code>qplot()</code> available in the <code>ggplot2</code> package. For <code>qplot()</code> you specify the data, here the object <code>td.AgeSex</code> where <code>td.AgeSex</code>’s column <code>Dep.Var</code> equals <code>Deletion</code>. This filtering is only specified because you don’t need to represent both <code>Deletion</code> and <code>Realization</code> on the same graph (as the value of one implies the value of the other). You then specify that you want your <em>x</em>-axis to be <code>Age.Group</code>: <code>x = Age.Group</code>. The axis will be ordered left to right (<code>Young</code>, <code>Middle</code>,<code>Old</code>) because you reordered the <code>Age.Group</code> column levels before running <code>qplot()</code>. You specify that<code>Percent</code> is the <em>y</em>-axis:<code>y = Percent</code>, and that the kind of graph you want is a line graph: <code>geom = "line"</code>. Specifying<code>group = Sex</code> means the data will be grouped according to the levels of <code>Sex</code>, and produces two lines in the graph: one for men and one for women. To make the two lines different colours, specify <code>colour = Sex</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><code>ggplot2</code> is infinitely customizable. You can change almost every element of the graph — for example, you could change the <em>y</em>-axis to show <span class="math inline">\(0\)</span> to <span class="math inline">\(100\)</span> percent instead of <span class="math inline">\(0\)</span> to <span class="math inline">\(50\)</span> percent — but these types of specifications are for another set of instructions.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>The use of the <code>tidy</code> method for cross tabs should be immediately apparent. There is no need to take the extra step to melt your proportions before building your plot. We will use the same code that we used to generate proportions from <a href="https://lingmethodshub.github.io/content/R/lvc_r/060_lvcr.html">the previous chapter</a>. First, it is useful to reorder the <code>Age.Group</code> variable, as this ordering will be inherited by the <code>summarize()</code> function. Next we use the <code>tidy</code> code to generate proportions and assign the results to an object called <code>results</code> and then build our plot from that object. We also make a tweak so that the <em>y</em>-axis ranges from 0 to 1, as this is the full range of possible proportions with <code>ylim=c(0,1)</code>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> This also moderates what might look like exteme differences in the figure generated above with a smaller <em>y</em>-axis. We also give the <em>x</em>-axis and the <em>y</em>-axis new labels with <code>ylab="Proportion of Deleted Tokens"</code> and <code>xlab= "Age Group"</code> and give the table a title with <code>main = "Proportion of Deleted (t ,d) tokens in Cape Breton English by Age and Sex"</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder Age.Group</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>td.AgeSex<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span> <span class="fu">factor</span>(td.AgeSex<span class="sc">$</span>Age.Group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a tidy object of proportions of Dep.Var by Age.Group and Sex, with</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># only Deletion included</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Age.Group, Sex, Dep.Var, <span class="at">.drop =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Prop =</span> Count<span class="sc">/</span><span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">subset</span>(Dep.Var <span class="sc">==</span> <span class="st">"Deletion"</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create basic ggplot2 line graph of the proportion of deletion by Age.Group,</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># with lines separated by Sex</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data =</span> results, <span class="at">x =</span> Age.Group, <span class="at">y =</span> Prop, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">group =</span> Sex, <span class="at">colour =</span> Sex,</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">ylab =</span> <span class="st">"Proportion of Deleted Tokens"</span>, <span class="at">xlab =</span> <span class="st">"Age Group"</span>, <span class="at">main =</span> <span class="st">"Proportion of Deleted (t ,d) tokens in Cape Breton English by Age and Sex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder Age.Group</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>td.AgeSex<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span><span class="fu">factor</span>(td.AgeSex<span class="sc">$</span>Age.Group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a tidy object of proportions of Dep.Var </span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># by Age.Group and Sex, with only Deletion included</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Sex, Dep.Var, <span class="at">.drop =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prop =</span> Count<span class="sc">/</span><span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subset</span>(Dep.Var <span class="sc">==</span> <span class="st">"Deletion"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create basic ggplot2 line graph of the proportion of deletion </span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># by Age.Group, with lines separated by Sex</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data =</span> results, </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Age.Group,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Prop, </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">"line"</span>, </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> Sex, </span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> Sex, </span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), </span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">"Proportion of Deleted Tokens"</span>, </span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">"Age Group"</span>, </span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">"Proportion of Deleted (t ,d) tokens in Cape Breton English</span><span class="sc">\n</span><span class="st">by Age and Sex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="070_lvcr_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -727,13 +775,12 @@ cookieconsent.run({
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>If you don’t have the <code>td</code> dataset loaded in <em>R</em>, go back to <a href="../../../content/R/lvc_r/050_lvcr.html">Doing it all again, but <code>tidy</code></a> and run the code.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Or <code>color = Sex</code>. Both will work.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>There are lots of <code>ggplot2</code> instructions online. Searching ``change y axis, qplot, ggplot2” will likely find you the right information.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>The concatenating function <code>c()</code> is used to combine values. Here it combines the desired start and end of the y axis.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Or <code>color = Sex</code>. Both will work.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>There are lots of <code>ggplot2</code> instructions online. Searching “change <em>y</em>-axis, qplot, ggplot2” will likely find you the right information.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The concatenating function <code>c()</code> is used to combine values. Here it combines the desired start and end of the <em>y</em>-axis.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{huntgardner2022,
-  author = {HuntGardner, Matt},
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner2022,
+  author = {Gardner, Matt Hunt},
   title = {Proportions for `Ggplot2`},
   series = {Linguistics Methods Hub},
   volume = {Doing LVC with R},
@@ -742,8 +789,8 @@ cookieconsent.run({
   doi = {10.5281/zenodo.7160718},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-huntgardner2022" class="csl-entry quarto-appendix-citeas" role="listitem">
-HuntGardner, Matt. 2022, September 27. Proportions for `ggplot2`.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gardner2022" class="csl-entry quarto-appendix-citeas" role="listitem">
+Gardner, Matt Hunt. 2022, September 27. Proportions for `ggplot2`.
 <em>Linguistics Methods Hub</em>: <em>Doing LVC with R</em>. (<a href="https://lingmethodshub.github.io/content/R/lvc_r/070_lvcr.html">https://lingmethodshub.github.io/content/R/lvc_r/070_lvcr.html</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
 </div></div></section></div></main> <!-- /main -->
@@ -1043,204 +1090,203 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Proportions for `ggplot2`"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-9-27"</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA 4.0"</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: scroll</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pdf: default</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">  # - name:</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">  #     given: Matt Hunt</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">  #     family: Gardner</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">  name: "Matt Hunt Gardner"</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">  orcid: 0000-0002-1878-4232</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">  email: matt.gardner@ling-phil.ox.ac.uk</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">  corresponding: true</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">  affiliations:</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">    - name: University of Oxford </span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">      department: Linguistics, Philology, &amp; Phonetics</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">      city: Oxford</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">      country: UK</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Generating proportions that you can plot using `ggplot2`. "</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "070_lvcr_files/figure-html/unnamed-chunk-8-1.png"</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="an">twitter-card:</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co">  image: "070_lvcr_files/figure-html/unnamed-chunk-8-1.png"</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="an">open-graph:</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co">  image: "070_lvcr_files/figure-html/unnamed-chunk-8-1.png"</span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"renv/activate.R"</span>)</span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">tidy=</span><span class="st">'styler'</span>, <span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">strict=</span><span class="cn">TRUE</span>, <span class="at">scope=</span><span class="st">"tokens"</span>), <span class="at">tidy =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Before <span class="sc">!=</span> <span class="st">"Vowel"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">After.New =</span> <span class="fu">recode</span>(After, <span class="st">"H"</span> <span class="ot">=</span> <span class="st">"Consonant"</span>),  </span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>             <span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)),</span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>             <span class="at">Age.Group =</span> <span class="fu">cut</span>(YOB, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">1944</span>, <span class="dv">1979</span>, <span class="cn">Inf</span>), </span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>)),</span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme =</span> <span class="fu">sub</span>(<span class="st">"^(.)(--.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, Phoneme.Dep.Var),</span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>             <span class="at">Dep.Var.Full =</span> <span class="fu">sub</span>(<span class="st">"^(.--)(.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, Phoneme.Dep.Var),</span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme.Dep.Var =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate_if</span>(is.character, as.factor)</span>
-<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>td.young <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>            <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Young"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>td.middle <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
-<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>             <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Middle"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>             <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>td.old <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
-<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>          <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Old"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>There are two main ways to make graphs in *R*. The first is using the standard graphing capabilities of *R*. The second is using a much more sophisticated and customizable graphics package called <span class="in">`ggplot2`</span>. Describing the ins and outs of the <span class="in">`ggplot2`</span> package is beyond the scope of these instructions, but what these instructions can do is teach you how to organize your summary statistics in such a way that they are usable by <span class="in">`ggplot2`</span>.</span>
-<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>Why is there a separate section on preparing summary statistics for <span class="in">`ggplot2`</span>? It is <span class="in">`ggplot2`</span> expects summary statistics to be organized in a way that is non-intuitive to us as sociolinguists. When we represent summary statistics we usually represent them like cross-tabs, for example:</span>
-<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>|           | **Female** |             | **Male** |             | **Total** |             |</span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>|:----------|:----------|:----------|:----------|:----------|:----------|:----------|</span>
-<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>| Age Group | n          | \% Deletion | n        | \% Deletion | n         | \% Deletion |</span>
-<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>| Young     | 271        | 27          | 357      | 34          | 628       | **31**      |</span>
-<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>| Middle    | 238        | 31          | 122      | 43          | 360       | **35**      |</span>
-<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>| Old       | 150        | 29          | 51       | 47          | 201       | **33**      |</span>
-<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>| **Total** | **659**    | **28**      | **530**  | **37**      | **1,189** | **32**   |</span>
-<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>: Percentage of deleted (t, d) tokens by Age Group and Sex in Cape Breton English<span class="ot">[^1]</span> {#tbl-normal}</span>
-<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>If you don't have the <span class="in">`td`</span> dataset loaded in *R*, go back to <span class="co">[</span><span class="ot">Doing it all again, but `tidy`</span><span class="co">](050_lvcr.qmd)</span> and run the code.</span>
-<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>In the above table there are variables both as rows (here <span class="in">`Age.Group`</span>) and columns (here <span class="in">`Sex`</span>). If I was going to create a chart in *Excel* of summary statistics this is how I would naturally make it. This is how data is presented in manuscripts, it is also how it is presented in *Goldvarb*, and it is how it is presented to us by the <span class="in">`prop.table()`</span> function. It is NOT how <span class="in">`ggplot2`</span> wants your data to be organized. For <span class="in">`ggplot2`</span> each variable has to exist in its own individual column --- much closer to the organization of the <span class="in">`ftable()`</span> or what is produced using <span class="in">`tidy`</span> methods.</span>
-<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>In order to create this kind of organization (if not using <span class="in">`tidy`</span> methods) you need to "melt" the <span class="in">`prop.table()`</span> using the function <span class="in">`melt()`</span> in the package <span class="in">`reshape2`</span>. You'll do this in two steps. First you create a new object <span class="in">`td.prop`</span>, which is the proportion table of the levels of <span class="in">`Dep.Var`</span> for each level of <span class="in">`Age.Group`</span> and <span class="in">`Sex`</span>, just like the table above. Then you "melt" that table using the function <span class="in">`melt()`</span>, and assign this new table to a new object <span class="in">`td.prop.melt`</span>.</span>
-<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE }</span></span>
-<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var for each level of Age.Group and Sex</span></span>
-<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop  </span></span>
-<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a>td.prop.melt <span class="ot">&lt;-</span><span class="fu">melt</span>(td.prop)</span>
-<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a><span class="co"># View first six lines of td.prop.melt</span></span>
-<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td.prop.melt)</span>
-<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>This new melted table does not contain informative column names, so you add those as the third step.</span>
-<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE }</span></span>
-<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
-<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.prop.melt) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
-<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a><span class="co"># View first six lines of td.prop.melt</span></span>
-<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td.prop.melt)</span>
-<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a>An alternative way to melt the columns is to save the proportion table as a new tab-delimited-text file. You might want to do this anyway, as having a separate file containing summary statistics may be useful to you. One use I have for tab-delimited-text file versions of my summary statistics is that they are much easier for copying and pasting. If you copy and paste from the *R* console window there is an inconsistent number of space characters between columns (e.g., above there are five space characters between <span class="in">`1`</span> and <span class="in">`Young`</span>, four between <span class="in">`2`</span> and <span class="in">`Middle`</span>, and five between <span class="in">`3`</span> and<span class="in">`Old`</span>). If you save that same table to a text file you can specify that you want each cell separated by a tab character instead.</span>
-<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var for each level of Age.Group and Sex</span></span>
-<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop  </span></span>
-<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a>td.prop.melt <span class="ot">&lt;-</span><span class="fu">melt</span>(td.prop)</span>
-<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
-<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.prop.melt) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
-<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a><span class="co"># Write td.prop.melt to file </span></span>
-<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.prop.melt, <span class="at">file =</span> <span class="st">"Data/summaryAgeGroupSexMelted.txt"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a><span class="co"># Write td.prop to file (with automatic melting)</span></span>
-<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.prop, <span class="at">file =</span> <span class="st">"Data/summaryAgeGroupSex.txt"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a>The two <span class="in">`write.table()`</span> functions above produce the exact same tab-delimited-text file. The one difference between them is that the melted table (e.g., <span class="in">`summaryAgeGroupSexMelted.txt`</span>) includes column names.</span>
-<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a><span class="al">![Not Melted](images/summaryAgeGroupSex.png)</span>{#fig-notmelted} <span class="al">![Melted](images/summaryAgeGroupSexMelted.png)</span>{#fig-melted}</span>
-<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a>When the <span class="in">`write.table()`</span> melts the proportion table for you it does not create the new column names. For this reason, I like to melt proportion tables before I save them so that I have the opportunity to name the table's columns. In the <span class="in">`write.table()`</span> functions above you first specify the object you want to write to a text file, then you specify what you want to call that file and where you want it to be created. Here I've named the files <span class="in">`summaryAgeGroupSexMelted.txt`</span> and <span class="in">`summaryAgeGroupSex.txt`</span> and saved it in a subfolder called <span class="in">`Data`</span> in the same folder in which my *R* script is saved.  You can save your file anywhere on your computer and call it whatever you want. You can specify any file path here.  For example, I could have written `~/Documents/My Project/Data` to indicate a folder called `Data` in a folder called `My Project` in my `Documents` folder on root drive of my Mac computer. If you are running a PC your folder structure will likely start with `"C:/\dots"`. In the function you specify that `quote = FALSE`. If you specify `TRUE`, *R* will put quotation marks around the values in each cell. I have never needed this. You further specify that the separator between cells in the same row is a tab, <span class="in">`sep="\t"`</span>, which creates a tab-delimited-text file (.txt). If you wanted to create a comma-separated-value table (.csv) you would instead specify <span class="in">`sep=","`</span> and change the file extension from <span class="in">`".txt"`</span> to <span class="in">`".csv"`</span>. Finally, you specify that <span class="in">`row.names = FALSE`</span> because there are no row names in this table, just column names. </span>
-<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a>If you've saved a summary statistics file previously and want to read it into *R* for use with <span class="in">`ggplot2`</span>, you can use the same procedure as you used for reading in your data file.</span>
-<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in Summary Statistics File</span></span>
-<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a>td.AgeSex <span class="ot">&lt;-</span><span class="fu">read.delim</span>(<span class="st">"Data/summaryAgeGroupSexMelted.txt"</span>)</span>
-<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a>Here's an example of a basic <span class="in">`ggplot2`</span> line graph that can be made with the above summary statistics. The first three steps are only necessary if you didn't read in the summary statistics file above.</span>
-<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var for each level of Age.Group and Sex</span></span>
-<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop  </span></span>
-<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a>td.AgeSex <span class="ot">&lt;-</span><span class="fu">melt</span>(td.prop)</span>
-<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
-<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.AgeSex) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
-<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder Age.Group</span></span>
-<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a>td.AgeSex<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span><span class="fu">factor</span>(td.AgeSex<span class="sc">$</span>Age.Group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>))</span>
-<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a><span class="co"># Create basic ggplot2 line graph of the proportion of deletion by Age.Group, with lines separated by Sex</span></span>
-<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data =</span> td.AgeSex[td.AgeSex<span class="sc">$</span>Dep.Var <span class="sc">==</span> <span class="st">"Deletion"</span>,], </span>
-<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Age.Group, </span>
-<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Percent, </span>
-<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">"line"</span>, </span>
-<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> Sex, </span>
-<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> Sex)</span>
-<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a>For this graph you can use the quick plot function <span class="in">`qplot()`</span> available in the <span class="in">`ggplot2`</span> package. For <span class="in">`qplot()`</span> you specify the data, here the object <span class="in">`td.AgeSex`</span> where <span class="in">`td.AgeSex`</span>'s column <span class="in">`Dep.Var`</span> equals <span class="in">`Deletion`</span>. This filtering is only specified because you don't need to represent both <span class="in">`Deletion`</span> and <span class="in">`Realization`</span> on the same graph (as the value of one implies the value of the other). You then specify that you want your x axis to be <span class="in">`Age.Group`</span>: <span class="in">`x = Age.Group`</span>. The axis will be ordered left to right (<span class="in">`Young`</span>, <span class="in">`Middle`</span>,<span class="in">`Old`</span>) because you reordered the <span class="in">`Age.Group`</span> column levels before running <span class="in">`qplot()`</span>. You specify that<span class="in">`Percent`</span> is the y axis:<span class="in">`y = Percent`</span>, and that the kind of graph you want is a line graph: <span class="in">`geom = "line"`</span>. Specifying<span class="in">`group = Sex`</span> means the data will be grouped according to the levels of <span class="in">`Sex`</span>, and produces two lines in the graph: one for men and one for women. To make the two lines different colours, specify <span class="in">`colour = Sex`</span>.<span class="ot">[^2]</span></span>
-<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>Or <span class="in">`color = Sex`</span>. Both will work.</span>
-<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a><span class="in">`ggplot2`</span> is infinitely customizable. You can change almost every element of the graph --- for example, you could change the y axis to show 0 to 100 percent instead of 0 to 50 percent --- but these types of specifications are for another set of instructions.<span class="ot">[^3]</span></span>
-<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>There are lots of <span class="in">`ggplot2`</span> instructions online. Searching  ``change y axis, qplot, ggplot2" will likely find you the right information.</span>
-<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a>The use of the <span class="in">`tidy`</span> method for cross tabs should be immediately apparent. There is no need to take the extra step to melt your proportions before building your plot. We will use the same code that we used to generate proportions from <span class="co">[</span><span class="ot">the previous chapter</span><span class="co">](060_lvcr.qmd)</span>. First, it is useful to reorder the <span class="in">`Age.Group`</span> variable, as this ordering will be inherited by the <span class="in">`summarize()`</span> function. Next we use the <span class="in">`tidy`</span> code to generate proportions and assign the results to an object called <span class="in">`results`</span> and then build our plot from that object. We also make a tweak so that the y-axis ranges from 0 to 1, as this is the full range of possible proportions with <span class="in">`ylim=c(0,1)`</span>.<span class="ot">[^4]</span> This also moderates what might look like exteme differences in the figure generated above with a smaller y axis. We also give the x axis and the y axis new labels with <span class="in">`ylab="Proportion of Deleted Tokens"`</span> and <span class="in">`xlab= "Age Group"`</span> and give the table a title with <span class="in">`main = "Proportion of Deleted (t ,d) tokens in Cape Breton English by Age and Sex"`</span>.</span>
-<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a><span class="ot">[^4]: </span>The concatenating function <span class="in">`c()`</span> is used to combine values. Here it combines the desired start and end of the y axis. </span>
-<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
-<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder Age.Group</span></span>
-<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a>td.AgeSex<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span><span class="fu">factor</span>(td.AgeSex<span class="sc">$</span>Age.Group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>))</span>
-<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a tidy object of proportions of Dep.Var by Age.Group and Sex, with only Deletion included</span></span>
-<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span></span>
-<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Sex, Dep.Var, <span class="at">.drop =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prop =</span> Count<span class="sc">/</span><span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subset</span>(Dep.Var <span class="sc">==</span> <span class="st">"Deletion"</span>)</span>
-<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a><span class="co"># Create basic ggplot2 line graph of the proportion of deletion by Age.Group, with lines separated by Sex</span></span>
-<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data =</span> results,</span>
-<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Age.Group, </span>
-<span id="cb10-201"><a href="#cb10-201" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Prop, </span>
-<span id="cb10-202"><a href="#cb10-202" aria-hidden="true" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">"line"</span>,</span>
-<span id="cb10-203"><a href="#cb10-203" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> Sex, </span>
-<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> Sex, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylab =</span> <span class="st">"Proportion of Deleted Tokens"</span>, <span class="at">xlab =</span> <span class="st">"Age Group"</span>, <span class="at">main =</span> <span class="st">"Proportion of Deleted (t ,d) tokens in Cape Breton English by Age and Sex"</span>)</span>
-<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Proportions for `ggplot2`"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-9-27"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA 4.0"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Generating proportions that you can plot using `ggplot2`. "</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "070_lvcr_files/figure-html/unnamed-chunk-8-1.png"</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="an">twitter-card:</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">  image: "070_lvcr_files/figure-html/unnamed-chunk-8-1.png"</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="an">open-graph:</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">  image: "070_lvcr_files/figure-html/unnamed-chunk-8-1.png"</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"renv/activate.R"</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">tidy=</span><span class="st">'styler'</span>, <span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">strict=</span><span class="cn">TRUE</span>, <span class="at">scope=</span><span class="st">"tokens"</span>, <span class="at">width.cutoff=</span><span class="dv">50</span>), <span class="at">tidy =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Before <span class="sc">!=</span> <span class="st">"Vowel"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">After.New =</span> <span class="fu">recode</span>(After, <span class="st">"H"</span> <span class="ot">=</span> <span class="st">"Consonant"</span>),  </span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>             <span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)),</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>             <span class="at">Age.Group =</span> <span class="fu">cut</span>(YOB, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">1944</span>, <span class="dv">1979</span>, <span class="cn">Inf</span>), </span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>)),</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme =</span> <span class="fu">sub</span>(<span class="st">"^(.)(--.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, Phoneme.Dep.Var),</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>             <span class="at">Dep.Var.Full =</span> <span class="fu">sub</span>(<span class="st">"^(.--)(.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, Phoneme.Dep.Var),</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>             <span class="at">Phoneme.Dep.Var =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate_if</span>(is.character, as.factor)</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>td.young <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>            <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Young"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>td.middle <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>             <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Middle"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>             <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>td.old <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>          <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Old"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>There are two main ways to make graphs in *R*. The first is using the standard graphing capabilities of *R*. The second is using a much more sophisticated and customizable graphics package called <span class="in">`ggplot2`</span>. Describing the ins and outs of the <span class="in">`ggplot2`</span> package is beyond the scope of these instructions, but what these instructions can do is teach you how to organize your summary statistics in such a way that they are usable by <span class="in">`ggplot2`</span>.</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>Why is there a separate section on preparing summary statistics for <span class="in">`ggplot2`</span>? It is <span class="in">`ggplot2`</span> expects summary statistics to be organized in a way that is non-intuitive to us as sociolinguists. When we represent summary statistics we usually represent them like cross-tabs, for example:</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>|           | **Female** |             | **Male** |             | **Total** |             |</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>|:----------|:----------|:----------|:----------|:----------|:----------|:----------|</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>| Age Group | n          | \% Deletion | n        | \% Deletion | n         | \% Deletion |</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>| Young     | 271        | 27          | 357      | 34          | 628       | **31**      |</span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>| Middle    | 238        | 31          | 122      | 43          | 360       | **35**      |</span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>| Old       | 150        | 29          | 51       | 47          | 201       | **33**      |</span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>| **Total** | **659**    | **28**      | **530**  | **37**      | **1,189** | **32**   |</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>: Percentage of deleted (t, d) tokens by Age Group and Sex in Cape Breton English {#tbl-normal}</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>In the above table there are variables both as rows (here <span class="in">`Age.Group`</span>) and columns (here <span class="in">`Sex`</span>). If I was going to create a chart in *Excel* of summary statistics this is how I would naturally make it. This is how data is presented in manuscripts, it is also how it is presented in *Goldvarb*, and it is how it is presented to us by the <span class="in">`prop.table()`</span> function. It is NOT how <span class="in">`ggplot2`</span> wants your data to be organized. For <span class="in">`ggplot2`</span> each variable has to exist in its own individual column --- much closer to the organization of the <span class="in">`ftable()`</span> or what is produced using <span class="in">`tidy`</span> methods.</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>In order to create this kind of organization (if not using <span class="in">`tidy`</span> methods) you need to "melt" the <span class="in">`prop.table()`</span> using the function <span class="in">`melt()`</span> in the package <span class="in">`reshape2`</span>. You'll do this in two steps. First you create a new object <span class="in">`td.prop`</span>, which is the proportion table of the levels of <span class="in">`Dep.Var`</span> for each level of <span class="in">`Age.Group`</span> and <span class="in">`Sex`</span>, just like the table above. Then you "melt" that table using the function <span class="in">`melt()`</span>, and assign this new table to a new object <span class="in">`td.prop.melt`</span>.</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## Get the data first</span></span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>If you don't have the <span class="in">`td`</span> data loaded in *R*, go back to <span class="co">[</span><span class="ot">Doing it all again, but `tidy`</span><span class="co">](https://lingmethodshub.github.io/content/R/lvc_r/050_lvcr.html)</span> and run the code.</span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE }</span></span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var for each level of Age.Group and Sex</span></span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop  </span></span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>td.prop.melt <span class="ot">&lt;-</span><span class="fu">melt</span>(td.prop)</span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a><span class="co"># View first six lines of td.prop.melt</span></span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td.prop.melt)</span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>This new melted table does not contain informative column names, so you add those as the third step.</span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE }</span></span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.prop.melt) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a><span class="co"># View first six lines of td.prop.melt</span></span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td.prop.melt)</span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>An alternative way to melt the columns is to save the proportion table as a new tab-delimited-text file. You might want to do this anyway, as having a separate file containing summary statistics may be useful to you. One use I have for tab-delimited-text file versions of my summary statistics is that they are much easier for copying and pasting. If you copy and paste from the *R* console window there is an inconsistent number of space characters between columns (e.g., above there are five space characters between <span class="in">`1`</span> and <span class="in">`Young`</span>, four between <span class="in">`2`</span> and <span class="in">`Middle`</span>, and five between <span class="in">`3`</span> and<span class="in">`Old`</span>). If you save that same table to a text file you can specify that you want each cell separated by a tab character instead.</span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var for each level of Age.Group and Sex</span></span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop  </span></span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a>td.prop.melt <span class="ot">&lt;-</span><span class="fu">melt</span>(td.prop)</span>
+<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.prop.melt) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a><span class="co"># Write td.prop.melt to file </span></span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.prop.melt, <span class="at">file =</span> <span class="st">"Data/summaryAgeGroupSexMelted.txt"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a><span class="co"># Write td.prop to file (with automatic melting)</span></span>
+<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.prop, <span class="at">file =</span> <span class="st">"Data/summaryAgeGroupSex.txt"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>The two <span class="in">`write.table()`</span> functions above produce the exact same tab-delimited-text file. The one difference between them is that the melted table (e.g., <span class="in">`summaryAgeGroupSexMelted.txt`</span>) includes column names.</span>
+<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a><span class="al">![Not Melted](images/summaryAgeGroupSex.png)</span>{width=.5\textwidth #fig-notmelted}</span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a><span class="al">![Melted](images/summaryAgeGroupSexMelted.png)</span>{width=.5\textwidth #fig-melted}</span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>When the <span class="in">`write.table()`</span> melts the proportion table for you it does not create the new column names. For this reason, I like to melt proportion tables before I save them so that I have the opportunity to name the table's columns. In the <span class="in">`write.table()`</span> functions above you first specify the object you want to write to a text file, then you specify what you want to call that file and where you want it to be created. Here I've named the files <span class="in">`summaryAgeGroupSexMelted.txt`</span> and <span class="in">`summaryAgeGroupSex.txt`</span> and saved it in a subfolder called <span class="in">`Data`</span> in the same folder in which my *R* script is saved.  You can save your file anywhere on your computer and call it whatever you want. You can specify any file path here.  For example, I could have written `~/Documents/My Project/Data` to indicate a folder called `Data` in a folder called `My Project` in my `Documents` folder on root drive of my Mac computer. If you are running a PC your folder structure will likely start with `"C:/\dots"`. In the function you specify that `quote = FALSE`. If you specify `TRUE`, *R* will put quotation marks around the values in each cell. I have never needed this. You further specify that the separator between cells in the same row is a tab, <span class="in">`sep="\t"`</span>, which creates a tab-delimited-text file (.txt). If you wanted to create a comma-separated-value table (.csv) you would instead specify <span class="in">`sep=","`</span> and change the file extension from <span class="in">`".txt"`</span> to <span class="in">`".csv"`</span>. Finally, you specify that <span class="in">`row.names = FALSE`</span> because there are no row names in this table, just column names. </span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>If you've saved a summary statistics file previously and want to read it into *R* for use with <span class="in">`ggplot2`</span>, you can use the same procedure as you used for reading in your data file.</span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in Summary Statistics File</span></span>
+<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a>td.AgeSex <span class="ot">&lt;-</span><span class="fu">read.delim</span>(<span class="st">"Data/summaryAgeGroupSexMelted.txt"</span>)</span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a>Here's an example of a basic <span class="in">`ggplot2`</span> line graph that can be made with the above summary statistics. The first three steps are only necessary if you didn't read in the summary statistics file above.</span>
+<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning = FALSE, tidy=FALSE}</span></span>
+<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var </span></span>
+<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a><span class="co"># for each level of Age.Group and Sex</span></span>
+<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop  </span></span>
+<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a>td.AgeSex <span class="ot">&lt;-</span><span class="fu">melt</span>(td.prop)</span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.AgeSex) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder Age.Group</span></span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a>td.AgeSex<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span><span class="fu">factor</span>(td.AgeSex<span class="sc">$</span>Age.Group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>))</span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a><span class="co"># Create basic ggplot2 line graph of the proportion of deletion by Age.Group, </span></span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a><span class="co"># with lines separated by Sex</span></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data =</span> td.AgeSex[td.AgeSex<span class="sc">$</span>Dep.Var <span class="sc">==</span> <span class="st">"Deletion"</span>,], </span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Age.Group, </span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Percent, </span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">"line"</span>, </span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> Sex, </span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> Sex)</span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a>For this graph you can use the quick plot function <span class="in">`qplot()`</span> available in the <span class="in">`ggplot2`</span> package. For <span class="in">`qplot()`</span> you specify the data, here the object <span class="in">`td.AgeSex`</span> where <span class="in">`td.AgeSex`</span>'s column <span class="in">`Dep.Var`</span> equals <span class="in">`Deletion`</span>. This filtering is only specified because you don't need to represent both <span class="in">`Deletion`</span> and <span class="in">`Realization`</span> on the same graph (as the value of one implies the value of the other). You then specify that you want your *x*-axis to be `Age.Group`: `x = Age.Group`. The axis will be ordered left to right (`Young`, `Middle`,`Old`) because you reordered the `Age.Group` column levels before running `qplot()`. You specify that`Percent` is the *y*-axis:<span class="in">`y = Percent`</span>, and that the kind of graph you want is a line graph: <span class="in">`geom = "line"`</span>. Specifying<span class="in">`group = Sex`</span> means the data will be grouped according to the levels of <span class="in">`Sex`</span>, and produces two lines in the graph: one for men and one for women. To make the two lines different colours, specify <span class="in">`colour = Sex`</span>.<span class="ot">[^2]</span></span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>Or <span class="in">`color = Sex`</span>. Both will work.</span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a><span class="in">`ggplot2`</span> is infinitely customizable. You can change almost every element of the graph --- for example, you could change the *y*-axis to show $0$ to $100$ percent instead of $0$ to $50$ percent --- but these types of specifications are for another set of instructions.<span class="ot">[^3]</span></span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>There are lots of <span class="in">`ggplot2`</span> instructions online. Searching  "change *y*-axis, qplot, ggplot2" will likely find you the right information.</span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a>The use of the <span class="in">`tidy`</span> method for cross tabs should be immediately apparent. There is no need to take the extra step to melt your proportions before building your plot. We will use the same code that we used to generate proportions from <span class="co">[</span><span class="ot">the previous chapter</span><span class="co">](https://lingmethodshub.github.io/content/R/lvc_r/060_lvcr.html)</span>. First, it is useful to reorder the <span class="in">`Age.Group`</span> variable, as this ordering will be inherited by the <span class="in">`summarize()`</span> function. Next we use the <span class="in">`tidy`</span> code to generate proportions and assign the results to an object called <span class="in">`results`</span> and then build our plot from that object. We also make a tweak so that the *y*-axis ranges from 0 to 1, as this is the full range of possible proportions with `ylim=c(0,1)`.[^4] This also moderates what might look like exteme differences in the figure generated above with a smaller *y*-axis. We also give the *x*-axis and the *y*-axis new labels with <span class="in">`ylab="Proportion of Deleted Tokens"`</span> and <span class="in">`xlab= "Age Group"`</span> and give the table a title with <span class="in">`main = "Proportion of Deleted (t ,d) tokens in Cape Breton English by Age and Sex"`</span>.</span>
+<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a><span class="ot">[^4]: </span>The concatenating function <span class="in">`c()`</span> is used to combine values. Here it combines the desired start and end of the *y*-axis. </span>
+<span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, warning=FALSE, tidy=FALSE}</span></span>
+<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder Age.Group</span></span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a>td.AgeSex<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span><span class="fu">factor</span>(td.AgeSex<span class="sc">$</span>Age.Group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>))</span>
+<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a tidy object of proportions of Dep.Var </span></span>
+<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a><span class="co"># by Age.Group and Sex, with only Deletion included</span></span>
+<span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span></span>
+<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Sex, Dep.Var, <span class="at">.drop =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prop =</span> Count<span class="sc">/</span><span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subset</span>(Dep.Var <span class="sc">==</span> <span class="st">"Deletion"</span>)</span>
+<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a><span class="co"># Create basic ggplot2 line graph of the proportion of deletion </span></span>
+<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a><span class="co"># by Age.Group, with lines separated by Sex</span></span>
+<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data =</span> results, </span>
+<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Age.Group,</span>
+<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Prop, </span>
+<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">"line"</span>, </span>
+<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> Sex, </span>
+<span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> Sex, </span>
+<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), </span>
+<span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">"Proportion of Deleted Tokens"</span>, </span>
+<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">"Age Group"</span>, </span>
+<span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">"Proportion of Deleted (t ,d) tokens in Cape Breton English</span><span class="sc">\n</span><span class="st">by Age and Sex"</span>)</span>
+<span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-203"><a href="#cb9-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

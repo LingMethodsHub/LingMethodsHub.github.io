@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Matt Hunt Gardner">
 <meta name="dcterms.date" content="2022-09-27">
 <meta name="description" content="How to import your data into R.">
 
@@ -57,7 +56,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -145,7 +163,6 @@ cookieconsent.run({
 <meta name="twitter:image" content="https://lingmethodshub.github.io/content/R/lvc_r/assets/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="citation_title" content="Getting Your Data Into *R*">
-<meta name="citation_author" content="Matt HuntGardner">
 <meta name="citation_publication_date" content="2022-09-27">
 <meta name="citation_cover_date" content="2022-09-27">
 <meta name="citation_year" content="2022">
@@ -156,6 +173,19 @@ cookieconsent.run({
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Linguistics Methods Hub">
 <meta name="citation_series_title" content="Linguistics Methods Hub">
+<meta name="citation_reference" content="citation_title=Regression diagnostics: Identifying influential data and sources of collinearity;,citation_author=David A. Belsley;,citation_author=Edwin Kuh;,citation_author=Roy E. Welsch;,citation_publication_date=1980;,citation_cover_date=1980;,citation_year=1980;">
+<meta name="citation_reference" content="citation_title=Analyzing linguistic data: A practical introduction to statistics using R;,citation_author=R. Harald Baayen;,citation_publication_date=2008;,citation_cover_date=2008;,citation_year=2008;">
+<meta name="citation_reference" content="citation_title=An introduction to statistical learning: With applications in &amp;amp;amp;lt;i&amp;gt;r&amp;lt;/i&amp;gt;;,citation_author=Gareth James;,citation_author=Daniela Witten;,citation_author=Trevor Hastie;,citation_author=Robert Tibshirani;,citation_publication_date=2013;,citation_cover_date=2013;,citation_year=2013;,citation_fulltext_html_url=https://link.springer.com/book/10.1007/978-1-4614-7138-7c;">
+<meta name="citation_reference" content="citation_title=LVC guidelines for reporting quantitative results;,citation_author=Gregory R. Guy;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;">
+<meta name="citation_reference" content="citation_title=Persistent confusions about hypothesis testing in the social sciences;,citation_author=Christopher Thron;,citation_author=Vincent Miller;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_issue=2;,citation_doi=10.3390/socsci4020361;,citation_volume=4;,citation_journal_title=Social Sciences;,citation_publisher=MDPI AG;">
+<meta name="citation_reference" content="citation_title=Statistical methods for research workers;,citation_author=Ronald A. Fisher;,citation_publication_date=1925;,citation_cover_date=1925;,citation_year=1925;">
+<meta name="citation_reference" content="citation_title=Variable word-final (t,d) in Cape Breton English;,citation_author=Matt Hunt Gardner;,citation_publication_date=2013;,citation_cover_date=2013;,citation_year=2013;,citation_dissertation_institution=University of Toronto;">
+<meta name="citation_reference" content="citation_title=Oat and a Boat: Identity creation through regional speech features in Industrial Cape Breton;,citation_author=Matt Hunt Gardner;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;,citation_dissertation_institution=Memorial University;">
+<meta name="citation_reference" content="citation_title=Grammatical variation and change in Industrial Cape Breton;,citation_author=Matt Hunt Gardner;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_dissertation_institution=University of Toronto;">
+<meta name="citation_reference" content="citation_title=An introduction to recursive partitioning: Rationale, application, and characteristics of classification and regression trees, bagging, and random forests.;,citation_author=Carolin Strobl;,citation_author=James Malley;,citation_author=Gerhard Tutz;,citation_publication_date=2009;,citation_cover_date=2009;,citation_year=2009;,citation_issue=4;,citation_volume=14;,citation_journal_title=Psychological Methods;">
+<meta name="citation_reference" content="citation_title=How many trees in a random forest?;,citation_abstract=Random Forest is a computationally efficient technique that can operate quickly over large datasets. It has been used in many recent research projects and real-world applications in diverse domains. However, the associated literature provides almost no directions about how many trees should be used to compose a Random Forest. The research reported here analyzes whether there is an optimal number of trees within a Random Forest, i.e., a threshold from which increasing the number of trees would bring no significant performance gain, and would only increase the computational cost. Our main conclusions are: as the number of trees grows, it does not always mean the performance of the forest is significantly better than previous forests (fewer trees), and doubling the number of trees is worthless. It is also possible to state there is a threshold beyond which there is no significant gain, unless a huge computational environment is available. In addition, it was found an experimental relationship for the AUC gain when doubling the number of trees in any forest. Furthermore, as the number of trees grows, the full set of attributes tend to be used within a Random Forest, which may not be interesting in the biomedical domain. Additionally, datasets’ density-based metrics proposed here probably capture some aspects of the VC dimension on decision trees and low-density datasets may require large capacity machines whilst the opposite also seems to be true.;,citation_author=Thais Mayumi Oshiro;,citation_author=Pedro Santoro Perez;,citation_author=José Augusto Baranauskas;,citation_editor=Petra Perner;,citation_publication_date=2012;,citation_cover_date=2012;,citation_year=2012;,citation_isbn=978-3-642-31537-4;,citation_conference_title=Machine learning and data mining in pattern recognition;,citation_conference=Springer;">
+<meta name="citation_reference" content="citation_title=Variationist sociolinguistics: Change, observation, interpretation;,citation_author=Sali A. Tagliamonte;,citation_publication_date=2012;,citation_cover_date=2012;,citation_year=2012;">
+<meta name="citation_reference" content="citation_title=Models, forests, and trees of York English: &amp;amp;amp;lt;i&amp;gt;Was/were&amp;lt;/i&amp;gt; variation as a case study for statistical practice;,citation_author=Sali A. Tagliamonte;,citation_author=R. Harald Baayen;,citation_publication_date=2012;,citation_cover_date=2012;,citation_year=2012;,citation_issue=2;,citation_volume=24;,citation_journal_title=Language Variation and Change;">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -218,7 +248,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/index.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/020_lvcr.html">Getting Your Data Into <em>R</em></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Getting Started</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/020_lvcr.html">Getting Your Data Into <em>R</em></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -252,7 +282,7 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../content/R/lvc_r/index.html" class="sidebar-item-text sidebar-link">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text">Doing LVC with R</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -473,7 +503,13 @@ cookieconsent.run({
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#references" id="toc-references" class="nav-link active" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="020_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -549,17 +585,31 @@ Warning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span><span class="fu">read.delim</span>(<span class="st">"https://www.dropbox.com/s/pi8xz1kuo6cz60l/deletiondata.txt?dl=1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This data file contains tokens of word-final (t, d) and was created for a project studying different pronunciations of word-final (t, d), including deletion. The data comes from a corpus collected for Gardner (2010; <a href="https://hdl.handle.net/1807/80940">2017</a>) among English speakers on <a href="https://en.wikipedia.org/wiki/Cape_Breton_Island">Cape Breton Island, Nova Scotia, Canada</a>.</p>
+<p>This data file contains tokens of word-final (t, d) and was created for a project studying different pronunciations of word-final (t, d), including deletion. The data comes from a corpus collected for Gardner <span class="citation" data-cites="Gardner2010 Gardner2013c Gardner2017">(<a href="#ref-Gardner2010" role="doc-biblioref">2010</a>; <a href="#ref-Gardner2013c" role="doc-biblioref">2013</a>; <a href="#ref-Gardner2017" role="doc-biblioref">2017</a>)</span> among English speakers on <a href="https://en.wikipedia.org/wiki/Cape_Breton_Island">Cape Breton Island, Nova Scotia, Canada</a>.</p>
 <p>If you prefer to save your data files as comma-separated-values files (even though you shouldn’t, see above), you can read them into <em>R</em> using the function <code>read.csv2()</code>. If you find it tricky to figure out the file path of your data file you can instead write <code>file.choose()</code> (OS X) or <code>choose.files()</code> (PC) instead of the file path inside the <code>read.delim()</code>/<code>read.csv2()</code> function, with no quotation marks. This will create a pop-up window where you can browse through your files and select one. While this <em>seems</em> easier, it is not worth it. By not explicitly writing out the file path you introduce a non-replicable element in your script file because there is no record of what you browse to in the actual script file. This means that if you return to your project a year later, or someone else is looking over your code, it might not be clear which data file is supposed to be used. If you choose to use an <em>R</em> script file you can actually just drag and drop your data file (or any file) into the script window itself and the full file path will be automatically inserted.</p>
 <p>You can also copy a file’s filepath to the clipboard on a Mac by pressing <strong>Control</strong> while clicking on the file, then pressing <strong>Option</strong> and selecting <strong>Copy “[your file]” as Pathname</strong>. On a PC you can do the same thing by right-clicking on a file, or (if using Windows 10) using the <strong>Copy path</strong> button on the <strong>Home</strong> tab ribbon in <em>Windows File Explorer</em>.</p>
 <p>For more information about reading files into <em>R</em>, go <a href="https://stat.ethz.ch/R-manual/R-devel/library/utils/html/read.table.html">here</a></p>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list">
+<div id="ref-Gardner2010" class="csl-entry" role="listitem">
+Gardner, Matt Hunt. 2010. <em><span>O</span>at and a <span>B</span>oat: <span>I</span>dentity creation through regional speech features in <span>I</span>ndustrial <span>C</span>ape <span>B</span>reton</em>. <span>S</span>t. <span>J</span>ohn’s, <span>N</span><span>L</span>, <span>C</span>anada: Memorial University dissertation.
+</div>
+<div id="ref-Gardner2013c" class="csl-entry" role="listitem">
+Gardner, Matt Hunt. 2013. <em>Variable word-final (t,d) in <span>C</span>ape <span>B</span>reton <span>E</span>nglish</em>. <span>T</span>oronto: <span>U</span>niversity of <span>T</span>oronto dissertation.
+</div>
+<div id="ref-Gardner2017" class="csl-entry" role="listitem">
+Gardner, Matt Hunt. 2017. <em>Grammatical variation and change in <span>I</span>ndustrial <span>C</span>ape <span>B</span>reton</em>. <span>U</span>niversity of <span>T</span>oronto dissertation.
+</div>
+</div>
 
 
 <!-- -->
 
+</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{huntgardner2022,
-  author = {HuntGardner, Matt},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner2022,
+  author = {Gardner, Matt Hunt},
   title = {Getting {Your} {Data} {Into} {*R*}},
   series = {Linguistics Methods Hub},
   volume = {Doing LVC with R},
@@ -568,8 +618,8 @@ Warning
   doi = {10.5281/zenodo.7160718},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-huntgardner2022" class="csl-entry quarto-appendix-citeas" role="listitem">
-HuntGardner, Matt. 2022, September 27. Getting Your Data Into *R*.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gardner2022" class="csl-entry quarto-appendix-citeas" role="listitem">
+Gardner, Matt Hunt. 2022, September 27. Getting Your Data Into *R*.
 <em>Linguistics Methods Hub</em>: <em>Doing LVC with R</em>. (<a href="https://lingmethodshub.github.io/content/R/lvc_r/020_lvcr.html">https://lingmethodshub.github.io/content/R/lvc_r/020_lvcr.html</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
 </div></div></section></div></main> <!-- /main -->
@@ -873,56 +923,46 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Getting Your Data Into *R*"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-9-27"</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">license:</span><span class="co"> "CC-BY-SA 4.0"</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: scroll</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># pdf: default</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">  #- name:</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">      # given: Matt Hunt</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">      # family: Gardner</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">  name: "Matt Hunt Gardner"</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">  orcid: 0000-0002-1878-4232</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">  email: matt.gardner@ling-phil.ox.ac.uk</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">  corresponding: true</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">  affiliations:</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">    - name: University of Oxford </span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">      department: Linguistics, Philology, &amp; Phonetics</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">      city: Oxford</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">      country: UK</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "How to import your data into *R*."</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"renv/activate.R"</span>)</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>The best way to organize your tokens is in a spreadsheet in Microsoft *Excel*. There are a lot of useful tools in Microsoft *Excel* for automatically coding and re-coding your data. Some of those tools overlap with what I present here for *R*. If you want to explore *Excel*'s functionality, I recommend this website as a springboard: &lt;https://support.office.com/en-us/article/Excel-training-9bc05390-e94c-46af-a5b3-d7c22f6990bb&gt;. There are other programs for spreadsheet management: *Numbers* in OSX, or Google's *Sheets*, for example. They generally function similarly to *Excel*. *R* does not easily read *Excel*'s default file type (**.xls** or **.xlsx**, [though it can be done](https://cran.r-project.org/web/packages/xlsx/xlsx.pdf)) therefore, you must save your token file as a tab-delimited-text file (**.txt**) or a comma-separated-values (**.csv**) file.</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "How to import your data into *R*."</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"renv/activate.R"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>The best way to organize your tokens is in a spreadsheet in Microsoft *Excel*. There are a lot of useful tools in Microsoft *Excel* for automatically coding and re-coding your data. Some of those tools overlap with what I present here for *R*. If you want to explore *Excel*'s functionality, I recommend this website as a springboard: &lt;https://support.office.com/en-us/article/Excel-training-9bc05390-e94c-46af-a5b3-d7c22f6990bb&gt;. There are other programs for spreadsheet management: *Numbers* in OSX, or Google's *Sheets*, for example. They generally function similarly to *Excel*. *R* does not easily read *Excel*'s default file type (**.xls** or **.xlsx**, [though it can be done](https://cran.r-project.org/web/packages/xlsx/xlsx.pdf)) therefore, you must save your token file as a tab-delimited-text file (**.txt**) or a comma-separated-values (**.csv**) file.</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>I recommend NOT saving your token files as a .**csv file**. Often your token files will include a column of cells containing the broader context the token was extracted from. For example, the sentence in which it appears in a transcript. This broader context usually includes commas. If this is the case, when you save your file as a **.csv file**, it will appear as if there are column breaks in the middle of your broader context because commas are used as the column delimiter.</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>There are four or five ways to read data into *R*. Which method you choose is really up to you, but because I'm advocating the use of *R* script files and maximum replicability, I suggest using the following function at the top of your script file:</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=TRUE}</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>The function creates an *R* "object" called `td` and then uses the assignment operator `&lt;-` to specify what that object is. In this case `td` is the contents of the tab-delimited text file called `deletiondata.txt` that is located in a folder called `Data`, in the same directory as my script file. If your data is saved somewhere else on your computer, replace `'Data/deletiondata.txt"` with the full path of your data file. The `deletiondata.txt` is a tab-delimited text file and is the data file I will use to teach you about *R*. You can download this same file [here](https://www.dropbox.com/s/pi8xz1kuo6cz60l/deletiondata.txt?dl=1). Wherever you save this file, write that file path in quotation marks inside the `read.delim()` function. On a PC this file path will likely begin `"C:/..."`. You can actually just read the file directly into *R* from the web link using the following function:</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span><span class="fu">read.delim</span>(<span class="st">"https://www.dropbox.com/s/pi8xz1kuo6cz60l/deletiondata.txt?dl=1"</span>)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>I recommend NOT saving your token files as a .**csv file**. Often your token files will include a column of cells containing the broader context the token was extracted from. For example, the sentence in which it appears in a transcript. This broader context usually includes commas. If this is the case, when you save your file as a **.csv file**, it will appear as if there are column breaks in the middle of your broader context because commas are used as the column delimiter.</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>This data file contains tokens of word-final (t, d) and was created for a project studying different pronunciations of word-final (t, d), including deletion. The data comes from a corpus collected for Gardner <span class="co">[</span><span class="ot">-@Gardner2010;-@Gardner2013c;-@Gardner2017</span><span class="co">]</span> among English speakers on <span class="co">[</span><span class="ot">Cape Breton Island, Nova Scotia, Canada</span><span class="co">](https://en.wikipedia.org/wiki/Cape_Breton_Island)</span>.</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>If you prefer to save your data files as comma-separated-values files (even though you shouldn't, see above), you can read them into *R* using the function `read.csv2()`. If you find it tricky to figure out the file path of your data file you can instead write `file.choose()` (OS X) or `choose.files()` (PC) instead of the file path inside the `read.delim()`/`read.csv2()` function, with no quotation marks. This will create a pop-up window where you can browse through your files and select one. While this *seems* easier, it is not worth it. By not explicitly writing out the file path you introduce a non-replicable element in your script file because there is no record of what you browse to in the actual script file. This means that if you return to your project a year later, or someone else is looking over your code, it might not be clear which data file is supposed to be used. If you choose to use an *R* script file you can actually just drag and drop your data file (or any file) into the script window itself and the full file path will be automatically inserted.</span>
 <span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>There are four or five ways to read data into *R*. Which method you choose is really up to you, but because I'm advocating the use of *R* script files and maximum replicability, I suggest using the following function at the top of your script file:</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>You can also copy a file's filepath to the clipboard on a Mac by pressing **Control** while clicking on the file, then pressing **Option** and selecting **Copy "\[your file\]" as Pathname**. On a PC you can do the same thing by right-clicking on a file, or (if using Windows 10) using the **Copy path** button on the **Home** tab ribbon in *Windows File Explorer*.</span>
 <span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=TRUE}</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>)</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>The function creates an *R* "object" called `td` and then uses the assignment operator `&lt;-` to specify what that object is. In this case `td` is the contents of the tab-delimited text file called `deletiondata.txt` that is located in a folder called `Data`, in the same directory as my script file. If your data is saved somewhere else on your computer, replace `'Data/deletiondata.txt"` with the full path of your data file. The `deletiondata.txt` is a tab-delimited text file and is the data file I will use to teach you about *R*. You can download this same file [here](https://www.dropbox.com/s/pi8xz1kuo6cz60l/deletiondata.txt?dl=1). Wherever you save this file, write that file path in quotation marks inside the `read.delim()` function. On a PC this file path will likely begin `"C:/..."`. You can actually just read the file directly into *R* from the web link using the following function:</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span><span class="fu">read.delim</span>(<span class="st">"https://www.dropbox.com/s/pi8xz1kuo6cz60l/deletiondata.txt?dl=1"</span>)</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>This data file contains tokens of word-final (t, d) and was created for a project studying different pronunciations of word-final (t, d), including deletion. The data comes from a corpus collected for Gardner (2010; <span class="co">[</span><span class="ot">2017</span><span class="co">](https://hdl.handle.net/1807/80940)</span>) among English speakers on <span class="co">[</span><span class="ot">Cape Breton Island, Nova Scotia, Canada</span><span class="co">](https://en.wikipedia.org/wiki/Cape_Breton_Island)</span>.</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>If you prefer to save your data files as comma-separated-values files (even though you shouldn't, see above), you can read them into *R* using the function `read.csv2()`. If you find it tricky to figure out the file path of your data file you can instead write `file.choose()` (OS X) or `choose.files()` (PC) instead of the file path inside the `read.delim()`/`read.csv2()` function, with no quotation marks. This will create a pop-up window where you can browse through your files and select one. While this *seems* easier, it is not worth it. By not explicitly writing out the file path you introduce a non-replicable element in your script file because there is no record of what you browse to in the actual script file. This means that if you return to your project a year later, or someone else is looking over your code, it might not be clear which data file is supposed to be used. If you choose to use an *R* script file you can actually just drag and drop your data file (or any file) into the script window itself and the full file path will be automatically inserted.</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>You can also copy a file's filepath to the clipboard on a Mac by pressing **Control** while clicking on the file, then pressing **Option** and selecting **Copy "\[your file\]" as Pathname**. On a PC you can do the same thing by right-clicking on a file, or (if using Windows 10) using the **Copy path** button on the **Home** tab ribbon in *Windows File Explorer*.</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>For more information about reading files into *R*, go <span class="co">[</span><span class="ot">here</span><span class="co">](https://stat.ethz.ch/R-manual/R-devel/library/utils/html/read.table.html)</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>For more information about reading files into *R*, go <span class="co">[</span><span class="ot">here</span><span class="co">](https://stat.ethz.ch/R-manual/R-devel/library/utils/html/read.table.html)</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### References</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>::: {#refs}</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>:::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
