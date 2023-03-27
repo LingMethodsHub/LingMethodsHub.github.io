@@ -18,6 +18,8 @@ knitr:
 
 ## Linguistics Methods Hub Maintainers
 
+hello!
+
 ::: {#maintainers}
 :::
 
