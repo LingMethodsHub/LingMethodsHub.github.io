@@ -34,3 +34,6 @@
 [submodule "content/python/speaker-diarization-for-linguistics"]
 	path = content/python/speaker-diarization-for-linguistics
 	url = git@github.com:LingMethodsHub/Speaker-Diarization-for-Linguistics.git
+[submodule "content/R/getVOT-tutorial"]
+	path = content/R/getVOT-tutorial
+	url = git@github.com:LingMethodsHub/getVOT-tutorial.git
