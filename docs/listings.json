@@ -1,10 +1,39 @@
 [
   {
+    "listing": "/content/tools/index.html",
+    "items": [
+      "/content/tools/mfa/mfa-tutorial/index.html",
+      "/content/tools/autovot/autovot-tutorial/index.html"
+    ]
+  },
+  {
+    "listing": "/content/python/index.html",
+    "items": [
+      "/content/python/speaker-diarization-for-linguistics/index.html",
+      "/content/python/vowel-plotting-py/index.html"
+    ]
+  },
+  {
+    "listing": "/content/cli/index.html",
+    "items": [
+      "/content/cli/bash-shell-basics/index.html",
+      "/content/cli/keyboarding/index.html"
+    ]
+  },
+  {
+    "listing": "/people/index.html",
+    "items": [
+      "/people/jofrhwld/index.html",
+      "/people/matthuntgardner/index.html"
+    ]
+  },
+  {
     "listing": "/content/R/index.html",
     "items": [
       "/content/R/animated_vowel_plots_tutorial/index.html",
       "/content/R/getVOT-tutorial/index.html",
       "/content/R/lvc_r/010_lvcr.html",
+      "/content/R/lvc_r/015_lvcr.html",
       "/content/R/lvc_r/020_lvcr.html",
       "/content/R/lvc_r/030_lvcr.html",
       "/content/R/lvc_r/040_lvcr.html",
@@ -23,36 +52,8 @@
     ]
   },
   {
-    "listing": "/people/index.html",
-    "items": [
-      "/people/jofrhwld/index.html",
-      "/people/matthuntgardner/index.html"
-    ]
-  },
-  {
-    "listing": "/content/cli/index.html",
-    "items": [
-      "/content/cli/bash-shell-basics/index.html",
-      "/content/cli/keyboarding/index.html"
-    ]
-  },
-  {
     "listing": "/content/praat/index.html",
     "items": []
-  },
-  {
-    "listing": "/content/python/index.html",
-    "items": [
-      "/content/python/speaker-diarization-for-linguistics/index.html",
-      "/content/python/vowel-plotting-py/index.html"
-    ]
-  },
-  {
-    "listing": "/content/tools/index.html",
-    "items": [
-      "/content/tools/mfa/mfa-tutorial/index.html",
-      "/content/tools/autovot/autovot-tutorial/index.html"
-    ]
   },
   {
     "listing": "/content/windows/index.html",

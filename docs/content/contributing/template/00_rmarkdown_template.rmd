@@ -33,6 +33,7 @@ Once you've run through all of the code for your tutorial again, just run `renv:
 ## Sample R Markdown Template
 
 ```{r}
+#| eval: false
 renv::use(lockfile = "renv.lock")
 ```
 

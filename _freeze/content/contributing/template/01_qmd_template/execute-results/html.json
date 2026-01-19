@@ -1,0 +1,17 @@
+{
+  "hash": "e118039d3a092d1ebf61ffd606d6abd6",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"quarto doc template\"\nauthor: \n  - name: \"Robin Doe\"\n    url: \"http://www.example.com\"\n    affiliations:\n      - University of State\ndate: 2025-9-1\nlicense: \"CC-BY-SA 4.0\"\nformat: \n  html: default\n  pdf: default\neditor: visual\nknitr: \n  opts_chunk: \n    message: false\n    warning: false\n---\n\nQuarto docs operate much the same way rmarkdown does.\n\n\n::: {.cell}\n\n````{.cell-code}\n```{{r}}\nlibrary(reticulate)\n```\n````\n:::\n\n\n\n::: {.cell}\n\n````{.cell-code}\n```{{python}}\nimport numpy as np\n```\n````\n:::\n\n\n\n::: {.cell}\n\n````{.cell-code}\n```{{python}}\na = np.random.rand(50,50)\n```\n````\n:::\n\n\n\n::: {.cell}\n\n````{.cell-code}\n```{{r}}\nimage(py$a)\n```\n````\n\n::: {.cell-output-display}\n![](01_qmd_template_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n:::\n\n",
+    "supporting": [
+      "01_qmd_template_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

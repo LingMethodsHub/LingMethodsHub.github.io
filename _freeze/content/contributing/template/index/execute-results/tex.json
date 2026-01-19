@@ -1,0 +1,17 @@
+{
+  "hash": "c5aa573e00716d023ca11ccc5cd84ad9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Tutorial template\"\nauthor: \n  - name: \"Robin Doe\"\n    url: \"http://www.example.com\"\n    affiliations:\n      - University of State\ndate: 2025-9-1\nlicense: \"CC-BY-SA 4.0\"\nformat: \n  html: default\n  pdf: default\neditor: visual\nknitr: \n  opts_chunk: \n    echo: true\n    message: false\n---\n\nThis is intended to be a tutoral template for the [Linguistics Methods Hub](https://lingmethodshub.github.io/). You can fork and rename this repository, then proceed to delete and rename files as works best for your needs\n\nTemplate repository url: <https://github.com/LingMethodsHub/template>\n\n## Authoring\n\n### Writing `.md`, `.rmd` files\n\nAll markdown, rmarkdown and quarto files will be rendered (except for any named `README*`), and can be written in your preferred way.\n\n[rmd output](00_rmarkdown_template.rmd)\n\n### Writing `.qmd` files\n\nYou can write quarto documents exactly like rmarkdown files.\n\n[qmd output](01_qmd_template.qmd)\n\n### Jupyter\n\nYou can also write tutorials in a jupyter notebook, and they will be rendered into the same output.\n\n[jupyter output](02_jupyter.ipynb)\n\n## Header information\n\n### Author information\n\nThe author yaml information for this page is\n\n``` yaml\nauthor: \n  - name: \"Robin Doe\"\n    url: \"http://www.example.com\"\n    affiliations:\n      - University of State\n```\n\nThe full author schema, from the [quarto docs](https://quarto.org/docs/journals/authors.html), is\n\n``` yaml\nauthor:\n  - id: string\n    number: number\n    name:\n      given: string\n      family: string\n      literal: string\n      dropping-particle: string\n      non-dropping-particle: string\n    url: string\n    email: string\n    fax: string\n    orcid: string\n    note: string\n    acknowledgements: string\n    attributes:\n      corresponding: boolean\n      equal-contributor: boolean\n      deceased: boolean\n    metadata: object\n    affiliations: \n```\n\n### Format\n\nIf you include both information for both `html` and `pdf` output formats, they will both be generated, allowing a standalone pdf for printing etc: [pdf output](index.pdf).\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}
