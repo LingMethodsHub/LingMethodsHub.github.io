@@ -1,7 +1,6 @@
 .DS_store
 /.quarto/
 _site/
-_freeze/
 .Rproj.user
 .Rhistory
 *.Rproj

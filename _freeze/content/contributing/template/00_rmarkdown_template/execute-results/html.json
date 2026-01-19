@@ -1,0 +1,17 @@
+{
+  "hash": "4fa3ceeb57d5c2c1465db9773a1b8e45",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"R Markdown Template\"\nauthor:\n  - name: \"Robin Doe\"\n    url: \"http://www.example.com\"\n    affiliations:\n      - University of State\ndate: 2025-9-1\nlicense: \"CC-BY-SA 4.0\"\nformat: \n  html: default\n  pdf: default\neditor: visual\nknitr: \n  opts_chunk: \n    message: false\n---\n\n## R environment (`renv`)\n\nUsing `renv` while writing your tutorial will ensure that when a LingMethodsHub maintainer renders your tutorial, all of the necessary packages will be installed. Even if you've already been working on the tutorial, you can start using `renv` like so:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nrenv::init()\nrenv::snapshot()\n```\n:::\n\n\nThis will create an `renv/` directory, and an `renv.lock` file. You should add `renv.lock` to git.\n\nOnce you've run through all of the code for your tutorial again, just run `renv::snapshot()` one more time before you push your final commit.\n\n## Sample R Markdown Template\n\n\n::: {.cell}\n\n```{.r .cell-code}\nrenv::use(lockfile = \"renv.lock\")\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: package 'ggplot2' was built under R version 4.5.2\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: package 'tibble' was built under R version 4.5.2\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: package 'tidyr' was built under R version 4.5.2\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: package 'purrr' was built under R version 4.5.2\n```\n\n\n:::\n\n```{.r .cell-code}\nlibrary(palmerpenguins)\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(showtext)\nlibrary(khroma)\nfont_add_google(\"Atkinson Hyperlegible\", \"atkinson\")\nshowtext_auto()\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\npalmerpenguins::penguins %>%\n  ggplot(aes(flipper_length_mm, body_mass_g, color = species))+\n    geom_point()+\n    scale_color_bright()+\n    theme_minimal()+\n    theme(text = element_text(family = \"atkinson\"))\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n```\n\n\n:::\n\n::: {.cell-output-display}\n![](00_rmarkdown_template_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n:::\n\n\n[00_rmarkdown_template.pdf](00_rmarkdown_template.pdf)\n",
+    "supporting": [
+      "00_rmarkdown_template_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
