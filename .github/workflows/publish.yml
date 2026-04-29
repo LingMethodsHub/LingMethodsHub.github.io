@@ -3,9 +3,9 @@ on:
   push:
     branches: ["master"]
     
-env:
-  RENV_PATHS_ROOT: ~/.cache/R/renv
-  QUARTO_PYTHON: renv/python/virtualenvs/renv-python-3.9/bin/python
+# env:
+#   RENV_PATHS_ROOT: ~/.cache/R/renv
+#   QUARTO_PYTHON: renv/python/virtualenvs/renv-python-3.9/bin/python
 jobs:
   build-docs:
      runs-on: ubuntu-latest

@@ -5,3 +5,5 @@ _site/
 .Rhistory
 *.Rproj
 /.luarc.json
+
+**/*.quarto_ipynb
