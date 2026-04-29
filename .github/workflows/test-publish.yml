@@ -13,10 +13,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: 'true'
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install libudunits2-dev libnode-dev         
+      # - name: Install dependencies
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install libudunits2-dev libnode-dev libproj-dev      
       - uses: r-lib/actions/setup-r@v2
       - name: Cache packages
         uses: actions/cache@v4
@@ -25,14 +25,22 @@ jobs:
           key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
           restore-keys: |
             ${{ runner.os }}-renv-          
-      - name: Restore packages
+      - name: Setup Dependencies
         shell: Rscript {0}
         run: |
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
-          #renv::upgrade("main")
+          renv::install("mdneuzerling/getsysreqs")
           renv::install("reticulate")
           reticulate::install_python("3.10:latest")
           renv::use_python(type = "virtualenv")
+      - name: install dependencies
+        run: |
+          sysreqs=$(Rscript -e "cat(apt_get_install('renv.lock', distribution = 'ubuntu')")
+          sudo -s eval "$sysreqs"
+      
+      - name: Install Packages
+        shell: Rscript {0}
+        run: |      
           renv::restore()
       - name: Set up quarto
         uses: quarto-dev/quarto-actions/setup@v2
