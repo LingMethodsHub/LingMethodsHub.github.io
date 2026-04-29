@@ -35,7 +35,7 @@ jobs:
           renv::use_python(type = "virtualenv")
       - name: install dependencies
         run: |
-          sysreqs=$(Rscript -e "cat(apt_get_install('renv.lock', distribution = 'ubuntu')")
+          sysreqs=$(Rscript -e "cat(apt_get_install('renv.lock', distribution = 'ubuntu'))")
           sudo -s eval "$sysreqs"
       
       - name: Install Packages
