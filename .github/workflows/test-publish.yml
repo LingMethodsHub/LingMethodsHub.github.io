@@ -25,6 +25,7 @@ jobs:
         shell: Rscript {0}
         run: |
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+          renv::upgrade("main")
           renv::install("reticulate")
           reticulate::install_python("3.10:latest")
           renv::use_python(type = "virtualenv")
