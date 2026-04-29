@@ -37,7 +37,7 @@ jobs:
         run: |
           sysreqs=$(Rscript .github/get_sys_reqs.R)
           sudo apt-get update
-          sudo -s eval "$sysreqs"
+          sudo eval "$sysreqs"
       
       - name: Install Packages
         shell: Rscript {0}
