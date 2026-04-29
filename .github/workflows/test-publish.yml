@@ -1,7 +1,7 @@
 name: Test Build Site
 on:
   pull_request:
-    branches: ["master"]
+    branches: ["main"]
     
 # env:
 #   RENV_PATHS_ROOT: ~/.cache/R/renv
