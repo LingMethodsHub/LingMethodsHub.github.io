@@ -51,9 +51,7 @@ jobs:
         run: quarto install tinytex
       - name: Install Google Fonts
         run: |
-          wget -O Charis_SIL.zip https://fonts.google.com/download?family=Charis%20SIL
-          unzip -d charis_sil/ Charis_SIL.zip
-          mv charis_sil /usr/share/fonts/
+          mv assets/Charis_SIL /usr/share/fonts/
           fc-cache -fv      
       - name: Test Render
         uses: quarto-dev/quarto-actions/render@v2
