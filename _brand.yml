@@ -1,0 +1,6 @@
+typography:
+  fonts:
+    - family: Charis SIL
+      source: google
+    - family: Atkinson Hyperlegible
+      source: google
