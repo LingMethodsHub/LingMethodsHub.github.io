@@ -44,6 +44,8 @@ jobs:
           renv::restore()
       - name: Set up quarto
         uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true        
       # - name: Set Quarto Python
       #   run: |
       #     echo "QUARTO_PYTHON=renv/python/virtualenvs/renv-python-3.9/bin/python" >> $GITHUB_ENV
