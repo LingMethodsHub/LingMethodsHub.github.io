@@ -47,11 +47,10 @@ jobs:
       # - name: Set Quarto Python
       #   run: |
       #     echo "QUARTO_PYTHON=renv/python/virtualenvs/renv-python-3.9/bin/python" >> $GITHUB_ENV
-      - name: tex install
-        run: quarto install tinytex
       - name: Install Google Fonts
         run: |
           mv assets/Charis_SIL /usr/share/fonts/
+          mv assets/Monaco /usr/share/fonts/
           fc-cache -fv      
       - name: Test Render
         uses: quarto-dev/quarto-actions/render@v2
