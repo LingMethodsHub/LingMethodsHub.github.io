@@ -1,2 +1,0 @@
-# mfa-tutorial
-MFA tutorial
