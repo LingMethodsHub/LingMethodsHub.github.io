@@ -50,7 +50,7 @@ jobs:
       - name: Install Google Fonts
         run: |
           mv assets/Charis_SIL /usr/share/fonts/
-          mv assets/Monaco /usr/share/fonts/
+          mv assets/monaco /usr/share/fonts/
           fc-cache -fv      
       - name: Test Render
         uses: quarto-dev/quarto-actions/render@v2
