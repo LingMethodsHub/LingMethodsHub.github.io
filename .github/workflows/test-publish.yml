@@ -36,7 +36,6 @@ jobs:
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::install("mdneuzerling/getsysreqs")
           renv::install("reticulate")
-          reticulate::install_python("3.10:latest")
           renv::use_python(type = "virtualenv")
       - name: Install Packages
         shell: Rscript {0}
