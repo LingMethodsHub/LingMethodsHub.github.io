@@ -1,0 +1,10 @@
+/*-- scss:rules --*/
+.cell:not(.page-full):has(.cell-output){
+    padding: 2%;
+    border-radius: 10px;
+    margin-bottom: 1em;
+    background-color: quarto-color.adjust(
+      $progress-bg,
+      $alpha: -0.65
+    );
+ }
