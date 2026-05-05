@@ -159,6 +159,8 @@ format:
       toggle: false
     lightbox: true
 
+pdf-engine: xelatex
+
 citation:
   container-title: "Linguistics Methods Hub"
   collection-title: "Linguistics Methods Hub"
