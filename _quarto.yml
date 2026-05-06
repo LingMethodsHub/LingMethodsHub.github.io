@@ -147,8 +147,8 @@ format:
     theme: 
       - minty
       - styles/custom.scss
-    include-in-header: google_font.html
-    mainfont: "'Atkinson Hyperlegible', sans-serif"
+    #include-in-header: google_font.html
+    #mainfont: "'Atkinson Hyperlegible', sans-serif"
     css: 
       - styles.css
     toc: true
