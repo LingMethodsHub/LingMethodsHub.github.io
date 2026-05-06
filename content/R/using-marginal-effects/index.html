@@ -611,7 +611,7 @@ cookieconsent.run({
 <div class="callout-body-container callout-body">
 <p><a href="data/um_data.csv">data/um_data.csv</a> (4.7Mb)</p>
 </div>
-</div></div><p>The purpose of this tutorial is to introduce use of the <a href="https://marginaleffects.com/">marginaleffects</a> package using linguistic data. The use of linguistic data is the distinctive aspect of this tutorial, which otherwise partially replicates the tutorials available by the author <a href="https://marginaleffects.com/">marginaleffects</a> and collaborators <span class="citation" data-cites="arel-bundock2024 arel-bundock2025 arel-bundock2026">(<a href="#ref-arel-bundock2024" role="doc-biblioref">Arel-Bundock &amp; Greifer &amp; Heiss 2024</a>; <a href="#ref-arel-bundock2025" role="doc-biblioref">Arel-Bundock 2025</a>; <a href="#ref-arel-bundock2026" role="doc-biblioref">2026</a>)</span>. I highly recommend referring to these materials as well, especially the book and reference manual at <a href="https://marginaleffects.com/">https://marginaleffects.com</a>.</p>
+</div></div><p>The purpose of this tutorial is to introduce use of the <a href="https://marginaleffects.com/">marginaleffects</a> package with linguistic data. The use of linguistic data is the distinctive aspect of this tutorial, which otherwise partially replicates the tutorials available by the author of <a href="https://marginaleffects.com/">marginaleffects</a> and collaborators <span class="citation" data-cites="arel-bundock2024 arel-bundock2025 arel-bundock2026">(<a href="#ref-arel-bundock2024" role="doc-biblioref">Arel-Bundock &amp; Greifer &amp; Heiss 2024</a>; <a href="#ref-arel-bundock2025" role="doc-biblioref">Arel-Bundock 2025</a>; <a href="#ref-arel-bundock2026" role="doc-biblioref">2026</a>)</span>. I highly recommend referring to these materials as well, especially the book and reference manual at <a href="https://marginaleffects.com/">https://marginaleffects.com</a>.</p>
 <p>While the use of <a href="https://marginaleffects.com/">marginaleffects</a> is often discussed within the framework of Causal Inference, it is very useful for extracting predictions and comparisons from statistical models even if you’re not operating within that framework. This tutorial will use <a href="https://github.com/paul-buerkner/brms">brms</a> to fit the model, but the incredible utility of <a href="https://marginaleffects.com/">marginaleffects</a> is its support for an enormous range of models (<a href="https://marginaleffects.com/bonus/supported_models.html">123 at time of writing</a>) from a broad range of packages using a common interface. So, even if you’re modeling using <a href="https://github.com/lme4/lme4/">lme4</a> or base <code><a href="https://rdrr.io/r/stats/lm.html">stats::lm()</a></code> or <code><a href="https://rdrr.io/r/stats/glm.html">stats::glm()</a></code>, you should be able to make use of the functions covered in this tutorial with minimal adjustment.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Setup</span></span>
@@ -823,7 +823,7 @@ Table&nbsp;1: 6 randomly sampled rows
 </figure>
 </div>
 </div>
-<p>Every row corresponds to either an “um” or an “un”. The data columns that may not be obvious from the names are:</p>
+<p>Every row corresponds to either an “um” or an “uh”. The data columns that may not be obvious from the names are:</p>
 <ul>
 <li>
 <p><code>local_*</code>: quantities estimated based on a 1 second window around each filled pause</p>
@@ -845,7 +845,7 @@ Table&nbsp;1: 6 randomly sampled rows
 <li><p><code>fol_dur</code>: The duration of the following phone.</p></li>
 </ul>
 <section id="descriptive-stats" class="level2"><h2 class="anchored" data-anchor-id="descriptive-stats">Descriptive stats</h2>
-<p><span class="citation" data-cites="clark2002">Clark &amp; Fox Tree (<a href="#ref-clark2002" role="doc-biblioref">2002</a>)</span> argue that filled pauses are useful signals to a listener that a speaker is working harder for lexical access, and that “um” is a signal of greater effort than “um”. As such, other indicators of greater effort in lexical access should be predictive of “um” usage, such as whether or not there is a silent pause following, and slowdowns in local speech rate.</p>
+<p><span class="citation" data-cites="clark2002">Clark &amp; Fox Tree (<a href="#ref-clark2002" role="doc-biblioref">2002</a>)</span> argue that filled pauses are useful signals to a listener that a speaker is working harder for lexical access, and that “um” is a signal of greater effort than “uh”. As such, other indicators of greater effort in lexical access should be predictive of “um” usage, such as whether or not there is a silent pause following, and slowdowns in local speech rate.</p>
 <p><a href="#fig-rate" class="quarto-xref">Figure&nbsp;1</a> plots “um” usage against the relative speech rate (how much faster/slower the local speech rate around the filled pause is relative to the speaker’s overall speech rate) and whether or not the following segment was a silent pause. It appears to hold true that a following silent pause is predictive of higher “um” usage, and so is a slower relative speech rate.</p>
 <div class="cell">
 <details class="code-fold"><summary>Plotting code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">um</span> <span class="op">|&gt;</span></span>
@@ -3915,8 +3915,8 @@ doi: <a href="https://doi.org/10.5281/zenodo.20055727">10.5281/zenodo.20055727</
 <span id="cb62-28"><a href="#cb62-28" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">data/um_data.csv</span><span class="co">](data/um_data.csv)</span> (4.7Mb)</span>
 <span id="cb62-29"><a href="#cb62-29" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb62-30"><a href="#cb62-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-31"><a href="#cb62-31" aria-hidden="true" tabindex="-1"></a>The purpose of this tutorial is to introduce use of the <span class="in">`{marginaleffects}`</span> package using linguistic data.</span>
-<span id="cb62-32"><a href="#cb62-32" aria-hidden="true" tabindex="-1"></a>The use of linguistic data is the distinctive aspect of this tutorial, which otherwise partially replicates the tutorials available by the author <span class="in">`{marginaleffects}`</span> and collaborators <span class="co">[</span><span class="ot">@arel-bundock2024; @arel-bundock2025; @arel-bundock2026</span><span class="co">]</span>.</span>
+<span id="cb62-31"><a href="#cb62-31" aria-hidden="true" tabindex="-1"></a>The purpose of this tutorial is to introduce use of the <span class="in">`{marginaleffects}`</span> package with linguistic data.</span>
+<span id="cb62-32"><a href="#cb62-32" aria-hidden="true" tabindex="-1"></a>The use of linguistic data is the distinctive aspect of this tutorial, which otherwise partially replicates the tutorials available by the author of <span class="in">`{marginaleffects}`</span> and collaborators <span class="co">[</span><span class="ot">@arel-bundock2024; @arel-bundock2025; @arel-bundock2026</span><span class="co">]</span>.</span>
 <span id="cb62-33"><a href="#cb62-33" aria-hidden="true" tabindex="-1"></a>I highly recommend referring to these materials as well, especially the book and reference manual at <span class="co">[</span><span class="ot">https://marginaleffects.com</span><span class="co">](https://marginaleffects.com/)</span>.</span>
 <span id="cb62-34"><a href="#cb62-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-35"><a href="#cb62-35" aria-hidden="true" tabindex="-1"></a>While the use of <span class="in">`{marginaleffects}`</span> is often discussed within the framework of Causal Inference, it is very useful for extracting predictions and comparisons from statistical models even if you're not operating within that framework.</span>
@@ -3980,7 +3980,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.20055727">10.5281/zenodo.20055727</
 <span id="cb62-99"><a href="#cb62-99" aria-hidden="true" tabindex="-1"></a> )</span>
 <span id="cb62-100"><a href="#cb62-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb62-101"><a href="#cb62-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-102"><a href="#cb62-102" aria-hidden="true" tabindex="-1"></a>Every row corresponds to either an "um" or an "un".</span>
+<span id="cb62-102"><a href="#cb62-102" aria-hidden="true" tabindex="-1"></a>Every row corresponds to either an "um" or an "uh".</span>
 <span id="cb62-103"><a href="#cb62-103" aria-hidden="true" tabindex="-1"></a>The data columns that may not be obvious from the names are:</span>
 <span id="cb62-104"><a href="#cb62-104" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-105"><a href="#cb62-105" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`local_*`</span>: quantities estimated based on a 1 second window around each filled pause</span>
@@ -4005,7 +4005,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.20055727">10.5281/zenodo.20055727</
 <span id="cb62-124"><a href="#cb62-124" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-125"><a href="#cb62-125" aria-hidden="true" tabindex="-1"></a><span class="fu">## Descriptive stats</span></span>
 <span id="cb62-126"><a href="#cb62-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-127"><a href="#cb62-127" aria-hidden="true" tabindex="-1"></a>@clark2002 argue that filled pauses are useful signals to a listener that a speaker is working harder for lexical access, and that "um" is a signal of greater effort than "um".</span>
+<span id="cb62-127"><a href="#cb62-127" aria-hidden="true" tabindex="-1"></a>@clark2002 argue that filled pauses are useful signals to a listener that a speaker is working harder for lexical access, and that "um" is a signal of greater effort than "uh".</span>
 <span id="cb62-128"><a href="#cb62-128" aria-hidden="true" tabindex="-1"></a>As such, other indicators of greater effort in lexical access should be predictive of "um" usage, such as whether or not there is a silent pause following, and slowdowns in local speech rate.</span>
 <span id="cb62-129"><a href="#cb62-129" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-130"><a href="#cb62-130" aria-hidden="true" tabindex="-1"></a>@fig-rate plots "um" usage against the relative speech rate (how much faster/slower the local speech rate around the filled pause is relative to the speaker's overall speech rate) and whether or not the following segment was a silent pause.</span>
