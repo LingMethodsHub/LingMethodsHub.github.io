@@ -40,3 +40,6 @@
 [submodule "content/R/using-marginal-effects"]
 	path = content/R/using-marginal-effects
 	url = git@github.com:LingMethodsHub/using-marginal-effects.git
+[submodule "content/R/causal-inference-tutorial"]
+	path = content/R/causal-inference-tutorial
+	url = git@github.com:LingMethodsHub/causal-inference-tutorial.git
