@@ -4,3 +4,10 @@ typography:
       source: google
     - family: Atkinson Hyperlegible
       source: google
+    - family: Public Sans
+      source: google
+    - family: Roboto Mono
+      source: google
+  
+  base: Public Sans
+  monospace: Roboto Mono
