@@ -40,7 +40,8 @@ jobs:
           renv::use_python(type = "virtualenv")
       - name: Get System Dependencies
         run: | 
-          Rscript .github/get_sys_reqs.R > deps.sh
+          Rscript .github/get_sys_reqs.R
+          echo "$(cat deps.sh)"
           sudo ./deps.sh
       - name: Install Packages
         shell: Rscript {0}

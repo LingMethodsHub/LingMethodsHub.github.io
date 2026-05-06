@@ -8,4 +8,4 @@ reqs <- get_sysreqs(
 
 libs <- paste(reqs, collapse = " ")
 cmd <- paste("sudo apt-get -y --no-install-recommends install", libs)
-cat(cmd)
+cat(cmd, file = "deps.sh")
