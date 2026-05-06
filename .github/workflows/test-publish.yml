@@ -41,7 +41,7 @@ jobs:
       - name: Get System Dependencies
         run: | 
           Rscript .github/get_sys_reqs.R > deps.sh
-          ./deps.sh
+          sudo ./deps.sh
       - name: Install Packages
         shell: Rscript {0}
         run: |      
