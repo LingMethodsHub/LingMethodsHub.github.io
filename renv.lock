@@ -927,6 +927,37 @@
       "Repository": "CRAN",
       "Encoding": "UTF-8"
     },
+    "TTR": {
+      "Package": "TTR",
+      "Version": "0.24.4",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Technical Trading Rules",
+      "Authors@R": "c( person(given=\"Joshua\", family=\"Ulrich\", role=c(\"cre\",\"aut\"), email=\"josh.m.ulrich@gmail.com\"), person(given=c(\"Ethan\",\"B.\"), family=\"Smith\", role=\"ctb\") )",
+      "Imports": [
+        "xts (>= 0.10-0)",
+        "zoo",
+        "curl"
+      ],
+      "LinkingTo": [
+        "xts"
+      ],
+      "Enhances": [
+        "quantmod"
+      ],
+      "Suggests": [
+        "RUnit"
+      ],
+      "Description": "A collection of over 50 technical indicators for creating technical trading rules. The package also provides fast implementations of common rolling-window functions, and several volatility calculations.",
+      "License": "GPL (>= 2)",
+      "URL": "https://github.com/joshuaulrich/TTR",
+      "BugReports": "https://github.com/joshuaulrich/TTR/issues",
+      "NeedsCompilation": "yes",
+      "Author": "Joshua Ulrich [cre, aut], Ethan B. Smith [ctb]",
+      "Maintainer": "Joshua Ulrich <josh.m.ulrich@gmail.com>",
+      "Repository": "RSPM",
+      "Encoding": "UTF-8"
+    },
     "V8": {
       "Package": "V8",
       "Version": "8.2.0",
@@ -1041,6 +1072,40 @@
       "Author": "Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>)",
       "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
       "Repository": "CRAN"
+    },
+    "av": {
+      "Package": "av",
+      "Version": "0.9.6",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Working with Audio and Video in R",
+      "Authors@R": "person(\"Jeroen\", \"Ooms\", , \"jeroenooms@gmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-4035-0289\"))",
+      "Description": "Bindings to 'FFmpeg' <http://www.ffmpeg.org/> AV library for working with  audio and video in R. Generates high quality video from images or R graphics with  custom audio. Also offers high performance tools for reading raw audio, creating 'spectrograms', and converting between countless audio / video formats. This package  interfaces directly to the C API and does not require any command line utilities.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://ropensci.r-universe.dev/av, https://docs.ropensci.org/av/",
+      "BugReports": "https://github.com/ropensci/av/issues",
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.2",
+      "SystemRequirements": "FFmpeg (>= 3.2); with at least libx264 and lame (mp3) drivers. MacOS Homebrew: ffmpeg. Debian/Ubuntu: libavfilter-dev. Fedora/RHEL: either ffmpeg-devel from https://rpmfusion.org (preferred), or libavfilter-free-devel which is a more limited version available on Fedora/EPEL9.",
+      "Depends": [
+        "R (>= 3.5)"
+      ],
+      "Imports": [
+        "graphics"
+      ],
+      "Config/Needs/website": "seewave, ggplot2, phonTools, signal, tuneR",
+      "Suggests": [
+        "curl",
+        "testthat",
+        "ps",
+        "ggplot2",
+        "gapminder"
+      ],
+      "Language": "en-US",
+      "NeedsCompilation": "yes",
+      "Author": "Jeroen Ooms [aut, cre] (ORCID: <https://orcid.org/0000-0002-4035-0289>)",
+      "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
+      "Repository": "RSPM"
     },
     "backports": {
       "Package": "backports",
@@ -3153,6 +3218,38 @@
       "Maintainer": "Søren Højsgaard <sorenh@math.aau.dk>",
       "Repository": "CRAN"
     },
+    "doParallel": {
+      "Package": "doParallel",
+      "Version": "1.0.17",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Foreach Parallel Adaptor for the 'parallel' Package",
+      "Authors@R": "c(person(\"Folashade\", \"Daniel\", role=\"cre\", email=\"fdaniel@microsoft.com\"), person(\"Microsoft\", \"Corporation\", role=c(\"aut\", \"cph\")), person(\"Steve\", \"Weston\", role=\"aut\"), person(\"Dan\", \"Tenenbaum\", role=\"ctb\"))",
+      "Description": "Provides a parallel backend for the %dopar% function using the parallel package.",
+      "Depends": [
+        "R (>= 2.14.0)",
+        "foreach (>= 1.2.0)",
+        "iterators (>= 1.0.0)",
+        "parallel",
+        "utils"
+      ],
+      "Suggests": [
+        "caret",
+        "mlbench",
+        "rpart",
+        "RUnit"
+      ],
+      "Enhances": [
+        "compiler"
+      ],
+      "License": "GPL-2",
+      "URL": "https://github.com/RevolutionAnalytics/doparallel",
+      "BugReports": "https://github.com/RevolutionAnalytics/doparallel/issues",
+      "NeedsCompilation": "no",
+      "Author": "Folashade Daniel [cre], Microsoft Corporation [aut, cph], Steve Weston [aut], Dan Tenenbaum [ctb]",
+      "Maintainer": "Folashade Daniel <fdaniel@microsoft.com>",
+      "Repository": "CRAN"
+    },
     "downlit": {
       "Package": "downlit",
       "Version": "0.4.5",
@@ -3299,6 +3396,34 @@
       "Author": "Hadley Wickham [cre, aut], Maximilian Girlich [aut], Mark Fairbanks [aut], Ryan Dickerson [aut], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
       "Repository": "RSPM"
+    },
+    "dtw": {
+      "Package": "dtw",
+      "Version": "1.23-2",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Dynamic Time Warping Algorithms",
+      "Description": "A comprehensive implementation of dynamic time warping (DTW) algorithms in R.  DTW computes the optimal (least cumulative distance) alignment between points of two time series.  Common DTW variants covered include local (slope) and global (window) constraints, subsequence matches, arbitrary distance definitions, normalizations, minimum variance matching, and so on.  Provides cumulative distances, alignments, specialized plot styles, etc., as described in Giorgino (2009) <doi:10.18637/jss.v031.i07>.",
+      "Authors@R": "person(\"Toni\",\"Giorgino\",email=\"toni.giorgino@gmail.com\",role=c(\"aut\",\"cre\"))",
+      "Date": "2026-4-8",
+      "Depends": [
+        "R (>= 2.10.0)",
+        "proxy"
+      ],
+      "Imports": [
+        "graphics",
+        "grDevices",
+        "stats",
+        "utils"
+      ],
+      "License": "GPL (>= 2)",
+      "URL": "https://dynamictimewarping.github.io/",
+      "RoxygenNote": "7.3.3",
+      "Encoding": "UTF-8",
+      "NeedsCompilation": "yes",
+      "Author": "Toni Giorgino [aut, cre]",
+      "Maintainer": "Toni Giorgino <toni.giorgino@gmail.com>",
+      "Repository": "CRAN"
     },
     "dygraphs": {
       "Package": "dygraphs",
@@ -5334,6 +5459,48 @@
       "Maintainer": "Baptiste Auguie <baptiste.auguie@gmail.com>",
       "Repository": "CRAN"
     },
+    "gsignal": {
+      "Package": "gsignal",
+      "Version": "0.3-7",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Signal Processing",
+      "Date": "2024-09-11",
+      "Authors@R": "c(person(\"Geert\", \"van Boxtel\", role = c(\"aut\", \"cre\"), email = \"G.J.M.vanBoxtel@gmail.com\", comment = \"Maintainer\"), person(\"Tom\", \"Short\", role = \"aut\", email = \"tshort@eprisolutions.com\", comment=\"Author of 'signal' package\"), person(\"Paul\", \"Kienzle\", role = \"aut\", comment = \"Majority of the original sources\"), person(\"Ben\", \"Abbott\", role = \"ctb\"), person(\"Juan\", \"Aguado\", role = \"ctb\"), person(\"Muthiah\", \"Annamalai\", role = \"ctb\"), person(\"Leonardo\", \"Araujo\", role = \"ctb\"), person(\"William\", \"Asquith\", role = \"ctb\"), person(\"David\", \"Bateman\", role = \"ctb\"), person(\"David\", \"Billinghurst\", role = \"ctb\"), person(\"Juan Pablo\", \"Carbajal\", role = \"ctb\"), person(\"André\", \"Carezia\", role = \"ctb\"), person(\"Vincent\", \"Cautaerts\", role = \"ctb\"), person(\"Eric\", \"Chassande-Mottin\", role = \"ctb\"), person(\"Luca\", \"Citi\", role = \"ctb\"), person(\"Dave\", \"Cogdell\", role = \"ctb\"), person(\"Carlo\", \"de Falco\", role = \"ctb\"), person(\"Carne\", \"Draug\", role = \"ctb\"), person(\"Pascal\", \"Dupuis\", role = \"ctb\"), person(\"John W.\", \"Eaton\", role = \"ctb\"), person(\"R.G.H\", \"Eschauzier\", role = \"ctb\"), person(\"Andrew\", \"Fitting\", role = \"ctb\"), person(\"Alan J.\", \"Greenberger\", role = \"ctb\"), person(\"Mike\", \"Gross\", role = \"ctb\"), person(\"Daniel\", \"Gunyan\", role = \"ctb\"), person(\"Kai\", \"Habel\", role = \"ctb\"), person(\"Kurt\", \"Hornik\", role = \"ctb\"), person(\"Jake\", \"Janovetz\", role = \"ctb\"), person(\"Alexander\", \"Klein\", role = \"ctb\"), person(\"Peter V.\", \"Lanspeary\", role = \"ctb\"), person(\"Bill\", \"Lash\", role = \"ctb\"), person(\"Friedrich\", \"Leissh\", role = \"ctb\"), person(\"Laurent S.\", \"Mazet\", role = \"ctb\"), person(\"Mike\", \"Miller\", role = \"ctb\"), person(\"Petr\", \"Mikulik\", role = \"ctb\"), person(\"Paolo\", \"Neis\", role = \"ctb\"), person(\"Georgios\", \"Ouzounis\", role = \"ctb\"), person(\"Sylvain\", \"Pelissier\", role = \"ctb\"), person(\"Francesco\", \"Potortì\", role = \"ctb\"), person(\"Charles\", \"Praplan\", role = \"ctb\"), person(\"Lukas F.\", \"Reichlin\", role = \"ctb\"), person(\"Tony\", \"Richardson\", role = \"ctb\"), person(\"Asbjorn\", \"Sabo\", role = \"ctb\"), person(\"Thomas\", \"Sailer\", role = \"ctb\"), person(\"Rolf\", \"Schirmacher\", role = \"ctb\"), person(\"Rolf\", \"Schirmacher\", role = \"ctb\"), person(\"Ivan\", \"Selesnick\", role = \"ctb\"), person(\"Julius O.\", \"Smith III\", role = \"ctb\"), person(\"Peter L.\", \"Soendergaard\", role = \"ctb\"), person(\"Quentin\", \"Spencer\", role = \"ctb\"), person(\"Doug\", \"Stewart\", role = \"ctb\"), person(\"P.\", \"Sudeepam\", role = \"ctb\"), person(\"Stefan\", \"van der Walt\", role = \"ctb\"), person(\"Andreas\", \"Weber\", role = \"ctb\"), person(\"P.\", \"Sudeepam\", role = \"ctb\"), person(\"Andreas\", \"Weingessel\", role = \"ctb\"))",
+      "Description": "R implementation of the 'Octave' package 'signal', containing a variety of signal processing tools, such as signal generation and measurement, correlation and convolution, filtering, filter design, filter analysis and conversion, power spectrum analysis, system identification, decimation and sample rate change, and windowing.",
+      "Depends": [
+        "R (>= 3.5.0)"
+      ],
+      "LinkingTo": [
+        "Rcpp"
+      ],
+      "Imports": [
+        "pracma",
+        "Rcpp",
+        "grDevices"
+      ],
+      "License": "GPL-3",
+      "Encoding": "UTF-8",
+      "Language": "en-US",
+      "URL": "https://github.com/gjmvanboxtel/gsignal",
+      "BugReports": "https://github.com/gjmvanboxtel/gsignal/issues",
+      "LazyData": "true",
+      "RoxygenNote": "7.3.2",
+      "Suggests": [
+        "knitr",
+        "rmarkdown",
+        "testthat",
+        "ggplot2",
+        "gridExtra",
+        "microbenchmark",
+        "covr"
+      ],
+      "VignetteBuilder": "knitr",
+      "NeedsCompilation": "yes",
+      "Author": "Geert van Boxtel [aut, cre] (Maintainer), Tom Short [aut] (Author of 'signal' package), Paul Kienzle [aut] (Majority of the original sources), Ben Abbott [ctb], Juan Aguado [ctb], Muthiah Annamalai [ctb], Leonardo Araujo [ctb], William Asquith [ctb], David Bateman [ctb], David Billinghurst [ctb], Juan Pablo Carbajal [ctb], André Carezia [ctb], Vincent Cautaerts [ctb], Eric Chassande-Mottin [ctb], Luca Citi [ctb], Dave Cogdell [ctb], Carlo de Falco [ctb], Carne Draug [ctb], Pascal Dupuis [ctb], John W. Eaton [ctb], R.G.H Eschauzier [ctb], Andrew Fitting [ctb], Alan J. Greenberger [ctb], Mike Gross [ctb], Daniel Gunyan [ctb], Kai Habel [ctb], Kurt Hornik [ctb], Jake Janovetz [ctb], Alexander Klein [ctb], Peter V. Lanspeary [ctb], Bill Lash [ctb], Friedrich Leissh [ctb], Laurent S. Mazet [ctb], Mike Miller [ctb], Petr Mikulik [ctb], Paolo Neis [ctb], Georgios Ouzounis [ctb], Sylvain Pelissier [ctb], Francesco Potortì [ctb], Charles Praplan [ctb], Lukas F. Reichlin [ctb], Tony Richardson [ctb], Asbjorn Sabo [ctb], Thomas Sailer [ctb], Rolf Schirmacher [ctb], Rolf Schirmacher [ctb], Ivan Selesnick [ctb], Julius O. Smith III [ctb], Peter L. Soendergaard [ctb], Quentin Spencer [ctb], Doug Stewart [ctb], P. Sudeepam [ctb], Stefan van der Walt [ctb], Andreas Weber [ctb], P. Sudeepam [ctb], Andreas Weingessel [ctb]",
+      "Maintainer": "Geert van Boxtel <G.J.M.vanBoxtel@gmail.com>",
+      "Repository": "RSPM"
+    },
     "gtable": {
       "Package": "gtable",
       "Version": "0.3.6",
@@ -6088,6 +6255,34 @@
       "Maintainer": "Torsten Hothorn <Torsten.Hothorn@R-project.org>",
       "Repository": "CRAN",
       "Encoding": "UTF-8"
+    },
+    "ipa": {
+      "Package": "ipa",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Title": "Convert Between Phonetic Alphabets",
+      "Authors@R": "person(given = \"Alexander\", family = \"Rossell Hayes\", role = c(\"aut\", \"cre\", \"cph\"), email = \"alexander@rossellhayes.com\", comment = c(ORCID = \"0000-0001-9412-0457\"))",
+      "Description": "Converts character vectors between phonetic representations.  Supports IPA (International Phonetic Alphabet), X-SAMPA (Extended Speech Assessment Methods Phonetic Alphabet), and ARPABET (used by the CMU Pronouncing Dictionary).",
+      "License": "MIT + file LICENSE",
+      "URL": "https://github.com/rossellhayes/ipa",
+      "BugReports": "https://github.com/rossellhayes/ipa/issues",
+      "Depends": [
+        "R (>= 2.10)"
+      ],
+      "Imports": [
+        "stringi"
+      ],
+      "Suggests": [
+        "covr",
+        "testthat"
+      ],
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "RoxygenNote": "7.1.0",
+      "NeedsCompilation": "no",
+      "Author": "Alexander Rossell Hayes [aut, cre, cph] (<https://orcid.org/0000-0001-9412-0457>)",
+      "Maintainer": "Alexander Rossell Hayes <alexander@rossellhayes.com>",
+      "Repository": "RSPM"
     },
     "isoband": {
       "Package": "isoband",
@@ -7481,6 +7676,30 @@
       "Repository": "CRAN",
       "Encoding": "UTF-8"
     },
+    "multitaper": {
+      "Package": "multitaper",
+      "Version": "1.0-17",
+      "Source": "Repository",
+      "Title": "Spectral Analysis Tools using the Multitaper Method",
+      "Author": "Karim Rahim <karim.rahim@queensu.ca>, Wesley S. Burr <wesleyburr@trentu.ca>",
+      "Maintainer": "Karim Rahim <karim.rahim@queensu.ca>",
+      "Depends": [
+        "R (>= 3.0)",
+        "methods"
+      ],
+      "Suggests": [
+        "psd",
+        "fftwtools",
+        "slp"
+      ],
+      "Description": "Implements multitaper spectral analysis using discrete prolate spheroidal sequences (Slepians) and sine tapers. It includes an adaptive weighted multitaper spectral estimate, a coherence estimate, Thomson's Harmonic F-test, and complex demodulation. The Slepians sequences are generated efficiently using a tridiagonal matrix solution, and jackknifed confidence intervals are available for most estimates. This package is an implementation of the method described in D.J. Thomson (1982) \"Spectrum estimation and harmonic analysis\" <doi:10.1109/PROC.1982.12433>.",
+      "License": "GPL (>= 2)",
+      "ByteCompile": "true",
+      "LazyData": "true",
+      "URL": "https://github.com/krahim/multitaper/",
+      "NeedsCompilation": "yes",
+      "Repository": "CRAN"
+    },
     "mvtnorm": {
       "Package": "mvtnorm",
       "Version": "1.3-7",
@@ -7613,6 +7832,50 @@
       "Author": "Brian Ripley [aut, cre, cph], William Venables [cph]",
       "Maintainer": "Brian Ripley <Brian.Ripley@R-project.org>",
       "Repository": "CRAN"
+    },
+    "nonlinearTseries": {
+      "Package": "nonlinearTseries",
+      "Version": "0.3.2",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Nonlinear Time Series Analysis",
+      "Date": "2026-3-18",
+      "Maintainer": "Constantino A. Garcia <constantino.garciama@ceu.es>",
+      "Authors@R": "c(person(\"Constantino A.\", \"Garcia\", email = \"constantino.garciama@ceu.es\", role = c(\"aut\", \"cre\")), person(\"Gunther\", \"Sawitzki\", role = \"ctb\"))",
+      "Description": "Functions for nonlinear time series analysis. This package permits the computation of the  most-used nonlinear statistics/algorithms including generalized correlation dimension, information dimension, largest Lyapunov exponent, sample entropy and Recurrence Quantification Analysis (RQA), among others. Basic routines for surrogate data testing are also included. Part of this work was based on the  book \"Nonlinear time series analysis\" by Holger Kantz and Thomas Schreiber (ISBN: 9780521529020).",
+      "License": "GPL-3",
+      "URL": "https://github.com/constantino-garcia/nonlinearTseries",
+      "BugReports": "https://github.com/constantino-garcia/nonlinearTseries/issues",
+      "Copyright": "ANN library is copyright University of Maryland and Sunil Arya and David Mount. R wrapper is based on the ANN library, copyright Samuel Kemp 2005-9 and Gregory Jefferis 2009-2013. See file COPYRIGHT for details",
+      "Depends": [
+        "R (>= 3.3.0)"
+      ],
+      "Imports": [
+        "Matrix",
+        "tseries",
+        "zoo",
+        "Rcpp (>= 0.12.12)",
+        "graphics",
+        "stats",
+        "lifecycle"
+      ],
+      "LinkingTo": [
+        "Rcpp",
+        "RcppArmadillo"
+      ],
+      "Suggests": [
+        "rgl",
+        "plot3D",
+        "knitr",
+        "rmarkdown",
+        "testthat"
+      ],
+      "VignetteBuilder": "knitr",
+      "RoxygenNote": "7.3.3",
+      "Encoding": "UTF-8",
+      "NeedsCompilation": "yes",
+      "Author": "Constantino A. Garcia [aut, cre], Gunther Sawitzki [ctb]",
+      "Repository": "RSPM"
     },
     "numDeriv": {
       "Package": "numDeriv",
@@ -8707,6 +8970,75 @@
       "Maintainer": "Paul-Christian Bürkner <paul.buerkner@gmail.com>",
       "Repository": "CRAN"
     },
+    "praatpicture": {
+      "Package": "praatpicture",
+      "Version": "1.8.0",
+      "Source": "Repository",
+      "Title": "'Praat Picture' Style Plots of Acoustic Data",
+      "Authors@R": "person(\"Rasmus\", \"Puggaard-Rode\",  email = \"rasmus.puggaard-rode@ling-phil.ox.ac.uk\",  role = c(\"aut\", \"cre\", \"cph\"), comment = c(ORCID = \"0000-0003-4522-9987\"))",
+      "Description": "Quickly and easily generate plots of acoustic data aligned with transcriptions similar to those made in 'Praat' using either derived signals generated directly in R with 'wrassp' or imported derived signals from 'Praat'. Provides easy and fast out-of-the-box solutions but also a high extent of  flexibility. Also provides options for embedding audio in figures and animating figures.",
+      "License": "Apache License (>= 2)",
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.3",
+      "Imports": [
+        "av (>= 0.9.0)",
+        "bslib (>= 0.6.1)",
+        "crayon (>= 1.5.2)",
+        "emuR (>= 2.4.2)",
+        "gifski (>= 1.12.0.2)",
+        "graphics (>= 4.3.2)",
+        "grDevices (>= 4.3.2)",
+        "gsignal (>= 0.3.5)",
+        "ipa (>= 0.1.0)",
+        "multitaper (>= 1.0-17)",
+        "phonTools (>= 0.2.2.2)",
+        "rPraat (>= 1.3.2.1)",
+        "rstudioapi (>= 0.15.0)",
+        "shiny (>= 1.8.1.1)",
+        "shinyjs (>= 2.1.0)",
+        "soundgen (>= 2.6.2)",
+        "tuneR (>= 1.4.6)",
+        "utils (>= 4.3.2)",
+        "wrassp (>= 1.0.4)",
+        "zoo (>= 1.8-12)"
+      ],
+      "URL": "https://github.com/rpuggaardrode/praatpicture",
+      "BugReports": "https://github.com/rpuggaardrode/praatpicture/issues",
+      "NeedsCompilation": "no",
+      "Author": "Rasmus Puggaard-Rode [aut, cre, cph] (ORCID: <https://orcid.org/0000-0003-4522-9987>)",
+      "Maintainer": "Rasmus Puggaard-Rode <rasmus.puggaard-rode@ling-phil.ox.ac.uk>",
+      "Repository": "RSPM"
+    },
+    "pracma": {
+      "Package": "pracma",
+      "Version": "2.4.6",
+      "Source": "Repository",
+      "Type": "Package",
+      "Date": "2025-10-20",
+      "Title": "Practical Numerical Math Functions",
+      "Authors@R": "person(\"Hans W.\", \"Borchers\",  email=\"hwborchers@googlemail.com\",  role=c(\"aut\", \"cre\"))",
+      "Depends": [
+        "R (>= 3.1.0)"
+      ],
+      "Imports": [
+        "graphics",
+        "grDevices",
+        "stats",
+        "utils"
+      ],
+      "Suggests": [
+        "NlcOptim",
+        "quadprog"
+      ],
+      "Description": "Provides a large number of functions from numerical analysis and linear algebra, numerical optimization, differential equations, time series, plus some well-known special mathematical functions. Uses 'MATLAB' function names where appropriate to simplify porting.",
+      "License": "GPL (>= 3)",
+      "ByteCompile": "true",
+      "LazyData": "yes",
+      "NeedsCompilation": "no",
+      "Author": "Hans W. Borchers [aut, cre]",
+      "Maintainer": "Hans W. Borchers <hwborchers@googlemail.com>",
+      "Repository": "CRAN"
+    },
     "praise": {
       "Package": "praise",
       "Version": "1.0.0",
@@ -9096,6 +9428,43 @@
       ],
       "License": "GPL (>= 2)",
       "NeedsCompilation": "yes",
+      "Repository": "CRAN"
+    },
+    "quantmod": {
+      "Package": "quantmod",
+      "Version": "0.4.28",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Quantitative Financial Modelling Framework",
+      "Authors@R": "c( person(given=c(\"Jeffrey\",\"A.\"), family=\"Ryan\", role=c(\"aut\",\"cph\")), person(given=c(\"Joshua\",\"M.\"), family=\"Ulrich\", role=c(\"cre\",\"aut\"), email=\"josh.m.ulrich@gmail.com\"), person(given=c(\"Ethan\",\"B.\"), family=\"Smith\", role=\"ctb\"), person(given=\"Wouter\", family=\"Thielen\", role=\"ctb\"), person(given=\"Paul\", family=\"Teetor\", role=\"ctb\"), person(given=\"Steve\", family=\"Bronder\", role=\"ctb\") )",
+      "Depends": [
+        "R (>= 3.2.0)",
+        "xts(>= 0.9-0)",
+        "zoo",
+        "TTR(>= 0.2)",
+        "methods"
+      ],
+      "Imports": [
+        "curl",
+        "jsonlite(>= 1.1)"
+      ],
+      "Suggests": [
+        "DBI",
+        "RMySQL",
+        "RSQLite",
+        "timeSeries",
+        "xml2",
+        "downloader",
+        "tinytest"
+      ],
+      "Description": "Specify, build, trade, and analyse quantitative financial trading strategies.",
+      "LazyLoad": "yes",
+      "License": "GPL-3",
+      "URL": "https://www.quantmod.com/, https://github.com/joshuaulrich/quantmod",
+      "BugReports": "https://github.com/joshuaulrich/quantmod/issues",
+      "NeedsCompilation": "no",
+      "Author": "Jeffrey A. Ryan [aut, cph], Joshua M. Ulrich [cre, aut], Ethan B. Smith [ctb], Wouter Thielen [ctb], Paul Teetor [ctb], Steve Bronder [ctb]",
+      "Maintainer": "Joshua M. Ulrich <josh.m.ulrich@gmail.com>",
       "Repository": "CRAN"
     },
     "quantreg": {
@@ -10628,6 +10997,40 @@
       "Maintainer": "Carson Sievert <carson@posit.co>",
       "Repository": "CRAN"
     },
+    "shinyjs": {
+      "Package": "shinyjs",
+      "Version": "2.1.1",
+      "Source": "Repository",
+      "Title": "Easily Improve the User Experience of Your Shiny Apps in Seconds",
+      "Authors@R": "person(\"Dean\", \"Attali\",  email = \"daattali@gmail.com\", role = c(\"aut\", \"cre\"), comment= c(ORCID=\"0000-0002-5645-3493\"))",
+      "Description": "Perform common useful JavaScript operations in Shiny apps that will greatly improve your apps without having to know any JavaScript. Examples include: hiding an element, disabling an input, resetting an input back to its original value, delaying code execution by a few seconds, and many more useful functions for both the end user and the developer. 'shinyjs' can also be used to easily call your own custom JavaScript functions from R.",
+      "URL": "https://deanattali.com/shinyjs/",
+      "BugReports": "https://github.com/daattali/shinyjs/issues",
+      "Depends": [
+        "R (>= 3.1.0)"
+      ],
+      "Imports": [
+        "digest (>= 0.6.8)",
+        "jsonlite",
+        "shiny (>= 1.0.0)"
+      ],
+      "Suggests": [
+        "htmltools (>= 0.2.9)",
+        "knitr (>= 1.7)",
+        "rmarkdown",
+        "shinyAce",
+        "shinydisconnect",
+        "testthat (>= 0.9.1)"
+      ],
+      "License": "MIT + file LICENSE",
+      "VignetteBuilder": "knitr",
+      "RoxygenNote": "7.3.3",
+      "Encoding": "UTF-8",
+      "NeedsCompilation": "no",
+      "Author": "Dean Attali [aut, cre] (ORCID: <https://orcid.org/0000-0002-5645-3493>)",
+      "Maintainer": "Dean Attali <daattali@gmail.com>",
+      "Repository": "RSPM"
+    },
     "showtext": {
       "Package": "showtext",
       "Version": "0.9-8",
@@ -10923,6 +11326,46 @@
       "NeedsCompilation": "no",
       "Author": "Daniel Lüdecke [aut, cre] (ORCID: <https://orcid.org/0000-0002-8895-3206>)",
       "Repository": "CRAN"
+    },
+    "soundgen": {
+      "Package": "soundgen",
+      "Version": "2.9.0",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Sound Synthesis and Acoustic Analysis",
+      "Authors@R": "person(\"Andrey\", \"Anikin\", email = \"andrey.anikin@cogsci.se\", role = c(\"aut\", \"cre\"))",
+      "Maintainer": "Andrey Anikin <andrey.anikin@cogsci.se>",
+      "URL": "http://cogsci.se/soundgen.html",
+      "Description": "Performs parametric synthesis of sounds with harmonic and noise  components such as animal vocalizations or human voice. Also offers tools  for audio manipulation and acoustic analysis, including pitch tracking,  spectral analysis, audio segmentation, pitch and formant shifting, etc.  Includes four interactive web apps for synthesizing and annotating audio,  manually correcting pitch contours, and measuring formant frequencies.  Reference: Anikin (2019) <doi:10.3758/s13428-018-1095-7>.",
+      "License": "GPL (>= 2)",
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "Imports": [
+        "stats (>= 4.0.0)",
+        "graphics",
+        "utils",
+        "tuneR",
+        "seewave (>= 2.1.6)",
+        "zoo",
+        "mvtnorm",
+        "dtw",
+        "phonTools",
+        "signal",
+        "shiny",
+        "shinyjs",
+        "bslib",
+        "foreach",
+        "doParallel",
+        "nonlinearTseries",
+        "data.table"
+      ],
+      "Depends": [
+        "R (>= 4.1)"
+      ],
+      "RoxygenNote": "7.3.3",
+      "NeedsCompilation": "no",
+      "Author": "Andrey Anikin [aut, cre]",
+      "Repository": "RSPM"
     },
     "sourcetools": {
       "Package": "sourcetools",
@@ -11811,6 +12254,32 @@
       "NeedsCompilation": "yes",
       "Author": "Olaf Mersmann [aut, cre], Heike Trautmann [aut], Detlef Steuer [aut], Björn Bornkamp [aut]",
       "Maintainer": "Olaf Mersmann <olafm@p-value.net>",
+      "Repository": "CRAN"
+    },
+    "tseries": {
+      "Package": "tseries",
+      "Version": "0.10-61",
+      "Source": "Repository",
+      "Encoding": "UTF-8",
+      "Title": "Time Series Analysis and Computational Finance",
+      "Authors@R": "c(person(\"Adrian\", \"Trapletti\", role = \"aut\", email = \"adrian@trapletti.org\"), person(\"Kurt\", \"Hornik\", role = c(\"aut\", \"cre\"), email = \"Kurt.Hornik@R-project.org\", comment = c(ORCID = \"0000-0003-4198-9911\")), person(\"Blake\", \"LeBaron\", role = \"ctb\", comment = \"BDS test code\"))",
+      "Description": "Time series analysis and computational finance.",
+      "Depends": [
+        "R (>= 3.4.0)"
+      ],
+      "Imports": [
+        "graphics",
+        "stats",
+        "utils",
+        "quadprog",
+        "zoo",
+        "quantmod (>= 0.4-9)",
+        "jsonlite"
+      ],
+      "License": "GPL-2 | GPL-3",
+      "NeedsCompilation": "yes",
+      "Author": "Adrian Trapletti [aut], Kurt Hornik [aut, cre] (ORCID: <https://orcid.org/0000-0003-4198-9911>), Blake LeBaron [ctb] (BDS test code)",
+      "Maintainer": "Kurt Hornik <Kurt.Hornik@R-project.org>",
       "Repository": "CRAN"
     },
     "tuneR": {

@@ -64,6 +64,7 @@ website:
             - href: "content/R/animated_vowel_plots_tutorial/index.Rmd"
             - href: "content/R/getVOT-tutorial/index.qmd"
             - href: "content/R/using-marginal-effects/index.qmd"
+            - href: "content/R/multitaper-tutorial/index.Rmd"
         - text: "---"
         - section: "Python"
           href: "content/python/index.md"
