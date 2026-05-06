@@ -106,9 +106,12 @@ div.csl-indent {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-b1e67e1314b00f1b086f7d5e4c74d39a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-b1e67e1314b00f1b086f7d5e4c74d39a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-b1e67e1314b00f1b086f7d5e4c74d39a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-d9dbcb957f0ef05ead23ec7ae25b7889.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-d9dbcb957f0ef05ead23ec7ae25b7889.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-d9dbcb957f0ef05ead23ec7ae25b7889.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -448,6 +451,12 @@ window.Quarto = {
  <span class="menu-text">Predicting VOT-related landmarks in R with <code>getVOT</code></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/using-marginal-effects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using {marginaleffects} to understand statistical models</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -783,7 +792,7 @@ Table&nbsp;2: The first few rows of the data we’re going to work with
 <div id="fig-unnorm1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An F1 by F2 plot of two speakers' unnormalized vowel means.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-unnorm1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-unnorm1-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' unnormalized vowel means." width="576">
+<a href="index_files/figure-html/fig-unnorm1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Speakers’ vowel means in unnormalized F1,F2 space."><img src="index_files/figure-html/fig-unnorm1-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' unnormalized vowel means." width="576"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unnorm1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Speakers’ vowel means in unnormalized F1,F2 space.
@@ -814,7 +823,7 @@ Figure&nbsp;1: Speakers’ vowel means in unnormalized F1,F2 space.
 <div id="fig-unnorm2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An F1 by F2 plot of two speakers' unnormalized vowel means.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-unnorm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-unnorm2-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' unnormalized vowel means." width="576">
+<a href="index_files/figure-html/fig-unnorm2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Speakers’ vowel means in unnormalized F1,F2 space. (fixed coords)"><img src="index_files/figure-html/fig-unnorm2-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' unnormalized vowel means." width="576"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unnorm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Speakers’ vowel means in unnormalized F1,F2 space. (fixed coords)
@@ -889,7 +898,7 @@ Figure&nbsp;2: Speakers’ vowel means in unnormalized F1,F2 space. (fixed coord
 <div id="fig-zscore" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An F1 by F2 plot of two speakers' Lobanov normalized vowel means.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-zscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-zscore-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' Lobanov normalized vowel means." width="576">
+<a href="index_files/figure-html/fig-zscore-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Speakers’ vowel means in z-scored F1,F2 space. (fixed coords)"><img src="index_files/figure-html/fig-zscore-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' Lobanov normalized vowel means." width="576"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Speakers’ vowel means in z-scored F1,F2 space. (fixed coords)
@@ -1110,7 +1119,7 @@ Table&nbsp;7: Nearey Normalized Vowels, wide again
 <div id="fig-neary-norm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-neary-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-neary-norm-1.png" class="img-fluid figure-img" width="624">
+<a href="index_files/figure-html/fig-neary-norm-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: An F1 by F2 plot of two speakers’ Nearey normalized vowel means."><img src="index_files/figure-html/fig-neary-norm-1.png" class="img-fluid figure-img" width="624"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-neary-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: An F1 by F2 plot of two speakers’ Nearey normalized vowel means.
@@ -1139,7 +1148,7 @@ Figure&nbsp;4: An F1 by F2 plot of two speakers’ Nearey normalized vowel means
 <div id="fig-neary-norm-fixed" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-neary-norm-fixed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-neary-norm-fixed-1.png" class="img-fluid figure-img" width="624">
+<a href="index_files/figure-html/fig-neary-norm-fixed-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: An F1 by F2 plot of two speakers’ Nearey normalized vowel means. (fixed coordinates)."><img src="index_files/figure-html/fig-neary-norm-fixed-1.png" class="img-fluid figure-img" width="624"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-neary-norm-fixed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: An F1 by F2 plot of two speakers’ Nearey normalized vowel means. (fixed coordinates).
@@ -1168,7 +1177,7 @@ Figure&nbsp;5: An F1 by F2 plot of two speakers’ Nearey normalized vowel means
 <div id="fig-neary-log-norm-fixed" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-neary-log-norm-fixed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-neary-log-norm-fixed-1.png" class="img-fluid figure-img" width="624">
+<a href="index_files/figure-html/fig-neary-log-norm-fixed-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Speakers’ vowel means in Log Nearey Normalized F1,F2 space (fixed coordinates)."><img src="index_files/figure-html/fig-neary-log-norm-fixed-1.png" class="img-fluid figure-img" width="624"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-neary-log-norm-fixed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Speakers’ vowel means in Log Nearey Normalized F1,F2 space (fixed coordinates).
@@ -1278,7 +1287,7 @@ Table&nbsp;9: The vowel triangle point values, long version
 <div id="fig-wf-triangle" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wf-triangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-wf-triangle-1.png" class="img-fluid figure-img" width="576">
+<a href="index_files/figure-html/fig-wf-triangle-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: The vowel space triangles for the Watt &amp; Fabricius method"><img src="index_files/figure-html/fig-wf-triangle-1.png" class="img-fluid figure-img" width="576"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wf-triangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: The vowel space triangles for the Watt &amp; Fabricius method
@@ -1407,7 +1416,7 @@ Table&nbsp;12: Speakers’ vowels Watt &amp; Fabricius normalized
 <div id="fig-wf-norm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wf-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-wf-norm-1.png" class="img-fluid figure-img" width="576">
+<a href="index_files/figure-html/fig-wf-norm-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: An F1 by F2 plot of two speakers’ Watt &amp; Fabricius normalized vowel means."><img src="index_files/figure-html/fig-wf-norm-1.png" class="img-fluid figure-img" width="576"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wf-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: An F1 by F2 plot of two speakers’ Watt &amp; Fabricius normalized vowel means.
@@ -2611,6 +2620,38 @@ doi: <a href="https://doi.org/10.5281/zenodo.7232341">10.5281/zenodo.7232341</a>
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

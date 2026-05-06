@@ -30,8 +30,12 @@
   {
     "listing": "/content/R/index.html",
     "items": [
-      "/content/R/animated_vowel_plots_tutorial/index.html",
+      "/content/R/lvc_r/index.html",
+      "/content/R/using-marginal-effects/index.html",
       "/content/R/getVOT-tutorial/index.html",
+      "/content/R/animated_vowel_plots_tutorial/index.html",
+      "/content/R/tidy-norm/index.html",
+      "/content/R/vowel-plots-tutorial/index.html",
       "/content/R/lvc_r/010_lvcr.html",
       "/content/R/lvc_r/015_lvcr.html",
       "/content/R/lvc_r/020_lvcr.html",
@@ -45,10 +49,7 @@
       "/content/R/lvc_r/110_lvcr.html",
       "/content/R/lvc_r/112_lvcr.html",
       "/content/R/lvc_r/114_lvcr.html",
-      "/content/R/lvc_r/116_lvcr.html",
-      "/content/R/lvc_r/index.html",
-      "/content/R/tidy-norm/index.html",
-      "/content/R/vowel-plots-tutorial/index.html"
+      "/content/R/lvc_r/116_lvcr.html"
     ]
   },
   {

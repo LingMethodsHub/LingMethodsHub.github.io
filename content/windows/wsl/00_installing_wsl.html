@@ -84,9 +84,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-b1e67e1314b00f1b086f7d5e4c74d39a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-b1e67e1314b00f1b086f7d5e4c74d39a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-b1e67e1314b00f1b086f7d5e4c74d39a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-d9dbcb957f0ef05ead23ec7ae25b7889.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-d9dbcb957f0ef05ead23ec7ae25b7889.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-d9dbcb957f0ef05ead23ec7ae25b7889.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -390,6 +393,12 @@ cookieconsent.run({
  <span class="menu-text">Predicting VOT-related landmarks in R with <code>getVOT</code></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/using-marginal-effects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using {marginaleffects} to understand statistical models</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -589,7 +598,7 @@ Note
 <!-- I don't know why, but I have to link the imgage up a level -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/control_panel.png" class="img-fluid figure-img"></p>
+<p><a href="images/control_panel.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="A screenshot of the control panel, highlighting where programs and features are."><img src="images/control_panel.png" class="img-fluid figure-img" alt="A screenshot of the control panel, highlighting where programs and features are."></a></p>
 <figcaption>A screenshot of the control panel, highlighting where programs and features are.</figcaption>
 </figure>
 </div>
@@ -599,7 +608,7 @@ Note
 <p>Once inside Programs and Features, click on <em>Turn Windows Features On or Off</em> on the left hand side.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/Programs_and_features.png" class="img-fluid figure-img"></p>
+<p><a href="images/Programs_and_features.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="A screenshot of Programs and Features, highlighting the location of Turn Windows Features On or Off."><img src="images/Programs_and_features.png" class="img-fluid figure-img" alt="A screenshot of Programs and Features, highlighting the location of Turn Windows Features On or Off."></a></p>
 <figcaption>A screenshot of Programs and Features, highlighting the location of Turn Windows Features On or Off.</figcaption>
 </figure>
 </div>
@@ -609,7 +618,7 @@ Note
 <p>A pop up window should appear. Scroll down to find “Windows Subsystem for Linux.” Click the box so it is checked. Then press ok.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/windows_features.png" class="img-fluid figure-img"></p>
+<p><a href="images/windows_features.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="A screenshot highlighting the item Windows Subsystem for Linux that should be checked off."><img src="images/windows_features.png" class="img-fluid figure-img" alt="A screenshot highlighting the item Windows Subsystem for Linux that should be checked off."></a></p>
 <figcaption>A screenshot highlighting the item Windows Subsystem for Linux that should be checked off.</figcaption>
 </figure>
 </div>
@@ -627,7 +636,7 @@ Note
 <p>After your computer has restarted, launch the Windows Store, and search for “Ubuntu”. On its store page, click on “Get” to install it.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/windows_store.png" class="img-fluid figure-img"></p>
+<p><a href="images/windows_store.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="A screenshot of Ubuntu in the Windows Store"><img src="images/windows_store.png" class="img-fluid figure-img" alt="A screenshot of Ubuntu in the Windows Store"></a></p>
 <figcaption>A screenshot of Ubuntu in the Windows Store</figcaption>
 </figure>
 </div>
@@ -1264,6 +1273,38 @@ doi: <a href="https://doi.org/10.5281/zenodo.7161531">10.5281/zenodo.7161531</a>
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
