@@ -63,6 +63,7 @@ website:
             - href: "content/R/tidy-norm/index.qmd"
             - href: "content/R/animated_vowel_plots_tutorial/index.Rmd"
             - href: "content/R/getVOT-tutorial/index.qmd"
+            - href: "content/R/using-marginal-effects/index.qmd"
         - text: "---"
         - section: "Python"
           href: "content/python/index.md"
@@ -143,16 +144,22 @@ website:
 
 format: 
   html:
-    theme: minty
+    theme: 
+      - minty
+      - styles/custom.scss
     include-in-header: google_font.html
     mainfont: "'Atkinson Hyperlegible', sans-serif"
-    css: styles.css
+    css: 
+      - styles.css
     toc: true
     smooth-scroll: true
     code-overflow: wrap
     code-tools: 
       source: true
       toggle: false
+    lightbox: true
+
+pdf-engine: xelatex
 
 citation:
   container-title: "Linguistics Methods Hub"

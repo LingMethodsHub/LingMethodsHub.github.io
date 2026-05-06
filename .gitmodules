@@ -37,3 +37,6 @@
 [submodule "content/R/getVOT-tutorial"]
 	path = content/R/getVOT-tutorial
 	url = git@github.com:LingMethodsHub/getVOT-tutorial.git
+[submodule "content/R/using-marginal-effects"]
+	path = content/R/using-marginal-effects
+	url = git@github.com:LingMethodsHub/using-marginal-effects.git
