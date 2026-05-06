@@ -7,6 +7,6 @@ listing:
     type: default
     fields: [date, author, title, description, image, reading-time]
     sort: 
-      - "modified desc"
+      - "date desc"
 citation: false    
 ---
