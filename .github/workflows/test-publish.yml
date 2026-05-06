@@ -42,7 +42,8 @@ jobs:
         run: | 
           Rscript .github/get_sys_reqs.R
           echo "$(cat deps.sh)"
-          sudo ./deps.sh
+          sudo apt-get update
+          sudo bash ./deps.sh
       - name: Install Packages
         shell: Rscript {0}
         run: |      
