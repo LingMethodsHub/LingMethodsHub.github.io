@@ -40,3 +40,6 @@
 [submodule "content/R/using-marginal-effects"]
 	path = content/R/using-marginal-effects
 	url = git@github.com:LingMethodsHub/using-marginal-effects.git
+[submodule "content/R/multitaper-tutorial"]
+	path = content/R/multitaper-tutorial
+	url = git@github.com:LingMethodsHub/multitaper-tutorial.git
