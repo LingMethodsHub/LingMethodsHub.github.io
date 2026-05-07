@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Matt Hunt Gardner">
 <meta name="dcterms.date" content="2022-09-27">
 <meta name="description" content="Generating proportions that you can plot using ggplot2.">
-
 <title>Proportions for ggplot2 – LingMethodsHub</title>
 <style>
 /* Default styles provided by pandoc.
@@ -63,7 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
@@ -91,8 +87,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap-194cc7e99426acbbbef3f1ad860df344.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -118,18 +113,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
-
-<script type="text/plain" cookie-consent="tracking">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script><script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
-</script>
-
-<script type="text/javascript" charset="UTF-8">
+</script><script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
@@ -144,27 +134,18 @@ cookieconsent.run({
 "language":"en"
   });
 });
-</script> 
-  
-<style>html{ scroll-behavior: smooth; }</style>
+</script><style>html{ scroll-behavior: smooth; }</style>
 <script type="application/json" class="js-hypothesis-config">
 {
   "theme": "clean",
   "openSidebar": false,
   "showHighlights": "never"
 }
-</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
-<script>
+</script><script async="" src="https://hypothes.is/embed.js"></script><script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -189,9 +170,7 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script>
-
-<link rel="stylesheet" href="../../../styles.css">
+</script><link rel="stylesheet" href="../../../styles.css">
 <meta property="og:title" content="Proportions for ggplot2 – LingMethodsHub">
 <meta property="og:description" content="Generating proportions that you can plot using ggplot2.">
 <meta property="og:image" content="https://lingmethodshub.github.io/content/R/lvc_r/070_lvcr_files/figure-html/unnamed-chunk-8-1.png">
@@ -217,13 +196,10 @@ window.Quarto = {
 <meta name="citation_journal_title" content="Linguistics Methods Hub">
 <meta name="citation_series_title" content="Linguistics Methods Hub">
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">LingMethodsHub</span>
@@ -235,7 +211,7 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -256,14 +232,14 @@ window.Quarto = {
 <span class="menu-text">People</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -272,9 +248,7 @@ window.Quarto = {
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -282,19 +256,15 @@ window.Quarto = {
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorials</span></a>
@@ -308,8 +278,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Doing LVC with R</span></a>
@@ -317,8 +287,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
@@ -398,7 +368,7 @@ window.Quarto = {
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
-  </li>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">
@@ -429,8 +399,14 @@ window.Quarto = {
  <span class="menu-text">Using {marginaleffects} to understand statistical models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/multitaper-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generating and analyzing multitaper spectra in R</span></a>
+  </div>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -440,8 +416,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vowel plotting in Python</span></a>
@@ -454,7 +430,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -469,8 +445,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Montreal Forced Aligner</span></a>
@@ -483,7 +459,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -493,8 +469,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Shell Basics</span></a>
@@ -507,7 +483,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -517,8 +493,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Windows Subsystem for Linux</span></a>
@@ -526,32 +502,29 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
     <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="070_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/070_lvcr.html">Proportions for <code>ggplot2</code></a></li></ol></nav>
-<div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Proportions for <code>ggplot2</code></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/070_lvcr.html">Proportions for <code>ggplot2</code></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Proportions for <code>ggplot2</code>
+</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 <div>
@@ -597,17 +570,12 @@ window.Quarto = {
   
 
 
-</header>
-
-
-<p>There are two main ways to make graphs in <em>R</em>. The first is using the standard graphing capabilities of <em>R</em>. The second is using a much more sophisticated and customizable graphics package called <code>ggplot2</code>. Describing the ins and outs of the <code>ggplot2</code> package is beyond the scope of these instructions, but what these instructions can do is teach you how to organize your summary statistics in such a way that they are usable by <code>ggplot2</code>.</p>
+</header><p>There are two main ways to make graphs in <em>R</em>. The first is using the standard graphing capabilities of <em>R</em>. The second is using a much more sophisticated and customizable graphics package called <code>ggplot2</code>. Describing the ins and outs of the <code>ggplot2</code> package is beyond the scope of these instructions, but what these instructions can do is teach you how to organize your summary statistics in such a way that they are usable by <code>ggplot2</code>.</p>
 <p>Why is there a separate section on preparing summary statistics for <code>ggplot2</code>? It is <code>ggplot2</code> expects summary statistics to be organized in a way that is non-intuitive to us as sociolinguists. When we represent summary statistics we usually represent them like cross-tabs, for example:</p>
 <div id="tbl-normal" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Percentage of deleted (t, d) tokens by Age Group and Sex in Cape Breton English
-</figcaption>
-<div aria-describedby="tbl-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 14%">
@@ -618,8 +586,7 @@ Table&nbsp;1: Percentage of deleted (t, d) tokens by Age Group and Sex in Cape B
 <col style="width: 14%">
 <col style="width: 14%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: left;"></th>
 <th style="text-align: left;"><strong>Female</strong></th>
 <th style="text-align: left;"></th>
@@ -627,8 +594,7 @@ Table&nbsp;1: Percentage of deleted (t, d) tokens by Age Group and Sex in Cape B
 <th style="text-align: left;"></th>
 <th style="text-align: left;"><strong>Total</strong></th>
 <th style="text-align: left;"></th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Age Group</td>
@@ -680,8 +646,8 @@ Table&nbsp;1: Percentage of deleted (t, d) tokens by Age Group and Sex in Cape B
 </div>
 </figure>
 </div>
-<p>In the above table there are variables both as rows (here <code>Age.Group</code>) and columns (here <code>Sex</code>). If I was going to create a chart in <em>Excel</em> of summary statistics this is how I would naturally make it. This is how data is presented in manuscripts, it is also how it is presented in <em>Goldvarb</em>, and it is how it is presented to us by the <code>prop.table()</code> function. It is NOT how <code>ggplot2</code> wants your data to be organized. For <code>ggplot2</code> each variable has to exist in its own individual column — much closer to the organization of the <code>ftable()</code> or what is produced using <code>tidy</code> methods.</p>
-<p>In order to create this kind of organization (if not using <code>tidy</code> methods) you need to “melt” the <code>prop.table()</code> using the function <code>melt()</code> in the package <code>reshape2</code>. You’ll do this in two steps. First you create a new object <code>td.prop</code>, which is the proportion table of the levels of <code>Dep.Var</code> for each level of <code>Age.Group</code> and <code>Sex</code>, just like the table above. Then you “melt” that table using the function <code>melt()</code>, and assign this new table to a new object <code>td.prop.melt</code>.</p>
+<p>In the above table there are variables both as rows (here <code>Age.Group</code>) and columns (here <code>Sex</code>). If I was going to create a chart in <em>Excel</em> of summary statistics this is how I would naturally make it. This is how data is presented in manuscripts, it is also how it is presented in <em>Goldvarb</em>, and it is how it is presented to us by the <code><a href="https://rdrr.io/r/base/proportions.html">prop.table()</a></code> function. It is NOT how <code>ggplot2</code> wants your data to be organized. For <code>ggplot2</code> each variable has to exist in its own individual column — much closer to the organization of the <code><a href="https://rdrr.io/r/stats/ftable.html">ftable()</a></code> or what is produced using <code>tidy</code> methods.</p>
+<p>In order to create this kind of organization (if not using <code>tidy</code> methods) you need to “melt” the <code><a href="https://rdrr.io/r/base/proportions.html">prop.table()</a></code> using the function <code><a href="https://rdrr.io/pkg/reshape2/man/melt.html">melt()</a></code> in the package <code>reshape2</code>. You’ll do this in two steps. First you create a new object <code>td.prop</code>, which is the proportion table of the levels of <code>Dep.Var</code> for each level of <code>Age.Group</code> and <code>Sex</code>, just like the table above. Then you “melt” that table using the function <code><a href="https://rdrr.io/pkg/reshape2/man/melt.html">melt()</a></code>, and assign this new table to a new object <code>td.prop.melt</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -696,15 +662,15 @@ Table&nbsp;1: Percentage of deleted (t, d) tokens by Age Group and Sex in Cape B
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var for each level of Age.Group and Sex</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop  </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>td.prop.melt <span class="ot">&lt;-</span><span class="fu">melt</span>(td.prop)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># View first six lines of td.prop.melt</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td.prop.melt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create object td.prop as proportion table of each level of Dep.Var for each level of Age.Group and Sex</span></span>
+<span><span class="va">td.prop</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span>, margin<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Melt td.prop  </span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape">reshape2</a></span><span class="op">)</span></span>
+<span><span class="va">td.prop.melt</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/reshape2/man/melt.html">melt</a></span><span class="op">(</span><span class="va">td.prop</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># View first six lines of td.prop.melt</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">td.prop.melt</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Var1 Var2     Var3     value
 1    Old    F Deletion 0.2866667
@@ -717,10 +683,10 @@ Table&nbsp;1: Percentage of deleted (t, d) tokens by Age Group and Sex in Cape B
 </div>
 <p>This new melted table does not contain informative column names, so you add those as the third step.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.prop.melt) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View first six lines of td.prop.melt</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td.prop.melt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create column names for td.prop.melt</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">td.prop.melt</span><span class="op">)</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span><span class="op">)</span></span>
+<span><span class="co"># View first six lines of td.prop.melt</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">td.prop.melt</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Age.Group Sex  Dep.Var   Percent
 1       Old   F Deletion 0.2866667
@@ -733,115 +699,109 @@ Table&nbsp;1: Percentage of deleted (t, d) tokens by Age Group and Sex in Cape B
 </div>
 <p>An alternative way to melt the columns is to save the proportion table as a new tab-delimited-text file. You might want to do this anyway, as having a separate file containing summary statistics may be useful to you. One use I have for tab-delimited-text file versions of my summary statistics is that they are much easier for copying and pasting. If you copy and paste from the <em>R</em> console window there is an inconsistent number of space characters between columns (e.g., above there are five space characters between <code>1</code> and <code>Young</code>, four between <code>2</code> and <code>Middle</code>, and five between <code>3</code> and<code>Old</code>). If you save that same table to a text file you can specify that you want each cell separated by a tab character instead.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var for each level of Age.Group and Sex</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop  </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>td.prop.melt <span class="ot">&lt;-</span><span class="fu">melt</span>(td.prop)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.prop.melt) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Write td.prop.melt to file </span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.prop.melt, <span class="at">file =</span> <span class="st">"Data/summaryAgeGroupSexMelted.txt"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Write td.prop to file (with automatic melting)</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.prop, <span class="at">file =</span> <span class="st">"Data/summaryAgeGroupSex.txt"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create object td.prop as proportion table of each level of Dep.Var for each level of Age.Group and Sex</span></span>
+<span><span class="va">td.prop</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span>, margin<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Melt td.prop  </span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape">reshape2</a></span><span class="op">)</span></span>
+<span><span class="va">td.prop.melt</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/reshape2/man/melt.html">melt</a></span><span class="op">(</span><span class="va">td.prop</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create column names for td.prop.melt</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">td.prop.melt</span><span class="op">)</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Write td.prop.melt to file </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">td.prop.melt</span>, file <span class="op">=</span> <span class="st">"Data/summaryAgeGroupSexMelted.txt"</span>, quote <span class="op">=</span> <span class="cn">FALSE</span>, sep <span class="op">=</span> <span class="st">"\t"</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Write td.prop to file (with automatic melting)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">td.prop</span>, file <span class="op">=</span> <span class="st">"Data/summaryAgeGroupSex.txt"</span>, quote <span class="op">=</span> <span class="cn">FALSE</span>, sep <span class="op">=</span> <span class="st">"\t"</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The two <code>write.table()</code> functions above produce the exact same tab-delimited-text file. The one difference between them is that the melted table (e.g., <code>summaryAgeGroupSexMelted.txt</code>) includes column names.</p>
+<p>The two <code><a href="https://rdrr.io/r/utils/write.table.html">write.table()</a></code> functions above produce the exact same tab-delimited-text file. The one difference between them is that the melted table (e.g., <code>summaryAgeGroupSexMelted.txt</code>) includes column names.</p>
 <div id="fig-notmelted" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-notmelted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-notmelted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="images/summaryAgeGroupSex.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Not Melted"><img src="images/summaryAgeGroupSex.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-notmelted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Not Melted
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 <div id="fig-melted" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-melted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-melted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="images/summaryAgeGroupSexMelted.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Melted"><img src="images/summaryAgeGroupSexMelted.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-melted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Melted
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
-<p>When the <code>write.table()</code> melts the proportion table for you it does not create the new column names. For this reason, I like to melt proportion tables before I save them so that I have the opportunity to name the table’s columns. In the <code>write.table()</code> functions above you first specify the object you want to write to a text file, then you specify what you want to call that file and where you want it to be created. Here I’ve named the files <code>summaryAgeGroupSexMelted.txt</code> and <code>summaryAgeGroupSex.txt</code> and saved it in a subfolder called <code>Data</code> in the same folder in which my <em>R</em> script is saved. You can save your file anywhere on your computer and call it whatever you want. You can specify any file path here. For example, I could have written <code>~/Documents/My Project/Data</code> to indicate a folder called <code>Data</code> in a folder called <code>My Project</code> in my <code>Documents</code> folder on root drive of my Mac computer. If you are running a PC your folder structure will likely start with <code>"C:/\dots"</code>. In the function you specify that <code>quote = FALSE</code>. If you specify <code>TRUE</code>, <em>R</em> will put quotation marks around the values in each cell. I have never needed this. You further specify that the separator between cells in the same row is a tab, <code>sep="\t"</code>, which creates a tab-delimited-text file (.txt). If you wanted to create a comma-separated-value table (.csv) you would instead specify <code>sep=","</code> and change the file extension from <code>".txt"</code> to <code>".csv"</code>. Finally, you specify that <code>row.names = FALSE</code> because there are no row names in this table, just column names.</p>
+<p>When the <code><a href="https://rdrr.io/r/utils/write.table.html">write.table()</a></code> melts the proportion table for you it does not create the new column names. For this reason, I like to melt proportion tables before I save them so that I have the opportunity to name the table’s columns. In the <code><a href="https://rdrr.io/r/utils/write.table.html">write.table()</a></code> functions above you first specify the object you want to write to a text file, then you specify what you want to call that file and where you want it to be created. Here I’ve named the files <code>summaryAgeGroupSexMelted.txt</code> and <code>summaryAgeGroupSex.txt</code> and saved it in a subfolder called <code>Data</code> in the same folder in which my <em>R</em> script is saved. You can save your file anywhere on your computer and call it whatever you want. You can specify any file path here. For example, I could have written <code>~/Documents/My Project/Data</code> to indicate a folder called <code>Data</code> in a folder called <code>My Project</code> in my <code>Documents</code> folder on root drive of my Mac computer. If you are running a PC your folder structure will likely start with <code>"C:/\dots"</code>. In the function you specify that <code>quote = FALSE</code>. If you specify <code>TRUE</code>, <em>R</em> will put quotation marks around the values in each cell. I have never needed this. You further specify that the separator between cells in the same row is a tab, <code>sep="\t"</code>, which creates a tab-delimited-text file (.txt). If you wanted to create a comma-separated-value table (.csv) you would instead specify <code>sep=","</code> and change the file extension from <code>".txt"</code> to <code>".csv"</code>. Finally, you specify that <code>row.names = FALSE</code> because there are no row names in this table, just column names.</p>
 <p>If you’ve saved a summary statistics file previously and want to read it into <em>R</em> for use with <code>ggplot2</code>, you can use the same procedure as you used for reading in your data file.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in Summary Statistics File</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>td.AgeSex <span class="ot">&lt;-</span><span class="fu">read.delim</span>(<span class="st">"Data/summaryAgeGroupSexMelted.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read in Summary Statistics File</span></span>
+<span><span class="va">td.AgeSex</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span><span class="op">(</span><span class="st">"Data/summaryAgeGroupSexMelted.txt"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here’s an example of a basic <code>ggplot2</code> line graph that can be made with the above summary statistics. The first three steps are only necessary if you didn’t read in the summary statistics file above.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object td.prop as proportion table of each level of Dep.Var </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># for each level of Age.Group and Sex</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>td.prop <span class="ot">&lt;-</span><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt td.prop  </span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>td.AgeSex <span class="ot">&lt;-</span><span class="fu">melt</span>(td.prop)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create column names for td.prop.melt</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td.AgeSex) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span>)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder Age.Group</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>td.AgeSex<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span><span class="fu">factor</span>(td.AgeSex<span class="sc">$</span>Age.Group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>))</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create basic ggplot2 line graph of the proportion of deletion by Age.Group, </span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># with lines separated by Sex</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data =</span> td.AgeSex[td.AgeSex<span class="sc">$</span>Dep.Var <span class="sc">==</span> <span class="st">"Deletion"</span>,], </span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Age.Group, </span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Percent, </span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">"line"</span>, </span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> Sex, </span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> Sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create object td.prop as proportion table of each level of Dep.Var </span></span>
+<span><span class="co"># for each level of Age.Group and Sex</span></span>
+<span><span class="va">td.prop</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span>, margin<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Melt td.prop  </span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape">reshape2</a></span><span class="op">)</span></span>
+<span><span class="va">td.AgeSex</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/reshape2/man/melt.html">melt</a></span><span class="op">(</span><span class="va">td.prop</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create column names for td.prop.melt</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">td.AgeSex</span><span class="op">)</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Age.Group"</span>, <span class="st">"Sex"</span>, <span class="st">"Dep.Var"</span>, <span class="st">"Percent"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Reorder Age.Group</span></span>
+<span><span class="va">td.AgeSex</span><span class="op">$</span><span class="va">Age.Group</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td.AgeSex</span><span class="op">$</span><span class="va">Age.Group</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create basic ggplot2 line graph of the proportion of deletion by Age.Group, </span></span>
+<span><span class="co"># with lines separated by Sex</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/qplot.html">qplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">td.AgeSex</span><span class="op">[</span><span class="va">td.AgeSex</span><span class="op">$</span><span class="va">Dep.Var</span> <span class="op">==</span> <span class="st">"Deletion"</span>,<span class="op">]</span>, </span>
+<span>      x <span class="op">=</span> <span class="va">Age.Group</span>, </span>
+<span>      y <span class="op">=</span> <span class="va">Percent</span>, </span>
+<span>      geom <span class="op">=</span> <span class="st">"line"</span>, </span>
+<span>      group <span class="op">=</span> <span class="va">Sex</span>, </span>
+<span>      colour <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><a href="070_lvcr_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="070_lvcr_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
+<figure class="figure"><p><a href="070_lvcr_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="070_lvcr_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<p>For this graph you can use the quick plot function <code>qplot()</code> available in the <code>ggplot2</code> package. For <code>qplot()</code> you specify the data, here the object <code>td.AgeSex</code> where <code>td.AgeSex</code>’s column <code>Dep.Var</code> equals <code>Deletion</code>. This filtering is only specified because you don’t need to represent both <code>Deletion</code> and <code>Realization</code> on the same graph (as the value of one implies the value of the other). You then specify that you want your <em>x</em>-axis to be <code>Age.Group</code>: <code>x = Age.Group</code>. The axis will be ordered left to right (<code>Young</code>, <code>Middle</code>,<code>Old</code>) because you reordered the <code>Age.Group</code> column levels before running <code>qplot()</code>. You specify that<code>Percent</code> is the <em>y</em>-axis:<code>y = Percent</code>, and that the kind of graph you want is a line graph: <code>geom = "line"</code>. Specifying<code>group = Sex</code> means the data will be grouped according to the levels of <code>Sex</code>, and produces two lines in the graph: one for men and one for women. To make the two lines different colours, specify <code>colour = Sex</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>For this graph you can use the quick plot function <code><a href="https://ggplot2.tidyverse.org/reference/qplot.html">qplot()</a></code> available in the <code>ggplot2</code> package. For <code><a href="https://ggplot2.tidyverse.org/reference/qplot.html">qplot()</a></code> you specify the data, here the object <code>td.AgeSex</code> where <code>td.AgeSex</code>’s column <code>Dep.Var</code> equals <code>Deletion</code>. This filtering is only specified because you don’t need to represent both <code>Deletion</code> and <code>Realization</code> on the same graph (as the value of one implies the value of the other). You then specify that you want your <em>x</em>-axis to be <code>Age.Group</code>: <code>x = Age.Group</code>. The axis will be ordered left to right (<code>Young</code>, <code>Middle</code>,<code>Old</code>) because you reordered the <code>Age.Group</code> column levels before running <code><a href="https://ggplot2.tidyverse.org/reference/qplot.html">qplot()</a></code>. You specify that<code>Percent</code> is the <em>y</em>-axis:<code>y = Percent</code>, and that the kind of graph you want is a line graph: <code>geom = "line"</code>. Specifying<code>group = Sex</code> means the data will be grouped according to the levels of <code>Sex</code>, and produces two lines in the graph: one for men and one for women. To make the two lines different colours, specify <code>colour = Sex</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p><code>ggplot2</code> is infinitely customizable. You can change almost every element of the graph — for example, you could change the <em>y</em>-axis to show <span class="math inline">\(0\)</span> to <span class="math inline">\(100\)</span> percent instead of <span class="math inline">\(0\)</span> to <span class="math inline">\(50\)</span> percent — but these types of specifications are for another set of instructions.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>The use of the <code>tidy</code> method for cross tabs should be immediately apparent. There is no need to take the extra step to melt your proportions before building your plot. We will use the same code that we used to generate proportions from <a href="https://lingmethodshub.github.io/content/R/lvc_r/060_lvcr.html">the previous chapter</a>. First, it is useful to reorder the <code>Age.Group</code> variable, as this ordering will be inherited by the <code>summarize()</code> function. Next we use the <code>tidy</code> code to generate proportions and assign the results to an object called <code>results</code> and then build our plot from that object. We also make a tweak so that the <em>y</em>-axis ranges from 0 to 1, as this is the full range of possible proportions with <code>ylim=c(0,1)</code>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> This also moderates what might look like exteme differences in the figure generated above with a smaller <em>y</em>-axis. We also give the <em>x</em>-axis and the <em>y</em>-axis new labels with <code>ylab="Proportion of Deleted Tokens"</code> and <code>xlab= "Age Group"</code> and give the table a title with <code>main = "Proportion of Deleted (t ,d) tokens in Cape Breton English by Age and Sex"</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder Age.Group</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>td.AgeSex<span class="sc">$</span>Age.Group <span class="ot">&lt;-</span><span class="fu">factor</span>(td.AgeSex<span class="sc">$</span>Age.Group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>))</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a tidy object of proportions of Dep.Var </span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># by Age.Group and Sex, with only Deletion included</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Sex, Dep.Var, <span class="at">.drop =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prop =</span> Count<span class="sc">/</span><span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subset</span>(Dep.Var <span class="sc">==</span> <span class="st">"Deletion"</span>)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create basic ggplot2 line graph of the proportion of deletion </span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># by Age.Group, with lines separated by Sex</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">data =</span> results, </span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Age.Group,</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Prop, </span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">geom =</span> <span class="st">"line"</span>, </span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> Sex, </span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> Sex, </span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), </span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">"Proportion of Deleted Tokens"</span>, </span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">"Age Group"</span>, </span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">"Proportion of Deleted (t ,d) tokens in Cape Breton English</span><span class="sc">\n</span><span class="st">by Age and Sex"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Reorder Age.Group</span></span>
+<span><span class="va">td.AgeSex</span><span class="op">$</span><span class="va">Age.Group</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td.AgeSex</span><span class="op">$</span><span class="va">Age.Group</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Generate a tidy object of proportions of Dep.Var </span></span>
+<span><span class="co"># by Age.Group and Sex, with only Deletion included</span></span>
+<span><span class="va">results</span> <span class="op">&lt;-</span> <span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Age.Group</span>, <span class="va">Sex</span>, <span class="va">Dep.Var</span>, .drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Count <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>Prop <span class="op">=</span> <span class="va">Count</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">Dep.Var</span> <span class="op">==</span> <span class="st">"Deletion"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create basic ggplot2 line graph of the proportion of deletion </span></span>
+<span><span class="co"># by Age.Group, with lines separated by Sex</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/qplot.html">qplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">results</span>, </span>
+<span>      x <span class="op">=</span> <span class="va">Age.Group</span>,</span>
+<span>      y <span class="op">=</span> <span class="va">Prop</span>, </span>
+<span>      geom <span class="op">=</span> <span class="st">"line"</span>, </span>
+<span>      group <span class="op">=</span> <span class="va">Sex</span>, </span>
+<span>      colour <span class="op">=</span> <span class="va">Sex</span>, </span>
+<span>      ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, </span>
+<span>      ylab <span class="op">=</span> <span class="st">"Proportion of Deleted Tokens"</span>, </span>
+<span>      xlab <span class="op">=</span> <span class="st">"Age Group"</span>, </span>
+<span>      main <span class="op">=</span> <span class="st">"Proportion of Deleted (t ,d) tokens in Cape Breton English\nby Age and Sex"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><a href="070_lvcr_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="070_lvcr_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
+<figure class="figure"><p><a href="070_lvcr_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="070_lvcr_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -850,16 +810,12 @@ Figure&nbsp;2: Melted
 
 <!-- -->
 
-
-
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
 <ol>
 <li id="fn1"><p>Or <code>color = Sex</code>. Both will work.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>There are lots of <code>ggplot2</code> instructions online. Searching “change <em>y</em>-axis, qplot, ggplot2” will likely find you the right information.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>The concatenating function <code>c()</code> is used to combine values. Here it combines the desired start and end of the <em>y</em>-axis.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner2022,
+<li id="fn3"><p>The concatenating function <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> is used to combine values. Here it combines the desired start and end of the <em>y</em>-axis.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner2022,
   author = {Gardner, Matt Hunt},
   title = {Proportions for `Ggplot2`},
   series = {Linguistics Methods Hub},
@@ -873,8 +829,7 @@ Figure&nbsp;2: Melted
 Gardner, Matt Hunt. 2022, September 27. Proportions for `ggplot2`.
 <em>Linguistics Methods Hub</em>: <em>Doing LVC with R</em>. (<a href="https://lingmethodshub.github.io/content/R/lvc_r/070_lvcr.html">https://lingmethodshub.github.io/content/R/lvc_r/070_lvcr.html</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1324,9 +1279,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../../content/R/lvc_r/060_lvcr.html" class="pagination-link" aria-label="Crosstabs: Counts, Proportions, and More">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Crosstabs: Counts, Proportions, and More</span>
       </a>          
@@ -1537,8 +1490,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -1549,8 +1501,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
       &nbsp;
     </div>
   </div>
-</footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
@@ -1582,8 +1533,6 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
   
 })();
           </script>
-
-
 
 
 <script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>

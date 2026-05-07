@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Eleanor Chodroff">
 <meta name="dcterms.date" content="2023-01-22">
-
 <title>Montreal Forced Aligner – LingMethodsHub</title>
 <style>
 /* Default styles provided by pandoc.
@@ -62,7 +59,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
@@ -87,8 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../../site_libs/bootstrap/bootstrap-8df02160ef4a432423e3ffc14fe4d0c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../../../site_libs/bootstrap/bootstrap-dark-8df02160ef4a432423e3ffc14fe4d0c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../../../../site_libs/bootstrap/bootstrap-8df02160ef4a432423e3ffc14fe4d0c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../../../site_libs/bootstrap/bootstrap-8df02160ef4a432423e3ffc14fe4d0c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -114,18 +109,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
-
-<script type="text/plain" cookie-consent="tracking">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script><script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
-</script>
-
-<script type="text/javascript" charset="UTF-8">
+</script><script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
@@ -140,25 +130,18 @@ cookieconsent.run({
 "language":"en"
   });
 });
-</script> 
-  
-<style>html{ scroll-behavior: smooth; }</style>
+</script><style>html{ scroll-behavior: smooth; }</style>
 <script type="application/json" class="js-hypothesis-config">
 {
   "theme": "clean",
   "openSidebar": false,
   "showHighlights": "never"
 }
-</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
-<script>
+</script><script async="" src="https://hypothes.is/embed.js"></script><script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>
-
-
-<link rel="stylesheet" href="../../../../styles.css">
+</script><link rel="stylesheet" href="../../../../styles.css">
 <meta property="og:title" content="Montreal Forced Aligner – LingMethodsHub">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://lingmethodshub.github.io/content/tools/mfa/mfa-tutorial/assets/logo.png">
@@ -179,13 +162,10 @@ cookieconsent.run({
 <meta name="citation_journal_title" content="Linguistics Methods Hub">
 <meta name="citation_series_title" content="Linguistics Methods Hub">
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">LingMethodsHub</span>
@@ -197,7 +177,7 @@ cookieconsent.run({
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -218,14 +198,14 @@ cookieconsent.run({
 <span class="menu-text">People</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -234,9 +214,7 @@ cookieconsent.run({
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -244,19 +222,15 @@ cookieconsent.run({
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../../index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../content/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorials</span></a>
@@ -270,8 +244,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Doing LVC with R</span></a>
@@ -279,8 +253,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
@@ -360,7 +334,7 @@ cookieconsent.run({
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
-  </li>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">
@@ -391,8 +365,14 @@ cookieconsent.run({
  <span class="menu-text">Using {marginaleffects} to understand statistical models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../content/R/multitaper-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generating and analyzing multitaper spectra in R</span></a>
+  </div>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -402,8 +382,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vowel plotting in Python</span></a>
@@ -416,7 +396,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -431,8 +411,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Montreal Forced Aligner</span></a>
@@ -445,7 +425,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -455,8 +435,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Shell Basics</span></a>
@@ -469,7 +449,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -479,8 +459,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Windows Subsystem for Linux</span></a>
@@ -488,59 +468,59 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+<li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#running-the-aligner" id="toc-running-the-aligner" class="nav-link" data-scroll-target="#running-the-aligner">Running the aligner</a></li>
-  <li><a href="#file-preparation" id="toc-file-preparation" class="nav-link" data-scroll-target="#file-preparation">File preparation</a>
+  <li>
+<a href="#file-preparation" id="toc-file-preparation" class="nav-link" data-scroll-target="#file-preparation">File preparation</a>
   <ul class="collapse">
-  <li><a href="#audio-files" id="toc-audio-files" class="nav-link" data-scroll-target="#audio-files">Audio files</a></li>
+<li><a href="#audio-files" id="toc-audio-files" class="nav-link" data-scroll-target="#audio-files">Audio files</a></li>
   <li><a href="#transcripts" id="toc-transcripts" class="nav-link" data-scroll-target="#transcripts">Transcripts</a></li>
   <li><a href="#filenames" id="toc-filenames" class="nav-link" data-scroll-target="#filenames">Filenames</a></li>
   <li><a href="#input-and-output-folders" id="toc-input-and-output-folders" class="nav-link" data-scroll-target="#input-and-output-folders">Input and output folders</a></li>
-  </ul></li>
-  <li><a href="#obtaining-acoustic-models" id="toc-obtaining-acoustic-models" class="nav-link" data-scroll-target="#obtaining-acoustic-models">Obtaining acoustic models</a>
+  </ul>
+</li>
+  <li>
+<a href="#obtaining-acoustic-models" id="toc-obtaining-acoustic-models" class="nav-link" data-scroll-target="#obtaining-acoustic-models">Obtaining acoustic models</a>
   <ul class="collapse">
-  <li><a href="#download-an-acoustic-model" id="toc-download-an-acoustic-model" class="nav-link" data-scroll-target="#download-an-acoustic-model">Download an acoustic model</a></li>
+<li><a href="#download-an-acoustic-model" id="toc-download-an-acoustic-model" class="nav-link" data-scroll-target="#download-an-acoustic-model">Download an acoustic model</a></li>
   <li><a href="#train-an-acoustic-model" id="toc-train-an-acoustic-model" class="nav-link" data-scroll-target="#train-an-acoustic-model">Train an acoustic model</a></li>
-  </ul></li>
-  <li><a href="#obtaining-dictionaries" id="toc-obtaining-dictionaries" class="nav-link" data-scroll-target="#obtaining-dictionaries">Obtaining dictionaries</a>
+  </ul>
+</li>
+  <li>
+<a href="#obtaining-dictionaries" id="toc-obtaining-dictionaries" class="nav-link" data-scroll-target="#obtaining-dictionaries">Obtaining dictionaries</a>
   <ul class="collapse">
-  <li><a href="#download-a-dictionary" id="toc-download-a-dictionary" class="nav-link" data-scroll-target="#download-a-dictionary">Download a dictionary</a></li>
+<li><a href="#download-a-dictionary" id="toc-download-a-dictionary" class="nav-link" data-scroll-target="#download-a-dictionary">Download a dictionary</a></li>
   <li><a href="#generate-a-dictionary-using-a-g2p-model" id="toc-generate-a-dictionary-using-a-g2p-model" class="nav-link" data-scroll-target="#generate-a-dictionary-using-a-g2p-model">Generate a dictionary using a G2P model</a></li>
   <li><a href="#train-a-g2p-model" id="toc-train-a-g2p-model" class="nav-link" data-scroll-target="#train-a-g2p-model">Train a G2P model</a></li>
   <li><a href="#create-the-dictionary-by-hand" id="toc-create-the-dictionary-by-hand" class="nav-link" data-scroll-target="#create-the-dictionary-by-hand">Create the dictionary by hand</a></li>
-  </ul></li>
-  <li><a href="#tips-and-tricks" id="toc-tips-and-tricks" class="nav-link" data-scroll-target="#tips-and-tricks">Tips and tricks</a></li>
   </ul>
-</nav>
+</li>
+  <li><a href="#tips-and-tricks" id="toc-tips-and-tricks" class="nav-link" data-scroll-target="#tips-and-tricks">Tips and tricks</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../content/tools/index.html">Tools</a></li><li class="breadcrumb-item"><a href="../../../../content/tools/mfa/mfa-tutorial/index.html">Montreal Forced Aligner</a></li></ol></nav>
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../content/tools/index.html">Tools</a></li><li class="breadcrumb-item"><a href="../../../../content/tools/mfa/mfa-tutorial/index.html">Montreal Forced Aligner</a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Montreal Forced Aligner</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -575,11 +555,7 @@ cookieconsent.run({
   
 
 
-</header>
-
-
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+</header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>The <a href="https://montreal-forced-aligner.readthedocs.io/en/latest/index.html" target="_blank">Montreal Forced Aligner</a> is a forced alignment system with acoustic models built using the <a href="https://eleanorchodroff.com/tutorial/kaldi/introduction.html" target="_blank">Kaldi ASR toolkit</a>. A major highlight of this system is the availability of pretrained acoustic models and grapheme-to-phoneme models for a wide variety of languages, as well as the ability to train acoustic and grapheme-to-phoneme models to any new dataset you might have. It also uses advanced techniques for training and aligning speech data (Kaldi) with a full suite of training and speaker adaptation algorithms. The basic acoustic model recipe uses the traditional GMM-HMM framework, starting with monophone models, then triphone models (which allow for context sensitivity, read: coarticulation), and some transformations and speaker adaptation along the way. You can check out more regarding the recipes in the <a href="https://montreal-forced-aligner.readthedocs.io/en/latest/">MFA user guide and reference guide</a>; for an overview to a standard training recipe, check out this <a href="https://www.eleanorchodroff.com/tutorial/kaldi/training-overview.html">Kaldi tutorial</a>.</p>
 <p>As a forced alignment system, the Montreal Forced Aligner will time-align a transcript to a corresponding audio file at the phone and word levels provided there exist a set of pretrained acoustic models and a pronunciation dictionary (a.k.a. lexicon) of the words in the transcript with their canonical phonetic pronunciation(s).</p>
 <p>The current MFA download contains a suite of <code>mfa</code> commands that allow you to do everything from basic forced alignment to grapheme-to-phoneme conversion to automatic speech recognition. In this tutorial, we’ll be focusing mostly on those commands relating to forced alignment and a side of grapheme-to-phoneme conversion.</p>
@@ -592,10 +568,7 @@ cookieconsent.run({
 <li>Create an input folder that contains the audio files and transcripts</li>
 <li>Create an empty output folder</li>
 <li>Run the <code>mfa align</code> command</li>
-</ul>
-</section>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+</ul></section><section id="installation" class="level2"><h2 class="anchored" data-anchor-id="installation">Installation</h2>
 <p>You can find the streamlined installation instructions on the <a href="https://montreal-forced-aligner.readthedocs.io/en/latest/installation.html">main MFA installation page</a>. The majority of users will be following the “All platforms” instructions.</p>
 <p>As listed there, you will need to download Miniconda or Anaconda. If you’re trying to decide between the two, I’d probably recommend Miniconda. Compared to Anaconda, Miniconda is smaller, and has a slightly higher success rate for installation. Conda is a package and environment management system. If you’re familiar with R, the package management system is similar in concept to the R CRAN server. Once installed, you can import sets of packages via the <code>conda</code> commands, similar to how you might run <code>install.packages</code> in R. The environment manager aspect of conda is fairly unique, and essentially creates a small environment on your computer for the collection of imported packages (here the MFA suite) to run. The primary advantage is that you don’t have to worry about conflicting versions of the same code package on your computer; the environment will be a bubble in your computer with the correct package versions for the MFA suite.</p>
 <p>Once you’ve installed Miniconda/Anaconda, you’ll run the following line of code in the command line. For Mac users, the command line will be the terminal or a downloaded equivalent. For Windows users, <em>I believe</em> you will run this directly in the Miniconda console.</p>
@@ -619,9 +592,7 @@ cookieconsent.run({
 </div>
 <p>You can run the aligner from any location on the computer as long as you’re in the aligner environment on the command line.</p>
 <p><strong>NB:</strong> The Montreal Forced Aligner is now located in the <code>Documents/MFA</code> folder. All acoustic models, dictionaries, temporary alignment or training files, etc. will be stored in this folder. If you are ever confused or curious about what is happening with the aligner, just poke around this folder.</p>
-</section>
-<section id="running-the-aligner" class="level2">
-<h2 class="anchored" data-anchor-id="running-the-aligner">Running the aligner</h2>
+</section><section id="running-the-aligner" class="level2"><h2 class="anchored" data-anchor-id="running-the-aligner">Running the aligner</h2>
 <p>To run the aligner, we’ll need to follow this procedure:</p>
 <ul>
 <li>Prep audio file(s)</li>
@@ -661,19 +632,12 @@ cookieconsent.run({
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> align <span class="at">--clean</span> /Users/Eleanor/Documents/input_english/ english_us_arpa english_us_arpa /Users/Eleanor/Documents/output_english/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And if everything worked appropriately, your aligned <code>TextGrids</code> should now be in the <code>Documents/output_english/</code> folder!</p>
-</section>
-<section id="file-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="file-preparation">File preparation</h2>
-<section id="audio-files" class="level3">
-<h3 class="anchored" data-anchor-id="audio-files">Audio files</h3>
+</section><section id="file-preparation" class="level2"><h2 class="anchored" data-anchor-id="file-preparation">File preparation</h2>
+<section id="audio-files" class="level3"><h3 class="anchored" data-anchor-id="audio-files">Audio files</h3>
 <p>The Montreal Forced Aligner is incredibly robust to audio files of differing formats, sampling rates and channels. You should not have to do much prep, but note that whatever you feed the system will be converted to be a <code>wav</code> file with a sampling rate of 16 kHz with a single (mono) channel unless otherwise specified (see <a href="https://montreal-forced-aligner.readthedocs.io/en/latest/user_guide/configuration/global.html##feature-config">Feature Configuration</a>. For the record, I have not yet tried any other file format except for <code>wav</code> files, so I’m not yet aware of potential issues that might arise there.</p>
-</section>
-<section id="transcripts" class="level3">
-<h3 class="anchored" data-anchor-id="transcripts">Transcripts</h3>
+</section><section id="transcripts" class="level3"><h3 class="anchored" data-anchor-id="transcripts">Transcripts</h3>
 <p>The MFA can take as input either a Praat <code>TextGrid</code> or a <code>.lab</code> or <code>.txt</code> file. I have worked most extensively with the <code>TextGrid</code> input, so I’ll describe those details here. As for <code>.lab</code> and <code>.txt</code> input, I believe this method only works when the transcript is pasted in as a single line. In other words, I don’t think it can handle time stamps for utterance start and end times.</p>
-</section>
-<section id="filenames" class="level3">
-<h3 class="anchored" data-anchor-id="filenames">Filenames</h3>
+</section><section id="filenames" class="level3"><h3 class="anchored" data-anchor-id="filenames">Filenames</h3>
 <p>The filename of the <code>wav</code> file and its corresponding transcript must be identical except for the extension (<code>.wav</code> or <code>.TextGrid</code>). If you have multiple speakers in the alignment or training, you can actually implement some degree of speaker/channel adaptation. You can do this either by placing speaker-specific files in its own subfolder within the input folder, or by adding an optional argument to the <code>mfa align</code> command to use the first <code>n</code> characters of the filename.</p>
 <p>If you go forward with this, it helps to have the speaker ID as the prefix to the filenames. For example:</p>
 <div class="cell">
@@ -694,21 +658,13 @@ cookieconsent.run({
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> align <span class="at">--speaker_characters</span> 6 <span class="at">--clean</span> /Users/Eleanor/input_english/ english_us_arpa english_us_arpa /Users/Eleanor/output_english/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="input-and-output-folders" class="level3">
-<h3 class="anchored" data-anchor-id="input-and-output-folders">Input and output folders</h3>
+</section><section id="input-and-output-folders" class="level3"><h3 class="anchored" data-anchor-id="input-and-output-folders">Input and output folders</h3>
 <p>I would recommend creating a special input folder that houses a copy of your audio files and <code>TextGrid</code> transcripts. In case something goes wrong, you won’t be messing up the raw data. You can place this folder basically anywhere on your computer, and you can call this whatever you want.</p>
 <p>You will also need to create an empty output folder. I recommend making sure this is empty each time you run the aligner as the aligner does not overwrite any existing files. You can place this folder basically anywhere on your computer, and you can call this whatever you want; however, you may not re-use the input folder as the output folder.</p>
-</section>
-</section>
-<section id="obtaining-acoustic-models" class="level2">
-<h2 class="anchored" data-anchor-id="obtaining-acoustic-models">Obtaining acoustic models</h2>
-<section id="download-an-acoustic-model" class="level3">
-<h3 class="anchored" data-anchor-id="download-an-acoustic-model">Download an acoustic model</h3>
+</section></section><section id="obtaining-acoustic-models" class="level2"><h2 class="anchored" data-anchor-id="obtaining-acoustic-models">Obtaining acoustic models</h2>
+<section id="download-an-acoustic-model" class="level3"><h3 class="anchored" data-anchor-id="download-an-acoustic-model">Download an acoustic model</h3>
 <p>Pretrained acoustic models for several languages can be downloaded directly using the command line interface. This is the <a href="https://mfa-models.readthedocs.io/en/latest/acoustic/index.html">master list</a> of acoustic models available for download.</p>
-</section>
-<section id="train-an-acoustic-model" class="level3">
-<h3 class="anchored" data-anchor-id="train-an-acoustic-model">Train an acoustic model</h3>
+</section><section id="train-an-acoustic-model" class="level3"><h3 class="anchored" data-anchor-id="train-an-acoustic-model">Train an acoustic model</h3>
 <p>You can also train an acoustic model yourself directly on the data you’re working on. You do need a fair amount of data to get reasonable alignments out. If an existing acoustic model already exists, it might be worth simply using that directly on your data or you could try <a href="https://montreal-forced-aligner.readthedocs.io/en/latest/user_guide/workflows/adapt_acoustic_model.html">adapting</a> the model to your data. There are many cases, however, when training a new acoustic model is the best path forward.</p>
 <p>The <code>mfa train</code> command takes 3 arguments:</p>
 <ul>
@@ -726,23 +682,17 @@ cookieconsent.run({
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model save acoustic <span class="at">--name</span> guarani_cv ~/Documents/MFA/mfainput4guarani/sat3_ali/acoustic_model.zip </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-</section>
-<section id="obtaining-dictionaries" class="level2">
-<h2 class="anchored" data-anchor-id="obtaining-dictionaries">Obtaining dictionaries</h2>
+</section></section><section id="obtaining-dictionaries" class="level2"><h2 class="anchored" data-anchor-id="obtaining-dictionaries">Obtaining dictionaries</h2>
 <p>The pronunciation dictionary must be a two column text file with a list of words on the left-hand side and the phonetic pronunciation(s) on the right-hand side. Each word should be separated from its phonetic pronunciation by a tab, and each phone in the phonetic pronunciation should be separated by a space. Many-to-many mappings between words and pronunciations are permitted. In fact, you can even add <a href="https://montreal-forced-aligner.readthedocs.io/en/latest/user_guide/workflows/training_dictionary.html">pronunciation probabilities</a> to the dictionary, but I have not yet tried this!</p>
 <p>One important point: the phone set in your dictionary must match that used in the acoustic models and the orthography must match that in the transcripts.</p>
 <p>There are a few options for obtaining a pronunciation dictionary:</p>
-<section id="download-a-dictionary" class="level3">
-<h3 class="anchored" data-anchor-id="download-a-dictionary">Download a dictionary</h3>
+<section id="download-a-dictionary" class="level3"><h3 class="anchored" data-anchor-id="download-a-dictionary">Download a dictionary</h3>
 <p>This is the <a href="https://mfa-models.readthedocs.io/en/latest/dictionary/index.html">master list</a> of pre-existing pronunciation dictionaries available through the MFA. Click on the dictionary of interest, and if you scroll to the bottom of the page, it will tell you the name to type in the <code>mfa model download dictionary</code> command.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> model download dictionary spanish_latin_america_mfa</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>NB: you must add any missing words in your corpus manually, or train a G2P model to handle these cases.</p>
-</section>
-<section id="generate-a-dictionary-using-a-g2p-model" class="level3">
-<h3 class="anchored" data-anchor-id="generate-a-dictionary-using-a-g2p-model">Generate a dictionary using a G2P model</h3>
+</section><section id="generate-a-dictionary-using-a-g2p-model" class="level3"><h3 class="anchored" data-anchor-id="generate-a-dictionary-using-a-g2p-model">Generate a dictionary using a G2P model</h3>
 <p>Grapheme-to-phoneme (G2P) models automatically convert the orthographic words in your corpus to the most likely phonetic pronunciation. How exactly it does this depends a lot on the type of model and its training data.</p>
 <p>The MFA has a handful of pretrained G2P models that you can download. This is the <a href="https://mfa-models.readthedocs.io/en/latest/g2p/index.html">master list</a> of G2P models available for download.</p>
 <div class="cell">
@@ -759,9 +709,7 @@ cookieconsent.run({
 </div>
 <p>You can also use an external resource like <a href="https://github.com/dmort27/epitran">Epitran</a> or <a href="https://cohenpr-xpf.github.io/XPF/Convert-to-IPA.html">XPF</a> to generate a dictionary for you. These are both rule-based G2P systems built by linguists; these systems work to varying degrees of success.</p>
 <p>In all cases, you’re best off checking the output. Remember that the phone set in the dictionary must entirely match the phone set in the acoustic model.</p>
-</section>
-<section id="train-a-g2p-model" class="level3">
-<h3 class="anchored" data-anchor-id="train-a-g2p-model">Train a G2P model</h3>
+</section><section id="train-a-g2p-model" class="level3"><h3 class="anchored" data-anchor-id="train-a-g2p-model">Train a G2P model</h3>
 <p>You can also train a G2P model on an existing pronunciation dictionary. Once you’ve trained the G2P model, you’ll need to jump back up to the generate dictionary instructions just above. This might be useful in cases when you have many unlisted orthographic forms that are still in need of a phonetic transcription.</p>
 <p>The <code>mfa train_g2p</code> command has 2 arguments:</p>
 <ul>
@@ -771,14 +719,9 @@ cookieconsent.run({
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mfa</span> train_g2p ~/Desktop/romanian/romanian_lexicon.txt ~/Desktop/romanian/romanian_g2p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="create-the-dictionary-by-hand" class="level3">
-<h3 class="anchored" data-anchor-id="create-the-dictionary-by-hand">Create the dictionary by hand</h3>
+</section><section id="create-the-dictionary-by-hand" class="level3"><h3 class="anchored" data-anchor-id="create-the-dictionary-by-hand">Create the dictionary by hand</h3>
 <p>This one is self-explanatory, but once again, make sure to use the same phone set as the acoustic models.</p>
-</section>
-</section>
-<section id="tips-and-tricks" class="level2">
-<h2 class="anchored" data-anchor-id="tips-and-tricks">Tips and tricks</h2>
+</section></section><section id="tips-and-tricks" class="level2"><h2 class="anchored" data-anchor-id="tips-and-tricks">Tips and tricks</h2>
 <ul>
 <li>Add <code>-h</code> after any command to get a help screen that will also display its argument structure. For example:</li>
 </ul>
@@ -840,9 +783,7 @@ cookieconsent.run({
 
 <!-- -->
 
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{chodroff2023,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{chodroff2023,
   author = {Chodroff, Eleanor},
   title = {Montreal {Forced} {Aligner}},
   series = {Linguistics Methods Hub},
@@ -855,8 +796,7 @@ cookieconsent.run({
 Chodroff, Eleanor. 2023, January 22. Montreal Forced Aligner.
 <em>Linguistics Methods Hub</em>. (<a href="https://lingmethodshub.github.io/content/tools/mfa/mfa-tutorial/">https://lingmethodshub.github.io/content/tools/mfa/mfa-tutorial/</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7591607">10.5281/zenodo.7591607</a>
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1306,9 +1246,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7591607">10.5281/zenodo.7591607</a>
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../../../content/tools/index.html" class="pagination-link" aria-label="Tools">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tools</span>
       </a>          
@@ -1648,8 +1586,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7591607">10.5281/zenodo.7591607</a>
 <span id="cb22-327"><a href="#cb22-327" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>And finally, there is even more to the MFA than just what I've put here! Definitely poke around the MFA user guide to learn more and find special functions that might make your workflow even easier.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -1661,8 +1598,6 @@ doi: <a href="https://doi.org/10.5281/zenodo.7591607">10.5281/zenodo.7591607</a>
     </div>
   </div>
 </footer>
-
-
 
 
 <script src="../../../../site_libs/quarto-html/zenscroll-min.js"></script>

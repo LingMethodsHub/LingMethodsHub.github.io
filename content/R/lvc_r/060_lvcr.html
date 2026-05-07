@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Matt Hunt Gardner">
 <meta name="dcterms.date" content="2022-09-27">
 <meta name="description" content="Getting token counts and proportions. Getting mean, median, standard deviation, and quartiles. Dealing with decimals and exponential notation.">
-
 <title>Crosstabs: Counts, Proportions, and More – LingMethodsHub</title>
 <style>
 /* Default styles provided by pandoc.
@@ -63,7 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
@@ -88,8 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap-194cc7e99426acbbbef3f1ad860df344.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/bootstrap/bootstrap-dark-194cc7e99426acbbbef3f1ad860df344.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-194cc7e99426acbbbef3f1ad860df344.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../../site_libs/bootstrap/bootstrap-194cc7e99426acbbbef3f1ad860df344.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -115,18 +110,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
-
-<script type="text/plain" cookie-consent="tracking">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script><script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
-</script>
-
-<script type="text/javascript" charset="UTF-8">
+</script><script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
@@ -141,27 +131,18 @@ cookieconsent.run({
 "language":"en"
   });
 });
-</script> 
-  
-<style>html{ scroll-behavior: smooth; }</style>
+</script><style>html{ scroll-behavior: smooth; }</style>
 <script type="application/json" class="js-hypothesis-config">
 {
   "theme": "clean",
   "openSidebar": false,
   "showHighlights": "never"
 }
-</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
-<script>
+</script><script async="" src="https://hypothes.is/embed.js"></script><script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -186,9 +167,7 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script>
-
-<link rel="stylesheet" href="../../../styles.css">
+</script><link rel="stylesheet" href="../../../styles.css">
 <meta property="og:title" content="Crosstabs: Counts, Proportions, and More – LingMethodsHub">
 <meta property="og:description" content="Getting token counts and proportions. Getting mean, median, standard deviation, and quartiles. Dealing with decimals and exponential notation.">
 <meta property="og:image" content="https://lingmethodshub.github.io/content/R/lvc_r/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
@@ -210,13 +189,10 @@ window.Quarto = {
 <meta name="citation_journal_title" content="Linguistics Methods Hub">
 <meta name="citation_series_title" content="Linguistics Methods Hub">
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">LingMethodsHub</span>
@@ -228,7 +204,7 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -249,14 +225,14 @@ window.Quarto = {
 <span class="menu-text">People</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -265,9 +241,7 @@ window.Quarto = {
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -275,19 +249,15 @@ window.Quarto = {
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorials</span></a>
@@ -301,8 +271,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Doing LVC with R</span></a>
@@ -310,8 +280,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
@@ -391,7 +361,7 @@ window.Quarto = {
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
-  </li>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">
@@ -422,8 +392,14 @@ window.Quarto = {
  <span class="menu-text">Using {marginaleffects} to understand statistical models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/multitaper-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generating and analyzing multitaper spectra in R</span></a>
+  </div>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -433,8 +409,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vowel plotting in Python</span></a>
@@ -447,7 +423,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -462,8 +438,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Montreal Forced Aligner</span></a>
@@ -476,7 +452,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -486,8 +462,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Shell Basics</span></a>
@@ -500,7 +476,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -510,8 +486,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Windows Subsystem for Linux</span></a>
@@ -519,48 +495,46 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#token-counts" id="toc-token-counts" class="nav-link active" data-scroll-target="#token-counts">Token Counts</a></li>
-  <li><a href="#summary-statistics-for-continous-variables" id="toc-summary-statistics-for-continous-variables" class="nav-link" data-scroll-target="#summary-statistics-for-continous-variables">Summary Statistics for Continous Variables</a>
+<li><a href="#token-counts" id="toc-token-counts" class="nav-link active" data-scroll-target="#token-counts">Token Counts</a></li>
+  <li>
+<a href="#summary-statistics-for-continous-variables" id="toc-summary-statistics-for-continous-variables" class="nav-link" data-scroll-target="#summary-statistics-for-continous-variables">Summary Statistics for Continous Variables</a>
   <ul class="collapse">
-  <li><a href="#dealing-with-decimals" id="toc-dealing-with-decimals" class="nav-link" data-scroll-target="#dealing-with-decimals">Dealing with Decimals</a></li>
-  </ul></li>
-  <li><a href="#more-summary-statistics-for-continous-variables" id="toc-more-summary-statistics-for-continous-variables" class="nav-link" data-scroll-target="#more-summary-statistics-for-continous-variables">More Summary Statistics for Continous Variables</a></li>
-  <li><a href="#position-functions-with-summarize" id="toc-position-functions-with-summarize" class="nav-link" data-scroll-target="#position-functions-with-summarize">Position functions with <code>summarize()</code></a>
-  <ul class="collapse">
-  <li><a href="#count-functions-with-summarize" id="toc-count-functions-with-summarize" class="nav-link" data-scroll-target="#count-functions-with-summarize">Count functions with <code>summarize()</code></a></li>
-  <li><a href="#logical-functions" id="toc-logical-functions" class="nav-link" data-scroll-target="#logical-functions">Logical functions</a></li>
-  </ul></li>
-  <li><a href="#proportions" id="toc-proportions" class="nav-link" data-scroll-target="#proportions">Proportions</a></li>
+<li><a href="#dealing-with-decimals" id="toc-dealing-with-decimals" class="nav-link" data-scroll-target="#dealing-with-decimals">Dealing with Decimals</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="060_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</li>
+  <li><a href="#more-summary-statistics-for-continous-variables" id="toc-more-summary-statistics-for-continous-variables" class="nav-link" data-scroll-target="#more-summary-statistics-for-continous-variables">More Summary Statistics for Continous Variables</a></li>
+  <li>
+<a href="#position-functions-with-summarize" id="toc-position-functions-with-summarize" class="nav-link" data-scroll-target="#position-functions-with-summarize">Position functions with <code>summarize()</code></a>
+  <ul class="collapse">
+<li><a href="#count-functions-with-summarize" id="toc-count-functions-with-summarize" class="nav-link" data-scroll-target="#count-functions-with-summarize">Count functions with <code>summarize()</code></a></li>
+  <li><a href="#logical-functions" id="toc-logical-functions" class="nav-link" data-scroll-target="#logical-functions">Logical functions</a></li>
+  </ul>
+</li>
+  <li><a href="#proportions" id="toc-proportions" class="nav-link" data-scroll-target="#proportions">Proportions</a></li>
+  </ul><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="060_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/060_lvcr.html">Crosstabs: Counts, Proportions, and More</a></li></ol></nav>
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/060_lvcr.html">Crosstabs: Counts, Proportions, and More</a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Crosstabs: Counts, Proportions, and More</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -607,13 +581,9 @@ window.Quarto = {
   
 
 
-</header>
-
-
-<p>It took me two years to figure out how to do cross-tabs in <em>R</em> the way that <em>Goldvarb</em> does cross-tabs. Below I show you how to build cross-tabs from scratch.</p>
-<section id="token-counts" class="level2">
-<h2 class="anchored" data-anchor-id="token-counts">Token Counts</h2>
-<p>A good starting point is the function <code>table()</code>. This function returns token numbers.</p>
+</header><p>It took me two years to figure out how to do cross-tabs in <em>R</em> the way that <em>Goldvarb</em> does cross-tabs. Below I show you how to build cross-tabs from scratch.</p>
+<section id="token-counts" class="level2"><h2 class="anchored" data-anchor-id="token-counts">Token Counts</h2>
+<p>A good starting point is the function <code><a href="https://rdrr.io/r/base/table.html">table()</a></code>. This function returns token numbers.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -628,8 +598,8 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by level of Dep.Var</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(td<span class="sc">$</span>Dep.Var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get the number of tokens by level of Dep.Var</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Deletion Realized 
@@ -638,8 +608,8 @@ Deletion Realized
 </div>
 <p>This tells you that there are 386 <code>Deletion</code> tokens and 803 not deleted, or <code>Realized</code> tokens. If you add another factor group like <code>Age.Group</code>, you get the number of tokens for each level of <code>Dep.Var</code> for each level of that additional factor group. These two factor groups are returned as the rows and then columns in the table.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by level of Dep.Var and Age.Group</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get the number of tokens by level of Dep.Var and Age.Group</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span>, <span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          
            Old Middle Young
@@ -649,8 +619,8 @@ Deletion Realized
 </div>
 <p>If you add one more factor group, <code>Sex</code>, it divides the data in what <em>R</em> calls “pages”. The first page is the number of tokens for each level of <code>Dep.Var</code> by each level of <code>Age.Group</code> for female data (<code>Sex = F</code>), and then the same for the male data (<code>Sex = M</code>).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by Dep.Var, Sex, and Age.Group</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get the number of tokens by Dep.Var, Sex, and Age.Group</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span>, <span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre style="max-height: 500px;"><code>, ,  = F
 
@@ -669,8 +639,8 @@ Deletion Realized
 </div>
 <p>You can add the option <code>deparse.level = 2</code> to include the names of the columns in the table.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by Dep.Var, Sex, and Age.Group</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, <span class="at">deparse.level =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get the number of tokens by Dep.Var, Sex, and Age.Group</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span>, <span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span>, deparse.level <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre style="max-height: 500px;"><code>, , td$Sex = F
 
@@ -687,10 +657,10 @@ td$Dep.Var Old Middle Young
   Realized  27     70   235</code></pre>
 </div>
 </div>
-<p>If you wrap the <code>table()</code> function in the <code>addmargins()</code> function you get the sums of each row and column, and another page for both the male and the female data together.</p>
+<p>If you wrap the <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> function in the <code><a href="https://rdrr.io/r/stats/addmargins.html">addmargins()</a></code> function you get the sums of each row and column, and another page for both the male and the female data together.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by Dep.Var, Sex, and Age.Group, with column, row and page totals</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex,  <span class="at">deparse.level =</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get the number of tokens by Dep.Var, Sex, and Age.Group, with column, row and page totals</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/addmargins.html">addmargins</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span>, <span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span>,  deparse.level <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre style="max-height: 500px;"><code>, , td$Sex = F
 
@@ -717,10 +687,10 @@ td$Dep.Var  Old Middle Young  Sum
   Sum       201    360   628 1189</code></pre>
 </div>
 </div>
-<p>If you change the order of factor groups you include in the <code>table()</code> function you can change which factors are rows, which are columns, and which are pages. You can also keep adding factors as additional pages. The order is always: rows, columns, page 1, page 2, etc.</p>
+<p>If you change the order of factor groups you include in the <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> function you can change which factors are rows, which are columns, and which are pages. You can also keep adding factors as additional pages. The order is always: rows, columns, page 1, page 2, etc.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by Age.Group, Education, Sex, and Dep.Var, with row, column, and page totals </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Education, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var,  <span class="at">deparse.level =</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get the number of tokens by Age.Group, Education, Sex, and Dep.Var, with row, column, and page totals </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/addmargins.html">addmargins</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Education</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span>,  deparse.level <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre style="max-height: 500px;"><code>, , td$Sex = F, td$Dep.Var = Deletion
 
@@ -805,11 +775,11 @@ td$Age.Group Educated Not Educated Student  Sum
 </div>
 </div>
 <p>The above function produces 9 “pages”, one for each combination of <code>Sex</code> (two levels) and <code>Dep.Var</code> (two levels), plus the sum of each (one additional level each), and the sum for both. With more than three factor groups like this it is very useful to have the column names included in the output. Scroll to the sixth page, for example (the one that begins <code>, , td$Sex = Sum, td$Dep.Var = Realized</code>). It shows the number of tokens by <code>Age.Group</code> and <code>Education</code> (the first two factor groups in the function), when <code>Sex</code> equals <code>Sum</code> (e.g., <code>M</code> and <code>F</code> combined) and <code>Dep.Var</code> equals <code>Realized</code>.</p>
-<p>One advantage of doing cross-tabs in <em>R</em>, rather than <em>Goldvarb</em>, is that you can simultaneously cross more than two factor groups at once. But, the presentation of these factors in pages may not be the most useful. The function <code>ftable()</code> in the package <code>vcd</code> presents the cross-tab in a more condensed format. The last factor group in the <code>table()</code> function will be the variable for the columns in <code>ftable()</code>, so you always want to make that the dependent variable. Below is the <code>ftable()</code> for the cross-tab of <code>Age.Group</code>, <code>Education</code>, <code>Sex</code>, and <code>Dep.Var</code>. You can see, for example, that there are 52 <code>Deletion</code> tokens from young, student, female speakers and that there are no tokens from old, educated men.</p>
+<p>One advantage of doing cross-tabs in <em>R</em>, rather than <em>Goldvarb</em>, is that you can simultaneously cross more than two factor groups at once. But, the presentation of these factors in pages may not be the most useful. The function <code><a href="https://rdrr.io/r/stats/ftable.html">ftable()</a></code> in the package <code>vcd</code> presents the cross-tab in a more condensed format. The last factor group in the <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> function will be the variable for the columns in <code><a href="https://rdrr.io/r/stats/ftable.html">ftable()</a></code>, so you always want to make that the dependent variable. Below is the <code><a href="https://rdrr.io/r/stats/ftable.html">ftable()</a></code> for the cross-tab of <code>Age.Group</code>, <code>Education</code>, <code>Sex</code>, and <code>Dep.Var</code>. You can see, for example, that there are 52 <code>Deletion</code> tokens from young, student, female speakers and that there are no tokens from old, educated men.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by Age.Group, Education, Sex, and Dep.Var, with row, column and page totals, presented in a flattened table</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Education, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get the number of tokens by Age.Group, Education, Sex, and Dep.Var, with row, column and page totals, presented in a flattened table</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">vcd</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/ftable.html">ftable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Education</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                       Deletion Realized
                                         
@@ -832,8 +802,8 @@ Young  Educated     F        20       52
        Student      F        52      147
                     M        50      127</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do the same but include the margin values</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(<span class="fu">addmargins</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Education, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Do the same but include the margin values</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/ftable.html">ftable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/addmargins.html">addmargins</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Education</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                         Deletion Realized  Sum
                                                
@@ -889,10 +859,10 @@ Sum    Educated     F          90      235  325
 </div>
 <p>Of course we can use the pipe <code>%&gt;%</code> to make things a bit easier</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of tokens by Age.Group, Education, Sex, and Dep.Var, with row, column and page totals, presented in a flattened table</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Education, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addmargins</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ftable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get the number of tokens by Age.Group, Education, Sex, and Dep.Var, with row, column and page totals, presented in a flattened table</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Education</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/addmargins.html">addmargins</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/ftable.html">ftable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                         Deletion Realized  Sum
                                                
@@ -948,10 +918,10 @@ Sum    Educated     F          90      235  325
 </div>
 <p>Another <code>tidy</code> way to find out the number of tokens by the different levels of a factor group is using the <code>group_by()</code> and <code>tally()</code> functions. First, we specify how to group the data, i.e., what combination of factors we want to investigate. In this case, we want the number of tokens for every combination of <code>Age.Group</code>, <code>Education</code>, <code>Sex</code> and <code>Dep.Var</code>. Next we use the <code>tally()</code> function to provide the token counts for each of those combinations. The results are very similar to those produced by <code>ftable(table())</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data by Age, Education, and Sex then tally each group</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Education, Sex, Dep.Var) <span class="sc">%&gt;%</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Group data by Age, Education, and Sex then tally each group</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Age.Group</span>, <span class="va">Education</span>, <span class="va">Sex</span>, <span class="va">Dep.Var</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">tally</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 24 × 5
 # Groups:   Age.Group, Education, Sex [12]
@@ -972,11 +942,11 @@ Sum    Educated     F          90      235  325
 </div>
 <p>As the results of <code>tally()</code> is a <em>tibble</em>, only the first 10 rows will be printed. To print all the rows add <code>print(n=Inf)</code> at the end.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data by Age, Education, and Sex, tally each group, then print all rows</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Education, Sex, Dep.Var) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Group data by Age, Education, and Sex, tally each group, then print all rows</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Age.Group</span>, <span class="va">Education</span>, <span class="va">Sex</span>, <span class="va">Dep.Var</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">tally</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n<span class="op">=</span><span class="cn">Inf</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 24 × 5
 # Groups:   Age.Group, Education, Sex [12]
@@ -1010,11 +980,11 @@ Sum    Educated     F          90      235  325
 </div>
 <p>The above code gives us the number of <code>Realized</code> and <code>Deletion</code> tokens for each combination of <code>Age.Group</code>, <code>Education</code>, and <code>Sex</code>. What if we want the total number of tokens for each combination, rather than the number of each level of <code>Dep.Var</code>. In this case, you can just drop <code>Dep.Var</code> from the <code>group_by()</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get total number of tokens per group by removing Dep.Var</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Education, Sex) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get total number of tokens per group by removing Dep.Var</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Age.Group</span>, <span class="va">Education</span>, <span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">tally</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n<span class="op">=</span><span class="cn">Inf</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 4
 # Groups:   Age.Group, Education [7]
@@ -1037,10 +1007,10 @@ Sum    Educated     F          90      235  325
 <p>We know now that there are 32 tokens from <code>Old</code>, <code>Educated</code>, <code>F</code> (female) speakers. The previous <code>tally()</code> shows us that 2 of the tokens are <code>Deletion</code> and 30 are of <code>Realized</code>.</p>
 <p>An alternative to <code>tally()</code> is the much more flexible <code>summarize()</code> function.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> With this function you can apply a summary statistic function to each combination of the grouping variables. If no summary statistic function is created, the a tibble of the combination of the groups is produced.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tibble of all combinations of Age.Group, Education, and Sex (for which there are rows of data)</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Education, Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create a tibble of all combinations of Age.Group, Education, and Sex (for which there are rows of data)</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Age.Group</span>, <span class="va">Education</span>, <span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 3
 # Groups:   Age.Group, Education [7]
@@ -1062,11 +1032,11 @@ Sum    Educated     F          90      235  325
 </div>
 <p>To get the count, or number of rows, of each combination, we create a new column in the tibble that is the output of <code>summarize()</code> and assign to it the value of the count function <code>n()</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tibble of grouping variables, then add a new column "Tokens" with the value of the count function </span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group, Education, Sex, Dep.Var) <span class="sc">%&gt;%</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Tokens =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create a tibble of grouping variables, then add a new column "Tokens" with the value of the count function </span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Age.Group</span>, <span class="va">Education</span>, <span class="va">Sex</span>, <span class="va">Dep.Var</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Tokens <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 24 × 5
 # Groups:   Age.Group, Education, Sex [12]
@@ -1100,71 +1070,78 @@ Sum    Educated     F          90      235  325
 </div>
 <p>The <code>summarize()</code> function can be used with a number of summary statistic functions, including, but not limited to, the following:</p>
 <table class="caption-top table">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>Type</th>
 <th>Some Useful Functions</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td>Center</td>
-<td><code>mean()</code>, <code>median()</code></td>
+<td>
+<code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>
+</td>
 </tr>
 <tr class="even">
 <td>Spread</td>
-<td><code>sd()</code>, <code>IQR()</code></td>
+<td>
+<code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code>, <code><a href="https://rdrr.io/r/stats/IQR.html">IQR()</a></code>
+</td>
 </tr>
 <tr class="odd">
 <td>Range</td>
-<td><code>min()</code>, <code>max()</code></td>
+<td>
+<code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code>, <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code>
+</td>
 </tr>
 <tr class="even">
 <td>Position</td>
-<td><code>first()</code>, <code>last()</code>, <code>nth()</code></td>
+<td>
+<code>first()</code>, <code>last()</code>, <code>nth()</code>
+</td>
 </tr>
 <tr class="odd">
 <td>Count</td>
-<td><code>n()</code>, <code>n_distinct()</code></td>
+<td>
+<code>n()</code>, <code>n_distinct()</code>
+</td>
 </tr>
 <tr class="even">
 <td>Logical</td>
-<td><code>any()</code>, <code>all()</code></td>
+<td>
+<code><a href="https://rdrr.io/r/base/any.html">any()</a></code>, <code><a href="https://rdrr.io/r/base/all.html">all()</a></code>
+</td>
 </tr>
 </tbody>
-</table>
-</section>
-<section id="summary-statistics-for-continous-variables" class="level2">
-<h2 class="anchored" data-anchor-id="summary-statistics-for-continous-variables">Summary Statistics for Continous Variables</h2>
-<p>This seems like an appropriate place to describe how to summarize values that are continous, like <code>YOB</code>. Normally in variationist sociolinguistics we are very concerned with frequency and proportion of usage, and we will explore how to generate those statistics in the following section. Here, however, let’s explore the functions available to use inside <code>summarize()</code>. These functions can be used on their own, also. For example, the first two, <code>mean()</code> and <code>median()</code> provide the arithmetic mean (basically the average) of a set of numbers while the <code>median()</code> provides the exact middle number of a set of values organized from smallest to largest (if there are an even number of values, <code>median()</code> returns the halfway point between the two middle numbers).</p>
+</table></section><section id="summary-statistics-for-continous-variables" class="level2"><h2 class="anchored" data-anchor-id="summary-statistics-for-continous-variables">Summary Statistics for Continous Variables</h2>
+<p>This seems like an appropriate place to describe how to summarize values that are continous, like <code>YOB</code>. Normally in variationist sociolinguistics we are very concerned with frequency and proportion of usage, and we will explore how to generate those statistics in the following section. Here, however, let’s explore the functions available to use inside <code>summarize()</code>. These functions can be used on their own, also. For example, the first two, <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> and <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> provide the arithmetic mean (basically the average) of a set of numbers while the <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> provides the exact middle number of a set of values organized from smallest to largest (if there are an even number of values, <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> returns the halfway point between the two middle numbers).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(td<span class="sc">$</span>YOB)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get mean year of birth</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">YOB</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1969.447</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get median year of birth</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(td<span class="sc">$</span>YOB)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get median year of birth</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">YOB</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1984</code></pre>
 </div>
 </div>
 <p>We already know that the mean year of birth for the <code>td</code> data set is 1969.447. You can also see that the middle number of all years of birth organized from oldest to youngest is 1984. If we wanted to find the mean or median year of birth for either just male or just female speakers, we have two options. We can use the base filter technique, or we can use the <code>tidy</code> method to group the data and summarize it.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth of just female speakers</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(td<span class="sc">$</span>YOB[td<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">"F"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get mean year of birth of just female speakers</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">YOB</span><span class="op">[</span><span class="va">td</span><span class="op">$</span><span class="va">Sex</span> <span class="op">==</span> <span class="st">"F"</span><span class="op">]</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1963.487</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth of just male speaker</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(td<span class="sc">$</span>YOB[td<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">"M"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get mean year of birth of just male speaker</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">YOB</span><span class="op">[</span><span class="va">td</span><span class="op">$</span><span class="va">Sex</span> <span class="op">==</span> <span class="st">"M"</span><span class="op">]</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1976.857</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth for each level of Sex</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get mean year of birth for each level of Sex</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Mean.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   Sex   Mean.YOB
@@ -1173,67 +1150,66 @@ Sum    Educated     F          90      235  325
 2 M        1977.</code></pre>
 </div>
 </div>
-<section id="dealing-with-decimals" class="level3">
-<h3 class="anchored" data-anchor-id="dealing-with-decimals">Dealing with Decimals</h3>
+<section id="dealing-with-decimals" class="level3"><h3 class="anchored" data-anchor-id="dealing-with-decimals">Dealing with Decimals</h3>
 <p><em>Tibbles</em> are intended to be succinct and concise, so they provide very few values after the decimal place by default. If you require more decimal values, the easiest (trust me) thing to do is to convert the tibble into a <em>data frame</em>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by Sex, converted to data frame </span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB)) <span class="sc">%&gt;%</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get mean year of birth by Sex, converted to data frame </span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Mean.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sex Mean.YOB
 1   F 1963.487
 2   M 1976.857</code></pre>
 </div>
 </div>
-<p><em>data frames</em> will display whole numbers, and numbers with decimals up to the total number of digits set by <code>options()</code> function. Keep in mind, though, that changing this value changes the global options for <em>R</em>. An alternative is to use the <code>format()</code> function.</p>
+<p><em>data frames</em> will display whole numbers, and numbers with decimals up to the total number of digits set by <code><a href="https://rdrr.io/r/base/options.html">options()</a></code> function. Keep in mind, though, that changing this value changes the global options for <em>R</em>. An alternative is to use the <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 6</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">6</span>)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex, converted to data frame</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB)) <span class="sc">%&gt;%</span></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Change number of significant digits displayed to 6</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="co"># Get mean year of birth by sex, converted to data frame</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Mean.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sex Mean.YOB
 1   F  1963.49
 2   M  1976.86</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 10</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">10</span>)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex, converted to data frame</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB)) <span class="sc">%&gt;%</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Change number of significant digits displayed to 10</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co"># Get mean year of birth by sex, converted to data frame</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Mean.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sex    Mean.YOB
 1   F 1963.487102
 2   M 1976.856604</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 3</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex, converted to data frame</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB)) <span class="sc">%&gt;%</span></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Change number of significant digits displayed to 3</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co"># Get mean year of birth by sex, converted to data frame</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Mean.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sex Mean.YOB
 1   F     1963
 2   M     1977</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 3</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex, converted to data frame but showing 10 significant digits</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB)) <span class="sc">%&gt;%</span></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format</span>(<span class="at">digits =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Change number of significant digits displayed to 3</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co"># Get mean year of birth by sex, converted to data frame but showing 10 significant digits</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Mean.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sex    Mean.YOB
 1   F 1963.487102
@@ -1242,13 +1218,13 @@ Sum    Educated     F          90      235  325
 </div>
 <p>For very large numbers <em>R</em> will often display values in exponential notation. We can alter this by setting the value of <code>scipen</code> inside the <code>option()</code> function. Again, though, remember that this is a global change for your whole <em>R</em> session. For <code>scipen</code> positive values increase the likelihood of using real numbers, negative values increase the likelihood of using exponential notation. To ensure printouts are always real numbers, set <code>scipen</code> to 9999 (this is the default). To ensure printouts are always exponential notation, set <code>scipen</code> to -9999. To demonstrate, below we multiply mean <code>YOB</code> by 10000.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 6, alter the likelihood of use of real number rather than scientific notation by 0</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">6</span>, <span class="at">scipen =</span> <span class="dv">0</span>)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB) <span class="sc">*</span> <span class="dv">100000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Change number of significant digits displayed to 6, alter the likelihood of use of real number rather than scientific notation by 0</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">6</span>, scipen <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Mean.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100000</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sex  Mean.YOB
 1   F 196348710
@@ -1257,13 +1233,13 @@ Sum    Educated     F          90      235  325
 </div>
 <p>With <code>scipen</code> set to 0, we still get real numbers as the values <code>Mean.YOB</code> are not too big. To ensure we have real numbers, though, we change the <code>scipen</code> value.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 6, alter the likelihood of use of real number rather than scientific notation by 9999</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">6</span>, <span class="at">scipen =</span> <span class="dv">9999</span>)</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB) <span class="sc">*</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Change number of significant digits displayed to 6, alter the likelihood of use of real number rather than scientific notation by 9999</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">6</span>, scipen <span class="op">=</span> <span class="fl">9999</span><span class="op">)</span></span>
+<span><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Mean.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10000</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sex Mean.YOB
 1   F 19634871
@@ -1272,17 +1248,17 @@ Sum    Educated     F          90      235  325
 </div>
 <p>If, instead we prefer exponential notation, we use the maximum negative <code>scipen</code> value, -9999/</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 6, alter the likelihood of use of real number rather than scientific notation by -9999</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">6</span>, <span class="at">scipen =</span> <span class="sc">-</span><span class="dv">9999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Change number of significant digits displayed to 6, alter the likelihood of use of real number rather than scientific notation by -9999</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">6</span>, scipen <span class="op">=</span> <span class="op">-</span><span class="fl">9999</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in options(digits = 6e+00, scipen = -9.999e+03): invalid 'scipen'
 -9999, used -9</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB) <span class="sc">*</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Mean.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10000</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sex    Mean.YOB
 1   F 1.96349e+07
@@ -1291,17 +1267,17 @@ Sum    Educated     F          90      235  325
 </div>
 <p>Above, the value <code>1.96349e+07</code> means <span class="math inline">\(1.96349 \times 10^7\)</span>. The easiest way to calculate this is to simply move the decimal places 7 spaces to the right (as the exponent is positive), which gives <code>19634900</code>. Notice some precision is lost because our number of <code>digits</code> is only 6.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 10, alter the likelihood of use of real number rather than scientific notation by -9999</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">10</span>, <span class="at">scipen =</span> <span class="sc">-</span><span class="dv">9999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Change number of significant digits displayed to 10, alter the likelihood of use of real number rather than scientific notation by -9999</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">10</span>, scipen <span class="op">=</span> <span class="op">-</span><span class="fl">9999</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in options(digits = 1e+01, scipen = -9.999e+03): invalid 'scipen'
 -9999, used -9</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB) <span class="sc">*</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Mean.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10000</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sex        Mean.YOB
 1   F 1.963487102e+07
@@ -1309,39 +1285,36 @@ Sum    Educated     F          90      235  325
 </div>
 </div>
 <p>Now, with more <code>digits</code> we have more precision; <span class="math inline">\(1.963487102 \times 10^7 = 19634671.02\)</span>. If the exponential values are negative, move the decimal place to the left. For example, <span class="math inline">\(1.963487102 \times 10^-7 = 0.0000001963467102\)</span>.</p>
-<p>Similarly, we can set whether or not we want scientific notation using the <code>format()</code> function. The <code>scientific</code> option can be either <code>TRUE</code> or <code>FALSE</code>, or a value like <code>scipen</code>.</p>
+<p>Similarly, we can set whether or not we want scientific notation using the <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> function. The <code>scientific</code> option can be either <code>TRUE</code> or <code>FALSE</code>, or a value like <code>scipen</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change number of significant digits displayed to 3, alter the likelihood of use of real number rather than scientific notation by 9999</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">scipen =</span> <span class="dv">9999</span>)</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame, digits formatted to 10 significant digits, and exponential notation</span></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB) <span class="sc">*</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format</span>(<span class="at">digits =</span> <span class="dv">10</span>, <span class="at">scientific =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Change number of significant digits displayed to 3, alter the likelihood of use of real number rather than scientific notation by 9999</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">3</span>, scipen <span class="op">=</span> <span class="fl">9999</span><span class="op">)</span></span>
+<span><span class="co"># Get mean year of birth by sex multiplied by 100000, converted to data frame, digits formatted to 10 significant digits, and exponential notation</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Mean.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span> <span class="op">*</span> <span class="fl">10000</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">10</span>, scientific <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sex        Mean.YOB
 1   F 1.963487102e+07
 2   M 1.976856604e+07</code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="more-summary-statistics-for-continous-variables" class="level2">
-<h2 class="anchored" data-anchor-id="more-summary-statistics-for-continous-variables">More Summary Statistics for Continous Variables</h2>
-<p>The other summary statistics for continuous variables include spread functions and the range functions. Some spread functions are <code>sd()</code>, which returns the standard deviation; and <code>IQR()</code> which returns the interquartile range.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Some range functions include: <code>min()</code>, which returns the lowest value; <code>max()</code>, which returns the highest value. To find the maximum spread (from highest to lowest), we can either subtract the <code>min()</code> value from the <code>max()</code> value, or employ the <code>diff()</code> function plus the <code>range()</code> function (which produces a vector containing the minimum and maximum values).</p>
+</section></section><section id="more-summary-statistics-for-continous-variables" class="level2"><h2 class="anchored" data-anchor-id="more-summary-statistics-for-continous-variables">More Summary Statistics for Continous Variables</h2>
+<p>The other summary statistics for continuous variables include spread functions and the range functions. Some spread functions are <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code>, which returns the standard deviation; and <code><a href="https://rdrr.io/r/stats/IQR.html">IQR()</a></code> which returns the interquartile range.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Some range functions include: <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code>, which returns the lowest value; <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code>, which returns the highest value. To find the maximum spread (from highest to lowest), we can either subtract the <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> value from the <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> value, or employ the <code><a href="https://rdrr.io/r/base/diff.html">diff()</a></code> function plus the <code><a href="https://rdrr.io/r/base/range.html">range()</a></code> function (which produces a vector containing the minimum and maximum values).</p>
 <p>We can include these functions inside the same <code>summarize()</code> function as we used above.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean, standard deviation, interquartile range, minimum value, maximum value, and range of values (twice) for year of birth</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Mean.YOB =</span> <span class="fu">mean</span>(YOB), </span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD.YOB =</span> <span class="fu">sd</span>(YOB), </span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">IQR.YOB =</span> <span class="fu">IQR</span>(YOB), </span>
-<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">Min.YOB =</span> <span class="fu">min</span>(YOB), </span>
-<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Max.YOB =</span> <span class="fu">max</span>(YOB), </span>
-<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">Range =</span> <span class="fu">max</span>(YOB) <span class="sc">-</span> <span class="fu">min</span>(YOB), </span>
-<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">Range2 =</span> <span class="fu">diff</span>(<span class="fu">range</span>(YOB)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get mean, standard deviation, interquartile range, minimum value, maximum value, and range of values (twice) for year of birth</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Mean.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span>, </span>
+<span>            SD.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span>, </span>
+<span>            IQR.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span>, </span>
+<span>            Min.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span>, </span>
+<span>            Max.YOB <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span>, </span>
+<span>            Range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span>, </span>
+<span>            Range2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">YOB</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 8
   Sex   Mean.YOB SD.YOB IQR.YOB Min.YOB Max.YOB Range Range2
@@ -1356,16 +1329,14 @@ Sum    Educated     F          90      235  325
 <li><p>The oldest female speakers was born in 1915, and the youngest female speaker was born in 1999.</p></li>
 <li><p>Fifty-percent of women were born in the 45 years centered around 1963.</p></li>
 <li><p>The female data represents 84 years of <a href="https://en.wikipedia.org/wiki/Apparent-time_hypothesis">apparent time</a>.</p></li>
-</ul>
-</section>
-<section id="position-functions-with-summarize" class="level2">
-<h2 class="anchored" data-anchor-id="position-functions-with-summarize">Position functions with <code>summarize()</code></h2>
+</ul></section><section id="position-functions-with-summarize" class="level2"><h2 class="anchored" data-anchor-id="position-functions-with-summarize">Position functions with <code>summarize()</code>
+</h2>
 <p>The position functions <code>first()</code>, <code>last()</code>, and <code>nth()</code> also work on the data created by <code>group_by()</code> and <code>summarize()</code>. <code>first()</code> returns the first value, <code>last()</code> returns the last value, and <code>nth()</code> returns the value after a specific number of rows.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get first six rows of just Sex and Dep.Var columns of td</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sex, Dep.Var) <span class="sc">%&gt;%</span></span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get first six rows of just Sex and Dep.Var columns of td</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">Sex</span>, <span class="va">Dep.Var</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sex  Dep.Var
 1   F Realized
@@ -1375,10 +1346,10 @@ Sum    Educated     F          90      235  325
 5   M Realized
 6   M Deletion</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get last six rows of just Sex and Dep.Var columns of td</span></span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sex, Dep.Var) <span class="sc">%&gt;%</span></span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tail</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get last six rows of just Sex and Dep.Var columns of td</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">Sex</span>, <span class="va">Dep.Var</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Sex  Dep.Var
 1184   F Realized
@@ -1389,15 +1360,15 @@ Sum    Educated     F          90      235  325
 1189   M Realized</code></pre>
 </div>
 </div>
-<p>Above we use the <code>select()</code> function to choose just the <code>Sex</code> and <code>Dep.Var</code> columns and run the <code>head()</code> and <code>tail()</code> functions in order to see the first and last six values for both in the data. We do this just for comparisons sake. Now, lets use the position functions an compare them to our results.</p>
+<p>Above we use the <code>select()</code> function to choose just the <code>Sex</code> and <code>Dep.Var</code> columns and run the <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> and <code><a href="https://rdrr.io/r/utils/head.html">tail()</a></code> functions in order to see the first and last six values for both in the data. We do this just for comparisons sake. Now, lets use the position functions an compare them to our results.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get first, last, second, and second to last value of Dep.Var by Sex</span></span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">First =</span> <span class="fu">first</span>(Dep.Var), </span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Last =</span> <span class="fu">last</span>(Dep.Var), </span>
-<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Second =</span> <span class="fu">nth</span>(Dep.Var, <span class="dv">2</span>),</span>
-<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">Second.Last =</span> <span class="fu">nth</span>(Dep.Var, <span class="sc">-</span><span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get first, last, second, and second to last value of Dep.Var by Sex</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>First <span class="op">=</span> <span class="fu">first</span><span class="op">(</span><span class="va">Dep.Var</span><span class="op">)</span>, </span>
+<span>            Last <span class="op">=</span> <span class="fu">last</span><span class="op">(</span><span class="va">Dep.Var</span><span class="op">)</span>, </span>
+<span>            Second <span class="op">=</span> <span class="fu">nth</span><span class="op">(</span><span class="va">Dep.Var</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>            Second.Last <span class="op">=</span> <span class="fu">nth</span><span class="op">(</span><span class="va">Dep.Var</span>, <span class="op">-</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   Sex   First    Last     Second   Second.Last
@@ -1406,23 +1377,23 @@ Sum    Educated     F          90      235  325
 2 M     Realized Realized Deletion Deletion   </code></pre>
 </div>
 </div>
-<p>Compare the male values with those from the <code>head()</code> and <code>tail()</code> functions above. The first (row 5) is <code>Realized</code>, the last (row 1198) is <code>Realized</code>. The second (row 6) is <code>Deletion</code>, and the second to last (row 1188) is also <code>Deletion</code>.</p>
-<section id="count-functions-with-summarize" class="level3">
-<h3 class="anchored" data-anchor-id="count-functions-with-summarize">Count functions with <code>summarize()</code></h3>
+<p>Compare the male values with those from the <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> and <code><a href="https://rdrr.io/r/utils/head.html">tail()</a></code> functions above. The first (row 5) is <code>Realized</code>, the last (row 1198) is <code>Realized</code>. The second (row 6) is <code>Deletion</code>, and the second to last (row 1188) is also <code>Deletion</code>.</p>
+<section id="count-functions-with-summarize" class="level3"><h3 class="anchored" data-anchor-id="count-functions-with-summarize">Count functions with <code>summarize()</code>
+</h3>
 <p>We’ve already looked at <code>n()</code> above, but there is also the <code>n_distinct()</code> function, which reports the number of distinct values. We can use this, for example, to find the number of speakers in each social category. To do this using base <em>R</em> filtering is a lot more complicated to code (so much so its not even worth doing). One example is shown below. It would need to be repeated for every combination of sex, education, and age group.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example using base R filtering, finding the number of unique speakers who are female, educated, and middle aged</span></span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="fu">n_distinct</span>(td<span class="sc">$</span>Speaker[td<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">"F"</span> <span class="sc">&amp;</span> td<span class="sc">$</span>Education <span class="sc">==</span> <span class="st">"Educated"</span> <span class="sc">&amp;</span> td<span class="sc">$</span>Age.Group <span class="sc">==</span> <span class="st">"Middle"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Example using base R filtering, finding the number of unique speakers who are female, educated, and middle aged</span></span>
+<span></span>
+<span><span class="fu">n_distinct</span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Speaker</span><span class="op">[</span><span class="va">td</span><span class="op">$</span><span class="va">Sex</span> <span class="op">==</span> <span class="st">"F"</span> <span class="op">&amp;</span> <span class="va">td</span><span class="op">$</span><span class="va">Education</span> <span class="op">==</span> <span class="st">"Educated"</span> <span class="op">&amp;</span> <span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span> <span class="op">==</span> <span class="st">"Middle"</span><span class="op">]</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Much easier way to find number of unique speakers for every combination of Sex, Education, and Age. Group</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex, Education, Age.Group) <span class="sc">%&gt;%</span></span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Speaker.Count =</span> <span class="fu">n_distinct</span>(Speaker)) <span class="sc">%&gt;%</span></span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Much easier way to find number of unique speakers for every combination of Sex, Education, and Age. Group</span></span>
+<span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span>, <span class="va">Education</span>, <span class="va">Age.Group</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Speaker.Count <span class="op">=</span> <span class="fu">n_distinct</span><span class="op">(</span><span class="va">Speaker</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n<span class="op">=</span><span class="cn">Inf</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 4
 # Groups:   Sex, Education [6]
@@ -1443,21 +1414,19 @@ Sum    Educated     F          90      235  325
 </div>
 </div>
 <p>You’ll notice that there are is no value for older educated males. This is because there are no speakers in the data from this group.</p>
-</section>
-<section id="logical-functions" class="level3">
-<h3 class="anchored" data-anchor-id="logical-functions">Logical functions</h3>
-<p>The two logical functions only work on data that is logical (i.e., is <code>TRUE</code> or <code>FALSE</code>). <code>any()</code> returns the answer to the question “Are any values <code>TRUE</code>?” and <code>all()</code> returns the answer to the question “Are all values <code>TRUE</code>?”. There are no logical values in the <code>td</code> data set, so lets make some as an example.</p>
+</section><section id="logical-functions" class="level3"><h3 class="anchored" data-anchor-id="logical-functions">Logical functions</h3>
+<p>The two logical functions only work on data that is logical (i.e., is <code>TRUE</code> or <code>FALSE</code>). <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> returns the answer to the question “Are any values <code>TRUE</code>?” and <code><a href="https://rdrr.io/r/base/all.html">all()</a></code> returns the answer to the question “Are all values <code>TRUE</code>?”. There are no logical values in the <code>td</code> data set, so lets make some as an example.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column in which all values are FALSE</span></span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Logical.Test <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the new column so for any tokens from young female speakers are coded as TRUE instead of FALSE</span></span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Logical.Test[td<span class="sc">$</span>Sex <span class="sc">==</span> <span class="st">"F"</span> <span class="sc">&amp;</span> td<span class="sc">$</span>Age.Group <span class="sc">==</span> <span class="st">"Young"</span>] <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Get logical value (TRUE or FALSE) of whether any tokens and all tokens of Logical.Test are TRUE, by Sex</span></span>
-<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Any.True =</span> <span class="fu">any</span>(Logical.Test), </span>
-<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">All.True =</span> <span class="fu">all</span>(Logical.Test))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create a new column in which all values are FALSE</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Logical.Test</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span></span>
+<span><span class="co"># Modify the new column so for any tokens from young female speakers are coded as TRUE instead of FALSE</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Logical.Test</span><span class="op">[</span><span class="va">td</span><span class="op">$</span><span class="va">Sex</span> <span class="op">==</span> <span class="st">"F"</span> <span class="op">&amp;</span> <span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span> <span class="op">==</span> <span class="st">"Young"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span></span>
+<span></span>
+<span><span class="co"># Get logical value (TRUE or FALSE) of whether any tokens and all tokens of Logical.Test are TRUE, by Sex</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Any.True <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">Logical.Test</span><span class="op">)</span>, </span>
+<span>            All.True <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">Logical.Test</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   Sex   Any.True All.True
@@ -1466,54 +1435,51 @@ Sum    Educated     F          90      235  325
 2 M     FALSE    FALSE   </code></pre>
 </div>
 </div>
-<p>Above we created a logical column in which only tokens from young females are set to <code>TRUE</code>. The <code>any()</code> function returns <code>TRUE</code> for <code>F</code> but not for <code>M</code> because there is at least one <code>TRUE</code> value in the female data. Conversely, the <code>all()</code> function returns <code>FALSE</code> for <code>F</code> because not all of the female values are <code>TRUE</code>.</p>
-</section>
-</section>
-<section id="proportions" class="level2">
-<h2 class="anchored" data-anchor-id="proportions">Proportions</h2>
-<p>Finding out the proportion of a variant is just like finding out the number of tokens. Using the base <em>R</em> methods, you simply wrap the <code>table()</code> function in a <code>prop.table()</code> function.</p>
+<p>Above we created a logical column in which only tokens from young females are set to <code>TRUE</code>. The <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> function returns <code>TRUE</code> for <code>F</code> but not for <code>M</code> because there is at least one <code>TRUE</code> value in the female data. Conversely, the <code><a href="https://rdrr.io/r/base/all.html">all()</a></code> function returns <code>FALSE</code> for <code>F</code> because not all of the female values are <code>TRUE</code>.</p>
+</section></section><section id="proportions" class="level2"><h2 class="anchored" data-anchor-id="proportions">Proportions</h2>
+<p>Finding out the proportion of a variant is just like finding out the number of tokens. Using the base <em>R</em> methods, you simply wrap the <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> function in a <code><a href="https://rdrr.io/r/base/proportions.html">prop.table()</a></code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var</span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Dep.Var))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Proportion of each level of Dep.Var</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Deletion Realized 
    0.325    0.675 </code></pre>
 </div>
 </div>
-<p>Usually proportions are expressed as hundredths. To force <em>R</em> to express numbers in hundredths, you can use the <code>options()</code> function to set the number of significant digits displayed to two.</p>
+<p>Usually proportions are expressed as hundredths. To force <em>R</em> to express numbers in hundredths, you can use the <code><a href="https://rdrr.io/r/base/options.html">options()</a></code> function to set the number of significant digits displayed to two.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display values rounded to nearest hundredth.  </span></span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var</span></span>
-<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Dep.Var))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb79"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Display values rounded to nearest hundredth.  </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Proportion of each level of Dep.Var</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Deletion Realized 
     0.32     0.68 </code></pre>
 </div>
 </div>
-<p>In the example above there is only one dimension: <code>Dep.Var</code>. The <code>prop.table()</code> outer function takes the <code>table()</code> inner function and divides the number of tokens in each cell by some total (e.g.&nbsp;denominator). The default denominator is the total number of tokens in the whole table. Because, in the example above, the total number of tokens in the one dimension table is the same as the total number of <code>Dep.Var</code> tokens, you don’t need to specify anything further. In the example below, however, there are two dimensions: <code>Dep.Var</code> and <code>Age.Group</code>. If you do not specify which total to use as a denominator, the proportions expressed use the total number of tokens in the table as the denominator.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> If you want to know the percentage of deletion tokens that come from <code>Young</code>, <code>Middle</code> and <code>Old</code> speakers, you set <code>margin = 1</code>, meaning that you want the total (e.g., denominator) to be the sum of the tokens for the first variable in the function, (e.g., rows total). If instead you want to know the percentage of <code>Young</code> tokens (or <code>Middle</code> tokens, or <code>Old</code> tokens) that are <code>Deletion</code>, and the percentage that are <code>Realized</code>, you set <code>margin = 2</code>, or rather set the denominator to the sum of the second factor group in the function (e.g., column total). This follows <em>R</em>’s global pattern of rows, columns, page 1, page 2, etc. You can verify this by adding up the proportions in each table below. In the first table all of the proportions add up to 1. In the second table, on the other hand, the proportions add up to 1 going across the rows. In the third table they add up to 1 going down the columns.</p>
+<p>In the example above there is only one dimension: <code>Dep.Var</code>. The <code><a href="https://rdrr.io/r/base/proportions.html">prop.table()</a></code> outer function takes the <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> inner function and divides the number of tokens in each cell by some total (e.g.&nbsp;denominator). The default denominator is the total number of tokens in the whole table. Because, in the example above, the total number of tokens in the one dimension table is the same as the total number of <code>Dep.Var</code> tokens, you don’t need to specify anything further. In the example below, however, there are two dimensions: <code>Dep.Var</code> and <code>Age.Group</code>. If you do not specify which total to use as a denominator, the proportions expressed use the total number of tokens in the table as the denominator.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> If you want to know the percentage of deletion tokens that come from <code>Young</code>, <code>Middle</code> and <code>Old</code> speakers, you set <code>margin = 1</code>, meaning that you want the total (e.g., denominator) to be the sum of the tokens for the first variable in the function, (e.g., rows total). If instead you want to know the percentage of <code>Young</code> tokens (or <code>Middle</code> tokens, or <code>Old</code> tokens) that are <code>Deletion</code>, and the percentage that are <code>Realized</code>, you set <code>margin = 2</code>, or rather set the denominator to the sum of the second factor group in the function (e.g., column total). This follows <em>R</em>’s global pattern of rows, columns, page 1, page 2, etc. You can verify this by adding up the proportions in each table below. In the first table all of the proportions add up to 1. In the second table, on the other hand, the proportions add up to 1 going across the rows. In the third table they add up to 1 going down the columns.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var and Age.Group (all values sum to 1)</span></span>
-<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb81"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Proportion of each level of Dep.Var and Age.Group (all values sum to 1)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span>, <span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          
              Old Middle Young
   Deletion 0.056  0.105 0.163
   Realized 0.113  0.198 0.365</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Age.Group for each level of Dep.Var (each row sums to 1)</span></span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group), <span class="at">margin =</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb83"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Proportion of each level of Age.Group for each level of Dep.Var (each row sums to 1)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span>, <span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span><span class="op">)</span>, margin <span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          
             Old Middle Young
   Deletion 0.17   0.32  0.50
   Realized 0.17   0.29  0.54</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var for each level of Age.Group (each column sums to 1)</span></span>
-<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Dep.Var, td<span class="sc">$</span>Age.Group), <span class="at">margin =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb85"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Proportion of each level of Dep.Var for each level of Age.Group (each column sums to 1)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span>, <span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span><span class="op">)</span>, margin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          
             Old Middle Young
@@ -1521,10 +1487,10 @@ Deletion Realized
   Realized 0.67   0.65  0.69</code></pre>
 </div>
 </div>
-<p>In order to achieve the three-dimension cross-tabs you get from <em>Goldvarb</em>, with one dependent variable and two independent variables, you must set up the <code>prop.table(table())</code> function with your variables in the following order: <em>independent variable 1</em>, <em>independent variable 2</em>, <em>dependent variable</em>. You must also specify a particular <code>margin</code>, e.g., denominator. In a <em>Goldvarb</em>-style cross-tab each cell is the number of tokens for one level of the dependent variable (e.g., the application or non-application value) divided by the total number of tokens for that cell. In an <em>R</em> proportion table the total number of tokens per cell is the number of tokens for the value of the row and the column at the same time — not the row total, or the column total. To specify that you want the denominator to be the cell total you set <em>margin = c(1,2)</em>, where the <code>c()</code> concatenating function specifies both row (1) and column (2). The result is a separate page for proportions of each level of <code>Dep.Var</code>. The proportions for the corresponding cells in each page add up to 1.</p>
+<p>In order to achieve the three-dimension cross-tabs you get from <em>Goldvarb</em>, with one dependent variable and two independent variables, you must set up the <code>prop.table(table())</code> function with your variables in the following order: <em>independent variable 1</em>, <em>independent variable 2</em>, <em>dependent variable</em>. You must also specify a particular <code>margin</code>, e.g., denominator. In a <em>Goldvarb</em>-style cross-tab each cell is the number of tokens for one level of the dependent variable (e.g., the application or non-application value) divided by the total number of tokens for that cell. In an <em>R</em> proportion table the total number of tokens per cell is the number of tokens for the value of the row and the column at the same time — not the row total, or the column total. To specify that you want the denominator to be the cell total you set <em>margin = c(1,2)</em>, where the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> concatenating function specifies both row (1) and column (2). The result is a separate page for proportions of each level of <code>Dep.Var</code>. The proportions for the corresponding cells in each page add up to 1.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var for each level of Age.Group and Sex (all corresponding cells sum to 1)</span></span>
-<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb87"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Proportion of each level of Dep.Var for each level of Age.Group and Sex (all corresponding cells sum to 1)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span>, margin<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>, ,  = Deletion
 
@@ -1545,8 +1511,8 @@ Deletion Realized
 </div>
 <p>You can keep adding factor groups to your proportion table, but you must do two things. You must keep the dependent variable, <code>Dep.Var</code>, as the rightmost variable in the function, and you must include all the other variables in the margin specification. For example, below you add <code>Education</code> as the third variable, and add 3 to the margin specification. There will be a separate page for each combination of the levels of <code>Education</code> and <code>Dep.Var</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var for each level of Age.Group, Sex and Education</span></span>
-<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Education, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb89"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Proportion of each level of Dep.Var for each level of Age.Group, Sex and Education</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">td</span><span class="op">$</span><span class="va">Education</span>, <span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span>, margin<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>, ,  = Educated,  = Deletion
 
@@ -1597,11 +1563,11 @@ Deletion Realized
   Young  0.739 0.718</code></pre>
 </div>
 </div>
-<p>Again, you can make these larger tables easier to read by flattening the pages using <code>ftable()</code>. Here the <code>NaN</code> means there is no data in the cell.</p>
+<p>Again, you can make these larger tables easier to read by flattening the pages using <code><a href="https://rdrr.io/r/stats/ftable.html">ftable()</a></code>. Here the <code>NaN</code> means there is no data in the cell.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of each level of Dep.Var for each level of Age.Group, Sex and Education, presented as a flattened table. Here the `NaN' just means there is no data in the cell. </span></span>
-<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
-<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(<span class="fu">prop.table</span>(<span class="fu">table</span>(td<span class="sc">$</span>Age.Group, td<span class="sc">$</span>Sex, td<span class="sc">$</span>Education, td<span class="sc">$</span>Dep.Var), <span class="at">margin=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb91"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Proportion of each level of Dep.Var for each level of Age.Group, Sex and Education, presented as a flattened table. Here the `NaN' just means there is no data in the cell. </span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">vcd</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/ftable.html">ftable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Age.Group</span>, <span class="va">td</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">td</span><span class="op">$</span><span class="va">Education</span>, <span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span>, margin<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                       Deletion Realized
                                         
@@ -1625,13 +1591,13 @@ Young  F Educated         0.278    0.722
          Student          0.282    0.718</code></pre>
 </div>
 </div>
-<p>There are a number of functions specifically designed to create cross-tables that are somewhat easier to use, but can be somewhat less flexible. Generally, they are most useful for one independent variable and one dependent variable. I tend to use the <code>CrossTable()</code> function from the <code>gmodels</code> package frequently.</p>
+<p>There are a number of functions specifically designed to create cross-tables that are somewhat easier to use, but can be somewhat less flexible. Generally, they are most useful for one independent variable and one dependent variable. I tend to use the <code><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable()</a></code> function from the <code>gmodels</code> package frequently.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load gmodels</span></span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gmodels)</span>
-<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate cross tab of Sex and Dep.Var in which the row proportions are displayed, but table proportions, column proportions, and contribution to chi-square are suppressed, with 0 decimal values displayed, and missing combinations included. </span></span>
-<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="fu">CrossTable</span>(td<span class="sc">$</span>Sex, td<span class="sc">$</span>Dep.Var, <span class="at">prop.r=</span><span class="cn">TRUE</span>, <span class="at">prop.c=</span><span class="cn">FALSE</span>, <span class="at">prop.t=</span><span class="cn">FALSE</span>, <span class="at">prop.chisq=</span><span class="cn">FALSE</span>, <span class="at">format=</span><span class="st">"SPSS"</span>, <span class="at">digits=</span><span class="dv">0</span>, <span class="at">missing.include=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb93"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load gmodels</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-gregmisc/gmodels">gmodels</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Generate cross tab of Sex and Dep.Var in which the row proportions are displayed, but table proportions, column proportions, and contribution to chi-square are suppressed, with 0 decimal values displayed, and missing combinations included. </span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span>, prop.r<span class="op">=</span><span class="cn">TRUE</span>, prop.c<span class="op">=</span><span class="cn">FALSE</span>, prop.t<span class="op">=</span><span class="cn">FALSE</span>, prop.chisq<span class="op">=</span><span class="cn">FALSE</span>, format<span class="op">=</span><span class="st">"SPSS"</span>, digits<span class="op">=</span><span class="fl">0</span>, missing.include<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Cell Contents
@@ -1657,14 +1623,14 @@ Column Total |      386  |      803  |     1189  |
  </code></pre>
 </div>
 </div>
-<p>For the <code>CrossTable()</code> function you can set the denominator to row total with the option <code>prop.r=TRUE</code>. If instead you wanted to the proportion by column, you set <code>prop.c = TRUE</code>, and if you want the proportion across the entire table you can set <code>prop.t = TRUE</code>. You can actually set all of these to <code>TRUE</code> to get all three. There are other values that can be generated, including values for calculating chi-square (see the <code>CrossTable()</code> documentation <a href="https://www.rdocumentation.org/packages/gmodels/versions/2.18.1.1/topics/CrossTable">here</a>). The above code includes the minimal number of options needed to generate the type of cross-table we generally want.</p>
+<p>For the <code><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable()</a></code> function you can set the denominator to row total with the option <code>prop.r=TRUE</code>. If instead you wanted to the proportion by column, you set <code>prop.c = TRUE</code>, and if you want the proportion across the entire table you can set <code>prop.t = TRUE</code>. You can actually set all of these to <code>TRUE</code> to get all three. There are other values that can be generated, including values for calculating chi-square (see the <code><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable()</a></code> documentation <a href="https://www.rdocumentation.org/packages/gmodels/versions/2.18.1.1/topics/CrossTable">here</a>). The above code includes the minimal number of options needed to generate the type of cross-table we generally want.</p>
 <p>To produce proportions using the <code>tidy</code> method, we combine the <code>group_by()</code> and <code>summarize()</code> functions with the <code>mutate()</code> discussed in an <a href="https://lingmethodshub.github.io/content/R/lvc_r/040_lvcr.html">earlier section</a>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate tibble of combination of Sex and Dep.Var with token counts and proportion of each level of Dep.Var by Sex </span></span>
-<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex, Dep.Var) <span class="sc">%&gt;%</span></span>
-<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prop =</span> Count<span class="sc">/</span><span class="fu">sum</span>(Count))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Generate tibble of combination of Sex and Dep.Var with token counts and proportion of each level of Dep.Var by Sex </span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span>, <span class="va">Dep.Var</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Count <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>Prop <span class="op">=</span> <span class="va">Count</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
 # Groups:   Sex [2]
@@ -1678,11 +1644,11 @@ Column Total |      386  |      803  |     1189  |
 </div>
 <p>After grouping the data by <code>Sex</code> and <code>Dep.Var</code>, we create a new column <code>Count</code> with values equal to the number of tokens for the particular combination, then we create a new column using <code>mutate()</code> and a math equation to generate proportions. It is important here that your dependent variable <code>Dep.Var</code> is the last grouping variable. If we change the order, instead of generating the proportion of <code>Realized</code> and <code>Deletion</code> tokens, it will instead return the percentage of <code>Realized</code> tokens that are <code>M</code> and the percentage that are <code>F</code>, which is the incorrect denominator for our purposes.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate tibble of combination of Dep.Var and Sex with token counts and proportion of each level of Sex by Dep.Var </span></span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Dep.Var, Sex) <span class="sc">%&gt;%</span></span>
-<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prop =</span> Count<span class="sc">/</span><span class="fu">sum</span>(Count))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Generate tibble of combination of Dep.Var and Sex with token counts and proportion of each level of Sex by Dep.Var </span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Dep.Var</span>, <span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Count <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>Prop <span class="op">=</span> <span class="va">Count</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
 # Groups:   Dep.Var [2]
@@ -1694,14 +1660,14 @@ Column Total |      386  |      803  |     1189  |
 4 Realized M       332 0.413</code></pre>
 </div>
 </div>
-<p>Unlike the <code>CrossTable()</code> function, we can include multiple independent variables. To include every combination (including those for which there are no tokens), we can add <code>.drop = FALSE</code> to the <code>group_by()</code> function.</p>
+<p>Unlike the <code><a href="https://rdrr.io/pkg/gmodels/man/CrossTable.html">CrossTable()</a></code> function, we can include multiple independent variables. To include every combination (including those for which there are no tokens), we can add <code>.drop = FALSE</code> to the <code>group_by()</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate tibble of combination of Sex, Edcuation, Age.Group, and Dep.Var with all combinations included, with token counts and proportion of each level of Dep.Var by each combination of other variables</span></span>
-<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>td <span class="sc">%&gt;%</span></span>
-<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex, Education, Age.Group, Dep.Var, <span class="at">.drop =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prop =</span> Count<span class="sc">/</span><span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span></span>
-<span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb99"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Generate tibble of combination of Sex, Edcuation, Age.Group, and Dep.Var with all combinations included, with token counts and proportion of each level of Dep.Var by each combination of other variables</span></span>
+<span><span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span>, <span class="va">Education</span>, <span class="va">Age.Group</span>, <span class="va">Dep.Var</span>, .drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Count <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>Prop <span class="op">=</span> <span class="va">Count</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 36 × 6
 # Groups:   Sex, Education, Age.Group [18]
@@ -1747,16 +1713,16 @@ Column Total |      386  |      803  |     1189  |
 </div>
 <p>Notice that for the missing combinations the <code>count()</code> is 0, and the percentage is <code>NaN</code>, which stands for “not a number”, the result of trying to divide 0 by something. <code>NaN</code> is similar to <code>NA</code>, but <code>NA</code> stands for “no data”, and is used for empty cells.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign the tibble generated in the previous code to an object called results </span></span>
-<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span></span>
-<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex, Education, Age.Group, Dep.Var, <span class="at">.drop =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb101-5"><a href="#cb101-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prop =</span> Count<span class="sc">/</span><span class="fu">sum</span>(Count))</span>
-<span id="cb101-6"><a href="#cb101-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-7"><a href="#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode all NaN in results to 0</span></span>
-<span id="cb101-8"><a href="#cb101-8" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>Prop[<span class="fu">is.nan</span>(results<span class="sc">$</span>Prop)] <span class="ot">&lt;-</span> <span class="dv">0</span> </span>
-<span id="cb101-9"><a href="#cb101-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb101-10"><a href="#cb101-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results, <span class="at">n =</span> <span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb101"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Assign the tibble generated in the previous code to an object called results </span></span>
+<span><span class="va">results</span> <span class="op">&lt;-</span> <span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span>, <span class="va">Education</span>, <span class="va">Age.Group</span>, <span class="va">Dep.Var</span>, .drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Count <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>Prop <span class="op">=</span> <span class="va">Count</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Recode all NaN in results to 0</span></span>
+<span><span class="va">results</span><span class="op">$</span><span class="va">Prop</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">Prop</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span> </span>
+<span><span class="co"># Print results</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">results</span>, n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 36 × 6
 # Groups:   Sex, Education, Age.Group [18]
@@ -1800,20 +1766,20 @@ Column Total |      386  |      803  |     1189  |
 36 M     Student      Young     Realized   127 0.718 </code></pre>
 </div>
 </div>
-<p>The easiest way to convert <code>NaN</code> (or <code>Na</code>) to 0 is to assign the above to a variable, then replace <code>NaN</code> with 0 using the function <code>is.nan()</code>. If there were <code>NA</code> values, you can do the same thing as above, but replace <code>is.nan()</code> with <code>is.na()</code></p>
-<p>When we report proportions in sociolinguistics manuscripts, we often only report the proportion of one level of the dependent variable (called the application value). To only display one of the two levels of <code>Dep.Var</code> — for instance, if we just want to show the rates of <code>Deletion</code>, which we might decide is our application value — we can use the <code>subset()</code> function.</p>
+<p>The easiest way to convert <code>NaN</code> (or <code>Na</code>) to 0 is to assign the above to a variable, then replace <code>NaN</code> with 0 using the function <code><a href="https://rdrr.io/r/base/is.finite.html">is.nan()</a></code>. If there were <code>NA</code> values, you can do the same thing as above, but replace <code><a href="https://rdrr.io/r/base/is.finite.html">is.nan()</a></code> with <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code></p>
+<p>When we report proportions in sociolinguistics manuscripts, we often only report the proportion of one level of the dependent variable (called the application value). To only display one of the two levels of <code>Dep.Var</code> — for instance, if we just want to show the rates of <code>Deletion</code>, which we might decide is our application value — we can use the <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the results object, but subsetted to include only Deletion tokens</span></span>
-<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span></span>
-<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex, Education, Age.Group, Dep.Var, <span class="at">.drop =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prop =</span> Count<span class="sc">/</span><span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span></span>
-<span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subset</span>(Dep.Var <span class="sc">==</span> <span class="st">"Deletion"</span>)</span>
-<span id="cb103-7"><a href="#cb103-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-8"><a href="#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode NaN to 0</span></span>
-<span id="cb103-9"><a href="#cb103-9" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>Prop[<span class="fu">is.nan</span>(results<span class="sc">$</span>Prop)] <span class="ot">&lt;-</span> <span class="dv">0</span> </span>
-<span id="cb103-10"><a href="#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb103-11"><a href="#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results, <span class="at">n =</span> <span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb103"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create the results object, but subsetted to include only Deletion tokens</span></span>
+<span><span class="va">results</span> <span class="op">&lt;-</span> <span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span>, <span class="va">Education</span>, <span class="va">Age.Group</span>, <span class="va">Dep.Var</span>, .drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Count <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>Prop <span class="op">=</span> <span class="va">Count</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">Dep.Var</span> <span class="op">==</span> <span class="st">"Deletion"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Recode NaN to 0</span></span>
+<span><span class="va">results</span><span class="op">$</span><span class="va">Prop</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">Prop</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span> </span>
+<span><span class="co"># Print results</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">results</span>, n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 18 × 6
 # Groups:   Sex, Education, Age.Group [18]
@@ -1841,18 +1807,18 @@ Column Total |      386  |      803  |     1189  |
 </div>
 <p>Finally, if we also want to add the total number of tokens per category (something we usually report alongside the application value) we can add another column using <code>mutate()</code>. Also, if we want the percentage instead of proportion, we can add <code>100 *</code> to the proportion equation (as percentage is proportion <span class="math inline">\(\times 100\)</span>)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate results object with percentage instead of proportion and a column with total tokens per combination. </span></span>
-<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span></span>
-<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex, Education, Age.Group, Dep.Var, <span class="at">.drop =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Percentage =</span> <span class="dv">100</span><span class="sc">*</span>Count<span class="sc">/</span><span class="fu">sum</span>(Count), </span>
-<span id="cb105-6"><a href="#cb105-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">Total.N =</span> <span class="fu">sum</span>(Count)) <span class="sc">%&gt;%</span></span>
-<span id="cb105-7"><a href="#cb105-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subset</span>(Dep.Var <span class="sc">==</span> <span class="st">"Deletion"</span>)</span>
-<span id="cb105-8"><a href="#cb105-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb105-9"><a href="#cb105-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode NaN to 0</span></span>
-<span id="cb105-10"><a href="#cb105-10" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>Percentage[<span class="fu">is.nan</span>(results<span class="sc">$</span>Percentage)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb105-11"><a href="#cb105-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb105-12"><a href="#cb105-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results, <span class="at">n =</span> <span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb105"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Generate results object with percentage instead of proportion and a column with total tokens per combination. </span></span>
+<span><span class="va">results</span> <span class="op">&lt;-</span> <span class="va">td</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span>, <span class="va">Education</span>, <span class="va">Age.Group</span>, <span class="va">Dep.Var</span>, .drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>Count <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>Percentage <span class="op">=</span> <span class="fl">100</span><span class="op">*</span><span class="va">Count</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span>, </span>
+<span>         Total.N <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">Dep.Var</span> <span class="op">==</span> <span class="st">"Deletion"</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="co"># Recode NaN to 0</span></span>
+<span><span class="va">results</span><span class="op">$</span><span class="va">Percentage</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html">is.nan</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">Percentage</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span><span class="co"># Print results</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">results</span>, n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 18 × 7
 # Groups:   Sex, Education, Age.Group [18]
@@ -1883,17 +1849,12 @@ Column Total |      386  |      803  |     1189  |
 
 <!-- -->
 
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
+</section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 <ol>
 <li id="fn1"><p><code>summarise()</code> and <code>summarize()</code> are synonyms.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>If we order the data from lowest to highest values, 50% of the data will be less than the mean, and 50% of the data will be higher than the mean. The mean is also called the 2nd quartile. The first quartile is halfway between the mean and the lowest value in the data. The third quartile is halfway betwen the mean and the highest value in the data. The interquartile range is the difference between the 3rd quartile and the 1st quartile and represents the spread of the middle 50% of the data.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>You’ll notice that the values in this table are expressed in thousandths instead of hundredths. This is because the proportion for <code>Deletion</code> and <code>Old</code> tokens requires three decimal places to have two meaningful digits.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner2022,
+</ol></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner2022,
   author = {Gardner, Matt Hunt},
   title = {Crosstabs: {Counts,} {Proportions,} and {More}},
   series = {Linguistics Methods Hub},
@@ -1908,8 +1869,7 @@ Gardner, Matt Hunt. 2022, September 27. Crosstabs: Counts, Proportions,
 and More. <em>Linguistics Methods Hub</em>: <em>Doing LVC with R</em>.
 (<a href="https://lingmethodshub.github.io/content/R/lvc_r/060_lvcr.html">https://lingmethodshub.github.io/content/R/lvc_r/060_lvcr.html</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -2359,9 +2319,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../../content/R/lvc_r/050_lvcr.html" class="pagination-link" aria-label="Doing it all again, but `tidy`">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Doing it all again, but <code>tidy</code></span>
       </a>          
@@ -2953,8 +2911,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -2966,8 +2923,6 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
     </div>
   </div>
 </footer>
-
-
 
 
 <script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>

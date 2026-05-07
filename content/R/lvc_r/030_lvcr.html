@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Matt Hunt Gardner">
 <meta name="dcterms.date" content="2022-09-27">
 <meta name="description" content="Getting a snapshot of your data. Types of data and data structures. Getting the dimensions of your data. Introducting the (t/d) dataset.">
-
 <title>Getting to Know Your Data – LingMethodsHub</title>
 <style>
 /* Default styles provided by pandoc.
@@ -63,7 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
@@ -91,8 +87,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap-194cc7e99426acbbbef3f1ad860df344.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -118,18 +113,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
-
-<script type="text/plain" cookie-consent="tracking">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script><script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
-</script>
-
-<script type="text/javascript" charset="UTF-8">
+</script><script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
@@ -144,27 +134,18 @@ cookieconsent.run({
 "language":"en"
   });
 });
-</script> 
-  
-<style>html{ scroll-behavior: smooth; }</style>
+</script><style>html{ scroll-behavior: smooth; }</style>
 <script type="application/json" class="js-hypothesis-config">
 {
   "theme": "clean",
   "openSidebar": false,
   "showHighlights": "never"
 }
-</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
-<script>
+</script><script async="" src="https://hypothes.is/embed.js"></script><script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -189,9 +170,7 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script>
-
-<link rel="stylesheet" href="../../../styles.css">
+</script><link rel="stylesheet" href="../../../styles.css">
 <meta property="og:title" content="Getting to Know Your Data – LingMethodsHub">
 <meta property="og:description" content="Getting a snapshot of your data. Types of data and data structures. Getting the dimensions of your data. Introducting the (t/d) dataset.">
 <meta property="og:image" content="https://lingmethodshub.github.io/content/R/lvc_r/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
@@ -213,13 +192,10 @@ window.Quarto = {
 <meta name="citation_journal_title" content="Linguistics Methods Hub">
 <meta name="citation_series_title" content="Linguistics Methods Hub">
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">LingMethodsHub</span>
@@ -231,7 +207,7 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -252,14 +228,14 @@ window.Quarto = {
 <span class="menu-text">People</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -268,9 +244,7 @@ window.Quarto = {
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -278,19 +252,15 @@ window.Quarto = {
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorials</span></a>
@@ -304,8 +274,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Doing LVC with R</span></a>
@@ -313,8 +283,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
@@ -394,7 +364,7 @@ window.Quarto = {
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
-  </li>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">
@@ -425,8 +395,14 @@ window.Quarto = {
  <span class="menu-text">Using {marginaleffects} to understand statistical models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/multitaper-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generating and analyzing multitaper spectra in R</span></a>
+  </div>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -436,8 +412,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vowel plotting in Python</span></a>
@@ -450,7 +426,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -465,8 +441,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Montreal Forced Aligner</span></a>
@@ -479,7 +455,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -489,8 +465,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Shell Basics</span></a>
@@ -503,7 +479,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -513,8 +489,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Windows Subsystem for Linux</span></a>
@@ -522,45 +498,41 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#getting-to-know-the-t-d-deletion-data" id="toc-getting-to-know-the-t-d-deletion-data" class="nav-link active" data-scroll-target="#getting-to-know-the-t-d-deletion-data">Getting to know the (t, d) deletion data</a>
+<li>
+<a href="#getting-to-know-the-t-d-deletion-data" id="toc-getting-to-know-the-t-d-deletion-data" class="nav-link active" data-scroll-target="#getting-to-know-the-t-d-deletion-data">Getting to know the (t, d) deletion data</a>
   <ul class="collapse">
-  <li><a href="#getting-a-snapshot-of-the-data" id="toc-getting-a-snapshot-of-the-data" class="nav-link" data-scroll-target="#getting-a-snapshot-of-the-data">Getting a Snapshot of the Data</a></li>
+<li><a href="#getting-a-snapshot-of-the-data" id="toc-getting-a-snapshot-of-the-data" class="nav-link" data-scroll-target="#getting-a-snapshot-of-the-data">Getting a Snapshot of the Data</a></li>
   <li><a href="#types-of-data" id="toc-types-of-data" class="nav-link" data-scroll-target="#types-of-data">Types of Data</a></li>
   <li><a href="#types-of-data-structures" id="toc-types-of-data-structures" class="nav-link" data-scroll-target="#types-of-data-structures">Types of Data Structures</a></li>
   <li><a href="#factors-and-comments" id="toc-factors-and-comments" class="nav-link" data-scroll-target="#factors-and-comments">Factors and Comments</a></li>
-  </ul></li>
+  </ul>
+</li>
   <li><a href="#more-exploring" id="toc-more-exploring" class="nav-link" data-scroll-target="#more-exploring">More Exploring</a></li>
   <li><a href="#the-td-data" id="toc-the-td-data" class="nav-link" data-scroll-target="#the-td-data">The (t/d) Data</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="030_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+  </ul><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="030_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/030_lvcr.html">Getting to Know Your Data</a></li></ol></nav>
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/030_lvcr.html">Getting to Know Your Data</a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Getting to Know Your Data</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -607,43 +579,38 @@ window.Quarto = {
   
 
 
-</header>
-
-
-<section id="getting-to-know-the-t-d-deletion-data" class="level2">
-<h2 class="anchored" data-anchor-id="getting-to-know-the-t-d-deletion-data">Getting to know the (t, d) deletion data</h2>
+</header><section id="getting-to-know-the-t-d-deletion-data" class="level2"><h2 class="anchored" data-anchor-id="getting-to-know-the-t-d-deletion-data">Getting to know the (t, d) deletion data</h2>
 <p>If you followed the previous section you now have an object in <em>R</em> called <code>td</code>. If not, you can load it now with either of the following codes.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span><span class="fu">read.delim</span>(<span class="st">"https://www.dropbox.com/s/jxlfuogea3lx2pu/deletiondata.txt?dl=1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">td</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span><span class="op">(</span><span class="st">"https://www.dropbox.com/s/jxlfuogea3lx2pu/deletiondata.txt?dl=1"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span><span class="op">(</span><span class="st">"Data/deletiondata.txt"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="getting-a-snapshot-of-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="getting-a-snapshot-of-the-data">Getting a Snapshot of the Data</h3>
+<section id="getting-a-snapshot-of-the-data" class="level3"><h3 class="anchored" data-anchor-id="getting-a-snapshot-of-the-data">Getting a Snapshot of the Data</h3>
 <p>Now that you have some data loaded into <em>R</em> you can start exploring it. At any time you can type <code>td</code> into the console window to see what that object actually represents. Try it.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>td</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">td</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>To find out how many columns there are in your data frame (this is what <em>R</em> calls spreadsheets), use the function <code>nrow()</code>. Similarly, to find out how many columns are in the data frame, use the function <code>ncol()</code>. The function <code>dim()</code> gives both.</p>
+<p>To find out how many columns there are in your data frame (this is what <em>R</em> calls spreadsheets), use the function <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code>. Similarly, to find out how many columns are in the data frame, use the function <code><a href="https://rdrr.io/r/base/nrow.html">ncol()</a></code>. The function <code><a href="https://rdrr.io/r/base/dim.html">dim()</a></code> gives both.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6989</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6989   12</code></pre>
 </div>
 </div>
 <p>There are 6,989 rows and 12 columns in this data frame.</p>
-<p>The <code>summary()</code> function is one of the most useful functions you’ll use in <em>R</em>. It gives you a quick snapshot of a data frame.</p>
+<p>The <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function is one of the most useful functions you’ll use in <em>R</em>. It gives you a quick snapshot of a data frame.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Dep.Var             Stress            Category          Morph.Type       
  Length:6989        Length:6989        Length:6989        Length:6989       
@@ -668,20 +635,18 @@ window.Quarto = {
                                                                             </code></pre>
 </div>
 </div>
-<p>The <code>summary()</code> function shows you the name of all the columns in the data frame and what each column contains.</p>
+<p>The <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function shows you the name of all the columns in the data frame and what each column contains.</p>
 <p>When you import a data frame into <em>R</em>, <em>R</em> automatically decides what type of data each column contains. Any data frame columns where all cells contain only numbers are assumed to <code>numeric</code> or <code>integer</code> data (depending on if there are decimal values). Any columns that include letters will be assumed to be <code>character</code> data.</p>
-<p>For <code>numeric</code> or <code>integer</code> data (like <code>YOB</code>, or year of birth of the speakers in the <code>td</code> data), the <code>summary()</code> function will tell you the mean, the median, the minimum value, the maximum value, and the values of the first and third quartiles. The mean is the arithmetic mean, which is the sum of all the values in a column divided by the number of values in a column. Fifty percent of the values in the column are equal to or less than the mean and 50% of the values in the column are greater than or less than the mean. The mean can also be thought of as the 2nd quartile. The median is exact middle point of the values in the column ordered from smallest to largest. For <em>normally distributed</em> data, the mean and the median should be close to the same value. Not all data, however, is normally distributed, which is sometimes a problem, and sometimes not a problem. If a certain test expects numerical data to be normally distributed these instructions will explain what to do, but for now, it’s just good to know what mean and median indicate. Twenty-five percent of the values in the column are equal to or less than the 1st quartile and 75% of the values in the column are equal to or less than the 3rd quartile. The minimum value is the lowest value in a column; the maximum value is the highest number in a column. These values can be used to construct a <strong>box and whisker</strong> plot:</p>
+<p>For <code>numeric</code> or <code>integer</code> data (like <code>YOB</code>, or year of birth of the speakers in the <code>td</code> data), the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function will tell you the mean, the median, the minimum value, the maximum value, and the values of the first and third quartiles. The mean is the arithmetic mean, which is the sum of all the values in a column divided by the number of values in a column. Fifty percent of the values in the column are equal to or less than the mean and 50% of the values in the column are greater than or less than the mean. The mean can also be thought of as the 2nd quartile. The median is exact middle point of the values in the column ordered from smallest to largest. For <em>normally distributed</em> data, the mean and the median should be close to the same value. Not all data, however, is normally distributed, which is sometimes a problem, and sometimes not a problem. If a certain test expects numerical data to be normally distributed these instructions will explain what to do, but for now, it’s just good to know what mean and median indicate. Twenty-five percent of the values in the column are equal to or less than the 1st quartile and 75% of the values in the column are equal to or less than the 3rd quartile. The minimum value is the lowest value in a column; the maximum value is the highest number in a column. These values can be used to construct a <strong>box and whisker</strong> plot:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-yob" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-yob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-yob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="030_lvcr_files/figure-html/fig-yob-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Box and whisker plot of YOB (Year of Birth) in the td data frame"><img src="030_lvcr_files/figure-html/fig-yob-1.png" class="img-fluid figure-img" width="672"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-yob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Box and whisker plot of <code>YOB</code> (Year of Birth) in the <code>td</code> data frame
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -689,20 +654,18 @@ Figure&nbsp;1: Box and whisker plot of <code>YOB</code> (Year of Birth) in the <
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-tokens" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-tokens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tokens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="030_lvcr_files/figure-html/fig-tokens-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Box and whisker plot of the number of tokens per speaker in the td data frame"><img src="030_lvcr_files/figure-html/fig-tokens-1.png" class="img-fluid figure-img" width="672"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tokens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Box and whisker plot of the number of tokens per speaker in the <code>td</code> data frame
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>The function <code>names()</code> returns a vector (a series of items in a line, separated by commas) of the column names. This function can be useful as a quick way to get the names of each column. You will need to use these names quite often when writing other commands. <code>colnames()</code> returns the same information; <code>ls()</code> returns the same information, but ordered alphabetically.</p>
+<p>The function <code><a href="https://rdrr.io/r/base/names.html">names()</a></code> returns a vector (a series of items in a line, separated by commas) of the column names. This function can be useful as a quick way to get the names of each column. You will need to use these names quite often when writing other commands. <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code> returns the same information; <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code> returns the same information, but ordered alphabetically.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Dep.Var"         "Stress"          "Category"        "Morph.Type"     
  [5] "Before"          "After"           "Speaker"         "YOB"            
@@ -710,7 +673,7 @@ Figure&nbsp;2: Box and whisker plot of the number of tokens per speaker in the <
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Dep.Var"         "Stress"          "Category"        "Morph.Type"     
  [5] "Before"          "After"           "Speaker"         "YOB"            
@@ -718,16 +681,16 @@ Figure&nbsp;2: Box and whisker plot of the number of tokens per speaker in the <
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "After"           "Before"          "Category"        "Dep.Var"        
  [5] "Education"       "Job"             "Morph.Type"      "Phoneme.Dep.Var"
  [9] "Sex"             "Speaker"         "Stress"          "YOB"            </code></pre>
 </div>
 </div>
-<p>The function <code>str()</code> describes the structure of a data frame. It reports similar information as <code>summary()</code> but does not include descriptions of each column; however, the layout of the information is sometimes a little easier to read, especially if your data frame has many columns. Here we can see that <code>YOB</code> is categorized as <code>int</code> (integer) data and all the other columns are <code>chr</code> (character) data.</p>
+<p>The function <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> describes the structure of a data frame. It reports similar information as <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> but does not include descriptions of each column; however, the layout of the information is sometimes a little easier to read, especially if your data frame has many columns. Here we can see that <code>YOB</code> is categorized as <code>int</code> (integer) data and all the other columns are <code>chr</code> (character) data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   6989 obs. of  12 variables:
  $ Dep.Var        : chr  "Realized" "Realized" "Realized" "Deletion" ...
@@ -744,9 +707,9 @@ Figure&nbsp;2: Box and whisker plot of the number of tokens per speaker in the <
  $ Phoneme.Dep.Var: chr  "t--Affricate" "t--Fricative" "t--Affricate" "t--Deletion" ...</code></pre>
 </div>
 </div>
-<p><code>head()</code> will return the first six lines of the data frame. <code>tail()</code> provides the last six. For either you can change the number of lines reported using the option <code>n=</code>.</p>
+<p><code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> will return the first six lines of the data frame. <code><a href="https://rdrr.io/r/utils/head.html">tail()</a></code> provides the last six. For either you can change the number of lines reported using the option <code>n=</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Dep.Var   Stress Category Morph.Type Before After Speaker  YOB Sex
 1 Realized Stressed Function       Mono  Vowel Pause  BOUF65 1965   F
@@ -766,7 +729,7 @@ Figure&nbsp;2: Box and whisker plot of the number of tokens per speaker in the <
 </div>
 <p>The numbers on the left side of the output are the row number in the data frame.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(td, <span class="at">n=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">td</span>, n<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      Dep.Var   Stress Category Morph.Type Before After Speaker  YOB Sex
 6980 Realized Stressed Function       Mono  Vowel Vowel  STEM42 1942   M
@@ -792,12 +755,11 @@ Figure&nbsp;2: Box and whisker plot of the number of tokens per speaker in the <
 6989     Educated   White            d--D</code></pre>
 </div>
 </div>
-</section>
-<section id="types-of-data" class="level3">
-<h3 class="anchored" data-anchor-id="types-of-data">Types of Data</h3>
+</section><section id="types-of-data" class="level3"><h3 class="anchored" data-anchor-id="types-of-data">Types of Data</h3>
 <p>There are other types of data beside <code>numerical</code> (like <code>YOB</code> in the <code>td</code> data) and <code>character</code> (like all other columns in the <code>td</code> data).</p>
 <table class="caption-top table">
-<caption>Types of data in <em>R</em></caption>
+<caption>Types of data in <em>R</em>
+</caption>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Data Type</td>
@@ -806,7 +768,8 @@ Figure&nbsp;2: Box and whisker plot of the number of tokens per speaker in the <
 </tr>
 <tr class="even">
 <td style="text-align: left;"><code>logical</code></td>
-<td style="text-align: left;">either <code>TRUE</code> or <code>FALSE</code></td>
+<td style="text-align: left;">either <code>TRUE</code> or <code>FALSE</code>
+</td>
 <td style="text-align: left;">The answer to a question like "is <code>x</code> a number?", etc.</td>
 </tr>
 <tr class="odd">
@@ -857,58 +820,56 @@ Note
 </div>
 <p>It is uncommon to use <code>raw</code> data in sociolinguistics. Anything can be expressed in bytes. There are two functions to convert from characters to bytes, and bytes to characters. To go from characters to bytes:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>raw_variable <span class="ot">&lt;-</span> <span class="fu">charToRaw</span>(<span class="st">"Sociolinguistics is fun"</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(raw_variable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raw_variable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">charToRaw</a></span><span class="op">(</span><span class="st">"Sociolinguistics is fun"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">raw_variable</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 53 6f 63 69 6f 6c 69 6e 67 75 69 73 74 69 63 73 20 69 73 20 66 75 6e</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">class</span>(raw_variable))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">raw_variable</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "raw"</code></pre>
 </div>
 </div>
-<p>Above the function <code>charToRaw()</code> converts the string <code>"Sociolinguistics is fun"</code> to bytes and assigns that raw data to the object <code>raw_variable</code>. Next the <code>print()</code> function displays in <em>R</em> the contents of the variable <code>raw_variable</code>. The <code>class()</code> function returns the type of data contained within a variable. To convert back to characters:</p>
+<p>Above the function <code><a href="https://rdrr.io/r/base/rawConversion.html">charToRaw()</a></code> converts the string <code>"Sociolinguistics is fun"</code> to bytes and assigns that raw data to the object <code>raw_variable</code>. Next the <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> function displays in <em>R</em> the contents of the variable <code>raw_variable</code>. The <code><a href="https://rdrr.io/r/base/class.html">class()</a></code> function returns the type of data contained within a variable. To convert back to characters:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a> char_variable <span class="ot">&lt;-</span> <span class="fu">rawToChar</span>(raw_variable)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(char_variable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span> <span class="va">char_variable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">raw_variable</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">char_variable</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Sociolinguistics is fun"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">class</span>(char_variable))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">char_variable</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
 </div>
-</section>
-<section id="types-of-data-structures" class="level3">
-<h3 class="anchored" data-anchor-id="types-of-data-structures">Types of Data Structures</h3>
-<p>A <strong>vector</strong> and a <strong>list</strong> are the most basic types of data structures. A <strong>vector</strong> is a collection of elements, most commonly a collection of <code>character</code>, <code>logical</code>, <code>integer</code>, or <code>numeric</code> values. Values can be combined into a vector using the concatenating function <code>c()</code></p>
+</section><section id="types-of-data-structures" class="level3"><h3 class="anchored" data-anchor-id="types-of-data-structures">Types of Data Structures</h3>
+<p>A <strong>vector</strong> and a <strong>list</strong> are the most basic types of data structures. A <strong>vector</strong> is a collection of elements, most commonly a collection of <code>character</code>, <code>logical</code>, <code>integer</code>, or <code>numeric</code> values. Values can be combined into a vector using the concatenating function <code><a href="https://rdrr.io/r/base/c.html">c()</a></code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>simple.vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Labov"</span>, <span class="st">"Fishman"</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(simple.vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">simple.vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Labov"</span>, <span class="st">"Fishman"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">simple.vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Labov"   "Fishman"</code></pre>
 </div>
 </div>
 <p>We can explore the vector using some of the same functions we’ve already seen.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(simple.vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">simple.vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(simple.vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">simple.vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(simple.vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">simple.vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> chr [1:2] "Labov" "Fishman"</code></pre>
 </div>
 </div>
 <p><strong>Lists</strong> are like <strong>vectors</strong> but can contain a mixture of different data types. Characters must be in quotation marks. Numbers in quotation marks will be categorized as characters. Numeric data is numbers without quotation marks. Integers are specificed by adding <code>L</code> after the number. Logical values are either <code>TRUE</code> or <code>FALSE</code> in all capital letters.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>simple.list<span class="ot">&lt;-</span><span class="fu">list</span>(<span class="st">"Labov"</span>, <span class="st">"Fishman"</span>,<span class="st">"2001"</span>, <span class="dv">1963</span>, <span class="fl">1.5</span>, <span class="dv">1974</span>L, <span class="cn">TRUE</span>)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(simple.list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">simple.list</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Labov"</span>, <span class="st">"Fishman"</span>,<span class="st">"2001"</span>, <span class="fl">1963</span>, <span class="fl">1.5</span>, <span class="fl">1974L</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">simple.list</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "Labov"
@@ -931,15 +892,15 @@ Note
 [[7]]
 [1] TRUE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(simple.list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">simple.list</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(simple.list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">simple.list</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(simple.list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">simple.list</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 7
  $ : chr "Labov"
@@ -951,11 +912,11 @@ Note
  $ : logi TRUE</code></pre>
 </div>
 </div>
-<p>You will notice that the results of the <code>str()</code> function show that <code>Labov</code>, <code>Fishman</code> and <code>2001</code> are all categorized as <code>chr</code> (character); <code>1963</code> and <code>1.5</code> are categorized as <code>num</code> (numeric); <code>1974</code> is categorized as <code>int</code> (integer); and <code>TRUE</code> is categorized as <code>logi</code> (logical).</p>
+<p>You will notice that the results of the <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> function show that <code>Labov</code>, <code>Fishman</code> and <code>2001</code> are all categorized as <code>chr</code> (character); <code>1963</code> and <code>1.5</code> are categorized as <code>num</code> (numeric); <code>1974</code> is categorized as <code>int</code> (integer); and <code>TRUE</code> is categorized as <code>logi</code> (logical).</p>
 <p>Lists can be bigger than just one group of data. Items in a list can also be more complex than a single value.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>complex.list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="st">"John Baugh"</span>, <span class="at">b =</span> simple.vector, <span class="at">c=</span>simple.list, <span class="at">d=</span><span class="fu">head</span>(td))</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(complex.list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">complex.list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="st">"John Baugh"</span>, b <span class="op">=</span> <span class="va">simple.vector</span>, c<span class="op">=</span><span class="va">simple.list</span>, d<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">complex.list</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$a
 [1] "John Baugh"
@@ -1002,7 +963,7 @@ $d
 5 Not Educated Service    t--Fricative
 6 Not Educated    Blue    t--Fricative</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(complex.list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">complex.list</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 4
  $ a: chr "John Baugh"
@@ -1032,11 +993,11 @@ $d
 </div>
 <p>In the list <code>complex.list</code> column <code>a</code> contains only one value: <code>John Baugh</code>. Column <code>b</code> contains our <code>simple.vector</code>, column <code>c</code> contains our <code>simple.list</code>, and column <code>d</code> includes the first six rows of the <code>td</code> data (which itself has columns). To access the values from columns within columns you can use multiple <code>$</code> operators.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(complex.list<span class="sc">$</span>a)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">complex.list</span><span class="op">$</span><span class="va">a</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "John Baugh"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(complex.list<span class="sc">$</span>d)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">complex.list</span><span class="op">$</span><span class="va">d</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Dep.Var   Stress Category Morph.Type Before After Speaker  YOB Sex
 1 Realized Stressed Function       Mono  Vowel Pause  BOUF65 1965   F
@@ -1053,37 +1014,35 @@ $d
 5 Not Educated Service    t--Fricative
 6 Not Educated    Blue    t--Fricative</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(complex.list<span class="sc">$</span>d<span class="sc">$</span>Job)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">complex.list</span><span class="op">$</span><span class="va">d</span><span class="op">$</span><span class="va">Job</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "White"   "White"   "Service" "Blue"    "Service" "Blue"   </code></pre>
 </div>
 </div>
 <p>Generally, in LVC analysis we do not deal often with either simple vectors or lists; instead, most of our data is in a spreadsheet-like format, which in <em>R</em> is a <strong>data frame</strong>.</p>
-<p><strong>Data frames</strong> are a special type of <strong>list</strong> in which every element in the <strong>list</strong> has the same length (unlike, for example, the <code>complex.list</code> above). <strong>Data frames</strong> can have additional annotations, like <code>rownames()</code>. Some statisticians use <code>rownames()</code> for things like <code>participantID</code>, <code>sampleID</code>, or some other unique identifier. Most of the time (and for our purposes), <code>rownames()</code> are not useful given that we have multiple rows from the same speaker/interview, etc.</p>
-</section>
-<section id="factors-and-comments" class="level3">
-<h3 class="anchored" data-anchor-id="factors-and-comments">Factors and Comments</h3>
+<p><strong>Data frames</strong> are a special type of <strong>list</strong> in which every element in the <strong>list</strong> has the same length (unlike, for example, the <code>complex.list</code> above). <strong>Data frames</strong> can have additional annotations, like <code><a href="https://rdrr.io/r/base/colnames.html">rownames()</a></code>. Some statisticians use <code><a href="https://rdrr.io/r/base/colnames.html">rownames()</a></code> for things like <code>participantID</code>, <code>sampleID</code>, or some other unique identifier. Most of the time (and for our purposes), <code><a href="https://rdrr.io/r/base/colnames.html">rownames()</a></code> are not useful given that we have multiple rows from the same speaker/interview, etc.</p>
+</section><section id="factors-and-comments" class="level3"><h3 class="anchored" data-anchor-id="factors-and-comments">Factors and Comments</h3>
 <p>A <em>factor</em> in <em>R</em> is a special type of variable or data type that, in theory, has a limited number of values. Each value is called a <em>level</em>. Any <strong>vector</strong> or <strong>data frame</strong> column of <code>character</code> or <code>integer</code> values can be a <strong>factor</strong>. Most non-numerical data in LVC is generally thought of as a <strong>factor</strong> already, so knowing how to convert <strong>vectors</strong> or <strong>data frame</strong> columns to factors is important. For example, in the <code>td</code> data, the column <code>Stress</code> contains only two options: <code>Stressed</code> and <code>Unstressed</code>. Because this column contains letters, when we imported it into <em>R</em>, it was automatically categorized as <code>character</code> data. This is probably the best option for a column that, for example, contained the broader context of a token. For <code>Stress</code>, however, it is better for our purposes for <em>R</em> to consider the column as containing a <strong>factor</strong> with two discrete levels. Below is the code to convert <code>Stress</code> into a <strong>factor</strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine the class of the column Stress in the date frame td</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(td<span class="sc">$</span>Stress)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Determine the class of the column Stress in the date frame td</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Stress</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Stress to a column to a factor</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Stress <span class="ot">&lt;-</span><span class="fu">factor</span>(td<span class="sc">$</span>Stress)</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify class of Stress column</span></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(td<span class="sc">$</span>Stress)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Convert Stress to a column to a factor</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Stress</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Stress</span><span class="op">)</span></span>
+<span><span class="co"># Verify class of Stress column</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Stress</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "factor"</code></pre>
 </div>
 </div>
 <p>Notice the <strong>comments</strong> in the code above. In <em>R</em> any line that begins with a <code>#</code> is not evaluated. This is called <em>commenting out</em> a line. We use <code>#</code> to include notes in our codes, or to keep code in our script file but have <em>R</em> ignore it. This can be useful in order to keep track of the steps you are taking in an analysis (see also <a href="https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections-in-the-RStudio-IDE">this tutorial</a> on organizing code using <code>#</code>)</p>
-<p>Columns within a data frame can be specified using the <code>$</code> operator So, above, we tell <em>R</em> to assign (using the assignment operator <code>&lt;-</code>) the values of the original <code>td$Stress</code> column, converted into <strong>factors</strong>, back to the column <code>td$Stress</code>. In other words, we are replacing the original column <code>td$Stress</code> with a converted version of itself. Now, look how the output of the <code>summary()</code> function changes.</p>
+<p>Columns within a data frame can be specified using the <code>$</code> operator So, above, we tell <em>R</em> to assign (using the assignment operator <code>&lt;-</code>) the values of the original <code>td$Stress</code> column, converted into <strong>factors</strong>, back to the column <code>td$Stress</code>. In other words, we are replacing the original column <code>td$Stress</code> with a converted version of itself. Now, look how the output of the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function changes.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Dep.Var                 Stress       Category          Morph.Type       
  Length:6989        Stressed  :6555   Length:6989        Length:6989       
@@ -1109,72 +1068,67 @@ $d
 </div>
 </div>
 <p>We get the number of observations of each level of <code>td$Stress</code> instead of just the number of rows (i.e.&nbsp;the <code>length</code> of the column).</p>
-<p>To get the levels of a <strong>factor</strong> we can use the function <code>levels()</code> and to get the number of levels, we can use the function <code>nlevels()</code></p>
+<p>To get the levels of a <strong>factor</strong> we can use the function <code><a href="https://rdrr.io/r/base/levels.html">levels()</a></code> and to get the number of levels, we can use the function <code><a href="https://rdrr.io/r/base/nlevels.html">nlevels()</a></code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(td<span class="sc">$</span>Stress)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Stress</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Stressed"   "Unstressed"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nlevels</span>(td<span class="sc">$</span>Stress)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html">nlevels</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Stress</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="more-exploring" class="level2">
-<h2 class="anchored" data-anchor-id="more-exploring">More Exploring</h2>
+</section></section><section id="more-exploring" class="level2"><h2 class="anchored" data-anchor-id="more-exploring">More Exploring</h2>
 <p>If you only want information from a single column of the data frame, you can use the operator <code>$</code> to specify which column of <code>td</code> you want. Here the column `Sex’ is specified.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(td<span class="sc">$</span>Sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Sex</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Length     Class      Mode 
      6989 character character </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(td<span class="sc">$</span>Sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Sex</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
 </div>
-<p>The <code>Sex</code> column is still categorized as <code>character</code> data and so <code>summary()</code> only return the number of rows (<code>length</code>) of the column and there are no levels. To get the information we want about the <code>Sex</code> column (i.e., how many tokens are from male speakers and how many are from women speakers) we need to convert it to a factor first. We can either convert the the column to a factor column, or we can use the <code>as.factor()</code> function to have <em>R</em> treat is as a factor in just the following code.</p>
+<p>The <code>Sex</code> column is still categorized as <code>character</code> data and so <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> only return the number of rows (<code>length</code>) of the column and there are no levels. To get the information we want about the <code>Sex</code> column (i.e., how many tokens are from male speakers and how many are from women speakers) we need to convert it to a factor first. We can either convert the the column to a factor column, or we can use the <code><a href="https://rdrr.io/r/base/factor.html">as.factor()</a></code> function to have <em>R</em> treat is as a factor in just the following code.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.factor</span>(td<span class="sc">$</span>Sex))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Sex</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   F    M 
 3776 3213 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span> (<span class="fu">as.factor</span>(td<span class="sc">$</span>Sex))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb74"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Sex</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "F" "M"</code></pre>
 </div>
 </div>
 <p>The following code changes all the character class columns to factors.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with a fresh import of the (t, d) data into R, downloading it directly</span></span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span><span class="fu">read.delim</span>(<span class="st">"https://www.dropbox.com/s/jxlfuogea3lx2pu/deletiondata.txt?dl=1"</span>)</span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or using the version saved locally in a folder Data in the same location as your script file</span></span>
-<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>)</span>
-<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Now convert each character column into a factor</span></span>
-<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Dep.Var <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Dep.Var)</span>
-<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Stress <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Stress)</span>
-<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Category <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Category)</span>
-<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Morph.Type<span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Morph.Type)</span>
-<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Before <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Before)</span>
-<span id="cb76-13"><a href="#cb76-13" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>After <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>After)</span>
-<span id="cb76-14"><a href="#cb76-14" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Speaker <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Speaker)</span>
-<span id="cb76-15"><a href="#cb76-15" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Sex)</span>
-<span id="cb76-16"><a href="#cb76-16" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Education <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Education)</span>
-<span id="cb76-17"><a href="#cb76-17" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Job <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Job)</span>
-<span id="cb76-18"><a href="#cb76-18" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>Phoneme.Dep.Var <span class="ot">&lt;-</span> <span class="fu">factor</span>(td<span class="sc">$</span>Phoneme.Dep.Var)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb76"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Start with a fresh import of the (t, d) data into R, downloading it directly</span></span>
+<span><span class="va">td</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span><span class="op">(</span><span class="st">"https://www.dropbox.com/s/jxlfuogea3lx2pu/deletiondata.txt?dl=1"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># or using the version saved locally in a folder Data in the same location as your script file</span></span>
+<span><span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span><span class="op">(</span><span class="st">"Data/deletiondata.txt"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Now convert each character column into a factor</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Dep.Var</span><span class="op">)</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Stress</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Stress</span><span class="op">)</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Category</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Category</span><span class="op">)</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Morph.Type</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Morph.Type</span><span class="op">)</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Before</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Before</span><span class="op">)</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">After</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">After</span><span class="op">)</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Speaker</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Speaker</span><span class="op">)</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Sex</span><span class="op">)</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Education</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Education</span><span class="op">)</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Job</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Job</span><span class="op">)</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">Phoneme.Dep.Var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">Phoneme.Dep.Var</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="the-td-data" class="level2">
-<h2 class="anchored" data-anchor-id="the-td-data">The (t/d) Data</h2>
+</section><section id="the-td-data" class="level2"><h2 class="anchored" data-anchor-id="the-td-data">The (t/d) Data</h2>
 <p>Let’s look at the data now that all the character columns are factors.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Dep.Var            Stress         Category        Morph.Type  
  Deletion:1747   Stressed  :6555   Function: 739   Mono     :5236  
@@ -1207,15 +1161,10 @@ $d
 
 <!-- -->
 
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
+</section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 <ol>
 <li id="fn1"><p>These were the only two sex/gender identities reported by speakers in this data.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner2022,
+</ol></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner2022,
   author = {Gardner, Matt Hunt},
   title = {Getting to {Know} {Your} {Data}},
   series = {Linguistics Methods Hub},
@@ -1229,8 +1178,7 @@ $d
 Gardner, Matt Hunt. 2022, September 27. Getting to Know Your Data.
 <em>Linguistics Methods Hub</em>: <em>Doing LVC with R</em>. (<a href="https://lingmethodshub.github.io/content/R/lvc_r/030_lvcr.html">https://lingmethodshub.github.io/content/R/lvc_r/030_lvcr.html</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1680,9 +1628,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../../content/R/lvc_r/020_lvcr.html" class="pagination-link" aria-label="Getting Your Data Into *R*">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Getting Your Data Into <em>R</em></span>
       </a>          
@@ -1992,8 +1938,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -2004,8 +1949,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
       &nbsp;
     </div>
   </div>
-</footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
@@ -2037,8 +1981,6 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
   
 })();
           </script>
-
-
 
 
 <script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>

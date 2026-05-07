@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Eleanor Chodroff">
 <meta name="dcterms.date" content="2022-10-05">
-
 <title>Bash Shell Basics – LingMethodsHub</title>
 <style>
 /* Default styles provided by pandoc.
@@ -62,7 +59,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
@@ -87,8 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap-8df02160ef4a432423e3ffc14fe4d0c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/bootstrap/bootstrap-dark-8df02160ef4a432423e3ffc14fe4d0c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-8df02160ef4a432423e3ffc14fe4d0c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../../site_libs/bootstrap/bootstrap-8df02160ef4a432423e3ffc14fe4d0c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -114,18 +109,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
-
-<script type="text/plain" cookie-consent="tracking">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script><script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
-</script>
-
-<script type="text/javascript" charset="UTF-8">
+</script><script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
@@ -140,25 +130,18 @@ cookieconsent.run({
 "language":"en"
   });
 });
-</script> 
-  
-<style>html{ scroll-behavior: smooth; }</style>
+</script><style>html{ scroll-behavior: smooth; }</style>
 <script type="application/json" class="js-hypothesis-config">
 {
   "theme": "clean",
   "openSidebar": false,
   "showHighlights": "never"
 }
-</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
-<script>
+</script><script async="" src="https://hypothes.is/embed.js"></script><script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>
-
-
-<link rel="stylesheet" href="../../../styles.css">
+</script><link rel="stylesheet" href="../../../styles.css">
 <meta property="og:title" content="Bash Shell Basics – LingMethodsHub">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://lingmethodshub.github.io/content/cli/bash-shell-basics/assets/logo.png">
@@ -179,13 +162,10 @@ cookieconsent.run({
 <meta name="citation_journal_title" content="Linguistics Methods Hub">
 <meta name="citation_series_title" content="Linguistics Methods Hub">
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">LingMethodsHub</span>
@@ -197,7 +177,7 @@ cookieconsent.run({
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -218,14 +198,14 @@ cookieconsent.run({
 <span class="menu-text">People</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -234,9 +214,7 @@ cookieconsent.run({
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -244,19 +222,15 @@ cookieconsent.run({
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorials</span></a>
@@ -270,8 +244,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Doing LVC with R</span></a>
@@ -279,8 +253,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
@@ -360,7 +334,7 @@ cookieconsent.run({
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
-  </li>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">
@@ -391,8 +365,14 @@ cookieconsent.run({
  <span class="menu-text">Using {marginaleffects} to understand statistical models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/multitaper-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generating and analyzing multitaper spectra in R</span></a>
+  </div>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -402,8 +382,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vowel plotting in Python</span></a>
@@ -416,7 +396,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -431,8 +411,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Montreal Forced Aligner</span></a>
@@ -445,7 +425,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -455,8 +435,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Bash Shell Basics</span></a>
@@ -469,7 +449,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -479,8 +459,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Windows Subsystem for Linux</span></a>
@@ -488,29 +468,27 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#familiarization" id="toc-familiarization" class="nav-link" data-scroll-target="#familiarization">Familiarization</a></li>
   <li><a href="#current-working-directory" id="toc-current-working-directory" class="nav-link" data-scroll-target="#current-working-directory">Current working directory</a></li>
   <li><a href="#listing" id="toc-listing" class="nav-link" data-scroll-target="#listing">Listing</a></li>
@@ -520,14 +498,10 @@ cookieconsent.run({
   <li><a href="#moving-files" id="toc-moving-files" class="nav-link" data-scroll-target="#moving-files">Moving files</a></li>
   <li><a href="#batch-renaming-and-for-loops" id="toc-batch-renaming-and-for-loops" class="nav-link" data-scroll-target="#batch-renaming-and-for-loops">Batch renaming and for loops</a></li>
   <li><a href="#removing-files" id="toc-removing-files" class="nav-link" data-scroll-target="#removing-files">Removing files</a></li>
-  </ul>
-</nav>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/cli/index.html">Command Line Interfaces</a></li><li class="breadcrumb-item"><a href="../../../content/cli/bash-shell-basics/index.html">Bash Shell Basics</a></li></ol></nav>
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/cli/index.html">Command Line Interfaces</a></li><li class="breadcrumb-item"><a href="../../../content/cli/bash-shell-basics/index.html">Bash Shell Basics</a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Bash Shell Basics</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -562,11 +536,7 @@ cookieconsent.run({
   
 
 
-</header>
-
-
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+</header><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>In corpus phonetics, the preparation, processing, and analysis of speech data are extensively automated. Use of the command line, or shell, is required for several relevant programs; it also greatly facilitates batch processing of large numbers of files. One of the advantages of corpus phonetics is being able to scale up the size of projects; however, handling large numbers of files individually would be quite tedious. A simple command in the command line can affect all applicable files in one go. Common uses of the command line include moving, renaming, deleting, copying, and creating files.</p>
 <p>So what exactly is the command line or the shell?</p>
 <p>It is an interface to your computer’s operating system. It allows the user to directly “speak” to the computer, and navigate through files and folders. By typing a certain command, the user can interact with and modify files, folders, and properties of the computer. Because of this, it is incredibly powerful – many avoid it for this reason, but power is also a good thing, especially when it comes to dealing with large numbers of files.</p>
@@ -582,17 +552,13 @@ cookieconsent.run({
 <li>create files and directories</li>
 </ul>
 <p>We’ll start off with a brief familiarization, then go further into navigating and manipulating files through the command line. Much of this part of the tutorial is based heavily on the <a href="https://swcarpentry.github.io/shell-novice/">Software Carpentries</a> course for the Unix Shell, though I’ve inserted several of my own tips and tricks that I’ve also found helpful for corpus phonetics work.</p>
-</section>
-<section id="familiarization" class="level2">
-<h2 class="anchored" data-anchor-id="familiarization">Familiarization</h2>
+</section><section id="familiarization" class="level2"><h2 class="anchored" data-anchor-id="familiarization">Familiarization</h2>
 <p>At an abstract level, computers are typically used for a handful of functions including running programs, storing data, and communicating with others. There are several ways in which we can interact with a computer including using a keyboard and mouse, touchscreen, voice command, and so forth.</p>
 <p>Many of these, and especially the keyboard and mouse and touchscreen variants, use what’s called a <strong>graphical user interface (GUI)</strong> to interact with the underlying parts of the computer. Breaking apart that term, the display on a Windows or a Mac is simply a visual display of buttons and options that implement commands to the computer when pressed. Companies at least strive to make these interfaces intuitive and easy to interact with (though I’m sure we’ve all encountered some frustrating ones!). Importantly, using a GUI is still an instance of instructing the computer to do something – whether that’s moving a file or opening a program, or creating a file, and so forth.</p>
 <p>GUIs are great – easy and intuitive, but they often don’t scale very well. While we can sometimes use a select all, copy all sequence, what if we just wanted to select only those files that contained the word “cat” in the filename? Or using a nice example from the Carpentries: “if we have to copy the third line of each of a thousand text files stored in thousand different directories and paste it into a single file line by line.” This would be incredibly tedious and time-consuming.</p>
 <p>In contrast to the GUI is the <strong>command-line interface</strong>, or the <strong>shell</strong>. The The command-line interface is far less visual, but far more powerful, especially for automating well-defined instructions like those just described.</p>
 <p>For each command entered, the shell reads the command, evaluates and executes it, and prints the output of the command. It then loops back and waits for the next command. This is known as a <strong>read-evaluate-print loop</strong>.</p>
-</section>
-<section id="current-working-directory" class="level2">
-<h2 class="anchored" data-anchor-id="current-working-directory">Current working directory</h2>
+</section><section id="current-working-directory" class="level2"><h2 class="anchored" data-anchor-id="current-working-directory">Current working directory</h2>
 <p>When opening the shell, the first thing presented on every line is a <strong>prompt</strong> for input, or the command to be executed. On the Mac terminal, the prompt is a dollar sign, and depending on your settings, the prompt may be preceded by the name of your computer, current location in the computer, and your username.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span></span>
@@ -614,9 +580,7 @@ cookieconsent.run({
 </div>
 <p>On Windows, this will likely be a location on your <code>C:\</code> drive.</p>
 <p>This command is useful if you ever need a reminder of where you are in the computer. Any command you write will be executed from this location which will be important to remember as we go along.</p>
-</section>
-<section id="listing" class="level2">
-<h2 class="anchored" data-anchor-id="listing">Listing</h2>
+</section><section id="listing" class="level2"><h2 class="anchored" data-anchor-id="listing">Listing</h2>
 <p>The next command we’ll try is one of the most frequent commands used: <code>ls</code> which <strong>lists</strong> all files and directories in the current working directory.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
@@ -652,9 +616,7 @@ cookieconsent.run({
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> man ls</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="navigating" class="level2">
-<h2 class="anchored" data-anchor-id="navigating">Navigating</h2>
+</section><section id="navigating" class="level2"><h2 class="anchored" data-anchor-id="navigating">Navigating</h2>
 <p>A key part of the command line is the ability to navigate through the various directories in the computer. This is analogous to clicking on a directory and then a sub-directory and then maybe hitting the back arrow – even using the GUI, we’re also navigating through different locations in the computer. For this to work well, it helps to think of the computer as a massive tree structure of directories – there are root directories, parent directories, and so forth. Using the command <code>cd</code> you can move up, down, and around on that tree structure.</p>
 <p>Let’s say you just want to go to a directory contained in your current working directory. You can use the following:</p>
 <div class="cell">
@@ -689,9 +651,7 @@ cookieconsent.run({
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ./corpus</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="creating-directories-and-files" class="level2">
-<h2 class="anchored" data-anchor-id="creating-directories-and-files">Creating directories and files</h2>
+</section><section id="creating-directories-and-files" class="level2"><h2 class="anchored" data-anchor-id="creating-directories-and-files">Creating directories and files</h2>
 <p>To create a directory in the command line, you can use the command <code>mkdir</code>. This takes one argument, the location and name of the new directory. If the location is in the current working directory, as usual, you can just leave out the full path and type the name of the directory.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir mycorpus</span>
@@ -739,9 +699,7 @@ cookieconsent.run({
 <span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co"># to see the last three (or whatever number of) lines of a file</span></span>
 <span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> tail <span class="at">-n</span> 3 speaker1.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="copying-files" class="level2">
-<h2 class="anchored" data-anchor-id="copying-files">Copying files</h2>
+</section><section id="copying-files" class="level2"><h2 class="anchored" data-anchor-id="copying-files">Copying files</h2>
 <p>To copy a file, the command is <code>cp</code> and has two alternative usages: copying a source file to a target file, or copying a set of source files to a target directory.</p>
 <p>Copying in sense one involves copying one file and creating a new one with a different name.</p>
 <div class="cell">
@@ -765,9 +723,7 @@ cookieconsent.run({
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls test test_backup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="moving-files" class="level2">
-<h2 class="anchored" data-anchor-id="moving-files">Moving files</h2>
+</section><section id="moving-files" class="level2"><h2 class="anchored" data-anchor-id="moving-files">Moving files</h2>
 <p>Another very powerful part of the command line is moving files.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv source-file location/</span>
@@ -781,9 +737,7 @@ cookieconsent.run({
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv speaker1.txt speaker1_new.txt</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mv speaker1_new.txt ../speaker1.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="batch-renaming-and-for-loops" class="level2">
-<h2 class="anchored" data-anchor-id="batch-renaming-and-for-loops">Batch renaming and for loops</h2>
+</section><section id="batch-renaming-and-for-loops" class="level2"><h2 class="anchored" data-anchor-id="batch-renaming-and-for-loops">Batch renaming and for loops</h2>
 <p>Because this renaming aspect of mv is so useful, we’re going to explore a bit more of what can be done with that. For this part, we’ll introduce regular expressions, for loops, and variables in the shell.</p>
 <p>To rename all files in a directory, we can do the following. This is simply a command I use frequently in my own scripting, and I’ve found it incredibly useful. I’ll explain each part once we see it in action:</p>
 <div class="cell">
@@ -810,9 +764,7 @@ cookieconsent.run({
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> do <span class="bu">echo</span> <span class="st">"</span><span class="va">$i</span><span class="st">"</span> <span class="st">"</span><span class="va">${i</span><span class="op">/</span><span class="ss">.txt</span><span class="op">/</span>_new.txt<span class="va">}</span><span class="st">"</span></span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> done</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="removing-files" class="level2">
-<h2 class="anchored" data-anchor-id="removing-files">Removing files</h2>
+</section><section id="removing-files" class="level2"><h2 class="anchored" data-anchor-id="removing-files">Removing files</h2>
 <p>Removing files can be very risky and so should be done with the utmost care! When you remove files from the command line, the files do not get sent to the Trash bin. Instead, they are immediately and permanently deleted. It is almost impossible to recover these files, so again, <strong>use with caution</strong>!</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to remove with a nice prompt for each file! (highly recommended unless you have hundreds of files you're deleting at once)</span></span>
@@ -848,9 +800,7 @@ cookieconsent.run({
 
 <!-- -->
 
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{chodroff2022,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{chodroff2022,
   author = {Chodroff, Eleanor},
   title = {Bash {Shell} {Basics}},
   series = {Linguistics Methods Hub},
@@ -863,8 +813,7 @@ cookieconsent.run({
 Chodroff, Eleanor. 2022, October 5. Bash Shell Basics. <em>Linguistics
 Methods Hub</em>. (<a href="https://lingmethodshub.github.io/content/cli/bash-shell-basics/">https://lingmethodshub.github.io/content/cli/bash-shell-basics/</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7165662">10.5281/zenodo.7165662</a>
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1314,9 +1263,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7165662">10.5281/zenodo.7165662</a>
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../../content/cli/index.html" class="pagination-link" aria-label="Command Line Interfaces">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Command Line Interfaces</span>
       </a>          
@@ -1736,8 +1683,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7165662">10.5281/zenodo.7165662</a>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -1749,8 +1695,6 @@ doi: <a href="https://doi.org/10.5281/zenodo.7165662">10.5281/zenodo.7165662</a>
     </div>
   </div>
 </footer>
-
-
 
 
 <script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>

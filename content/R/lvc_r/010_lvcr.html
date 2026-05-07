@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Matt Hunt Gardner">
 <meta name="dcterms.date" content="2022-09-27">
 <meta name="description" content="An introduction to using this tutorial. The relationship between R and Goldvarb. Token and script files. R vs.&nbsp;R Studio. How to install packages.">
-
 <title>Getting Started – LingMethodsHub</title>
 <style>
 /* Default styles provided by pandoc.
@@ -63,7 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
@@ -91,8 +87,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap-194cc7e99426acbbbef3f1ad860df344.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -118,18 +113,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
-
-<script type="text/plain" cookie-consent="tracking">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script><script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
-</script>
-
-<script type="text/javascript" charset="UTF-8">
+</script><script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
@@ -144,25 +134,18 @@ cookieconsent.run({
 "language":"en"
   });
 });
-</script> 
-  
-<style>html{ scroll-behavior: smooth; }</style>
+</script><style>html{ scroll-behavior: smooth; }</style>
 <script type="application/json" class="js-hypothesis-config">
 {
   "theme": "clean",
   "openSidebar": false,
   "showHighlights": "never"
 }
-</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
-<script>
+</script><script async="" src="https://hypothes.is/embed.js"></script><script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>
-
-
-<link rel="stylesheet" href="../../../styles.css">
+</script><link rel="stylesheet" href="../../../styles.css">
 <meta property="og:title" content="Getting Started – LingMethodsHub">
 <meta property="og:description" content="An introduction to using this tutorial. The relationship between R and Goldvarb. Token and script files. R vs.&nbsp;R Studio. How to install packages.">
 <meta property="og:image" content="https://lingmethodshub.github.io/content/R/lvc_r/images/tweet.png">
@@ -188,13 +171,10 @@ cookieconsent.run({
 <meta name="citation_journal_title" content="Linguistics Methods Hub">
 <meta name="citation_series_title" content="Linguistics Methods Hub">
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">LingMethodsHub</span>
@@ -206,7 +186,7 @@ cookieconsent.run({
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -227,14 +207,14 @@ cookieconsent.run({
 <span class="menu-text">People</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -243,9 +223,7 @@ cookieconsent.run({
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -253,19 +231,15 @@ cookieconsent.run({
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorials</span></a>
@@ -279,8 +253,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Doing LVC with R</span></a>
@@ -288,8 +262,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Getting Started</span></a>
@@ -369,7 +343,7 @@ cookieconsent.run({
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
-  </li>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">
@@ -400,8 +374,14 @@ cookieconsent.run({
  <span class="menu-text">Using {marginaleffects} to understand statistical models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/multitaper-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generating and analyzing multitaper spectra in R</span></a>
+  </div>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -411,8 +391,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vowel plotting in Python</span></a>
@@ -425,7 +405,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -440,8 +420,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Montreal Forced Aligner</span></a>
@@ -454,7 +434,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -464,8 +444,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Shell Basics</span></a>
@@ -478,7 +458,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -488,8 +468,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Windows Subsystem for Linux</span></a>
@@ -497,44 +477,40 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+<li>
+<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#r-and-goldvarb" id="toc-r-and-goldvarb" class="nav-link" data-scroll-target="#r-and-goldvarb"><em>R</em> and <em>Goldvarb</em></a></li>
+<li><a href="#r-and-goldvarb" id="toc-r-and-goldvarb" class="nav-link" data-scroll-target="#r-and-goldvarb"><em>R</em> and <em>Goldvarb</em></a></li>
   <li><a href="#token-files" id="toc-token-files" class="nav-link" data-scroll-target="#token-files">Token Files</a></li>
   <li><a href="#r-script-files" id="toc-r-script-files" class="nav-link" data-scroll-target="#r-script-files"><em>R</em> Script Files</a></li>
   <li><a href="#r-and-r-studio" id="toc-r-and-r-studio" class="nav-link" data-scroll-target="#r-and-r-studio"><em>R</em> and <em>R Studio</em></a></li>
   <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing Packages</a></li>
-  </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="010_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</li>
+  </ul><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="010_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Getting Started</a></li></ol></nav>
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Getting Started</a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Getting Started</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -581,13 +557,9 @@ cookieconsent.run({
   
 
 
-</header>
-
-
-<p>If you have not installed <em>R</em> or have never used <em>R</em> before, please check out <em>Swirl</em> <a href="https://swirlstats.com/" class="uri">https://swirlstats.com/</a>, which will guide you through installing and learning the basic functionality of <em>R</em>. <em>Swirl</em> is a collection of interactive courses. Its <em>R Programming</em> beginner course will introduce you to <em>R</em> and several concepts discussed in this guide. Even if you have used <em>R</em> before, you should still go through the basic <em>R Programming</em> tutorial — even I learned something new when testing it before recommending it here.</p>
+</header><p>If you have not installed <em>R</em> or have never used <em>R</em> before, please check out <em>Swirl</em> <a href="https://swirlstats.com/" class="uri">https://swirlstats.com/</a>, which will guide you through installing and learning the basic functionality of <em>R</em>. <em>Swirl</em> is a collection of interactive courses. Its <em>R Programming</em> beginner course will introduce you to <em>R</em> and several concepts discussed in this guide. Even if you have used <em>R</em> before, you should still go through the basic <em>R Programming</em> tutorial — even I learned something new when testing it before recommending it here.</p>
 <p>The first two chapters of Bodo Winter’s <a href="https://www.routledge.com/Statistics-for-Linguists-An-Introduction-Using-R/Winter/p/book/9781138056091"><em>Statistics or Lingustics: An Introduction Using R</em></a> will also help you learn the same fundamental <em>R</em> skills.</p>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>These instructions are not intended to be a comprehensive overview of <em>R</em>’s functionality, which is myriad. Instead it is a set of very specific instructions for doing the kinds of things in <em>R</em> that variationist sociolinguists familiar with <em>Goldvarb</em> often want to do. This includes extracting summary statistics from a standard token spreadsheet and formatting those statistics in such a way that they can be graphed using the package <code>ggplot2</code>, as well as testing the trends in those summary statistics using mixed-effects logistic regression analysis. These instructions assume you have installed the latest version of <em>R</em> (4.1.3 or later ). Even though this guide does not show everything that <em>R</em> can do, after reading and working your way through this guide, you should be familiar enough with how <em>R</em> generally works to figure out how do something not covered.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -604,31 +576,26 @@ Note
 </div>
 <p>If you run into a problem you don’t know how to solve, Google it. I guarantee someone has had the same question already. There are many, many online <em>R</em> tutorials. That’s how I learned how to use <em>R</em>. That said, it still sometimes takes me many failed attempts before I get something right.</p>
 <div id="fig-tweet" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-tweet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tweet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="images/tweet.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Actual tweet"><img src="images/tweet.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tweet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Actual tweet
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
-<section id="r-and-goldvarb" class="level3">
-<h3 class="anchored" data-anchor-id="r-and-goldvarb"><em>R</em> and <em>Goldvarb</em></h3>
+<section id="r-and-goldvarb" class="level3"><h3 class="anchored" data-anchor-id="r-and-goldvarb">
+<em>R</em> and <em>Goldvarb</em>
+</h3>
 <p>In this guide I mention the program <a href="http://individual.utoronto.ca/tagliamonte/goldvarb.html"><em>Goldvarb</em></a> a lot. This is a well-known and widely-used program for doing multivariate analysis in the language variation and change literature. If you are are unfamiliar with <em>Goldvarb</em> you can learn more in Sali Tagliamonte’s (2006) <a href="https://doi.org/10.1017/CBO9780511801624"><em>Analysing Sociolingusitic Variation</em></a>. I remain agnostic as to whether <em>R</em> or <em>Goldvarb</em> or any other analysis tool is the one you must use for your research. Each tool has pros and cons. These instructions are simply a set of procedures you can use if you choose to use <em>R</em>.</p>
-</section>
-<section id="token-files" class="level3">
-<h3 class="anchored" data-anchor-id="token-files">Token Files</h3>
+</section><section id="token-files" class="level3"><h3 class="anchored" data-anchor-id="token-files">Token Files</h3>
 <p>You should have one master Microsoft <em>Excel</em> spreadsheet for your data. From this master spreadsheet you can create other files that can be used in programs like <em>Goldvarb</em> and <em>R</em>. Each row of your spreadsheet should represent an individual token. Each column of your spreadsheet should represent a different, independent variable. The example token file for this guide is structured this way, as in <a href="#fig-excel" class="quarto-xref">Figure&nbsp;2</a>.</p>
 <div id="fig-excel" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="images/tokenfile.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Example token file deletiondata.txt"><img src="images/tokenfile.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Example token file <code>deletiondata.txt</code>
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -643,46 +610,40 @@ Warning
 <p>Do not include anything in your token file that isn’t a token. Do not create sum columns. Do not add random notes to the right or the top of the data. <em>R</em> will try to interpret all of this as data.</p>
 </div>
 </div>
-</section>
-<section id="r-script-files" class="level3">
-<h3 class="anchored" data-anchor-id="r-script-files"><em>R</em> Script Files</h3>
+</section><section id="r-script-files" class="level3"><h3 class="anchored" data-anchor-id="r-script-files">
+<em>R</em> Script Files</h3>
 <p>Anytime you are using <em>R</em> you should be using script files. Script files are very similar to <em>Goldvarb</em> condition files. They are files that include instructions that tell <em>R</em> what to do. By saving your command functions in script files you create replicability for your work in <em>R</em>. You may have <em>pseudo</em>-script files already. Many people keep a text file full of useful <em>R</em> command functions. An <em>R</em> script file is an <em>R</em>-specific file that does the same thing.</p>
 <p>I cannot stress enough the importance of replicability. You always want to be able to go back and see every step you took in your analysis. This is especially true in the frequent situation where a reviewer suggests you go back and double-check something in your data or tweak your analysis in some way. Using script files, which are essentially a log of all your steps, is an excellent way to ensure replicability.</p>
 <div id="fig-scriptfile" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-scriptfile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-scriptfile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="images/scriptfile.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Example R script file"><img src="images/scriptfile.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scriptfile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Example <em>R</em> script file
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 <p>Some people have one script file for an entire project — say, a paper. My co-author Derek Denis does this. Other people have specific script files for specific results — e.g., one script file for each graph with the complete instructions for making that one graph, and the script file and the graph it creates labelled identically. This is the method I prefer. You may choose to do either, or both, or choose not to use script files at all. It’s up to you.</p>
 <p>All of the functions discussed in this guide are in a single <em>R</em> script file which is replicated at the end of this guide.</p>
 <p>If you download this file and open it, <em>R</em> will automatically open for you. If you want to create a new <em>R</em> script file after you’ve opened <em>R</em> you can do so via the <strong>File</strong> menu: <strong>File&gt;New Document</strong>.</p>
-</section>
-<section id="r-and-r-studio" class="level3">
-<h3 class="anchored" data-anchor-id="r-and-r-studio"><em>R</em> and <em>R Studio</em></h3>
+</section><section id="r-and-r-studio" class="level3"><h3 class="anchored" data-anchor-id="r-and-r-studio">
+<em>R</em> and <em>R Studio</em>
+</h3>
 <p>The following instructions assume you are using the core <em>R</em> program, not <em>R Studio</em>. There is no real difference between these programs (at least in how <em>R</em> operates). <em>R Studio</em> is just an alternative user interface. Some of the external commands (e.g.&nbsp;creating a new <em>R</em> script file, etc.) may be different, but the actual <em>R</em> functions listed in this document will be the same. There is no advantage to using the <em>R</em> core program or <em>R Studio</em>. The choice is simply personal preference. I prefer the core <em>R</em> program because I like to be able to see multiple script files at the same time. <em>R Studio</em> organizes script files in tabs. You may prefer <em>R Studio</em> because it can also author other types of documents.</p>
 <p>To execute a command function that is in a script file simply put your cursor on the same line as that command and press the execution or <strong>Run</strong> command depending on your operating system and editor. In <a href="#fig-scriptfile" class="quarto-xref">Figure&nbsp;3</a> the cursor is placed in the middle of line 2; pressing <code>Control+Return</code> on my Mac executes the command function highlighted in grey. You can also highlight a large portion, or even all of your script file, and press the execution command to execute multiple commands at once. There is also an execute all or <strong>Source</strong> command that will execute the entire script file.</p>
 <div id="tbl-execute" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-execute-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-execute-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Execute current line of code
-</figcaption>
-<div aria-describedby="tbl-execute-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-execute-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>Execute</th>
 <th>Mac OSX</th>
 <th>Windows PC</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
-<td><em>R</em> Editor</td>
+<td>
+<em>R</em> Editor</td>
 <td><code>Command+Return</code></td>
 <td><code>CTRL+R</code></td>
 </tr>
@@ -697,22 +658,19 @@ Table&nbsp;1: Execute current line of code
 </figure>
 </div>
 <div id="tbl-executeall" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-executeall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-executeall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;2: Execute all code
-</figcaption>
-<div aria-describedby="tbl-executeall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-executeall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>Execute</th>
 <th>Mac OSX</th>
 <th>Windows PC</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
-<td><em>R</em> Editor</td>
+<td>
+<em>R</em> Editor</td>
 <td><code>Command+E</code></td>
 <td><code>CTRL+Shift+R</code></td>
 </tr>
@@ -726,28 +684,23 @@ Table&nbsp;2: Execute all code
 </div>
 </figure>
 </div>
-</section>
-<section id="installing-packages" class="level3">
-<h3 class="anchored" data-anchor-id="installing-packages">Installing Packages</h3>
+</section><section id="installing-packages" class="level3"><h3 class="anchored" data-anchor-id="installing-packages">Installing Packages</h3>
 <p>Before you begin doing any kind of analysis in <em>R</em>, you’ll first need several `packages.’ Packages are simply additional sets of instructions that can do things above and beyond <em>R</em>’s core functionality. Packages are created by academics and are made available to everyone. <em>R</em> doesn’t automatically download every package, so if you want to use a specific package, you must download it. You only need to do this one time. You also need to be connected to the internet to do it. Type the following function into <em>R</em>’s console window and press <strong>Enter/Return</strong> or type it into a script file and press <strong>CTRL+Enter/Command+Return</strong>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"dplyr"</span>,<span class="st">"vcd"</span>,<span class="st">"reshape2"</span>,<span class="st">"ggplot2"</span>,<span class="st">"partykit"</span>,<span class="st">"lme4"</span>,<span class="st">"car"</span>,<span class="st">"multcomp"</span>, <span class="st">"MuMIn"</span>, <span class="st">"gmodels"</span>), <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dplyr"</span>,<span class="st">"vcd"</span>,<span class="st">"reshape2"</span>,<span class="st">"ggplot2"</span>,<span class="st">"partykit"</span>,<span class="st">"lme4"</span>,<span class="st">"car"</span>,<span class="st">"multcomp"</span>, <span class="st">"MuMIn"</span>, <span class="st">"gmodels"</span><span class="op">)</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Above <code>install.packages()</code> is a function for installing packages. Inside the parentheses you tell <em>R</em> which packages to install. In this case you want to install multiple packages. Any time you need to combine multiple things in <em>R</em> you use the concatenating function <code>c()</code>. So the above function says combine the package names <code>dplyr</code>, <code>vcd</code>, <code>reshape2</code>, <code>ggplot2</code>, <code>partykit</code>, <code>lme4</code>, <code>car</code>, <code>multcomp</code>, and <code>MuNIn</code> and then install the packages with those names. The <code>dependencies = TRUE</code> specification tells <em>R</em> to install any additional packages that these packages depend on to function.</p>
+<p>Above <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> is a function for installing packages. Inside the parentheses you tell <em>R</em> which packages to install. In this case you want to install multiple packages. Any time you need to combine multiple things in <em>R</em> you use the concatenating function <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>. So the above function says combine the package names <code>dplyr</code>, <code>vcd</code>, <code>reshape2</code>, <code>ggplot2</code>, <code>partykit</code>, <code>lme4</code>, <code>car</code>, <code>multcomp</code>, and <code>MuNIn</code> and then install the packages with those names. The <code>dependencies = TRUE</code> specification tells <em>R</em> to install any additional packages that these packages depend on to function.</p>
 <p>When you execute this function, <em>R</em> might ask you to pick a <strong>CRAN Mirror</strong>. This is just <em>R</em> asking you from where you want to download the packages. <em>CRAN</em> is the <em>Comprehensive R Archive Network</em> and mirrors are simply different institutions that offer identical copies of <em>R</em> files for downloading. Usually I just pick the option closest to me, which is the University of Toronto in Canada. If you’ve downloaded packages in the past you’ve likely already set your <strong>CRAN Mirror</strong>, and won’t be prompted to do it again.</p>
-<p>Once you’ve selected your <strong>CRAN Mirror</strong>, if necessary, and executed the <code>install.packages()</code> function, you may see a bunch of text scroll across your <em>R</em> console window. This is just <em>R</em> telling you that it is downloading and installing these packages. You can also install packages by selecting <strong>Packages &amp; Data &gt; Package Installer</strong>. In this window click <strong>Get List</strong>, then search/browse for the required packages one by one. When you find a package, highlight it and click <strong>Install Selected</strong>. Make sure the <strong>Install Dependencies</strong> option is checked.</p>
-<p>As <em>R</em> updates over time, so too must these packages. But packages don’t update automatically. Therefore it’s a good idea to periodically execute the function below. Do this now. These instructions assume that you have the most up to date version of <em>R</em> and its packages. The <code>ask=FALSE</code> option for the <code>update.packages()</code> function just means that <em>R</em> will run the update ’silently”, or rather, it won’t ask you whether or not you want to update each individual package you’ve installed.</p>
+<p>Once you’ve selected your <strong>CRAN Mirror</strong>, if necessary, and executed the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function, you may see a bunch of text scroll across your <em>R</em> console window. This is just <em>R</em> telling you that it is downloading and installing these packages. You can also install packages by selecting <strong>Packages &amp; Data &gt; Package Installer</strong>. In this window click <strong>Get List</strong>, then search/browse for the required packages one by one. When you find a package, highlight it and click <strong>Install Selected</strong>. Make sure the <strong>Install Dependencies</strong> option is checked.</p>
+<p>As <em>R</em> updates over time, so too must these packages. But packages don’t update automatically. Therefore it’s a good idea to periodically execute the function below. Do this now. These instructions assume that you have the most up to date version of <em>R</em> and its packages. The <code>ask=FALSE</code> option for the <code><a href="https://rdrr.io/r/utils/update.packages.html">update.packages()</a></code> function just means that <em>R</em> will run the update ’silently”, or rather, it won’t ask you whether or not you want to update each individual package you’ve installed.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update.packages</span>(<span class="at">ask=</span><span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/update.packages.html">update.packages</a></span><span class="op">(</span>ask<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
 <!-- -->
 
-</section>
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner2022,
+</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner2022,
   author = {Gardner, Matt Hunt},
   title = {Getting {Started}},
   series = {Linguistics Methods Hub},
@@ -761,8 +714,7 @@ Table&nbsp;2: Execute all code
 Gardner, Matt Hunt. 2022, September 27. Getting Started. <em>Linguistics
 Methods Hub</em>: <em>Doing LVC with R</em>. (<a href="https://lingmethodshub.github.io/content/R/lvc_r/010_lvcr.html">https://lingmethodshub.github.io/content/R/lvc_r/010_lvcr.html</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1212,9 +1164,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../../content/R/index.html" class="pagination-link" aria-label="R">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">R</span>
       </a>          
@@ -1339,8 +1289,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -1351,8 +1300,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
       &nbsp;
     </div>
   </div>
-</footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
@@ -1384,8 +1332,6 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
   
 })();
           </script>
-
-
 
 
 <script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>

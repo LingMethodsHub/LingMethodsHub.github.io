@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Matt Hunt Gardner">
 <meta name="dcterms.date" content="2022-09-27">
 <meta name="description" content="Modifying data, but using the tidyverse">
-
 <title>Doing it all again, but tidy – LingMethodsHub</title>
 <style>
 /* Default styles provided by pandoc.
@@ -63,7 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
@@ -88,8 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap-194cc7e99426acbbbef3f1ad860df344.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/bootstrap/bootstrap-dark-194cc7e99426acbbbef3f1ad860df344.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-194cc7e99426acbbbef3f1ad860df344.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../../site_libs/bootstrap/bootstrap-194cc7e99426acbbbef3f1ad860df344.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -115,18 +110,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
-
-<script type="text/plain" cookie-consent="tracking">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script><script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
-</script>
-
-<script type="text/javascript" charset="UTF-8">
+</script><script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
@@ -141,25 +131,18 @@ cookieconsent.run({
 "language":"en"
   });
 });
-</script> 
-  
-<style>html{ scroll-behavior: smooth; }</style>
+</script><style>html{ scroll-behavior: smooth; }</style>
 <script type="application/json" class="js-hypothesis-config">
 {
   "theme": "clean",
   "openSidebar": false,
   "showHighlights": "never"
 }
-</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
-<script>
+</script><script async="" src="https://hypothes.is/embed.js"></script><script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>
-
-
-<link rel="stylesheet" href="../../../styles.css">
+</script><link rel="stylesheet" href="../../../styles.css">
 <meta property="og:title" content="Doing it all again, but tidy – LingMethodsHub">
 <meta property="og:description" content="Modifying data, but using the tidyverse">
 <meta property="og:image" content="https://lingmethodshub.github.io/content/R/lvc_r/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
@@ -181,13 +164,10 @@ cookieconsent.run({
 <meta name="citation_journal_title" content="Linguistics Methods Hub">
 <meta name="citation_series_title" content="Linguistics Methods Hub">
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">LingMethodsHub</span>
@@ -199,7 +179,7 @@ cookieconsent.run({
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -220,14 +200,14 @@ cookieconsent.run({
 <span class="menu-text">People</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -236,9 +216,7 @@ cookieconsent.run({
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -246,19 +224,15 @@ cookieconsent.run({
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorials</span></a>
@@ -272,8 +246,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Doing LVC with R</span></a>
@@ -281,8 +255,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
@@ -362,7 +336,7 @@ cookieconsent.run({
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
-  </li>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">
@@ -393,8 +367,14 @@ cookieconsent.run({
  <span class="menu-text">Using {marginaleffects} to understand statistical models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/multitaper-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generating and analyzing multitaper spectra in R</span></a>
+  </div>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -404,8 +384,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vowel plotting in Python</span></a>
@@ -418,7 +398,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -433,8 +413,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Montreal Forced Aligner</span></a>
@@ -447,7 +427,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -457,8 +437,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Shell Basics</span></a>
@@ -471,7 +451,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -481,8 +461,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Windows Subsystem for Linux</span></a>
@@ -490,44 +470,41 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#doing-it-all-again-but-tidy" id="toc-doing-it-all-again-but-tidy" class="nav-link active" data-scroll-target="#doing-it-all-again-but-tidy">Doing It All Again, But <code>tidy</code></a>
+<li>
+<a href="#doing-it-all-again-but-tidy" id="toc-doing-it-all-again-but-tidy" class="nav-link active" data-scroll-target="#doing-it-all-again-but-tidy">Doing It All Again, But <code>tidy</code></a>
   <ul class="collapse">
-  <li><a href="#the-pipe" id="toc-the-pipe" class="nav-link" data-scroll-target="#the-pipe">The Pipe %&gt;%</a></li>
+<li><a href="#the-pipe" id="toc-the-pipe" class="nav-link" data-scroll-target="#the-pipe">The Pipe %&gt;%</a></li>
   <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles">Tibbles</a></li>
   <li><a href="#getting-a-glimpse" id="toc-getting-a-glimpse" class="nav-link" data-scroll-target="#getting-a-glimpse">Getting a <code>glimpse()</code></a></li>
   <li><a href="#manipulating-data-with-dplyr" id="toc-manipulating-data-with-dplyr" class="nav-link" data-scroll-target="#manipulating-data-with-dplyr">Manipulating data with <code>dplyr</code></a></li>
-  </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="050_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</li>
+  </ul><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="050_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/050_lvcr.html">Doing it all again, but <code>tidy</code></a></li></ol></nav>
-<div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Doing it all again, but <code>tidy</code></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/050_lvcr.html">Doing it all again, but <code>tidy</code></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Doing it all again, but <code>tidy</code>
+</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 <div>
@@ -573,23 +550,20 @@ cookieconsent.run({
   
 
 
-</header>
-
-
-<section id="doing-it-all-again-but-tidy" class="level2">
-<h2 class="anchored" data-anchor-id="doing-it-all-again-but-tidy">Doing It All Again, But <code>tidy</code></h2>
+</header><section id="doing-it-all-again-but-tidy" class="level2"><h2 class="anchored" data-anchor-id="doing-it-all-again-but-tidy">Doing It All Again, But <code>tidy</code>
+</h2>
 <p>The package <code>dplyr</code> is part of a larger “universe” of <em>R</em> packages called <code>tidyverse</code>. This collection of packages is specifically focused on data science and offers some shortcuts that are useful to learn. The packages that make up the <code>tidyverse</code> are <code>dplyr</code>, <code>ggplot2</code>, <code>purr</code>, <code>tibble</code>, <code>tidyr</code>, <code>stingr</code>, <code>readr</code>, and <code>forcats</code>, among others. Throughout this guide I try to use the most basic <em>R</em> syntax for accomplishing a task. This way you learn how <em>R</em> works. I will also show how to complete the same task using packages from the <code>tidyverse</code>. Using the <code>tidyverse</code> methods is usually optional — though once you get the hang of it, you might always use the <code>tidyverse</code> methods.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the tidyverse package</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Install the tidyverse package</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the tidyverse package</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the tidyverse package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List the packages loaded by the tidyverse package</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidyverse_packages</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># List the packages loaded by the tidyverse package</span></span>
+<span><span class="fu"><a href="https://tidyverse.tidyverse.org/reference/tidyverse_packages.html">tidyverse_packages</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "broom"         "conflicted"    "cli"           "dbplyr"       
  [5] "dplyr"         "dtplyr"        "forcats"       "ggplot2"      
@@ -602,8 +576,7 @@ cookieconsent.run({
 </div>
 </div>
 <p>Before we get started with the <code>tidyverse</code>, there are two important new things to learn about. The first is the pipe operator <code>%&gt;%</code> and the second is the the alternative to a <em>data frame</em> called a <em>tibble</em>.</p>
-<section id="the-pipe" class="level3">
-<h3 class="anchored" data-anchor-id="the-pipe">The Pipe %&gt;%</h3>
+<section id="the-pipe" class="level3"><h3 class="anchored" data-anchor-id="the-pipe">The Pipe %&gt;%</h3>
 <p>The pipe operator <code>%&gt;%</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> is introduced by the <code>magrittr</code> package<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and it is extremely useful. The pipe operator passes the output of a function to the first argument of the next function, which mean you can chain several steps together.</p>
 <p>For example, lets find the mean year of birth in our data. We already know that when the pre-vowel contexts are removed, the mean year of birth is 1969.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -620,24 +593,22 @@ cookieconsent.run({
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find mean YOB using mean() function</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(td<span class="sc">$</span>YOB)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Find mean YOB using mean() function</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">YOB</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1969.447</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the mean YOB by piping the td data to the mean() function</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>YOB <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Find the mean YOB by piping the td data to the mean() function</span></span>
+<span><span class="va">td</span><span class="op">$</span><span class="va">YOB</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1969.447</code></pre>
 </div>
 </div>
 <p>The functionality of <code>%&gt;%</code> might seem trivial at this point; however, when you need to perform multiple tasks sequentially, it saves a lot of time and space when writing your code.</p>
-</section>
-<section id="tibbles" class="level3">
-<h3 class="anchored" data-anchor-id="tibbles">Tibbles</h3>
+</section><section id="tibbles" class="level3"><h3 class="anchored" data-anchor-id="tibbles">Tibbles</h3>
 <p>A <em>tibble</em> is an updated version of a <em>data frame</em>. <em>Tibbles</em> keep the features that have stood the test of time, and drop the features that used to be convenient but are now frustrating (i.e.&nbsp;converting character vectors to factors). For our purposes, the difference between the two is negligible, but you should be aware that <em>tibbles</em> look a bit different from <em>data frames</em>. Run these two commands and compare.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre style="max-height: 500px;"><code>      Dep.Var     Stress Category Morph.Type          Before     After Speaker  YOB Sex    Education     Job After.New Center.Age Age.Group  Age_Sex Phoneme    Dep.Var.Full
 51   Realized   Stressed  Lexical       Mono            Stop Consonant  BOUF65 1965   F     Educated   White Consonant  -4.446594    Middle Middle_F       t               T
@@ -1832,7 +1803,7 @@ cookieconsent.run({
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre style="max-height: 500px;"><code># A tibble: 1,189 × 17
    Dep.Var  Stress   Category Morph.Type Before After     Speaker   YOB Sex   Education    Job     After.New Center.Age Age.Group Age_Sex  Phoneme Dep.Var.Full
@@ -1850,16 +1821,16 @@ cookieconsent.run({
 # ℹ 1,179 more rows</code></pre>
 </div>
 </div>
-<p>Notice that the <em>tibble</em> lists the dimensions of the tibble at the top, as well as the class of each of the columns. It also only displays the first 10 rows. You’ll also notice that the row numbers have reset when we converted <code>td</code> to a <em>tibble</em>. If we want to view the entire tibble, we can use the <code>print()</code> function and specify the <code>n=</code> plus the number of rows we want to see, including all rows (<code>n=Inf</code>). You can see below how the pipe operator makes doing this pretty easy.</p>
+<p>Notice that the <em>tibble</em> lists the dimensions of the tibble at the top, as well as the class of each of the columns. It also only displays the first 10 rows. You’ll also notice that the row numbers have reset when we converted <code>td</code> to a <em>tibble</em>. If we want to view the entire tibble, we can use the <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> function and specify the <code>n=</code> plus the number of rows we want to see, including all rows (<code>n=Inf</code>). You can see below how the pipe operator makes doing this pretty easy.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Embedding functions</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">as_tibble</span>(td), <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Embedding functions</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span>, n<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The above produces the same as the following:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using %&gt;% to pass the results from the first function to the second function</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(td)<span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Using %&gt;% to pass the results from the first function to the second function</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre style="max-height: 500px;"><code># A tibble: 1,189 × 17
    Dep.Var  Stress   Category Morph.Type Before After     Speaker   YOB Sex   Education    Job     After.New Center.Age Age.Group Age_Sex  Phoneme Dep.Var.Full
@@ -1887,12 +1858,11 @@ cookieconsent.run({
 # ℹ 1,169 more rows</code></pre>
 </div>
 </div>
-</section>
-<section id="getting-a-glimpse" class="level3">
-<h3 class="anchored" data-anchor-id="getting-a-glimpse">Getting a <code>glimpse()</code></h3>
-<p>Another useful addition to data exploration is the <code>glimpse()</code> function from the <code>pilllar</code> package and re-exported by <code>dplyr</code>. The <code>glipmpse()</code> function is like a cross between <code>print()</code> (which shows the data) and <code>str()</code> (which shows the structure of the data). I use <code>glimpse()</code> almost as frequently as I use <code>summary()</code>. In fact, if you have very wide data, i.e., with lots of columns, <code>glimpse()</code> may prove more useful than <code>summary()</code> for getting a quick snapshot of your data. <code>glimpse()</code> shows the number of rows, the number of columns, the name of each column, its class, and however many values in each column as will fit horizontally in the console.</p>
+</section><section id="getting-a-glimpse" class="level3"><h3 class="anchored" data-anchor-id="getting-a-glimpse">Getting a <code>glimpse()</code>
+</h3>
+<p>Another useful addition to data exploration is the <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> function from the <code>pilllar</code> package and re-exported by <code>dplyr</code>. The <code>glipmpse()</code> function is like a cross between <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> (which shows the data) and <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> (which shows the structure of the data). I use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> almost as frequently as I use <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>. In fact, if you have very wide data, i.e., with lots of columns, <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> may prove more useful than <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> for getting a quick snapshot of your data. <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> shows the number of rows, the number of columns, the name of each column, its class, and however many values in each column as will fit horizontally in the console.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(td)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">td</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,189
 Columns: 17
@@ -1915,152 +1885,143 @@ $ Phoneme      &lt;fct&gt; t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t, t,
 $ Dep.Var.Full &lt;fct&gt; T, Deletion, Deletion, Deletion, T, Deletion, Deletion, D…</code></pre>
 </div>
 </div>
-</section>
-<section id="manipulating-data-with-dplyr" class="level3">
-<h3 class="anchored" data-anchor-id="manipulating-data-with-dplyr">Manipulating data with <code>dplyr</code></h3>
+</section><section id="manipulating-data-with-dplyr" class="level3"><h3 class="anchored" data-anchor-id="manipulating-data-with-dplyr">Manipulating data with <code>dplyr</code>
+</h3>
 <p>The <code>dplyr</code> package is great for manipulating data in a data frame/tibble. Some common things that <code>diplyr</code> can do include:</p>
 <table class="caption-top table">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>Function</th>
 <th>Description</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
-<td><code>mutate()</code></td>
+<td><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code></td>
 <td>add new variables or modify existing ones</td>
 </tr>
 <tr class="even">
-<td><code>select()</code></td>
+<td><code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code></td>
 <td>select variables</td>
 </tr>
 <tr class="odd">
-<td><code>filter()</code></td>
+<td><code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code></td>
 <td>filter</td>
 </tr>
 <tr class="even">
-<td><code>summarize()</code></td>
+<td><code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code></td>
 <td>summarize/reduce</td>
 </tr>
 <tr class="odd">
-<td><code>arrange()</code></td>
+<td><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code></td>
 <td>sort</td>
 </tr>
 <tr class="even">
-<td><code>group_by()</code></td>
+<td><code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code></td>
 <td>group</td>
 </tr>
 <tr class="odd">
-<td><code>rename()</code></td>
+<td><code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code></td>
 <td>rename columns</td>
 </tr>
 </tbody>
 </table>
 <p>Lets redo all our data manipulation of <code>td</code> but with <code>dplyr</code> and its pipe <code>%&gt;%</code> operator</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in token file</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"Data/deletiondata.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read in token file</span></span>
+<span><span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span><span class="op">(</span><span class="st">"Data/deletiondata.txt"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>or…</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in token file</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"https://www.dropbox.com/s/jxlfuogea3lx2pu/deletiondata.txt?dl=1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read in token file</span></span>
+<span><span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span><span class="op">(</span><span class="st">"https://www.dropbox.com/s/jxlfuogea3lx2pu/deletiondata.txt?dl=1"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>then…</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset data to remove previous 'Vowel' contexts:</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## filter td to include everything that is not "Vowel" in the column Before</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Before <span class="sc">!=</span> <span class="st">"Vowel"</span>) </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-code 'H' to be 'Consonant' in a new column:</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="do">## create a new column called After.New that equals a re-code of After in which H is re-coded as Consonant</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">After.New =</span> <span class="fu">recode</span>(After, <span class="st">"H"</span> <span class="ot">=</span> <span class="st">"Consonant"</span>))</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Center Year of Birth:</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="do">## create a new column called Center.Age equal to the YOB column but scaled</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>     <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>))) </span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Age.Group:</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="do">## cut YOB into discrete categories. </span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">Age.Group =</span> <span class="fu">cut</span>(YOB, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">1944</span>, <span class="dv">1979</span>, <span class="cn">Inf</span>), </span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>))) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset data to remove previous 'Vowel' contexts:</span></span>
+<span><span class="co">## filter td to include everything that is not "Vowel" in the column Before</span></span>
+<span><span class="va">td</span> <span class="op">&lt;-</span> <span class="va">td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Before</span> <span class="op">!=</span> <span class="st">"Vowel"</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co"># Re-code 'H' to be 'Consonant' in a new column:</span></span>
+<span><span class="co">## create a new column called After.New that equals a re-code of After in which H is re-coded as Consonant</span></span>
+<span><span class="va">td</span> <span class="op">&lt;-</span> <span class="va">td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>After.New <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/recode.html">recode</a></span><span class="op">(</span><span class="va">After</span>, <span class="st">"H"</span> <span class="op">=</span> <span class="st">"Consonant"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Center Year of Birth:</span></span>
+<span><span class="co">## create a new column called Center.Age equal to the YOB column but scaled</span></span>
+<span><span class="va">td</span> <span class="op">&lt;-</span> <span class="va">td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Center.Age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">YOB</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co"># Create Age.Group:</span></span>
+<span><span class="co">## cut YOB into discrete categories. </span></span>
+<span><span class="va">td</span> <span class="op">&lt;-</span> <span class="va">td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Age.Group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">YOB</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">1944</span>, <span class="fl">1979</span>, <span class="cn">Inf</span><span class="op">)</span>, </span>
+<span>                                  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Before we continue, a note about the <code>cut()</code> function. The <code>breaks=</code> option is a concatenated list of boundaries. It should start and end with <code>-Inf</code> and <code>Inf</code> (negative and positive infinity) as these will be the lower and upper bounds. The other values are the boundaries or cut-off points. By default <code>cut()</code> has the setting <code>right=TRUE</code>, which means the boundary values are considered the last value in a group (e.g., rightmost value). Above, this means <code>1944</code> will be the highest value in the <code>Old</code> category and <code>1979</code> will the the highest value in the <code>Middle</code> category. To reverse this you can add the option <code>right=FALSE</code> in which case 1944 would be the lowest value in the <code>Middle</code> category (e.g.&nbsp;leftmost value) and 1979 would be the lowest value in the <code>Young</code> category.</p>
+<p>Before we continue, a note about the <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code> function. The <code>breaks=</code> option is a concatenated list of boundaries. It should start and end with <code>-Inf</code> and <code>Inf</code> (negative and positive infinity) as these will be the lower and upper bounds. The other values are the boundaries or cut-off points. By default <code><a href="https://rdrr.io/r/base/cut.html">cut()</a></code> has the setting <code>right=TRUE</code>, which means the boundary values are considered the last value in a group (e.g., rightmost value). Above, this means <code>1944</code> will be the highest value in the <code>Old</code> category and <code>1979</code> will the the highest value in the <code>Middle</code> category. To reverse this you can add the option <code>right=FALSE</code> in which case 1944 would be the lowest value in the <code>Middle</code> category (e.g.&nbsp;leftmost value) and 1979 would be the lowest value in the <code>Young</code> category.</p>
 <p>Let’s continue.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine Age and Sex: use the unite() function from the tidyr package, if remove=TRUE the original Age.Group and Sex columns will be deleted</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span>td <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">unite</span>(<span class="st">"Age_Sex"</span>, <span class="fu">c</span>(Age.Group, Sex), <span class="at">sep=</span> <span class="st">"_"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Break Phoneme.Dep.Var into two columns:</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># same as before, but with td passed to mutate() by the %&gt;% operator</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span>td <span class="sc">%&gt;%</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Phoneme =</span> <span class="fu">sub</span>(<span class="st">"^(.)(--.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, </span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        Phoneme.Dep.Var), </span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">Dep.Var.Full =</span> <span class="fu">sub</span>(<span class="st">"^(.--)(.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, </span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>        Phoneme.Dep.Var), </span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">Phoneme.Dep.Var =</span> <span class="cn">NULL</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Combine Age and Sex: use the unite() function from the tidyr package, if remove=TRUE the original Age.Group and Sex columns will be deleted</span></span>
+<span><span class="va">td</span> <span class="op">&lt;-</span><span class="va">td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>     <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span><span class="op">(</span><span class="st">"Age_Sex"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">Age.Group</span>, <span class="va">Sex</span><span class="op">)</span>, sep<span class="op">=</span> <span class="st">"_"</span>, remove <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span>
+<span>    </span>
+<span><span class="co"># Break Phoneme.Dep.Var into two columns:</span></span>
+<span><span class="co"># same as before, but with td passed to mutate() by the %&gt;% operator</span></span>
+<span><span class="va">td</span> <span class="op">&lt;-</span><span class="va">td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Phoneme <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"^(.)(--.*)$"</span>, <span class="st">"\\1"</span>, </span>
+<span>        <span class="va">Phoneme.Dep.Var</span><span class="op">)</span>, </span>
+<span>        Dep.Var.Full <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"^(.--)(.*)$"</span>, <span class="st">"\\2"</span>, </span>
+<span>        <span class="va">Phoneme.Dep.Var</span><span class="op">)</span>, </span>
+<span>        Phoneme.Dep.Var <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>At this point we have done everything except partition the data and re-center YOB in the partitioned data frames. You may ask, “How is this better?”. Well, the answer is that because all these modifications feed into one another, we can actually include them all together in one serialized operation. Behold!</p>
 <p>All of the above code can be simplified as follows:</p>
 <p>or…</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in token file</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"https://www.dropbox.com/s/jxlfuogea3lx2pu/deletiondata.txt?dl=1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read in token file</span></span>
+<span><span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span><span class="op">(</span><span class="st">"https://www.dropbox.com/s/jxlfuogea3lx2pu/deletiondata.txt?dl=1"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>then…</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset data to remove previous 'Vowel' contexts, </span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># then modify several columns with mutate, </span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># then convert any character column to a factor column</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Before <span class="sc">!=</span> <span class="st">"Vowel"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">After.New =</span> <span class="fu">recode</span>(After, <span class="st">"H"</span> <span class="ot">=</span> <span class="st">"Consonant"</span>), </span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)), </span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">Age.Group =</span> <span class="fu">cut</span>(YOB, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">1944</span>, <span class="dv">1979</span>, <span class="cn">Inf</span>), </span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span>)), </span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">Phoneme =</span> <span class="fu">sub</span>(<span class="st">"^(.)(--.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, Phoneme.Dep.Var), </span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">Dep.Var.Full =</span> <span class="fu">sub</span>(<span class="st">"^(.--)(.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">2"</span>, Phoneme.Dep.Var), </span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">Phoneme.Dep.Var =</span> <span class="cn">NULL</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">%&gt;%</span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate_if</span>(is.character, as.factor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset data to remove previous 'Vowel' contexts, </span></span>
+<span><span class="co"># then modify several columns with mutate, </span></span>
+<span><span class="co"># then convert any character column to a factor column</span></span>
+<span><span class="va">td</span> <span class="op">&lt;-</span> <span class="va">td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Before</span> <span class="op">!=</span> <span class="st">"Vowel"</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>        After.New <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/recode.html">recode</a></span><span class="op">(</span><span class="va">After</span>, <span class="st">"H"</span> <span class="op">=</span> <span class="st">"Consonant"</span><span class="op">)</span>, </span>
+<span>        Center.Age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">YOB</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>        Age.Group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">YOB</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">1944</span>, <span class="fl">1979</span>, <span class="cn">Inf</span><span class="op">)</span>, </span>
+<span>                        labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Old"</span>, <span class="st">"Middle"</span>, <span class="st">"Young"</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>        Phoneme <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"^(.)(--.*)$"</span>, <span class="st">"\\1"</span>, <span class="va">Phoneme.Dep.Var</span><span class="op">)</span>, </span>
+<span>        Dep.Var.Full <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"^(.--)(.*)$"</span>, <span class="st">"\\2"</span>, <span class="va">Phoneme.Dep.Var</span><span class="op">)</span>, </span>
+<span>        Phoneme.Dep.Var <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>        <span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_if</a></span><span class="op">(</span><span class="va">is.character</span>, <span class="va">as.factor</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Now, doesn’t the above look so much cleaner and easier to follow? You’ll notice that after some lines there is a <code>#</code>. This an optional way to signal the end of a line of code when your code is broken over more than one line. Above, the <code>mutate()</code> function could have been written in one single continuous line, but breaking it up over multiple lines makes seeing each mutation much easier.</p>
+<p>Now, doesn’t the above look so much cleaner and easier to follow? You’ll notice that after some lines there is a <code>#</code>. This an optional way to signal the end of a line of code when your code is broken over more than one line. Above, the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function could have been written in one single continuous line, but breaking it up over multiple lines makes seeing each mutation much easier.</p>
 <p>To partition the data we still need separate functions. Also, remember to re-centre any continuous variables after partioning.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>td.young <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Young"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>td.middle <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Middle"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>             <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>td.old <span class="ot">&lt;-</span> td <span class="sc">%&gt;%</span> </span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>          <span class="fu">filter</span>(Age.Group <span class="sc">==</span> <span class="st">"Old"</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">Center.Age =</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(YOB, <span class="at">scale =</span> <span class="cn">FALSE</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">td.young</span> <span class="op">&lt;-</span> <span class="va">td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Age.Group</span> <span class="op">==</span> <span class="st">"Young"</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Center.Age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">YOB</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">td.middle</span> <span class="op">&lt;-</span> <span class="va">td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>             <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Age.Group</span> <span class="op">==</span> <span class="st">"Middle"</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>             <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Center.Age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">YOB</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">td.old</span> <span class="op">&lt;-</span> <span class="va">td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>          <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Age.Group</span> <span class="op">==</span> <span class="st">"Old"</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>          <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Center.Age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">YOB</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
 <!-- -->
 
-</section>
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
+</section></section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 <ol>
 <li id="fn1"><p>Not to be confused with the operator <code>|</code>, which means “or” and whose symbol is also called “pipe”.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Loading <code>dplyr</code> will also let you use it.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner2022,
+</ol></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner2022,
   author = {Gardner, Matt Hunt},
   title = {Doing It All Again, but `Tidy`},
   series = {Linguistics Methods Hub},
@@ -2074,8 +2035,7 @@ $ Dep.Var.Full &lt;fct&gt; T, Deletion, Deletion, Deletion, T, Deletion, Deletio
 Gardner, Matt Hunt. 2022, September 27. Doing it all again, but `tidy`.
 <em>Linguistics Methods Hub</em>: <em>Doing LVC with R</em>. (<a href="https://lingmethodshub.github.io/content/R/lvc_r/050_lvcr.html">https://lingmethodshub.github.io/content/R/lvc_r/050_lvcr.html</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -2525,9 +2485,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../../content/R/lvc_r/040_lvcr.html" class="pagination-link" aria-label="Modifying Data">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Modifying Data</span>
       </a>          
@@ -2810,8 +2768,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -2823,8 +2780,6 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
     </div>
   </div>
 </footer>
-
-
 
 
 <script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>

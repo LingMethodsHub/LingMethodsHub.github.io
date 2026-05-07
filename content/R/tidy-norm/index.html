@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Josef Fruehwald">
 <meta name="dcterms.date" content="2022-10-20">
 <meta name="description" content="A tutorial on how to normalize vowel formant measurments in R using the tidyverse">
-
 <title>How to normalize your vowels using the tidyverse – LingMethodsHub</title>
 <style>
 /* Default styles provided by pandoc.
@@ -83,7 +80,6 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
-
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
@@ -111,8 +107,7 @@ div.csl-indent {
 <link href="../../../site_libs/bootstrap/bootstrap-8df02160ef4a432423e3ffc14fe4d0c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -138,18 +133,13 @@ div.csl-indent {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
-
-<script type="text/plain" cookie-consent="tracking">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script><script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
-</script>
-
-<script type="text/javascript" charset="UTF-8">
+</script><script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
@@ -164,29 +154,19 @@ cookieconsent.run({
 "language":"en"
   });
 });
-</script> 
-  
-<style>html{ scroll-behavior: smooth; }</style>
+</script><style>html{ scroll-behavior: smooth; }</style>
 <script type="application/json" class="js-hypothesis-config">
 {
   "theme": "clean",
   "openSidebar": false,
   "showHighlights": "never"
 }
-</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
-<script>
+</script><script async="" src="https://hypothes.is/embed.js"></script><script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>
-<link href="../../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="../../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+</script><link href="../../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -211,9 +191,7 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script>
-
-<link rel="stylesheet" href="../../../styles.css">
+</script><link rel="stylesheet" href="../../../styles.css">
 <meta property="og:title" content="How to normalize your vowels using the tidyverse – LingMethodsHub">
 <meta property="og:description" content="A tutorial on how to normalize vowel formant measurments in R using the tidyverse">
 <meta property="og:image" content="https://lingmethodshub.github.io/content/R/tidy-norm/index_files/figure-html/fig-unnorm1-1.png">
@@ -244,13 +222,10 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=Phonetic feature systems for vowels.;,citation_author=Terrance Nearey;,citation_publication_date=1978;,citation_cover_date=1978;,citation_year=1978;,citation_fulltext_html_url=https://sites.ualberta.ca/~tnearey/Nearey1978_compressed.pdf;">
 <meta name="citation_reference" content="citation_title=Evaluation of a technique for improving the mapping of multiple speakers’ vowel spaces in the F1 &nbsp; F2 plane;,citation_author=Dominic Watt;,citation_author=Anne Fabricius;,citation_publication_date=2002;,citation_cover_date=2002;,citation_year=2002;,citation_volume=9;,citation_language=en;,citation_journal_title=Leeds Working Papers in Linguistics and Phonetics;">
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">LingMethodsHub</span>
@@ -262,7 +237,7 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -283,14 +258,14 @@ window.Quarto = {
 <span class="menu-text">People</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -299,9 +274,7 @@ window.Quarto = {
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -309,19 +282,15 @@ window.Quarto = {
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorials</span></a>
@@ -335,8 +304,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Doing LVC with R</span></a>
@@ -344,8 +313,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
@@ -425,7 +394,7 @@ window.Quarto = {
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
-  </li>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">
@@ -456,8 +425,14 @@ window.Quarto = {
  <span class="menu-text">Using {marginaleffects} to understand statistical models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/multitaper-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generating and analyzing multitaper spectra in R</span></a>
+  </div>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -467,8 +442,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vowel plotting in Python</span></a>
@@ -481,7 +456,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -496,8 +471,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Montreal Forced Aligner</span></a>
@@ -510,7 +485,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -520,8 +495,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Shell Basics</span></a>
@@ -534,7 +509,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -544,8 +519,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Windows Subsystem for Linux</span></a>
@@ -553,49 +528,45 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lobanov-a.k.a.-z-scoring" id="toc-lobanov-a.k.a.-z-scoring" class="nav-link active" data-scroll-target="#lobanov-a.k.a.-z-scoring">Lobanov (a.k.a. z-scoring)</a></li>
+<li><a href="#lobanov-a.k.a.-z-scoring" id="toc-lobanov-a.k.a.-z-scoring" class="nav-link active" data-scroll-target="#lobanov-a.k.a.-z-scoring">Lobanov (a.k.a. z-scoring)</a></li>
   <li><a href="#nearey-2" id="toc-nearey-2" class="nav-link" data-scroll-target="#nearey-2">Nearey 2</a></li>
   <li><a href="#watt-fabricius" id="toc-watt-fabricius" class="nav-link" data-scroll-target="#watt-fabricius">Watt &amp; Fabricius</a></li>
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
   <li><a href="#unnormalized" id="toc-unnormalized" class="nav-link" data-scroll-target="#unnormalized">Unnormalized</a></li>
   <li><a href="#prepping-for-normalization" id="toc-prepping-for-normalization" class="nav-link" data-scroll-target="#prepping-for-normalization">Prepping for normalization</a></li>
-  <li><a href="#normalizations" id="toc-normalizations" class="nav-link" data-scroll-target="#normalizations">Normalizations</a>
+  <li>
+<a href="#normalizations" id="toc-normalizations" class="nav-link" data-scroll-target="#normalizations">Normalizations</a>
   <ul class="collapse">
-  <li><a href="#lobanov-a.k.a.-z-score" id="toc-lobanov-a.k.a.-z-score" class="nav-link" data-scroll-target="#lobanov-a.k.a.-z-score">Lobanov a.k.a. z-score</a></li>
+<li><a href="#lobanov-a.k.a.-z-score" id="toc-lobanov-a.k.a.-z-score" class="nav-link" data-scroll-target="#lobanov-a.k.a.-z-score">Lobanov a.k.a. z-score</a></li>
   <li><a href="#nearey-a.k.a.-nearey-2" id="toc-nearey-a.k.a.-nearey-2" class="nav-link" data-scroll-target="#nearey-a.k.a.-nearey-2">Nearey (a.k.a. Nearey 2)</a></li>
   <li><a href="#watt-fabricius-1" id="toc-watt-fabricius-1" class="nav-link" data-scroll-target="#watt-fabricius-1">Watt &amp; Fabricius</a></li>
-  </ul></li>
-  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final thoughts</a></li>
   </ul>
-</nav>
+</li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final thoughts</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/tidy-norm/index.html">How to normalize your vowels using the tidyverse</a></li></ol></nav>
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/tidy-norm/index.html">How to normalize your vowels using the tidyverse</a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">How to normalize your vowels using the tidyverse</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
   <div class="quarto-categories">
     <div class="quarto-category">vowels</div>
@@ -640,10 +611,7 @@ window.Quarto = {
   
 
 
-</header>
-
-
-<p>This is a tutorial about how to “normalize” vowel formant data using data tools from the <a href="https://www.tidyverse.org/">tidyverse</a>. A <em>lot</em> has been written about vowel normalization (why we do it, how it should work, what methods are best) that I can’t really cover here, although <span class="citation" data-cites="Adank2004">Adank &amp; Smits &amp; Hout (<a href="#ref-Adank2004" role="doc-biblioref">2004</a>)</span> is often taken as the canonical citation, and I’ll be taking into account the recent “order of operations” from <span class="citation" data-cites="stanley2022">Stanley (<a href="#ref-stanley2022" role="doc-biblioref">2022</a>)</span>.</p>
+</header><p>This is a tutorial about how to “normalize” vowel formant data using data tools from the <a href="https://www.tidyverse.org/">tidyverse</a>. A <em>lot</em> has been written about vowel normalization (why we do it, how it should work, what methods are best) that I can’t really cover here, although <span class="citation" data-cites="Adank2004">Adank &amp; Smits &amp; Hout (<a href="#ref-Adank2004" role="doc-biblioref">2004</a>)</span> is often taken as the canonical citation, and I’ll be taking into account the recent “order of operations” from <span class="citation" data-cites="stanley2022">Stanley (<a href="#ref-stanley2022" role="doc-biblioref">2022</a>)</span>.</p>
 <p>There’s also a <code>vowels</code> R package <span class="citation" data-cites="vowels">(<a href="#ref-vowels" role="doc-biblioref">Kendall &amp; Thomas 2018</a>)</span> that basically lets you run <a href="http://lingtools.uoregon.edu/norm/norm1_methods.php">the NORM suite locally</a>.</p>
 <p>There are still many occasions when you might want or need to normalize your vowel data yourself, though, and learning how to do it is actually a great introduction to a number of tidyverse “verbs”, especially:</p>
 <ul>
@@ -654,20 +622,13 @@ window.Quarto = {
 <li><p><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html"><code>tidyr::pivot_wider()</code></a></p></li>
 </ul>
 <p>Since I’m focusing on how data structures relate to vowel normalization, I’ll cover 3 specific normalization procedures:</p>
-<section id="lobanov-a.k.a.-z-scoring" class="level3">
-<h3 class="anchored" data-anchor-id="lobanov-a.k.a.-z-scoring">Lobanov (a.k.a. z-scoring)</h3>
-<p>In terms of tidy data procedures, this is the simplest. All it requires is a <code>group_by()</code> and a <code>mutate()</code></p>
-</section>
-<section id="nearey-2" class="level3">
-<h3 class="anchored" data-anchor-id="nearey-2">Nearey 2</h3>
-<p>This procedure is a little more complicated, involving “pivoting” our data from wide to long, then long to wide again, using <code>pivot_longer()</code> and <code>pivot_wider()</code>.</p>
-</section>
-<section id="watt-fabricius" class="level3">
-<h3 class="anchored" data-anchor-id="watt-fabricius">Watt &amp; Fabricius</h3>
-<p>This method requires estimating by-speaker scaling factors (using <code>group_by()</code> and <code>summarise()</code>) then merging them back onto the original data (with <code>left_join()</code>).</p>
-</section>
-<section id="setup" class="level2">
-<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<section id="lobanov-a.k.a.-z-scoring" class="level3"><h3 class="anchored" data-anchor-id="lobanov-a.k.a.-z-scoring">Lobanov (a.k.a. z-scoring)</h3>
+<p>In terms of tidy data procedures, this is the simplest. All it requires is a <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and a <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code></p>
+</section><section id="nearey-2" class="level3"><h3 class="anchored" data-anchor-id="nearey-2">Nearey 2</h3>
+<p>This procedure is a little more complicated, involving “pivoting” our data from wide to long, then long to wide again, using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code>.</p>
+</section><section id="watt-fabricius" class="level3"><h3 class="anchored" data-anchor-id="watt-fabricius">Watt &amp; Fabricius</h3>
+<p>This method requires estimating by-speaker scaling factors (using <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>) then merging them back onto the original data (with <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code>).</p>
+</section><section id="setup" class="level2"><h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <p>To begin with, I’m going to import a few packages:</p>
 <ul>
 <li><p><code>tidyverse</code>: This is a “metapackage” that imports many different packages that contain functions we’ll need, including <code>ggplot2</code></p></li>
@@ -677,7 +638,7 @@ window.Quarto = {
 </ul>
 <p>Any time I use a function that’s not loaded by the tidyverse, I’ll indicate it with the <code>package::function()</code> convention.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'ggplot2' was built under R version 4.5.2</code></pre>
 </div>
@@ -690,38 +651,34 @@ window.Quarto = {
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'purrr' was built under R version 4.5.2</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggforce)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(khroma)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("JoeyStanley/joeyr")</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(joeyr)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># set the ggplot2 theme</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggforce.data-imaginist.com">ggforce</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://codeberg.org/tesselle/khroma">khroma</a></span><span class="op">)</span></span>
+<span><span class="co"># remotes::install_github("JoeyStanley/joeyr")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://joeystanley.github.io/joeyr/">joeyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># set the ggplot2 theme</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We also need to load in some data. Here are two tab-delimited files of <a href="https://buckeyecorpus.osu.edu/">Buckeye Corpus</a> speakers whose interviews were run through <a href="https://github.com/JoFrhwld/FAVE">FAVE</a>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>s01_url <span class="ot">&lt;-</span> <span class="st">"?meta:website.site-url/content/R/tidy-norm/data/s01.txt"</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>s03_url <span class="ot">&lt;-</span> <span class="st">"?meta:website.site-url/content/R/tidy-norm/data/s03.txt"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s01_url</span> <span class="op">&lt;-</span> <span class="st">"?meta:website.site-url/content/R/tidy-norm/data/s01.txt"</span></span>
+<span><span class="va">s03_url</span> <span class="op">&lt;-</span> <span class="st">"?meta:website.site-url/content/R/tidy-norm/data/s03.txt"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This code should load these files.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>vowels_orig <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(<span class="fu">c</span>(s01_url, s03_url), </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                       <span class="sc">~</span><span class="fu">read_tsv</span>(.x, <span class="at">col_types=</span><span class="fu">cols</span>(<span class="at">sex =</span> <span class="st">'c'</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_orig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">s01_url</span>, <span class="va">s03_url</span><span class="op">)</span>, </span>
+<span>                       <span class="op">~</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span><span class="va">.x</span>, col_types<span class="op">=</span><span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span><span class="op">(</span>sex <span class="op">=</span> <span class="st">'c'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<details>
-<summary>
+<details><summary>
 What that <code>map_dfr</code> thing did:
-</summary>
-<p>The <code>map_dfr</code> function iterated over each url, and applied the function <code>read_tsv()</code> to them. I had to tell <code>read_tsv()</code> that the column <code>sex</code> should be treated as a character data type, since the value <code>f</code> gets reinterpreted as <code>FALSE</code> otherwise. After reading in each tab-delimited file, <code>map_dfr()</code> then combines the results together row-wise, to produce one large data frame.</p>
-</details>
-<p>The variable <code>vowels_orig</code> is now one large data frame with both speakers’ FAVE output in it. Here’s three randomly sampled rows from each speakers’ data.</p>
+</summary><p>The <code>map_dfr</code> function iterated over each url, and applied the function <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv()</a></code> to them. I had to tell <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv()</a></code> that the column <code>sex</code> should be treated as a character data type, since the value <code>f</code> gets reinterpreted as <code>FALSE</code> otherwise. After reading in each tab-delimited file, <code><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfr()</a></code> then combines the results together row-wise, to produce one large data frame.</p>
+</details><p>The variable <code>vowels_orig</code> is now one large data frame with both speakers’ FAVE output in it. Here’s three randomly sampled rows from each speakers’ data.</p>
 <div class="cell" data-tbl-cap-location="bottom">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">50</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>vowels_orig <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">|&gt;</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span></span>
+<span><span class="va">vowels_orig</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-vowel-orig" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-cap-location="bottom">
-<figure class="quarto-float quarto-float-tbl figure">
-<div aria-describedby="tbl-vowel-orig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><div aria-describedby="tbl-vowel-orig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -732,8 +689,7 @@ What that <code>map_dfr</code> thing did:
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-vowel-orig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Three randomly sampled rows from each speaker’s data
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 <p>FAVE outputs a lot of useful information, but for this tutorial, I want to narrow down our focus to just a few columns</p>
@@ -744,19 +700,17 @@ Table&nbsp;1: Three randomly sampled rows from each speaker’s data
 <li><p><code>F1</code>, <code>F2</code>: What we’re all here for. The first and second formants.</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>vowels_orig <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="ot">-&gt;</span> vowels_focus</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_orig</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">word</span>, <span class="va">ipa_vclass</span>, <span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">vowels_focus</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>vowels_focus <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_focus</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-vowel-focus" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-vowel-focus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-vowel-focus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;2: The first few rows of the data we’re going to work with
-</figcaption>
-<div aria-describedby="tbl-vowel-focus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-vowel-focus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -768,173 +722,150 @@ Table&nbsp;2: The first few rows of the data we’re going to work with
 </figure>
 </div>
 </div>
-</section>
-<section id="unnormalized" class="level2">
-<h2 class="anchored" data-anchor-id="unnormalized">Unnormalized</h2>
+</section><section id="unnormalized" class="level2"><h2 class="anchored" data-anchor-id="unnormalized">Unnormalized</h2>
 <p>First, let’s see how things look when we get our vowel means and plot them unnormalized. I won’t go into detail about how the plotting code works (see the LingMethodsHub tutorial on <a href="https://lingmethodshub.github.io/content/R/vowel-plots-tutorial/">ggplot2 vowel plots</a>).</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>vowels_focus <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">|&gt;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> mean)) <span class="sc">|&gt;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
+<details class="code-fold"><summary>Plot code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_focus</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">ipa_vclass</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span>, .fns <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">F2</span>, <span class="va">F1</span>, color <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">ipa_vclass</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">ggforce</span><span class="fu">::</span><span class="fu"><a href="https://ggforce.data-imaginist.com/reference/geom_mark_hull.html">geom_mark_hull</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">khroma</span><span class="fu">::</span><span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_color_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">khroma</span><span class="fu">::</span><span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_fill_vibrant</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
 <div id="fig-unnorm1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An F1 by F2 plot of two speakers' unnormalized vowel means.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-unnorm1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-unnorm1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="index_files/figure-html/fig-unnorm1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Speakers’ vowel means in unnormalized F1,F2 space."><img src="index_files/figure-html/fig-unnorm1-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' unnormalized vowel means." width="576"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unnorm1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Speakers’ vowel means in unnormalized F1,F2 space.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>Here, we see reason number 1 why we’ll want to normalize vowels. These two speakers vowel spaced hardly overlap, but the <em>relative</em> position of vowel categories inside their spaces are fairly similar. All normalization methods try to do is pinch and scale <em>appropriately</em> to get the relative positions of these vowel spaces to overlap.</p>
-<p><em>Another</em> reason we might be motivated to normalize our data is because F2 has a much larger range of data than F1. We can more easily see that if we add <code>coord_fixed()</code> to the plot.</p>
+<p><em>Another</em> reason we might be motivated to normalize our data is because F2 has a much larger range of data than F1. We can more easily see that if we add <code><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed()</a></code> to the plot.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>vowels_focus <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> mean)) <span class="sc">|&gt;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
+<details class="code-fold"><summary>Plot code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_focus</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">ipa_vclass</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span>, .fns <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">F2</span>, <span class="va">F1</span>, color <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">ipa_vclass</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">ggforce</span><span class="fu">::</span><span class="fu"><a href="https://ggforce.data-imaginist.com/reference/geom_mark_hull.html">geom_mark_hull</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">khroma</span><span class="fu">::</span><span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_color_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">khroma</span><span class="fu">::</span><span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_fill_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
 <div id="fig-unnorm2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An F1 by F2 plot of two speakers' unnormalized vowel means.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-unnorm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-unnorm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="index_files/figure-html/fig-unnorm2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Speakers’ vowel means in unnormalized F1,F2 space. (fixed coords)"><img src="index_files/figure-html/fig-unnorm2-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' unnormalized vowel means." width="576"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unnorm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Speakers’ vowel means in unnormalized F1,F2 space. (fixed coords)
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>The plot is squished because F2 just has that much larger a range of values than F1. Any stats or calculations we do on vowels in the F1<span class="math inline">\(\times\)</span>F2 space is going to be dominated by things that happen across F2 vs F1.</p>
-</section>
-<section id="prepping-for-normalization" class="level2">
-<h2 class="anchored" data-anchor-id="prepping-for-normalization">Prepping for normalization</h2>
+</section><section id="prepping-for-normalization" class="level2"><h2 class="anchored" data-anchor-id="prepping-for-normalization">Prepping for normalization</h2>
 <p>In order to get ready for normalization, I’m going to first filter out any vowel tokens that have a <span class="math inline">\(\sqrt{\text{mahalanobis}}\)</span> distance from its vowel class greater than 2.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>vowels_focus <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">|&gt;</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mahal =</span> joeyr<span class="sc">::</span><span class="fu">tidy_mahalanobis</span>(F1, F2),</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">mahal_sq =</span> <span class="fu">sqrt</span>(mahal)) <span class="sc">|&gt;</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mahal_sq <span class="sc">&lt;=</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="ot">-&gt;</span> vowels_inlie</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_focus</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">ipa_vclass</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>mahal <span class="op">=</span> <span class="fu">joeyr</span><span class="fu">::</span><span class="fu"><a href="https://joeystanley.github.io/joeyr/reference/tidy_mahalanobis.html">tidy_mahalanobis</a></span><span class="op">(</span><span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span>,</span>
+<span>         mahal_sq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">mahal</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">mahal_sq</span> <span class="op">&lt;=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">vowels_inlie</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="normalizations" class="level2">
-<h2 class="anchored" data-anchor-id="normalizations">Normalizations</h2>
-<section id="lobanov-a.k.a.-z-score" class="level3">
-<h3 class="anchored" data-anchor-id="lobanov-a.k.a.-z-score">Lobanov a.k.a. z-score</h3>
+</section><section id="normalizations" class="level2"><h2 class="anchored" data-anchor-id="normalizations">Normalizations</h2>
+<section id="lobanov-a.k.a.-z-score" class="level3"><h3 class="anchored" data-anchor-id="lobanov-a.k.a.-z-score">Lobanov a.k.a. z-score</h3>
 <p>The first normalization procedure we’ll look at is “Lobanov” normalization <span class="citation" data-cites="lobanov">(<a href="#ref-lobanov" role="doc-biblioref">Lobanov 1971</a>)</span>. An important thing to know here is that while phoneticians may call this procedure “Lobanov” normalization, the rest of the data analysis world calls it “z-score” or even just “standard score.”</p>
 <p>The process works like this:</p>
 <ul>
-<li><p>Within each speaker’s data ⤵️</p>
+<li>
+<p>Within each speaker’s data ⤵️</p>
 <ul>
-<li><p>Within each formant ⤵️</p>
+<li>
+<p>Within each formant ⤵️</p>
 <ul>
 <li>subtract the mean of the formant, and divide by the standard deviation of the formant</li>
-</ul></li>
-</ul></li>
 </ul>
-<p>Since we already a have F1 and F2 separated out into separate columns, this means all we have to do us <code>group_by()</code> our vowels data by speaker ID (in <code>name</code>), then create our new normalized columns by subtracting the mean and dividing by the standard deviation.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Since we already a have F1 and F2 separated out into separate columns, this means all we have to do us <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> our vowels data by speaker ID (in <code>name</code>), then create our new normalized columns by subtracting the mean and dividing by the standard deviation.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">|&gt;</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_z =</span> (F1 <span class="sc">-</span> <span class="fu">mean</span>(F1))<span class="sc">/</span><span class="fu">sd</span>(F1),</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_z =</span> (F2 <span class="sc">-</span> <span class="fu">mean</span>(F2))<span class="sc">/</span><span class="fu">sd</span>(F2)) <span class="ot">-&gt;</span> vowels_score1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_inlie</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>F1_z <span class="op">=</span> <span class="op">(</span><span class="va">F1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">F1</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">F1</span><span class="op">)</span>,</span>
+<span>         F2_z <span class="op">=</span> <span class="op">(</span><span class="va">F2</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">F2</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">F2</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">vowels_score1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>group_by(name)</code> process in this pipeline means that when we calculate <code>mean(F1)</code> and <code>std(F1)</code> in the next part, those mean and standard deviation values are for each speaker’s subset of <code>vowels_inlie</code>.</p>
-<p>Since z-scoring is so common a thing to do in quantitative analysis, R actually has a built in function, <code>scale()</code> that we could use instead of writing the math out ourselves.</p>
+<p>Since z-scoring is so common a thing to do in quantitative analysis, R actually has a built in function, <code><a href="https://rdrr.io/r/base/scale.html">scale()</a></code> that we could use instead of writing the math out ourselves.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_z =</span> <span class="fu">scale</span>(F1),</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_z =</span> <span class="fu">scale</span>(F2)) <span class="ot">-&gt;</span> vowels_zscore2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_inlie</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>F1_z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">F1</span><span class="op">)</span>,</span>
+<span>         F2_z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">F2</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">vowels_zscore2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="results" class="level4">
-<h4 class="anchored" data-anchor-id="results">Results</h4>
-<p>Here’s the results of z-scoring! We’ve got largely overlapping vowel spaces now. The numeric values of these z-scores tend to run somewhere between -3 and 3 (less extreme for means). Both formants are also on the same scale, which you can see with the plot being roughly square shaped even with <code>coord_fixed()</code> being added.</p>
+<section id="results" class="level4"><h4 class="anchored" data-anchor-id="results">Results</h4>
+<p>Here’s the results of z-scoring! We’ve got largely overlapping vowel spaces now. The numeric values of these z-scores tend to run somewhere between -3 and 3 (less extreme for means). Both formants are also on the same scale, which you can see with the plot being roughly square shaped even with <code><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed()</a></code> being added.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>vowels_zscore2 <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">|&gt;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1_z, F2_z), <span class="at">.fns =</span> mean)) <span class="sc">|&gt;</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2_z, F1_z, <span class="at">color =</span> name))<span class="sc">+</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
+<details class="code-fold"><summary>Plot code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_zscore2</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">ipa_vclass</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">F1_z</span>, <span class="va">F2_z</span><span class="op">)</span>, .fns <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">F2_z</span>, <span class="va">F1_z</span>, color <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">ipa_vclass</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">ggforce</span><span class="fu">::</span><span class="fu"><a href="https://ggforce.data-imaginist.com/reference/geom_mark_hull.html">geom_mark_hull</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">khroma</span><span class="fu">::</span><span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_color_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">khroma</span><span class="fu">::</span><span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_fill_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
 <div id="fig-zscore" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An F1 by F2 plot of two speakers' Lobanov normalized vowel means.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-zscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-zscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="index_files/figure-html/fig-zscore-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Speakers’ vowel means in z-scored F1,F2 space. (fixed coords)"><img src="index_files/figure-html/fig-zscore-1.png" class="img-fluid figure-img" alt="An F1 by F2 plot of two speakers' Lobanov normalized vowel means." width="576"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zscore-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Speakers’ vowel means in z-scored F1,F2 space. (fixed coords)
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="nearey-a.k.a.-nearey-2" class="level3">
-<h3 class="anchored" data-anchor-id="nearey-a.k.a.-nearey-2">Nearey (a.k.a. Nearey 2)</h3>
+</section></section><section id="nearey-a.k.a.-nearey-2" class="level3"><h3 class="anchored" data-anchor-id="nearey-a.k.a.-nearey-2">Nearey (a.k.a. Nearey 2)</h3>
 <p>Next, we’ll look at what the vowels package calls “Nearey 2” normalization <span class="citation" data-cites="nearey1978">(<a href="#ref-nearey1978" role="doc-biblioref">Nearey 1978</a>)</span>. The Nearey 1 procedure is more similar in terms of data code as z-scoring.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The Nearey 2 procedure works like this:</p>
 <ul>
-<li><p>Within each speaker ⤵️</p>
+<li>
+<p>Within each speaker ⤵️</p>
 <ul>
 <li><p>Convert <em>all</em> formant measurements to log-Hz</p></li>
 <li><p>Get the mean log-Hz across all measurements (F1 and F2 <em>together</em>)</p></li>
 <li><p>Subtract the mean log-Hz from the log-Hz</p></li>
 <li><p>“Anti-log” or exponentiate the result</p></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>We need to combine F1 and F2 measurements together to get their mean, and this is best achieved in the tidyverse by “pivoting” the data frame from wide to long. We’ll take it in steps. In each next step, I’m going to be putting additional tidyverse verbs between the data frame and the line that has <code>head() |&gt; rmarkdown::paged_table()</code>, which is just there to provide nice looking output.</p>
-<section id="step-1-focus-in-on-the-columns-of-interest" class="level4">
-<h4 class="anchored" data-anchor-id="step-1-focus-in-on-the-columns-of-interest">Step 1: Focus in on the columns of interest</h4>
+<section id="step-1-focus-in-on-the-columns-of-interest" class="level4"><h4 class="anchored" data-anchor-id="step-1-focus-in-on-the-columns-of-interest">Step 1: Focus in on the columns of interest</h4>
 <p>The <code>vowels_inlie</code> has data columns for the mahalanobis distance, which I want to drop off for now.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_inlie</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">word</span>, <span class="va">ipa_vclass</span>, <span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># more verbs to go here</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-nearey-focus" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nearey-focus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nearey-focus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;3: The columns of importance for Neary 2
-</figcaption>
-<div aria-describedby="tbl-nearey-focus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-nearey-focus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -946,22 +877,18 @@ Table&nbsp;3: The columns of importance for Neary 2
 </figure>
 </div>
 </div>
-</section>
-<section id="step-2-add-an-id-column" class="level4">
-<h4 class="anchored" data-anchor-id="step-2-add-an-id-column">Step 2: Add an ID column</h4>
-<p>When we’re pivoting our data long and then wide again, we need to have a column that is a unique id for each vowel observation. I’ll create that with <code>mutate(id = 1:n())</code> . The <code>n()</code> function there is a convenience function that returns the number of rows in each (group) of the data frame.</p>
+</section><section id="step-2-add-an-id-column" class="level4"><h4 class="anchored" data-anchor-id="step-2-add-an-id-column">Step 2: Add an ID column</h4>
+<p>When we’re pivoting our data long and then wide again, we need to have a column that is a unique id for each vowel observation. I’ll create that with <code>mutate(id = 1:n())</code> . The <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> function there is a convenience function that returns the number of rows in each (group) of the data frame.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">|&gt;</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">|&gt;</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_inlie</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">word</span>, <span class="va">ipa_vclass</span>, <span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># more verbs to go here</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-nearey-id" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nearey-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nearey-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4: The formant data with a token ID for each observation
-</figcaption>
-<div aria-describedby="tbl-nearey-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-nearey-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -973,39 +900,42 @@ Table&nbsp;4: The formant data with a token ID for each observation
 </figure>
 </div>
 </div>
-</section>
-<section id="step-3-pivot-longer" class="level4">
-<h4 class="anchored" data-anchor-id="step-3-pivot-longer">Step 3: Pivot Longer</h4>
-<p>Now, we want to take the F1 and F2 columns, and stack them one on top of each other, which we can do with <code>pivot_longer()</code>. This function needs to know at least three things:</p>
+</section><section id="step-3-pivot-longer" class="level4"><h4 class="anchored" data-anchor-id="step-3-pivot-longer">Step 3: Pivot Longer</h4>
+<p>Now, we want to take the F1 and F2 columns, and stack them one on top of each other, which we can do with <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>. This function needs to know at least three things:</p>
 <ul>
-<li><p>Which columns are we going to be stacking on top of each other?</p>
+<li>
+<p>Which columns are we going to be stacking on top of each other?</p>
 <ul>
 <li>We pass this information to the <code>cols=</code> argument.</li>
-</ul></li>
-<li><p>How should we keep track of the original column names?</p>
+</ul>
+</li>
+<li>
+<p>How should we keep track of the original column names?</p>
 <ul>
 <li>We pass this information to <code>names_to=</code>.</li>
-</ul></li>
-<li><p>How should we keep track of the original values from these columns?</p>
+</ul>
+</li>
+<li>
+<p>How should we keep track of the original values from these columns?</p>
 <ul>
-<li>We pass this information to <code>values_to=</code></li>
-</ul></li>
+<li>We pass this information to <code>values_to=</code>
+</li>
+</ul>
+</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">|&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">|&gt;</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> F1<span class="sc">:</span>F2, </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"formant"</span>, </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">|&gt;</span>  </span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">12</span>) <span class="sc">|&gt;</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_inlie</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">word</span>, <span class="va">ipa_vclass</span>, <span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">F1</span><span class="op">:</span><span class="va">F2</span>, </span>
+<span>               names_to <span class="op">=</span> <span class="st">"formant"</span>, </span>
+<span>               values_to <span class="op">=</span> <span class="st">"hz"</span><span class="op">)</span> <span class="op">|&gt;</span>  </span>
+<span>  <span class="co"># more verbs to go here</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-nearey-long" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nearey-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nearey-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5: The formant data, pivoted long
-</figcaption>
-<div aria-describedby="tbl-nearey-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-nearey-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -1017,28 +947,24 @@ Table&nbsp;5: The formant data, pivoted long
 </figure>
 </div>
 </div>
-<p>You can get an idea for what <code>pivot_longer()</code> has done by comparing this table (<a href="#tbl-nearey-long" class="quarto-xref">Table&nbsp;5</a>) to the table before (<a href="#tbl-nearey-id" class="quarto-xref">Table&nbsp;4</a>). There are two rows in this long table for every row in the wide table. The <code>name</code>, <code>word</code>, <code>ipa_vclass</code>, and <code>id</code> values are repeated twice. There’s also a new <code>formant</code> column, which contains the column names we pivoted longer, and a new <code>hz</code> column, which contains the values from the columns we pivoted longer.</p>
-</section>
-<section id="step-4-the-actual-normalization" class="level4">
-<h4 class="anchored" data-anchor-id="step-4-the-actual-normalization">Step 4: The actual normalization!</h4>
-<p>Now we can do the actual normalization. The column we’ll target is the new <code>hz</code> column. We’ll log it, subtract the mean log value, then convert it back to its original scale with <code>exp()</code>. And don’t forget we need to <code>group_by(name)</code> first too!</p>
+<p>You can get an idea for what <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> has done by comparing this table (<a href="#tbl-nearey-long" class="quarto-xref">Table&nbsp;5</a>) to the table before (<a href="#tbl-nearey-id" class="quarto-xref">Table&nbsp;4</a>). There are two rows in this long table for every row in the wide table. The <code>name</code>, <code>word</code>, <code>ipa_vclass</code>, and <code>id</code> values are repeated twice. There’s also a new <code>formant</code> column, which contains the column names we pivoted longer, and a new <code>hz</code> column, which contains the values from the columns we pivoted longer.</p>
+</section><section id="step-4-the-actual-normalization" class="level4"><h4 class="anchored" data-anchor-id="step-4-the-actual-normalization">Step 4: The actual normalization!</h4>
+<p>Now we can do the actual normalization. The column we’ll target is the new <code>hz</code> column. We’ll log it, subtract the mean log value, then convert it back to its original scale with <code><a href="https://rdrr.io/r/base/Log.html">exp()</a></code>. And don’t forget we need to <code>group_by(name)</code> first too!</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">|&gt;</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">|&gt;</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> F1<span class="sc">:</span>F2, </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"formant"</span>, </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">|&gt;</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nearey =</span> <span class="fu">exp</span>(<span class="fu">log</span>(hz)<span class="sc">-</span><span class="fu">mean</span>(<span class="fu">log</span>(hz))))<span class="sc">|&gt;</span>  </span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">12</span>) <span class="sc">|&gt;</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_inlie</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">word</span>, <span class="va">ipa_vclass</span>, <span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">F1</span><span class="op">:</span><span class="va">F2</span>, </span>
+<span>               names_to <span class="op">=</span> <span class="st">"formant"</span>, </span>
+<span>               values_to <span class="op">=</span> <span class="st">"hz"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>nearey <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">hz</span><span class="op">)</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">hz</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">|&gt;</span>  </span>
+<span>  <span class="co"># more verbs to go here</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">12</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-nearey-norm" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nearey-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nearey-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6: The formant data, pivoted long, and normalized
-</figcaption>
-<div aria-describedby="tbl-nearey-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-nearey-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -1050,42 +976,44 @@ Table&nbsp;6: The formant data, pivoted long, and normalized
 </figure>
 </div>
 </div>
-</section>
-<section id="step-5-pivoting-wide-again-for-plotting" class="level4">
-<h4 class="anchored" data-anchor-id="step-5-pivoting-wide-again-for-plotting">Step 5: Pivoting wide again, for plotting</h4>
+</section><section id="step-5-pivoting-wide-again-for-plotting" class="level4"><h4 class="anchored" data-anchor-id="step-5-pivoting-wide-again-for-plotting">Step 5: Pivoting wide again, for plotting</h4>
 <p>Technically, we’re done normalizing the formant data, but in order to make a nice F1<span class="math inline">\(\times\)</span>F2 plot, we need to pivot the data wide again.</p>
-<p>To do that, we first need to drop the <code>hz</code> column, because <code>pivot_wider()</code> will go weird if we don’t.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Then, we need to tell <code>pivot_wider()</code> the following information:</p>
+<p>To do that, we first need to drop the <code>hz</code> column, because <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> will go weird if we don’t.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Then, we need to tell <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> the following information:</p>
 <ul>
-<li><p>Where should it get the names of new columns from?</p>
+<li>
+<p>Where should it get the names of new columns from?</p>
 <ul>
-<li>We’ll pass this to <code>names_from=</code></li>
-</ul></li>
-<li><p>Where should it get the values to put into the new columns from?</p>
+<li>We’ll pass this to <code>names_from=</code>
+</li>
+</ul>
+</li>
+<li>
+<p>Where should it get the values to put into the new columns from?</p>
 <ul>
-<li>We’ll pass this to <code>values_from=</code></li>
-</ul></li>
+<li>We’ll pass this to <code>values_from=</code>
+</li>
+</ul>
+</li>
 </ul>
 <p>After this step, we’re done the normalizing process, so I’ll assign the result to a variable called <code>vowels_neary</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, word, ipa_vclass, F1, F2) <span class="sc">|&gt;</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> F1<span class="sc">:</span>F2, </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"formant"</span>, </span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">|&gt;</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nearey =</span> <span class="fu">exp</span>(<span class="fu">log</span>(hz)<span class="sc">-</span><span class="fu">mean</span>(<span class="fu">log</span>(hz))))<span class="sc">|&gt;</span>  </span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>hz) <span class="sc">|&gt;</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> nearey) <span class="ot">-&gt;</span> vowels_nearey</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>vowels_nearey <span class="sc">|&gt;</span></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_inlie</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">word</span>, <span class="va">ipa_vclass</span>, <span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">F1</span><span class="op">:</span><span class="va">F2</span>, </span>
+<span>               names_to <span class="op">=</span> <span class="st">"formant"</span>, </span>
+<span>               values_to <span class="op">=</span> <span class="st">"hz"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>nearey <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">hz</span><span class="op">)</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">hz</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">|&gt;</span>  </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">hz</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">formant</span>, values_from <span class="op">=</span> <span class="va">nearey</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">vowels_nearey</span></span>
+<span></span>
+<span><span class="va">vowels_nearey</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-neary-wide" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-neary-wide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-neary-wide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;7: Nearey Normalized Vowels, wide again
-</figcaption>
-<div aria-describedby="tbl-neary-wide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-neary-wide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -1097,101 +1025,80 @@ Table&nbsp;7: Nearey Normalized Vowels, wide again
 </figure>
 </div>
 </div>
-</section>
-<section id="results-1" class="level4">
-<h4 class="anchored" data-anchor-id="results-1">Results!</h4>
+</section><section id="results-1" class="level4"><h4 class="anchored" data-anchor-id="results-1">Results!</h4>
 <div class="cell">
-<details class="code-fold">
-<summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>vowels_nearey <span class="sc">|&gt;</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">|&gt;</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> mean)) <span class="sc">|&gt;</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
+<details class="code-fold"><summary>Plot code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_nearey</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">ipa_vclass</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span>, .fns <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">F2</span>, <span class="va">F1</span>, color <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">ipa_vclass</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">ggforce</span><span class="fu">::</span><span class="fu"><a href="https://ggforce.data-imaginist.com/reference/geom_mark_hull.html">geom_mark_hull</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">khroma</span><span class="fu">::</span><span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_color_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">khroma</span><span class="fu">::</span><span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_fill_vibrant</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
 <div id="fig-neary-norm" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-neary-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-neary-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="index_files/figure-html/fig-neary-norm-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: An F1 by F2 plot of two speakers’ Nearey normalized vowel means."><img src="index_files/figure-html/fig-neary-norm-1.png" class="img-fluid figure-img" width="624"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-neary-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: An F1 by F2 plot of two speakers’ Nearey normalized vowel means.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>Again, the vowel spaces are largely overlapping. One thing that’s not immediately clear from this graph, though, is that this specific approach to Nearey normalization still has a much wider range for F2 than F1, which we can see if we plot it with fixed coordinates.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>vowels_nearey <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">|&gt;</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> mean)) <span class="sc">|&gt;</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
+<details class="code-fold"><summary>Plot code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_nearey</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">ipa_vclass</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span>, .fns <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">F2</span>, <span class="va">F1</span>, color <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">ipa_vclass</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">ggforce</span><span class="fu">::</span><span class="fu"><a href="https://ggforce.data-imaginist.com/reference/geom_mark_hull.html">geom_mark_hull</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">khroma</span><span class="fu">::</span><span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_color_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">khroma</span><span class="fu">::</span><span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_fill_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
 <div id="fig-neary-norm-fixed" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-neary-norm-fixed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-neary-norm-fixed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="index_files/figure-html/fig-neary-norm-fixed-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: An F1 by F2 plot of two speakers’ Nearey normalized vowel means. (fixed coordinates)."><img src="index_files/figure-html/fig-neary-norm-fixed-1.png" class="img-fluid figure-img" width="624"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-neary-norm-fixed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: An F1 by F2 plot of two speakers’ Nearey normalized vowel means. (fixed coordinates).
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>It gets better if we plot the log of the normalized values<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, but then the vowel space doesn’t look like the familiar hertz space.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>vowels_nearey <span class="sc">|&gt;</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">|&gt;</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), <span class="at">.fns =</span> <span class="sc">~</span><span class="fu">mean</span>(<span class="fu">log</span>(.x)))) <span class="sc">|&gt;</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> name))<span class="sc">+</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
+<details class="code-fold"><summary>Plot code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_nearey</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">ipa_vclass</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span>, .fns <span class="op">=</span> <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">F2</span>, <span class="va">F1</span>, color <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">ipa_vclass</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">ggforce</span><span class="fu">::</span><span class="fu"><a href="https://ggforce.data-imaginist.com/reference/geom_mark_hull.html">geom_mark_hull</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">khroma</span><span class="fu">::</span><span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_color_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">khroma</span><span class="fu">::</span><span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_fill_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
 <div id="fig-neary-log-norm-fixed" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-neary-log-norm-fixed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-neary-log-norm-fixed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="index_files/figure-html/fig-neary-log-norm-fixed-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Speakers’ vowel means in Log Nearey Normalized F1,F2 space (fixed coordinates)."><img src="index_files/figure-html/fig-neary-log-norm-fixed-1.png" class="img-fluid figure-img" width="624"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-neary-log-norm-fixed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Speakers’ vowel means in Log Nearey Normalized F1,F2 space (fixed coordinates).
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="watt-fabricius-1" class="level3">
-<h3 class="anchored" data-anchor-id="watt-fabricius-1">Watt &amp; Fabricius</h3>
+</section></section><section id="watt-fabricius-1" class="level3"><h3 class="anchored" data-anchor-id="watt-fabricius-1">Watt &amp; Fabricius</h3>
 <p>The final normalization method we’ll look at, which can’t easily be done with a single sequence of tidyverse verbs, is the Watt &amp; Fabricius method <span class="citation" data-cites="watt2002">(<a href="#ref-watt2002" role="doc-biblioref">Watt &amp; Fabricius 2002</a>)</span>. The idea behind the Watt &amp; Fabricius method is to define a vowel space triangle for each speaker, then to scale their formant values to the triangle.</p>
-<section id="step-1-getting-the-triangle-points" class="level4">
-<h4 class="anchored" data-anchor-id="step-1-getting-the-triangle-points">Step 1: Getting the Triangle Points</h4>
+<section id="step-1-getting-the-triangle-points" class="level4"><h4 class="anchored" data-anchor-id="step-1-getting-the-triangle-points">Step 1: Getting the Triangle Points</h4>
 <p>I’ll follow the NORM suite and define the points of the triangle like so:</p>
 <ul>
 <li><p>Top Left Corner, “beet” point: The F1 of the vowel with the smallest F1, and the F2 of the vowel with the largest F2</p></li>
@@ -1200,24 +1107,22 @@ Figure&nbsp;6: Speakers’ vowel means in Log Nearey Normalized F1,F2 space (fix
 </ul>
 <p>Here’s how you can get those values per speaker:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">|&gt;</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), mean)) <span class="sc">|&gt;</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">|&gt;</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">beet_f1 =</span> <span class="fu">min</span>(F1),</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">beet_f2 =</span> <span class="fu">max</span>(F2),</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">bat_f1 =</span> <span class="fu">max</span>(F1),</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">bat_f2 =</span> F2[F1 <span class="sc">==</span> <span class="fu">max</span>(F1)]) <span class="sc">|&gt;</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">school_f1 =</span> beet_f1,</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">school_f2 =</span> beet_f1) <span class="sc">|&gt;</span></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_inlie</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">ipa_vclass</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>beet_f1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">F1</span><span class="op">)</span>,</span>
+<span>            beet_f2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">F2</span><span class="op">)</span>,</span>
+<span>            bat_f1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">F1</span><span class="op">)</span>,</span>
+<span>            bat_f2 <span class="op">=</span> <span class="va">F2</span><span class="op">[</span><span class="va">F1</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">F1</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>school_f1 <span class="op">=</span> <span class="va">beet_f1</span>,</span>
+<span>         school_f2 <span class="op">=</span> <span class="va">beet_f1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># more verbs to go here</span></span>
+<span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-wf-points" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wf-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wf-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;8: The vowel triangle point values.
-</figcaption>
-<div aria-describedby="tbl-wf-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-wf-points-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -1229,35 +1134,33 @@ Table&nbsp;8: The vowel triangle point values.
 </figure>
 </div>
 </div>
-<p>In order to plot these points in an F1<span class="math inline">\(\times\)</span>F2 space, we need to do a little <code>pivot_longer()</code> and <code>pivot_wider()</code> again with the following steps:</p>
+<p>In order to plot these points in an F1<span class="math inline">\(\times\)</span>F2 space, we need to do a little <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> again with the following steps:</p>
 <ul>
-<li><p><code>pivot_longer()</code>, to stack the values of the columns between <code>beet_f1</code> and <code>school_f2</code> on top of each other.</p></li>
-<li><p>Split the point names (e.g.&nbsp;“<code>beet_f1"</code>) into separate values (e.g.&nbsp;<code>"beet"</code> and <code>"beet"</code>) using <code>separate()</code>.</p></li>
-<li><p><code>pivot_wider()</code> using the column with <code>"f1"</code> and <code>"f2"</code> to make the new column names.</p></li>
+<li><p><code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>, to stack the values of the columns between <code>beet_f1</code> and <code>school_f2</code> on top of each other.</p></li>
+<li><p>Split the point names (e.g.&nbsp;“<code>beet_f1"</code>) into separate values (e.g.&nbsp;<code>"beet"</code> and <code>"beet"</code>) using <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code>.</p></li>
+<li><p><code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> using the column with <code>"f1"</code> and <code>"f2"</code> to make the new column names.</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">|&gt;</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">|&gt;</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1, F2), mean)) <span class="sc">|&gt;</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">|&gt;</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">beet_f1 =</span> <span class="fu">min</span>(F1),</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">beet_f2 =</span> <span class="fu">max</span>(F2),</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">bat_f1 =</span> <span class="fu">max</span>(F1),</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">bat_f2 =</span> F2[F1 <span class="sc">==</span> <span class="fu">max</span>(F1)]) <span class="sc">|&gt;</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">school_f1 =</span> beet_f1,</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">school_f2 =</span> beet_f1) <span class="sc">|&gt;</span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> beet_f1<span class="sc">:</span>school_f2, <span class="at">names_to =</span> <span class="st">"var"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(var, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"point"</span>, <span class="st">"formant"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> hz) <span class="ot">-&gt;</span> wf_points</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>wf_points <span class="sc">|&gt;</span></span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_inlie</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">ipa_vclass</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">F1</span>, <span class="va">F2</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>beet_f1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">F1</span><span class="op">)</span>,</span>
+<span>            beet_f2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">F2</span><span class="op">)</span>,</span>
+<span>            bat_f1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">F1</span><span class="op">)</span>,</span>
+<span>            bat_f2 <span class="op">=</span> <span class="va">F2</span><span class="op">[</span><span class="va">F1</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">F1</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>school_f1 <span class="op">=</span> <span class="va">beet_f1</span>,</span>
+<span>         school_f2 <span class="op">=</span> <span class="va">beet_f1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">beet_f1</span><span class="op">:</span><span class="va">school_f2</span>, names_to <span class="op">=</span> <span class="st">"var"</span>, values_to <span class="op">=</span> <span class="st">"hz"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">var</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"point"</span>, <span class="st">"formant"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">formant</span>, values_from <span class="op">=</span> <span class="va">hz</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">wf_points</span></span>
+<span></span>
+<span><span class="va">wf_points</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-wf-point-long" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wf-point-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wf-point-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;9: The vowel triangle point values, long version
-</figcaption>
-<div aria-describedby="tbl-wf-point-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-wf-point-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -1271,48 +1174,39 @@ Table&nbsp;9: The vowel triangle point values, long version
 </div>
 <p>When we plot thee triangle points, we wind up with a plot that looks like a very simplified version of the vowel space from <a href="#fig-unnorm1" class="quarto-xref">Figure&nbsp;1</a>.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>wf_points <span class="sc">|&gt;</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(f2, f1))<span class="sc">+</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_polygon</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name, <span class="at">color =</span> name), <span class="at">alpha =</span> <span class="fl">0.6</span>)<span class="sc">+</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> point))<span class="sc">+</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_vibrant</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
+<details class="code-fold"><summary>Plot code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wf_points</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">f2</span>, <span class="va">f1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">name</span>, color <span class="op">=</span> <span class="va">name</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">point</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_fill_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_color_vibrant</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
 <div id="fig-wf-triangle" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-wf-triangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-wf-triangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="index_files/figure-html/fig-wf-triangle-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;7: The vowel space triangles for the Watt &amp; Fabricius method"><img src="index_files/figure-html/fig-wf-triangle-1.png" class="img-fluid figure-img" width="576"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wf-triangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: The vowel space triangles for the Watt &amp; Fabricius method
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
-</section>
-<section id="step-2-calculate-scaling-factors" class="level4">
-<h4 class="anchored" data-anchor-id="step-2-calculate-scaling-factors">Step 2: Calculate Scaling Factors</h4>
+</section><section id="step-2-calculate-scaling-factors" class="level4"><h4 class="anchored" data-anchor-id="step-2-calculate-scaling-factors">Step 2: Calculate Scaling Factors</h4>
 <p>With the F1 and F2 of these triangle points, we then calculate scaling factors by just taking the mean of F1 and F2 for each speaker.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>wf_points <span class="sc">|&gt;</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">|&gt;</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">S1 =</span> <span class="fu">mean</span>(f1),</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">S2 =</span> <span class="fu">mean</span>(f2)) <span class="ot">-&gt;</span> wf_scalers</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>wf_scalers <span class="sc">|&gt;</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wf_points</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>S1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">f1</span><span class="op">)</span>,</span>
+<span>           S2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">f2</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">wf_scalers</span></span>
+<span></span>
+<span><span class="va">wf_scalers</span> <span class="op">|&gt;</span></span>
+<span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-wf-scaler" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wf-scaler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wf-scaler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;10: The Watt &amp; Fabricius scaling factors
-</figcaption>
-<div aria-describedby="tbl-wf-scaler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-wf-scaler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -1324,35 +1218,36 @@ Table&nbsp;10: The Watt &amp; Fabricius scaling factors
 </figure>
 </div>
 </div>
-</section>
-<section id="step-3-merging-the-scalers-onto-the-original-data." class="level4">
-<h4 class="anchored" data-anchor-id="step-3-merging-the-scalers-onto-the-original-data.">Step 3: Merging the scalers onto the original data.</h4>
+</section><section id="step-3-merging-the-scalers-onto-the-original-data." class="level4"><h4 class="anchored" data-anchor-id="step-3-merging-the-scalers-onto-the-original-data.">Step 3: Merging the scalers onto the original data.</h4>
 <p>Now what we need to do is divide each speaker’s F1 and F2 value by these scalers. Right now the speakers’ original data is in <code>vowels_inlie</code> and the scaling values are in <code>wf_scalers</code>, so to do that division, we need to associate these two data frames.</p>
-<p>Fortunately, both <code>vowels_inlie</code> and <code>wf_scalers</code> have a column name in common: the speaker ID column <code>name</code>. That means we can merge <code>wf_scalers</code> onto <code>vowels_inlie</code> with a join operation. There are a few different <code>*_join()</code> functions in the tidyverse, and here I’ll use <code>left_join()</code>.</p>
-<p>We need to tell <code>left_join()</code> the following information:</p>
+<p>Fortunately, both <code>vowels_inlie</code> and <code>wf_scalers</code> have a column name in common: the speaker ID column <code>name</code>. That means we can merge <code>wf_scalers</code> onto <code>vowels_inlie</code> with a join operation. There are a few different <code>*_join()</code> functions in the tidyverse, and here I’ll use <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code>.</p>
+<p>We need to tell <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> the following information:</p>
 <ul>
-<li><p>Which two data frames are we joining together?</p>
+<li>
+<p>Which two data frames are we joining together?</p>
 <ul>
 <li>Since we’re piping, the first data frame will appear on the left hand side of <code>|&gt;</code>, and the second data frame will be the first argument.</li>
-</ul></li>
-<li><p>Which columns should we use to join the data frames together?</p>
+</ul>
+</li>
+<li>
+<p>Which columns should we use to join the data frames together?</p>
 <ul>
-<li><code>left_join()</code> will guess and try to join the data together using columns with the same name, but we can explicitly tell it which columns to use with the <code>by=</code> argument.</li>
-</ul></li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> will guess and try to join the data together using columns with the same name, but we can explicitly tell it which columns to use with the <code>by=</code> argument.</li>
+</ul>
+</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">|&gt;</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(wf_scalers, <span class="at">by =</span> <span class="st">"name"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># more verbs to go here</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The group_by here is just to illustrate that each speaker's scalers were</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># successfully merged</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">|&gt;</span> <span class="fu">slice</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">|&gt;</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_inlie</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">wf_scalers</span>, by <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># more verbs to go here</span></span>
+<span>  <span class="co"># The group_by here is just to illustrate that each speaker's scalers were</span></span>
+<span>  <span class="co"># successfully merged</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-wf-join" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wf-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wf-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;11: Speakers’s scalers merged onto the original data
-</figcaption>
-<div aria-describedby="tbl-wf-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-wf-join-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -1364,24 +1259,20 @@ Table&nbsp;11: Speakers’s scalers merged onto the original data
 </figure>
 </div>
 </div>
-</section>
-<section id="step-4-the-actual-normalization-1" class="level4">
-<h4 class="anchored" data-anchor-id="step-4-the-actual-normalization-1">Step 4: The actual normalization!</h4>
+</section><section id="step-4-the-actual-normalization-1" class="level4"><h4 class="anchored" data-anchor-id="step-4-the-actual-normalization-1">Step 4: The actual normalization!</h4>
 <p>Now all we need to do is divide F1 and F2 by their respective scaling factors to get the normalized Watt &amp; Fabricius values.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">|&gt;</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(wf_scalers, <span class="at">by =</span> <span class="st">"name"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_wf =</span> F1<span class="sc">/</span>S1,</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_wf =</span> F2<span class="sc">/</span>S2)<span class="ot">-&gt;</span>vowels_wf</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>vowels_wf <span class="sc">|&gt;</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">|&gt;</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">|&gt;</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_inlie</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">wf_scalers</span>, by <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>F1_wf <span class="op">=</span> <span class="va">F1</span><span class="op">/</span><span class="va">S1</span>,</span>
+<span>         F2_wf <span class="op">=</span> <span class="va">F2</span><span class="op">/</span><span class="va">S2</span><span class="op">)</span><span class="op">-&gt;</span><span class="va">vowels_wf</span></span>
+<span></span>
+<span><span class="va">vowels_wf</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-wf-norm" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wf-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wf-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;12: Speakers’ vowels Watt &amp; Fabricius normalized
-</figcaption>
-<div aria-describedby="tbl-wf-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption><div aria-describedby="tbl-wf-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -1393,43 +1284,32 @@ Table&nbsp;12: Speakers’ vowels Watt &amp; Fabricius normalized
 </figure>
 </div>
 </div>
-</section>
-<section id="results-2" class="level4">
-<h4 class="anchored" data-anchor-id="results-2">Results!</h4>
+</section><section id="results-2" class="level4"><h4 class="anchored" data-anchor-id="results-2">Results!</h4>
 <div class="cell">
-<details class="code-fold">
-<summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>vowels_wf <span class="sc">|&gt;</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name, ipa_vclass) <span class="sc">|&gt;</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(F1_wf, F2_wf), <span class="at">.fns =</span> mean)) <span class="sc">|&gt;</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2_wf, F1_wf, <span class="at">color =</span> name))<span class="sc">+</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa_vclass))<span class="sc">+</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    ggforce<span class="sc">::</span><span class="fu">geom_mark_hull</span>(<span class="fu">aes</span>(<span class="at">fill =</span> name))<span class="sc">+</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_vibrant</span>()<span class="sc">+</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_fixed</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
+<details class="code-fold"><summary>Plot code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_wf</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">ipa_vclass</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">F1_wf</span>, <span class="va">F2_wf</span><span class="op">)</span>, .fns <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">F2_wf</span>, <span class="va">F1_wf</span>, color <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">ipa_vclass</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">ggforce</span><span class="fu">::</span><span class="fu"><a href="https://ggforce.data-imaginist.com/reference/geom_mark_hull.html">geom_mark_hull</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_color_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://packages.tesselle.org/khroma/reference/scale_tol_vibrant.html">scale_fill_vibrant</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
 <div id="fig-wf-norm" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-wf-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-wf-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="index_files/figure-html/fig-wf-norm-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8: An F1 by F2 plot of two speakers’ Watt &amp; Fabricius normalized vowel means."><img src="index_files/figure-html/fig-wf-norm-1.png" class="img-fluid figure-img" width="576"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wf-norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: An F1 by F2 plot of two speakers’ Watt &amp; Fabricius normalized vowel means.
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>Again, we’ve got largely overlapping vowel spaces, and since F1 and F2 were normalized separately, they’ve got very comparable data ranges.</p>
-</section>
-</section>
-</section>
-<section id="final-thoughts" class="level2">
-<h2 class="anchored" data-anchor-id="final-thoughts">Final thoughts</h2>
+</section></section></section><section id="final-thoughts" class="level2"><h2 class="anchored" data-anchor-id="final-thoughts">Final thoughts</h2>
 <p>There there has been a <em>lot</em> written about vowel normalization methods, and I’ve barely covered most of the relevant topics discussed in the literature. For example:</p>
 <ul>
 <li><p>How well do these methods correspond to what <em>listeners</em> actually do when hearing people with different vowel spaces?</p></li>
@@ -1442,10 +1322,7 @@ Figure&nbsp;8: An F1 by F2 plot of two speakers’ Watt &amp; Fabricius normaliz
 <!-- -->
 
 
-</section>
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-Adank2004" class="csl-entry" role="listitem">
 Adank, Patti &amp; Smits, Roel &amp; Hout, Roeland van. 2004. A comparison of vowel normalization procedures for language variation research. <em>The Journal of the Acoustical Society of America</em>. 116(5). 3099. Retrieved from <a href="http://link.aip.org/link/JASMAN/v116/i5/p3099/s1&amp;Agg=doi">http://link.aip.org/link/JASMAN/v116/i5/p3099/s1&amp;Agg=doi</a>
 </div>
@@ -1465,17 +1342,17 @@ Stanley, Joseph A. 2022. Order of operations in sociophonetic analysis. <em>Penn
 Watt, Dominic &amp; Fabricius, Anne. 2002. Evaluation of a technique for improving the mapping of multiple speakers’ vowel spaces in the F1 &nbsp; F2 plane. <em>Leeds Working Papers in Linguistics and Phonetics</em>. 9. 159–173.
 </div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
 <ol>
-<li id="fn1"><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>vowels_inlie <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">|&gt;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_n =</span> <span class="fu">exp</span>(<span class="fu">log</span>(F1) <span class="sc">-</span> <span class="fu">mean</span>(<span class="fu">log</span>(F1))),</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_n =</span> <span class="fu">exp</span>(<span class="fu">log</span>(F2) <span class="sc">-</span> <span class="fu">mean</span>(<span class="fu">log</span>(F2))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vowels_inlie</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>F1_n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">F1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">F1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>         F2_n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">F2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">F2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a>
+</li>
 <li id="fn2"><p>But you should try it just to see!<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Which is a little silly because that’s what we had in the normalization code chunk above, and then we did <code>exp()</code> on it.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{fruehwald2022,
+<li id="fn3"><p>Which is a little silly because that’s what we had in the normalization code chunk above, and then we did <code><a href="https://rdrr.io/r/base/Log.html">exp()</a></code> on it.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{fruehwald2022,
   author = {Fruehwald, Josef},
   title = {How to Normalize Your Vowels Using the Tidyverse},
   series = {Linguistics Methods Hub},
@@ -1488,8 +1365,7 @@ Watt, Dominic &amp; Fabricius, Anne. 2002. Evaluation of a technique for improvi
 Fruehwald, Josef. 2022, October 20. How to normalize your vowels using
 the tidyverse. <em>Linguistics Methods Hub</em>. (<a href="https://lingmethodshub.github.io/content/R/tidy-norm/">https://lingmethodshub.github.io/content/R/tidy-norm/</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7232341">10.5281/zenodo.7232341</a>
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1939,9 +1815,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7232341">10.5281/zenodo.7232341</a>
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../../content/R/vowel-plots-tutorial/index.html" class="pagination-link" aria-label="Vowel Plots with `ggplot2`">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Vowel Plots with <code>ggplot2</code></span>
       </a>          
@@ -2606,8 +2480,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7232341">10.5281/zenodo.7232341</a>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -2618,8 +2491,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7232341">10.5281/zenodo.7232341</a>
       &nbsp;
     </div>
   </div>
-</footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
@@ -2651,8 +2523,6 @@ doi: <a href="https://doi.org/10.5281/zenodo.7232341">10.5281/zenodo.7232341</a>
   
 })();
           </script>
-
-
 
 
 <script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>

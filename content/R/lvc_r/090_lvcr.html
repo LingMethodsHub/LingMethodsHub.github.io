@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Matt Hunt Gardner">
 <meta name="dcterms.date" content="2026-01-19">
 <meta name="description" content="Doing a basic random forest analysis.">
-
 <title>Random Forests: The Basics – LingMethodsHub</title>
 <style>
 /* Default styles provided by pandoc.
@@ -83,7 +80,6 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
-
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
@@ -111,8 +107,7 @@ div.csl-indent {
 <link href="../../../site_libs/bootstrap/bootstrap-194cc7e99426acbbbef3f1ad860df344.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -138,18 +133,13 @@ div.csl-indent {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script>
-
-<script type="text/plain" cookie-consent="tracking">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ES98D09K0F"></script><script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ES98D09K0F', { 'anonymize_ip': true});
-</script>
-
-<script type="text/javascript" charset="UTF-8">
+</script><script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
@@ -164,25 +154,18 @@ cookieconsent.run({
 "language":"en"
   });
 });
-</script> 
-  
-<style>html{ scroll-behavior: smooth; }</style>
+</script><style>html{ scroll-behavior: smooth; }</style>
 <script type="application/json" class="js-hypothesis-config">
 {
   "theme": "clean",
   "openSidebar": false,
   "showHighlights": "never"
 }
-</script>
-<script async="" src="https://hypothes.is/embed.js"></script>
-<script>
+</script><script async="" src="https://hypothes.is/embed.js"></script><script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>
-
-
-<link rel="stylesheet" href="../../../styles.css">
+</script><link rel="stylesheet" href="../../../styles.css">
 <meta property="og:title" content="Random Forests: The Basics – LingMethodsHub">
 <meta property="og:description" content="Doing a basic random forest analysis.">
 <meta property="og:image" content="https://lingmethodshub.github.io/content/R/lvc_r/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
@@ -218,13 +201,10 @@ cookieconsent.run({
 <meta name="citation_reference" content="citation_title=Variationist sociolinguistics: Change, observation, interpretation;,citation_author=Sali A. Tagliamonte;,citation_publication_date=2012;,citation_cover_date=2012;,citation_year=2012;">
 <meta name="citation_reference" content="citation_title=Models, forests, and trees of York English: &amp;amp;amp;lt;i&amp;gt;Was/were&amp;lt;/i&amp;gt; variation as a case study for statistical practice;,citation_author=Sali A. Tagliamonte;,citation_author=R. Harald Baayen;,citation_publication_date=2012;,citation_cover_date=2012;,citation_year=2012;,citation_issue=2;,citation_volume=24;,citation_journal_title=Language Variation and Change;">
 </head>
-
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">LingMethodsHub</span>
@@ -236,7 +216,7 @@ cookieconsent.run({
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -257,14 +237,14 @@ cookieconsent.run({
 <span class="menu-text">People</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/LingMethodsHub/LingMethodsHub.github.io"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -273,9 +253,7 @@ cookieconsent.run({
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -283,19 +261,15 @@ cookieconsent.run({
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorials</span></a>
@@ -309,8 +283,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Doing LVC with R</span></a>
@@ -318,8 +292,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/lvc_r/010_lvcr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started</span></a>
@@ -399,7 +373,7 @@ cookieconsent.run({
 </li>
           <li class="px-0"><hr class="sidebar-divider hi "></li>
       </ul>
-  </li>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/R/vowel-plots-tutorial/index.html" class="sidebar-item-text sidebar-link">
@@ -430,8 +404,14 @@ cookieconsent.run({
  <span class="menu-text">Using {marginaleffects} to understand statistical models</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/R/multitaper-tutorial/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generating and analyzing multitaper spectra in R</span></a>
+  </div>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -441,8 +421,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/python/vowel-plotting-py/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Vowel plotting in Python</span></a>
@@ -455,7 +435,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -470,8 +450,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/tools/mfa/mfa-tutorial/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Montreal Forced Aligner</span></a>
@@ -484,7 +464,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -494,8 +474,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/cli/bash-shell-basics/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Shell Basics</span></a>
@@ -508,7 +488,7 @@ cookieconsent.run({
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -518,8 +498,8 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../content/windows/wsl/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Windows Subsystem for Linux</span></a>
@@ -527,37 +507,31 @@ cookieconsent.run({
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../content/windows/wsl/00_installing_wsl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#references" id="toc-references" class="nav-link active" data-scroll-target="#references">References</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="090_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<li><a href="#references" id="toc-references" class="nav-link active" data-scroll-target="#references">References</a></li>
+  </ul><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="090_lvcr.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/090_lvcr.html">Random Forests: The Basics</a></li></ol></nav>
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/R/index.html">R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/010_lvcr.html">Doing LVC with R</a></li><li class="breadcrumb-item"><a href="../../../content/R/lvc_r/090_lvcr.html">Random Forests: The Basics</a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Random Forests: The Basics</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -604,18 +578,15 @@ cookieconsent.run({
   
 
 
-</header>
-
-
-<p>Another useful type of analysis available as part of the <code>partykit</code> package is a random forest analysis. This algorithm determines the most common classification tree (like the one above) among a large collection of trees built on random subsets of a dataset. Random forests are useful because they can rank the relative importance of independent variables with respect to a dependent variable. They can also simultaneously test variables that are (multi)collinear. Logistic regression (discussed in <a href="https://lingmethodshub.github.io/content/R/lvc_r/110_lvcr.html">Mixed-Efects Logistic Regression Analysis</a>) assumes little or no collinearity among independent predictor variables. Variables like lexical status (<code>Category</code>) and morphological type (<code>Morph.Type</code>) are highly correlated (i.e., semi-weak and past-tense verbs are all lexical), thus should not be included as predictors in the same logistic regression model.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</header><p>Another useful type of analysis available as part of the <code>partykit</code> package is a random forest analysis. This algorithm determines the most common classification tree (like the one above) among a large collection of trees built on random subsets of a dataset. Random forests are useful because they can rank the relative importance of independent variables with respect to a dependent variable. They can also simultaneously test variables that are (multi)collinear. Logistic regression (discussed in <a href="https://lingmethodshub.github.io/content/R/lvc_r/110_lvcr.html">Mixed-Efects Logistic Regression Analysis</a>) assumes little or no collinearity among independent predictor variables. Variables like lexical status (<code>Category</code>) and morphological type (<code>Morph.Type</code>) are highly correlated (i.e., semi-weak and past-tense verbs are all lexical), thus should not be included as predictors in the same logistic regression model.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>Random forest analysis take a lot of computing power and time. I usually leave my computer to run the analysis overnight. The bigger your dataset and the more predictors you include, the longer the analysis will take.</p>
 <p>The first step is to first set the “seed” before running your random forest analysis.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Seed</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123456</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Set Seed</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123456</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The random forest algorithm finds the most common classification tree from those built on random samplings of the data. Setting the seed for <em>R</em>’s random number generator means you can both generate random samples of your data for creating these trees, and you can also make your analysis reproducible. Think of each seed as a list of random numbers. Above, the seed <code>123456</code> is used, but the seed you select is arbitrary. The one time it is important to select a specific seed is if you are trying to reproduce results. In that case, you must use the same seed as the previous analysis. Keeping a record of your seed setting in a script file and reporting your seed setting in a manuscript is therefore very important.</p>
-<p>You build your random forest formula just like you built the formula for your <code>ctree()</code>, but with the function <code>cforest()</code>. The formula here uses <code>Dep.Var</code> as the dependent variable and <code>Stress</code>, <code>Category</code>, <code>Morph.Type</code>, <code>Before</code>, <code>After</code>, <code>Sex</code>, <code>Education</code>, <code>Job</code>, <code>After.New</code>, <code>Center.Age</code>, <code>Age.Group</code>, and <code>Phoneme</code> as predictor variables. The data tested is set using <code>data=td</code>.</p>
+<p>You build your random forest formula just like you built the formula for your <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html">ctree()</a></code>, but with the function <code><a href="https://rdrr.io/pkg/partykit/man/cforest.html">cforest()</a></code>. The formula here uses <code>Dep.Var</code> as the dependent variable and <code>Stress</code>, <code>Category</code>, <code>Morph.Type</code>, <code>Before</code>, <code>After</code>, <code>Sex</code>, <code>Education</code>, <code>Job</code>, <code>After.New</code>, <code>Center.Age</code>, <code>Age.Group</code>, and <code>Phoneme</code> as predictor variables. The data tested is set using <code>data=td</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -630,7 +601,7 @@ cookieconsent.run({
 </div>
 </div>
 <p>The setting <code>ntree=128</code> specifies the number of trees to grow. I have run analyses where I’ve specified 10,000 trees and it took almost 24 hours to compute on my 2015 MacBook Pro. As a rule, the more data/independent variables you have, the more trees you should specify; however, <span class="citation" data-cites="Oshiro2012">Oshiro &amp; Perez &amp; Baranauskas (<a href="#ref-Oshiro2012" role="doc-biblioref">2012</a>)</span> point out, based on their test with 29 different datasets, that after 128 trees there is no significant improvement in the accuracy of the resulting random forest. As a random forest is never my only analysis, I now specify 128 trees for casual data exploration. I use at least 5,000 for any random forest that I include in a published manuscript.</p>
-<p>The <code>cforest()</code> function creates the random forest, but you still need to determine which independent variables do the best job of describing the data averaged over all of the trees created. To do this you use the function <code>varimp()</code> on the result of <code>cforest()</code> (here the object <code>td.cforest</code>). The setting <code>conditional=TRUE</code> is important when independent variables are collinear; it should always be used. In simple terms, this setting ensures that, if two independent variables are collinear, only the variable that does a better job at explaining the variation in the data will be considered as an important descriptor and the other will be ignored.</p>
+<p>The <code><a href="https://rdrr.io/pkg/partykit/man/cforest.html">cforest()</a></code> function creates the random forest, but you still need to determine which independent variables do the best job of describing the data averaged over all of the trees created. To do this you use the function <code><a href="https://rdrr.io/pkg/partykit/man/varimp.html">varimp()</a></code> on the result of <code><a href="https://rdrr.io/pkg/partykit/man/cforest.html">cforest()</a></code> (here the object <code>td.cforest</code>). The setting <code>conditional=TRUE</code> is important when independent variables are collinear; it should always be used. In simple terms, this setting ensures that, if two independent variables are collinear, only the variable that does a better job at explaining the variation in the data will be considered as an important descriptor and the other will be ignored.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -644,25 +615,25 @@ Note
 <p>You’ll notice that I use the term descriptor for random forests and predictor for regression analysis. This is because regression analysis tests what independent variables do the best job of predicting whether a given token will be <code>Deletion</code> or <code>Realization</code>. The random forest analysis doesn’t predict, instead it determines the most useful way of dividing the data in order to best explain when <code>Deletion</code> and <code>Realization</code> occurs.</p>
 </div>
 </div>
-<p>The <code>varimp()</code> function is the part of this analysis that takes a long time and lots of computing power. Here is where the size of your dataset, the number of trees grown, and the number of independent variables all contribute to how much time and computing power is needed.</p>
-<p>The result of <code>varimp()</code> is a list, rather than a dataframe. To turn it into a dataframe we need to use the function <code>melt()</code>. The setting <code>id.var=NULL</code> turns the names of each independent variable into a value in a column called <code>variable</code>. If this setting is not used <em>R</em> will instead use the independent variable names as row names, which is not useful for graphing.</p>
-<p>Given that <code>varimp()</code> often takes a long time, it is a good idea to save the results as a text file. That way you don’t have to re-run the analysis if you want to refer to it at a later date. As above, doing so will automatically melt the data, but it won’t include column names. If you read this file back into <code>R</code> you need to assign the column names using the function <code>names(td.cforest.results)&lt;-c("variable", "value")</code>.</p>
+<p>The <code><a href="https://rdrr.io/pkg/partykit/man/varimp.html">varimp()</a></code> function is the part of this analysis that takes a long time and lots of computing power. Here is where the size of your dataset, the number of trees grown, and the number of independent variables all contribute to how much time and computing power is needed.</p>
+<p>The result of <code><a href="https://rdrr.io/pkg/partykit/man/varimp.html">varimp()</a></code> is a list, rather than a dataframe. To turn it into a dataframe we need to use the function <code><a href="https://rdrr.io/pkg/reshape2/man/melt.html">melt()</a></code>. The setting <code>id.var=NULL</code> turns the names of each independent variable into a value in a column called <code>variable</code>. If this setting is not used <em>R</em> will instead use the independent variable names as row names, which is not useful for graphing.</p>
+<p>Given that <code><a href="https://rdrr.io/pkg/partykit/man/varimp.html">varimp()</a></code> often takes a long time, it is a good idea to save the results as a text file. That way you don’t have to re-run the analysis if you want to refer to it at a later date. As above, doing so will automatically melt the data, but it won’t include column names. If you read this file back into <code>R</code> you need to assign the column names using the function <code>names(td.cforest.results)&lt;-c("variable", "value")</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate a Random Forest testing Stress, Category, Morph.Type, Before, After, Sex, Education, Job, After.New, Center.Age, Age.Group , and Phoneme</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(partykit)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>td.cforest <span class="ot">&lt;-</span> <span class="fu">cforest</span>(Dep.Var <span class="sc">~</span> Stress <span class="sc">+</span> Category <span class="sc">+</span> Morph.Type <span class="sc">+</span> Before <span class="sc">+</span> After <span class="sc">+</span> Sex <span class="sc">+</span> Education <span class="sc">+</span> Job <span class="sc">+</span> After.New <span class="sc">+</span> Center.Age <span class="sc">+</span> Age.Group <span class="sc">+</span> Phoneme, <span class="at">data=</span>td, <span class="at">ntree=</span><span class="dv">128</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>td.cforest.varimp<span class="ot">&lt;-</span><span class="fu">varimp</span>(td.cforest, <span class="at">conditional=</span><span class="cn">TRUE</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>td.cforest.results<span class="ot">&lt;-</span><span class="fu">melt</span>(<span class="fu">data.frame</span>(<span class="fu">as.list</span>(td.cforest.varimp)), <span class="at">id.vars=</span><span class="cn">NULL</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Write Random Forest to File</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(td.cforest.results, <span class="at">file =</span><span class="st">"Data/tdCForestVarimp.txt"</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#Calculate a Random Forest testing Stress, Category, Morph.Type, Before, After, Sex, Education, Job, After.New, Center.Age, Age.Group , and Phoneme</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://partykit.r-forge.r-project.org/partykit/">partykit</a></span><span class="op">)</span></span>
+<span><span class="va">td.cforest</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/partykit/man/cforest.html">cforest</a></span><span class="op">(</span><span class="va">Dep.Var</span> <span class="op">~</span> <span class="va">Stress</span> <span class="op">+</span> <span class="va">Category</span> <span class="op">+</span> <span class="va">Morph.Type</span> <span class="op">+</span> <span class="va">Before</span> <span class="op">+</span> <span class="va">After</span> <span class="op">+</span> <span class="va">Sex</span> <span class="op">+</span> <span class="va">Education</span> <span class="op">+</span> <span class="va">Job</span> <span class="op">+</span> <span class="va">After.New</span> <span class="op">+</span> <span class="va">Center.Age</span> <span class="op">+</span> <span class="va">Age.Group</span> <span class="op">+</span> <span class="va">Phoneme</span>, data<span class="op">=</span><span class="va">td</span>, ntree<span class="op">=</span><span class="fl">128</span><span class="op">)</span></span>
+<span><span class="va">td.cforest.varimp</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/partykit/man/varimp.html">varimp</a></span><span class="op">(</span><span class="va">td.cforest</span>, conditional<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape">reshape2</a></span><span class="op">)</span></span>
+<span><span class="va">td.cforest.results</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/reshape2/man/melt.html">melt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">as.list</a></span><span class="op">(</span><span class="va">td.cforest.varimp</span><span class="op">)</span><span class="op">)</span>, id.vars<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Write Random Forest to File</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.table</a></span><span class="op">(</span><span class="va">td.cforest.results</span>, file <span class="op">=</span><span class="st">"Data/tdCForestVarimp.txt"</span>, quote <span class="op">=</span> <span class="cn">FALSE</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Read Random Forest from File </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>td.cforest.results <span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="at">file =</span><span class="st">"Data/tdCForestVarimp.txt"</span>, <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">row.names=</span><span class="cn">NULL</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(td.cforest.results)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#Read Random Forest from File </span></span>
+<span><span class="va">td.cforest.results</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span>file <span class="op">=</span><span class="st">"Data/tdCForestVarimp.txt"</span>, header<span class="op">=</span><span class="cn">TRUE</span>, row.names<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">td.cforest.results</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     variable         value
 1      Stress  0.0092881683
@@ -680,87 +651,84 @@ Note
 </div>
 </div>
 <p>Now that you have the variable importance of each independent variable in a dataframe you can compare the values to determine which variables do the best job at explaining the variation. You could do this by just looking at the values — higher values are more useful, lower values are less useful — however, the more common way to compare the variables is by graphing them.</p>
-<p>Older manuals suggest using the <em>R</em> base graphics function <code>dotplot()</code> to visualize this data. I prefer using <code>ggplot()</code> because it is so much more customizable. As in previous chapters, I won’t list all the different ways you can customize a <code>ggplot()</code>, but I will show you how to make and save a nice looking random forest graph.</p>
+<p>Older manuals suggest using the <em>R</em> base graphics function <code>dotplot()</code> to visualize this data. I prefer using <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> because it is so much more customizable. As in previous chapters, I won’t list all the different ways you can customize a <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>, but I will show you how to make and save a nice looking random forest graph.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder variable importance by highest to lowest value in column value</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>td.cforest.results<span class="sc">$</span>variable<span class="ot">&lt;-</span><span class="fu">reorder</span>(td.cforest.results<span class="sc">$</span>variable, td.cforest.results<span class="sc">$</span>value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="co"># Reorder variable importance by highest to lowest value in column value</span></span>
+<span><span class="va">td.cforest.results</span><span class="op">$</span><span class="va">variable</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">td.cforest.results</span><span class="op">$</span><span class="va">variable</span>, <span class="va">td.cforest.results</span><span class="op">$</span><span class="va">value</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>First you make sure <code>ggplot2</code> is loaded using the <code>library()</code> function. Next, you need to order the descriptor variable names in the <code>td.cforest.results</code> column <code>variable</code> based on the values of the column <code>value</code>. To do this you use the <code>reorder()</code> function, which takes two objects: first, the column you want to sort (here <code>td.cforest.results$variable</code>); and second, the column you want to sort by (here <code>td.cforest.results$value</code>). You assign this reordered dataframe back as the original dataframe using the assignment operator <code>&lt;-</code>.</p>
+<p>First you make sure <code>ggplot2</code> is loaded using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function. Next, you need to order the descriptor variable names in the <code>td.cforest.results</code> column <code>variable</code> based on the values of the column <code>value</code>. To do this you use the <code><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder()</a></code> function, which takes two objects: first, the column you want to sort (here <code>td.cforest.results$variable</code>); and second, the column you want to sort by (here <code>td.cforest.results$value</code>). You assign this reordered dataframe back as the original dataframe using the assignment operator <code>&lt;-</code>.</p>
 <p>Alternatively, you could to this in a <code>tidy</code> way using <code>arrange()</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder variable importance by highest to lowest value in column value, but tidy</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>td.cforest.results<span class="ot">&lt;-</span>td.cforest.results <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(variable, value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Reorder variable importance by highest to lowest value in column value, but tidy</span></span>
+<span><span class="va">td.cforest.results</span><span class="op">&lt;-</span><span class="va">td.cforest.results</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">variable</span>, <span class="va">value</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Next you need to find the absolute value of the lowest negative-scoring descriptor variable. You’ll see why in a second. You create a new object <code>td.cforest.min</code> and, using the assignment operator <code>&lt;-</code>, make it equal to the absolute value (using <code>abs()</code>) of the lowest negative-scoring variable (using <code>min()</code>). Can can also do this in a <code>tidy</code> way using <code>%&gt;%</code>, though it’s not much quicker to type:</p>
+<p>Next you need to find the absolute value of the lowest negative-scoring descriptor variable. You’ll see why in a second. You create a new object <code>td.cforest.min</code> and, using the assignment operator <code>&lt;-</code>, make it equal to the absolute value (using <code><a href="https://rdrr.io/r/base/MathFun.html">abs()</a></code>) of the lowest negative-scoring variable (using <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code>). Can can also do this in a <code>tidy</code> way using <code>%&gt;%</code>, though it’s not much quicker to type:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get absolute minimum value of column value</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>td.cforest.min<span class="ot">&lt;-</span><span class="fu">abs</span>(<span class="fu">min</span>(td.cforest.results<span class="sc">$</span>value))</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get absolute minimum value of column value, but tidy</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>td.cforest.min <span class="ot">&lt;-</span> td.cforest.results<span class="sc">$</span>value <span class="sc">%&gt;%</span> <span class="fu">min</span>() <span class="sc">%&gt;%</span> <span class="fu">abs</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Get absolute minimum value of column value</span></span>
+<span><span class="va">td.cforest.min</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">td.cforest.results</span><span class="op">$</span><span class="va">value</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Get absolute minimum value of column value, but tidy</span></span>
+<span><span class="va">td.cforest.min</span> <span class="op">&lt;-</span> <span class="va">td.cforest.results</span><span class="op">$</span><span class="va">value</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Now you have everything you need to visualize the variable importance of the variables in the random forest. You create a new object <code>dotplot</code>, which will be the graph created by <code>ggplot()</code>. The function <code>ggplot()</code> has a special syntax. Generally you first create the plot using <code>ggplot()</code>; this is the function where you specify what values are going to serve as the <code>x</code> and <code>y</code> axes of the graph and also what data will be used. Specifying the <code>x</code> and <code>y</code> axes values is done inside the aesthetics (<code>aes()</code>) of the <code>gplot()</code>. These aesthetics are carried forward to all the other components you add to the plot. If you stop just at the <code>ggplot()</code> function, then <code>dotplot</code> would only be the plotting area, plus an <code>x</code> and <code>y</code> axes.</p>
-<p>The next step is to add some data points to your plot. You do this by adding what are called “geom’s” ([’gi.owmz]). You want to create a dotplot, so you use <code>geom_point()</code>, which will add the corresponding <code>x</code> and <code>y</code> values (inherited from <code>aes()</code>) as points. Use <code>+</code> to add the geom to the already created <code>ggplot()</code>. The geom <code>geom_point()</code> can be on a separate line, but the <code>+</code> must be on the same line as the object being added to.</p>
-<p>The next step is to name the <code>x</code>-axis by adding <code>xlab()</code> with the label in quotation marks. You can remove the <code>y</code>-axis label by specifying the label as <code>NULL</code>. Much of the customization of <code>ggplot()</code>’s look is done through the <code>theme()</code> function. I’m not going to delve too deep into customization; instead, I’m going to suggest one of the built-in themes: <code>theme_classic()</code>, which gives a very bare-bones graph (my personal preference). There are other built-in themes like <code>theme_linedraw()</code>; <code>theme_bw()</code>; <code>theme_dark()</code>; etc. <em>Google</em> is your best friend when you want to customize the look of your <code>ggplot2</code> visualizations.</p>
-<p>The final element you add to the dotplot is a vertical line where <code>x = td.cforest.min</code>. This is the absolute value of the lowest negative-scoring variable you calculated earlier. The geom <code>geom_vline()</code> adds the vertical line. Its first argument is where you specify the <code>xintercept</code>, i.e., where you want the vertical line to intercept the <code>x</code>-axis. The second argument is the <code>linetype</code>; here you specify it as <code>2</code>. There are different line types in <em>R</em>; <code>0</code> is “blank”, <code>1</code> is “solid”, <code>2</code> is “dashed”, <code>3</code> is “dotted”, <code>4</code> is “dotdash”, <code>5</code> is “longdash”, and <code>6</code> is “twodash”. You can either use the line type number or name, but the name must be in quotation marks. The <code>alpha</code> value is a number between <code>0</code> and <code>1</code> that indicates how transparent to make the line. Here <code>0.5</code> (50% transparent) is used.</p>
+<p>Now you have everything you need to visualize the variable importance of the variables in the random forest. You create a new object <code>dotplot</code>, which will be the graph created by <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>. The function <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> has a special syntax. Generally you first create the plot using <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>; this is the function where you specify what values are going to serve as the <code>x</code> and <code>y</code> axes of the graph and also what data will be used. Specifying the <code>x</code> and <code>y</code> axes values is done inside the aesthetics (<code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>) of the <code>gplot()</code>. These aesthetics are carried forward to all the other components you add to the plot. If you stop just at the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function, then <code>dotplot</code> would only be the plotting area, plus an <code>x</code> and <code>y</code> axes.</p>
+<p>The next step is to add some data points to your plot. You do this by adding what are called “geom’s” ([’gi.owmz]). You want to create a dotplot, so you use <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>, which will add the corresponding <code>x</code> and <code>y</code> values (inherited from <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>) as points. Use <code>+</code> to add the geom to the already created <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>. The geom <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> can be on a separate line, but the <code>+</code> must be on the same line as the object being added to.</p>
+<p>The next step is to name the <code>x</code>-axis by adding <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab()</a></code> with the label in quotation marks. You can remove the <code>y</code>-axis label by specifying the label as <code>NULL</code>. Much of the customization of <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>’s look is done through the <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme()</a></code> function. I’m not going to delve too deep into customization; instead, I’m going to suggest one of the built-in themes: <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic()</a></code>, which gives a very bare-bones graph (my personal preference). There are other built-in themes like <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_linedraw()</a></code>; <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw()</a></code>; <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_dark()</a></code>; etc. <em>Google</em> is your best friend when you want to customize the look of your <code>ggplot2</code> visualizations.</p>
+<p>The final element you add to the dotplot is a vertical line where <code>x = td.cforest.min</code>. This is the absolute value of the lowest negative-scoring variable you calculated earlier. The geom <code><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline()</a></code> adds the vertical line. Its first argument is where you specify the <code>xintercept</code>, i.e., where you want the vertical line to intercept the <code>x</code>-axis. The second argument is the <code>linetype</code>; here you specify it as <code>2</code>. There are different line types in <em>R</em>; <code>0</code> is “blank”, <code>1</code> is “solid”, <code>2</code> is “dashed”, <code>3</code> is “dotted”, <code>4</code> is “dotdash”, <code>5</code> is “longdash”, and <code>6</code> is “twodash”. You can either use the line type number or name, but the name must be in quotation marks. The <code>alpha</code> value is a number between <code>0</code> and <code>1</code> that indicates how transparent to make the line. Here <code>0.5</code> (50% transparent) is used.</p>
 <p>If you type <code>dotplot</code> in the <em>R</em> console and hit execute, you’ll see what your graph looks like.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create object of Random Forest as a dotplot using ggplot2</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>dotplot<span class="ot">&lt;-</span><span class="fu">ggplot</span>(td.cforest.results, <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> variable))<span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Variable Importance"</span>)<span class="sc">+</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> td.cforest.min, <span class="at">linetype=</span><span class="dv">2</span>, <span class="at">alpha=</span>.<span class="dv">5</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Save dotplot</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"Data/tdCForest.png"</span>, dotplot, <span class="at">width =</span> <span class="dv">4</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#Create object of Random Forest as a dotplot using ggplot2</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="va">dotplot</span><span class="op">&lt;-</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">td.cforest.results</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">value</span>, y <span class="op">=</span> <span class="va">variable</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Variable Importance"</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">td.cforest.min</span>, linetype<span class="op">=</span><span class="fl">2</span>, alpha<span class="op">=</span><span class="fl">.5</span><span class="op">)</span></span>
+<span><span class="co"># Save dotplot</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"Data/tdCForest.png"</span>, <span class="va">dotplot</span>, width <span class="op">=</span> <span class="fl">4</span>, height <span class="op">=</span> <span class="fl">4</span>, units <span class="op">=</span> <span class="st">"in"</span>, dpi <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><a href="090_lvcr_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="090_lvcr_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></a></p>
+<figure class="figure"><p><a href="090_lvcr_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="090_lvcr_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<p>To save the graph use the function <code>ggsave()</code>. The first argument is the save destination. You can specify which type of file you want to save your image as by using different file extensions: .png, .pdf, etc. I generally only use PNG or PDF files. The second argument is the name of the object to save (here <code>dotplot</code>). Next you specify the <code>width</code> and <code>height</code> of the image you want to create and the <code>units</code> of the values you specify. You don’t need to do this, but I like to so that I know exactly how big my image will be. I find this helpful when later inserting images in my manuscripts. It is also a good way to ensure consistency in size from graph to graph. For PNG you can also specify the <code>dpi</code> (dots per inch/pixels per inch), which will be the resolution of the final image. The higher the <code>dpi</code>, the bigger the file, but also the clearer the image will be if you decide later to zoom in on it or enlarge it. Though, if you need a bigger image it’s better to just specify the exact size using the height and width arguments, rather than enlarging a smaller image. For graphs with little to no text <code>300</code> dpi is sufficient. If there is a lot of text, you may want to bump it up to <code>600</code> dpi. For certain publishers there may be a specific dpi needed.</p>
+<p>To save the graph use the function <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>. The first argument is the save destination. You can specify which type of file you want to save your image as by using different file extensions: .png, .pdf, etc. I generally only use PNG or PDF files. The second argument is the name of the object to save (here <code>dotplot</code>). Next you specify the <code>width</code> and <code>height</code> of the image you want to create and the <code>units</code> of the values you specify. You don’t need to do this, but I like to so that I know exactly how big my image will be. I find this helpful when later inserting images in my manuscripts. It is also a good way to ensure consistency in size from graph to graph. For PNG you can also specify the <code>dpi</code> (dots per inch/pixels per inch), which will be the resolution of the final image. The higher the <code>dpi</code>, the bigger the file, but also the clearer the image will be if you decide later to zoom in on it or enlarge it. Though, if you need a bigger image it’s better to just specify the exact size using the height and width arguments, rather than enlarging a smaller image. For graphs with little to no text <code>300</code> dpi is sufficient. If there is a lot of text, you may want to bump it up to <code>600</code> dpi. For certain publishers there may be a specific dpi needed.</p>
 <p>In the dotplot above, the descriptor variables are ordered top to bottom from most important to least important. Variables can be considered informative if their variable importance is above the absolute value of the lowest negative-scoring variable. The rationale for this rule of thumb, according to <span class="citation" data-cites="Strobl2009">Strobl &amp; Malley &amp; Tutz (<a href="#ref-Strobl2009" role="doc-biblioref">2009: 342</a>)</span>, is that importance of irrelevant variables varies randomly around zero. In other words, everything to the right of the dashed line is a useful in describing <code>Deletion</code> in the data. The further to the right of the dashed line, the more useful.</p>
 <p>The variables with the highest variable importance are <code>Before</code> and <code>Morph.Type</code>, followed by <code>Center.Age</code>, <code>After</code>, <code>Job</code>, <code>Education</code>, <code>After.New</code> and <code>Stress</code>. The variables <code>Category</code>, <code>Age.Group</code>, <code>Sex</code>, and <code>Phoneme</code> are all to the left of the dashed line, so you can consider them as not useful in describing the variation.</p>
 <p>You’ll notice that many of the independent variables included are collinear — in other words, the value of one can predict (all or some of) the values of the other. As I noted above, <code>Category</code> and <code>Morph.Type</code> are collinear because all <code>Semi-Weak</code> and <code>Past</code> tokens are also <code>Lexical</code>. Likewise <code>Age.Group</code> and <code>Center.Age</code> are completely collinear; the value of <code>Center.Age</code> can exactly predict the value of <code>Age.Group</code>. Values for both age measures can also do a good job of predicting both <code>Education</code> and <code>Job</code> in the Cape Breton data. Younger speakers are generally <code>Educated</code> and have <code>White</code> (collar) or <code>Service</code> jobs. All <code>Students</code> in the variable <code>Education</code> are also <code>Students</code> for the variable <code>Job</code>, and all are also <code>Young</code>. It would violate the assumptions of the model to include all these predictors at the same time in the same regression (see <a href="https://lingmethodshub.github.io/content/R/lvc_r/100_lvcr.html">next chapter</a>); however, these collinear variables can be included in a random forest. One of the greatest uses of a random forest analysis is when you have multiple ways of categorizing the same phenomenon (like social class, which can be operationalized by either <code>Job</code> or <code>Education</code>, or age which can be operationalized as a continuous variable like <code>Center.Age</code>, or a discrete variable like <code>Age.Group</code>) and you want to decide which categorization to use.</p>
 <p>In the dotplot the variable <code>After</code> is higher ranked than <code>After.New</code>. This would be good justification for choosing <code>After</code> — which includes a separate level for (t, d) before /h/ — instead of <code>After.New</code> in further analyses. Likewise, <code>Job</code> is describes the variation better than <code>Education</code>; the random forest therefore points to <code>Job</code> being a more useful reflection of social class stratification than <code>Education</code> for the (t, d) variable. The only caveat is that when selecting between independent variables that are collinear, you must also take into account the hypotheses that you aim to test. In other words, selection of variables should be also be independently motivated.</p>
-<p>A very important thing to remember about random forest analysis is that they are truly random, so the results can vary from run to run depending on which seed has been set. For this reason it’s a good idea to verify your findings by re-running your random forest analysis using different seeds and perhaps different numbers of trees. Below is the code for generating a random forest from seed 654321 and 8,000 randomly grown trees (I also used <code>theme_linedraw()</code> instead of <code>theme_classic()</code>). You’ll see that the variable importance rankings are nearly identical. <code>Before</code> is far-and-away the most informative descriptor, followed by <code>Center.Age</code> and <code>Morph.Type</code>, then <code>Job</code>, <code>After</code>, and <code>Education</code>, and finally marginally-informative <code>Stress</code> and <code>After.New</code>. This gives me confidence that the results from the previous random forest are relatively accurate. It also provides justification for choosing <code>Job</code> over <code>Education</code> as a metric of social status, <code>Center.Age</code> over <code>Age.Group</code> as a measure of apparent time, and <code>Morph.Type</code> over <code>Category</code> (two highly-correlated descriptors). <code>Sex</code> and <code>Phoneme</code> also appear to be poor descriptors of the variation in the data, so leaving them out of regression analysis (in order to simplify modelling), could also be justified.</p>
+<p>A very important thing to remember about random forest analysis is that they are truly random, so the results can vary from run to run depending on which seed has been set. For this reason it’s a good idea to verify your findings by re-running your random forest analysis using different seeds and perhaps different numbers of trees. Below is the code for generating a random forest from seed 654321 and 8,000 randomly grown trees (I also used <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_linedraw()</a></code> instead of <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic()</a></code>). You’ll see that the variable importance rankings are nearly identical. <code>Before</code> is far-and-away the most informative descriptor, followed by <code>Center.Age</code> and <code>Morph.Type</code>, then <code>Job</code>, <code>After</code>, and <code>Education</code>, and finally marginally-informative <code>Stress</code> and <code>After.New</code>. This gives me confidence that the results from the previous random forest are relatively accurate. It also provides justification for choosing <code>Job</code> over <code>Education</code> as a metric of social status, <code>Center.Age</code> over <code>Age.Group</code> as a measure of apparent time, and <code>Morph.Type</code> over <code>Category</code> (two highly-correlated descriptors). <code>Sex</code> and <code>Phoneme</code> also appear to be poor descriptors of the variation in the data, so leaving them out of regression analysis (in order to simplify modelling), could also be justified.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">654321</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(partykit)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>td.cforest2 <span class="ot">&lt;-</span> <span class="fu">cforest</span>(Dep.Var <span class="sc">~</span> Stress <span class="sc">+</span> Category <span class="sc">+</span> Morph.Type <span class="sc">+</span> Before <span class="sc">+</span> After <span class="sc">+</span> Sex <span class="sc">+</span> Education <span class="sc">+</span> Job <span class="sc">+</span> After.New <span class="sc">+</span> Center.Age <span class="sc">+</span> Age.Group <span class="sc">+</span> Phoneme, <span class="at">data=</span>td, <span class="at">ntree=</span><span class="dv">8000</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>td.cforest2.varimp<span class="ot">&lt;-</span><span class="fu">varimp</span>(td.cforest2, <span class="at">conditional=</span><span class="cn">TRUE</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>td.cforest2.results<span class="ot">&lt;-</span><span class="fu">melt</span>(<span class="fu">data.frame</span>(<span class="fu">as.list</span>(td.cforest2.varimp)), <span class="at">id.vars=</span><span class="cn">NULL</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">654321</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://partykit.r-forge.r-project.org/partykit/">partykit</a></span><span class="op">)</span></span>
+<span><span class="va">td.cforest2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/partykit/man/cforest.html">cforest</a></span><span class="op">(</span><span class="va">Dep.Var</span> <span class="op">~</span> <span class="va">Stress</span> <span class="op">+</span> <span class="va">Category</span> <span class="op">+</span> <span class="va">Morph.Type</span> <span class="op">+</span> <span class="va">Before</span> <span class="op">+</span> <span class="va">After</span> <span class="op">+</span> <span class="va">Sex</span> <span class="op">+</span> <span class="va">Education</span> <span class="op">+</span> <span class="va">Job</span> <span class="op">+</span> <span class="va">After.New</span> <span class="op">+</span> <span class="va">Center.Age</span> <span class="op">+</span> <span class="va">Age.Group</span> <span class="op">+</span> <span class="va">Phoneme</span>, data<span class="op">=</span><span class="va">td</span>, ntree<span class="op">=</span><span class="fl">8000</span><span class="op">)</span></span>
+<span><span class="va">td.cforest2.varimp</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/partykit/man/varimp.html">varimp</a></span><span class="op">(</span><span class="va">td.cforest2</span>, conditional<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape">reshape2</a></span><span class="op">)</span></span>
+<span><span class="va">td.cforest2.results</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/reshape2/man/melt.html">melt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">as.list</a></span><span class="op">(</span><span class="va">td.cforest2.varimp</span><span class="op">)</span><span class="op">)</span>, id.vars<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>td.cforest2.results<span class="sc">$</span>variable<span class="ot">&lt;-</span><span class="fu">reorder</span>(td.cforest2.results<span class="sc">$</span>variable, td.cforest2.results<span class="sc">$</span>value)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>td.cforest2.min<span class="ot">&lt;-</span><span class="fu">abs</span>(<span class="fu">min</span>(td.cforest2.results<span class="sc">$</span>value))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(td.cforest2.results, <span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> variable))<span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Variable Importance"</span>)<span class="sc">+</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_linedraw</span>()<span class="sc">+</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> td.cforest.min, <span class="at">linetype=</span><span class="dv">2</span>, <span class="at">alpha=</span>.<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">td.cforest2.results</span><span class="op">$</span><span class="va">variable</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">td.cforest2.results</span><span class="op">$</span><span class="va">variable</span>, <span class="va">td.cforest2.results</span><span class="op">$</span><span class="va">value</span><span class="op">)</span></span>
+<span><span class="va">td.cforest2.min</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">td.cforest2.results</span><span class="op">$</span><span class="va">value</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">td.cforest2.results</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">value</span>, y <span class="op">=</span> <span class="va">variable</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Variable Importance"</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_linedraw</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">td.cforest.min</span>, linetype<span class="op">=</span><span class="fl">2</span>, alpha<span class="op">=</span><span class="fl">.5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><a href="090_lvcr_files/figure-html/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="090_lvcr_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></a></p>
+<figure class="figure"><p><a href="090_lvcr_files/figure-html/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="090_lvcr_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Another important thing to remember when using random forest analyses is that the values along the <code>x</code>-axis are only relative rankings for a specific random forest. The absolute values shouldn’t be interpreted or compared across different studies <span class="citation" data-cites="Strobl2009">Strobl et al. (<a href="#ref-Strobl2009" role="doc-biblioref">2009: 336</a>)</span>. What you can compare across studies is the relative ranking of variables along the <code>y</code>-axis and which variables are on each side of the dashed line. Further, random forests do not take into account the weirdness of sociolinguisic data, which generally includes an inconsistent number of tokens from each speaker. Mixed-effects regression <em>can</em> do this. So, random forests should always be used in conjunction with other forms of data modelling like mixed-effects regression.</p>
-<section id="references" class="level3">
-<h3 class="anchored" data-anchor-id="references">References</h3>
+<section id="references" class="level3"><h3 class="anchored" data-anchor-id="references">References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-Oshiro2012" class="csl-entry" role="listitem">
 Oshiro, Thais Mayumi &amp; Perez, Pedro Santoro &amp; Baranauskas, José Augusto. 2012. How many trees in a random forest? In Petra Perner (ed.), <em>Machine learning and data mining in pattern recognition</em> 154–168. Berlin: Springer.
@@ -779,15 +747,10 @@ Tagliamonte, Sali A. &amp; Baayen, R.Harald. 2012. <span>M</span>odels, forests,
 
 <!-- -->
 
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
+</section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 <ol>
 <li id="fn1"><p>See <span class="citation" data-cites="Tagliamonte2012">Tagliamonte (<a href="#ref-Tagliamonte2012" role="doc-biblioref">2012</a>)</span> and <span class="citation" data-cites="Tagliamonte2012b">Tagliamonte &amp; Baayen (<a href="#ref-Tagliamonte2012b" role="doc-biblioref">2012</a>)</span> for a variationist-focused explanation of random forest analysis and its relationship to other analyses.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner,
+</ol></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gardner,
   author = {Gardner, Matt Hunt},
   title = {Random {Forests:} {The} {Basics}},
   series = {Linguistics Methods Hub},
@@ -801,8 +764,7 @@ Tagliamonte, Sali A. &amp; Baayen, R.Harald. 2012. <span>M</span>odels, forests,
 Gardner, Matt Hunt. n.d. Random Forests: The Basics. <em>Linguistics
 Methods Hub</em>: <em>Doing LVC with R</em>. (<a href="https://lingmethodshub.github.io/content/R/lvc_r/090_lvcr.html">https://lingmethodshub.github.io/content/R/lvc_r/090_lvcr.html</a>).
 doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1252,9 +1214,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../../content/R/lvc_r/080_lvcr.html" class="pagination-link" aria-label="Conditional Inference Trees">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Conditional Inference Trees</span>
       </a>          
@@ -1468,8 +1428,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -1480,8 +1439,7 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
       &nbsp;
     </div>
   </div>
-</footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
@@ -1513,8 +1471,6 @@ doi: <a href="https://doi.org/10.5281/zenodo.7160718">10.5281/zenodo.7160718</a>
   
 })();
           </script>
-
-
 
 
 <script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
